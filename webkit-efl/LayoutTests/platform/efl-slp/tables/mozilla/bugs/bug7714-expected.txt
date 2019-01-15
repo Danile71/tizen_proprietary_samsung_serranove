@@ -1,0 +1,71 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x42
+        RenderText {#text} at (0,0) size 779x42
+          text run at (0,0) width 749: "The table below should have two columns and a total of 7 cells, arranged in an alternating/overlapping fashion. The cellspacing=0 for this table. In Nav4.5, this"
+          text run at (0,14) width 779: "example can be viewed. In 5.0 (jun08 win95), this example displays (apparently) as a simple 2x2 table (i.e., some elements are not displayed at all). (The numbers are"
+          text run at (0,28) width 218: "the position of each TD in the HTML source)."
+      RenderTable {TABLE} at (0,54) size 18x122 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 16x120
+          RenderTableRow {TR} at (0,0) size 16x20
+            RenderTableCell {TD} at (0,12) size 8x16 [border: (1px inset #808080)] [r=0 c=0 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (8,2) size 8x16 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "2"
+          RenderTableRow {TR} at (0,20) size 16x20
+            RenderTableCell {TD} at (8,32) size 8x16 [border: (1px inset #808080)] [r=1 c=1 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "3"
+          RenderTableRow {TR} at (0,40) size 16x20
+            RenderTableCell {TD} at (0,52) size 8x16 [border: (1px inset #808080)] [r=2 c=0 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "4"
+          RenderTableRow {TR} at (0,60) size 16x20
+            RenderTableCell {TD} at (8,72) size 8x16 [border: (1px inset #808080)] [r=3 c=1 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "5"
+          RenderTableRow {TR} at (0,80) size 16x20
+            RenderTableCell {TD} at (0,92) size 8x16 [border: (1px inset #808080)] [r=4 c=0 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "6"
+          RenderTableRow {TR} at (0,100) size 16x20
+            RenderTableCell {TD} at (8,102) size 8x16 [border: (1px inset #808080)] [r=5 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"
+      RenderBlock {P} at (0,188) size 784x14
+        RenderText {#text} at (0,0) size 673x14
+          text run at (0,0) width 673: "This is the same table as above, but cellspacing=5 in this case. For 5.0, (jun08 win95) notice the odd cellspacing overlaps. See also bug #6304."
+      RenderTable {TABLE} at (0,214) size 33x147 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 31x145
+          RenderTableRow {TR} at (0,5) size 31x20
+            RenderTableCell {TD} at (5,17) size 8x16 [border: (1px inset #808080)] [r=0 c=0 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (18,7) size 8x16 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "2"
+          RenderTableRow {TR} at (0,30) size 31x15
+            RenderTableCell {TD} at (18,42) size 8x16 [border: (1px inset #808080)] [r=1 c=1 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "3"
+          RenderTableRow {TR} at (0,50) size 31x20
+            RenderTableCell {TD} at (5,62) size 8x16 [border: (1px inset #808080)] [r=2 c=0 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "4"
+          RenderTableRow {TR} at (0,75) size 31x15
+            RenderTableCell {TD} at (18,87) size 8x16 [border: (1px inset #808080)] [r=3 c=1 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "5"
+          RenderTableRow {TR} at (0,95) size 31x20
+            RenderTableCell {TD} at (5,109) size 8x16 [border: (1px inset #808080)] [r=4 c=0 rs=2 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "6"
+          RenderTableRow {TR} at (0,120) size 31x20
+            RenderTableCell {TD} at (18,122) size 8x16 [border: (1px inset #808080)] [r=5 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"

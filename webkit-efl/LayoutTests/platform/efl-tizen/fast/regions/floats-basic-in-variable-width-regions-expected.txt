@@ -1,0 +1,40 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x422
+  RenderBlock {HTML} at (0,0) size 800x422
+    RenderBody {BODY} at (8,8) size 784x406
+      RenderBlock {DIV} at (0,0) size 784x406
+        RenderRegion {DIV} at (0,0) size 302x102 [border: (1px solid #000000)]
+        RenderRegion {DIV} at (0,102) size 402x182 [border: (1px solid #000000)]
+        RenderRegion {DIV} at (0,284) size 222x122 [border: (1px solid #000000)]
+Flow Threads
+  Thread with flow-name 'flow1'
+    layer at (0,0) size 400x400
+      RenderFlowThread at (0,0) size 400x400
+        RenderBlock {DIV} at (0,0) size 400x291
+          RenderBlock {DIV} at (5,5) size 390x281 [border: (1px solid #0000FF)]
+            RenderBlock {DIV} at (48,1) size 293x279 [border: (1px solid #008000)]
+              RenderBlock (floating) {DIV} at (-11,1) size 50x50 [bgcolor=#00FF00]
+              RenderBlock (floating) {DIV} at (155,1) size 50x50 [bgcolor=#00FF00]
+              RenderBlock {P} at (1,17) size 291x134
+                RenderText {#text} at (38,0) size 303x134
+                  text run at (38,0) width 116: "These lines"
+                  text run at (38,19) width 116: "will not spill"
+                  text run at (-12,38) width 216: "out of the regions. These"
+                  text run at (-12,57) width 216: "lines will not spill out of the"
+                  text run at (0,77) width 70: "regions. "
+                  text run at (70,77) width 221: "These lines will not spill out"
+                  text run at (0,96) width 291: "of the regions. These lines will not"
+                  text run at (0,115) width 182: "spill out of the regions."
+              RenderBlock {P} at (1,167) size 291x95
+                RenderText {#text} at (0,0) size 291x95
+                  text run at (0,0) width 291: "These lines will not spill out of the"
+                  text run at (0,19) width 291: "regions. These lines will not spill out"
+                  text run at (0,38) width 131: "of the regions. "
+                  text run at (131,38) width 160: "These lines will not"
+                  text run at (0,57) width 291: "spill out of the regions. These lines"
+                  text run at (0,76) width 243: "will not spill out of the regions."
+  Regions for flow 'flow1'
+    RenderRegion {DIV} #region1
+    RenderRegion {DIV} #region2
+    RenderRegion {DIV} #region3

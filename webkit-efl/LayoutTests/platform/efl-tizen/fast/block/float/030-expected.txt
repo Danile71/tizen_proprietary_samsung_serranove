@@ -1,0 +1,14 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 947x19
+          text run at (0,0) width 582: "You should see a 500x300 rectangle with orange, yellow and olive rects. "
+          text run at (582,0) width 365: "No red should be visible or the test has failed."
+      RenderBlock (floating) {DIV} at (0,35) size 500x300 [bgcolor=#FF0000]
+        RenderBlock (floating) {DIV} at (0,0) size 250x300 [bgcolor=#FFA500]
+        RenderBlock (floating) {DIV} at (250,0) size 250x300
+          RenderBlock (floating) {DIV} at (0,0) size 250x40 [bgcolor=#FFFF00]
+          RenderBlock (floating) {DIV} at (0,40) size 250x260 [bgcolor=#808000]

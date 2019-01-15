@@ -1,0 +1,42 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 67x19
+          text run at (0,0) width 67: "Test for "
+        RenderInline {I} at (0,0) size 917x38
+          RenderInline {A} at (0,0) size 380x19 [color=#0000EE]
+            RenderText {#text} at (67,0) size 380x19
+              text run at (67,0) width 380: "https://bugs.webkit.org/show_bug.cgi?id=34735"
+          RenderText {#text} at (447,0) size 917x38
+            text run at (447,0) width 470: " [Chromium] OpenType font with CFF glyphs is not handled"
+            text run at (0,19) width 198: "correctly on Windows XP"
+        RenderText {#text} at (198,19) size 5x19
+          text run at (198,19) width 5: "."
+      RenderBlock {P} at (0,54) size 964x38
+        RenderText {#text} at (0,0) size 896x38
+          text run at (0,0) width 896: "Check if glyphs in Ahem.otf can be rendered correctly. If the test passes, you should see dozens of black square"
+          text run at (0,19) width 143: "characters below:"
+      RenderBlock (anonymous) at (0,108) size 964x32
+        RenderInline {SPAN} at (0,0) size 736x17
+          RenderText {#text} at (0,0) size 736x17
+            text run at (0,0) width 736: "!\"#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO"
+        RenderText {#text} at (0,0) size 0x0
+        RenderInline {SPAN} at (0,0) size 736x17
+          RenderText {#text} at (0,16) size 736x17
+            text run at (0,16) width 736: "PQRSTUVWXYZ[\\]^_`abcdefghijklmnoqrstuvwxyz{|}~"
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,156) size 964x38
+        RenderText {#text} at (0,0) size 946x38
+          text run at (0,0) width 946: "Check if glyphs not in Ahem.otf can be rendered using a fallback font. If the test passes, you should see a single-quote"
+          text run at (0,19) width 135: "character below:"
+      RenderBlock (anonymous) at (0,210) size 964x16
+        RenderInline {SPAN} at (0,0) size 4x17
+          RenderText {#text} at (0,0) size 4x17
+            text run at (0,0) width 4: "'"
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0

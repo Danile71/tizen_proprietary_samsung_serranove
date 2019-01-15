@@ -1,0 +1,25 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock (anonymous) at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 948x38
+          text run at (0,0) width 431: "This is a test for simple ruby that contains <rp> tags. "
+          text run at (431,0) width 517: "Contents of the <rp> tags (opening and closing brackets) should"
+          text run at (0,19) width 284: "not show when ruby is suppoorted. "
+        RenderBR {BR} at (284,34) size 0x0
+        RenderBR {BR} at (0,38) size 0x19
+      RenderBlock {P} at (0,73) size 964x29
+        RenderText {#text} at (0,10) size 202x19
+          text run at (0,10) width 202: "Ruby is often used in the "
+        RenderRuby (inline) {RUBY} at (0,0) size 152x19
+          RenderRubyRun (anonymous) at (202,10) size 152x19
+            RenderRubyText {RT} at (0,-10) size 152x10
+              RenderText {#text} at (56,0) size 40x10
+                text run at (56,0) width 40: "Nihongo"
+            RenderRubyBase (anonymous) at (0,0) size 152x19
+              RenderText {#text} at (0,0) size 152x19
+                text run at (0,0) width 152: "Japanese language"
+        RenderText {#text} at (354,10) size 5x19
+          text run at (354,10) width 5: "."

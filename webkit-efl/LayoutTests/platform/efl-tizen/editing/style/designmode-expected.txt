@@ -1,0 +1,22 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 5 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 25 of #text > B > DIV > BODY > HTML > #document to 25 of #text > B > DIV > BODY > HTML > #document toDOMRange:range from 0 of #text > B > DIV > BODY > HTML > #document to 25 of #text > B > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 946x19
+          text run at (0,0) width 946: "This tests to make sure that rich editing commands like Bold can be performed on text in a document in design mode."
+      RenderBlock {DIV} at (0,35) size 964x19
+        RenderInline {B} at (0,0) size 223x19
+          RenderText {#text} at (0,0) size 223x19
+            text run at (0,0) width 223: "This text should be bold."
+selection start: position 0 of child 0 {#text} of child 0 {B} of child 2 {DIV} of body
+selection end:   position 25 of child 0 {#text} of child 0 {B} of child 2 {DIV} of body

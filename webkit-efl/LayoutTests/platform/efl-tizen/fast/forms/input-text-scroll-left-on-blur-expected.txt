@@ -1,0 +1,31 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock (anonymous) at (0,0) size 964x29
+        RenderTextControl {INPUT} at (2,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderText {#text} at (175,5) size 5x19
+          text run at (175,5) width 5: " "
+        RenderTextControl {INPUT} at (182,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderText {#text} at (355,5) size 5x19
+          text run at (355,5) width 5: " "
+        RenderTextControl {INPUT} at (362,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,45) size 964x38
+        RenderText {#text} at (0,0) size 953x38
+          text run at (0,0) width 953: "Tests scrolling back to the beginning when a text field blurs. The first field should be scrolled to the left, the second and"
+          text run at (0,19) width 203: "third scrolled to the right."
+layer at (14,16) size 164x15 scrollWidth 381
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (0,0) size 380x15
+      text run at (0,0) width 380: "this text field has a lot of text in it so that it needs to scrol"
+layer at (194,16) size 164x15 scrollX 216 scrollWidth 380
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (-216,0) size 380x15
+      text run at (-216,0) width 380: "this text field has a lot of text in it so that it needs to scrol"
+layer at (374,16) size 164x15 scrollWidth 381
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (0,0) size 380x15
+      text run at (0,0) width 380: "this text field has a lot of text in it so that it needs to scrol"
+caret: position 65 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 4 {INPUT} of body

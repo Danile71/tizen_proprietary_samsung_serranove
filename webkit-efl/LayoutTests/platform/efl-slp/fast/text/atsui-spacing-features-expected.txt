@@ -1,0 +1,82 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x294
+  RenderBlock {HTML} at (0,0) size 800x294
+    RenderBody {BODY} at (8,12) size 784x274
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 133x14
+          text run at (0,0) width 133: "Test for regressions against "
+        RenderInline {I} at (0,0) size 757x28
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (133,0) size 262x14
+              text run at (133,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=3922"
+          RenderText {#text} at (395,0) size 757x28
+            text run at (395,0) width 362: " Variable word/letter spacing and full justification not supported for ATSUI-"
+            text run at (0,14) width 62: "rendered text"
+        RenderText {#text} at (62,14) size 3x14
+          text run at (62,14) width 3: "."
+      RenderBlock (anonymous) at (0,40) size 784x14
+        RenderText {#text} at (0,0) size 378x14
+          text run at (0,0) width 378: "Each green box should be identical to the blue box it follows, except for accents."
+      RenderBlock {HR} at (0,60) size 784x2 [border: (1px inset #000000)]
+      RenderTable {TABLE} at (0,68) size 620x206
+        RenderTableSection {TBODY} at (0,0) size 620x206
+          RenderTableRow {TR} at (0,2) size 620x16
+            RenderTableCell {TD} at (2,2) size 204x16 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (69,1) size 66x14
+                text run at (69,1) width 66: "Word spacing"
+            RenderTableCell {TD} at (208,2) size 204x16 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (69,1) size 66x14
+                text run at (69,1) width 66: "Letter spacing"
+            RenderTableCell {TD} at (414,2) size 204x16 [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (73,1) size 58x14
+                text run at (73,1) width 58: "Justification"
+          RenderTableRow {TR} at (0,20) size 620x184
+            RenderTableCell {TD} at (2,20) size 204x110 [r=1 c=0 rs=1 cs=1]
+              RenderBlock {DIV} at (1,1) size 202x108
+                RenderBlock {DIV} at (0,0) size 202x38 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (73,3) size 142x32
+                    text run at (73,3) width 128 RTL: "\x{5D9}\x{5B0}\x{5D4}\x{5B4}\x{5D9}, \x{5D0}\x{5B8}\x{5D7}\x{5B4}\x{5D9}, \x{5DC}\x{5B0}\x{5DA}\x{5B8} \x{5E1}\x{5B5}\x{5E4}\x{5B6}\x{5E8} \x{5E9}\x{5C1}\x{5B0}\x{5DC}\x{5B7}\x{5D7}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5}"
+                    text run at (59,21) width 98 RTL: "\x{5E6}\x{5B0}\x{5DE}\x{5B4}\x{5D9}\x{5EA}\x{5D5}\x{5BC}\x{5EA} \x{5DC}\x{5B8}\x{5DA}\x{5B0} \x{5DE}\x{5B0}\x{5DB}\x{5B7}\x{5E8}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5}."
+                    text run at (157,21) width 44 RTL: "\x{5D5}\x{5BC}\x{5DE}\x{5B4}\x{5DE}\x{5B0}\x{5DB}\x{5BC}\x{5B6}\x{5E8}\x{5B6}\x{5EA} "
+                RenderBlock {DIV} at (0,43) size 202x30 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (1,1) size 133x28
+                    text run at (1,1) width 133: "Lore\x{300}m ipsum dolor sit ame\x{300}t,"
+                    text run at (1,15) width 129: "consectetuer adipiscing e\x{300}lit."
+                RenderBlock {DIV} at (0,78) size 202x30 [border: (1px solid #008000)]
+                  RenderText {#text} at (1,1) size 173x28
+                    text run at (1,1) width 173: "Lorem ipsum dolor sit amet,"
+                    text run at (1,15) width 149: "consectetuer adipiscing elit."
+            RenderTableCell {TD} at (208,20) size 204x184 [r=1 c=1 rs=1 cs=1]
+              RenderBlock {DIV} at (1,1) size 202x182
+                RenderBlock {DIV} at (0,0) size 202x56 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (41,3) size 178x50
+                    text run at (41,3) width 160 RTL: "\x{5D9}\x{5B0}\x{5D4}\x{5B4}\x{5D9}, \x{5D0}\x{5B8}\x{5D7}\x{5B4}\x{5D9}, \x{5DC}\x{5B0}\x{5DA}\x{5B8} \x{5E1}\x{5B5}\x{5E4}\x{5B6}\x{5E8}"
+                    text run at (57,21) width 144 RTL: "\x{5E9}\x{5C1}\x{5B0}\x{5DC}\x{5B7}\x{5D7}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5} \x{5D5}\x{5BC}\x{5DE}\x{5B4}\x{5DE}\x{5B0}\x{5DB}\x{5BC}\x{5B6}\x{5E8}\x{5B6}\x{5EA}"
+                    text run at (23,39) width 178 RTL: "\x{5E6}\x{5B0}\x{5DE}\x{5B4}\x{5D9}\x{5EA}\x{5D5}\x{5BC}\x{5EA} \x{5DC}\x{5B8}\x{5DA}\x{5B0} \x{5DE}\x{5B0}\x{5DB}\x{5B7}\x{5E8}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5}."
+                RenderBlock {DIV} at (0,61) size 202x58 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (1,1) size 176x56
+                    text run at (1,1) width 176: "Lore\x{300}m ipsum dolor"
+                    text run at (1,15) width 84: "sit ame\x{300}t,"
+                    text run at (1,29) width 118: "consectetue\x{300}r"
+                    text run at (1,43) width 148: "adipiscing e\x{300}lit."
+                RenderBlock {DIV} at (0,124) size 202x58 [border: (1px solid #008000)]
+                  RenderText {#text} at (1,1) size 176x56
+                    text run at (1,1) width 176: "Lorem ipsum dolor"
+                    text run at (1,15) width 84: "sit amet,"
+                    text run at (1,29) width 118: "consectetuer"
+                    text run at (1,43) width 148: "adipiscing elit."
+            RenderTableCell {TD} at (414,20) size 204x110 [r=1 c=2 rs=1 cs=1]
+              RenderBlock {DIV} at (1,1) size 202x108
+                RenderBlock {DIV} at (0,0) size 202x38 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (1,3) size 200x32
+                    text run at (1,3) width 200 RTL: "\x{5D9}\x{5B0}\x{5D4}\x{5B4}\x{5D9}, \x{5D0}\x{5B8}\x{5D7}\x{5B4}\x{5D9}, \x{5DC}\x{5B0}\x{5DA}\x{5B8} \x{5E1}\x{5B5}\x{5E4}\x{5B6}\x{5E8} \x{5E9}\x{5C1}\x{5B0}\x{5DC}\x{5B7}\x{5D7}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5} \x{5D5}\x{5BC}\x{5DE}\x{5B4}\x{5DE}\x{5B0}\x{5DB}\x{5BC}\x{5B6}\x{5E8}\x{5B6}\x{5EA}"
+                    text run at (103,21) width 98 RTL: "\x{5E6}\x{5B0}\x{5DE}\x{5B4}\x{5D9}\x{5EA}\x{5D5}\x{5BC}\x{5EA} \x{5DC}\x{5B8}\x{5DA}\x{5B0} \x{5DE}\x{5B0}\x{5DB}\x{5B7}\x{5E8}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5}."
+                RenderBlock {DIV} at (0,43) size 202x30 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (1,1) size 200x28
+                    text run at (1,1) width 200: "Lore\x{300}m ipsum dolor sit ame\x{300}t, consectetue\x{300}r"
+                    text run at (1,15) width 68: "adipiscing e\x{300}lit."
+                RenderBlock {DIV} at (0,78) size 202x30 [border: (1px solid #008000)]
+                  RenderText {#text} at (1,1) size 200x28
+                    text run at (1,1) width 200: "Lorem ipsum dolor sit amet, consectetuer"
+                    text run at (1,15) width 68: "adipiscing elit."

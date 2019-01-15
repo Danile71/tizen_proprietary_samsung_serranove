@@ -1,0 +1,34 @@
+--- mozilla/security/nss/lib/Makefile	2010/11/16 13:55:53	1.1
++++ mozilla/security/nss/lib/Makefile	2010/11/16 13:57:29
+@@ -62,11 +62,11 @@
+ ZLIB_SRCDIR = zlib  # Add the zlib directory to DIRS.
+ endif
+ 
+-ifndef MOZILLA_CLIENT
+-ifndef NSS_USE_SYSTEM_SQLITE
+-SQLITE_SRCDIR = sqlite  # Add the sqlite directory to DIRS.
+-endif
+-endif
++#ifndef MOZILLA_CLIENT
++#ifndef NSS_USE_SYSTEM_SQLITE
++#SQLITE_SRCDIR = sqlite  # Add the sqlite directory to DIRS.
++#endif
++#endif
+ 
+ ifndef MOZILLA_CLIENT
+ ifeq ($(OS_ARCH),Linux)
+--- mozilla/security/nss/lib/softoken/manifest.mn	2010/11/16 13:56:14	1.1
++++ mozilla/security/nss/lib/softoken/manifest.mn	2010/11/16 13:58:24
+@@ -47,9 +47,9 @@
+ 
+ DEFINES += -DSHLIB_SUFFIX=\"$(DLL_SUFFIX)\" -DSHLIB_PREFIX=\"$(DLL_PREFIX)\" -DSOFTOKEN_LIB_NAME=\"$(notdir $(SHARED_LIBRARY))\" -DSHLIB_VERSION=\"$(LIBRARY_VERSION)\"
+ 
+-ifdef SQLITE_INCLUDE_DIR
+-INCLUDES += -I$(SQLITE_INCLUDE_DIR)
+-endif
++#ifdef SQLITE_INCLUDE_DIR
++#INCLUDES += -I$(SQLITE_INCLUDE_DIR)
++#endif
+ 
+ EXPORTS = \
+ 	secmodt.h \

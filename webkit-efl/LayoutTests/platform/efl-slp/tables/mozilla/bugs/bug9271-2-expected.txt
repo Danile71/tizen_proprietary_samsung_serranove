@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x92
+  RenderBlock {HTML} at (0,0) size 800x92
+    RenderBody {BODY} at (8,16) size 784x68
+      RenderBlock {H1} at (0,0) size 784x28
+        RenderText {#text} at (0,1) size 258x26
+          text run at (0,1) width 258: "insertCell() bugs, 0 based"
+      RenderTable {TABLE} at (0,44) size 652x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 650x22
+          RenderTableRow {TR} at (0,2) size 650x18
+            RenderTableCell {TD} at (2,2) size 106x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 102x14
+                text run at (2,2) width 102: "This is cell number 0."
+            RenderTableCell {TD} at (110,2) size 106x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 102x14
+                text run at (2,2) width 102: "This is cell number 1."
+            RenderTableCell {TD} at (218,2) size 106x18 [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 102x14
+                text run at (2,2) width 102: "This is cell number 2."
+            RenderTableCell {TD} at (326,2) size 106x18 [border: (1px inset #808080)] [r=0 c=3 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 102x14
+                text run at (2,2) width 102: "This is cell number 3."
+            RenderTableCell {TD} at (434,2) size 106x18 [border: (1px inset #808080)] [r=0 c=4 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 102x14
+                text run at (2,2) width 102: "This is cell number 4."
+            RenderTableCell {TD} at (542,2) size 106x18 [border: (1px inset #808080)] [r=0 c=5 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 102x14
+                text run at (2,2) width 102: "This is cell number 5."

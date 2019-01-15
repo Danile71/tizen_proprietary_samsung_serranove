@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x105
+  RenderBlock {HTML} at (0,0) size 800x105
+    RenderBody {BODY} at (8,8) size 784x89
+      RenderBlock {DIV} at (0,0) size 784x89 [color=#FFFFFF] [bgcolor=#000080] [border: (3px solid #0000FF) (72px solid #0000FF) (3px solid #0000FF)]
+        RenderBlock (floating) {DIV} at (511,9) size 264x52 [bgcolor=#008080]
+          RenderBlock {P} at (12,12) size 240x28
+            RenderText {#text} at (0,0) size 235x28
+              text run at (0,0) width 235: "This teal box should start inside the dark blue box"
+              text run at (0,14) width 61: "and spill out "
+              text run at (61,14) width 127: "onto the blue area below it."
+        RenderBlock {P} at (3,3) size 778x14
+          RenderText {#text} at (0,0) size 192x14
+            text run at (0,0) width 192: "You should see a teal box to the right. \x{21E8}"

@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 656x14
+          text run at (0,0) width 656: "This tests whether alt text is shown for image elements with no src attribute. You should see \"Success\" twice, followed by a blue rectangle."
+      RenderBlock {P} at (0,26) size 784x91
+        RenderImage {IMG} at (0,0) size 38x14
+        RenderBR {BR} at (38,14) size 0x0
+        RenderImage {IMG} at (0,14) size 102x52 [border: (1px solid #000000)]
+        RenderBR {BR} at (102,66) size 0x0
+        RenderImage {IMG} at (0,66) size 75x25
+        RenderBR {BR} at (75,91) size 0x0

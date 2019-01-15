@@ -1,0 +1,34 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 950x38
+          text run at (0,0) width 617: "This tests to make sure that breaking a quoted list doesn't renumber the list. "
+          text run at (617,0) width 333: "You should see a list broken in two below,"
+          text run at (0,19) width 270: "the list items numbered 1, 2, 3, 4."
+      RenderBlock {DIV} at (0,54) size 964x127
+        RenderBlock {BLOCKQUOTE} at (2,0) size 922x38 [color=#0000FF] [border: none (2px solid #0000FF)]
+          RenderBlock {OL} at (2,0) size 920x38
+            RenderListItem {LI} at (40,0) size 880x19
+              RenderListMarker at (-25,0) size 20x19: "1"
+              RenderText {#text} at (0,0) size 33x19
+                text run at (0,0) width 33: "One"
+            RenderListItem {LI} at (40,19) size 880x19
+              RenderListMarker at (-25,0) size 20x19: "2"
+              RenderText {#text} at (0,0) size 33x19
+                text run at (0,0) width 33: "Two"
+        RenderBlock (anonymous) at (0,54) size 964x19
+          RenderBR {BR} at (0,0) size 0x19
+        RenderBlock {BLOCKQUOTE} at (2,89) size 922x38 [color=#0000FF] [border: none (2px solid #0000FF)]
+          RenderBlock {OL} at (2,0) size 920x38
+            RenderListItem {LI} at (40,0) size 880x19
+              RenderListMarker at (-25,0) size 20x19: "3"
+              RenderText {#text} at (0,0) size 47x19
+                text run at (0,0) width 47: "Three"
+            RenderListItem {LI} at (40,19) size 880x19
+              RenderListMarker at (-25,0) size 20x19: "4"
+              RenderText {#text} at (0,0) size 36x19
+                text run at (0,0) width 36: "Four"
+caret: position 0 of child 2 {BR} of child 3 {DIV} of body

@@ -1,0 +1,29 @@
+layer at (0,0) size 800x3131
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x3131
+  RenderBlock {HTML} at (0,0) size 800x3131
+    RenderBody {BODY} at (8,8) size 784x3111
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {A} at (0,0) size 51x14 [color=#0000EE]
+          RenderText {#text} at (40,0) size 51x14
+            text run at (40,0) width 51: "bug 12331"
+        RenderText {#text} at (91,0) size 3x14
+          text run at (91,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 643x14
+          text run at (0,0) width 643: "To test manually, scroll down until you find the input element. Select some text. If the bug occurs, the page will scroll back up to the top."
+      RenderBlock {DIV} at (0,52) size 784x3000
+      RenderBlock (anonymous) at (0,3052) size 784x33
+        RenderTextControl {INPUT} at (2,2) size 195x29 [color=#202020]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,3097) size 784x14
+        RenderText {#text} at (0,0) size 302x14
+          text run at (0,0) width 302: "If the bug does not occur, you'll be left down here at the bottom."
+layer at (14,3068) size 188x19
+  RenderBlock {DIV} at (4,6) size 188x19
+    RenderText {#text} at (1,0) size 160x19
+      text run at (1,0) width 160: "select some of this text"
+selection start: position 1 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 7 {INPUT} of body
+selection end:   position 11 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 7 {INPUT} of body

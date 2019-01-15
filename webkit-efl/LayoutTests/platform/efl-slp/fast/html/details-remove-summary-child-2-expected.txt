@@ -1,0 +1,12 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {DETAILS} at (0,0) size 784x14
+        RenderBlock {SUMMARY} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 47x14
+            text run at (0,0) width 47: "summary "
+          RenderInline {SPAN} at (0,0) size 135x14
+            RenderText {#text} at (47,0) size 135x14
+              text run at (47,0) width 135: "shouldn't have any bold text."

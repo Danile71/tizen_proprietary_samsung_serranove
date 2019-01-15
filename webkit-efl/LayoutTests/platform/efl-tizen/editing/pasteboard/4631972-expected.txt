@@ -1,0 +1,30 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document toDOMRange:range from 2 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 825x38
+          text run at (0,0) width 553: "This tests pasting a fragment containing an <iframe> after a <div>. "
+          text run at (553,0) width 272: "This used to fail on an assertion in"
+          text run at (0,19) width 402: "moveParagraphContentsToNewBlockIfNecessary. "
+          text run at (402,19) width 401: "You should see 'foo' and then an <iframe> below."
+      RenderBlock {DIV} at (0,54) size 964x71
+        RenderBlock {DIV} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 26x19
+            text run at (0,0) width 26: "foo"
+        RenderBlock (anonymous) at (0,19) size 964x52
+          RenderPartObject {IFRAME} at (0,0) size 102x52 [border: (1px solid #000000)]
+            layer at (0,0) size 100x50
+              RenderView at (0,0) size 100x50
+            layer at (0,0) size 100x50
+              RenderBlock {HTML} at (0,0) size 100x50
+                RenderBody {BODY} at (8,8) size 84x34
+caret: position 1 of child 1 {IFRAME} of child 2 {DIV} of body

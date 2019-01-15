@@ -1,0 +1,29 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 957x38
+          text run at (0,0) width 957: "The table below should be sized so that each word of text wraps to its own line, and if the font size is not too large, then"
+          text run at (0,19) width 342: "the table will not be wider than the screen."
+      RenderBlock {P} at (0,54) size 964x76
+        RenderText {#text} at (0,0) size 959x76
+          text run at (0,0) width 939: "Previously, the table would be incredibly wide, wide enough so that the entire paragraph of text was on one line. That"
+          text run at (0,19) width 959: "was because the \"maxElementSize\" of the cell was including margins calculated from the desired size of the text (in this"
+          text run at (0,38) width 952: "case, 19x the desired width of the paragraph). The fix was to calculate the margin for the \"maxElementSize\" of the cell"
+          text run at (0,57) width 869: "using the \"maxElementSize\" of the contained block itself, which in this case is the maximum width of a word."
+      RenderTable {TABLE} at (0,146) size 293x162 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 291x160
+          RenderTableRow {TR} at (0,2) size 291x156
+            RenderTableCell {TD} at (2,2) size 287x156 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderBlock {P} at (270,2) size 15x152
+                RenderText {#text} at (0,0) size 44x152
+                  text run at (0,0) width 32: "This"
+                  text run at (0,19) width 12: "is"
+                  text run at (0,38) width 44: "some"
+                  text run at (0,57) width 36: "text."
+                  text run at (0,76) width 32: "This"
+                  text run at (0,95) width 12: "is"
+                  text run at (0,114) width 44: "some"
+                  text run at (0,133) width 36: "text."

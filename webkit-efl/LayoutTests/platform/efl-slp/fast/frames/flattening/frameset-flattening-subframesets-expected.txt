@@ -1,0 +1,58 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderFrameSet {FRAMESET} at (0,0) size 800x600
+      RenderFrameSet {FRAMESET} at (0,0) size 800x120
+        RenderFrame {FRAME} at (0,0) size 400x120
+          layer at (0,0) size 450x120
+            RenderView at (0,0) size 400x120
+          layer at (0,0) size 400x120
+            RenderBlock {HTML} at (0,0) size 400x120
+              RenderBody {BODY} at (8,8) size 384x100 [bgcolor=#008000]
+                RenderBlock {P} at (0,0) size 384x14
+                  RenderText {#text} at (0,0) size 273x14
+                    text run at (0,0) width 273: "A frameset flattening test that only works inside the DRT."
+                RenderBlock {P} at (0,26) size 384x28
+                  RenderText {#text} at (0,0) size 381x28
+                    text run at (0,0) width 381: "This frame is inside frameset 1 and should be at least 450px wide, 150px tall and"
+                    text run at (0,14) width 80: "not be scrollable."
+          layer at (0,0) size 450x50
+            RenderBlock (positioned) {DIV} at (0,0) size 450x50
+        RenderFrame {FRAME} at (400,0) size 400x120
+          layer at (0,0) size 450x150
+            RenderView at (0,0) size 400x120
+          layer at (0,0) size 400x120
+            RenderBlock {HTML} at (0,0) size 400x120
+              RenderBody {BODY} at (8,8) size 384x100 [bgcolor=#FF0000]
+                RenderBlock {P} at (0,0) size 384x28
+                  RenderText {#text} at (0,0) size 381x28
+                    text run at (0,0) width 381: "This frame is inside frameset 1 and should be at least 450px wide, 150px tall and"
+                    text run at (0,14) width 80: "not be scrollable."
+          layer at (0,0) size 450x150
+            RenderBlock (positioned) {DIV} at (0,0) size 450x150
+      RenderFrameSet {FRAMESET} at (0,120) size 800x480
+        RenderFrame {FRAME} at (0,0) size 400x480
+          layer at (0,0) size 400x480
+            RenderView at (0,0) size 400x480
+          layer at (0,0) size 400x480
+            RenderBlock {HTML} at (0,0) size 400x480
+              RenderBody {BODY} at (8,8) size 384x460 [bgcolor=#FFFF00]
+                RenderBlock {P} at (0,0) size 384x28
+                  RenderText {#text} at (0,0) size 381x28
+                    text run at (0,0) width 381: "This frame is inside frameset 2 and should be at least 450px wide, 400px tall and"
+                    text run at (0,14) width 80: "not be scrollable."
+          layer at (0,0) size 200x450
+            RenderBlock (positioned) {DIV} at (0,0) size 200x450
+        RenderFrame {FRAME} at (400,0) size 400x480
+          layer at (0,0) size 450x480
+            RenderView at (0,0) size 400x480
+          layer at (0,0) size 400x480
+            RenderBlock {HTML} at (0,0) size 400x480
+              RenderBody {BODY} at (8,8) size 384x460 [bgcolor=#0000FF]
+                RenderBlock {P} at (0,0) size 384x28
+                  RenderText {#text} at (0,0) size 381x28
+                    text run at (0,0) width 381: "This frame is inside frameset 2 and should be at least 450px wide, 400px tall and"
+                    text run at (0,14) width 80: "not be scrollable."
+          layer at (0,0) size 450x450
+            RenderBlock (positioned) {DIV} at (0,0) size 450x450

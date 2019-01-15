@@ -1,0 +1,34 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document toDOMRange:range from 1 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 934x38
+          text run at (0,0) width 450: "This tests inserting a paragraph separator after a table. "
+          text run at (450,0) width 484: "There should be an empty paragraph between the table and"
+          text run at (0,19) width 430: "'bar' and the caret should be in the empty paragraph."
+      RenderBlock {DIV} at (0,54) size 964x67
+        RenderTable {TABLE} at (0,0) size 36x29 [border: (1px outset #808080)]
+          RenderTableSection {TBODY} at (1,1) size 34x27
+            RenderTableRow {TR} at (0,2) size 34x23
+              RenderTableCell {TD} at (2,2) size 30x23 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (2,2) size 26x19
+                  text run at (2,2) width 26: "foo"
+        RenderBlock (anonymous) at (0,29) size 964x38
+          RenderBR {BR} at (0,0) size 0x19
+          RenderText {#text} at (0,19) size 27x19
+            text run at (0,19) width 27: "bar"
+caret: position 0 of child 1 {BR} of child 2 {DIV} of body

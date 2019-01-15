@@ -1,0 +1,243 @@
+layer at (0,0) size 800x1979
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x1979
+  RenderBlock {HTML} at (0,0) size 800x1979
+    RenderBody {BODY} at (8,16) size 784x1951 [bgcolor=#FFFFFF]
+      RenderBlock {H1} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 275x28
+          text run at (0,0) width 275: "Table Inheritance Tests - 1"
+      RenderBlock {P} at (0,44) size 784x14
+        RenderText {#text} at (0,0) size 290x14
+          text run at (0,0) width 290: "If you have any comments to make regarding this test, e-mail "
+        RenderInline {A} at (0,0) size 136x14 [color=#0000EE]
+          RenderText {#text} at (290,0) size 136x14
+            text run at (290,0) width 136: "py8ieh=eviltests@bath.ac.uk"
+        RenderText {#text} at (426,0) size 3x14
+          text run at (426,0) width 3: "."
+      RenderBlock {DL} at (0,70) size 784x28
+        RenderBlock {DT} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 61x14
+            text run at (0,0) width 61: "Prerequisites"
+        RenderBlock {DD} at (40,14) size 744x14
+          RenderText {#text} at (0,0) size 414x14
+            text run at (0,0) width 414: "Browsers that are subjected to this test should support CSS1 and the CSS2 table model."
+      RenderBlock {H2} at (0,112) size 784x21
+        RenderText {#text} at (0,0) size 79x21
+          text run at (0,0) width 79: "0. Control"
+      RenderBlock {P} at (0,147) size 784x14
+        RenderText {#text} at (0,0) size 301x14
+          text run at (0,0) width 301: "The following four tests should look identical, namely, like this:"
+      RenderBlock {DIV} at (0,173) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+        RenderText {#text} at (0,0) size 747x56
+          text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+          text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {P} at (0,241) size 784x42
+        RenderText {#text} at (0,0) size 772x42
+          text run at (0,0) width 748: "There are some minor exceptions, however. The x.1 tests should fill the viewport width, the other tests need not. Also, browsers attempting to have backwards"
+          text run at (0,14) width 772: "compatability with the buggy behaviour of legacy browsers may omit to inherit the color and font-size in 1.1, which will make 1.1 (but only 1.1) unreadable. That is"
+          text run at (0,28) width 196: "the problem with not following the specs."
+      RenderBlock {H2} at (0,297) size 784x21
+        RenderText {#text} at (0,0) size 130x21
+          text run at (0,0) width 130: "1. HTML Tables"
+      RenderBlock {H3} at (0,332) size 784x17
+        RenderText {#text} at (0,0) size 184x17
+          text run at (0,0) width 184: "1.1 Inheritance through a DIV"
+      RenderBlock {DIV} at (0,363) size 784x62 [color=#FFFFFF] [bgcolor=#000000]
+        RenderTable {TABLE} at (0,0) size 784x62
+          RenderTableSection {TBODY} at (0,0) size 784x62
+            RenderTableRow {TR} at (0,2) size 784x58
+              RenderTableCell {TD} at (2,2) size 780x58 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 747x56
+                  text run at (1,1) width 747: "This text should be white on black, bold, twice the size of normal"
+                  text run at (1,29) width 224: "text, and sans serif."
+      RenderBlock {H3} at (0,439) size 784x17
+        RenderText {#text} at (0,0) size 196x17
+          text run at (0,0) width 196: "1.2 Styles set directly on TABLE"
+      RenderTable {TABLE} at (0,470) size 784x62 [color=#FFFFFF] [bgcolor=#000000]
+        RenderTableSection {TBODY} at (0,0) size 784x62
+          RenderTableRow {TR} at (0,2) size 784x58
+            RenderTableCell {TD} at (2,2) size 780x58 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 747x56
+                text run at (1,1) width 747: "This text should be white on black, bold, twice the size of normal"
+                text run at (1,29) width 224: "text, and sans serif."
+      RenderBlock {H2} at (0,546) size 784x21
+        RenderText {#text} at (0,0) size 173x21
+          text run at (0,0) width 173: "2. Explicit CSS Tables"
+      RenderBlock {H3} at (0,581) size 784x17
+        RenderText {#text} at (0,0) size 184x17
+          text run at (0,0) width 184: "2.1 Inheritance through a DIV"
+      RenderBlock {DIV} at (0,612) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+        RenderTable {DIV} at (0,0) size 784x56
+          RenderTableSection (anonymous) at (0,0) size 784x56
+            RenderTableRow {DIV} at (0,0) size 784x56
+              RenderTableCell {DIV} at (0,0) size 784x56 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (0,0) size 747x56
+                  text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                  text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H3} at (0,682) size 784x17
+        RenderText {#text} at (0,0) size 196x17
+          text run at (0,0) width 196: "2.2 Styles set directly on TABLE"
+      RenderTable {DIV} at (0,713) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+        RenderTableSection (anonymous) at (0,0) size 784x56
+          RenderTableRow {DIV} at (0,0) size 784x56
+            RenderTableCell {DIV} at (0,0) size 784x56 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 747x56
+                text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H3} at (0,783) size 784x17
+        RenderText {#text} at (0,0) size 185x17
+          text run at (0,0) width 185: "2.3 Styles set directly on ROW"
+      RenderTable {DIV} at (0,814) size 784x56
+        RenderTableSection (anonymous) at (0,0) size 784x56
+          RenderTableRow {DIV} at (0,0) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+            RenderTableCell {DIV} at (0,0) size 784x56 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 747x56
+                text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H3} at (0,884) size 784x17
+        RenderText {#text} at (0,0) size 187x17
+          text run at (0,0) width 187: "2.4 Styles set directly on CELL"
+      RenderTable {DIV} at (0,915) size 784x56
+        RenderTableSection (anonymous) at (0,0) size 784x56
+          RenderTableRow {DIV} at (0,0) size 784x56
+            RenderTableCell {DIV} at (0,0) size 784x56 [color=#FFFFFF] [bgcolor=#000000] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 747x56
+                text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H2} at (0,985) size 784x21
+        RenderText {#text} at (0,0) size 290x21
+          text run at (0,0) width 290: "3. Implicit CSS Tables (table explicit)"
+      RenderBlock {H3} at (0,1020) size 784x17
+        RenderText {#text} at (0,0) size 184x17
+          text run at (0,0) width 184: "3.1 Inheritance through a DIV"
+      RenderBlock {DIV} at (0,1051) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+        RenderTable {DIV} at (0,0) size 784x56
+          RenderTableSection (anonymous) at (0,0) size 784x56
+            RenderTableRow (anonymous) at (0,0) size 784x56
+              RenderTableCell (anonymous) at (0,0) size 784x56 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (0,0) size 747x56
+                  text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                  text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H3} at (0,1121) size 784x17
+        RenderText {#text} at (0,0) size 196x17
+          text run at (0,0) width 196: "3.2 Styles set directly on TABLE"
+      RenderTable {DIV} at (0,1152) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+        RenderTableSection (anonymous) at (0,0) size 784x56
+          RenderTableRow (anonymous) at (0,0) size 784x56
+            RenderTableCell (anonymous) at (0,0) size 784x56 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 747x56
+                text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H2} at (0,1222) size 784x21
+        RenderText {#text} at (0,0) size 282x21
+          text run at (0,0) width 282: "4. Implicit CSS Tables (row explicit)"
+      RenderBlock {H3} at (0,1257) size 784x17
+        RenderText {#text} at (0,0) size 184x17
+          text run at (0,0) width 184: "4.1 Inheritance through a DIV"
+      RenderBlock {DIV} at (0,1288) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+        RenderTable at (0,0) size 784x56
+          RenderTableSection (anonymous) at (0,0) size 784x56
+            RenderTableRow {DIV} at (0,0) size 784x56
+              RenderTableCell (anonymous) at (0,0) size 784x56 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (0,0) size 747x56
+                  text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                  text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H3} at (0,1358) size 784x17
+        RenderText {#text} at (0,0) size 185x17
+          text run at (0,0) width 185: "4.2 Styles set directly on ROW"
+      RenderTable at (0,1389) size 784x56
+        RenderTableSection (anonymous) at (0,0) size 784x56
+          RenderTableRow {DIV} at (0,0) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+            RenderTableCell (anonymous) at (0,0) size 784x56 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 747x56
+                text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H2} at (0,1459) size 784x21
+        RenderText {#text} at (0,0) size 278x21
+          text run at (0,0) width 278: "5. Implicit CSS Tables (cell explicit)"
+      RenderBlock {H3} at (0,1494) size 784x17
+        RenderText {#text} at (0,0) size 184x17
+          text run at (0,0) width 184: "5.1 Inheritance through a DIV"
+      RenderBlock {DIV} at (0,1525) size 784x56 [color=#FFFFFF] [bgcolor=#000000]
+        RenderTable at (0,0) size 784x56
+          RenderTableSection (anonymous) at (0,0) size 784x56
+            RenderTableRow (anonymous) at (0,0) size 784x56
+              RenderTableCell {DIV} at (0,0) size 784x56 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (0,0) size 747x56
+                  text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                  text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H3} at (0,1595) size 784x17
+        RenderText {#text} at (0,0) size 187x17
+          text run at (0,0) width 187: "5.2 Styles set directly on CELL"
+      RenderTable at (0,1626) size 784x56
+        RenderTableSection (anonymous) at (0,0) size 784x56
+          RenderTableRow (anonymous) at (0,0) size 784x56
+            RenderTableCell {DIV} at (0,0) size 784x56 [color=#FFFFFF] [bgcolor=#000000] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 747x56
+                text run at (0,0) width 747: "This text should be white on black, bold, twice the size of normal"
+                text run at (0,28) width 224: "text, and sans serif."
+      RenderBlock {H2} at (0,1696) size 784x21
+        RenderText {#text} at (0,0) size 117x21
+          text run at (0,0) width 117: "Submit Results"
+      RenderBlock {FORM} at (0,1731) size 784x76
+        RenderBlock {P} at (0,0) size 784x76
+          RenderText {#text} at (0,0) size 196x14
+            text run at (0,0) width 196: "How does your browser fare on this test?"
+          RenderMenuList {SELECT} at (2,16) size 607x25 [color=#202020]
+            RenderBlock (anonymous) at (5,2) size 582x19
+              RenderText at (0,0) size 582x19
+                text run at (0,0) width 582: "The tests all render identically, and this browser may or may not grok CSS2 tables."
+          RenderText {#text} at (611,22) size 3x14
+            text run at (611,22) width 3: " "
+          RenderInline {LABEL} at (0,0) size 666x47
+            RenderText {#text} at (614,22) size 52x14
+              text run at (614,22) width 52: "Comment: "
+            RenderTextControl {INPUT} at (2,45) size 195x29 [color=#202020]
+          RenderText {#text} at (199,55) size 3x14
+            text run at (199,55) width 3: " "
+          RenderButton {INPUT} at (204,47) size 57x26 [color=#202020]
+            RenderBlock (anonymous) at (4,4) size 50x19
+              RenderText at (0,0) size 50x19
+                text run at (0,0) width 50: "Submit"
+          RenderText {#text} at (0,0) size 0x0
+      RenderBlock {HR} at (0,1819) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,1833) size 784x14
+        RenderText {#text} at (0,0) size 47x14
+          text run at (0,0) width 47: "Up to the "
+        RenderInline {A} at (0,0) size 54x14 [color=#0000EE]
+          RenderText {#text} at (47,0) size 54x14
+            text run at (47,0) width 54: "Table Tests"
+        RenderText {#text} at (101,0) size 3x14
+          text run at (101,0) width 3: "."
+      RenderBlock {P} at (0,1859) size 784x14
+        RenderText {#text} at (0,0) size 47x14
+          text run at (0,0) width 47: "Up to the "
+        RenderInline {A} at (0,0) size 73x14 [color=#0000EE]
+          RenderText {#text} at (47,0) size 73x14
+            text run at (47,0) width 73: "Evil Tests Page"
+        RenderText {#text} at (120,0) size 3x14
+          text run at (120,0) width 3: "."
+      RenderBlock {P} at (0,1885) size 784x14
+        RenderText {#text} at (0,0) size 45x14
+          text run at (0,0) width 45: "Bugzilla: "
+        RenderInline {A} at (0,0) size 47x14 [color=#0000EE]
+          RenderText {#text} at (45,0) size 47x14
+            text run at (45,0) width 47: "Bug 1044"
+      RenderBlock {P} at (0,1911) size 784x14
+        RenderText {#text} at (0,0) size 129x14
+          text run at (0,0) width 129: "This page is maintained by "
+        RenderInline {A} at (0,0) size 58x14 [color=#0000EE]
+          RenderText {#text} at (129,0) size 58x14
+            text run at (129,0) width 58: "Ian Hickson"
+        RenderText {#text} at (187,0) size 7x14
+          text run at (187,0) width 7: " ("
+        RenderInline {A} at (0,0) size 91x14 [color=#0000EE]
+          RenderText {#text} at (194,0) size 91x14
+            text run at (194,0) width 91: "py8ieh@bath.ac.uk"
+        RenderText {#text} at (285,0) size 7x14
+          text run at (285,0) width 7: ")."
+      RenderBlock {P} at (0,1937) size 784x14
+        RenderText {#text} at (0,0) size 136x14
+          text run at (0,0) width 136: "Last updated in March 1999."
+layer at (14,1798) size 188x19
+  RenderBlock {DIV} at (4,6) size 188x19

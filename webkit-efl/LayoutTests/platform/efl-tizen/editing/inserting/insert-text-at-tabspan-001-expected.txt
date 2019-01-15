@@ -1,0 +1,24 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x56 [border: (2px solid #FF0000)]
+        RenderInline {SPAN} at (0,0) size 205x28
+          RenderText {#text} at (14,14) size 29x28
+            text run at (14,14) width 29: "ax"
+          RenderInline {SPAN} at (0,0) size 163x28
+            RenderText {#text} at (43,14) size 163x28
+              text run at (43,14) width 163: "\x{9}\x{9}\x{9}"
+          RenderText {#text} at (206,14) size 13x28
+            text run at (206,14) width 13: "z"
+        RenderText {#text} at (0,0) size 0x0
+caret: position 2 of child 0 {#text} of child 1 {SPAN} of child 1 {DIV} of body

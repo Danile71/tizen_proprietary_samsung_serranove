@@ -1,0 +1,37 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x210
+  RenderBlock {HTML} at (0,0) size 800x210
+    RenderBody {BODY} at (8,12) size 784x190
+      RenderBlock {P} at (0,0) size 784x14
+        RenderInline {B} at (0,0) size 47x14
+          RenderText {#text} at (0,0) size 47x14
+            text run at (0,0) width 47: "BUG ID:"
+        RenderText {#text} at (47,0) size 3x14
+          text run at (47,0) width 3: " "
+        RenderInline {A} at (0,0) size 87x14 [color=#0000EE]
+          RenderText {#text} at (50,0) size 87x14
+            text run at (50,0) width 87: "Bugzilla bug 6769"
+        RenderText {#text} at (137,0) size 365x14
+          text run at (137,0) width 365: " REGRESSION: Incomplete repaint when a cell's extra bottom margin grows"
+      RenderBlock {P} at (0,26) size 784x20 [bgcolor=#98FB98]
+        RenderInline {B} at (0,0) size 68x14
+          RenderText {#text} at (3,3) size 68x14
+            text run at (3,3) width 68: "TEST PASS:"
+        RenderText {#text} at (71,3) size 265x14
+          text run at (71,3) width 3: " "
+          text run at (74,3) width 262: "There should be only a green square below, and no red."
+      RenderBlock {P} at (0,58) size 784x20 [bgcolor=#FF3300]
+        RenderInline {B} at (0,0) size 67x14
+          RenderText {#text} at (3,3) size 67x14
+            text run at (3,3) width 67: "TEST FAIL:"
+        RenderText {#text} at (70,3) size 233x14
+          text run at (70,3) width 3: " "
+          text run at (73,3) width 230: "The lower-right quarter of the square will be red."
+      RenderTable {TABLE} at (0,90) size 100x100 [bgcolor=#008000]
+        RenderTableSection {TBODY} at (0,0) size 100x100
+          RenderTableRow {TR} at (0,0) size 100x100
+            RenderTableCell {TD} at (0,50) size 50x0 [r=0 c=0 rs=2 cs=1]
+            RenderTableCell {TD} at (50,0) size 50x0 [bgcolor=#008000] [r=0 c=1 rs=1 cs=1]
+          RenderTableRow {TR} at (0,100) size 100x0
+            RenderTableCell {TD} at (50,100) size 50x0 [bgcolor=#FF0000] [r=1 c=1 rs=1 cs=1]

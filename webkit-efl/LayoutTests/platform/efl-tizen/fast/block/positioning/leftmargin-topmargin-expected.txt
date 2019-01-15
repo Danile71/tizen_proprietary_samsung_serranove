@@ -1,0 +1,12 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (42,42) size 896x651
+      RenderBlock {P} at (0,0) size 896x38
+        RenderText {#text} at (0,0) size 842x38
+          text run at (0,0) width 842: "This test checks for a regression against rdar://problem/4364302 leftmargin and topmargin should match"
+          text run at (0,19) width 353: "marginwidth and marginheight respectively."
+      RenderBlock {P} at (0,54) size 896x19
+        RenderText {#text} at (0,0) size 590x19
+          text run at (0,0) width 590: "If it passes, the left, top, right, and bottom margins of the page will be 42."

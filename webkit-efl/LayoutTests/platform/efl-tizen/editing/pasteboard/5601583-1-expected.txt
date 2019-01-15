@@ -1,0 +1,21 @@
+layer at (0,0) size 980x1388
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1388
+  RenderBlock {HTML} at (0,0) size 980x1388
+    RenderBody {BODY} at (8,8) size 964x1372
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 904x38
+          text run at (0,0) width 514: "This tests for a bug where a copied link wouldn't paste as a link. "
+          text run at (514,0) width 390: "Both editable regions below should contain a link"
+          text run at (0,19) width 121: "\"Hello\\nWorld\"."
+      RenderBlock {DIV} at (0,54) size 964x38
+        RenderInline {A} at (0,0) size 47x38 [color=#0000EE]
+          RenderText {#text} at (0,0) size 40x19
+            text run at (0,0) width 40: "Hello"
+          RenderBR {BR} at (40,15) size 0x0
+          RenderText {#text} at (0,19) size 47x19
+            text run at (0,19) width 47: "World"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,92) size 964x1280
+        RenderImage {IMG} at (0,0) size 720x1280
+caret: position 1 of child 0 {IMG} of child 4 {DIV} of body

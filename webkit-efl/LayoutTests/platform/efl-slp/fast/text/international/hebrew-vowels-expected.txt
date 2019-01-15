@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 206x14
+          text run at (0,0) width 206: "This test covers Hebrew vowel positioning."
+      RenderBlock {HR} at (0,26) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,40) size 784x14
+        RenderText {#text} at (0,0) size 341x14
+          text run at (0,0) width 341: "The vowel (two vertical dots) should be centered beneath the main letter."
+      RenderBlock {DIV} at (0,66) size 784x69
+        RenderText {#text} at (0,1) size 0x66
+          text run at (0,1) width 0 RTL: "\x{5E1}\x{5B0} "
+        RenderText {#text} at (0,1) size 0x66
+          text run at (0,1) width 0 RTL: "\x{5E9}\x{5B0}"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {HR} at (0,141) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,155) size 784x14
+        RenderText {#text} at (0,0) size 478x14
+          text run at (0,0) width 478: "The dot should be positioned on the right side of the first letter, and on the left side of the second one."
+      RenderBlock {DIV} at (0,181) size 784x138
+        RenderText {#text} at (0,1) size 0x66
+          text run at (0,1) width 0 RTL: "\x{5E9}\x{5C1}"
+        RenderBR {BR} at (0,54) size 0x0
+        RenderText {#text} at (0,70) size 0x66
+          text run at (0,70) width 0 RTL: "\x{5E9}\x{5C2}"
+        RenderText {#text} at (0,0) size 0x0

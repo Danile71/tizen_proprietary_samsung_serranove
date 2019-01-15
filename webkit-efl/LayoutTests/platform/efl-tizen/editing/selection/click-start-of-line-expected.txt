@@ -1,0 +1,35 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:(null) toDOMRange:range from 18 of #text > DIV > BODY > HTML > #document to 18 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 132x19
+          text run at (0,0) width 132: "This is a test for "
+        RenderInline {I} at (0,0) size 942x38
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (132,0) size 426x19
+              text run at (132,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=9978"
+          RenderText {#text} at (558,0) size 942x38
+            text run at (558,0) width 5: " "
+            text run at (563,0) width 379: "REGRESSION (r12949-r12988): Clicking the first"
+            text run at (0,19) width 495: "letter on a line places the caret at the end of the previous line"
+        RenderText {#text} at (495,19) size 5x19
+          text run at (495,19) width 5: "."
+      RenderBlock {P} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 935x19
+          text run at (0,0) width 700: "To test interactively, click the left side of the W on the second line. The caret should be "
+          text run at (700,0) width 235: "move to the start of that line."
+      RenderBlock {HR} at (0,89) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,99) size 250x168
+        RenderText {#text} at (0,0) size 228x168
+          text run at (0,0) width 173: "Alice in"
+          text run at (173,0) width 15: " "
+          text run at (0,56) width 228: "Wonderla"
+          text run at (0,112) width 60: "nd"
+caret: position 18 of child 0 {#text} of child 7 {DIV} of body

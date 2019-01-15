@@ -1,0 +1,29 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x92
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 31x19
+            text run at (0,0) width 31: "For "
+          RenderInline {A} at (0,0) size 86x19 [color=#0000EE]
+            RenderText {#text} at (31,0) size 86x19
+              text run at (31,0) width 86: "Bug 32123"
+          RenderText {#text} at (117,0) size 393x19
+            text run at (117,0) width 10: ". "
+            text run at (127,0) width 383: "Hightlight for Selection should fit the target line."
+        RenderBlock (anonymous) at (0,35) size 964x19
+          RenderInline {SPAN} at (0,0) size 10x19
+            RenderText {#text} at (0,0) size 10x19
+              text run at (0,0) width 10: "a"
+        RenderBlock {DIV} at (0,54) size 964x19
+          RenderText {#text} at (0,0) size 168x19
+            text run at (0,0) width 168: "should just select me"
+        RenderBlock (anonymous) at (0,73) size 964x19
+          RenderInline {SPAN} at (0,0) size 9x19
+            RenderText {#text} at (0,0) size 9x19
+              text run at (0,0) width 9: "c"
+          RenderText {#text} at (0,0) size 0x0
+selection start: position 1 of child 0 {#text} of child 3 {SPAN} of child 1 {DIV} of body
+selection end:   position 0 of child 5 {SPAN} of child 1 {DIV} of body

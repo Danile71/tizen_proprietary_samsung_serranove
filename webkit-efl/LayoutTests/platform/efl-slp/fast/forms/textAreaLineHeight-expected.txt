@@ -1,0 +1,75 @@
+layer at (0,0) size 800x1168
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x1168
+  RenderBlock {HTML} at (0,0) size 800x1168
+    RenderBody {BODY} at (8,8) size 784x1148
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 201x14
+          text run at (0,0) width 201: "line-height settings not reflected in textarea"
+        RenderBR {BR} at (201,0) size 0x14
+      RenderBlock {P} at (0,26) size 784x251
+        RenderText {#text} at (0,0) size 63x14
+          text run at (0,0) width 63: "TEXTAREA"
+        RenderBR {BR} at (63,0) size 0x14
+        RenderText {#text} at (406,209) size 3x14
+          text run at (406,209) width 3: " "
+        RenderBR {BR} at (0,0) size 0x0
+        RenderBR {BR} at (0,223) size 0x14
+        RenderText {#text} at (0,237) size 115x14
+          text run at (0,237) width 115: "PARAGRAPH - works"
+      RenderBlock {P} at (0,290) size 402x202 [border: (1px dotted #C0C0C0)]
+        RenderText {#text} at (1,19) size 382x68
+          text run at (1,19) width 382: "Demo text here that wraps a bit and should demonstrate"
+          text run at (1,71) width 182: "the goodness of line-height"
+      RenderBlock (anonymous) at (0,505) size 784x28
+        RenderBR {BR} at (0,0) size 0x14
+        RenderText {#text} at (0,14) size 62x14
+          text run at (0,14) width 62: "DIV - works"
+        RenderBR {BR} at (62,14) size 0x14
+      RenderBlock {DIV} at (0,533) size 402x202 [border: (1px dotted #C0C0C0)]
+        RenderText {#text} at (1,19) size 382x68
+          text run at (1,19) width 382: "Demo text here that wraps a bit and should demonstrate"
+          text run at (1,71) width 182: "the goodness of line-height"
+      RenderBlock (anonymous) at (0,735) size 784x413
+        RenderBR {BR} at (0,0) size 0x14
+        RenderBR {BR} at (0,14) size 0x14
+        RenderText {#text} at (0,28) size 92x14
+          text run at (0,28) width 92: "Un-Styled Textarea"
+        RenderBR {BR} at (92,28) size 0x14
+        RenderText {#text} at (191,81) size 3x14
+          text run at (191,81) width 3: " "
+        RenderBR {BR} at (0,0) size 0x0
+        RenderBR {BR} at (0,95) size 0x14
+        RenderText {#text} at (0,109) size 159x14
+          text run at (0,109) width 159: "Totally Blank Un-Styled Textarea"
+        RenderBR {BR} at (159,109) size 0x14
+        RenderText {#text} at (191,162) size 3x14
+          text run at (191,162) width 3: " "
+        RenderBR {BR} at (0,0) size 0x0
+        RenderBR {BR} at (0,176) size 0x14
+        RenderText {#text} at (0,190) size 156x14
+          text run at (0,190) width 156: "Totally Blank STYLED Textarea"
+        RenderBR {BR} at (156,190) size 0x14
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,1160) size 784x0
+layer at (8,48) size 406x206 clip at (9,49) size 404x204
+  RenderTextControl {TEXTAREA} at (0,14) size 406x206 [bgcolor=#FFFFFF] [border: (1px dotted #C0C0C0)]
+    RenderBlock {DIV} at (3,3) size 400x104
+      RenderText {#text} at (0,18) size 387x68
+        text run at (0,18) width 382: "Demo text here that wraps a bit and should demonstrate"
+        text run at (382,18) width 5: " "
+        text run at (0,70) width 182: "the goodness of line-height"
+layer at (10,787) size 187x46 scrollHeight 82
+  RenderTextControl {TEXTAREA} at (2,44) size 187x46 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 180x72
+      RenderText {#text} at (0,0) size 178x71
+        text run at (0,0) width 177: "Demo text here that wrap"
+        text run at (0,18) width 178: "s a bit and should demon"
+        text run at (0,36) width 177: "strate the goodness of lin"
+        text run at (0,54) width 58: "e-height"
+layer at (10,868) size 187x46
+  RenderTextControl {TEXTAREA} at (2,125) size 187x46 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 180x18
+layer at (8,947) size 406x206 clip at (9,948) size 404x204
+  RenderTextControl {TEXTAREA} at (0,204) size 406x206 [bgcolor=#FFFFFF] [border: (1px dotted #C0C0C0)]
+    RenderBlock {DIV} at (3,3) size 400x52

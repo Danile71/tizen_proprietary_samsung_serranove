@@ -1,0 +1,137 @@
+From 4988042dda44294d7554191e9d3197102c6c188b Mon Sep 17 00:00:00 2001
+From: Yeongil Jang <yg0577.jang@samsung.com>
+Date: Tue, 2 Jul 2013 11:15:48 +0900
+Subject: [PATCH] "subprocess" can raise OSError (EPIPE) when communicating
+ with short-lived processes
+
+Created on 2011-01-20 20:23 by dmalcolm, last changed 2011-04-05 14:14 by rosslagerwall
+
+Signed-off-by: Yeongil Jang <yg0577.jang@samsung.com>
+---
+ Lib/subprocess.py           |   45 ++++++++++++++++++++++++++++++++-----------
+ Lib/test/test_subprocess.py |   18 +++++++++++++++++
+ 2 files changed, 52 insertions(+), 11 deletions(-)
+
+diff --git a/Lib/subprocess.py b/Lib/subprocess.py
+index 24bf321..ccd698d 100644
+--- a/Lib/subprocess.py
++++ b/Lib/subprocess.py
+@@ -396,6 +396,7 @@ import types
+ import traceback
+ import gc
+ import signal
++import errno
+ 
+ # Exception classes used by this module.
+ class CalledProcessError(Exception):
+@@ -427,7 +428,6 @@ if mswindows:
+ else:
+     import select
+     _has_poll = hasattr(select, 'poll')
+-    import errno
+     import fcntl
+     import pickle
+ 
+@@ -726,7 +726,11 @@ class Popen(object):
+             stderr = None
+             if self.stdin:
+                 if input:
+-                    self.stdin.write(input)
++                    try:
++                        self.stdin.write(input)
++                    except IOError as e:
++                        if e.errno != errno.EPIPE and e.errno != errno.EINVAL:
++                            raise
+                 self.stdin.close()
+             elif self.stdout:
+                 stdout = self.stdout.read()
+@@ -956,7 +960,11 @@ class Popen(object):
+ 
+             if self.stdin:
+                 if input is not None:
+-                    self.stdin.write(input)
++                    try:
++                        self.stdin.write(input)
++                    except IOError as e:
++                        if e.errno != errno.EPIPE:
++                            raise
+                 self.stdin.close()
+ 
+             if self.stdout:
+@@ -1317,9 +1325,16 @@ class Popen(object):
+                 for fd, mode in ready:
+                     if mode & select.POLLOUT:
+                         chunk = input[input_offset : input_offset + _PIPE_BUF]
+-                        input_offset += os.write(fd, chunk)
+-                        if input_offset >= len(input):
+-                            close_unregister_and_remove(fd)
++                        try:
++                            self._input_offset += os.write(fd, chunk)
++                        except OSError as e:
++                            if e.errno == errno.EPIPE:
++                                close_unregister_and_remove(fd)
++                            else:
++                                raise
++                        else:
++                            if self._input_offset >= len(self._input):
++                                close_unregister_and_remove(fd)
+                     elif mode & select_POLLIN_POLLPRI:
+                         data = os.read(fd, 4096)
+                         if not data:
+@@ -1358,11 +1373,19 @@ class Popen(object):
+ 
+                 if self.stdin in wlist:
+                     chunk = input[input_offset : input_offset + _PIPE_BUF]
+-                    bytes_written = os.write(self.stdin.fileno(), chunk)
+-                    input_offset += bytes_written
+-                    if input_offset >= len(input):
+-                        self.stdin.close()
+-                        write_set.remove(self.stdin)
++                    try:
++                        bytes_written = os.write(self.stdin.fileno(), chunk)
++                    except OSError as e:
++                        if e.errno == errno.EPIPE:
++                            self.stdin.close()
++                            self.write_set.remove(self.stdin)
++                        else:
++                            raise
++                    else:
++                        self._input_offset += bytes_written
++                        if self._input_offset >= len(self._input):
++                            self.stdin.close()
++                            self.write_set.remove(self.stdin)
+ 
+                 if self.stdout in rlist:
+                     data = os.read(self.stdout.fileno(), 1024)
+diff --git a/Lib/test/test_subprocess.py b/Lib/test/test_subprocess.py
+index 37c4e0f..2f1c3d3 100644
+--- a/Lib/test/test_subprocess.py
++++ b/Lib/test/test_subprocess.py
+@@ -596,6 +596,24 @@ class ProcessTestCase(BaseTestCase):
+         self.assertFalse(os.path.exists(ofname))
+         self.assertFalse(os.path.exists(efname))
+ 
++    def test_communicate_epipe(self):
++        # Issue 10963: communicate() should hide EPIPE
++        p = subprocess.Popen([sys.executable, "-c", 'pass'],
++                             stdin=subprocess.PIPE,
++                             stdout=subprocess.PIPE,
++                             stderr=subprocess.PIPE)
++        self.addCleanup(p.stdout.close)
++        self.addCleanup(p.stderr.close)
++        self.addCleanup(p.stdin.close)
++        p.communicate(b"x" * 2**20)
++
++    def test_communicate_epipe_only_stdin(self):
++        # Issue 10963: communicate() should hide EPIPE
++        p = subprocess.Popen([sys.executable, "-c", 'pass'],
++                             stdin=subprocess.PIPE)
++        self.addCleanup(p.stdin.close)
++        time.sleep(2)
++        p.communicate(b"x" * 2**20)
+ 
+ # context manager
+ class _SuppressCoreFiles(object):
+-- 
+1.7.9.5
+

@@ -1,0 +1,68 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x448
+  RenderBlock {HTML} at (0,0) size 800x448
+    RenderBody {BODY} at (8,12) size 784x428
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 776x28
+          text run at (0,0) width 565: "There should be a SPAN in the middle of all four paragraphs that has padding, a green border, and a margin on the left, "
+          text run at (565,0) width 211: "and padding, an orange border, and a margin"
+          text run at (0,14) width 57: "on the right."
+      RenderBlock {H1} at (0,40) size 784x14
+        RenderText {#text} at (0,0) size 68x14
+          text run at (0,0) width 68: "Left-to-Right"
+      RenderBlock {DIV} at (0,62) size 784x168 [border: (1px solid #000000)]
+        RenderBlock {P} at (6,18) size 772x24
+          RenderText {#text} at (0,5) size 94x14
+            text run at (0,5) width 94: "Lorem ipsum dolor "
+          RenderText {#text} at (282,5) size 249x14
+            text run at (282,5) width 249: "adipisicing elit, sed do eiusmod tempor incididunt ut."
+        RenderBlock {P} at (6,54) size 772x96
+          RenderText {#text} at (0,5) size 772x38
+            text run at (0,5) width 441: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut "
+            text run at (441,5) width 331: "labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud"
+            text run at (0,29) width 97: "exercitation ullamco "
+          RenderText {#text} at (622,53) size 771x38
+            text run at (622,53) width 149: "sit amet, consectetur adipisicing"
+            text run at (0,77) width 271: "elit, sed do eiusmod tempor incididunt ut labore et dolore "
+            text run at (271,77) width 457: "magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+      RenderBlock {H1} at (0,238) size 784x14
+        RenderText {#text} at (0,0) size 68x14
+          text run at (0,0) width 68: "Right-to-Left"
+      RenderBlock {DIV} at (0,260) size 784x168 [border: (1px solid #000000)]
+        RenderBlock {P} at (6,18) size 772x24
+          RenderText {#text} at (678,5) size 94x14
+            text run at (678,5) width 94 RTL override: "Lorem ipsum dolor "
+          RenderText {#text} at (241,5) size 249x14
+            text run at (241,5) width 249 RTL override: "adipisicing elit, sed do eiusmod tempor incididunt ut."
+        RenderBlock {P} at (6,54) size 772x96
+          RenderText {#text} at (0,5) size 772x38
+            text run at (0,5) width 331 RTL override: "labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud"
+            text run at (331,5) width 441 RTL override: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut "
+            text run at (675,29) width 97 RTL override: "exercitation ullamco "
+          RenderText {#text} at (1,53) size 771x38
+            text run at (1,53) width 149 RTL override: "sit amet, consectetur adipisicing"
+            text run at (44,77) width 457 RTL override: "magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+            text run at (501,77) width 271 RTL override: "elit, sed do eiusmod tempor incididunt ut labore et dolore "
+layer at (14,92) size 153x16
+  RenderInline (relative positioned) {SPAN} at (0,0) size 153x16 [border: (1px solid #0000FF) (10px solid #FFA500) (1px solid #0000FF) (10px solid #008000)]
+    RenderText {#text} at (139,5) size 98x14
+      text run at (139,5) width 98: "sit amet, consectetur "
+layer at (14,128) size 762x40
+  RenderInline (relative positioned) {SPAN} at (0,0) size 762x40 [border: (1px solid #0000FF) (10px solid #FFA500) (1px solid #0000FF) (10px solid #008000)]
+    RenderText {#text} at (142,29) size 762x38
+      text run at (142,29) width 422: "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in "
+      text run at (564,29) width 198: "voluptate velit esse cillum dolore eu fugiat"
+      text run at (0,53) width 225: "nulla pariatur. Excepteur sint occaecat cupidatat "
+      text run at (225,53) width 352: "non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+layer at (14,290) size 153x16
+  RenderInline (relative positioned) {SPAN} at (0,0) size 153x16 [border: (1px solid #0000FF) (10px solid #FFA500) (1px solid #0000FF) (10px solid #008000)]
+    RenderText {#text} at (535,5) size 98x14
+      text run at (535,5) width 98 RTL override: "sit amet, consectetur "
+layer at (14,326) size 762x40
+  RenderInline (relative positioned) {SPAN} at (0,0) size 762x40 [border: (1px solid #0000FF) (10px solid #FFA500) (1px solid #0000FF) (10px solid #008000)]
+    RenderText {#text} at (10,29) size 762x38
+      text run at (10,29) width 198 RTL override: "voluptate velit esse cillum dolore eu fugiat"
+      text run at (208,29) width 422 RTL override: "laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in "
+      text run at (195,53) width 352 RTL override: "non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+      text run at (547,53) width 225 RTL override: "nulla pariatur. Excepteur sint occaecat cupidatat "

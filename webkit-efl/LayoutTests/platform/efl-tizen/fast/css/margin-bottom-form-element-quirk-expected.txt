@@ -1,0 +1,12 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735 layerType: background only
+layer at (8,8) size 160x32
+  RenderBlock (positioned) zI: -1 {DIV} at (8,8) size 160x32 [bgcolor=#FF0000]
+layer at (0,0) size 980x735 layerType: foreground only
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x37 [bgcolor=#00FF00] [border: (1px solid #00FF00)]
+        RenderBlock {FORM} at (1,1) size 962x19
+          RenderText {#text} at (0,0) size 855x19
+            text run at (0,0) width 855: "There should be no red on this page. Form element should have border-bottom set to 1em in quirks mode."

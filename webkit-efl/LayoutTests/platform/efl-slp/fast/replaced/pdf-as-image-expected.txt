@@ -1,0 +1,19 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {A} at (0,0) size 47x14 [color=#0000EE]
+          RenderText {#text} at (40,0) size 47x14
+            text run at (40,0) width 47: "Bug 7206"
+        RenderText {#text} at (87,0) size 337x14
+          text run at (87,0) width 337: " REGRESSION: PDF \"images\" no longer render within HTML pages."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 484x14
+          text run at (0,0) width 484: "If the test fails, the image below will be the 20x20 error image instead of the larger actual PDF content."
+      RenderBlock (anonymous) at (0,52) size 784x4
+        RenderImage {IMG} at (0,0) size 4x4
+        RenderText {#text} at (0,0) size 0x0

@@ -1,0 +1,21 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x12
+        RenderText {#text} at (0,0) size 414x11
+          text run at (0,0) width 414: "Reflection should not be cropped by being in a composited layer."
+      RenderBlock {P} at (0,284) size 784x12
+        RenderText {#text} at (0,0) size 250x11
+          text run at (0,0) width 250: "This is the next paragraph in the page."
+layer at (208,70) size 342x172
+  RenderBlock {DIV} at (200,62) size 342x172 [border: (1px solid #000000)]
+    RenderBlock {P} at (21,23) size 300x12
+      RenderText {#text} at (0,0) size 230x11
+        text run at (0,0) width 230: "This element has a composited layer"
+layer at (349,111) size 260x56
+  RenderBlock (positioned) {DIV} at (141,41) size 260x56 [bgcolor=#DDDDDD]
+    RenderBlock {P} at (10,22) size 240x12
+      RenderText {#text} at (0,0) size 222x11
+        text run at (0,0) width 222: "This is a positioned, reflected child."

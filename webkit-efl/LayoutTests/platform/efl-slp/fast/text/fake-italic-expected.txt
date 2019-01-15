@@ -1,0 +1,12 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 783x28
+          text run at (0,0) width 783: "This layout test is designed to test that our fake italic mode is working correctly. The Ahem font, used below, does not include an italic variant. Thus, when we ask for"
+          text run at (0,14) width 466: "italic Ahem, we should skew the glyphs ourselves, resulting in a series of italic black boxes below."
+      RenderBlock {P} at (0,40) size 784x12
+        RenderText {#text} at (0,0) size 84x12
+          text run at (0,0) width 84: "A A A A"

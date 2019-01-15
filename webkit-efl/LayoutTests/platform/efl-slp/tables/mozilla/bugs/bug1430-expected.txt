@@ -1,0 +1,53 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x70
+        RenderText {#text} at (0,0) size 781x70
+          text run at (0,0) width 383: "Here's the HTML test case, extracted from the Netcenter Address Book page. At "
+          text run at (383,0) width 320: "the top of the address book is a \"tool bar\" with options like \"New,\" "
+          text run at (703,0) width 58: "\"Directory,\""
+          text run at (0,14) width 287: "\"Sign-out,\" \"Customize,\" etc. These are areas in a client side "
+          text run at (287,14) width 378: "image map. You should be able to click on these areas of the map, including the "
+          text run at (665,14) width 116: "areas on the right side of"
+          text run at (0,28) width 256: "the map. However, in NGLayout, the right side of the "
+          text run at (256,28) width 338: "map isn't \"clickable\" -- the cursor doesn't change and the link cannot be "
+          text run at (594,28) width 57: "\"activated.\" "
+          text run at (651,28) width 116: "I think somewhere we're"
+          text run at (0,42) width 264: "miscalculating where the imagemap's areas are, because "
+          text run at (264,42) width 364: "the areas on the left still work, although clicking on them sometimes crashes. "
+          text run at (628,42) width 149: "It's as though NGLayout thinks"
+          text run at (0,56) width 178: "the Imagemap areas are located a few "
+          text run at (178,56) width 123: "hundred pixels to the left. "
+        RenderBR {BR} at (0,0) size 0x0
+      RenderTable {TABLE} at (0,70) size 598x63
+        RenderTableSection {TBODY} at (0,0) size 598x63
+          RenderTableRow {TR} at (0,2) size 598x59
+            RenderTableCell {TD} at (2,23) size 138x16 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 136x14
+                text run at (1,1) width 136: "Let's put some space in here!"
+            RenderTableCell {TD} at (142,2) size 454x59 [r=0 c=1 rs=1 cs=1]
+              RenderTable {TABLE} at (1,1) size 452x57
+                RenderTableSection {TBODY} at (0,0) size 452x57
+                  RenderTableRow {TR} at (0,2) size 452x53
+                    RenderTableCell {TD} at (2,2) size 448x53 [r=0 c=0 rs=1 cs=1]
+                      RenderTable {TABLE} at (1,1) size 446x51
+                        RenderTableSection {TBODY} at (0,0) size 446x51
+                          RenderTableRow {TR} at (0,2) size 446x47
+                            RenderTableCell {TD} at (2,2) size 442x47 [r=0 c=0 rs=1 cs=1]
+                              RenderImage {IMG} at (1,45) size 4x1
+                              RenderImage {IMG} at (5,6) size 436x35
+                              RenderText {#text} at (0,0) size 0x0
+                              RenderInline {MAP} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                                RenderText {#text} at (0,0) size 0x0
+                              RenderText {#text} at (0,0) size 0x0

@@ -1,0 +1,40 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x182
+  RenderBlock {HTML} at (0,0) size 800x182
+    RenderBody {BODY} at (8,12) size 784x158
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 343x14
+          text run at (0,0) width 343: "Each link below should display the text \"n(href=n)\" where n is a number"
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 241x14
+          text run at (0,0) width 241: "The href attribute of the last one is changed onload."
+      RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,66) size 784x14
+        RenderInline {A} at (0,0) size 46x14 [color=#0000EE]
+          RenderText {#text} at (0,0) size 6x14
+            text run at (0,0) width 6: "1"
+          RenderInline (generated) at (0,0) size 40x14
+            RenderText at (6,0) size 40x14
+              text run at (6,0) width 40: "(href=1)"
+      RenderBlock {P} at (0,92) size 784x14
+        RenderInline {A} at (0,0) size 46x14 [color=#0000EE]
+          RenderText {#text} at (0,0) size 6x14
+            text run at (0,0) width 6: "2"
+          RenderInline (generated) at (0,0) size 40x14
+            RenderText at (6,0) size 40x14
+              text run at (6,0) width 40: "(href=2)"
+      RenderBlock {P} at (0,118) size 784x14
+        RenderInline {A} at (0,0) size 46x14 [color=#0000EE]
+          RenderText {#text} at (0,0) size 6x14
+            text run at (0,0) width 6: "3"
+          RenderInline (generated) at (0,0) size 40x14
+            RenderText at (6,0) size 40x14
+              text run at (6,0) width 40: "(href=3)"
+      RenderBlock {P} at (0,144) size 784x14
+        RenderInline {A} at (0,0) size 46x14 [color=#0000EE]
+          RenderText {#text} at (0,0) size 6x14
+            text run at (0,0) width 6: "4"
+          RenderInline (generated) at (0,0) size 40x14
+            RenderText at (6,0) size 40x14
+              text run at (6,0) width 40: "(href=4)"

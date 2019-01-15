@@ -1,0 +1,15 @@
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 809x38
+          text run at (0,0) width 809: "This tests that the selection tint is grey when the WebView is not focused (using the pixel output from"
+          text run at (0,19) width 154: "DumpRenderTree)."
+      RenderBlock {DIV} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 227x19
+          text run at (0,0) width 227: "This text should be selected."
+selection start: position 0 of child 0 {#text} of child 3 {DIV} of body
+selection end:   position 29 of child 0 {#text} of child 3 {DIV} of body

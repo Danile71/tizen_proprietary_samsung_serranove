@@ -1,0 +1,20 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 950x57
+          text run at (0,0) width 404: "You should see a 300x100 green rectangle below. "
+          text run at (404,0) width 534: "If you see any red, the test has failed. This test makes a positioned"
+          text run at (0,19) width 258: "vertical box with three children. "
+          text run at (258,19) width 618: "The first and third children are absolutely positioned at the edges of the box. "
+          text run at (876,19) width 74: "Box-align"
+          text run at (0,38) width 530: "of center is used to align the second child in the center of the box."
+layer at (8,81) size 300x100
+  RenderDeprecatedFlexibleBox (relative positioned) {DIV} at (0,73) size 300x100 [bgcolor=#FF0000]
+    RenderDeprecatedFlexibleBox {DIV} at (100,0) size 100x100 [bgcolor=#008000]
+layer at (8,81) size 100x100
+  RenderDeprecatedFlexibleBox (positioned) {DIV} at (0,0) size 100x100 [bgcolor=#008000]
+layer at (208,81) size 100x100
+  RenderDeprecatedFlexibleBox (positioned) {DIV} at (200,0) size 100x100 [bgcolor=#008000]

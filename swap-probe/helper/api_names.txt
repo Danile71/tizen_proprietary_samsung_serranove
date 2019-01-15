@@ -1,0 +1,21 @@
+#filename "daforkexec.c"
+#lib "/lib/libc.so.6"
+#feature ---
+execl@*;       execl;      0
+execlp@*;      execlp;     0
+execle@*;      execle;     0
+execv@*;       execv;      0
+execvp@*;      execvp;     0
+execve@*;      execve;     0
+execvpe@*;     execvpe;    0
+
+
+#filename "daforkexec.c"
+#lib "/lib/*"
+#feature ---
+fork@*;        fork;       0
+
+#filename "dacapture.c"
+#lib "---"
+#feature ---
+captureScreen@*;   captureScreen;  0

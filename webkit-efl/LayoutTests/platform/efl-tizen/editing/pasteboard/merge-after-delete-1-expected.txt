@@ -1,0 +1,41 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of #text > DIV > DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document toDOMRange:range from 3 of #text > DIV > DIV > BODY > HTML > #document to 3 of #text > DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 951x57
+          text run at (0,0) width 951: "When ReplaceSelectionCommand deletes the current selection, it should request that the deletion do a merge in some"
+          text run at (0,19) width 940: "cases (normally, though, it should ask that a merge not be done, because a merge will cause information about block"
+          text run at (0,38) width 153: "nesting to be lost). "
+          text run at (153,38) width 475: "It wasn't requesting a merge in cases where it should have."
+      RenderBlock {P} at (0,73) size 964x76
+        RenderText {#text} at (0,0) size 944x76
+          text run at (0,0) width 944: "The failing case is where the incoming fragment has more than one block, and the selection being pasted into ends at"
+          text run at (0,19) width 196: "the end of a paragraph. "
+          text run at (196,19) width 728: "Any time the selection being pasted into ends at the end of a paragraph, deleting will leave"
+          text run at (0,38) width 562: "leave a) a br or b) an empty block at the end of the deleted selection. "
+          text run at (562,38) width 382: "So, not merging will leave an extraneous empty"
+          text run at (0,57) width 403: "line or a collapsed block after the paste operation."
+      RenderBlock {DIV} at (2,165) size 960x50 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (3,3) size 954x21 [border: (1px solid #FF0000)]
+          RenderText {#text} at (1,1) size 10x19
+            text run at (1,1) width 10: "b"
+          RenderText {#text} at (11,1) size 26x19
+            text run at (11,1) width 26: "foo"
+        RenderBlock {DIV} at (3,26) size 954x21 [border: (1px solid #000000)]
+          RenderText {#text} at (1,1) size 27x19
+            text run at (1,1) width 27: "bar"
+caret: position 3 of child 0 {#text} of child 1 {DIV} of child 4 {DIV} of body

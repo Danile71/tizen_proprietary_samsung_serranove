@@ -1,0 +1,47 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x170
+  RenderBlock {HTML} at (0,0) size 800x170
+    RenderBody {BODY} at (8,8) size 784x154
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 38x14
+          text run at (0,0) width 38: "Case A:"
+      RenderBlock {DIV} at (0,14) size 784x28
+        RenderBlock (run-in) {DIV} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 84x14
+            text run at (0,0) width 84: "This should NOT"
+        RenderBlock (anonymous) at (0,14) size 784x14
+          RenderInline {DIV} at (0,0) size 31x14
+            RenderText {#text} at (0,0) size 31x14
+              text run at (0,0) width 31: "run in."
+          RenderText {#text} at (0,0) size 0x0
+      RenderBlock (anonymous) at (0,42) size 784x14
+        RenderText {#text} at (0,0) size 37x14
+          text run at (0,0) width 37: "Case B:"
+      RenderBlock {DIV} at (0,56) size 784x28
+        RenderBlock (run-in) {DIV} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 84x14
+            text run at (0,0) width 84: "This should NOT"
+        RenderBlock (anonymous) at (0,14) size 784x14
+          RenderText {#text} at (0,0) size 31x14
+            text run at (0,0) width 31: "run in."
+      RenderBlock (anonymous) at (0,84) size 784x14
+        RenderText {#text} at (0,0) size 37x14
+          text run at (0,0) width 37: "Case C:"
+      RenderBlock {DIV} at (0,98) size 784x14
+        RenderBlock {DIV} at (0,0) size 784x14
+          RenderInline (run-in) {DIV} at (0,0) size 59x14
+            RenderText {#text} at (0,0) size 59x14
+              text run at (0,0) width 59: "This should "
+          RenderText {#text} at (59,0) size 31x14
+            text run at (59,0) width 31: "run in."
+      RenderBlock (anonymous) at (0,112) size 784x14
+        RenderText {#text} at (0,0) size 38x14
+          text run at (0,0) width 38: "Case D:"
+      RenderBlock {DIV} at (0,126) size 784x28
+        RenderBlock (run-in) {DIV} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 84x14
+            text run at (0,0) width 84: "This should NOT"
+        RenderBlock (run-in) {DIV} at (0,14) size 784x14
+          RenderText {#text} at (0,0) size 31x14
+            text run at (0,0) width 31: "run in."

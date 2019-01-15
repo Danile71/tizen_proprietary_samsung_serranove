@@ -1,0 +1,25 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 194x19
+          text run at (0,0) width 194: "This is a repaint test for "
+        RenderInline {I} at (0,0) size 914x38
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (194,0) size 426x19
+              text run at (194,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=9121"
+          RenderText {#text} at (620,0) size 914x38
+            text run at (620,0) width 5: " "
+            text run at (625,0) width 289: "REGRESSION: [Incremental Repaint]"
+            text run at (0,19) width 248: "DHTML movement test failures"
+        RenderText {#text} at (248,19) size 5x19
+          text run at (248,19) width 5: "."
+      RenderBlock {HR} at (0,54) size 964x2 [border: (1px inset #000000)]
+layer at (8,72) size 214x232 scrollWidth 644
+  RenderBlock (relative positioned) {DIV} at (0,64) size 214x232
+layer at (-2,72) size 214x232 backgroundClip at (8,72) size 214x232 clip at (8,72) size 214x232 outlineClip at (8,72) size 214x232
+  RenderBlock (positioned) {DIV} at (-440,0) size 214x232
+    RenderImage {IMG} at (0,0) size 214x232
+    RenderText {#text} at (0,0) size 0x0

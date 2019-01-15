@@ -1,0 +1,12 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (0,0) size 800x600
+      RenderInline {A} at (0,0) size 300x14
+        RenderImage {IMG} at (0,0) size 300x300
+      RenderText {#text} at (300,289) size 3x14
+        text run at (300,289) width 3: " "
+      RenderText {#text} at (303,289) size 332x14
+        text run at (303,289) width 261: "The element at position (100, 100) should be the body. "
+        text run at (564,289) width 71: "Result: BODY"

@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x198
+  RenderBlock {HTML} at (0,0) size 800x198
+    RenderBody {BODY} at (8,12) size 784x174
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 211x14
+          text run at (0,0) width 211: "This <hr width=\"25%\"> should be centered:"
+      RenderBlock {HR} at (293,26) size 198x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,40) size 784x14
+        RenderText {#text} at (0,0) size 149x14
+          text run at (0,0) width 149: "This one should be left-aligned."
+      RenderBlock {HR} at (0,66) size 198x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,80) size 784x14
+        RenderText {#text} at (0,0) size 156x14
+          text run at (0,0) width 156: "This one should be right-aligned."
+      RenderBlock {HR} at (586,106) size 198x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,120) size 784x14
+        RenderText {#text} at (0,0) size 135x14
+          text run at (0,0) width 135: "This one should be centered."
+      RenderBlock {HR} at (293,146) size 198x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,160) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "(W3C: \x{201C}"
+        RenderInline {A} at (0,0) size 146x14 [color=#0000EE]
+          RenderText {#text} at (40,0) size 146x14
+            text run at (40,0) width 146: "By default, the rule is centered."
+        RenderText {#text} at (186,0) size 9x14
+          text run at (186,0) width 9: "\x{201D})"

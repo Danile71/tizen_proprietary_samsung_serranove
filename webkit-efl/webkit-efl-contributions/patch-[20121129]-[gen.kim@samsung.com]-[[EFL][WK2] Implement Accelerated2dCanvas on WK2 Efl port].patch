@@ -1,0 +1,505 @@
+diff --git a/Source/WebCore/ChangeLog b/Source/WebCore/ChangeLog
+index c8b1b68..e6061e1 100644
+--- a/Source/WebCore/ChangeLog
++++ b/Source/WebCore/ChangeLog
+@@ -1,3 +1,59 @@
++2012-11-29  Kyungjin Kim  <gen.kim@samsung.com>
++
++        [EFL][WK2] Implement Accelerated2dCanvas on WK2 Efl port
++        https://bugs.webkit.org/show_bug.cgi?id=XXXXX
++
++        Reviewed by NOBODY (OOPS!).
++
++        Implement accelerated 2d canvas using Coordinated Graphics on WK2 Efl port.
++        This implementation is based on COORDINATED_GRAPHICS.
++
++        No new tests. Covered by existing tests.
++
++        * PlatformEfl.cmake:
++        * platform/graphics/GraphicsContext.cpp:
++        (WebCore):
++        * platform/graphics/ImageBuffer.cpp:
++        (WebCore):
++        * platform/graphics/ImageBuffer.h:
++        (ImageBuffer):
++        (WebCore::ImageBuffer::getSurface):
++        * platform/graphics/cairo/GraphicsContextCairo.cpp:
++        (WebCore::GraphicsContext::isAcceleratedContext):
++        (WebCore):
++        * platform/graphics/cairo/ImageBufferCairo.cpp:
++        (WebCore::ImageBufferData::ImageBufferData):
++        (WebCore::ImageBuffer::ImageBuffer):
++        (WebCore):
++        (WebCore::ImageBuffer::platformLayer):
++        * platform/graphics/cairo/ImageBufferDataCairo.h:
++        (WebCore):
++        (ImageBufferData):
++        * platform/graphics/cairo/PlatformContextCairo.cpp:
++        (WebCore::PlatformContextCairo::PlatformContextCairo):
++        * platform/graphics/cairo/PlatformContextCairo.h:
++        (WebCore::PlatformContextCairo::isAccelerated):
++        (WebCore::PlatformContextCairo::setAccelerated):
++        (PlatformContextCairo):
++        * platform/graphics/efl/Canvas2DLayerEfl.cpp: Added.
++        (WebCore):
++        (WebCore::Canvas2DLayerEfl::create):
++        (WebCore::Canvas2DLayerEfl::Canvas2DLayerEfl):
++        (WebCore::Canvas2DLayerEfl::~Canvas2DLayerEfl):
++        (WebCore::Canvas2DLayerEfl::copyToGraphicsSurface):
++        (WebCore::Canvas2DLayerEfl::graphicsSurfaceToken):
++        (WebCore::Canvas2DLayerEfl::paintContents):
++        * platform/graphics/efl/Canvas2DLayerEfl.h: Added.
++        (WebCore):
++        (Canvas2DLayerEfl):
++        (WebCore::Canvas2DLayerEfl::paintToTextureMapper):
++        (WebCore::Canvas2DLayerEfl::platformLayerSize):
++        (WebCore::Canvas2DLayerEfl::is2D):
++        * platform/graphics/texmap/TextureMapperPlatformLayer.h:
++        (WebCore):
++        (TextureMapperPlatformLayer):
++        (WebCore::TextureMapperPlatformLayer::paintContents):
++        (WebCore::TextureMapperPlatformLayer::is2D):
++
+ 2012-11-29  Sheriff Bot  <webkit.review.bot@gmail.com>
+ 
+         Unreviewed, rolling out r136111.
+diff --git a/Source/WebCore/PlatformEfl.cmake b/Source/WebCore/PlatformEfl.cmake
+index 31e4c87..28e8b18 100644
+--- a/Source/WebCore/PlatformEfl.cmake
++++ b/Source/WebCore/PlatformEfl.cmake
+@@ -299,6 +299,12 @@ IF (WTF_USE_3D_GRAPHICS)
+   )
+ ENDIF ()
+ 
++IF (ENABLE_ACCELERATED_2D_CANVAS)
++  LIST(APPEND WebCore_SOURCES
++    platform/graphics/efl/Canvas2DLayerEfl.cpp
++  )
++ENDIF ()
++
+ ADD_DEFINITIONS(-DDATA_DIR="${CMAKE_INSTALL_PREFIX}/${DATA_INSTALL_DIR}")
+ 
+ IF (ENABLE_WEB_AUDIO)
+diff --git a/Source/WebCore/platform/graphics/GraphicsContext.cpp b/Source/WebCore/platform/graphics/GraphicsContext.cpp
+index c21173a..15e61f2 100644
+--- a/Source/WebCore/platform/graphics/GraphicsContext.cpp
++++ b/Source/WebCore/platform/graphics/GraphicsContext.cpp
+@@ -730,7 +730,7 @@ void GraphicsContext::setPlatformShouldSmoothFonts(bool)
+ }
+ #endif
+ 
+-#if !USE(SKIA) && !USE(CG)
++#if !USE(SKIA) && !USE(CG) && !USE(CAIRO)
+ bool GraphicsContext::isAcceleratedContext() const
+ {
+     return false;
+diff --git a/Source/WebCore/platform/graphics/ImageBuffer.cpp b/Source/WebCore/platform/graphics/ImageBuffer.cpp
+index 138d078..67f2b11 100644
+--- a/Source/WebCore/platform/graphics/ImageBuffer.cpp
++++ b/Source/WebCore/platform/graphics/ImageBuffer.cpp
+@@ -99,7 +99,7 @@ void ImageBuffer::convertToLuminanceMask()
+     genericConvertToLuminanceMask();
+ }
+ 
+-#if USE(ACCELERATED_COMPOSITING) && !USE(SKIA)
++#if USE(ACCELERATED_COMPOSITING) && !USE(SKIA) && !USE(CAIRO)
+ PlatformLayer* ImageBuffer::platformLayer() const
+ {
+     return 0;
+diff --git a/Source/WebCore/platform/graphics/ImageBuffer.h b/Source/WebCore/platform/graphics/ImageBuffer.h
+index 47cfeb8..476a31e 100644
+--- a/Source/WebCore/platform/graphics/ImageBuffer.h
++++ b/Source/WebCore/platform/graphics/ImageBuffer.h
+@@ -120,6 +120,9 @@ namespace WebCore {
+ #else
+         AffineTransform baseTransform() const { return AffineTransform(1, 0, 0, -1, 0, internalSize().height()); }
+ #endif
++#if USE(CAIRO)
++        cairo_surface_t* getSurface() const { return m_data.m_surface; }
++#endif
+ #if USE(ACCELERATED_COMPOSITING)
+         PlatformLayer* platformLayer() const;
+ #endif
+diff --git a/Source/WebCore/platform/graphics/cairo/GraphicsContextCairo.cpp b/Source/WebCore/platform/graphics/cairo/GraphicsContextCairo.cpp
+index b87af4a..ba8203e 100644
+--- a/Source/WebCore/platform/graphics/cairo/GraphicsContextCairo.cpp
++++ b/Source/WebCore/platform/graphics/cairo/GraphicsContextCairo.cpp
+@@ -1173,6 +1173,11 @@ void GraphicsContext::set3DTransform(const TransformationMatrix& transform)
+ }
+ #endif
+ 
++bool GraphicsContext::isAcceleratedContext() const
++{
++    return platformContext()->isAccelerated();
++}
++
+ } // namespace WebCore
+ 
+ #endif // USE(CAIRO)
+diff --git a/Source/WebCore/platform/graphics/cairo/ImageBufferCairo.cpp b/Source/WebCore/platform/graphics/cairo/ImageBufferCairo.cpp
+index 026f449..363622f 100644
+--- a/Source/WebCore/platform/graphics/cairo/ImageBufferCairo.cpp
++++ b/Source/WebCore/platform/graphics/cairo/ImageBufferCairo.cpp
+@@ -51,10 +51,13 @@ namespace WebCore {
+ ImageBufferData::ImageBufferData(const IntSize&)
+     : m_surface(0)
+     , m_platformContext(0)
++#if USE(ACCELERATED_COMPOSITING)
++    , m_platformLayer(0)
++#endif
+ {
+ }
+ 
+-ImageBuffer::ImageBuffer(const IntSize& size, float /* resolutionScale */, ColorSpace, RenderingMode, DeferralMode, bool& success)
++ImageBuffer::ImageBuffer(const IntSize& size, float /* resolutionScale */, ColorSpace, RenderingMode renderingMode, DeferralMode, bool& success)
+     : m_data(size)
+     , m_size(size)
+     , m_logicalSize(size)
+@@ -70,6 +73,14 @@ ImageBuffer::ImageBuffer(const IntSize& size, float /* resolutionScale */, Color
+     m_data.m_platformContext.setCr(cr.get());
+     m_context = adoptPtr(new GraphicsContext(&m_data.m_platformContext));
+     success = true;
++#if ENABLE(ACCELERATED_2D_CANVAS) && PLATFORM(EFL)
++    if (renderingMode == Accelerated) {
++        m_data.m_platformLayer = Canvas2DLayerEfl::create(this, m_size);
++        context()->platformContext()->setAccelerated(true);
++    }
++#else
++    UNUSED_PARAM(renderingMode);
++#endif
+ }
+ 
+ ImageBuffer::~ImageBuffer()
+@@ -310,4 +321,11 @@ String ImageBuffer::toDataURL(const String& mimeType, const double*, CoordinateS
+ }
+ #endif
+ 
++#if USE(ACCELERATED_COMPOSITING)
++PlatformLayer* ImageBuffer::platformLayer() const
++{
++    return static_cast<TextureMapperPlatformLayer*>(m_data.m_platformLayer.get());
++}
++#endif
++
+ } // namespace WebCore
+diff --git a/Source/WebCore/platform/graphics/cairo/ImageBufferDataCairo.h b/Source/WebCore/platform/graphics/cairo/ImageBufferDataCairo.h
+index 5ca7262..466eaf9 100644
+--- a/Source/WebCore/platform/graphics/cairo/ImageBufferDataCairo.h
++++ b/Source/WebCore/platform/graphics/cairo/ImageBufferDataCairo.h
+@@ -24,12 +24,18 @@
+  */
+ 
+ #include "PlatformContextCairo.h"
++#if USE(ACCELERATED_COMPOSITING) && PLATFORM(EFL)
++#include <efl/Canvas2DLayerEfl.h>
++#endif
+ 
+ typedef struct _cairo_surface cairo_surface_t;
+ 
+ namespace WebCore {
+ 
+ class IntSize;
++#if USE(ACCELERATED_COMPOSITING) && PLATFORM(EFL)
++class Canvas2DLayerEfl;
++#endif
+ 
+ class ImageBufferData {
+ public:
+@@ -37,6 +43,9 @@ public:
+ 
+     cairo_surface_t* m_surface;
+     PlatformContextCairo m_platformContext;
++#if USE(ACCELERATED_COMPOSITING) && PLATFORM(EFL)
++    RefPtr<Canvas2DLayerEfl> m_platformLayer;
++#endif
+ };
+ 
+ } // namespace WebCore
+diff --git a/Source/WebCore/platform/graphics/cairo/PlatformContextCairo.cpp b/Source/WebCore/platform/graphics/cairo/PlatformContextCairo.cpp
+index 865d152..92fd924 100644
+--- a/Source/WebCore/platform/graphics/cairo/PlatformContextCairo.cpp
++++ b/Source/WebCore/platform/graphics/cairo/PlatformContextCairo.cpp
+@@ -82,6 +82,7 @@ public:
+ 
+ PlatformContextCairo::PlatformContextCairo(cairo_t* cr)
+     : m_cr(cr)
++    , m_accelerated(false)
+ {
+     m_stateStack.append(State());
+     m_state = &m_stateStack.last();
+diff --git a/Source/WebCore/platform/graphics/cairo/PlatformContextCairo.h b/Source/WebCore/platform/graphics/cairo/PlatformContextCairo.h
+index d7f1205..436407a 100644
+--- a/Source/WebCore/platform/graphics/cairo/PlatformContextCairo.h
++++ b/Source/WebCore/platform/graphics/cairo/PlatformContextCairo.h
+@@ -67,6 +67,9 @@ public:
+     enum AlphaPreservation { DoNotPreserveAlpha, PreserveAlpha };
+     void prepareForStroking(const GraphicsContextState&, AlphaPreservation = PreserveAlpha);
+ 
++    bool isAccelerated() const { return m_accelerated; }
++    void setAccelerated(bool accelerated) { m_accelerated = accelerated; }
++
+ private:
+     void clipForPatternFilling(const GraphicsContextState&);
+ 
+@@ -79,6 +82,7 @@ private:
+     // GraphicsContext is responsible for managing the state of the ShadowBlur,
+     // so it does not need to be on the state stack.
+     ShadowBlur m_shadowBlur;
++    bool m_accelerated;
+ 
+ };
+ 
+diff --git a/Source/WebCore/platform/graphics/efl/Canvas2DLayerEfl.cpp b/Source/WebCore/platform/graphics/efl/Canvas2DLayerEfl.cpp
+new file mode 100644
+index 0000000..0391ac1
+--- /dev/null
++++ b/Source/WebCore/platform/graphics/efl/Canvas2DLayerEfl.cpp
+@@ -0,0 +1,64 @@
++/*
++    Copyright (C) 2012 Samsung Electronics
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public License
++    along with this library; see the file COPYING.LIB.  If not, write to
++    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++    Boston, MA 02110-1301, USA.
++*/
++
++#include "config.h"
++
++#if USE(ACCELERATED_COMPOSITING) && ENABLE(ACCELERATED_2D_CANVAS)
++#include "Canvas2DLayerEfl.h"
++
++#include "CanvasRenderingContext2D.h"
++
++namespace WebCore {
++
++PassRefPtr<Canvas2DLayerEfl> Canvas2DLayerEfl::create(ImageBuffer* buffer, IntSize& size)
++{
++    return adoptRef(new Canvas2DLayerEfl(buffer, size));
++}
++
++Canvas2DLayerEfl::Canvas2DLayerEfl(ImageBuffer* buffer, IntSize& size)
++    : m_buffer(buffer)
++    , m_size(size)
++{
++}
++
++Canvas2DLayerEfl::~Canvas2DLayerEfl()
++{
++}
++
++#if USE(GRAPHICS_SURFACE)
++uint32_t Canvas2DLayerEfl::copyToGraphicsSurface()
++{
++}
++
++GraphicsSurfaceToken Canvas2DLayerEfl::graphicsSurfaceToken() const
++{
++}
++#else
++void Canvas2DLayerEfl::paintContents(GraphicsContext& context, const IntRect& rect)
++{
++    if (m_buffer) {
++        context.clearRect(FloatRect(rect));
++        context.platformContext()->drawSurfaceToContext(m_buffer->getSurface(), FloatRect(rect), FloatRect(rect), &context);
++    }
++}
++#endif
++
++} // namespace WebCore
++
++#endif
+diff --git a/Source/WebCore/platform/graphics/efl/Canvas2DLayerEfl.h b/Source/WebCore/platform/graphics/efl/Canvas2DLayerEfl.h
+new file mode 100644
+index 0000000..69aa786
+--- /dev/null
++++ b/Source/WebCore/platform/graphics/efl/Canvas2DLayerEfl.h
+@@ -0,0 +1,62 @@
++/*
++   Copyright (C) 2012 Samsung Electronics
++
++    This library is free software; you can redistribute it and/or
++    modify it under the terms of the GNU Library General Public
++    License as published by the Free Software Foundation; either
++    version 2 of the License, or (at your option) any later version.
++
++    This library is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++    Library General Public License for more details.
++
++    You should have received a copy of the GNU Library General Public License
++    along with this library; see the file COPYING.LIB.  If not, write to
++    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++    Boston, MA 02110-1301, USA.
++*/
++
++#ifndef Canvas2DLayerEfl_h
++#define Canvas2DLayerEfl_h
++
++#if USE(GRAPHICS_SURFACE)
++#include "GraphicsSurface.h"
++#endif
++#if USE(TEXTURE_MAPPER_GL)
++#include <texmap/TextureMapperPlatformLayer.h>
++#endif
++
++namespace WebCore {
++class CanvasRenderingContext2D;
++
++class Canvas2DLayerEfl :
++#if USE(TEXTURE_MAPPER_GL)
++    public TextureMapperPlatformLayer
++#endif
++    , public RefCounted<Canvas2DLayerEfl> {
++public:
++    static PassRefPtr<Canvas2DLayerEfl> create(ImageBuffer*, IntSize&);
++    virtual ~Canvas2DLayerEfl();
++
++#if USE(TEXTURE_MAPPER_GL)
++    virtual void paintToTextureMapper(TextureMapper*, const FloatRect&, const TransformationMatrix&, float, BitmapTexture*) { }
++#endif
++#if USE(GRAPHICS_SURFACE)
++    virtual IntSize platformLayerSize() const { return m_size; }
++    virtual uint32_t copyToGraphicsSurface();
++    virtual GraphicsSurfaceToken graphicsSurfaceToken() const;
++#else
++    void paintContents(GraphicsContext&, const IntRect&);
++#endif
++    virtual bool is2D() { return true; }
++
++private:
++    Canvas2DLayerEfl(ImageBuffer*, IntSize&);
++    ImageBuffer* m_buffer;
++    IntSize m_size;
++};
++
++} // namespace WebCore
++
++#endif // Canvas2DLayerEfl_h
+diff --git a/Source/WebCore/platform/graphics/texmap/TextureMapperPlatformLayer.h b/Source/WebCore/platform/graphics/texmap/TextureMapperPlatformLayer.h
+index 38af03e..0a26fca 100644
+--- a/Source/WebCore/platform/graphics/texmap/TextureMapperPlatformLayer.h
++++ b/Source/WebCore/platform/graphics/texmap/TextureMapperPlatformLayer.h
+@@ -20,6 +20,9 @@
+ #ifndef TextureMapperPlatformLayer_h
+ #define TextureMapperPlatformLayer_h
+ 
++#if ENABLE(ACCELERATED_2D_CANVAS)
++#include "GraphicsContext.h"
++#endif
+ #if USE(GRAPHICS_SURFACE)
+ #include "GraphicsSurface.h"
+ #endif
+@@ -41,6 +44,10 @@ public:
+     virtual uint32_t copyToGraphicsSurface() { return 0; }
+     virtual GraphicsSurfaceToken graphicsSurfaceToken() const { return GraphicsSurfaceToken(); }
+ #endif
++#if ENABLE(ACCELERATED_2D_CANVAS)
++    virtual void paintContents(GraphicsContext&, const IntRect&) { }
++    virtual bool is2D() { return false; }
++#endif
+ };
+ 
+ };
+diff --git a/Source/WebKit2/ChangeLog b/Source/WebKit2/ChangeLog
+index b805594..1897c41 100644
+--- a/Source/WebKit2/ChangeLog
++++ b/Source/WebKit2/ChangeLog
+@@ -1,3 +1,21 @@
++2012-11-29  Kyungjin Kim  <gen.kim@samsung.com>
++
++        [EFL][WK2] Implement Accelerated2dCanvas on WK2 Efl port
++        https://bugs.webkit.org/show_bug.cgi?id=XXXXX
++
++        Reviewed by NOBODY (OOPS!).
++
++        Implement accelerated 2d canvas using Coordinated Graphics on WK2 Efl port.
++        This implementation is based on COORDINATED_GRAPHICS.
++
++        * UIProcess/API/efl/EwkViewImpl.cpp:
++        (EwkViewImpl::EwkViewImpl):
++        * WebProcess/WebPage/CoordinatedGraphics/CoordinatedGraphicsLayer.cpp:
++        (WebCore::CoordinatedGraphicsLayer::setContentsToCanvas):
++        (WebCore::CoordinatedGraphicsLayer::syncCanvas):
++        (WebCore::CoordinatedGraphicsLayer::tiledBackingStorePaint):
++        (WebCore::CoordinatedGraphicsLayer::updateContentBuffers):
++
+ 2012-11-28  Jocelyn Turcotte  <jocelyn.turcotte@digia.com>
+ 
+         [Qt] The WebView should be flickable only using touch events
+diff --git a/Source/WebKit2/UIProcess/API/efl/EwkViewImpl.cpp b/Source/WebKit2/UIProcess/API/efl/EwkViewImpl.cpp
+index 50e4cb2..d7b5a1a 100644
+--- a/Source/WebKit2/UIProcess/API/efl/EwkViewImpl.cpp
++++ b/Source/WebKit2/UIProcess/API/efl/EwkViewImpl.cpp
+@@ -151,6 +151,9 @@ EwkViewImpl::EwkViewImpl(Evas_Object* view, PassRefPtr<EwkContext> context, Pass
+ #if ENABLE(WEBGL)
+     m_pageProxy->pageGroup()->preferences()->setWebGLEnabled(true);
+ #endif
++#if ENABLE(ACCELERATED_2D_CANVAS)
++    m_pageProxy->pageGroup()->preferences()->setAccelerated2dCanvasEnabled(true);
++#endif
+     if (behavior == DefaultBehavior)
+         m_pageProxy->setUseFixedLayout(true);
+ #endif
+diff --git a/Source/WebKit2/WebProcess/WebPage/CoordinatedGraphics/CoordinatedGraphicsLayer.cpp b/Source/WebKit2/WebProcess/WebPage/CoordinatedGraphics/CoordinatedGraphicsLayer.cpp
+index 349948e..c42c910 100644
+--- a/Source/WebKit2/WebProcess/WebPage/CoordinatedGraphics/CoordinatedGraphicsLayer.cpp
++++ b/Source/WebKit2/WebProcess/WebPage/CoordinatedGraphics/CoordinatedGraphicsLayer.cpp
+@@ -345,7 +345,10 @@ void CoordinatedGraphicsLayer::setContentsToCanvas(PlatformLayer* platformLayer)
+     if (client())
+         client()->notifyFlushRequired(this);
+ #else
+-    UNUSED_PARAM(platformLayer);
++    m_canvasPlatformLayer = platformLayer;
++    m_canvasNeedsDisplay = true;
++    if (client())
++        client()->notifyFlushRequired(this);
+ #endif
+ }
+ 
+@@ -553,6 +556,9 @@ void CoordinatedGraphicsLayer::syncCanvas()
+     ASSERT(m_canvasPlatformLayer);
+ #if USE(GRAPHICS_SURFACE)
+     m_coordinator->syncCanvas(m_id, m_canvasPlatformLayer);
++#elif ENABLE(ACCELERATED_2D_CANVAS)
++    if (m_canvasPlatformLayer->is2D())
++        setNeedsDisplay();
+ #endif
+     m_canvasNeedsDisplay = false;
+ }
+@@ -667,6 +673,13 @@ void CoordinatedGraphicsLayer::tiledBackingStorePaint(GraphicsContext* context,
+ {
+     if (rect.isEmpty())
+         return;
++
++#if ENABLE(ACCELERATED_2D_CANVAS) && !USE(GRAPHICS_SURFACE)
++    if (m_canvasPlatformLayer && m_canvasPlatformLayer->is2D()) {
++        m_canvasPlatformLayer->paintContents(*context, rect);
++        return;
++    }
++#endif
+     paintGraphicsLayerContents(*context, rect);
+ }
+ 
+@@ -747,6 +760,10 @@ void CoordinatedGraphicsLayer::removeTile(int tileID)
+ 
+ void CoordinatedGraphicsLayer::updateContentBuffers()
+ {
++#if ENABLE(ACCELERATED_2D_CANVAS) && !USE(GRAPHICS_SURFACE)
++    if (m_canvasPlatformLayer && m_canvasPlatformLayer->is2D())
++        setDrawsContent(true);
++#endif
+     if (!drawsContent() || !contentsAreVisible() || m_size.isEmpty()) {
+         m_mainBackingStore.clear();
+         m_previousBackingStore.clear();

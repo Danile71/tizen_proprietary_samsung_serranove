@@ -1,0 +1,18 @@
+--- a/libgupnp/gupnp-control-point.c
++++ b/libgupnp/gupnp-control-point.c
+@@ -213,9 +213,15 @@ find_service_node (GUPnPControlPoint *control_point,
+ 
+                 info = GUPNP_SERVICE_INFO (l->data);
+ 
++#if 0 /* Fixed - missed service node bug */
+                 if ((strcmp (gupnp_service_info_get_udn (info), udn) == 0) ||
+                     (strcmp (gupnp_service_info_get_service_type (info),
+                              service_type) == 0))
++#else
++                if ((strcmp (gupnp_service_info_get_udn (info), udn) == 0) &&
++                    (strcmp (gupnp_service_info_get_service_type (info),
++                             service_type) == 0))
++#endif
+                         break;
+ 
+                 l = l->next;

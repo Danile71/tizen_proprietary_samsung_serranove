@@ -1,0 +1,64 @@
+/*
+    Copyright (C) 2014 Samsung Electronics
+
+    This file is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This file is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public License
+    along with this library; see the file COPYING.LIB.  If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
+*/
+
+   group {
+      name: "webkit/widget/mediacontrol/control_panel_background";
+
+      images {
+         image: "widget/mediacontrol/controlpanel/Control_Panel_BackGround_Vertical.png" COMP;
+         image: "widget/mediacontrol/controlpanel/Control_Panel_BackGround_Horizontal.png" COMP;
+      }
+
+   parts {
+      part {
+         name: "Control_Panel_BackGround";
+         type: IMAGE;
+         description {
+            state: "default" 0.0;
+            min: 50 50;
+         }
+         description {
+            state: "ControlPanelBackGroundVertical" 0.0;
+            inherit: "default" 0.0;
+            image.normal: "widget/mediacontrol/controlpanel/Control_Panel_BackGround_Vertical.png";
+         }
+         description {
+            state: "ControlPanelBackGroundHorizontal" 0.0;
+            inherit: "default" 0.0;
+            image.normal: "widget/mediacontrol/controlpanel/Control_Panel_BackGround_Horizontal.png";
+         }
+      }
+   }
+
+   programs {
+      program {
+         name: "ControlPanelBackGroundVertical";
+         signal: "ControlPanelBackGroundVertical";
+         action: STATE_SET "ControlPanelBackGroundVertical" 0.0;
+         target: "Control_Panel_BackGround";
+      }
+      program {
+         name: "ControlPanelBackGroundHorizontal";
+         signal: "ControlPanelBackGroundHorizontal";
+         action: STATE_SET "ControlPanelBackGroundHorizontal" 0.0;
+         target: "Control_Panel_BackGround";
+      }
+   }
+}
+

@@ -1,0 +1,178 @@
+smack (1.0+s14) unstable; urgency=low
+
+  [ Rafal Krypa ]
+  * smackload-fast:
+    - revert untracked changes to original source.
+    - add support for legacy kernel with no multi-line support.
+    - sanitize struct rule definition and usage.
+
+  [ Jan Cybulski ]
+  * Change smack.service to use smackload-fast.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Wed, 04 Dec 2013 17:24:32 +0100
+
+smack (1.0+s13) unstable; urgency=low
+
+  * Prevent potentially unterminated buffers while adding rule to the list
+  * Add util smackloadfast
+  * Fix parse error messages in smackloadfast.
+  * Fix parsing bug in smackloadfast util.
+  * Add automake generation for smackloadfast
+  * Elimination of floor (_) labeled executables
+
+ -- Krzysztof Jackiewicz <k.jackiewicz@samsung.com>  Thu, 28 Nov 2013 16:15:45 +0200
+
+smack (1.0+s12) unstable; urgency=low
+
+  * Fix symlink creation on smack-utils install.
+  * libsmack: add support for new access mode for setting locks ("l")
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Tue, 13 Aug 2013 17:57:31 +0200
+
+smack (1.0+s11-4) unstable; urgency=low
+
+  * remove rc.d scripts
+
+ -- Kidong Kim <kd0228.kim@samsung.com>  Mon, 27 May 2013 14:43:26 +0900
+
+smack (1.0+s11-3) unstable; urgency=low
+
+  * fix systemd service file
+
+ -- Kidong Kim <kd0228.kim@samsung.com>  Tue, 14 May 2013 14:03:02 +0900
+
+smack (1.0+s11-2) unstable; urgency=low
+
+  * fix %post
+
+ -- Kidong Kim <kd0228.kim@samsung.com>  Mon, 6 May 2013 17:57:34 +0900
+
+smack (1.0+s11-1) unstable; urgency=low
+
+  * fix directory installation problem
+  * fix %post bug
+
+ -- Kidong Kim <kd0228.kim@samsung.com>  Fri, 3 May 2013 19:59:41 +0900
+
+smack (1.0+s11) unstable; urgency=low
+
+  [ Passion Zhao ]
+  * fix smackcipso can't set CIPSO correctly
+
+  [ Nathaniel Chen ]
+  * disable services for new systemd versions
+
+ -- Krzysztof Jackiewicz <k.jackiewicz@samsung.com>  Thu, 25 Apr 2013 11:53:54 +0200
+
+smack (1.0+s10) unstable; urgency=low
+
+  [ Rafal Krypa ]
+  * libsmack: check label length in smack_revoke_subject().
+  * Merge changes from upstream repository.
+
+  [ Jarkko Sakkinen ]
+  * libsmack: fallback to short labels.
+  * Declare smack_mnt as non-static in init.c.
+  * Removed dso.h.
+
+  [ Auke Kok ]
+  * smack.service: provide [Install] section in systemd unit file.
+  * smack.mount: "WantedBy" is illegal in [Unit] context.
+
+  [ Passion Zhao ]
+  * Move cipso_free,cipso_new,cipso_apply from utils/common.c to libsmack/libsmack.c.
+  * Add support for smackfs directory: /sys/fs/smackfs/
+
+  [ Patrick McCarty ]
+  * Run AM_PROG_AR to fix build with newer automake.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Mon, 18 Feb 2013 18:55:29 +0100
+
+smack (1.0+s9) unstable; urgency=low
+
+  [ Jacek Migacz ]
+  * Add systemd support scripts.
+
+  [ Chengwei Yang ]
+  * Polish init script.
+
+  [ Wonguk Jeong ]
+  * execute init script between local-fs.target and basic.target.
+
+  [ Rafal Krypa ]
+  * libsmack: try not to fail if accesses_apply cannot access some kernel interface.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Thu, 07 Feb 2013 12:16:05 +0100
+
+smack (1.0+s8) unstable; urgency=low
+
+  * libsmack: fix access type parsing.
+  * libsmack: fix label removal.
+  * Don't fail when removing label from file, that doesn't have it.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Tue, 05 Feb 2013 14:51:35 +0100
+
+smack (1.0+s7) unstable; urgency=low
+
+  * change initialization script order.
+
+ -- Kidong Kim <kd0228.kim@samsung.com>  Mon, 26 Nov 2012 20:17:59 +0900
+
+smack (1.0+s6) unstable; urgency=low
+
+  [ Bumjin Im ]
+  * Modified typo access.d --> accesses.d
+
+  [ Rafal Krypa ]
+  * packaging: fix location of symlinks to smack-utils init script.
+  * Merge with upstream.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Mon, 17 Sep 2012 10:40:12 +0200
+
+smack (1.0+s5) unstable; urgency=low
+
+  * Rebuild, no source changes.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Wed, 01 Aug 2012 12:04:22 +0200
+
+smack (1.0+s4) unstable; urgency=low
+
+  * Rebuild, no source changes.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Thu, 30 Jul 2012 11:43:03 +0200
+
+smack (1.0+s3) unstable; urgency=low
+
+  * Rebuilding the package in OBS. No source changes has been made.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Thu, 19 Jul 2012 15:17:03 +0200
+
+smack (1.0+s2) unstable; urgency=low
+
+  * Merge with upstream master branch.
+  * Fix inconsistent init script names.
+  * Install missing manual page links for library functions.
+  * libsmack: add API for revoking all rules for a subject label.
+  * libsmack: add support for modification rules.
+  * libsmack: add function for setting current process label.
+  * Move definition of max label length to a single place and export it in libsmack header file.
+  * debian: fix paths to upstream repositories.
+  * Fix three compilation warnings.
+  * libsmack: add functions for getting and setting labels from files.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Wed, 11 Jul 2012 14:36:56 +0200
+
+smack (1.0+s1) unstable; urgency=low
+
+  * debian: set myself as Tizen package maintainer.
+  * debian: move configuration directories to /opt/etc, as in Tizen directory structure.
+  * debian: symlink the init script to proper init directories for Tizen.
+  * debian: rename libsmack to libsmack1 according to Debian policy.
+
+ -- Rafal Krypa <r.krypa@samsung.com>  Mon, 07 May 2012 19:27:23 +0200
+
+smack (1.0) unstable; urgency=low
+
+  * Initial package release for debian
+
+ -- Brian McGillion <brian.mcgillion@intel.com>  Wed, 25 Apr 2012 11:00:09 +0900

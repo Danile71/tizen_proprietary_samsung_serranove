@@ -1,0 +1,22 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x75
+  RenderBlock {HTML} at (0,0) size 800x75
+    RenderBody {BODY} at (8,12) size 784x55
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 271x14
+          text run at (0,0) width 271: "The following two boxes should be identical, to the pixel."
+      RenderBlock {OL} at (60,26) size 120x14 [color=#FFFFFF] [bgcolor=#000080]
+        RenderListItem {LI} at (0,0) size 120x14
+          RenderListMarker at (-15,0) size 12x14: "1"
+          RenderInline {SPAN} at (0,0) size 9x14 [color=#000080]
+            RenderText {#text} at (0,0) size 9x14
+              text run at (0,0) width 9: "1."
+          RenderText {#text} at (9,0) size 23x14
+            text run at (9,0) width 23: " Test"
+      RenderBlock {OL} at (60,41) size 120x14 [color=#000080] [bgcolor=#000080]
+        RenderListItem {LI} at (0,0) size 120x14
+          RenderListMarker at (0,0) size 12x14: "1"
+          RenderInline {SPAN} at (0,0) size 20x14 [color=#FFFFFF]
+            RenderText {#text} at (12,0) size 20x14
+              text run at (12,0) width 20: "Test"

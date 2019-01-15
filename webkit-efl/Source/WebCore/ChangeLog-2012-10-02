@@ -1,0 +1,108 @@
+2012-09-07  John Bauman  <jbauman@chromium.org>
+
+        Check objects for null when recreating context
+        https://bugs.webkit.org/show_bug.cgi?id=95926
+
+        Reviewed by Dean Jackson.
+
+        Upon navigation the FrameViwe and other objects may go null, so detect
+        that and return rather than try to dereference them.
+
+        * html/canvas/WebGLRenderingContext.cpp:
+        (WebCore):
+        (WebCore::WebGLRenderingContext::maybeRestoreContext):
+
+2012-08-24  James Robinson  <jamesr@chromium.org>
+
+        WebGL should not flip textures on presentation if contents are unchanged
+        https://bugs.webkit.org/show_bug.cgi?id=94961
+
+        Reviewed by Kenneth Russell.
+
+        For WebGL contexts where antialias and preserveDrawingBuffer are false, chromium implements DrawingBuffer using
+        two textures and flips them on presentation. If the page hasn't actually rendered anything into the WebGL
+        context since the last presentation, this makes an old frame available. This fixes the bug by marking the
+        DrawingBuffer when its contents change.
+
+        Test: compositing/webgl/webgl-repaint.html
+
+        * html/canvas/WebGLRenderingContext.cpp:
+        (WebCore):
+        (WebCore::WebGLRenderingContext::markContextChanged):
+        * platform/graphics/chromium/DrawingBufferChromium.cpp:
+        (WebCore::DrawingBuffer::DrawingBuffer):
+        (WebCore::DrawingBuffer::prepareBackBuffer):
+        * platform/graphics/gpu/DrawingBuffer.h:
+        (WebCore::DrawingBuffer::markContentsChanged):
+        (DrawingBuffer):
+
+2012-08-20  Dean Jackson  <dino@apple.com>
+
+        [WebGL] OES_vertex_array_object is not correctly un/binding or deleting
+        https://bugs.webkit.org/show_bug.cgi?id=94029
+
+        Reviewed by Ken Russell.
+
+        When the currently bound vertex array is deleted, the specification says that
+        the default object should be bound in its place. Also, binding a null object
+        as a vertex array was not actually clearing the bound object at the GL layer.
+        And lastly, it should not be possible to bind a deleted vertex array.
+
+        The test case for this is the public Khronos WebGL conformance suite, in particular:
+        conformance/extensions/oes-vertex-array-object.html
+
+        * html/canvas/OESVertexArrayObject.cpp:
+        (WebCore::OESVertexArrayObject::deleteVertexArrayOES): Check if the deleted array is
+        currently bound, and if so, unbind it.
+        (WebCore::OESVertexArrayObject::bindVertexArrayOES): Make sure never to bind an
+        array that has been marked as deleted.
+        * platform/graphics/opengl/Extensions3DOpenGL.cpp:
+        (WebCore::Extensions3DOpenGL::bindVertexArrayOES): Remove the null check on bind. We
+        do need to call glBindVertexArrayAPPLE with a null value in order to clear it.
+
+2012-08-07  Ojan Vafai  <ojan@chromium.org>
+
+        percentage height/width values in quirks mode are incorrectly resolved in flexbox children
+        https://bugs.webkit.org/show_bug.cgi?id=81809
+
+        Reviewed by Tony Chang.
+
+        When computing percentage logical heights we need to use the RenderBox helper methods
+        to make sure we handle all the edge cases correctly (e.g. walk up the containing block
+        ancestor chain in quirks mode until we find a definite size).
+
+        For widths, the containing block always has a definite size, so all we need to do
+        is call computeContentBoxLogicalWidth(valueForLength(...)), although I'm not sure
+        this does the right thing for the intrinsic sizing keywords.
+
+        Tests: css3/flexbox/box-sizing-min-max-sizes.html
+               css3/flexbox/percentage-sizes-quirks.html
+               css3/flexbox/percentage-sizes.html
+
+        * rendering/RenderBox.cpp:
+        (WebCore::RenderBox::computeLogicalClientHeight):
+        (WebCore):
+        * rendering/RenderBox.h:
+        (RenderBox):
+        * rendering/RenderFlexibleBox.cpp:
+        (WebCore::RenderFlexibleBox::computeMainAxisSizeForChild):
+        (WebCore::RenderFlexibleBox::preferredMainAxisContentExtentForChild):
+        (WebCore::RenderFlexibleBox::adjustChildSizeForMinAndMax):
+        * rendering/RenderFlexibleBox.h:
+
+2012-07-31  Ojan Vafai  <ojan@chromium.org>
+
+        need tests to ensure flexboxes play nicely with box-sizing
+        https://bugs.webkit.org/show_bug.cgi?id=70771
+
+        Reviewed by Tony Chang.
+
+        Anytime we grab the width/height off of the RenderStyle, we need to adjust
+        it for box-sizing. Fortunately, we only do this two places in RenderFlexibleBox.
+        Also, delete crossAxisLength since it's unused.
+
+        Test: css3/flexbox/box-sizing.html
+
+        * rendering/RenderFlexibleBox.cpp:
+        (WebCore::RenderFlexibleBox::preferredMainAxisContentExtentForChild):
+        * rendering/RenderFlexibleBox.h:

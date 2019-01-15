@@ -1,0 +1,12 @@
+{
+        global:
+                ewk_*;
+                JS*;
+                extern "C++" {
+                      /* For DRT */
+                      DumpRenderTreeSupportEfl*;
+                };
+        local:
+                _Z*;
+                cti*;
+};

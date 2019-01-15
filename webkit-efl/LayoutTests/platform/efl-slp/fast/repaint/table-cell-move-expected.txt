@@ -1,0 +1,43 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x358
+  RenderBlock {HTML} at (0,0) size 800x358
+    RenderBody {BODY} at (8,12) size 784x338
+      RenderBlock {P} at (0,0) size 784x14
+        RenderInline {B} at (0,0) size 47x14
+          RenderText {#text} at (0,0) size 47x14
+            text run at (0,0) width 47: "BUG ID:"
+        RenderText {#text} at (47,0) size 3x14
+          text run at (47,0) width 3: " "
+        RenderInline {A} at (0,0) size 87x14 [color=#0000EE]
+          RenderText {#text} at (50,0) size 87x14
+            text run at (50,0) width 87: "Bugzilla bug 8449"
+        RenderText {#text} at (137,0) size 283x14
+          text run at (137,0) width 283: " REGRESSION: Incomplete repaint of table cell that moved"
+      RenderBlock {P} at (0,26) size 784x20 [bgcolor=#98FB98]
+        RenderInline {B} at (0,0) size 68x14
+          RenderText {#text} at (3,3) size 68x14
+            text run at (3,3) width 68: "TEST PASS:"
+        RenderText {#text} at (71,3) size 302x14
+          text run at (71,3) width 3: " "
+          text run at (74,3) width 299: "There should be only a green square below the line, and no red."
+      RenderBlock {P} at (0,58) size 784x20 [bgcolor=#FF3300]
+        RenderInline {B} at (0,0) size 67x14
+          RenderText {#text} at (3,3) size 67x14
+            text run at (3,3) width 67: "TEST FAIL:"
+        RenderText {#text} at (70,3) size 230x14
+          text run at (70,3) width 3: " "
+          text run at (73,3) width 227: "There will be a red square and a green rectangle."
+      RenderBlock {HR} at (0,90) size 784x2 [border: (1px inset #000000)]
+      RenderTable {TABLE} at (0,98) size 61x240
+        RenderTableSection {TBODY} at (0,0) size 61x240
+          RenderTableRow {TR} at (0,0) size 61x60
+            RenderTableCell {TD} at (0,30) size 61x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (61,30) size 0x0 [r=0 c=1 rs=1 cs=1]
+          RenderTableRow {TR} at (0,60) size 61x180
+            RenderTableCell {TD} at (0,120) size 61x60 [r=1 c=0 rs=1 cs=1]
+              RenderBlock {DIV} at (0,0) size 61x60 [bgcolor=#008000]
+            RenderTableCell {TD} at (61,150) size 0x0 [r=1 c=1 rs=1 cs=1]
+          RenderTableRow {TR} at (0,240) size 61x0
+            RenderTableCell {TD} at (0,240) size 61x0 [bgcolor=#FF0000] [r=2 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (61,240) size 0x0 [r=2 c=1 rs=1 cs=1]

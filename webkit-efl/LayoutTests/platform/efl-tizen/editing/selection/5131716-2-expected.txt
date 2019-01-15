@@ -1,0 +1,27 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 956x38
+          text run at (0,0) width 570: "This tests clicking to place a caret in the padding of an editable region. "
+          text run at (570,0) width 386: "The eventSender clicks to the left of the ToDo in"
+          text run at (0,19) width 678: "the left padding of the editable region and the caret should be just before that ToDo."
+      RenderBlock {DIV} at (0,54) size 964x119 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (26,26) size 912x19
+          RenderText {#text} at (0,0) size 127x19
+            text run at (0,0) width 127: "Paragraph One."
+        RenderTable {TABLE} at (26,45) size 106x29 [border: (1px solid #BBBBBB)]
+          RenderTableSection {TBODY} at (1,1) size 104x27
+            RenderTableRow {TR} at (0,2) size 104x23 [border: (1px solid #BBBBBB)]
+              RenderTableCell {TD} at (2,2) size 9x23 [border: (1px solid #BBBBBB)] [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (2,2) size 5x19
+                  text run at (2,2) width 5: " "
+              RenderTableCell {TD} at (13,2) size 89x23 [border: (1px solid #BBBBBB)] [r=0 c=1 rs=1 cs=1]
+                RenderText {#text} at (2,2) size 85x19
+                  text run at (2,2) width 85: "ToDo One."
+        RenderBlock {DIV} at (26,74) size 912x19
+          RenderText {#text} at (0,0) size 127x19
+            text run at (0,0) width 127: "Paragraph Two."
+caret: position 0 of child 3 {TABLE} of child 3 {DIV} of body

@@ -1,0 +1,12 @@
+diff -Nur libxslt/xsltproc/Makefile.am libxslt_patch/xsltproc/Makefile.am
+--- libxslt/xsltproc/Makefile.am	2015-04-08 16:08:33.146774250 +0900
++++ libxslt_patch/xsltproc/Makefile.am	2015-04-08 16:55:27.522773914 +0900
+@@ -10,7 +10,7 @@
+ AM_CFLAGS = $(LIBGCRYPT_CFLAGS) $(LIBXML_CFLAGS)
+ 
+ xsltproc_SOURCES = xsltproc.c
+-xsltproc_LDFLAGS = 
++xsltproc_LDFLAGS = -pie
+ xsltproc_DEPENDENCIES = $(DEPS)
+ 
+ testThreads_SOURCES=testThreads.c

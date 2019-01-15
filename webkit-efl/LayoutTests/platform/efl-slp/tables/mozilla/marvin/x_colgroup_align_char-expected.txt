@@ -1,0 +1,27 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x90
+  RenderBlock {html} at (0,0) size 800x90
+    RenderBody {body} at (8,12) size 784x70
+      RenderBlock {p} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 249x14
+          text run at (0,0) width 249: "Numbers in table should be aligned at decimal points"
+      RenderTable {table} at (0,26) size 600x44 [border: (1px outset #808080)]
+        RenderTableCol {colgroup} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+        RenderTableSection (anonymous) at (1,1) size 598x42
+          RenderTableRow {tr} at (0,2) size 598x18
+            RenderTableCell {td} at (2,2) size 276x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 27x14
+                text run at (2,2) width 27: "55.00"
+            RenderTableCell {td} at (280,2) size 316x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 45x14
+                text run at (2,2) width 45: "55555.00"
+          RenderTableRow {tr} at (0,22) size 598x18
+            RenderTableCell {td} at (2,22) size 276x18 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 39x14
+                text run at (2,2) width 39: "1234.56"
+            RenderTableCell {td} at (280,22) size 316x18 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 33x14
+                text run at (2,2) width 33: "123.45"

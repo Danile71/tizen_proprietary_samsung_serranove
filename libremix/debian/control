@@ -1,0 +1,29 @@
+Source: libremix
+Section: libs
+Priority: optional
+Uploaders: Prince Kumar Dubey <prince.dubey@samsung.com>, Govindaraju S M <govi.sm@samsung.com>, Daniel Juyung Seo <juyung.seo@samsung.com>, Hyoyoung Chang <hyoyoung.chang>
+Maintainer: Prince Kumar Dubey <prince.dubey@samsung.com>
+Build-Depends: cdbs, libsndfile1-dev, libsndfile1, pkg-config, libtool
+Standards-Version: 0.2.4
+Homepage: http://www.metadecks.org/software/remix/
+
+Package: libremix
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libsndfile1
+Suggests: libremix (= ${binary:Version})
+Description: Various binaries for use with libremix.
+   Remix is an audio sequencing and mixing library that provides a multichannel,
+   sparse audio data container (streams), a structured mixing abstraction (decks),
+   and widely useful means of generating control data (via envelopes) and of
+   caching audio data.
+
+
+Package: libremix-dev
+Architecture: any
+Section: libdevel
+Depends: ${misc:Depends}, libremix (= ${binary:Version}), libsndfile1-dev
+Description: libremix headers and static libraries
+   Remix is an audio sequencing and mixing library that provides a multichannel,
+   sparse audio data container (streams), a structured mixing abstraction (decks),
+   and widely useful means of generating control data (via envelopes) and of
+   caching audio data.

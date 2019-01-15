@@ -1,0 +1,38 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 67x19
+          text run at (0,0) width 67: "Test for "
+        RenderInline {I} at (0,0) size 934x38
+          RenderInline {A} at (0,0) size 372x19 [color=#0000EE]
+            RenderText {#text} at (67,0) size 372x19
+              text run at (67,0) width 372: "http://bugs.webkit.org/show_bug.cgi?id=13353"
+          RenderText {#text} at (439,0) size 934x38
+            text run at (439,0) width 5: " "
+            text run at (444,0) width 490: "REGRESSION (r20754-20766): Textarea does not resize when"
+            text run at (0,19) width 152: "scrollbar is present"
+        RenderText {#text} at (152,19) size 5x19
+          text run at (152,19) width 5: "."
+      RenderBlock {P} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 958x19
+          text run at (0,0) width 736: "To test interactively, verify that you can resize each of the boxes below. The automatic test "
+          text run at (736,0) width 222: "resizes them to 125 by 125."
+      RenderBlock (floating) {DIV} at (0,89) size 125x125 [bgcolor=#FF0000]
+      RenderBlock (floating) {DIV} at (135,89) size 125x125 [bgcolor=#FF0000]
+      RenderBlock (floating) {DIV} at (270,89) size 125x125 [bgcolor=#FF0000]
+      RenderBlock (floating) {DIV} at (405,89) size 125x125 [bgcolor=#FF0000]
+layer at (8,97) size 125x125
+  RenderBlock {DIV} at (0,0) size 125x125 [bgcolor=#008000]
+    RenderBlock {DIV} at (0,0) size 100x100
+layer at (143,97) size 125x125 clip at (143,97) size 110x110
+  RenderBlock {DIV} at (0,0) size 125x125 [bgcolor=#008000]
+    RenderBlock {DIV} at (0,0) size 100x100
+layer at (278,97) size 125x125 clip at (278,97) size 110x125
+  RenderBlock {DIV} at (0,0) size 125x125 [bgcolor=#008000]
+    RenderBlock {DIV} at (0,0) size 100x100
+layer at (413,97) size 125x125 clip at (413,97) size 125x110
+  RenderBlock {DIV} at (0,0) size 125x125 [bgcolor=#008000]
+    RenderBlock {DIV} at (0,0) size 100x100

@@ -1,0 +1,13 @@
+[Unit]
+Description=Input Service Framework Panel
+After=local-fs.target xorg.service e17.service wm_ready.service
+
+[Service]
+ExecStart=/usr/bin/scim -d
+Environment=HOME=/root "DISPLAY=:0"
+EnvironmentFile=/run/tizen-*-env
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

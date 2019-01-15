@@ -1,0 +1,11 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x60
+  RenderBlock {HTML} at (0,0) size 800x60
+    RenderBody {BODY} at (8,8) size 784x44
+      RenderBlock {DIV} at (0,0) size 202x44 [border: (1px solid #000000)]
+        RenderBlock (floating) {DIV} at (1,1) size 50x50 [bgcolor=#008000]
+        RenderText {#text} at (151,1) size 150x42
+          text run at (151,1) width 47: "Some text"
+          text run at (51,15) width 150: "that should not overlap the edge"
+          text run at (51,29) width 76: "of the container."

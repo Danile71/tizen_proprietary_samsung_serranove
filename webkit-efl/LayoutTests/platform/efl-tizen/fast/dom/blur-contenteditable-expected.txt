@@ -1,0 +1,15 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 614x19
+          text run at (0,0) width 614: "This test will try to call blur() on a contenteditable div, and then a normal div."
+      RenderBlock {DIV} at (0,19) size 964x25 [border: (3px solid #000000)]
+        RenderText {#text} at (3,3) size 153x19
+          text run at (3,3) width 153: "contentEditable div"
+      RenderBlock {DIV} at (0,44) size 964x19
+        RenderText {#text} at (0,0) size 100x19
+          text run at (0,0) width 100: "Test Passed."
+      RenderBlock {DIV} at (0,63) size 964x0

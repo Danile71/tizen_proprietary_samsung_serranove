@@ -1,0 +1,20 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x128
+  RenderBlock {HTML} at (0,0) size 980x128
+    RenderBody {BODY} at (8,8) size 964x82
+      RenderBlock (floating) {DIV} at (654,10) size 300x100 [bgcolor=#008000]
+      RenderTable {TABLE} at (15,0) size 613x25 [bgcolor=#FFA500]
+        RenderTableSection {TBODY} at (0,0) size 613x25
+          RenderTableRow {TR} at (0,2) size 613x21
+            RenderTableCell {TD} at (2,2) size 609x21 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 607x19
+                text run at (1,1) width 453: "This is a test and is demonstrating that auto width really "
+                text run at (454,1) width 154: "should kick in here."
+layer at (180,33) size 300x57
+  RenderBlock {DIV} at (172,25) size 300x57 [bgcolor=#FFA500]
+    RenderText {#text} at (0,0) size 282x57
+      text run at (0,0) width 273: "This is a test and is demonstrating"
+      text run at (0,19) width 175: "that auto width really "
+      text run at (175,19) width 107: "should kick in"
+      text run at (0,38) width 42: "here."

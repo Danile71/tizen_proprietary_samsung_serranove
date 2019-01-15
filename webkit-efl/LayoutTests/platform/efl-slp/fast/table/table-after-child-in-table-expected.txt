@@ -1,0 +1,19 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderTable {DIV} at (0,0) size 98x88 [color=#FF0000] [border: (3px solid #008000)]
+        RenderTableSection (anonymous) at (15,15) size 68x58 [color=#000000]
+          RenderTableRow (anonymous) at (0,0) size 68x58
+            RenderTableCell (anonymous) at (0,0) size 68x58 [r=0 c=0 rs=1 cs=1]
+              RenderBlock (anonymous) at (0,0) size 68x14
+                RenderInline {SPAN} at (0,0) size 56x14 [color=#FF0000]
+                  RenderText {#text} at (0,0) size 56x14
+                    text run at (0,0) width 56: "CONTENT"
+              RenderTable at (0,14) size 68x44 [color=#FF0000] [border: (3px solid #0000FF)]
+                RenderTableSection (anonymous) at (15,15) size 38x14 [color=#000000]
+                  RenderTableRow (anonymous) at (0,0) size 38x14
+                    RenderTableCell (anonymous) at (0,0) size 38x14 [r=0 c=0 rs=1 cs=1]
+                      RenderText at (0,0) size 38x14
+                        text run at (0,0) width 38: "AFTER"

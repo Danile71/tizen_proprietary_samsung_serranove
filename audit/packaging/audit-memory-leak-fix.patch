@@ -1,0 +1,22 @@
+From: Jinwoo nam <jwoo.nam@samsung.com>
+Subject: fix memory leak
+Upsteam: never
+
+fix memory leak
+
+---
+ auparse/auparse.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/auparse/auparse.c b/auparse/auparse.c
+index dc19fbc..f6a56dd 100644
+--- a/auparse/auparse.c
++++ b/auparse/auparse.c
+@@ -74,6 +74,7 @@ static int setup_log_file_array(auparse_state_t *au)
+ 	if (num == 0) {
+ 		fprintf(stderr, "No log file\n");
+ 		free_config(&config);
++		free(filename);
+ 		return 1;
+ 	}
+ 	num--;

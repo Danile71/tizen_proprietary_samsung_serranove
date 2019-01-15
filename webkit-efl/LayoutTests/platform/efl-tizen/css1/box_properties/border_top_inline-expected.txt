@@ -1,0 +1,59 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 451x19
+          text run at (0,0) width 451: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,35) size 964x45
+        RenderText {#text} at (0,0) size 253x45
+          text run at (0,0) width 253: ".one {border-top: purple double 10px;}"
+          text run at (253,0) width 0: " "
+          text run at (0,15) width 233: ".two {border-top: purple thin solid;}"
+          text run at (233,15) width 0: " "
+          text run at (0,30) width 0: " "
+      RenderBlock {HR} at (0,93) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,111) size 964x57 [bgcolor=#C0C0C0]
+        RenderText {#text} at (0,0) size 848x19
+          text run at (0,0) width 848: "This is an unstyled element, save for the background color, and containing inline elements with classes of "
+        RenderInline {SPAN} at (0,0) size 74x29 [border: (10px double #800080) none]
+          RenderText {#text} at (848,0) size 74x19
+            text run at (848,0) width 74: "class one"
+        RenderText {#text} at (922,0) size 927x38
+          text run at (922,0) width 5: ","
+          text run at (0,19) width 480: "which should have a 10-pixel purple double top border; and "
+        RenderInline {SPAN} at (0,0) size 73x20 [border: (1px solid #800080) none]
+          RenderText {#text} at (480,19) size 73x19
+            text run at (480,19) width 73: "class two"
+        RenderText {#text} at (553,19) size 952x38
+          text run at (553,19) width 399: ", which should have a thin solid purple top border."
+          text run at (0,38) width 549: "The line-height of the parent element should not change on any line."
+      RenderTable {TABLE} at (0,184) size 964x94 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x92
+          RenderTableRow {TR} at (0,0) size 962x27
+            RenderTableCell {TD} at (0,0) size 962x27 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 202x19
+                RenderText {#text} at (4,4) size 202x19
+                  text run at (4,4) width 202: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,27) size 962x65
+            RenderTableCell {TD} at (0,46) size 13x27 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 5x19
+                text run at (4,4) width 5: " "
+            RenderTableCell {TD} at (13,27) size 949x65 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 941x57 [bgcolor=#C0C0C0]
+                RenderText {#text} at (0,0) size 848x19
+                  text run at (0,0) width 848: "This is an unstyled element, save for the background color, and containing inline elements with classes of "
+                RenderInline {SPAN} at (0,0) size 74x29 [border: (10px double #800080) none]
+                  RenderText {#text} at (848,0) size 74x19
+                    text run at (848,0) width 74: "class one"
+                RenderText {#text} at (922,0) size 927x38
+                  text run at (922,0) width 5: ","
+                  text run at (0,19) width 480: "which should have a 10-pixel purple double top border; and "
+                RenderInline {SPAN} at (0,0) size 73x20 [border: (1px solid #800080) none]
+                  RenderText {#text} at (480,19) size 73x19
+                    text run at (480,19) width 73: "class two"
+                RenderText {#text} at (553,19) size 888x38
+                  text run at (553,19) width 335: ", which should have a thin solid purple top"
+                  text run at (0,38) width 64: "border. "
+                  text run at (64,38) width 549: "The line-height of the parent element should not change on any line."

@@ -1,0 +1,201 @@
+class Elm_Colorselector (Elm_Layout, Elm_Interface_Atspi_Widget_Action)
+{
+   eo_prefix: elm_obj_colorselector;
+   properties {
+      color {
+         set {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Set color to colorselector
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @ingroup Colorselector */
+         }
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get current color from colorselector
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @ingroup Colorselector */
+         }
+         values {
+            int r; /*@ r-value of color */
+            int g; /*@ g-value of color */
+            int b; /*@ b-value of color */
+            int a; /*@ a-value of color */
+         }
+      }
+      palette_name {
+         set {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Set current palette's name
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @remark When colorpalette name is set, colors will be loaded from and saved to config
+            using the set name. If no name is set then colors will be loaded from or
+            saved to "default" config.
+
+            @ingroup Colorselector */
+         }
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get current palette's name
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return Name of palette
+
+            @remark Returns the currently set palette name using which colors will be
+            saved/loaded in to config.
+
+            @ingroup Colorselector */
+         }
+         values {
+            const(char)* palette_name; /*@ Name of palette */
+         }
+      }
+      mode {
+         set {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Set Colorselector's mode.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @remark Colorselector supports three modes palette only, selector only and both.
+
+            @ingroup Colorselector */
+         }
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get Colorselector's mode.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return mode The current mode of colorselector
+
+            @ingroup Colorselector */
+         }
+         values {
+            Elm_Colorselector_Mode mode; /*@ Elm_Colorselector_Mode */
+         }
+      }
+      palette_items {
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get list of palette items.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return The list of color palette items.
+
+            @remark Note That palette item list is internally managed by colorselector widget and
+            it should not be freed/modified by application.
+
+            @since 1.9
+
+            @ingroup Colorselector */
+            return: const(list)*;
+         }
+      }
+      palette_selected_item {
+         get {
+            /*@
+            @internal
+
+            Get the selected item in colorselector palette.
+
+            @return The selected item, or NULL if none is selected.
+
+            @since 1.9
+            @ingroup Colorselector */
+            return: Elm_Object_Item *;
+         }
+      }
+   }
+   methods {
+      palette_color_add {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Add a new color item to palette.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return A new color palette Item.
+
+         @ingroup Colorselector */
+
+         return: Elm_Object_Item *;
+         params {
+            @in int r; /*@ r-value of color */
+            @in int g; /*@ g-value of color */
+            @in int b; /*@ b-value of color */
+            @in int a; /*@ a-value of color */
+         }
+      }
+      palette_clear {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Clear the palette items.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @ingroup Colorselector */
+
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Elm_Widget.theme_apply;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_next;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.access;
+      Elm_Widget.event;
+      Elm_Layout.sizing_eval;
+      Elm_Interface_Atspi_Widget_Action.elm_actions.get;
+      //TIZEN_ONLY(20150707) : improve colorselctor atspi support
+      Elm_Interface_Atspi_Accessible.children.get;
+      ///
+   }
+   events {
+      color,item,selected;
+      color,item,longpressed;
+      changed;
+      language,changed;
+      access,changed;
+      focused;
+      unfocused;
+   }
+
+}

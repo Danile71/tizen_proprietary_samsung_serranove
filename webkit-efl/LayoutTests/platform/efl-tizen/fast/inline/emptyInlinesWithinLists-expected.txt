@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {DIV} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 584x19
+          text run at (0,0) width 584: "This test demonstrates our behavior regarding empty inlines in list items."
+      RenderBlock {UL} at (0,35) size 964x95
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderInline {SPAN} at (0,0) size 4x23 [border: (2px solid #FF0000)]
+        RenderListItem {LI} at (40,19) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderInline {SPAN} at (0,0) size 8x27 [border: (2px solid #FF0000)]
+          RenderText {#text} at (8,0) size 35x19
+            text run at (8,0) width 35: "Text"
+        RenderListItem {LI} at (40,38) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 110x19
+            text run at (0,0) width 110: "TextTextText "
+          RenderInline {SPAN} at (0,0) size 8x27 [border: (2px solid #FF0000)]
+        RenderBlock (anonymous) at (40,57) size 924x19
+          RenderInline {SPAN} at (0,0) size 8x27 [border: (2px solid #FF0000)]
+        RenderListItem {LI} at (40,76) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 35x19
+            text run at (0,0) width 35: "Text"

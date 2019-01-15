@@ -1,0 +1,38 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x166
+  RenderBlock {HTML} at (0,0) size 800x166
+    RenderBody {BODY} at (8,8) size 784x150
+      RenderRegion {DIV} at (0,0) size 200x50
+      RenderBlock {DIV} at (0,50) size 200x50
+      RenderRegion {DIV} at (0,100) size 200x50
+Flow Threads
+  Thread with flow-name 'flow1'
+    layer at (0,0) size 200x100
+      RenderFlowThread at (0,0) size 200x100
+        RenderBlock {DIV} at (0,16) size 200x285
+          RenderBlock {P} at (0,0) size 200x53
+            RenderText {#text} at (0,0) size 154x53
+              text run at (0,0) width 154: "First para goes into"
+              text run at (0,34) width 56: "region."
+          RenderBlock (anonymous) at (0,69) size 200x19
+            RenderText {#text} at (0,0) size 169x19
+              text run at (0,0) width 169: "Text goes into region"
+          RenderBlock {P} at (0,104) size 200x38
+            RenderText {#text} at (0,0) size 179x38
+              text run at (0,0) width 179: "Second para goes into"
+              text run at (0,19) width 56: "region."
+          RenderBlock {P} at (0,158) size 200x38
+            RenderText {#text} at (0,0) size 161x38
+              text run at (0,0) width 161: "Third para goes into"
+              text run at (0,19) width 56: "region."
+          RenderBlock (anonymous) at (0,212) size 200x19
+            RenderText {#text} at (0,0) size 169x19
+              text run at (0,0) width 169: "Text goes into region"
+          RenderBlock {P} at (0,247) size 200x38
+            RenderText {#text} at (0,0) size 172x38
+              text run at (0,0) width 172: "Fourth para goes into"
+              text run at (0,19) width 56: "region."
+  Regions for flow 'flow1'
+    RenderRegion {DIV} #region1 region style: 1
+    RenderRegion {DIV} #region3 region style: 1

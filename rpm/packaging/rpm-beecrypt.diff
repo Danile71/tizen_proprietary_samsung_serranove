@@ -1,0 +1,1725 @@
+--- ./config.h.in.orig	2011-07-15 09:37:41.000000000 +0000
++++ ./config.h.in	2011-07-18 16:34:29.000000000 +0000
+@@ -13,6 +13,9 @@
+ /* Define to 1 if you have the `basename' function. */
+ #undef HAVE_BASENAME
+ 
++/* Define to 1 if you have the <beecrypt/api.h> header file. */
++#undef HAVE_BEECRYPT_API_H
++
+ /* Define as 1 if you bzip2 1.0 */
+ #undef HAVE_BZ2_1_0
+ 
+@@ -77,7 +80,7 @@
+ /* Define as 1 if your zlib has gzseek() */
+ #undef HAVE_GZSEEK
+ 
+-/* Define if you have the iconv() function. */
++/* Define if you have the iconv() function and it works. */
+ #undef HAVE_ICONV
+ 
+ /* Define to 1 if you have the <inttypes.h> header file. */
+@@ -227,6 +230,10 @@
+    */
+ #undef LT_OBJDIR
+ 
++/* Define to the sub-directory in which libtool stores uninstalled libraries.
++   */
++#undef LT_OBJDIR
++
+ /* Define to 1 if `major', `minor', and `makedev' are declared in <mkdev.h>.
+    */
+ #undef MAJOR_IN_MKDEV
+@@ -311,6 +318,9 @@
+ /* Build with acl support? */
+ #undef WITH_ACL
+ 
++/* Build with beecrypt instead of nss3 support? */
++#undef WITH_BEECRYPT
++
+ /* Build with capability support? */
+ #undef WITH_CAP
+ 
+--- ./configure.ac.orig	2011-07-15 09:37:20.000000000 +0000
++++ ./configure.ac	2011-07-18 16:34:29.000000000 +0000
+@@ -252,12 +252,43 @@ AC_CHECK_HEADERS([dwarf.h], [
+ AM_CONDITIONAL(LIBDWARF,[test "$WITH_LIBDWARF" = yes])
+ 
+ #=================
++# Check for beecrypt library if requested.
++AC_ARG_WITH(beecrypt, [  --with-beecrypt         build with beecrypt support ],,[with_beecrypt=yes])
++AC_ARG_WITH(internal_beecrypt, [  --with-internal-beecrypt build with internal beecrypt library ],,[with_internal_beecrypt=yes])
++AM_CONDITIONAL([WITH_INTERNAL_BEECRYPT],[test "$with_internal_beecrypt" = yes])
++if test "$with_internal_beecrypt" = yes ; then
++  with_beecrypt=yes
++fi
++AM_CONDITIONAL([WITH_BEECRYPT],[test "$with_beecrypt" = yes])
++
++WITH_BEECRYPT_INCLUDE=
++WITH_BEECRYPT_LIB=
++if test "$with_beecrypt" = yes ; then
++  AC_DEFINE(WITH_BEECRYPT, 1, [Build with beecrypt instead of nss3 support?])
++  if test "$with_internal_beecrypt" = yes ; then
++    WITH_BEECRYPT_INCLUDE="-I\$(top_srcdir)/beecrypt"
++    AC_DEFINE(HAVE_BEECRYPT_API_H, 1, [Define to 1 if you have the <beecrypt/api.h> header file.])
++  else
++    AC_CHECK_LIB(beecrypt, mpfprintln, [
++      WITH_BEECRYPT_LIB="-lbeecrypt"
++    ],[
++      AC_MSG_ERROR([missing required library 'beecrypt']) 
++    ])
++    AC_CHECK_HEADER([beecrypt/api.h], [AC_DEFINE(HAVE_BEECRYPT_API_H, 1, [Define to 1 if you have the <beecrypt/api.h> header file.])
++    ])
++  fi
++fi
++AC_SUBST(WITH_BEECRYPT_LIB)
++AC_SUBST(WITH_BEECRYPT_INCLUDE)
++
++#=================
+ # Check for NSS library.
+ # We need nss.h from NSS which needs nspr.h. Unfortunately both glibc and NSS 
+ # have a header named nss.h... so make extra check for NSS's sechash.h 
+ # which we use too and hopefully is slightly more unique to NSS.
+ WITH_NSS_INCLUDE=
+ WITH_NSS_LIB=
++if test "$with_beecrypt" != yes ; then
+ AC_CHECK_HEADERS([nspr.h nss.h sechash.h], [], [
+   AC_MSG_ERROR([missing required NSPR / NSS header])
+ ])
+@@ -266,6 +297,7 @@ AC_CHECK_LIB(nss3, NSS_NoDB_Init, [
+ ], [
+   AC_MSG_ERROR([missing required NSS library 'nss3'])
+ ])
++fi
+ AC_SUBST(WITH_NSS_INCLUDE)
+ AC_SUBST(WITH_NSS_LIB)
+ 
+--- ./rpmio/Makefile.am.orig	2011-07-15 09:36:33.000000000 +0000
++++ ./rpmio/Makefile.am	2011-07-18 16:36:35.000000000 +0000
+@@ -2,6 +2,7 @@
+ 
+ AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) -I$(top_builddir)/include/
+ AM_CPPFLAGS += @WITH_NSS_INCLUDE@
++AM_CPPFLAGS += @WITH_BEECRYPT_INCLUDE@
+ AM_CPPFLAGS += @WITH_POPT_INCLUDE@
+ AM_CPPFLAGS += -I$(top_srcdir)/misc
+ AM_CPPFLAGS += -DRPMCONFIGDIR="\"@RPMCONFIGDIR@\""
+@@ -17,10 +18,17 @@ librpmio_la_SOURCES = \
+ 	rpmstring.c rpmfileutil.c \
+ 	rpmkeyring.c
+ 
++if WITH_BEECRYPT
++librpmio_la_SOURCES += digest_beecrypt.c
++else
++librpmio_la_SOURCES += digest_nss.c
++endif
++
+ librpmio_la_LDFLAGS = -version-info 2:1:0
+ librpmio_la_LIBADD = \
+ 	../misc/libmisc.la \
+ 	@WITH_NSS_LIB@ \
++	@WITH_BEECRYPT_LIB@ \
+ 	@WITH_BZ2_LIB@ \
+ 	@WITH_ZLIB_LIB@ \
+ 	@WITH_LIBELF_LIB@ \
+@@ -28,6 +36,15 @@ librpmio_la_LIBADD = \
+ 	@WITH_LZMA_LIB@ \
+ 	-lpthread
+ 
++if WITH_INTERNAL_BEECRYPT
++librpmio_la_LIBADD += $(libbeecrypt_la)
++
++libbeecrypt_la = $(top_builddir)/beecrypt/libbeecrypt_nolibdir.la
++
++$(top_builddir)/beecrypt/libbeecrypt_nolibdir.la: $(top_builddir)/beecrypt/libbeecrypt.la
++	sed -e 's/libdir=.*/libdir=/' < $(top_builddir)/beecrypt/libbeecrypt.la > $(top_builddir)/beecrypt/libbeecrypt_nolibdir.la
++endif
++
+ if WITH_LUA
+ AM_CPPFLAGS += -I$(top_srcdir)/luaext/
+ AM_CPPFLAGS += @LUA_CFLAGS@
+--- ./rpmio/base64.c.orig	2011-07-12 11:28:13.000000000 +0000
++++ ./rpmio/base64.c	2011-07-18 16:34:29.000000000 +0000
+@@ -4,8 +4,11 @@
+ #include <arpa/inet.h>
+ #include <stdlib.h>
+ 
++#include "system.h"
++
+ #include "rpmio/base64.h"
+ 
++#ifndef WITH_BEECRYPT
+ 
+ static char base64_encode_value(char value_in)
+ {
+@@ -253,3 +256,4 @@ int main(int argc, char *argv[])
+ }
+ #endif
+ 
++#endif	/* WITH_BEECRYPT */
+--- ./rpmio/digest.c.orig	2011-07-12 11:28:13.000000000 +0000
++++ ./rpmio/digest.c	2011-07-18 16:34:29.000000000 +0000
+@@ -4,25 +4,12 @@
+ 
+ #include "system.h"
+ 
++#include <rpm/rpmpgp.h>
+ #include "rpmio/digest.h"
++#include "rpmio/rpmio_internal.h"
+ 
+ #include "debug.h"
+ 
+-#ifdef	SHA_DEBUG
+-#define	DPRINTF(_a)	fprintf _a
+-#else
+-#define	DPRINTF(_a)
+-#endif
+-
+-
+-/**
+- * MD5/SHA1 digest private data.
+- */
+-struct DIGEST_CTX_s {
+-    rpmDigestFlags flags;	/*!< Bit(s) to control digest operation. */
+-    HASHContext *hashctx;	/*!< Internal NSS hash context. */
+-    int algo;			/*!< Used hash algorithm */
+-};
+ 
+ #define DIGESTS_MAX 11
+ struct rpmDigestBundle_s {
+@@ -109,138 +96,3 @@ DIGEST_CTX rpmDigestBundleDupCtx(rpmDige
+     return dup;
+ }
+ 
+-DIGEST_CTX
+-rpmDigestDup(DIGEST_CTX octx)
+-{
+-    DIGEST_CTX nctx = NULL;
+-    if (octx) {
+-	HASHContext *hctx = HASH_Clone(octx->hashctx);
+-	if (hctx) {
+-	    nctx = memcpy(xcalloc(1, sizeof(*nctx)), octx, sizeof(*nctx));
+-	    nctx->hashctx = hctx;
+-	}
+-    }
+-    return nctx;
+-}
+-
+-RPM_GNUC_PURE
+-static HASH_HashType getHashType(int hashalgo)
+-{
+-    switch (hashalgo) {
+-    case PGPHASHALGO_MD5:
+-	return HASH_AlgMD5;
+-	break;
+-    case PGPHASHALGO_MD2:
+-	return HASH_AlgMD2;
+-	break;
+-    case PGPHASHALGO_SHA1:
+-	return HASH_AlgSHA1;
+-	break;
+-    case PGPHASHALGO_SHA256:
+-	return HASH_AlgSHA256;
+-	break;
+-    case PGPHASHALGO_SHA384:
+-	return HASH_AlgSHA384;
+-	break;
+-    case PGPHASHALGO_SHA512:
+-	return HASH_AlgSHA512;
+-	break;
+-    case PGPHASHALGO_RIPEMD160:
+-    case PGPHASHALGO_TIGER192:
+-    case PGPHASHALGO_HAVAL_5_160:
+-    default:
+-	return HASH_AlgNULL;
+-	break;
+-    }
+-}
+-
+-size_t
+-rpmDigestLength(int hashalgo)
+-{
+-    return HASH_ResultLen(getHashType(hashalgo));
+-}
+-
+-DIGEST_CTX
+-rpmDigestInit(int hashalgo, rpmDigestFlags flags)
+-{
+-    HASH_HashType type = getHashType(hashalgo);
+-    HASHContext *hashctx = NULL;
+-    DIGEST_CTX ctx = NULL;
+-
+-    if (type == HASH_AlgNULL || rpmInitCrypto() < 0)
+-	goto exit;
+-
+-    if ((hashctx = HASH_Create(type)) != NULL) {
+-	ctx = xcalloc(1, sizeof(*ctx));
+-	ctx->flags = flags;
+-	ctx->algo = hashalgo;
+-	ctx->hashctx = hashctx;
+-    	HASH_Begin(ctx->hashctx);
+-    }
+-    
+-DPRINTF((stderr, "*** Init(%x) ctx %p hashctx %p\n", flags, ctx, ctx->hashctx));
+-exit:
+-    return ctx;
+-}
+-
+-int
+-rpmDigestUpdate(DIGEST_CTX ctx, const void * data, size_t len)
+-{
+-    size_t partlen;
+-    const unsigned char *ptr = data;
+-
+-    if (ctx == NULL)
+-	return -1;
+-
+-DPRINTF((stderr, "*** Update(%p,%p,%zd) hashctx %p \"%s\"\n", ctx, data, len, ctx->hashctx, ((char *)data)));
+-   partlen = ~(unsigned int)0xFF;
+-   while (len > 0) {
+-   	if (len < partlen) {
+-   		partlen = len;
+-   	}
+-	HASH_Update(ctx->hashctx, ptr, partlen);
+-	ptr += partlen;
+-	len -= partlen;
+-   }
+-   return 0;
+-}
+-
+-int
+-rpmDigestFinal(DIGEST_CTX ctx, void ** datap, size_t *lenp, int asAscii)
+-{
+-    unsigned char * digest;
+-    unsigned int digestlen;
+-
+-    if (ctx == NULL)
+-	return -1;
+-    digestlen = HASH_ResultLenContext(ctx->hashctx);
+-    digest = xmalloc(digestlen);
+-
+-DPRINTF((stderr, "*** Final(%p,%p,%p,%zd) hashctx %p digest %p\n", ctx, datap, lenp, asAscii, ctx->hashctx, digest));
+-/* FIX: check rc */
+-    HASH_End(ctx->hashctx, digest, (unsigned int *) &digestlen, digestlen);
+-
+-    /* Return final digest. */
+-    if (!asAscii) {
+-	if (lenp) *lenp = digestlen;
+-	if (datap) {
+-	    *datap = digest;
+-	    digest = NULL;
+-	}
+-    } else {
+-	if (lenp) *lenp = (2*digestlen) + 1;
+-	if (datap) {
+-	    const uint8_t * s = (const uint8_t *) digest;
+-	    *datap = pgpHexStr(s, digestlen);
+-	}
+-    }
+-    if (digest) {
+-	memset(digest, 0, digestlen);	/* In case it's sensitive */
+-	free(digest);
+-    }
+-    HASH_Destroy(ctx->hashctx);
+-    memset(ctx, 0, sizeof(*ctx));	/* In case it's sensitive */
+-    free(ctx);
+-    return 0;
+-}
+-
+--- ./rpmio/digest.h.orig	2011-07-12 11:28:13.000000000 +0000
++++ ./rpmio/digest.h	2011-07-18 16:34:29.000000000 +0000
+@@ -1,11 +1,6 @@
+ #ifndef _RPMDIGEST_H
+ #define _RPMDIGEST_H
+ 
+-#include <nss.h>
+-#include <sechash.h>
+-#include <keyhi.h>
+-#include <cryptohi.h>
+-
+ #include <rpm/rpmpgp.h>
+ #include "rpmio/base64.h"
+ 
+@@ -42,8 +37,18 @@ struct pgpDig_s {
+     struct pgpDigParams_s pubkey;
+ 
+     /* DSA/RSA parameters */
+-    SECKEYPublicKey *keydata;
+-    SECItem *sigdata;
++    void *keydata;
++    void *sigdata;
+ };
+ 
++void pgpCleanRSADSA(pgpDig dig);
++
++int pgpSetSigMpiRSA(pgpDig dig, int num, const uint8_t *p);
++int pgpSetPubMpiRSA(pgpDig dig, int num, const uint8_t *p);
++int pgpVerifyRSA(pgpDig dig, uint8_t *hash, size_t hashlen);
++
++int pgpSetSigMpiDSA(pgpDig dig, int num, const uint8_t *p);
++int pgpSetPubMpiDSA(pgpDig dig, int num, const uint8_t *p);
++int pgpVerifyDSA(pgpDig dig, uint8_t *hash, size_t hashlen);
++
+ #endif /* _RPMDIGEST_H */
+--- ./rpmio/digest_beecrypt.c.orig	2011-07-18 16:34:29.000000000 +0000
++++ ./rpmio/digest_beecrypt.c	2011-07-18 16:34:29.000000000 +0000
+@@ -0,0 +1,493 @@
++#include "system.h"
++
++#include <beecrypt.h>
++#include <dsa.h>
++#include <endianness.h>
++#include <md5.h>
++#include <mp.h>
++#include <rsa.h>
++#include <rsapk.h>
++#include <sha1.h>
++#if HAVE_BEECRYPT_API_H
++#include <sha256.h>
++#include <sha384.h>
++#include <sha512.h>
++#endif
++
++#include <rpm/rpmpgp.h>
++#include "rpmio/digest.h"
++#include "rpmio/rpmio_internal.h"
++
++#include "debug.h"
++
++/* interface to beecrpyt crypto framework */
++
++/****************************  init   ************************************/
++
++int rpmInitCrypto(void) {
++    return 0;
++}
++
++int rpmFreeCrypto(void) {
++    return 0;
++}
++
++/**************************** helpers ************************************/
++
++static inline unsigned int pgpMpiBits(const uint8_t *p)
++{
++    return ((p[0] << 8) | p[1]);
++}
++
++static inline size_t pgpMpiLen(const uint8_t *p)
++{
++    return (2 + ((pgpMpiBits(p)+7)>>3));
++}
++
++static inline char * pgpHexCvt(char *t, const byte *s, int nbytes)
++        /*@modifies *t @*/
++{
++    static char hex[] = "0123456789abcdef";
++    while (nbytes-- > 0) { 
++        unsigned int i;
++        i = *s++;
++        *t++ = hex[ (i >> 4) & 0xf ];
++        *t++ = hex[ (i     ) & 0xf ];
++    }    
++    *t = '\0';
++    return t;
++}
++
++static const char * pgpMpiHex(const byte *p)
++{
++    static char prbuf[2048];
++    char *t = prbuf;
++    t = pgpHexCvt(t, p+2, pgpMpiLen(p)-2);
++    return prbuf;
++}
++
++static int pgpHexSet(int lbits, mpnumber * mpn, const byte * p)
++{
++    unsigned int mbits = pgpMpiBits(p);
++    unsigned int nbits;
++    unsigned int nbytes;
++    char *t;
++    unsigned int ix;
++
++    nbits = (lbits > mbits ? lbits : mbits);
++    nbytes = ((nbits + 7) >> 3);
++    t = xmalloc(2*nbytes+1);
++    ix = 2 * ((nbits - mbits) >> 3);
++
++    if (ix > 0) memset(t, (int)'0', ix);
++    strcpy(t+ix, pgpMpiHex(p));
++    (void) mpnsethex(mpn, t);
++    t = _free(t);
++    return 0;
++}
++
++void pgpCleanRSADSA(pgpDig dig)
++{
++    if (!dig)
++	return;
++    if (dig->keydata) {
++	dig->keydata= _free(dig->keydata);
++    }
++    if (dig->sigdata) {
++	dig->sigdata = _free(dig->sigdata);
++    }
++}
++
++
++/****************************** RSA **************************************/
++
++struct pgpDigSigRSA_s {
++    mpnumber c;
++};
++
++struct pgpDigPubRSA_s {
++    rsapk rsa_pk;
++};
++
++int
++pgpSetSigMpiRSA(pgpDig dig, int num, const uint8_t *p)
++{
++    struct pgpDigSigRSA_s *sig;
++    if (num != 0)
++	return 1;
++    if (!dig->sigdata)
++	dig->sigdata = xcalloc(1, sizeof(*sig));
++    sig = dig->sigdata;
++    if (!sig)
++	return 1;
++    (void) mpnsethex(&sig->c, pgpMpiHex(p));
++    return 0;
++}
++
++int
++pgpSetPubMpiRSA(pgpDig dig, int num, const uint8_t *p)
++{
++    struct pgpDigPubRSA_s *pub;
++
++    if (!dig->keydata)
++	dig->keydata = xcalloc(1, sizeof(*pub));
++    pub = dig->keydata;
++    if (!pub)
++	return 1;
++    switch(num) {
++    case 0:
++	(void) mpbsethex(&pub->rsa_pk.n, pgpMpiHex(p));
++	return 0;
++    case 1:
++	(void) mpnsethex(&pub->rsa_pk.e, pgpMpiHex(p));
++	return 0;
++    default:
++	return 1;
++    }
++}
++
++static inline unsigned char nibble(char c)
++{
++    if (c >= '0' && c <= '9')
++        return (c - '0');
++    if (c >= 'A' && c <= 'F')
++        return (c - 'A') + 10;
++    if (c >= 'a' && c <= 'f')
++        return (c - 'a') + 10;
++    return 0;
++}
++
++int pgpVerifyRSA(pgpDig dig, uint8_t *hash, size_t hashlen)
++{
++    const char * prefix = NULL;
++    int res;
++    mpnumber rsahm;
++    struct pgpDigSigRSA_s *sig;
++    struct pgpDigPubRSA_s *pub;
++
++    sig = dig->sigdata;
++    pub = dig->keydata;
++    if (!sig || !pub)
++	return 1;
++
++    switch (dig->signature.hash_algo) {
++    case PGPHASHALGO_MD5:
++        prefix = "3020300c06082a864886f70d020505000410";
++        break;
++    case PGPHASHALGO_SHA1:
++        prefix = "3021300906052b0e03021a05000414";
++        break;
++    case PGPHASHALGO_MD2:
++        prefix = "3020300c06082a864886f70d020205000410";
++        break;
++    case PGPHASHALGO_SHA256:
++        prefix = "3031300d060960864801650304020105000420";
++        break;
++    case PGPHASHALGO_SHA384:
++        prefix = "3041300d060960864801650304020205000430";
++        break;
++    case PGPHASHALGO_SHA512:
++        prefix = "3051300d060960864801650304020305000440";
++        break;
++    /* fallthrough for unsupported / unknown types */
++    default:
++	return 1;
++    }
++
++    /* Generate RSA modulus parameter. */
++    {   unsigned int nbits = MP_WORDS_TO_BITS(sig->c.size);
++        unsigned int nb = (nbits + 7) >> 3;
++        byte *buf, *bp;
++
++	if (nb < 3)
++	    return 1;
++	buf = xmalloc(nb);
++	memset(buf, 0xff, nb);
++	buf[0] = 0x00;
++	buf[1] = 0x01;
++	bp = buf + nb - strlen(prefix)/2 - hashlen - 1;
++	if (bp < buf)
++	    return 1;
++	*bp++ = 0;
++	for (; *prefix; prefix += 2)
++	    *bp++ = (nibble(prefix[0]) << 4) | nibble(prefix[1]);
++        memcpy(bp, hash, hashlen);
++        mpnzero(&rsahm);
++        (void) mpnsetbin(&rsahm, buf, nb);
++        buf = _free(buf);
++    }
++#if HAVE_BEECRYPT_API_H
++    res = rsavrfy(&pub->rsa_pk.n, &pub->rsa_pk.e, &sig->c, &rsahm) == 1 ? 0 : 1;
++#else
++    res = rsavrfy(&pub->rsa_pk, &rsahm, &sig->c) == 1 ? 0 : 1;
++#endif
++    mpnfree(&rsahm);
++    return res;
++}
++
++
++/****************************** DSA **************************************/
++
++struct pgpDigSigDSA_s {
++    mpnumber r;
++    mpnumber s;
++};
++
++struct pgpDigPubDSA_s {
++    mpbarrett p;
++    mpbarrett q;
++    mpnumber g;
++    mpnumber y;
++};
++
++int
++pgpSetSigMpiDSA(pgpDig dig, int num, const uint8_t *p)
++{
++    struct pgpDigSigDSA_s *sig;
++
++    if (!dig->sigdata)
++	dig->sigdata = xcalloc(1, sizeof(*sig));
++    sig = dig->sigdata;
++    if (!sig)
++	return 1;
++    switch(num) {
++    case 0:
++	return pgpHexSet(160, &sig->r, p);
++    case 1:
++	return pgpHexSet(160, &sig->s, p);
++    default:
++	return 1;
++    }
++}
++
++int
++pgpSetPubMpiDSA(pgpDig dig, int num, const uint8_t *p)
++{
++    struct pgpDigPubDSA_s *pub;
++
++    if (!dig->keydata)
++	dig->keydata = xcalloc(1, sizeof(*pub));
++    pub = dig->keydata;
++    if (!pub)
++	return 1;
++    switch(num) {
++    case 0:
++	mpbsethex(&pub->p, pgpMpiHex(p));
++	return 0;
++    case 1:
++	mpbsethex(&pub->q, pgpMpiHex(p));
++	return 0;
++    case 2:
++	mpnsethex(&pub->g, pgpMpiHex(p));
++	return 0;
++    case 3:
++	mpnsethex(&pub->y, pgpMpiHex(p));
++	return 0;
++    default:
++	return 1;
++    }
++}
++
++int pgpVerifyDSA(pgpDig dig, uint8_t *hash, size_t hashlen)
++{
++    struct pgpDigSigDSA_s *sig;
++    struct pgpDigPubDSA_s *pub;
++    mpnumber hm;
++    int res;
++
++    sig = dig->sigdata;
++    pub = dig->keydata;
++    if (!sig || !pub)
++	return 1;
++    mpnzero(&hm);
++    mpnsetbin(&hm, hash, hashlen);
++    res = dsavrfy(&pub->p, &pub->q, &pub->g, &hm, &pub->y, &sig->r, &sig->s) == 1 ? 0 : 1;
++    mpnfree(&hm);
++    return res;
++}
++
++/****************************  digest ************************************/
++
++#ifdef	SHA_DEBUG
++#define	DPRINTF(_a)	fprintf _a
++#else
++#define	DPRINTF(_a)
++#endif
++
++/**
++ * MD5/SHA1 digest private data.
++ */
++struct DIGEST_CTX_s {
++    rpmDigestFlags flags;	/*!< Bit(s) to control digest operation. */
++    int algo;			/*!< Used hash algorithm */
++    uint32_t datalen;		/*!< No. bytes in block of plaintext data. */
++    uint32_t paramlen;		/*!< No. bytes of digest parameters. */
++    uint32_t digestlen;		/*!< No. bytes of digest. */
++    void * param;		/*!< Digest parameters. */
++    int (*Reset) (void * param)
++	/*@modifies param @*/;	/*!< Digest initialize. */
++    int (*Update) (void * param, const byte * data, size_t size)
++	/*@modifies param @*/;	/*!< Digest transform. */
++    int (*Digest) (void * param, /*@out@*/ byte * digest)
++	/*@modifies param, digest @*/;	/*!< Digest finish. */
++};
++
++DIGEST_CTX
++rpmDigestDup(DIGEST_CTX octx)
++{
++    DIGEST_CTX nctx;
++    nctx = memcpy(xcalloc(1, sizeof(*nctx)), octx, sizeof(*nctx));
++    nctx->param = memcpy(xcalloc(1, nctx->paramlen), octx->param, nctx->paramlen);
++    return nctx;
++}
++
++size_t
++rpmDigestLength(int hashalgo)
++{
++    switch (hashalgo) {
++    case PGPHASHALGO_MD5:
++	return 16;
++    case PGPHASHALGO_SHA1:
++	return 20;
++#if HAVE_BEECRYPT_API_H
++    case PGPHASHALGO_SHA256:
++	return 32;
++    case PGPHASHALGO_SHA384:
++	return 48;
++    case PGPHASHALGO_SHA512:
++	return 64;
++#endif
++    default:
++	return 0;
++    }
++}
++
++DIGEST_CTX
++rpmDigestInit(int hashalgo, rpmDigestFlags flags)
++{
++    DIGEST_CTX ctx = xcalloc(1, sizeof(*ctx));
++    int xx;
++
++    ctx->flags = flags;
++    ctx->algo = hashalgo;
++
++    switch (hashalgo) {
++    case PGPHASHALGO_MD5:
++	ctx->digestlen = 16;
++	ctx->datalen = 64;
++	ctx->paramlen = sizeof(md5Param);
++	ctx->param = xcalloc(1, ctx->paramlen);
++	ctx->Reset = (void *) md5Reset;
++	ctx->Update = (void *) md5Update;
++	ctx->Digest = (void *) md5Digest;
++	break;
++    case PGPHASHALGO_SHA1:
++	ctx->digestlen = 20;
++	ctx->datalen = 64;
++	ctx->paramlen = sizeof(sha1Param);
++	ctx->param = xcalloc(1, ctx->paramlen);
++	ctx->Reset = (void *) sha1Reset;
++	ctx->Update = (void *) sha1Update;
++	ctx->Digest = (void *) sha1Digest;
++	break;
++#if HAVE_BEECRYPT_API_H
++    case PGPHASHALGO_SHA256:
++	ctx->digestlen = 32;
++	ctx->datalen = 64;
++	ctx->paramlen = sizeof(sha256Param);
++	ctx->param = xcalloc(1, ctx->paramlen);
++	ctx->Reset = (void *) sha256Reset;
++	ctx->Update = (void *) sha256Update;
++	ctx->Digest = (void *) sha256Digest;
++	break;
++    case PGPHASHALGO_SHA384:
++	ctx->digestlen = 48;
++	ctx->datalen = 128;
++	ctx->paramlen = sizeof(sha384Param);
++	ctx->param = xcalloc(1, ctx->paramlen);
++	ctx->Reset = (void *) sha384Reset;
++	ctx->Update = (void *) sha384Update;
++	ctx->Digest = (void *) sha384Digest;
++	break;
++    case PGPHASHALGO_SHA512:
++	ctx->digestlen = 64;
++	ctx->datalen = 128;
++	ctx->paramlen = sizeof(sha512Param);
++	ctx->param = xcalloc(1, ctx->paramlen);
++	ctx->Reset = (void *) sha512Reset;
++	ctx->Update = (void *) sha512Update;
++	ctx->Digest = (void *) sha512Digest;
++	break;
++#endif
++    case PGPHASHALGO_RIPEMD160:
++    case PGPHASHALGO_MD2:
++    case PGPHASHALGO_TIGER192:
++    case PGPHASHALGO_HAVAL_5_160:
++    default:
++	free(ctx);
++	return NULL;
++    }
++
++    xx = (*ctx->Reset) (ctx->param);
++
++DPRINTF((stderr, "*** Init(%x) ctx %p param %p\n", flags, ctx, ctx->param));
++    return ctx;
++}
++
++/* LCL: ctx->param may be modified, but ctx is abstract @*/
++int
++rpmDigestUpdate(DIGEST_CTX ctx, const void * data, size_t len)
++{
++    if (ctx == NULL)
++	return -1;
++
++DPRINTF((stderr, "*** Update(%p,%p,%d) param %p \"%s\"\n", ctx, data, len, ctx->param, ((char *)data)));
++    return (*ctx->Update) (ctx->param, data, len);
++}
++
++int
++rpmDigestFinal(DIGEST_CTX ctx, void ** datap, size_t *lenp, int asAscii)
++{
++    byte * digest;
++    char * t;
++    int i;
++
++    if (ctx == NULL)
++	return -1;
++    digest = xmalloc(ctx->digestlen);
++
++DPRINTF((stderr, "*** Final(%p,%p,%p,%d) param %p digest %p\n", ctx, datap, lenp, asAscii, ctx->param, digest));
++    /* FIX: check rc */
++    (void) (*ctx->Digest) (ctx->param, digest);
++
++    /* Return final digest. */
++    if (!asAscii) {
++	if (lenp) *lenp = ctx->digestlen;
++	if (datap) {
++	    *datap = digest;
++	    digest = NULL;
++	}
++    } else {
++	if (lenp) *lenp = (2*ctx->digestlen) + 1;
++	if (datap) {
++	    const byte * s = (const byte *) digest;
++	    static const char hex[] = "0123456789abcdef";
++
++	    *datap = t = xmalloc((2*ctx->digestlen) + 1);
++	    for (i = 0 ; i < ctx->digestlen; i++) {
++		*t++ = hex[ (unsigned)((*s >> 4) & 0x0f) ];
++		*t++ = hex[ (unsigned)((*s++   ) & 0x0f) ];
++	    }
++	    *t = '\0';
++	}
++    }
++    if (digest) {
++	memset(digest, 0, ctx->digestlen);	/* In case it's sensitive */
++	free(digest);
++    }
++    memset(ctx->param, 0, ctx->paramlen);	/* In case it's sensitive */
++    free(ctx->param);
++    memset(ctx, 0, sizeof(*ctx));	/* In case it's sensitive */
++    free(ctx);
++    return 0;
++}
+--- ./rpmio/digest_nss.c.orig	2011-07-18 16:34:29.000000000 +0000
++++ ./rpmio/digest_nss.c	2011-07-18 16:34:29.000000000 +0000
+@@ -0,0 +1,500 @@
++#include <nss.h>
++#include <sechash.h>
++#include <keyhi.h>
++#include <cryptohi.h>
++
++#include "system.h"
++
++#include <rpm/rpmpgp.h>
++#include "rpmio/rpmio_internal.h"
++#include "rpmio/digest.h"
++
++#include "debug.h"
++
++/* interface to nss crypto framework */
++
++/****************************  init   ************************************/
++
++static int _crypto_initialized = 0;
++static int _new_process = 1;
++
++/*
++ * Only flag for re-initialization here, in the common case the child
++ * exec()'s something else shutting down NSS here would be waste of time.
++ */
++static void at_forkchild(void) {
++    _new_process = 1; 
++}
++
++int rpmInitCrypto(void) {
++    int rc = 0; 
++
++    /* Lazy NSS shutdown for re-initialization after fork() */
++    if (_new_process && _crypto_initialized) {
++	rpmFreeCrypto();
++    }    
++
++    /* Initialize NSS if not already done */
++    if (!_crypto_initialized) {
++	if (NSS_NoDB_Init(NULL) != SECSuccess) {
++	    rc = -1;
++	} else {
++	    _crypto_initialized = 1; 
++	}
++    }
++
++    /* Register one post-fork handler per process */
++    if (_new_process) {
++	if (pthread_atfork(NULL, NULL, at_forkchild) != 0) { 
++	    rpmlog(RPMLOG_WARNING, _("Failed to register fork handler: %m\n"));
++	}
++	_new_process = 0;
++    }
++    return rc;
++}
++
++int rpmInitCrypto(void) {
++    int rc = 0; 
++
++    if (!_crypto_initialized) {
++	if (NSS_NoDB_Init(NULL) != SECSuccess) {
++	    rc = -1;
++	} else {
++	    _crypto_initialized = 1; 
++	}
++    }    
++    return rc;
++}
++
++int rpmFreeCrypto(void) 
++{
++    int rc = 0; 
++    if (_crypto_initialized) {
++        rc = (NSS_Shutdown() != SECSuccess);
++        _crypto_initialized = 0; 
++    }
++    return rc;
++}
++
++/**************************** helpers ************************************/
++
++static SECKEYPublicKey *pgpNewPublicKey(KeyType type)
++{
++    PRArenaPool *arena;
++    SECKEYPublicKey *key;
++    
++    arena = PORT_NewArena(DER_DEFAULT_CHUNKSIZE);
++    if (arena == NULL)
++        return NULL;
++    
++    key = PORT_ArenaZAlloc(arena, sizeof(SECKEYPublicKey));
++    
++    if (key == NULL) {
++        PORT_FreeArena(arena, PR_FALSE);
++        return NULL;
++    }    
++    
++    key->keyType = type;
++    key->pkcs11ID = CK_INVALID_HANDLE;
++    key->pkcs11Slot = NULL;
++    key->arena = arena;
++    return key; 
++}
++
++static SECItem *pgpMpiItem(PRArenaPool *arena, SECItem *item, const uint8_t *p)
++{
++    size_t nbytes = pgpMpiLen(p)-2;
++
++    if (item == NULL) {
++        if ((item=SECITEM_AllocItem(arena, item, nbytes)) == NULL)
++            return item;
++    } else {
++        if (arena != NULL)
++            item->data = PORT_ArenaGrow(arena, item->data, item->len, nbytes);
++        else
++            item->data = PORT_Realloc(item->data, nbytes);
++     
++        if (item->data == NULL) {
++            if (arena == NULL)
++                SECITEM_FreeItem(item, PR_TRUE);
++            return NULL;
++        }
++    }    
++
++    memcpy(item->data, p+2, nbytes);
++    item->len = nbytes;
++    return item;
++}
++
++static int pgpMpiSet(unsigned int lbits,
++                void *dest, const uint8_t * p, const uint8_t * pend)
++{
++    unsigned int mbits = pgpMpiBits(p);
++    unsigned int nbits;
++    size_t nbytes;
++    char *t = dest;
++    unsigned int ix;
++
++    if ((p + ((mbits+7) >> 3)) > pend)
++        return 1;
++
++    if (mbits > lbits)
++        return 1;
++
++    nbits = (lbits > mbits ? lbits : mbits);
++    nbytes = ((nbits + 7) >> 3);
++    ix = (nbits - mbits) >> 3;
++
++    if (ix > 0) memset(t, '\0', ix); 
++    memcpy(t+ix, p+2, nbytes-ix);
++
++    return 0;
++}
++
++void pgpCleanRSADSA(pgpDig dig)
++{
++    if (!dig)
++	return;
++    if (dig->keydata) {
++	SECKEY_DestroyPublicKey(dig->keydata);
++	dig->keydata = NULL;
++    }
++    if (dig->sigdata) {
++	SECITEM_ZfreeItem(dig->sigdata, PR_TRUE);
++	dig->sigdata = NULL;
++    }
++}
++
++/****************************** RSA **************************************/
++
++int
++pgpSetSigMpiRSA(struct pgpDig_s *dig, int num, const uint8_t *p, const uint8_t *pend)
++{
++    SECItem *sig;
++
++    if (num != 0)
++	return 1;
++    sig = dig->rsasigdata;
++    sig = pgpMpiItem(NULL, sig, p);
++    dig->rsasigdata = sig;
++    if (sig == NULL)
++	return 1;
++    return 0;
++}
++
++int
++pgpSetPubMpiRSA(struct pgpDig_s *dig, int num, const uint8_t *p, const uint8_t *pend)
++{
++    SECKEYPublicKey *pub;
++
++    if (!dig->keydata)
++	dig->keydata = pgpNewPublicKey(rsaKey);
++    pub = dig->keydata;
++    if (!pub)
++	return 1;
++    switch(num) {
++    case 0:
++	pgpMpiItem(pub->arena, &pub->u.rsa.modulus, p);
++	return 0;
++    case 1:
++	pgpMpiItem(pub->arena, &pub->u.rsa.publicExponent, p);
++	return 0;
++    default:
++	return 1;
++    }
++}
++
++int pgpVerifyRSA(pgpDig dig, uint8_t *hash, size_t hashlen)
++{
++    SECOidTag sigalg;
++    SECItem digest;
++    SECKEYPublicKey *pub;
++    SECItem *sig;
++    SECItem *newsig = NULL;
++    size_t siglen;
++    int res;
++
++    switch (dig->hash_algo) {
++    case PGPHASHALGO_MD5:
++        sigalg = SEC_OID_PKCS1_MD5_WITH_RSA_ENCRYPTION;
++        break;
++    case PGPHASHALGO_SHA1:
++        sigalg = SEC_OID_PKCS1_SHA1_WITH_RSA_ENCRYPTION;
++        break;
++    case PGPHASHALGO_MD2:
++        sigalg = SEC_OID_PKCS1_MD2_WITH_RSA_ENCRYPTION;
++        break;
++    case PGPHASHALGO_SHA256:
++        sigalg = SEC_OID_PKCS1_SHA256_WITH_RSA_ENCRYPTION;
++        break;
++    case PGPHASHALGO_SHA384:
++        sigalg = SEC_OID_PKCS1_SHA384_WITH_RSA_ENCRYPTION;
++        break;
++    case PGPHASHALGO_SHA512:
++        sigalg = SEC_OID_PKCS1_SHA512_WITH_RSA_ENCRYPTION;
++        break;
++    /* fallthrough for unsupported / unknown types */
++    default:
++        sigalg = SEC_OID_UNKNOWN;
++        break;
++    }
++    digest.type = siBuffer;
++    digest.data = hash;
++    digest.len = hashlen;
++
++    pub = dig->keydata;
++    sig = dig->sigdata;
++    siglen = SECKEY_SignatureLen(dig->keydata);
++
++    /* Zero-pad signature data up to expected size if necessary */
++    if (siglen > sig->len) {
++	size_t pad = siglen - sig->len;
++	if ((newsig = SECITEM_AllocItem(NULL, NULL, siglen)) == NULL) {
++	    return 1;
++	}
++	memset(newsig->data, 0, pad);
++	memcpy(newsig->data+pad, sig->data, sig->len);
++	sig = newsig;
++    }
++
++    if (VFY_VerifyDigest(&digest, pub, sig, sigalg, NULL) == SECSuccess)
++	res = 0;
++    else
++	res = 1;
++
++    if (newsig) {
++	SECITEM_ZfreeItem(newsig, 1);
++    }
++    return res;
++}
++
++
++/****************************** DSA **************************************/
++
++int
++pgpSetSigMpiDSA(struct pgpDig_s *dig, int num, const uint8_t *p, const uint8_t *pend)
++{
++    SECItem *sig, *new;
++
++    switch(num) {
++    case 0:
++	sig = SECITEM_AllocItem(NULL, NULL, 2*DSA_SUBPRIME_LEN);
++	dig->sigdata = sig;
++	memset(sig->data, 0, 2*DSA_SUBPRIME_LEN);
++	pgpMpiSet(DSA_SUBPRIME_LEN*8, sig->data, p, pend);
++	return 0;
++    case 1:
++	sig = dig->sigdata;
++	if (!sig)
++	    return 1;
++	pgpMpiSet(DSA_SUBPRIME_LEN*8, sig->data + DSA_SUBPRIME_LEN, p, pend);
++	new = SECITEM_AllocItem(NULL, NULL, 0);
++	if (!new)
++	    return 1;
++	if (DSAU_EncodeDerSig(new, sig) != SECSuccess)
++	    return 1;
++	SECITEM_FreeItem(sig, PR_TRUE);
++	dig->sigdata = new;
++	return 0;
++    default:
++	return 1;
++    }
++}
++
++int
++pgpSetPubMpiDSA(struct pgpDig_s *dig, int num, const uint8_t *p, const uint8_t *pend)
++{
++    SECKEYPublicKey *pub;
++
++    if (!dig->keydata)
++	dig->keydata = pgpNewPublicKey(dsaKey);
++    pub = dig->keydata;
++    if (!pub)
++	return 1;
++    switch(num) {
++    case 0:
++	pgpMpiItem(pub->arena, &pub->u.dsa.params.prime, p);
++	return 0;
++    case 1:
++	pgpMpiItem(pub->arena, &pub->u.dsa.params.subPrime, p);
++	return 0;
++    case 2:
++	pgpMpiItem(pub->arena, &pub->u.dsa.params.base, p);
++	return 0;
++    case 3:
++	pgpMpiItem(pub->arena, &pub->u.dsa.publicValue, p);
++	return 0;
++    default:
++	return 1;
++    }
++}
++
++int pgpVerifyDSA(pgpDig dig, uint8_t *hash, size_t hashlen)
++{
++    SECItem digest;
++    SECKEYPublicKey *pub;
++    SECItem *sig;
++
++    sig = dig->sigdata;
++    pub = dig->keydata;
++    digest.type = siBuffer;
++    digest.data = hash;
++    digest.len = hashlen;
++    if (VFY_VerifyDigest(&digest, pub, sig, SEC_OID_ANSIX9_DSA_SIGNATURE_WITH_SHA1_DIGEST, NULL) == SECSuccess)
++	return 0;
++    else
++	return 1;
++}
++
++
++/****************************  digest ************************************/
++
++
++#ifdef	SHA_DEBUG
++#define	DPRINTF(_a)	fprintf _a
++#else
++#define	DPRINTF(_a)
++#endif
++
++
++/**
++ * MD5/SHA1 digest private data.
++ */
++struct DIGEST_CTX_s {
++    rpmDigestFlags flags;	/*!< Bit(s) to control digest operation. */
++    HASHContext *hashctx;	/*!< Internal NSS hash context. */
++    int algo;			/*!< Used hash algorithm */
++};
++
++DIGEST_CTX
++rpmDigestDup(DIGEST_CTX octx)
++{
++    DIGEST_CTX nctx;
++    nctx = memcpy(xcalloc(1, sizeof(*nctx)), octx, sizeof(*nctx));
++    nctx->hashctx = HASH_Clone(octx->hashctx);
++    if (nctx->hashctx == NULL) {
++    	fprintf(stderr, "HASH_Clone failed\n");
++    	exit(EXIT_FAILURE);  /* FIX: callers do not bother checking error return */
++    }
++    return nctx;
++}
++
++RPM_GNUC_PURE
++static HASH_HashType getHashType(int hashalgo)
++{
++    switch (hashalgo) {
++    case PGPHASHALGO_MD5:
++	return HASH_AlgMD5;
++	break;
++    case PGPHASHALGO_MD2:
++	return HASH_AlgMD2;
++	break;
++    case PGPHASHALGO_SHA1:
++	return HASH_AlgSHA1;
++	break;
++    case PGPHASHALGO_SHA256:
++	return HASH_AlgSHA256;
++	break;
++    case PGPHASHALGO_SHA384:
++	return HASH_AlgSHA384;
++	break;
++    case PGPHASHALGO_SHA512:
++	return HASH_AlgSHA512;
++	break;
++    case PGPHASHALGO_RIPEMD160:
++    case PGPHASHALGO_TIGER192:
++    case PGPHASHALGO_HAVAL_5_160:
++    default:
++	return HASH_AlgNULL;
++	break;
++    }
++}
++
++size_t
++rpmDigestLength(int hashalgo)
++{
++    return HASH_ResultLen(getHashType(hashalgo));
++}
++
++DIGEST_CTX
++rpmDigestInit(int hashalgo, rpmDigestFlags flags)
++{
++    HASH_HashType type;
++    HASHContext *hashctx = NULL;
++    DIGEST_CTX ctx = NULL;
++
++    if (type == HASH_AlgNULL || rpmInitCrypto() < 0)
++	return NULL;
++
++    if ((hashctx = HASH_Create(type)) == NULL)
++	return NULL;
++    ctx = xcalloc(1, sizeof(*ctx));
++    ctx->flags = flags;
++    ctx->algo = hashalgo;
++    ctx->hashctx = hashctx;
++    HASH_Begin(ctx->hashctx);
++    
++DPRINTF((stderr, "*** Init(%x) ctx %p hashctx %p\n", flags, ctx, ctx->hashctx));
++    return ctx;
++}
++
++int
++rpmDigestUpdate(DIGEST_CTX ctx, const void * data, size_t len)
++{
++    size_t partlen;
++    const unsigned char *ptr = data;
++
++    if (ctx == NULL)
++	return -1;
++
++DPRINTF((stderr, "*** Update(%p,%p,%zd) hashctx %p \"%s\"\n", ctx, data, len, ctx->hashctx, ((char *)data)));
++   partlen = ~(unsigned int)0xFF;
++   while (len > 0) {
++   	if (len < partlen) {
++   		partlen = len;
++   	}
++	HASH_Update(ctx->hashctx, ptr, partlen);
++	ptr += partlen;
++	len -= partlen;
++   }
++   return 0;
++}
++
++int
++rpmDigestFinal(DIGEST_CTX ctx, void ** datap, size_t *lenp, int asAscii)
++{
++    unsigned char * digest;
++    unsigned int digestlen;
++
++    if (ctx == NULL)
++	return -1;
++    digestlen = HASH_ResultLenContext(ctx->hashctx);
++    digest = xmalloc(digestlen);
++
++DPRINTF((stderr, "*** Final(%p,%p,%p,%zd) hashctx %p digest %p\n", ctx, datap, lenp, asAscii, ctx->hashctx, digest));
++/* FIX: check rc */
++    HASH_End(ctx->hashctx, digest, (unsigned int *) &digestlen, digestlen);
++
++    /* Return final digest. */
++    if (!asAscii) {
++	if (lenp) *lenp = digestlen;
++	if (datap) {
++	    *datap = digest;
++	    digest = NULL;
++	}
++    } else {
++	if (lenp) *lenp = (2*digestlen) + 1;
++	if (datap) {
++	    const uint8_t * s = (const uint8_t *) digest;
++	    *datap = pgpHexStr(s, digestlen);
++	}
++    }
++    if (digest) {
++	memset(digest, 0, digestlen);	/* In case it's sensitive */
++	free(digest);
++    }
++    HASH_Destroy(ctx->hashctx);
++    memset(ctx, 0, sizeof(*ctx));	/* In case it's sensitive */
++    free(ctx);
++    return 0;
++}
+--- ./rpmio/rpmpgp.c.orig	2011-07-15 09:32:41.000000000 +0000
++++ ./rpmio/rpmpgp.c	2011-07-18 16:42:25.000000000 +0000
+@@ -20,9 +20,6 @@ static int _debug = 0;
+ 
+ static int _print = 0;
+ 
+-static int _crypto_initialized = 0;
+-static int _new_process = 1;
+-
+ typedef const struct pgpValTbl_s {
+     int val;
+     char const * const str;
+@@ -315,89 +312,6 @@ int pgpValTok(pgpValTbl vs, const char *
+     } while ((++vs)->val != -1);
+     return vs->val;
+ }
+-/**
+- * @return		0 on success
+- */
+-static int pgpMpiSet(const char * pre, unsigned int lbits,
+-		uint8_t *dest, const uint8_t * p, const uint8_t * pend)
+-{
+-    unsigned int mbits = pgpMpiBits(p);
+-    unsigned int nbits;
+-    size_t nbytes;
+-    uint8_t *t = dest;
+-    unsigned int ix;
+-
+-    if ((p + ((mbits+7) >> 3)) > pend)
+-	return 1;
+-
+-    if (mbits > lbits)
+-	return 1;
+-
+-    nbits = (lbits > mbits ? lbits : mbits);
+-    nbytes = ((nbits + 7) >> 3);
+-    ix = (nbits - mbits) >> 3;
+-
+-if (_debug)
+-fprintf(stderr, "*** mbits %u nbits %u nbytes %zu ix %u\n", mbits, nbits, nbytes, ix);
+-    if (ix > 0) memset(t, '\0', ix);
+-    memcpy(t+ix, p+2, nbytes-ix);
+-if (_debug)
+-fprintf(stderr, "*** %s %s\n", pre, pgpHexStr(dest, nbytes));
+-
+-    return 0;
+-}
+-
+-/**
+- * @return		NULL on error
+- */
+-static SECItem *pgpMpiItem(PRArenaPool *arena, SECItem *item, const uint8_t *p)
+-{
+-    size_t nbytes = pgpMpiLen(p)-2;
+-
+-    if (item == NULL) {
+-    	if ((item=SECITEM_AllocItem(arena, item, nbytes)) == NULL)
+-    	    return item;
+-    } else {
+-    	if (arena != NULL)
+-    	    item->data = PORT_ArenaGrow(arena, item->data, item->len, nbytes);
+-    	else
+-    	    item->data = PORT_Realloc(item->data, nbytes);
+-    	
+-    	if (item->data == NULL) {
+-    	    if (arena == NULL)
+-    		SECITEM_FreeItem(item, PR_TRUE);
+-    	    return NULL;
+-    	}
+-    }
+-
+-    memcpy(item->data, p+2, nbytes);
+-    item->len = nbytes;
+-    return item;
+-}
+-/*@=boundswrite@*/
+-
+-static SECKEYPublicKey *pgpNewPublicKey(KeyType type)
+-{
+-    PRArenaPool *arena;
+-    SECKEYPublicKey *key;
+-    
+-    arena = PORT_NewArena(DER_DEFAULT_CHUNKSIZE);
+-    if (arena == NULL)
+-	return NULL;
+-    
+-    key = PORT_ArenaZAlloc(arena, sizeof(SECKEYPublicKey));
+-    
+-    if (key == NULL) {
+-	PORT_FreeArena(arena, PR_FALSE);
+-	return NULL;
+-    }
+-    
+-    key->keyType = type;
+-    key->pkcs11ID = CK_INVALID_HANDLE;
+-    key->pkcs11Slot = NULL;
+-    key->arena = arena;
+-    return key;
+-}
+ 
+ /** \ingroup rpmpgp
+  * Is buffer at beginning of an OpenPGP packet?
+@@ -593,29 +507,16 @@ static int pgpPrtSigParams(pgpTag tag, u
+ {
+     const uint8_t * pend = h + hlen;
+     size_t i;
+-    SECItem dsaraw;
+-    unsigned char dsabuf[2*DSA_SUBPRIME_LEN];
+     char *mpi;
+ 
+-    dsaraw.type = 0;
+-    dsaraw.data = dsabuf;
+-    dsaraw.len = sizeof(dsabuf);
+-    
+     for (i = 0; p < pend; i++, p += pgpMpiLen(p)) {
+ 	if (pubkey_algo == PGPPUBKEYALGO_RSA) {
+ 	    if (i >= 1) break;
+ 	    if (_dig &&
+ 	(sigtype == PGPSIGTYPE_BINARY || sigtype == PGPSIGTYPE_TEXT))
+ 	    {
+-		switch (i) {
+-		case 0:		/* m**d */
+-		    _dig->sigdata = pgpMpiItem(NULL, _dig->sigdata, p);
+-		    if (_dig->sigdata == NULL)
+-			return 1;
+-		    break;
+-		default:
+-		    break;
+-		}
++		if (pgpSetSigMpiRSA(_dig, i, p))
++		    return 1;
+ 	    }
+ 	    pgpPrtStr("", pgpSigRSA[i]);
+ 	} else if (pubkey_algo == PGPPUBKEYALGO_DSA) {
+@@ -623,30 +524,8 @@ static int pgpPrtSigParams(pgpTag tag, u
+ 	    if (_dig &&
+ 	(sigtype == PGPSIGTYPE_BINARY || sigtype == PGPSIGTYPE_TEXT))
+ 	    {
+-		int xx;
+-		xx = 0;
+-		switch (i) {
+-		case 0:
+-		    memset(dsaraw.data, '\0', 2*DSA_SUBPRIME_LEN);
+-				/* r */
+-		    xx = pgpMpiSet(pgpSigDSA[i], DSA_SUBPRIME_LEN*8, dsaraw.data, p, pend);
+-		    break;
+-		case 1:		/* s */
+-		    xx = pgpMpiSet(pgpSigDSA[i], DSA_SUBPRIME_LEN*8, dsaraw.data + DSA_SUBPRIME_LEN, p, pend);
+-		    if (_dig->sigdata != NULL)
+-		    	SECITEM_FreeItem(_dig->sigdata, PR_FALSE);
+-		    else if ((_dig->sigdata=SECITEM_AllocItem(NULL, NULL, 0)) == NULL) {
+-		        xx = 1;
+-		        break;
+-		    }
+-		    if (DSAU_EncodeDerSig(_dig->sigdata, &dsaraw) != SECSuccess)
+-		    	xx = 1;
+-		    break;
+-		default:
+-		    xx = 1;
+-		    break;
+-		}
+-		if (xx) return xx;
++		if (pgpSetSigMpiDSA(_dig, i, p))
++		    return 1;
+ 	    }
+ 	    pgpPrtStr("", pgpSigDSA[i]);
+ 	} else {
+@@ -842,49 +721,11 @@ static const uint8_t * pgpPrtPubkeyParam
+ 	char * mpi;
+ 	if (pubkey_algo == PGPPUBKEYALGO_RSA) {
+ 	    if (i >= 2) break;
+-	    if (_dig) {
+-		if (_dig->keydata == NULL) {
+-		    _dig->keydata = pgpNewPublicKey(rsaKey);
+-		    if (_dig->keydata == NULL)
+-			return NULL;
+-		}
+-		switch (i) {
+-		case 0:		/* n */
+-		    pgpMpiItem(_dig->keydata->arena, &_dig->keydata->u.rsa.modulus, p);
+-		    break;
+-		case 1:		/* e */
+-		    pgpMpiItem(_dig->keydata->arena, &_dig->keydata->u.rsa.publicExponent, p);
+-		    break;
+-		default:
+-		    break;
+-		}
+-	    }
++	    pgpSetPubMpiRSA(_dig, i, p);
+ 	    pgpPrtStr("", pgpPublicRSA[i]);
+ 	} else if (pubkey_algo == PGPPUBKEYALGO_DSA) {
+ 	    if (i >= 4) break;
+-	    if (_dig) {
+-		if (_dig->keydata == NULL) {
+-		    _dig->keydata = pgpNewPublicKey(dsaKey);
+-		    if (_dig->keydata == NULL)
+-			return NULL;
+-		}
+-		switch (i) {
+-		case 0:		/* p */
+-		    pgpMpiItem(_dig->keydata->arena, &_dig->keydata->u.dsa.params.prime, p);
+-		    break;
+-		case 1:		/* q */
+-		    pgpMpiItem(_dig->keydata->arena, &_dig->keydata->u.dsa.params.subPrime, p);
+-		    break;
+-		case 2:		/* g */
+-		    pgpMpiItem(_dig->keydata->arena, &_dig->keydata->u.dsa.params.base, p);
+-		    break;
+-		case 3:		/* y */
+-		    pgpMpiItem(_dig->keydata->arena, &_dig->keydata->u.dsa.publicValue, p);
+-		    break;
+-		default:
+-		    break;
+-		}
+-	    }
++	    pgpSetPubMpiDSA(_dig, i, p);
+ 	    pgpPrtStr("", pgpPublicDSA[i]);
+ 	} else if (pubkey_algo == PGPPUBKEYALGO_ELGAMAL_ENCRYPT) {
+ 	    if (i >= 3) break;
+@@ -1269,15 +1110,7 @@ void pgpCleanDig(pgpDig dig)
+ 	memset(&dig->signature, 0, sizeof(dig->signature));
+ 	memset(&dig->pubkey, 0, sizeof(dig->pubkey));
+ 
+-	if (dig->keydata != NULL) {
+-	    SECKEY_DestroyPublicKey(dig->keydata);
+-	    dig->keydata = NULL;
+-	}
+-
+-	if (dig->sigdata != NULL) {
+-	    SECITEM_ZfreeItem(dig->sigdata, PR_TRUE);
+-	    dig->sigdata = NULL;
+-	}
++        pgpCleanRSADSA(dig);
+     }
+     return;
+ }
+@@ -1319,39 +1152,6 @@ int pgpPrtPkts(const uint8_t * pkts, siz
+     return 0;
+ }
+ 
+-static SECOidTag getSigAlg(pgpDigParams sigp)
+-{
+-    SECOidTag sigalg = SEC_OID_UNKNOWN;
+-    if (sigp->pubkey_algo == PGPPUBKEYALGO_DSA) {
+-	/* assume SHA1 for now, NSS doesn't have SECOID's for other types */
+-	sigalg = SEC_OID_ANSIX9_DSA_SIGNATURE_WITH_SHA1_DIGEST;
+-    } else if (sigp->pubkey_algo == PGPPUBKEYALGO_RSA) {
+-	switch (sigp->hash_algo) {
+-	case PGPHASHALGO_MD5:
+-	    sigalg = SEC_OID_PKCS1_MD5_WITH_RSA_ENCRYPTION;
+-	    break;
+-	case PGPHASHALGO_MD2:
+-	    sigalg = SEC_OID_PKCS1_MD2_WITH_RSA_ENCRYPTION;
+-	    break;
+-	case PGPHASHALGO_SHA1:
+-	    sigalg = SEC_OID_PKCS1_SHA1_WITH_RSA_ENCRYPTION;
+-	    break;
+-	case PGPHASHALGO_SHA256:
+-	    sigalg = SEC_OID_PKCS1_SHA256_WITH_RSA_ENCRYPTION;
+-	    break;
+-	case PGPHASHALGO_SHA384:
+-	     sigalg = SEC_OID_PKCS1_SHA384_WITH_RSA_ENCRYPTION;
+-	    break;
+-	case PGPHASHALGO_SHA512:
+-	    sigalg = SEC_OID_PKCS1_SHA512_WITH_RSA_ENCRYPTION;
+-	    break;
+-	default:
+-	    break;
+-	}
+-    }
+-    return sigalg;
+-}
+-
+ char *pgpIdentItem(pgpDigParams digp)
+ {
+     char *id = NULL;
+@@ -1409,30 +1209,12 @@ rpmRC pgpVerifySig(pgpDig dig, DIGEST_CT
+     if (dig->keydata == NULL) {
+ 	res = RPMRC_NOKEY;
+     } else {
+-	SECItem digest = { .type = siBuffer, .data = hash, .len = hashlen };
+-	SECItem *sig = dig->sigdata;
+-
+-	/* Zero-pad RSA signature to expected size if necessary */
+ 	if (sigp->pubkey_algo == PGPPUBKEYALGO_RSA) {
+-	    size_t siglen = SECKEY_SignatureLen(dig->keydata);
+-	    if (siglen > sig->len) {
+-		size_t pad = siglen - sig->len;
+-		if ((sig = SECITEM_AllocItem(NULL, NULL, siglen)) == NULL) {
+-		    goto exit;
+-		}
+-		memset(sig->data, 0, pad);
+-		memcpy(sig->data+pad, dig->sigdata->data, dig->sigdata->len);
+-	    }
+-	}
+-
+-	/* XXX VFY_VerifyDigest() is deprecated in NSS 3.12 */ 
+-	if (VFY_VerifyDigest(&digest, dig->keydata, sig,
+-			     getSigAlg(sigp), NULL) == SECSuccess) {
+-	    res = RPMRC_OK;
+-	}
+-
+-	if (sig != dig->sigdata) {
+-	    SECITEM_ZfreeItem(sig, 1);
++	    if (!pgpVerifyRSA(dig, hash, hashlen))
++		res = RPMRC_OK;
++	} else if (sigp->pubkey_algo == PGPPUBKEYALGO_DSA) {
++	    if (!pgpVerifyDSA(dig, hash, hashlen))
++		res = RPMRC_OK;
+ 	}
+     }
+ 
+@@ -1620,50 +1402,3 @@ char * pgpArmorWrap(int atype, const uns
+     return val;
+ }
+ 
+-/*
+- * Only flag for re-initialization here, in the common case the child
+- * exec()'s something else shutting down NSS here would be waste of time.
+- */
+-static void at_forkchild(void)
+-{
+-    _new_process = 1;
+-}
+-
+-int rpmInitCrypto(void) {
+-    int rc = 0;
+-
+-    /* Lazy NSS shutdown for re-initialization after fork() */
+-    if (_new_process && _crypto_initialized) {
+-	rpmFreeCrypto();
+-    }
+-
+-    /* Initialize NSS if not already done */
+-    if (!_crypto_initialized) {
+-	if (NSS_NoDB_Init(NULL) != SECSuccess) {
+-	    rc = -1;
+-	} else {
+-	    _crypto_initialized = 1;
+-	}
+-    }
+-
+-    /* Register one post-fork handler per process */
+-    if (_new_process) {
+-	if (pthread_atfork(NULL, NULL, at_forkchild) != 0) {
+-	    rpmlog(RPMLOG_WARNING, _("Failed to register fork handler: %m\n"));
+-	}
+-	_new_process = 0;
+-    }
+-    return rc;
+-}
+-
+-int rpmFreeCrypto(void) 
+-{
+-    int rc = 0;
+-    if (_crypto_initialized) {
+-	rc = (NSS_Shutdown() != SECSuccess);
+-    	_crypto_initialized = 0;
+-    }
+-    return rc;
+-}
+-	
+-	

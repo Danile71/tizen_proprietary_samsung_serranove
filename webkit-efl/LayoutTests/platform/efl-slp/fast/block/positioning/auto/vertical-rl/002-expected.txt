@@ -1,0 +1,20 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 780x584
+      RenderBlock {P} at (0,0) size 28x584
+        RenderText {#text} at (0,0) size 28x575
+          text run at (0,0) width 381: "In this test, you should see three blocks that are aligned right within a black box. "
+          text run at (0,381) width 194: "They should be stacked horizontally with"
+          text run at (14,0) width 202: "the green box in between two olive boxes. "
+          text run at (14,202) width 259: "The olive boxes and the green box should be 100x100."
+layer at (412,8) size 340x240
+  RenderBlock (positioned) {DIV} at (48,8) size 340x240 [border: (20px solid #000000)]
+    RenderBlock {DIV} at (70,20) size 0x100
+layer at (532,128) size 100x100
+  RenderBlock (positioned) {DIV} at (120,120) size 100x100 [bgcolor=#008000]
+layer at (632,128) size 100x100
+  RenderBlock (positioned) {DIV} at (20,120) size 100x100 [bgcolor=#808000]
+layer at (432,128) size 100x100
+  RenderBlock (positioned) {DIV} at (220,120) size 100x100 [bgcolor=#808000]

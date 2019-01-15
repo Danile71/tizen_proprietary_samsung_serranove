@@ -1,0 +1,34 @@
+#!/bin/bash
+
+ALIAS_FILE="__DATADIR__/locale/locale.alias"
+LOCAR_FILE="__PREFIX__/locale/locale-archive"
+LOC_PATH="__PREFIX__/lib/locale/"
+
+rm -f ${LOCAR_FILE}
+
+if [ ! -d ${LOC_PATH} ]; then
+	echo "Cannot open directory \"${LOC_PATH}\""
+	#exit 1
+fi
+
+PRIMARY=${LC_ALL}
+
+if [ x"${PRIMARY}" == x"" ]; then
+	PRIMARY=${LANG}
+fi;
+
+if [ x"${PRIMARY}" != x"" ]; then
+	if  [ "${PRIMARY:0:2}" != "ja" ] && \
+		[ "${PRIMARY:0:2}" != "ko" ] && \
+		[ "${PRIMARY:0:2}" != "zh" ]; then
+		PRIMARY=$(echo ${PRIMARY} | sed -e 's/\..*@/.utf8@/')
+	fi
+
+	if [ -d ${PRIMARY} ]; then
+		/usr/bin/localedef --alias-file=${ALIAS_FILE} --add-to-archive ${PRIMARY}
+	fi
+fi
+
+find ${LOC_PATH} -type d | while read loc; do
+	/usr/bin/localedef --alias-file=${ALIAS_FILE} --add-to-archive  ${loc}
+done

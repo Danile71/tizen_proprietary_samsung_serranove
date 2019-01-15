@@ -1,0 +1,26 @@
+
+
+
+
+@deftypefun {int} {gnutls_x509_crt_check_hostname2} (gnutls_x509_crt_t @var{cert}, const char * @var{hostname}, unsigned int @var{flags})
+@var{cert}: should contain an gnutls_x509_crt_t structure
+
+@var{hostname}: A null terminated string that contains a DNS name
+
+@var{flags}: gnutls_certificate_verify_flags
+
+This function will check if the given certificate's subject matches
+the given hostname.  This is a basic implementation of the matching
+described in RFC2818 (HTTPS), which takes into account wildcards,
+and the DNSName/IPAddress subject alternative name PKIX extension.
+
+The comparison may have false-negatives as it is done byte by byte in 
+non-ascii names.
+
+When the flag @code{GNUTLS_VERIFY_DO_NOT_ALLOW_WILDCARDS}  is specified no
+wildcards are considered. Otherwise they are only considered if the
+domain name consists of three components or more, and the wildcard
+starts at the leftmost position.
+
+@strong{Returns:} non-zero for a successful match, and zero on failure.
+@end deftypefun

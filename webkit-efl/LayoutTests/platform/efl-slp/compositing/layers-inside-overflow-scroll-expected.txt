@@ -1,0 +1,18 @@
+CONSOLE MESSAGE: line 52: TypeError: 'undefined' is not a function (evaluating 'video.canPlayType('video/ogg')')
+FAIL: Timed out waiting for notifyDone to be called
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x210
+  RenderBlock {HTML} at (0,0) size 800x210
+    RenderBody {BODY} at (8,12) size 784x188
+      RenderBlock {P} at (0,0) size 784x12
+        RenderText {#text} at (0,0) size 433x11
+          text run at (0,0) width 433: "The red box in the overflow:scroll div should be scrolled out of view."
+      RenderBlock {DIV} at (10,24) size 302x2 [border: (1px solid #000000)]
+        RenderInline {VIDEO} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+layer at (18,48) size 302x152 clip at (19,49) size 300x150 scrollHeight 500
+  RenderBlock {DIV} at (10,36) size 302x152 [border: (1px solid #000000)]
+    RenderBlock {DIV} at (1,1) size 300x500
+layer at (19,49) size 100x100
+  RenderBlock {DIV} at (0,0) size 100x100 [bgcolor=#FF0000]

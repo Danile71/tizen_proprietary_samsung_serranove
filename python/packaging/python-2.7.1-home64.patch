@@ -1,0 +1,21 @@
+diff -urNp Python-2.7.1.orig/Makefile.pre.in Python-2.7.1/Makefile.pre.in
+--- Python-2.7.1.orig/Makefile.pre.in	2014-06-11 21:06:25.264228369 +0900
++++ Python-2.7.1/Makefile.pre.in	2014-06-11 21:07:41.680228358 +0900
+@@ -96,14 +96,14 @@ LIBDIR=		@libdir@
+ MANDIR=		@mandir@
+ INCLUDEDIR=	@includedir@
+ CONFINCLUDEDIR=	$(exec_prefix)/include
+-SCRIPTDIR=	@libdir@
++SCRIPTDIR=	@prefix@/lib
+ 
+ # Detailed destination directories
+-BINLIBDEST=	$(LIBDIR)/python$(VERSION)
++BINLIBDEST=	$(SCRIPTDIR)/python$(VERSION)
+ LIBDEST=	$(SCRIPTDIR)/python$(VERSION)
+ INCLUDEPY=	$(INCLUDEDIR)/python$(VERSION)
+ CONFINCLUDEPY=	$(CONFINCLUDEDIR)/python$(VERSION)
+-LIBP=		$(LIBDIR)/python$(VERSION)
++LIBP=		$(SCRIPTDIR)/python$(VERSION)
+ 
+ # Symbols used for using shared libraries
+ SO=		@SO@

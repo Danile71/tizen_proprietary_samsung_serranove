@@ -1,0 +1,23 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 100x84
+        RenderText {#text} at (0,0) size 100x84
+          text run at (0,0) width 100: "This paragraph"
+          text run at (0,14) width 100: "contains justified"
+          text run at (0,28) width 37: "text. "
+          text run at (37,28) width 63: "Within the"
+          text run at (0,42) width 100: "constrained width,"
+          text run at (0,56) width 100: "this text should be"
+          text run at (0,70) width 41: "justified."
+      RenderBlock {P} at (0,96) size 100x84
+        RenderText {#text} at (0,0) size 100x84
+          text run at (0,0) width 100: "This paragraph also"
+          text run at (0,14) width 100: "contains justified"
+          text run at (0,28) width 37: "text. "
+          text run at (37,28) width 63: "Within the"
+          text run at (0,42) width 100: "constrained width,"
+          text run at (0,56) width 100: "this text should be"
+          text run at (0,70) width 41: "justified."

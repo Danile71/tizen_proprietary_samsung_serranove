@@ -1,0 +1,21 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x60
+  RenderBlock {html} at (0,0) size 800x60
+    RenderBody {body} at (8,8) size 784x44
+      RenderTable {table} at (0,0) size 684x44 [border: (1px outset #808080)]
+        RenderTableSection (anonymous) at (1,1) size 682x42
+          RenderTableRow {tr} at (0,2) size 682x18
+            RenderTableCell {td} at (2,2) size 678x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 674x14
+                text run at (2,2) width 196: "The text in the cell should not wrap upon "
+                text run at (198,2) width 195: "window resizing    x-fill x-fill x-fill x-fill "
+                text run at (393,2) width 234: "x-fill x-fill x-fill x-fill x-fill x-fill x-fill x-fill x-fill "
+                text run at (627,2) width 49: "x-fill x-fill"
+          RenderTableRow {tr} at (0,22) size 682x18
+            RenderTableCell {td} at (2,22) size 678x18 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 674x14
+                text run at (2,2) width 196: "The text in the cell should not wrap upon "
+                text run at (198,2) width 195: "window resizing    x-fill x-fill x-fill x-fill "
+                text run at (393,2) width 234: "x-fill x-fill x-fill x-fill x-fill x-fill x-fill x-fill x-fill "
+                text run at (627,2) width 49: "x-fill x-fill"

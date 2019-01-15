@@ -1,0 +1,29 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 10 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (anonymous) at (0,0) size 964x28
+        RenderText {#text} at (0,0) size 798x28
+          text run at (0,0) width 798: "Test inserting paragraphs: should see empty red box above \"baz\""
+      RenderBlock {DIV} at (0,28) size 964x12
+      RenderBlock {DIV} at (0,40) size 964x56 [border: (2px solid #FF0000)]
+        RenderBR {BR} at (14,14) size 0x28
+      RenderBlock {DIV} at (0,96) size 964x56 [border: (2px solid #FF0000)]
+        RenderText {#text} at (14,14) size 43x28
+          text run at (14,14) width 43: "baz"
+      RenderBlock (anonymous) at (0,152) size 964x28
+        RenderText {#text} at (0,0) size 40x28
+          text run at (0,0) width 40: "bar"
+      RenderBlock {DIV} at (0,180) size 964x56 [border: (2px solid #FF0000)]
+        RenderText {#text} at (14,14) size 38x28
+          text run at (14,14) width 38: "foo"
+      RenderBlock {DIV} at (0,236) size 964x56 [border: (2px solid #FF0000)]
+        RenderBR {BR} at (14,14) size 0x28
+caret: position 0 of child 0 {#text} of child 4 {DIV} of body

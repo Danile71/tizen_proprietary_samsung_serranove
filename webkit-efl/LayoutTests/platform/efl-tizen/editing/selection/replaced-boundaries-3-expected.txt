@@ -1,0 +1,29 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 5 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document toDOMRange:range from 1 of #text > DIV > BODY > HTML > #document to 4 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 919x38
+          text run at (0,0) width 919: "This tests that when a selection that ends at [replaced element, 0] is painted, the replaced element doesn't appear"
+          text run at (0,19) width 77: "selected. "
+          text run at (77,19) width 419: "This test uses a select box for the replaced element."
+      RenderBlock {DIV} at (0,54) size 964x48
+        RenderText {#text} at (0,0) size 29x19
+          text run at (0,0) width 29: "abc"
+        RenderBR {BR} at (29,15) size 0x0
+        RenderMenuList {SELECT} at (2,21) size 266x25 [bgcolor=#FFFFFF]
+          RenderBlock (anonymous) at (6,5) size 238x15
+            RenderText at (0,0) size 238x15
+              text run at (0,0) width 238: "this select box shouldn't be selected"
+        RenderText {#text} at (0,0) size 0x0
+selection start: position 1 of child 0 {#text} of child 3 {DIV} of body
+selection end:   position 1 of child 1 {BR} of child 3 {DIV} of body

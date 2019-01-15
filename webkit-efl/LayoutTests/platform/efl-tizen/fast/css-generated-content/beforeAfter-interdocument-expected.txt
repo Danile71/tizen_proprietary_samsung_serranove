@@ -1,0 +1,33 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 36x19
+          text run at (0,0) width 36: "Bug "
+        RenderInline {A} at (0,0) size 55x19 [color=#0000EE]
+          RenderText {#text} at (36,0) size 55x19
+            text run at (36,0) width 55: "23826 "
+        RenderText {#text} at (91,0) size 726x19
+          text run at (91,0) width 726: ": Potential bug with before/after rule while moving element from one document to another"
+      RenderBlock {P} at (0,35) size 964x19
+        RenderText {#text} at (0,0) size 700x19
+          text run at (0,0) width 700: "This test that moving a quote element sets the before / after flag in the final document."
+      RenderBlock {DIV} at (0,70) size 964x54
+        RenderBlock (anonymous) at (0,0) size 964x19
+          RenderInline {Q} at (0,0) size 198x19
+            RenderInline (generated) at (0,0) size 7x19
+              RenderQuote at (0,0) size 7x19
+                text run at (0,0) width 7: "\""
+            RenderText {#text} at (7,0) size 191x19
+              text run at (7,0) width 191: "Quotes should surround"
+        RenderBlock (anonymous) at (0,35) size 964x0
+          RenderBlock {P} at (0,0) size 964x0
+        RenderBlock (anonymous) at (0,35) size 964x19
+          RenderInline {Q} at (0,0) size 76x19
+            RenderText {#text} at (0,0) size 69x19
+              text run at (0,0) width 69: "this text."
+            RenderInline (generated) at (0,0) size 7x19
+              RenderQuote at (69,0) size 7x19
+                text run at (69,0) width 7: "\""

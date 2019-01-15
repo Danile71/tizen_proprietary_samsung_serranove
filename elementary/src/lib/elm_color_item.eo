@@ -1,0 +1,70 @@
+class Elm_Color_Item(Elm_Widget_Item, Elm_Interface_Atspi_Widget_Action)
+{
+   eo_prefix: elm_obj_color_item;
+   properties {
+        color {
+             get {
+                 /*@
+                 @internal
+
+                 Get Palette item's color.
+
+                 @ingroup Colorselector
+                 */
+             }
+             set {
+                 /*@
+                 @internal
+
+                 Set Palette item's color.
+
+                 @ingroup Colorselector
+                 */
+             }
+             values {
+                 int r; /*@ red-value of color   */
+                 int g; /*@ green-value of color */
+                 int b; /*@ blue-value of color  */
+                 int a; /*@ alpha-value of color */
+             }
+        }
+        selected {
+             get {
+                 /*@
+                 @internal
+
+                 Get the selected state of color palette item
+
+                 @since 1.9
+                 @ingroup Colorselector
+                 */
+             }
+             set {
+                 /*@
+                 @internal
+
+                 Set the selected state of color palette item
+
+                 @since 1.9
+                 @ingroup Colorselector
+                 */
+             }
+             values {
+                 Eina_Bool selected; /*@ @c EINA_TRUE if selected @c EINA_FALSE otherwise */
+             }
+        }
+   }
+   implements {
+        Eo.Base.constructor;
+        Eo.Base.destructor;
+        Elm_Widget_Item.access_register;
+        Elm_Widget_Item.signal_emit;
+        //TIZEN_ONLY(20150707) : improve colorselctor atspi support
+        Elm_Interface_Atspi_Accessible.state_set.get;
+        Elm_Interface_Atspi_Accessible.name.get;
+        Elm_Interface_Atspi_Component.highlight_grab;
+        Elm_Interface_Atspi_Component.highlight_clear;
+        Elm_Interface_Atspi_Widget_Action.elm_actions.get;
+        //
+   }
+}

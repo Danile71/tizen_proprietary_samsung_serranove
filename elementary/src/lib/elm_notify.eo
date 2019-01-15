@@ -1,0 +1,154 @@
+class Elm_Notify (Elm_Container)
+{
+   eo_prefix: elm_obj_notify;
+   properties {
+      align {
+         set {
+            /*@
+            @brief Set the alignment of the notify object
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark Sets the alignment in which the notify will appear in its parent.
+
+            @remark To fill the notify box in the parent area, please pass the
+            #ELM_NOTIFY_ALIGN_FILL to @p horizontal, @p vertical.
+
+            @since 1.8
+            @ingroup Notify */
+         }
+         get {
+            /*@
+            @brief Get the alignment of the notify object
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @see elm_notify_align_set()
+
+            @since 1.8
+            @ingroup Notify */
+         }
+         values {
+            double horizontal; /*@ The horizontal alignment of the notification */
+            double vertical; /*@ The vertical alignment of the notification */
+         }
+      }
+      allow_events {
+         set {
+            /*@
+            @brief Sets whether events should be passed to by a click outside
+            its area.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark When true if the user clicks outside the window the events will be caught
+            by the others widgets, else the events are blocked.
+
+            @remark The default value is EINA_TRUE.
+
+            @ingroup Notify */
+         }
+         get {
+            /*@
+            @brief Return true if events are allowed below the notify object
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @see elm_notify_allow_events_set()
+
+            @ingroup Notify */
+         }
+         values {
+            bool allow; /*@ EINA_TRUE If events are allowed, otherwise not */
+         }
+      }
+      timeout {
+         set {
+            /*@
+            @brief Set the time interval after which the notify window is going to be
+            hidden.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark This function sets a timeout and starts the timer controlling when the
+            notify is hidden. Since calling evas_object_show() on a notify restarts
+            the timer controlling when the notify is hidden, setting this before the
+            notify is shown will in effect mean starting the timer when the notify is
+            shown.
+
+            @remark Set a value <= 0.0 to disable a running timer.
+
+            @remark If the value > 0.0 and the notify is previously visible, the
+            timer will be started with this value, canceling any running timer.
+
+            @ingroup Notify */
+         }
+         get {
+            /*@
+            @brief Return the timeout value (in seconds)
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @see elm_notify_timeout_set()
+
+            @ingroup Notify */
+         }
+         values {
+            double timeout; /*@ The timeout in seconds */
+         }
+      }
+   }
+   methods {
+      dismiss {
+         /*@
+          @brief Dismiss a notify object
+
+          @since_tizen 2.3.1
+
+          @param[in] obj The notify object
+
+          @details Use this function to dismiss the notify with hide effect.
+                   when the notify is dismissed, the "dismissed" signal will be
+                   emitted.
+
+          @ingroup Notify */
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.hide;
+      Evas.Object_Smart.show;
+      Evas.Object_Smart.move;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Evas.Object_Smart.resize;
+      Elm_Widget.focus_direction;
+      Elm_Widget.parent;
+      Elm_Widget.theme_apply;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_next;
+      Elm_Widget.sub_object_del;
+      Elm_Container.content_get;
+      Elm_Container.content_set;
+      Elm_Container.content_unset;
+   }
+   events {
+      block,clicked;
+      timeout;
+   }
+
+}

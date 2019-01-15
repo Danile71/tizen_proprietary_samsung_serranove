@@ -1,0 +1,30 @@
+class Elm_Atspi_Bridge (Eo.Base)
+{
+   eo_prefix: elm_obj_atspi_bridge;
+   properties {
+      connected @protected {
+         get {
+            /*@ Indicate if connection with AT-SPI2 bus has been established. */
+         }
+         values {
+            bool ret;
+         }
+      }
+      root @protected {
+         get {
+            /*@ Get root object of accessible object hierarchy */
+         }
+         values {
+            Eo* ret;
+         }
+      }
+   }
+   implements {
+      Eo.Base.constructor;
+      Eo.Base.destructor;
+   }
+   events {
+      connected;
+      disconnected;
+   }
+}

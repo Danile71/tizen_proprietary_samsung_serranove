@@ -1,0 +1,93 @@
+Tests styling multiple combinators have linear performance
+FAIL: got indeterminate result expected O(n)
+
+DEBUG LOG:
+run iteration. magnitude 512 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 686 jsObjectCountAfter 836
+iterations 53
+run iteration. magnitude 1 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 836 jsObjectCountAfter 865
+run iteration. magnitude 2 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 865 jsObjectCountAfter 877
+run iteration. magnitude 4 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 877 jsObjectCountAfter 888
+run iteration. magnitude 8 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 888 jsObjectCountAfter 899
+run iteration. magnitude 16 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 899 jsObjectCountAfter 910
+run iteration. magnitude 32 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 910 jsObjectCountAfter 921
+run iteration. magnitude 64 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 921 jsObjectCountAfter 932
+run iteration. magnitude 128 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 932 jsObjectCountAfter 943
+run iteration. magnitude 256 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 943 jsObjectCountAfter 956
+magnitude: 1 iterations: 5604 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.008922198429693077
+magnitude: 2 iterations: 5689 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.008788890841975743
+magnitude: 4 iterations: 5650 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.008849557522123894
+magnitude: 8 iterations: 5370 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.00931098696461825
+magnitude: 16 iterations: 4823 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.01036699149906697
+magnitude: 32 iterations: 3912 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.01278118609406953
+magnitude: 64 iterations: 2487 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.02010454362685967
+magnitude: 128 iterations: 1089 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.04591368227731864
+magnitude: 256 iterations: 289 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.17301038062283736
+magnitude: 512 iterations: 53 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.9433962264150944
+magnitudes: 1,2,4,8,16,32,64,128,256,512
+iterations: 5604,5689,5650,5370,4823,3912,2487,1089,289,53
+milliseconds/iteration: 0.008922198429693077,0.008788890841975743,0.008849557522123894,0.00931098696461825,0.01036699149906697,0.01278118609406953,0.02010454362685967,0.04591368227731864,0.17301038062283736,0.9433962264150944
+numPoints 10 slope 0.0016669299454746525 intercept -0.04638246899269122 rSquared 0.8849024255944811
+numPoints 10 slope 0.08551187660607812 intercept -0.14258095835315274 rSquared 0.3769459905067078
+numPoints 10 slope 0.6431632036624816 intercept -5.664811550582887 rSquared 0.720249853839976
+rSquared 0.8849024255944811 rSquaredXLog 0.3769459905067078 rSquaredXYLog 0.720249853839976
+numTriesLeft: 2
+run iteration. magnitude 512 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 956 jsObjectCountAfter 1141
+iterations 57
+run iteration. magnitude 1 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1141 jsObjectCountAfter 1155
+run iteration. magnitude 2 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1155 jsObjectCountAfter 1165
+run iteration. magnitude 4 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1165 jsObjectCountAfter 1175
+run iteration. magnitude 8 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1175 jsObjectCountAfter 1185
+run iteration. magnitude 16 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1185 jsObjectCountAfter 1196
+run iteration. magnitude 32 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1196 jsObjectCountAfter 1207
+run iteration. magnitude 64 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1207 jsObjectCountAfter 1218
+run iteration. magnitude 128 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1218 jsObjectCountAfter 1229
+run iteration. magnitude 256 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1229 jsObjectCountAfter 1240
+magnitude: 1 iterations: 6013 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.008315316813570598
+magnitude: 2 iterations: 6008 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.008322237017310254
+magnitude: 4 iterations: 5921 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.00844451950684006
+magnitude: 8 iterations: 3650 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.0136986301369863
+magnitude: 16 iterations: 3724 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.01342642320085929
+magnitude: 32 iterations: 3946 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.012671059300557527
+magnitude: 64 iterations: 2394 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.020885547201336674
+magnitude: 128 iterations: 1076 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.046468401486988845
+magnitude: 256 iterations: 277 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.18050541516245489
+magnitude: 512 iterations: 57 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.8771929824561403
+magnitudes: 1,2,4,8,16,32,64,128,256,512
+iterations: 6013,6008,5921,3650,3724,3946,2394,1076,277,57
+milliseconds/iteration: 0.008315316813570598,0.008322237017310254,0.00844451950684006,0.0136986301369863,0.01342642320085929,0.012671059300557527,0.020885547201336674,0.046468401486988845,0.18050541516245489,0.8771929824561403
+numPoints 10 slope 0.0015586730943892748 intercept -0.04045920432771835 rSquared 0.8962283829536944
+numPoints 10 slope 0.08075687499277881 intercept -0.13290074772604019 rSquared 0.3894333951511638
+numPoints 10 slope 0.6400242273505239 intercept -5.606624050566474 rSquared 0.7471693041346612
+rSquared 0.8962283829536944 rSquaredXLog 0.3894333951511638 rSquaredXYLog 0.7471693041346612
+numTriesLeft: 1
+run iteration. magnitude 512 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1240 jsObjectCountAfter 1382
+iterations 51
+run iteration. magnitude 1 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1382 jsObjectCountAfter 1396
+run iteration. magnitude 2 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1396 jsObjectCountAfter 1406
+run iteration. magnitude 4 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1406 jsObjectCountAfter 1416
+run iteration. magnitude 8 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1416 jsObjectCountAfter 1426
+run iteration. magnitude 16 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1426 jsObjectCountAfter 1437
+run iteration. magnitude 32 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1437 jsObjectCountAfter 1448
+run iteration. magnitude 64 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1448 jsObjectCountAfter 1459
+run iteration. magnitude 128 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1459 jsObjectCountAfter 1470
+run iteration. magnitude 256 milliseconds 50 runsPerIteration 1 jsObjectCountBefore 1470 jsObjectCountAfter 1481
+magnitude: 1 iterations: 5758 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.00868357068426537
+magnitude: 2 iterations: 5247 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.00952925481227368
+magnitude: 4 iterations: 4365 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.011454753722794959
+magnitude: 8 iterations: 4659 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.010731916720326251
+magnitude: 16 iterations: 4435 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.011273957158962795
+magnitude: 32 iterations: 3821 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.01308557969118032
+magnitude: 64 iterations: 2453 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.020383204239706482
+magnitude: 128 iterations: 1052 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.04752851711026616
+magnitude: 256 iterations: 265 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.18867924528301888
+magnitude: 512 iterations: 51 runsPerIteration 1 loop-time 50 time/iteration(ms): 0.9803921568627451
+magnitudes: 1,2,4,8,16,32,64,128,256,512
+iterations: 5758,5247,4365,4659,4435,3821,2453,1052,265,51
+milliseconds/iteration: 0.00868357068426537,0.00952925481227368,0.011454753722794959,0.010731916720326251,0.011273957158962795,0.01308557969118032,0.020383204239706482,0.04752851711026616,0.18867924528301888,0.9803921568627451
+numPoints 10 slope 0.0017365847806803903 intercept -0.04747840743504994 rSquared 0.888969148601
+numPoints 10 slope 0.08927713003945065 intercept -0.14829564376042567 rSquared 0.3803126002243467
+numPoints 10 slope 0.6350180493532073 intercept -5.565932167224847 rSquared 0.716107120473285
+rSquared 0.888969148601 rSquaredXLog 0.3803126002243467 rSquaredXYLog 0.716107120473285
+
+PASS
+

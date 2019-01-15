@@ -1,0 +1,14 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x150
+  RenderBlock {HTML} at (0,0) size 800x150
+    RenderBody {BODY} at (8,12) size 784x126
+      RenderBlock {P} at (0,0) size 784x20 [border: (3px solid #008000)]
+        RenderText {#text} at (3,3) size 176x14
+          text run at (3,3) width 176: "This box should have a green border."
+      RenderBlock {P} at (0,32) size 784x20 [border: (3px solid #008000)]
+        RenderText {#text} at (3,3) size 224x14
+          text run at (3,3) width 224: "This box should have an identical green border."
+      RenderBlock {P} at (0,64) size 784x62 [border: (24px solid #800080) (24px solid #008000) (24px solid #0000FF) (24px solid #FFFF00)]
+        RenderText {#text} at (24,24) size 395x14
+          text run at (24,24) width 395: "Clockwise from top, the borders should be: PURPLE, GREEN, BLUE, YELLOW."

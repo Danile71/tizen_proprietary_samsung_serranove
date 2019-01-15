@@ -1,0 +1,25 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of #text > SPAN > SPAN > DIV > BODY > HTML > #document to 1 of #text > SPAN > SPAN > DIV > BODY > HTML > #document toDOMRange:range from 1 of #text > SPAN > SPAN > DIV > BODY > HTML > #document to 1 of #text > SPAN > SPAN > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x84 [border: (2px solid #FF0000)]
+        RenderInline {SPAN} at (0,0) size 102x56
+          RenderBR {BR} at (14,14) size 0x28
+          RenderInline {SPAN} at (0,0) size 64x28
+            RenderText {#text} at (14,42) size 64x28
+              text run at (14,42) width 64: "\x{9}"
+          RenderText {#text} at (78,42) size 38x28
+            text run at (78,42) width 38: "foo"
+        RenderText {#text} at (0,0) size 0x0
+caret: position 1 of child 0 {#text} of child 1 {SPAN} of child 1 {SPAN} of child 1 {DIV} of body

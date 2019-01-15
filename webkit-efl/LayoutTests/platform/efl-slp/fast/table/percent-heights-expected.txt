@@ -1,0 +1,58 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {H3} at (0,0) size 784x16
+        RenderText {#text} at (0,0) size 183x15
+          text run at (0,0) width 183: "Small Percentage Heights Bug"
+      RenderBlock {P} at (0,30) size 784x28
+        RenderText {#text} at (0,0) size 751x28
+          text run at (0,0) width 299: "In the example below, all eight cells should be the same height. "
+          text run at (299,0) width 366: "It appears that any percentage heights cause cells to fill the entire table height. "
+          text run at (665,0) width 86: "Note how cell 8 is"
+          text run at (0,14) width 310: "correct but 2-7 are not, despite the cells all specifying height:30%."
+      RenderTable {TABLE} at (0,70) size 784x80 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x78
+          RenderTableRow {TR} at (0,0) size 782x78
+            RenderTableCell {TD} at (0,0) size 516x78 [bgcolor=#FFFF00] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (225,11) size 66x14
+                text run at (225,11) width 66: "Table Data #1"
+              RenderBR {BR} at (291,22) size 0x0
+              RenderText {#text} at (232,25) size 52x14
+                text run at (232,25) width 52: "Other cells"
+              RenderBR {BR} at (283,36) size 1x0
+              RenderText {#text} at (210,39) size 96x14
+                text run at (210,39) width 96: "should be the height"
+              RenderBR {BR} at (305,50) size 1x0
+              RenderText {#text} at (233,53) size 50x14
+                text run at (233,53) width 50: "of this cell"
+            RenderTableCell {TD} at (516,14) size 38x50 [bgcolor=#006000] [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (11,11) size 16x28
+                text run at (11,11) width 16: "TD"
+                text run at (13,25) width 12: "#2"
+            RenderTableCell {TD} at (554,14) size 38x50 [bgcolor=#00FFFF] [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (11,11) size 16x28
+                text run at (11,11) width 16: "TD"
+                text run at (13,25) width 12: "#3"
+            RenderTableCell {TD} at (592,14) size 38x50 [bgcolor=#0000FF] [border: (1px inset #808080)] [r=0 c=3 rs=1 cs=1]
+              RenderText {#text} at (11,11) size 16x28
+                text run at (11,11) width 16: "TD"
+                text run at (13,25) width 12: "#4"
+            RenderTableCell {TD} at (630,14) size 38x50 [bgcolor=#008000] [border: (1px inset #808080)] [r=0 c=4 rs=1 cs=1]
+              RenderText {#text} at (11,11) size 16x28
+                text run at (11,11) width 16: "TD"
+                text run at (13,25) width 12: "#5"
+            RenderTableCell {TD} at (668,14) size 38x50 [bgcolor=#000080] [border: (1px inset #808080)] [r=0 c=5 rs=1 cs=1]
+              RenderText {#text} at (11,11) size 16x28
+                text run at (11,11) width 16: "TD"
+                text run at (13,25) width 12: "#6"
+            RenderTableCell {TD} at (706,14) size 38x50 [bgcolor=#CACACA] [border: (1px inset #808080)] [r=0 c=6 rs=1 cs=1]
+              RenderText {#text} at (11,11) size 16x28
+                text run at (11,11) width 16: "TD"
+                text run at (13,25) width 12: "#7"
+            RenderTableCell {TD} at (744,14) size 38x50 [bgcolor=#000000] [border: (1px inset #808080)] [r=0 c=7 rs=1 cs=1]
+              RenderInline {FONT} at (0,0) size 16x28 [color=#FFFFFF]
+                RenderText {#text} at (11,11) size 16x28
+                  text run at (11,11) width 16: "TD"
+                  text run at (13,25) width 12: "#8"

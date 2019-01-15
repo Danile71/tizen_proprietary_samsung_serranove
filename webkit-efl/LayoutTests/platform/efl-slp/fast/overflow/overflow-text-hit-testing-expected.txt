@@ -1,0 +1,24 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (0,0) size 800x588
+      RenderBlock {HR} at (0,20) size 800x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,34) size 800x28
+        RenderText {#text} at (0,0) size 158x14
+          text run at (0,0) width 158: "This tests for regressions against "
+        RenderInline {I} at (0,0) size 566x14
+          RenderText {#text} at (158,0) size 566x14
+            text run at (158,0) width 337: "http://bugzilla.opendarwin.org/show_bug.cgi?id=5921 Hit-testing text "
+            text run at (495,0) width 229: "in overflows does not take scrolling into account"
+        RenderText {#text} at (724,0) size 800x28
+          text run at (724,0) width 62: " by scrolling "
+          text run at (786,0) width 14: "the"
+          text run at (0,14) width 287: "above text all the way to the right, clicking the last letter, and "
+          text run at (287,14) width 301: "verifying that the correct caret position is reported to the editing "
+          text run at (588,14) width 41: "delegate."
+layer at (0,0) size 210x14
+  RenderBlock {DIV} at (0,0) size 210x14
+    RenderText {#text} at (0,0) size 181x14
+      text run at (0,0) width 181: "Seals and caribou live in the arctic, too"
+caret: position 41 of child 0 {#text} of child 1 {DIV} of body

@@ -1,0 +1,30 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderTable {TABLE} at (0,0) size 964x719 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x717
+          RenderTableRow {TR} at (0,2) size 962x713
+            RenderTableCell {TD} at (2,337) size 450x42 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 100x19
+                text run at (2,2) width 100: "Outer Table:"
+              RenderBR {BR} at (102,17) size 0x0
+              RenderText {#text} at (2,21) size 409x19
+                text run at (2,21) width 409: "<table border=\"1\" width=\"100%\" height=\"100%\">"
+            RenderTableCell {TD} at (454,2) size 506x713 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderTable {TABLE} at (2,2) size 502x709 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 500x707
+                  RenderTableRow {TR} at (0,2) size 500x703
+                    RenderTableCell {TD} at (2,323) size 452x61 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,2) size 110x19
+                        text run at (2,2) width 110: "Nested Table:"
+                      RenderBR {BR} at (112,17) size 0x0
+                      RenderText {#text} at (2,21) size 409x19
+                        text run at (2,21) width 409: "<table border=\"1\" width=\"100%\" height=\"100%\">"
+                      RenderBR {BR} at (411,36) size 0x0
+                      RenderText {#text} at (2,40) size 169x19
+                        text run at (2,40) width 169: "<td height=\"100%\">"
+                    RenderTableCell {TD} at (456,342) size 42x23 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+                      RenderText {#text} at (2,2) size 34x19
+                        text run at (2,2) width 34: "asdf"

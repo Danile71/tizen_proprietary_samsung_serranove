@@ -1,0 +1,32 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 660x19
+          text run at (0,0) width 660: "The two divs below should be on the same line, since they are display: inline-block."
+      RenderBlock {CENTER} at (0,19) size 964x23
+        RenderBlock {DIV} at (178,0) size 304x23 [border: (2px solid #0000FF)]
+          RenderText {#text} at (93,2) size 118x19
+            text run at (93,2) width 118: "This is div one."
+        RenderBlock {DIV} at (482,0) size 304x23 [border: (2px solid #0000FF)]
+          RenderText {#text} at (94,2) size 116x19
+            text run at (94,2) width 116: "This is div two."
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock (anonymous) at (0,42) size 964x65
+        RenderText {#text} at (0,0) size 926x19
+          text run at (0,0) width 926: "The two marquees below should be on separate lines, since marquees fill the width of a containing block by default."
+        RenderInline {SPAN} at (0,0) size 964x42
+          RenderText {#text} at (0,0) size 0x0
+          RenderText {#text} at (0,0) size 0x0
+          RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+layer at (8,69) size 964x23 clip at (10,71) size 960x19 scrollX -960
+  RenderBlock {MARQUEE} at (0,19) size 964x23 [border: (2px solid #008000)]
+    RenderText {#text} at (2,2) size 117x19
+      text run at (2,2) width 117: "This is div one."
+layer at (8,92) size 964x23 clip at (10,94) size 960x19 scrollX -960
+  RenderBlock {MARQUEE} at (0,42) size 964x23 [border: (2px solid #008000)]
+    RenderText {#text} at (2,2) size 116x19
+      text run at (2,2) width 116: "This is div two."

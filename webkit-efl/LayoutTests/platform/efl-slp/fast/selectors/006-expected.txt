@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x30
+  RenderBlock {HTML} at (0,0) size 800x30
+    RenderBody {BODY} at (8,8) size 784x14
+      RenderBlock {ADDRESS} at (0,0) size 784x14 [bgcolor=#00FF00]
+        RenderInline {SPAN} at (0,0) size 100x14
+          RenderText {#text} at (0,0) size 100x14
+            text run at (0,0) width 100: "This address should "
+        RenderText {#text} at (0,0) size 0x0
+        RenderInline {SPAN} at (0,0) size 424x14
+          RenderText {#text} at (100,0) size 424x14
+            text run at (100,0) width 182: "have a green background because the "
+            text run at (282,0) width 242: "selector in last rule does not apply to inner SPANs."
+        RenderText {#text} at (0,0) size 0x0

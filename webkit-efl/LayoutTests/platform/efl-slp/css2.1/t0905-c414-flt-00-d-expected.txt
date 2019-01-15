@@ -1,0 +1,23 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x130
+  RenderBlock {HTML} at (0,0) size 800x130
+    RenderBody {BODY} at (8,12) size 784x78
+      RenderBlock {P} at (0,0) size 784x14 [color=#000080]
+        RenderText {#text} at (0,0) size 302x14
+          text run at (0,0) width 302: "The two patterns below should be identical, with no red present."
+      RenderBlock {DIV} at (0,26) size 784x52
+        RenderBlock {DIV} at (12,12) size 120x14 [color=#FFFF00] [bgcolor=#000080]
+          RenderText {#text} at (0,0) size 9x14
+            text run at (0,0) width 9: " *"
+        RenderBlock {DIV} at (72,26) size 120x14 [color=#FFFF00] [bgcolor=#000080]
+          RenderText {#text} at (111,0) size 9x14
+            text run at (111,0) width 9: "* "
+      RenderBlock {DIV} at (12,90) size 180x0
+        RenderBlock {DIV} at (0,0) size 180x0 [bgcolor=#FF0000]
+          RenderBlock (floating) {P} at (0,0) size 120x14 [color=#FFFF00] [bgcolor=#000080]
+            RenderText {#text} at (0,0) size 9x14
+              text run at (0,0) width 9: " *"
+          RenderBlock (floating) {P} at (60,14) size 120x14 [color=#FFFF00] [bgcolor=#000080]
+            RenderText {#text} at (111,0) size 9x14
+              text run at (111,0) width 9: "* "

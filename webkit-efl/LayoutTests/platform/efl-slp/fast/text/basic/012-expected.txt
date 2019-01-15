@@ -1,0 +1,35 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584 [bgcolor=#FFFFFF]
+      RenderBlock {H2} at (0,0) size 784x21
+        RenderText {#text} at (0,0) size 270x20
+          text run at (0,0) width 270: "Safari Whitespace/Non-ASCII Bug"
+      RenderBlock {P} at (0,35) size 784x28
+        RenderText {#text} at (0,0) size 742x28
+          text run at (0,0) width 480: "Apart from whitespace (tab and linefeed characters), the two lists below (in red) use identical HTML. "
+          text run at (480,0) width 262: "Both lists should be rendered on a single line. In Safari,"
+          text run at (0,14) width 268: "however, the first list shows each item on a separate line."
+      RenderBlock {P} at (0,75) size 784x14
+        RenderText {#text} at (0,0) size 776x14
+          text run at (0,0) width 776: "This bug only seems to occur if the bullet character is non-ASCII (has a Unicode value higher than 127). Non-breaking spaces (&#160;), however, are an exception."
+      RenderBlock (anonymous) at (0,101) size 784x56
+        RenderBR {BR} at (0,0) size 0x14
+        RenderInline {FONT} at (0,0) size 249x42 [color=#CC0000]
+          RenderText {#text} at (0,14) size 249x14
+            text run at (0,14) width 51: "\x{BB} England "
+            text run at (51,14) width 45: "\x{BB} Ireland "
+            text run at (96,14) width 53: "\x{BB} Scotland "
+            text run at (149,14) width 56: "\x{BB} Germany "
+            text run at (205,14) width 44: "\x{BB} France "
+          RenderBR {BR} at (249,25) size 0x0
+          RenderBR {BR} at (0,28) size 0x14
+          RenderText {#text} at (0,42) size 249x14
+            text run at (0,42) width 51: "\x{BB} England "
+            text run at (51,42) width 45: "\x{BB} Ireland "
+            text run at (96,42) width 53: "\x{BB} Scotland "
+            text run at (149,42) width 56: "\x{BB} Germany "
+            text run at (205,42) width 44: "\x{BB} France "
+        RenderText {#text} at (0,0) size 0x0
+        RenderBR {BR} at (0,0) size 0x0

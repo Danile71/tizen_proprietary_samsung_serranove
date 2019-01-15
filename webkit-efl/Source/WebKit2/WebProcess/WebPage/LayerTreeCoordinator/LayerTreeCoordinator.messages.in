@@ -1,0 +1,44 @@
+#
+#    Copyright (C) 2011 Nokia Corporation and/or its subsidiary(-ies)
+#
+#    This library is free software; you can redistribute it and/or
+#    modify it under the terms of the GNU Library General Public
+#    License as published by the Free Software Foundation; either
+#    version 2 of the License, or (at your option) any later version.
+#
+#    This library is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#    Library General Public License for more details.
+#
+#    You should have received a copy of the GNU Library General Public License
+#    along with this library; see the file COPYING.LIB.  If not, write to
+#   the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+#   Boston, MA 02110-1301, USA.
+#
+
+
+#if USE(UI_SIDE_COMPOSITING)
+messages -> LayerTreeCoordinator {
+    SetVisibleContentsRect(WebCore::IntRect visibleContentsRect, float scale, WebCore::FloatPoint trajectoryVectory)
+#if ENABLE(TIZEN_CSS_OVERFLOW_SCROLL_ACCELERATION_ON_UI_SIDE)
+    SetVisibleContentsLocationAndTrajectoryVectorForLayer(int layerID, WebCore::IntPoint visibleContentsLocation, WebCore::FloatPoint trajectoryVectory)
+#endif
+    RenderNextFrame()
+    PurgeBackingStores()
+#if ENABLE(TIZEN_WEBKIT2_TILED_AC)
+    FreePlatformSurface(int layerID, int platformSurfaceId)
+    FreePlatformSurfaceByTileID(int tileID)
+    RemovePlatformSurface(int layerID, int platformSurfaceId)
+#endif
+#if ENABLE(TIZEN_RUNTIME_BACKEND_SELECTION)
+    SetAccelerationMode(bool mode)
+#endif
+#if ENABLE(TIZEN_UPDATE_ONLY_VISIBLE_AREA_STATE)
+    UpdateOnlyVisibleAreaState(bool state)
+#endif
+#if ENABLE(TIZEN_LOW_SCALE_LAYER)
+    SetCoverWithTilesForLowScaleLayerOnly(bool updateLowScaleLayerOnly)
+#endif
+}
+#endif

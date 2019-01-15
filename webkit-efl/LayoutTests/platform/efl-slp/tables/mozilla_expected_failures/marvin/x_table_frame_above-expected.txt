@@ -1,0 +1,59 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x125
+  RenderBlock {html} at (0,0) size 800x125
+    RenderBody {body} at (8,12) size 784x105
+      RenderBlock {p} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 362x14
+          text run at (0,0) width 279: "Only the top side of the frame surrounding the table below "
+          text run at (279,0) width 83: "should be visible."
+      RenderTable {table} at (0,26) size 143x79 [border: (1px solid #808080) none]
+        RenderTableCol {colgroup} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+        RenderTableCol {colgroup} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+        RenderTableCol {colgroup} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+        RenderTableSection {thead} at (0,1) size 143x20
+          RenderTableRow {tr} at (0,2) size 143x16
+            RenderTableCell {th} at (2,2) size 45x16 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 43x14
+                text run at (1,1) width 43: "THEAD"
+            RenderTableCell {th} at (49,2) size 45x16 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 43x14
+                text run at (1,1) width 43: "THEAD"
+            RenderTableCell {th} at (96,2) size 45x16 [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 43x14
+                text run at (1,1) width 43: "THEAD"
+        RenderTableSection {tfoot} at (0,59) size 143x20
+          RenderTableRow {tr} at (0,2) size 143x16
+            RenderTableCell {td} at (2,2) size 45x16 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 39x14
+                text run at (1,1) width 39: "TFOOT"
+            RenderTableCell {td} at (49,2) size 45x16 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 39x14
+                text run at (1,1) width 39: "TFOOT"
+            RenderTableCell {td} at (96,2) size 45x16 [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 39x14
+                text run at (1,1) width 39: "TFOOT"
+        RenderTableSection {tbody} at (0,21) size 143x38
+          RenderTableRow {tr} at (0,2) size 143x16
+            RenderTableCell {td} at (2,2) size 45x16 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 42x14
+                text run at (1,1) width 42: "TBODY"
+            RenderTableCell {td} at (49,2) size 45x16 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 42x14
+                text run at (1,1) width 42: "TBODY"
+            RenderTableCell {td} at (96,2) size 45x16 [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 42x14
+                text run at (1,1) width 42: "TBODY"
+          RenderTableRow {tr} at (0,20) size 143x16
+            RenderTableCell {td} at (2,20) size 45x16 [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 42x14
+                text run at (1,1) width 42: "TBODY"
+            RenderTableCell {td} at (49,20) size 45x16 [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 42x14
+                text run at (1,1) width 42: "TBODY"
+            RenderTableCell {td} at (96,20) size 45x16 [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 42x14
+                text run at (1,1) width 42: "TBODY"

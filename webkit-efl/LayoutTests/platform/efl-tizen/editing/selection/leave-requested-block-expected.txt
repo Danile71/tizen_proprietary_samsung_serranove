@@ -1,0 +1,32 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 161x19
+          text run at (0,0) width 161: "Test case for fix for "
+        RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+          RenderText {#text} at (161,0) size 426x19
+            text run at (161,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=5354"
+        RenderText {#text} at (587,0) size 5x19
+          text run at (587,0) width 5: "."
+      RenderBlock {P} at (0,35) size 964x38
+        RenderText {#text} at (0,0) size 931x38
+          text run at (0,0) width 931: "Changes were made to VisiblePosition's so that init() will not leave the block containing the requested position unless"
+          text run at (0,19) width 334: "there are no VisiblePositions in that block."
+      RenderBlock {P} at (0,89) size 964x0
+      RenderBlock {DIV} at (0,89) size 964x55 [border: (2px solid #AAAAFF)]
+        RenderBlock {P} at (2,18) size 960x19
+          RenderText {#text} at (0,0) size 864x19
+            text run at (0,0) width 864: "Select All while inside this editable block should create a selection that does not extend outside of this block."
+layer at (8,168) size 964x19
+  RenderBlock {P} at (0,160) size 964x19
+    RenderText {#text} at (0,0) size 534x19
+      text run at (0,0) width 534: "This is a paragraph outside the editable block with overflow:hidden"
+selection start: position 0 of child 0 {#text} of child 1 {P} of child 5 {DIV} of body
+selection end:   position 113 of child 0 {#text} of child 1 {P} of child 5 {DIV} of body

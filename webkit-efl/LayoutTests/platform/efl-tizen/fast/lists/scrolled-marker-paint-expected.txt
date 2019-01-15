@@ -1,0 +1,23 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (anonymous) at (0,0) size 964x38
+        RenderBR {BR} at (0,0) size 0x19
+        RenderBR {BR} at (0,19) size 0x19
+      RenderBlock {DIV} at (0,38) size 964x19
+        RenderText {#text} at (0,0) size 169x19
+          text run at (0,0) width 169: "This is a testcase for "
+        RenderInline {A} at (0,0) size 576x19 [color=#0000EE]
+          RenderText {#text} at (169,0) size 576x19
+            text run at (169,0) width 576: "REGRESSION: (r13028) Scrolling causes incomplete drawing of ul bullets"
+        RenderText {#text} at (745,0) size 5x19
+          text run at (745,0) width 5: "."
+layer at (8,-4) size 496x19 backgroundClip at (0,0) size 980x735 clip at (0,0) size 980x735 outlineClip at (0,0) size 980x735
+  RenderBlock (positioned) {UL} at (8,-4) size 496x19
+    RenderListItem {LI} at (40,0) size 456x19
+      RenderListMarker at (-18,0) size 7x19: bullet
+      RenderText {#text} at (0,0) size 456x19
+        text run at (0,0) width 142: "This is a list item. "
+        text run at (142,0) width 314: "You should see a list marker to the left."

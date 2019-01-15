@@ -1,0 +1,11 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 743x28
+          text run at (0,0) width 743: "The two squares below should not match each other. On the left is an uncorrected image and border, and on the right is the same image and same border color"
+          text run at (0,14) width 105: "corrected from sRGB."
+      RenderImage {IMG} at (0,40) size 140x140 [border: (20px solid #560063)]
+      RenderImage {IMG} at (140,40) size 140x140 [border: (20px solid #560063)]

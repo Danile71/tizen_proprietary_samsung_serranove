@@ -1,0 +1,22 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 72x14
+          text run at (0,0) width 72: "First paragraph"
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 171x14
+          text run at (0,0) width 171: "Here is some regular paragraph text "
+        RenderText {#text} at (610,0) size 77x14
+          text run at (610,0) width 77: "Some more text."
+      RenderBlock {P} at (0,52) size 784x14
+        RenderText {#text} at (0,0) size 399x14
+          text run at (0,0) width 399: "The image gets erroneously positioned to the top/left corner of the paragraph instead."
+layer at (8,34) size 439x14
+  RenderInline (relative positioned) {SPAN} at (0,0) size 439x14 [bgcolor=#90EE90]
+    RenderText {#text} at (171,0) size 439x14
+      text run at (171,0) width 439: "The image (found or not) should be positioned at the top/left corner of this green-shaded text "
+layer at (179,34) size 42x42
+  RenderImage {IMG} at (0,0) size 42x42 [border: (1px solid #000000)]

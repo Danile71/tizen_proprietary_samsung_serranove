@@ -1,0 +1,26 @@
+<manifest>
+    <define>
+        <domain name="webkit2-efl"/>
+        <request>
+            <smack request="system::homedir" type="arwxt"/>
+            <smack request="xorg" type="rw"/>
+            <smack request="system::use_internet" type="rw"/>
+            <smack request="tizen::vconf::public::r::platform::rw" type="r"/>
+            <smack request="tizen::vconf::public::r" type="rl"/>
+            <smack request="tizen::vconf::platform::rw" type="rl"/>
+            <smack request="tizen::vconf::setting::admin" type="rl"/>
+        </request>
+        <permit>
+            <smack permit="system::use_internet" type="w"/>
+        </permit>
+    </define>
+    <request>
+        <domain name="_"/>
+    </request>
+    <assign>
+        <filesystem path="/usr/bin/WebProcess" label="webkit2-efl" exec_label="none"/>
+        <filesystem path="/usr/bin/PluginProcess" label="webkit2-efl" exec_label="none"/>
+        <filesystem path="/usr/bin/MiniBrowser" label="webkit2-efl" exec_label="none"/>
+        <filesystem path="/etc/opt/upgrade/200.webkit2-efl.patch.sh" label="webkit2-efl" exec_label="none"/>
+    </assign>
+</manifest>

@@ -1,0 +1,35 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 532x14
+          RenderInline {A} at (0,0) size 226x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 226x14
+              text run at (40,0) width 226: "http://bugs.webkit.org/show_bug.cgi?id=13800"
+          RenderText {#text} at (266,0) size 306x14
+            text run at (266,0) width 3: " "
+            text run at (269,0) width 303: "REGRESSION: Moving a slider moves another unrelated slider"
+        RenderText {#text} at (572,0) size 3x14
+          text run at (572,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 213x14
+          text run at (0,0) width 213: "The first slider\x{2019}s thumb should be on the left."
+      RenderBlock {DIV} at (0,52) size 784x30
+        RenderSlider {INPUT} at (2,2) size 129x11 [bgcolor=#FFFFFF]
+          RenderDeprecatedFlexibleBox {DIV} at (0,0) size 129x11
+            RenderBlock {DIV} at (0,0) size 117x12
+            RenderBlock {DIV} at (117,0) size 12x12
+        RenderBR {BR} at (133,13) size 0x0
+        RenderSlider {INPUT} at (2,17) size 129x11 [bgcolor=#FFFFFF]
+          RenderDeprecatedFlexibleBox {DIV} at (0,0) size 129x11
+            RenderBlock {DIV} at (0,0) size 117x12
+            RenderBlock {DIV} at (117,0) size 12x12
+        RenderText {#text} at (0,0) size 0x0
+layer at (10,62) size 12x12
+  RenderBlock (relative positioned) {DIV} at (0,0) size 12x12
+layer at (127,77) size 12x12
+  RenderBlock (relative positioned) {DIV} at (0,0) size 12x12

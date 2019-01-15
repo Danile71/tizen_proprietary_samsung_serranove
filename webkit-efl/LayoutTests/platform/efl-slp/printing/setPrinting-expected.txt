@@ -1,0 +1,12 @@
+layer at (0,0) size 800x777
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x777
+  RenderBlock {HTML} at (0,0) size 800x777
+    RenderBody {BODY} at (0,0) size 800x777
+      RenderBlock {DIV} at (0,0) size 800x749 [bgcolor=#008000]
+        RenderText {#text} at (0,0) size 173x14
+          text run at (0,0) width 173: "This test case should output 2 pages."
+      RenderBlock (anonymous) at (0,749) size 800x28
+        RenderText {#text} at (0,0) size 794x28
+          text run at (0,0) width 794: "There should be a blue line above this test. This line is the boundary of 2 pages. As the height of green box is shorter than the height of a page by one pixel, there should"
+          text run at (0,14) width 260: "be a white line between the green box and the blue line."

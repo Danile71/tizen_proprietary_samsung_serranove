@@ -1,0 +1,20 @@
+layer at (0,0) size 800x606
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x606
+  RenderBlock {HTML} at (0,0) size 800x606
+    RenderBody {BODY} at (8,8) size 784x590
+      RenderBlock {P} at (0,0) size 784x12
+        RenderText {#text} at (0,0) size 528x11
+          text run at (0,0) width 528: "Testing masks on compositing layers. Left and right columns should look the same."
+      RenderBlock (anonymous) at (0,24) size 784x566
+        RenderText {#text} at (262,554) size 6x11
+          text run at (262,554) width 6: " "
+        RenderText {#text} at (0,0) size 0x0
+layer at (8,32) size 262x562
+  RenderBlock {DIV} at (0,0) size 262x562 [border: (1px solid #000000)]
+layer at (39,63) size 200x200
+  RenderBlock (relative positioned) {DIV} at (31,31) size 200x200 [bgcolor=#6464FFCC] [border: (10px solid #000000)]
+layer at (276,32) size 262x562
+  RenderBlock {DIV} at (268,0) size 262x562 [border: (1px solid #000000)]
+layer at (307,63) size 200x200
+  RenderBlock (relative positioned) {DIV} at (31,31) size 200x200 [bgcolor=#6464FFCC] [border: (10px solid #000000)]

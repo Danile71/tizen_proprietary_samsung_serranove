@@ -1,0 +1,39 @@
+From 312524af520d725d65722006c88b75ac14d37ec4 Mon Sep 17 00:00:00 2001
+From: Elena, Reshetova <elena.reshetova@intel.com>
+Date: Mon, 20 Feb 2012 15:44:34 +0200
+Subject: [PATCH] Fix for build_pack functionality
+
+---
+ build/pack.c |    6 ++++--
+ 1 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/build/pack.c b/build/pack.c
+index 981a03e..34e260d 100644
+--- a/build/pack.c
++++ b/build/pack.c
+@@ -48,8 +48,10 @@ static rpmRC cpio_doio(FD_t fdo, Header h, CSA_t csa,
+     int xx, i;
+ 
+     {	char *fmode = rpmExpand(fmodeMacro, NULL);
+-	if (!(fmode && fmode[0] == 'w'))
++	if (!(fmode && fmode[0] == 'w')) {
++        if (fmode) free(fmode);
+ 	    fmode = xstrdup("w9.gzdio");
++    }
+ 	(void) Fflush(fdo);
+ 	cfd = Fdopen(fdDup(Fileno(fdo)), fmode);
+ 	fmode = _free(fmode);
+@@ -142,9 +144,9 @@ static StringBuf addFileToTagAux(rpmSpec spec,
+ 	}
+ 	appendStringBuf(sb, buf);
+     }
+-    (void) fclose(f);
+ 
+ exit:
++    if (f) fclose(f);
+     free(fn);
+ 
+     return sb;
+-- 
+1.7.4.1
+

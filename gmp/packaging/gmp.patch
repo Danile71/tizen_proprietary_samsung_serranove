@@ -1,0 +1,193 @@
+Index: configure
+--- configure.orig	2006-03-22 17:27:26 +0100
++++ configure	2006-03-27 09:23:28 +0200
+@@ -3189,189 +3189,6 @@
+   sh2-*-*)  path="sh/sh2 sh" ;;
+ 
+ 
+-  *sparc*-*-*)
+-    # sizeof(long)==4 or 8 is tested, to ensure we get the right ABI.  We've
+-    # had various bug reports where users have set CFLAGS for their desired
+-    # mode, but not set our ABI.  For some reason it's sparc where this
+-    # keeps coming up, presumably users there are accustomed to driving the
+-    # compiler mode that way.  The effect of our testlist setting is to
+-    # reject ABI=64 in favour of ABI=32 if the user has forced the flags to
+-    # 32-bit mode.
+-    #
+-    abilist="32"
+-    cclist="gcc acc cc"
+-    any_testlist="sizeof-long-4"
+-
+-echo "include_mpn(\`sparc32/sparc-defs.m4')" >> $gmp_tmpconfigm4i
+-
+-
+-    case $host_cpu in
+-      sparcv8 | microsparc | turbosparc)
+-        path="sparc32/v8 sparc32" ;;
+-      supersparc)
+-        path="sparc32/v8/supersparc sparc32/v8 sparc32" ;;
+-      sparc64 | sparcv9* | ultrasparc*)
+-        path="sparc32/v9 sparc32/v8 sparc32" ;;
+-      *)
+-        path="sparc32" ;;
+-    esac
+-
+-    # gcc 2.7.2 doesn't know about v9 and doesn't pass -xarch=v8plus to the
+-    # assembler.  Add it explicitly since the solaris assembler won't accept
+-    # our sparc32/v9 asm code without it.  gas accepts -xarch=v8plus too, so
+-    # it can be in the cflags unconditionally (though gas doesn't need it).
+-    #
+-    # gcc -m32 is needed to force 32-bit mode on a dual-ABI system, but past
+-    # gcc doesn't know that flag, hence cflags_maybe.  Note that -m32 cannot
+-    # be done through the optlist since the plain cflags would be run first
+-    # and we don't want to require the default mode (whatever it is) works.
+-    #
+-    # Note it's gcc_32_cflags_maybe and not gcc_cflags_maybe because the
+-    # latter would be used in the 64-bit ABI on systems like "*bsd" where
+-    # abilist="64" only.
+-    #
+-    case $host_cpu in
+-      sparc64 | sparcv9* | ultrasparc*)
+-        gcc_cflags="-O2 -Wa,-xarch=v8plus" ;;
+-      *)
+-        gcc_cflags="-O2" ;;
+-    esac
+-    gcc_32_cflags_maybe="-m32"
+-    gcc_cflags_optlist="cpu"
+-
+-    # gcc 2.7.2 knows -mcypress, -msupersparc, -mv8, -msparclite.
+-    # gcc 2.95 knows -mcpu= v7, hypersparc, sparclite86x, f930, f934,
+-    #   sparclet, tsc701, v9, ultrasparc.  A warning is given that the
+-    #   plain -m forms will disappear.
+-    # gcc 3.0 adds nothing.
+-    # gcc 3.1 adds nothing.
+-    # gcc 3.2 adds nothing.
+-    # gcc 3.3 adds ultrasparc3.
+-    #
+-    case $host_cpu in
+-      supersparc)           gcc_cflags_cpu="-mcpu=supersparc -msupersparc" ;;
+-      sparcv8 | microsparc | turbosparc)
+-			    gcc_cflags_cpu="-mcpu=v8 -mv8" ;;
+-      sparc64 | sparcv9*)   gcc_cflags_cpu="-mcpu=v9 -mv8" ;;
+-      ultrasparc3)          gcc_cflags_cpu="-mcpu=ultrasparc3 -mcpu=ultrasparc -mv8" ;;
+-      ultrasparc*)          gcc_cflags_cpu="-mcpu=ultrasparc -mv8" ;;
+-      *)                    gcc_cflags_cpu="-mcpu=v7 -mcypress" ;;
+-    esac
+-
+-    # SunPRO cc and acc, and SunOS bundled cc
+-    case $host in
+-      *-*-solaris* | *-*-sunos*)
+-    	# Note no -g, it disables all optimizations.
+-    	cc_cflags=
+-    	cc_cflags_optlist="opt arch cpu"
+-
+-        # SunOS cc doesn't know -xO4, fallback to -O2.
+-    	cc_cflags_opt="-xO4 -O2"
+-
+-        # SunOS cc doesn't know -xarch, apparently always generating v7
+-        # code, so make this optional
+-    	case $host_cpu in
+-    	  sparcv8 | microsparc | supersparc | turbosparc)
+-					      cc_cflags_arch="-xarch=v8" ;;
+-    	  sparc64 | sparcv9* | ultrasparc*)   cc_cflags_arch="-xarch=v8plus" ;;
+-    	  *)                                  cc_cflags_arch="-xarch=v7" ;;
+-    	esac
+-
+-        # SunOS cc doesn't know -xchip and doesn't seem to have an equivalent.
+-    	# SunPRO cc 5 recognises -xchip=generic, old, super, super2, micro,
+-    	#   micro2, hyper, hyper2, powerup, ultra, ultra2, ultra2i.
+-    	# SunPRO cc 6 adds -xchip=ultra2e, ultra3cu.
+-        #
+-    	# FIXME: Which of ultra, ultra2 or ultra2i is the best fallback for
+-    	# ultrasparc3?
+-    	#
+-    	case $host_cpu in
+-    	  supersparc)   cc_cflags_cpu="-xchip=super" ;;
+-    	  microsparc)   cc_cflags_cpu="-xchip=micro" ;;
+-    	  turbosparc)   cc_cflags_cpu="-xchip=micro2" ;;
+-    	  ultrasparc)   cc_cflags_cpu="-xchip=ultra" ;;
+-    	  ultrasparc2)  cc_cflags_cpu="-xchip=ultra2" ;;
+-    	  ultrasparc2i) cc_cflags_cpu="-xchip=ultra2i" ;;
+-    	  ultrasparc3)  cc_cflags_cpu="-xchip=ultra3 -xchip=ultra" ;;
+-    	  *)            cc_cflags_cpu="-xchip=generic" ;;
+-    	esac
+-    esac
+-
+-    case $host_cpu in
+-      sparc64 | sparcv9* | ultrasparc*)
+-        case $host in
+-          # Solaris 6 and earlier cannot run ABI=64 since it doesn't save
+-          # registers properly, so ABI=32 is left as the only choice.
+-          #
+-          *-*-solaris2.[0-6] | *-*-solaris2.[0-6].*) ;;
+-
+-          # BSD sparc64 ports are 64-bit-only systems, so ABI=64 is the only
+-          # choice.  In fact they need no special compiler flags, gcc -m64
+-          # is the default, but it doesn't hurt to add it.  v9 CPUs always
+-          # use the sparc64 port, since the plain 32-bit sparc ports don't
+-          # run on a v9.
+-          #
+-          *-*-*bsd*) abilist="64" ;;
+-
+-          # For all other systems, we try both 64 and 32.
+-          #
+-          # GNU/Linux sparc64 has only recently gained a 64-bit user mode.
+-          # In the past sparc64 meant a v9 cpu, but there were no 64-bit
+-          # operations in user mode.  We assume that if "gcc -m64" works
+-          # then the system is suitable.  Hopefully even if someone attempts
+-          # to put a new gcc and/or glibc on an old system it won't run.
+-          #
+-          *) abilist="64 32" ;;
+-        esac
+-
+-        path_64="sparc64"
+-        cclist_64="gcc"
+-        any_64_testlist="sizeof-long-8"
+-
+-        # gcc -mptr64 is probably implied by -m64, but we're not sure if
+-        # this was always so.  On Solaris in the past we always used both
+-        # "-m64 -mptr64".
+-        #
+-        # gcc -Wa,-xarch=v9 is thought to be necessary in some cases on
+-        # solaris, but it would seem likely that if gcc is going to generate
+-        # 64-bit code it will have to add that option itself where needed.
+-        # An extra copy of this option should be harmless though, but leave
+-        # it until we're sure.  (Might want -xarch=v9a or -xarch=v9b for the
+-        # higher cpu types instead.)
+-        #
+-        gcc_64_cflags="-O2 -m64 -mptr64"
+-        gcc_64_ldflags="-Wc,-m64"
+-        gcc_64_cflags_optlist="cpu"
+-
+-        case $host in
+-          *-*-solaris*)
+-            # Sun cc.
+-            #
+-            # -fast enables different optimizations depending on compiler
+-            # version.  Unfortunately it does things according to the native
+-            # system, which may not be optimal when cross compiling (to a
+-            # different sparc).  -xchip from cc_cflags_cpu will override at
+-            # least that part of its selections.
+-            #
+-            # -fns=no and -fsimple=1 disable some transformations that
+-            # conflict with IEEE 754, which some compiler versions perform
+-            # under -fast.
+-            #
+-            cclist_64="$cclist_64 cc"
+-            cc_64_cflags="-fast -fns=no -fsimple=1 -xarch=v9"
+-            cc_64_cflags_optlist="cpu"
+-            ;;
+-        esac
+-
+-        # using the v9 %tick register
+-        SPEED_CYCLECOUNTER_OBJ_32=sparcv9.lo
+-        SPEED_CYCLECOUNTER_OBJ_64=sparcv9.lo
+-        cyclecounter_size_32=2
+-        cyclecounter_size_64=2
+-        ;;
+-    esac
+-    ;;
+-
+ 
+   # VAX
+   vax*-*-*)

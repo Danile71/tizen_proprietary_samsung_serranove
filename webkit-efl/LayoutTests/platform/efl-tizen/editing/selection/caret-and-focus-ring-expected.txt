@@ -1,0 +1,21 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 943x38
+          text run at (0,0) width 943: "This tests that the caret and the focus halo are not displayed when the WebView is not focused (using the pixel output"
+          text run at (0,19) width 198: "from DumpRenderTree)."
+      RenderBlock {DIV} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 79x19
+          text run at (0,0) width 79: "This is an "
+        RenderInline {SPAN} at (0,0) size 64x19
+          RenderText {#text} at (79,0) size 64x19
+            text run at (79,0) width 64: "editable"
+        RenderText {#text} at (143,0) size 515x19
+          text run at (143,0) width 515: " region. No caret or focus ring should appear in the pixel results."
+caret: position 11 of child 0 {#text} of child 3 {DIV} of body

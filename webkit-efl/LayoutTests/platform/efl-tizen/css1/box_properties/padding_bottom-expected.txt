@@ -1,0 +1,99 @@
+layer at (0,0) size 980x1674
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1674
+  RenderBlock {HTML} at (0,0) size 980x1674
+    RenderBody {BODY} at (8,8) size 964x1658 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 451x19
+          text run at (0,0) width 451: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,35) size 964x90
+        RenderText {#text} at (0,0) size 364x90
+          text run at (0,0) width 341: ".zero {background-color: silver; padding-bottom: 0;}"
+          text run at (341,0) width 0: " "
+          text run at (0,15) width 357: ".one {padding-bottom: 0.5in; background-color: aqua;}"
+          text run at (357,15) width 0: " "
+          text run at (0,30) width 357: ".two {padding-bottom: 25px; background-color: aqua;}"
+          text run at (357,30) width 0: " "
+          text run at (0,45) width 364: ".three {padding-bottom: 5em; background-color: aqua;}"
+          text run at (364,45) width 0: " "
+          text run at (0,60) width 355: ".four {padding-bottom: 25%; background-color: aqua;}"
+          text run at (355,60) width 0: " "
+          text run at (0,75) width 363: ".five {padding-bottom: -20px; background-color: aqua;}"
+          text run at (363,75) width 0: " "
+      RenderBlock {HR} at (0,138) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,156) size 964x19 [bgcolor=#C0C0C0]
+        RenderText {#text} at (0,0) size 261x19
+          text run at (0,0) width 261: "This element has a class of zero."
+      RenderBlock {P} at (0,191) size 964x86 [bgcolor=#00FFFF]
+        RenderText {#text} at (0,0) size 904x38
+          text run at (0,0) width 836: "This element should have a bottom padding of half an inch, which will require extra text in order to test. "
+          text run at (836,0) width 68: "Both the"
+          text run at (0,19) width 518: "content background and the padding should be aqua (light blue)."
+      RenderBlock {P} at (0,293) size 964x63 [bgcolor=#00FFFF]
+        RenderText {#text} at (0,0) size 947x38
+          text run at (0,0) width 813: "This element should have a bottom padding of 25 pixels, which will require extra text in order to test. "
+          text run at (813,0) width 134: "Both the content"
+          text run at (0,19) width 452: "background and the padding should be aqua (light blue)."
+      RenderBlock {P} at (0,372) size 964x118 [bgcolor=#00FFFF]
+        RenderText {#text} at (0,0) size 918x38
+          text run at (0,0) width 784: "This element should have a bottom padding of 5 em, which will require extra text in order to test. "
+          text run at (784,0) width 134: "Both the content"
+          text run at (0,19) width 452: "background and the padding should be aqua (light blue)."
+      RenderBlock {P} at (0,506) size 964x279 [bgcolor=#00FFFF]
+        RenderText {#text} at (0,0) size 961x38
+          text run at (0,0) width 961: "This element should have a bottom padding of 25%, which is calculated with respect to the width of the parent element."
+          text run at (0,19) width 342: "This will require extra text in order to test. "
+          text run at (342,19) width 591: "Both the content background and the padding should be aqua (light blue)."
+      RenderBlock {P} at (0,801) size 964x19 [bgcolor=#C0C0C0]
+        RenderText {#text} at (0,0) size 261x19
+          text run at (0,0) width 261: "This element has a class of zero."
+      RenderBlock {P} at (0,836) size 964x38 [bgcolor=#00FFFF]
+        RenderText {#text} at (0,0) size 884x38
+          text run at (0,0) width 750: "This element should have no bottom padding, since negative padding values are not allowed. "
+          text run at (750,0) width 134: "Both the content"
+          text run at (0,19) width 514: "background and the normal padding should be aqua (light blue)."
+      RenderTable {TABLE} at (0,890) size 964x768 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x766
+          RenderTableRow {TR} at (0,0) size 962x27
+            RenderTableCell {TD} at (0,0) size 962x27 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 202x19
+                RenderText {#text} at (4,4) size 202x19
+                  text run at (4,4) width 202: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,27) size 962x739
+            RenderTableCell {TD} at (0,383) size 13x27 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 5x19
+                text run at (4,4) width 5: " "
+            RenderTableCell {TD} at (13,27) size 949x739 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 941x19 [bgcolor=#C0C0C0]
+                RenderText {#text} at (0,0) size 261x19
+                  text run at (0,0) width 261: "This element has a class of zero."
+              RenderBlock {P} at (4,39) size 941x86 [bgcolor=#00FFFF]
+                RenderText {#text} at (0,0) size 904x38
+                  text run at (0,0) width 836: "This element should have a bottom padding of half an inch, which will require extra text in order to test. "
+                  text run at (836,0) width 68: "Both the"
+                  text run at (0,19) width 518: "content background and the padding should be aqua (light blue)."
+              RenderBlock {P} at (4,141) size 941x63 [bgcolor=#00FFFF]
+                RenderText {#text} at (0,0) size 881x38
+                  text run at (0,0) width 813: "This element should have a bottom padding of 25 pixels, which will require extra text in order to test. "
+                  text run at (813,0) width 68: "Both the"
+                  text run at (0,19) width 518: "content background and the padding should be aqua (light blue)."
+              RenderBlock {P} at (4,220) size 941x118 [bgcolor=#00FFFF]
+                RenderText {#text} at (0,0) size 918x38
+                  text run at (0,0) width 784: "This element should have a bottom padding of 5 em, which will require extra text in order to test. "
+                  text run at (784,0) width 134: "Both the content"
+                  text run at (0,19) width 452: "background and the padding should be aqua (light blue)."
+              RenderBlock {P} at (4,354) size 941x292 [bgcolor=#00FFFF]
+                RenderText {#text} at (0,0) size 914x57
+                  text run at (0,0) width 885: "This element should have a bottom padding of 25%, which is calculated with respect to the width of the parent"
+                  text run at (0,19) width 76: "element. "
+                  text run at (76,19) width 342: "This will require extra text in order to test. "
+                  text run at (418,19) width 496: "Both the content background and the padding should be aqua"
+                  text run at (0,38) width 90: "(light blue)."
+              RenderBlock {P} at (4,662) size 941x19 [bgcolor=#C0C0C0]
+                RenderText {#text} at (0,0) size 261x19
+                  text run at (0,0) width 261: "This element has a class of zero."
+              RenderBlock {P} at (4,697) size 941x38 [bgcolor=#00FFFF]
+                RenderText {#text} at (0,0) size 884x38
+                  text run at (0,0) width 750: "This element should have no bottom padding, since negative padding values are not allowed. "
+                  text run at (750,0) width 134: "Both the content"
+                  text run at (0,19) width 514: "background and the normal padding should be aqua (light blue)."

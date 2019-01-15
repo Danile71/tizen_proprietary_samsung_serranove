@@ -1,0 +1,19 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x0
+        RenderInline {B} at (0,0) size 0x0
+      RenderBlock (anonymous) at (0,0) size 784x0
+      RenderBlock (anonymous) at (0,0) size 784x0
+        RenderInline {B} at (0,0) size 0x0
+      RenderBlock {P} at (0,0) size 784x14
+        RenderInline {B} at (0,0) size 27x14
+          RenderText {#text} at (0,0) size 27x14
+            text run at (0,0) width 27: "Bold "
+        RenderText {#text} at (27,0) size 42x14
+          text run at (27,0) width 42: "Not bold"
+      RenderBlock (anonymous) at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 68x14
+          text run at (0,0) width 68: "Also not bold."

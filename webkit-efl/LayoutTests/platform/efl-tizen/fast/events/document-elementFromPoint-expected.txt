@@ -1,0 +1,18 @@
+Absolute
+Relative
+Fixed
+x	x
+Table Content
+In Columns
+Transformed
+In RTL overflow
+FAIL: event at (109, 57) expected to hit absolute at (29, 32) but hit filler at (109, 57)
+FAIL: event at (161, 13) expected to hit relative at (31, 28) but hit filler at (161, 13)
+FAIL: event at (40, 297) expected to hit table-content at (15, 18) but hit filler at (40, 297)
+FAIL: event at (122, 407) expected to hit transformed at (18, 15) but hit table-content at (77, 28)
+FAIL: event at (573, 480) expected to hit inside-overflow at (2, 9) but hit overflow-contents at (162, 89)
+FAIL: event at (707, 174) expected to hit in-columns at (88, 13) but hit filler at (707, 174)
+PASS: event at (241, 67) hit fixed at offset (41, 17)
+PASS: event at (244, 102) hit fixed at offset (44, 52)
+PASS: event at (388, 88) hit fixed at offset (188, 38)
+

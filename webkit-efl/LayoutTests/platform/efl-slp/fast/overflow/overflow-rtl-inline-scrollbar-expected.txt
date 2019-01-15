@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 161x14
+          text run at (0,0) width 161: "This tests for a regression against "
+        RenderInline {I} at (0,0) size 766x28
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (161,0) size 262x14
+              text run at (161,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=6618"
+          RenderText {#text} at (423,0) size 766x28
+            text run at (423,0) width 3: " "
+            text run at (426,0) width 340: "Inline in RTL block with overflow:auto and left border makes scroll bar"
+            text run at (0,14) width 34: "appear"
+        RenderText {#text} at (34,14) size 3x14
+          text run at (34,14) width 3: "."
+      RenderBlock {HR} at (0,40) size 784x2 [border: (1px inset #000000)]
+layer at (8,56) size 784x14 clip at (18,56) size 774x14
+  RenderBlock {DIV} at (0,48) size 784x14 [border: (10px solid #0000FF)]
+    RenderText {#text} at (548,0) size 236x14
+      text run at (548,0) width 88: "This block should "
+      text run at (781,0) width 3 RTL: "."
+    RenderInline {EM} at (0,0) size 15x14
+      RenderText {#text} at (636,0) size 15x14
+        text run at (636,0) width 15: "not"
+    RenderText {#text} at (651,0) size 130x14
+      text run at (651,0) width 130: " have a horizontal scroll bar"

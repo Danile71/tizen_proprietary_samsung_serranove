@@ -1,0 +1,26 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderText {#text} at (0,0) size 761x28
+        text run at (0,0) width 761: "This tests the width of a breaking space after a Hindi character to ensure that it's measured properly and enough space is left for it. Neither the Hindi on the button"
+        text run at (0,14) width 383: "below nor the same text on two lines below that should be truncated at either end."
+      RenderBR {BR} at (383,25) size 0x0
+      RenderButton {INPUT} at (2,30) size 46x36 [color=#202020]
+        RenderBlock (anonymous) at (15,8) size 16x18
+          RenderText at (8,0) size 0x17
+            text run at (8,0) width 0: "\x{915}\x{93F}\x{938}\x{940} \x{92D}\x{940} \x{924}\x{930}\x{939} \x{906}\x{917}\x{947} \x{92C}"
+      RenderBR {BR} at (50,52) size 0x0
+      RenderInline {SPAN} at (0,0) size 12x14
+        RenderText {#text} at (0,68) size 12x14
+          text run at (0,68) width 12: "\x{915}\x{93F}\x{938}\x{940} \x{92D}\x{940} \x{924}\x{930}\x{939} \x{906}\x{917}\x{947} \x{92C}"
+      RenderText {#text} at (12,68) size 19x14
+        text run at (12,68) width 19: "Foo"
+      RenderBR {BR} at (31,79) size 0x0
+      RenderInline {SPAN} at (0,0) size 12x14
+        RenderText {#text} at (0,82) size 12x14
+          text run at (0,82) width 12: "\x{915}\x{93F}\x{938}\x{940} \x{92D}\x{940} \x{924}\x{930}\x{939} \x{906}\x{917}\x{947} \x{92C}"
+      RenderText {#text} at (12,82) size 19x14
+        text run at (12,82) width 19: "Foo"
+      RenderBR {BR} at (31,93) size 0x0

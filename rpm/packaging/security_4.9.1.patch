@@ -1,0 +1,5700 @@
+diff -Nuarp rpm/build/files.c rpm-security/build/files.c
+--- rpm/build/files.c	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/build/files.c	2012-10-01 10:29:50.283983646 +0300
+@@ -827,6 +827,7 @@ static VFA_t virtualFileAttributes[] = {
+ 	{ "%readme",	0,	RPMFILE_README },
+ 	{ "%license",	0,	RPMFILE_LICENSE },
+ 	{ "%pubkey",	0,	RPMFILE_PUBKEY },
++	{ "%manifest",	0,	RPMFILE_SECMANIFEST },
+ 	{ NULL, 0, 0 }
+ };
+ 
+@@ -894,7 +895,7 @@ static rpmRC parseForSimple(rpmSpec spec
+ 	    if (fl->currentFlags & RPMFILE_DOC) {
+ 		rstrscat(&specialDocBuf, " ", s, NULL);
+ 	    } else
+-	    if (fl->currentFlags & RPMFILE_PUBKEY)
++	    if (fl->currentFlags & (RPMFILE_PUBKEY|RPMFILE_SECMANIFEST))
+ 	    {
+ 		*fileName = s;
+ 	    } else {
+@@ -1612,6 +1613,14 @@ static rpmRC processMetadataFile(Package
+ 	apkt = pgpArmorWrap(PGPARMOR_PUBKEY, pkt, pktlen);
+ 	break;
+     }
++    case RPMTAG_SECMANIFEST:
++	if ((xx = rpmioSlurp(fn, &pkt, &pktlen)) != 0 || pkt == NULL) {
++	    rpmlog(RPMLOG_ERR, _("%s: Security manifest file read failed.\n"), fn);
++	    goto exit;
++	}
++	apkt = b64encode(pkt, pktlen, -1);
++	rpmlog(RPMLOG_INFO, _("Aptk: %s\n"), apkt);
++	break;
+     }
+ 
+     if (!apkt) {
+@@ -1868,6 +1877,8 @@ static rpmRC processPackageFiles(rpmSpec
+ 	    dupAttrRec(&fl.cur_ar, specialDocAttrRec);
+ 	} else if (fl.currentFlags & RPMFILE_PUBKEY) {
+ 	    (void) processMetadataFile(pkg, &fl, fileName, RPMTAG_PUBKEYS);
++	} else if (fl.currentFlags & RPMFILE_SECMANIFEST) {
++	    (void) processMetadataFile(pkg, &fl, fileName, RPMTAG_SECMANIFEST);
+ 	} else {
+ 	    (void) processBinaryFile(pkg, &fl, fileName);
+ 	}
+diff -Nuarp rpm/build/parsePreamble.c rpm-security/build/parsePreamble.c
+--- rpm/build/parsePreamble.c	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/build/parsePreamble.c	2012-10-01 10:29:50.287983644 +0300
+@@ -216,7 +216,7 @@ static int addSource(rpmSpec spec, Packa
+ 	*fieldp = '\0';
+ 
+ 	nump = fieldp_backup;
+-	SKIPSPACE(nump);
++	if (nump) SKIPSPACE(nump);
+ 	if (nump == NULL || *nump == '\0') {
+ 	    num = flag == RPMBUILD_ISSOURCE ? 0 : INT_MAX;
+ 	} else {
+@@ -913,6 +913,7 @@ static struct PreambleRec_s const preambleList[] = {
+     {RPMTAG_BUILDSUGGESTS,	0, 0, LEN_AND_STR("buildsuggests")},
+     {RPMTAG_BUILDENHANCES,	0, 0, LEN_AND_STR("buildsupplements")},
+     {RPMTAG_BUILDENHANCES,	0, 0, LEN_AND_STR("buildenhances")},
++    {RPMTAG_SECMANIFEST,	0, 0, LEN_AND_STR("manifest")},
+     {0, 0, 0, 0}
+ };
+ 
+diff -Nuarp rpm/configure.ac rpm-security/configure.ac
+--- rpm/configure.ac	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/configure.ac	2012-10-01 10:29:50.291983643 +0300
+@@ -653,6 +653,65 @@ AC_SUBST(WITH_SELINUX_LIB)
+ AC_SUBST(WITH_SEMANAGE_LIB)
+ AM_CONDITIONAL(SELINUX,[test "$with_selinux" = yes])
+ 
++# msm
++WITH_MSM_LIB=
++WITH_MSM_INCLUDE=
++AC_ARG_WITH(msm, [AS_HELP_STRING([--with-msm],[build with msm support])],
++[case "$with_msm" in
++yes|no) ;;
++*) AC_MSG_ERROR([invalid argument to --with-msm])
++  ;;
++esac],
++[with_msm=no])
++
++AS_IF([test "$with_msm" = yes],[
++#  AC_CHECK_HEADER([libxml2/libxml/xmlreader.h],[
++    save_LIBS="$LIBS"
++    AC_CHECK_LIB([xml2],[xmlReaderForMemory],[],[
++      AC_MSG_ERROR([--with-msm given, but xmlReaderForMemory not found in libxml2])])
++    LIBS="$save_LIBS"
++#  ],[
++#    AC_MSG_ERROR([--with-msm given, but libxml2/libxml/xmlreader.h not found])
++#  ])
++  AC_CHECK_HEADER([sys/capability.h],[
++    save_LIBS="$LIBS"
++    AC_CHECK_LIB([cap],[cap_set_file],[],[
++      AC_MSG_ERROR([--with-msm given, but cap_set_file not found in libcap])])
++    LIBS="$save_LIBS"
++  ],[
++    AC_MSG_ERROR([--with-msm given, but sys/capability.h not found])
++  ])
++  AC_CHECK_HEADER([attr/xattr.h],[
++    save_LIBS="$LIBS"
++    AC_CHECK_LIB([attr],[setxattr],[],[
++      AC_MSG_ERROR([--with-msm given, but setxattr not found in libattr])])
++    LIBS="$save_LIBS"
++  ],[
++    AC_MSG_ERROR([--with-msm given, but attr/xattr.h not found])
++  ])
++  AC_CHECK_HEADER([uthash.h],[
++    save_LIBS="$LIBS"
++    LIBS="$save_LIBS"
++  ],[
++    AC_MSG_ERROR([--with-msm given, but uthash.h not found])
++  ])
++  AC_CHECK_HEADER([sys/smack.h],[
++     save_LIBS="$LIBS"
++    LIBS="$save_LIBS"
++   ],[
++     AC_MSG_ERROR([--with-msm given, but smack.h not found])
++   ])
++])
++
++AS_IF([test "$with_msm" = yes],[
++  AC_DEFINE(WITH_MSM, 1, [Build with msm support?])
++  WITH_MSM_LIB="`xml2-config --libs` -lcap -lattr -lsmack -lmagic"
++  WITH_MSM_INCLUDE="`xml2-config --cflags`"
++])
++AC_SUBST(WITH_MSM_LIB)
++AC_SUBST(WITH_MSM_INCLUDE)
++AM_CONDITIONAL(MSM,[test "$with_msm" = yes])
++
+ # libcap
+ WITH_CAP_LIB=
+ AC_ARG_WITH(cap, [AS_HELP_STRING([--with-cap],[build with capability support])],
+@@ -732,6 +791,17 @@ AS_IF([test "$enable_plugins" = yes],[
+ ])
+ AM_CONDITIONAL(ENABLE_PLUGINS,[test "$enable_plugins" = yes])
+ 
++AC_ARG_ENABLE(security, [AS_HELP_STRING([--disable-security],[build without security plugin support])],,[enable_security=yes])
++AS_IF([test "$enable_security" = yes],[
++  AC_DEFINE(ENABLE_SECURITY, 1, [Build with security plugin support?])
++])
++AM_CONDITIONAL(ENABLE_SECURITY,[test "$enable_security" = yes])
++
++AC_ARG_ENABLE(dchecks, [AS_HELP_STRING([--disable-dchecks],[build without domain checks])],,[enable_dchecks=yes])
++AS_IF([test "$enable_dchecks" = yes],[
++  AC_DEFINE(ENABLE_DCHECKS, 1, [Build with domain checks])
++])
++AM_CONDITIONAL(ENABLE_DCHECKS,[test "$enable_dchecks" = yes])
+ 
+ with_dmalloc=no
+ AC_ARG_WITH(dmalloc, [AS_HELP_STRING([--with-dmalloc],[build with dmalloc debugging support])])
+@@ -878,5 +942,6 @@ AC_CONFIG_FILES([Makefile
+  	luaext/Makefile
+  	tests/Makefile
+  	plugins/Makefile
++ 	security/Makefile
+   ])
+ AC_OUTPUT
+diff -Nuarp rpm/lib/fsm.c rpm-security/lib/fsm.c
+--- rpm/lib/fsm.c	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/fsm.c	2012-10-01 10:36:53.175964792 +0300
+@@ -28,6 +28,8 @@
+ #include "lib/rpmts_internal.h"	/* rpmtsSELabelFoo() only */
+ #include "lib/rpmug.h"
+ 
++#include "lib/rpmsecurity.h"
++
+ #include "debug.h"
+ 
+ #define	_FSM_DEBUG	0
+@@ -800,6 +802,11 @@ static int expandRegular(FSM_t fsm)
+ 	if (rc)
+ 	    goto exit;
+ 
++	/* Call security plugin to update file status. */
++	rc = rpmsecurityCallFsmUpdated(fsm);
++	if (rc)
++	    goto exit;
++
+ 	rc = fsmNext(fsm, FSM_WRITE);
+ 	if (rc)
+ 	    goto exit;
+@@ -1127,7 +1134,7 @@ static int fsmCommitLinks(FSM_t fsm)
+ 	    break;
+     }
+ 
+-    for (i = 0; i < fsm->li->nlink; i++) {
++    for (i = 0; fsm->li && i < fsm->li->nlink; i++) {
+ 	if (fsm->li->filex[i] < 0) continue;
+ 	fsm->ix = fsm->li->filex[i];
+ 	rc = fsmMapPath(fsm);
+@@ -1263,6 +1270,9 @@ static int fsmMkdirs(FSM_t fsm)
+ 			}
+ 		    }
+ 
++		    /* Call plugin hook to label the directory */
++		    rc = rpmsecurityCallDirLabel(fsm, rc);
++
+ 		    if (fsm->fcontext == NULL)
+ 			rpmlog(RPMLOG_DEBUG,
+ 			    "%s directory created with perms %04o, no context.\n",
+@@ -1654,6 +1664,13 @@ static int fsmStage(FSM_t fsm, fileStage
+ 		break;
+ 	    }
+ 
++	    /* Call security plugin to start up for a file. */
++	    rc = rpmsecurityCallFsmOpened(fsm);
++	    if (rc) {
++		(void) fsmNext(fsm, FSM_UNDO);
++		break;
++	    }
++
+ 	    /* Extract file from archive. */
+ 	    rc = fsmNext(fsm, FSM_PROCESS);
+ 	    if (rc) {
+@@ -2026,6 +2043,12 @@ if (!(fsm->mapFlags & CPIO_ALL_HARDLINKS
+ 	    /*
+ 	     * Set file security context (if not disabled).
+ 	     */
++
++	    /* Call security plugin with return code to finish the file. */
++	    if (!rc) {
++	    	rc = rpmsecurityCallFsmClosed(fsm, rc);
++	    }
++
+ 	    if (!rc && !getuid()) {
+ 		rc = fsmMapFContext(fsm);
+ 		if (!rc) {
+diff -Nuarp rpm/lib/Makefile.am rpm-security/lib/Makefile.am
+--- rpm/lib/Makefile.am	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/Makefile.am	2012-10-01 10:29:50.295983643 +0300
+@@ -36,7 +36,8 @@ librpm_la_SOURCES = \
+ 	verify.c rpmlock.c rpmlock.h misc.h \
+ 	rpmscript.h rpmscript.c legacy.c merge.c \
+ 	rpmchroot.c rpmchroot.h \
+-	rpmplugins.c rpmplugins.h rpmug.c rpmug.h
++ 	rpmplugins.c rpmplugins.h rpmug.c rpmug.h \
++ 	rpmsecurity.c rpmsecurity.h
+ 
+ librpm_la_LDFLAGS = -version-info 2:1:0
+ 
+diff -Nuarp rpm/lib/package.c rpm-security/lib/package.c
+--- rpm/lib/package.c	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/package.c	2012-10-01 10:29:50.295983643 +0300
+@@ -18,6 +18,8 @@
+ #include "rpmio/rpmio_internal.h"	/* fd digest bits */
+ #include "lib/header_internal.h"	/* XXX headerCheck */
+ 
++#include "lib/rpmsecurity.h"
++
+ #include "debug.h"
+ 
+ static int _print_pkts = 0;
+@@ -698,7 +700,10 @@ static rpmRC rpmpkgRead(rpmKeyring keyri
+ 
+     /** @todo Implement disable/enable/warn/error/anal policy. */
+     rc = rpmVerifySignature(keyring, &sigtd, dig, ctx, &msg);
+-	
++
++    /* Call security plugin to verify the signature. */
++    rc = rpmsecurityCallVerify(keyring, &sigtd, dig, rc);
++
+     switch (rc) {
+     case RPMRC_OK:		/* Signature is OK. */
+ 	rpmlog(RPMLOG_DEBUG, "%s: %s", fn, msg);
+diff -Nuarp rpm/lib/rpmfi.h rpm-security/lib/rpmfi.h
+--- rpm/lib/rpmfi.h	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/rpmfi.h	2012-10-01 10:29:50.299983645 +0300
+@@ -60,6 +60,7 @@ enum rpmfileAttrs_e {
+     RPMFILE_EXCLUDE	= (1 <<  9),	/*!< from %%exclude, internal */
+     RPMFILE_UNPATCHED	= (1 << 10),	/*!< placeholder (SuSE) */
+     RPMFILE_PUBKEY	= (1 << 11),	/*!< from %%pubkey */
++    RPMFILE_SECMANIFEST	= (1 << 12),	/*!< from %%manifest */
+ };
+ 
+ typedef rpmFlags rpmfileAttrs;
+diff -Nuarp rpm/lib/rpmscript.c rpm-security/lib/rpmscript.c
+--- rpm/lib/rpmscript.c	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/rpmscript.c	2012-10-01 10:29:50.299983645 +0300
+@@ -14,6 +14,8 @@
+ #include "rpmio/rpmlua.h"
+ #include "lib/rpmscript.h"
+ 
++#include "lib/rpmsecurity.h"
++
+ #include "debug.h"
+ 
+ /**
+@@ -162,7 +164,8 @@ static void doScriptExec(int selinux, AR
+ 	}
+ 
+ 	if (xx == 0) {
+-	    xx = execv(argv[0], argv);
++	    /* Exec the scriptlet through security plugin */
++	    xx = rpmsecurityCallScriptExec(argv);
+ 	}
+     }
+     _exit(127); /* exit 127 for compatibility with bash(1) */
+@@ -286,7 +289,7 @@ exit:
+     if (fn) {
+ 	if (!rpmIsDebug())
+ 	    xx = unlink(fn);
+-	fn = _free(fn);
++	if (fn) fn = _free(fn);
+     }
+     return rc;
+ }
+diff -Nuarp rpm/lib/rpmsecurity.c rpm-security/lib/rpmsecurity.c
+--- rpm/lib/rpmsecurity.c	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/lib/rpmsecurity.c	2012-10-01 10:39:43.959957177 +0300
+@@ -0,0 +1,281 @@
++#include "system.h"
++
++#include <rpm/rpmmacro.h>
++#include <rpm/rpmtypes.h>
++#include <rpm/rpmlog.h>
++#include <rpm/rpmstring.h>
++#include <rpm/rpmts.h>
++
++#include <rpm/rpmsecurity.h>
++
++#define STR1(x) #x
++#define STR(x) STR1(x)
++
++struct rpmSecurity_s {
++    void *handle;
++    rpmRC (*SECURITYHOOK_INIT_FUNC)(rpmts, const char *);
++    rpmRC (*SECURITYHOOK_FILE_CONFLICT_FUNC)(rpmts, rpmte, rpmfi, Header, rpmfi, int);
++    rpmRC (*SECURITYHOOK_PRE_TSM_FUNC)(rpmts);
++    rpmRC (*SECURITYHOOK_VERIFY_FUNC)(rpmKeyring, rpmtd, pgpDig, rpmRC);
++    rpmRC (*SECURITYHOOK_PRE_PSM_FUNC)(rpmte);
++    rpmRC (*SECURITYHOOK_SCRIPT_EXEC_FUNC)(ARGV_const_t);
++    rpmRC (*SECURITYHOOK_FSM_OPENED_FUNC)(FSM_t);
++    rpmRC (*SECURITYHOOK_FSM_UPDATED_FUNC)(FSM_t);
++    rpmRC (*SECURITYHOOK_FSM_CLOSED_FUNC)(FSM_t, int);
++    rpmRC (*SECURITYHOOK_FSM_DIR_LABEL_FUNC)(FSM_t, int);
++    rpmRC (*SECURITYHOOK_POST_PSM_FUNC)(rpmte, int);
++    rpmRC (*SECURITYHOOK_POST_TSM_FUNC)(rpmts);
++    rpmRC (*SECURITYHOOK_CLEANUP_FUNC)(void);
++    int count;
++    rpmts ts;
++};
++
++static rpmSecurity securityPlugin = NULL;
++
++rpmRC rpmsecurityCallInit(const char *opts);
++rpmRC rpmsecurityCallCleanup(void);
++
++#define RPMSECURITY_GET_HOOK_FUNC(hook)					\
++    *(void **)(&securityPlugin->hook) = dlsym(securityPlugin->handle, STR(hook)); \
++    if ((error = dlerror()) != NULL) {					\
++	rpmlog(RPMLOG_ERR, _("Failed to resolve security plugin symbol %s: %s\n"), STR(hook), error); \
++	goto fail;							\
++    }
++
++static rpmRC rpmsecurityAdd(const char *path, const char *opts, rpmts ts)
++{
++    char *error;
++    void *handle = dlopen(path, RTLD_LAZY);
++    if (!handle) {
++	rpmlog(RPMLOG_DEBUG, _("Failed to dlopen %s %s\n"), path, dlerror());
++	return RPMRC_OK; /* in case plug‌in isn't avalible in the configuration */
++    }
++    securityPlugin = xcalloc(1, sizeof(*securityPlugin));
++    if (!securityPlugin) {
++	rpmlog(RPMLOG_ERR, _("Failed to allocate security plugin %s\n"), path);
++	goto fail;
++    }
++    securityPlugin->handle = handle;
++    securityPlugin->count++;
++    securityPlugin->ts = ts;
++
++    /* Security plugin really has to have all the hooks. This means that */ 
++    /* if the interface is changed, all plugins have to be changed which */
++    /* in general is not nice. However, a security plugin must be aware of */
++    /* all the hooks declaring empty functions if it doesn't need them. */
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_INIT_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_FILE_CONFLICT_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_PRE_TSM_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_VERIFY_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_PRE_PSM_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_SCRIPT_EXEC_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_FSM_OPENED_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_FSM_UPDATED_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_FSM_CLOSED_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_FSM_DIR_LABEL_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_POST_PSM_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_POST_TSM_FUNC);
++    RPMSECURITY_GET_HOOK_FUNC(SECURITYHOOK_CLEANUP_FUNC);
++
++    return rpmsecurityCallInit(opts);
++
++ fail:
++    if (handle) dlclose(handle);
++    if (securityPlugin) {
++	free(securityPlugin);
++	securityPlugin = NULL;
++    }
++    return RPMRC_FAIL;
++}
++
++rpmRC rpmsecuritySetupPlugin(rpmts ts)
++{
++    char *path;
++    char *options;
++    int rc = RPMRC_FAIL;
++
++    if (securityPlugin) {
++	securityPlugin->count++;
++	return RPMRC_OK;
++    }
++
++    path = rpmExpand("%{?__security_plugin}", NULL);
++    if (!path || rstreq(path, "")) {
++/* enforce security by default #ifdef ENFORCE_SECURITY */
++	rpmlog(RPMLOG_ERR, _("Failed to expand %%__security_plugin macro\n"));
++/* #else
++	rpmlog(RPMLOG_INFO, _("Failed to expand %%__security_plugin macro\n"));
++#endif */
++	goto exit;
++    }
++
++    /* split the options from the path */
++#define SKIPSPACE(s)    { while (*(s) &&  risspace(*(s))) (s)++; }
++#define SKIPNONSPACE(s) { while (*(s) && !risspace(*(s))) (s)++; }
++    options = path;
++    SKIPNONSPACE(options);
++    if (risspace(*options)) {
++	*options = '\0';
++	options++;
++	SKIPSPACE(options);
++    }
++    if (*options == '\0') {
++	options = NULL;
++    }
++    rc = rpmsecurityAdd(path, options, ts);
++  exit:
++    if (path) free(path);
++    return rc;
++}
++
++int rpmsecurityPluginAdded(void)
++{
++    return (securityPlugin != NULL);
++}
++
++rpmSecurity rpmsecurityFreePlugin()
++{
++    if (securityPlugin) {
++	securityPlugin->count--;
++	if (!securityPlugin->count) {
++	    rpmsecurityCallCleanup();
++	    dlclose(securityPlugin->handle);
++	    free(securityPlugin);
++	    securityPlugin = NULL;
++	}
++    }
++    return securityPlugin;
++}
++
++#define RPMSECURITY_SET_HOOK_FUNC(hook)					\
++    hookFunc = securityPlugin->hook;					\
++    if (rpmtsFlags(securityPlugin->ts) & RPMTRANS_FLAG_TEST) {		\
++	return RPMRC_OK;						\
++    }									\
++    rpmlog(RPMLOG_DEBUG, "Security: calling hook %s in security plugin\n", STR(hook));
++
++rpmRC rpmsecurityCallInit(const char *opts)
++{
++    rpmRC (*hookFunc)(rpmts, const char *);
++    RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_INIT_FUNC);
++    return hookFunc(securityPlugin->ts, opts);
++}
++
++rpmRC rpmsecurityCallCleanup(void)
++{
++    rpmRC (*hookFunc)(void);
++    RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_CLEANUP_FUNC);
++    return hookFunc();
++}
++
++rpmRC rpmsecurityCallPreTsm(rpmts ts)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(rpmts);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_PRE_TSM_FUNC);
++	return hookFunc(ts);
++    }
++    return RPMRC_OK;
++}
++
++rpmRC rpmsecurityCallPostTsm(rpmts ts)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(rpmts);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_POST_TSM_FUNC);
++	return hookFunc(ts);
++    }
++    return RPMRC_OK;
++}
++
++rpmRC rpmsecurityCallPrePsm(rpmte te)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(rpmte);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_PRE_PSM_FUNC);
++	return hookFunc(te);
++    }
++    return RPMRC_OK;
++}
++
++rpmRC rpmsecurityCallPostPsm(rpmte te, int rpmrc)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(rpmte, int);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_POST_PSM_FUNC);
++	return hookFunc(te, rpmrc);
++    }
++    return rpmrc;
++}
++
++rpmRC rpmsecurityCallScriptExec(ARGV_const_t argv)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(ARGV_const_t);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_SCRIPT_EXEC_FUNC);
++	return hookFunc(argv);
++    }
++    return execv(argv[0], argv);
++}
++
++rpmRC rpmsecurityCallFsmOpened(FSM_t fsm)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(FSM_t);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_FSM_OPENED_FUNC);
++	return hookFunc(fsm);
++    }
++    return RPMRC_OK;
++}
++
++rpmRC rpmsecurityCallFsmUpdated(FSM_t fsm)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(FSM_t);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_FSM_UPDATED_FUNC);
++	return hookFunc(fsm);
++    }
++    return RPMRC_OK;
++}
++
++rpmRC rpmsecurityCallFsmClosed(FSM_t fsm, int rpmrc)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(FSM_t, int);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_FSM_CLOSED_FUNC);
++	return hookFunc(fsm, rpmrc);
++    }
++    return rpmrc;
++}
++
++rpmRC rpmsecurityCallDirLabel(FSM_t fsm, int rpmrc)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(FSM_t, int);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_FSM_DIR_LABEL_FUNC);
++	return hookFunc(fsm, rpmrc);
++    }
++    return rpmrc;
++}
++
++rpmRC rpmsecurityCallVerify(rpmKeyring keyring, rpmtd sigtd, 
++			    pgpDig dig, rpmRC rpmrc)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(rpmKeyring, rpmtd, pgpDig, rpmRC);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_VERIFY_FUNC);
++	return hookFunc(keyring, sigtd, dig, rpmrc);
++    }
++    return rpmrc;
++}
++
++rpmRC rpmsecurityCallFileConflict(rpmts ts, rpmte te, rpmfi fi,
++				  Header oldHeader, rpmfi oldFi, int rpmrc)
++{
++    if (securityPlugin) {
++	rpmRC (*hookFunc)(rpmts, rpmte, rpmfi, Header, rpmfi, int);
++	RPMSECURITY_SET_HOOK_FUNC(SECURITYHOOK_FILE_CONFLICT_FUNC);
++	return hookFunc(ts, te, fi, oldHeader, oldFi, rpmrc);
++    }
++    return rpmrc;
++}
+diff -Nuarp rpm/lib/rpmsecurity.h rpm-security/lib/rpmsecurity.h
+--- rpm/lib/rpmsecurity.h	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/lib/rpmsecurity.h	2012-10-01 10:37:47.415962375 +0300
+@@ -0,0 +1,169 @@
++#ifndef _SECURITY_H
++#define _SECURITY_H
++
++#include <rpm/rpmtypes.h>
++#include <rpm/rpmpgp.h>
++#include <lib/fsm.h>
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++/** \ingroup rpmsecurity
++ *
++ * General flow of code in rpm:
++ *
++ * The first hook SECURITYHOOK_INIT_FUNC is called right after keyring is
++ * loaded and database indexes are opened.
++ *
++ * At the time rpm prepares packages for installation, it might call
++ * SECURITYHOOK_FILE_CONFLICT_FUNC if some new package has conflicting files.
++ * Security plugin can then decide if overwrite is allowed or not. After
++ * conflict resolving rpm calls SECURITYHOOK_PRE_TSM_FUNC.
++ *
++ * The actual package processing starts by calling SECURITYHOOK_VERIFY_FUNC
++ * where security plugin can verify the package signature (right after rpm
++ * has done it's own signature verifying). 
++
++ * Then SECURITYHOOK_PRE_PSM_FUNC is called to start installing/removing 
++ * the package. In the beginning of installation process there may be call 
++ * to SECURITYHOOK_SCRIPT_EXEC_FUNC if package spec has a pre installation
++ * script. Then SECURITYHOOK_FSM_OPENED_FUNC, SECURITYHOOK_FSM_UPDATED_FUNC
++ * and SECURITYHOOK_FSM_CLOSED_FUNC are called for each installed file to
++ * make it possible to calculate hashes for the files (or use the sum
++ * in rpm package). At the end of installation process there may be call 
++ * to SECURITYHOOK_SCRIPT_EXEC_FUNC if package spec has a post installation
++ * script. Finally SECURITYHOOK_POST_PSM_FUNC is called to wrap up package 
++ * processing.
++ * 
++ * SECURITYHOOK_POST_TSM_FUNC is called when all packages have been processed.
++ * 
++ * Finally SECURITYHOOK_CLEANUP_FUNC is called to free used resources.
++ */
++
++/** \ingroup rpmsecurity
++ * Add and open security plugin, calls SECURITYHOOK_INIT_FUNC.
++ * This is the place for the plugin to initialize itself, load
++ * possible configuration files etc.
++ * @param ts		ts element
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecuritySetupPlugin(rpmts ts);
++
++/** \ingroup rpmsecurity
++ * Call the security file conflict plugin hook.
++ * This hook is called whenever there is a file conflict.
++ * @param ts		transaction set
++ * @param te		transaction element
++ * @param fi		new file
++ * @param oldHeader	old header
++ * @param oldFi		old file
++ * @param rpmrc         success from RPM
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallFileConflict(rpmts ts, rpmte te, rpmfi fi,
++				  Header oldHeader, rpmfi oldFi, int rpmrc);
++
++/** \ingroup rpmsecurity
++ * Call the security pre tsm plugin hook.
++ * This hook is called before the transaction state machine is started.
++ * @param ts		transaction set
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallPreTsm(rpmts ts);
++
++/** \ingroup rpmsecurity
++ * Call the security verify plugin hook.
++ * This hook is called right after RPM has verified package signature.
++ * @param keyring	RPM keyring
++ * @param sigtd		signature tag
++ * @param dig		PGP digest
++ * @param rpmrc		success from RPM
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallVerify(rpmKeyring keyring, rpmtd sigtd, 
++			    pgpDig dig, rpmRC rpmrc);
++
++/** \ingroup rpmsecurity
++ * Call the security pre psm plugin hook.
++ * This hook is called before the package state machine is started.
++ * @param te		transaction element in question
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallPrePsm(rpmte te);
++
++/** \ingroup rpmsecurity
++ * Call the security script exec plugin hook.
++ * Script execution takes place in child process context.
++ * @param argv		script command line arguments
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallScriptExec(ARGV_const_t argv);
++
++/** \ingroup rpmsecurity
++ * Call the security file opened plugin hook.
++ * This hook is called before the file state machine is started.
++ * @param fsm		fsm in question
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallFsmOpened(FSM_t fsm);
++
++/** \ingroup rpmsecurity
++ * Call the security file updated plugin hook.
++ * This hook is called during the file state machine is running.
++ * @param fsm		fsm in question
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallFsmUpdated(FSM_t fsm);
++
++/** \ingroup rpmsecurity
++ * Call the security file closed plugin hook.
++ * This hook is called after the file state machine has finished.
++ * @param fsm		fsm in question
++ * @param rpmrc		success from RPM
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallFsmClosed(FSM_t fsm, int rpmrc);
++
++/** \ingroup rpmsecurity
++ * Call the security dir labelling plugin hook.
++ * This hook is called for each dir not explicitly included into the package
++ * @param fsm		fsm in question
++ * @param rpmrc	success from RPM
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallDirLabel(FSM_t fsm, int rpmrc);
++
++/** \ingroup rpmsecurity
++ * Call the security post psm plugin hook.
++ * This hook is called after the package state machine has finished.
++ * @param te		transaction element in question
++ * @param rpmrc		success from RPM
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallPostPsm(rpmte te, int rpmrc);
++
++/** \ingroup rpmsecurity
++ * Call the security post tsm plugin hook.
++ * This hook is called after the transaction state machine has finished.
++ * @param ts		transaction set
++ * @return		RPMRC_OK on success, RPMRC_FAIL otherwise
++ */
++rpmRC rpmsecurityCallPostTsm(rpmts ts);
++
++/** \ingroup rpmsecurity
++ * Destroy security plugin structure, calls SECURITYHOOK_CLEANUP_FUNC.
++ * Plugin can save new state and new configuration in cleanup.
++ * @return		NULL always
++ */
++rpmSecurity rpmsecurityFreePlugin(void);
++
++/** \ingroup rpmsecurity
++ * Determine if a security plugin has been added already.
++ * @return		1 if security plugin has already been added, 0 otherwise
++ */
++int rpmsecurityPluginAdded(void);
++#ifdef __cplusplus
++}
++#endif
++#endif	/* _SECURITY_H */
+diff -Nuarp rpm/lib/rpmtag.h rpm-security/lib/rpmtag.h
+--- rpm/lib/rpmtag.h	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/rpmtag.h	2012-10-01 10:29:50.303983646 +0300
+@@ -299,7 +299,8 @@ typedef enum rpmTag_e {
+     RPMTAG_ORDERNAME		= 5035,	/* s[] */
+     RPMTAG_ORDERVERSION		= 5036,	/* s[] */
+     RPMTAG_ORDERFLAGS		= 5037,	/* i[] */
+-
++    RPMTAG_SECMANIFEST		= 5038,	/* s[] security manifest file */
++    RPMTAG_SECSWSOURCE		= 5039,	/* s[] security software source */
+     RPMTAG_FIRSTFREE_TAG	/*!< internal */
+ } rpmTag;
+ 
+diff -Nuarp rpm/lib/psm.c rpm-security/lib/psm.c
+--- rpm/lib/psm.c	2012-10-01 12:29:23.183663849 +0300
++++ rpm-security/lib/psm.c	2013-07-31 13:58:41.293078800 +0300
+@@ -24,6 +24,7 @@
+ #include "lib/rpmte_internal.h"	/* XXX internal apis */
+ #include "lib/rpmdb_internal.h" /* rpmdbAdd/Remove */
+ #include "lib/rpmscript.h"
++#include "lib/rpmsecurity.h"
+ 
+ #include "debug.h"
+ 
+@@ -1067,16 +1068,22 @@ rpmRC rpmpsmRun(rpmts ts, rpmte te, pkgG
+ 	switch (goal) {
+ 	case PKG_INSTALL:
+ 	case PKG_ERASE:
+-	    op = (goal == PKG_INSTALL) ? RPMTS_OP_INSTALL : RPMTS_OP_ERASE;
+-	    rpmswEnter(rpmtsOp(psm->ts, op), 0);
++	    /* Call security plugin to set te for next operations */
++	    if (rpmsecurityCallPrePsm(te) != RPMRC_FAIL) {
+ 
+-	    rc = rpmpsmNext(psm, PSM_INIT);
+-	    if (!rc) rc = rpmpsmNext(psm, PSM_PRE);
+-	    if (!rc) rc = rpmpsmNext(psm, PSM_PROCESS);
+-	    if (!rc) rc = rpmpsmNext(psm, PSM_POST);
+-	    (void) rpmpsmNext(psm, PSM_FINI);
++		op = (goal == PKG_INSTALL) ? RPMTS_OP_INSTALL : RPMTS_OP_ERASE;
++		rpmswEnter(rpmtsOp(psm->ts, op), 0);
+ 
+-	    rpmswExit(rpmtsOp(psm->ts, op), 0);
++		rc = rpmpsmNext(psm, PSM_INIT);
++		if (!rc) rc = rpmpsmNext(psm, PSM_PRE);
++		if (!rc) rc = rpmpsmNext(psm, PSM_PROCESS);
++		if (!rc) rc = rpmpsmNext(psm, PSM_POST);
++		(void) rpmpsmNext(psm, PSM_FINI);
++
++		rpmswExit(rpmtsOp(psm->ts, op), 0);
++	    }
++	    /* Run post transaction element hook for all plugins */
++	    rpmsecurityCallPostPsm(te, rc);
+ 	    break;
+ 	case PKG_PRETRANS:
+ 	case PKG_POSTTRANS: 
+diff -Nuarp rpm/lib/rpmts.c rpm-security/lib/rpmts.c
+--- rpm/lib/rpmts.c	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/rpmts.c	2012-10-01 10:29:50.303983646 +0300
+@@ -24,6 +24,7 @@
+ #include "lib/rpmal.h"
+ #include "lib/rpmchroot.h"
+ #include "lib/rpmplugins.h"
++#include "lib/rpmsecurity.h"
+ #include "lib/rpmts_internal.h"
+ #include "lib/rpmte_internal.h"
+ #include "lib/misc.h"
+@@ -630,6 +631,8 @@ rpmts rpmtsFree(rpmts ts)
+     ts->installLangs = argvFree(ts->installLangs);
+ 
+     ts->plugins = rpmpluginsFree(ts->plugins);
++    /* Free security plugin here also. */
++    rpmsecurityFreePlugin();
+ 
+     if (_rpmts_stats)
+ 	rpmtsPrintStats(ts);
+diff -Nuarp rpm/lib/rpmtypes.h rpm-security/lib/rpmtypes.h
+--- rpm/lib/rpmtypes.h	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/rpmtypes.h	2012-10-01 10:29:50.303983646 +0300
+@@ -78,6 +78,7 @@ typedef struct rpmPubkey_s * rpmPubkey;
+ typedef struct rpmKeyring_s * rpmKeyring;
+ 
+ typedef struct rpmPlugins_s * rpmPlugins;
++typedef struct rpmSecurity_s * rpmSecurity;
+ 
+ typedef struct rpmgi_s * rpmgi;
+ 
+diff -Nuarp rpm/lib/transaction.c rpm-security/lib/transaction.c
+--- rpm/lib/transaction.c	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/lib/transaction.c	2012-10-01 10:29:50.307983646 +0300
+@@ -21,6 +21,8 @@
+ #include "lib/rpmts_internal.h"
+ #include "rpmio/rpmhook.h"
+ 
++#include "lib/rpmsecurity.h"
++
+ /* XXX FIXME: merge with existing (broken?) tests in system.h */
+ /* portability fiddles */
+ #if STATFS_IN_SYS_STATVFS
+@@ -354,6 +356,9 @@ static int handleInstInstalledFile(const
+ 	    }
+ 	}
+ 
++	/* Call security plugin to check the file conflict. */
++	rConflicts = rpmsecurityCallFileConflict(ts, p, fi, otherHeader, otherFi, rConflicts);
++
+ 	if (rConflicts) {
+ 	    char *altNEVR = headerGetAsString(otherHeader, RPMTAG_NEVRA);
+ 	    rpmteAddProblem(p, RPMPROB_FILE_CONFLICT, altNEVR, rpmfiFN(fi),
+@@ -1420,6 +1425,13 @@ int rpmtsRun(rpmts ts, rpmps okProbs, rp
+ 	goto exit;
+     }
+ 
++    /* Setup the security plugin */
++    if (rpmsecuritySetupPlugin(ts)) {
++/* enforce security by default #ifdef ENFORCE_SECURITY */
++	goto exit;
++/* #endif */
++    }
++
+     rpmtsSetupCollections(ts);
+ 
+     /* Check package set for problems */
+@@ -1452,9 +1464,15 @@ int rpmtsRun(rpmts ts, rpmps okProbs, rp
+     tsprobs = rpmpsFree(tsprobs);
+     rpmtsCleanProblems(ts);
+ 
++    /* Call security plugin */
++    rpmsecurityCallPreTsm(ts);
++
+     /* Actually install and remove packages, get final exit code */
+     rc = rpmtsProcess(ts) ? -1 : 0;
+ 
++    /* Call security plugin */
++    rpmsecurityCallPostTsm(ts);
++
+     /* Run post-transaction scripts unless disabled */
+     if (!(rpmtsFlags(ts) & (RPMTRANS_FLAG_NOPOST))) {
+ 	rpmlog(RPMLOG_DEBUG, "running post-transaction scripts\n");
+diff -Nuarp rpm/macros.in rpm-security/macros.in
+--- rpm/macros.in	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/macros.in	2012-10-01 10:29:50.307983646 +0300
+@@ -1070,5 +1070,7 @@ done \
+ %__collection_sepolicy		%{__plugindir}/sepolicy.so
+ %__collection_sepolicy_flags	1
+ 
++%__security_plugin		%{__plugindir}/msm.so
++
+ # \endverbatim
+ #*/
+diff -Nuarp rpm/Makefile.am rpm-security/Makefile.am
+--- rpm/Makefile.am	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/Makefile.am	2012-10-01 10:29:50.311983646 +0300
+@@ -29,7 +29,11 @@ if ENABLE_PLUGINS
+ SUBDIRS += plugins
+ endif
+ 
+-DIST_SUBDIRS = po misc luaext rpmio lib sign build python scripts fileattrs doc tests plugins
++if ENABLE_SECURITY
++SUBDIRS += security
++endif
++
++DIST_SUBDIRS = po misc luaext rpmio lib sign build python scripts fileattrs doc tests plugins security
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ 
+@@ -76,6 +80,8 @@ pkginclude_HEADERS += lib/rpmte.h
+ pkginclude_HEADERS += lib/rpmts.h
+ pkginclude_HEADERS += lib/rpmtypes.h
+ pkginclude_HEADERS += lib/rpmvf.h
++pkginclude_HEADERS += lib/rpmplugins.h
++pkginclude_HEADERS += lib/rpmsecurity.h
+ 
+ pkginclude_HEADERS += sign/rpmsign.h
+ 
+diff -Nuarp rpm/preinstall.am rpm-security/preinstall.am
+--- rpm/preinstall.am	2012-08-08 09:33:56.000000000 +0300
++++ rpm-security/preinstall.am	2012-10-01 10:29:50.311983646 +0300
+@@ -114,6 +114,14 @@ include/rpm/rpmvf.h: lib/rpmvf.h include
+ 	$(INSTALL_DATA) $(top_srcdir)/lib/rpmvf.h include/rpm/rpmvf.h
+ BUILT_SOURCES += include/rpm/rpmvf.h
+ CLEANFILES += include/rpm/rpmvf.h
++include/rpm/rpmplugins.h: lib/rpmplugins.h include/rpm/$(dirstamp)
++	$(INSTALL_DATA) $(top_srcdir)/lib/rpmplugins.h include/rpm/rpmplugins.h
++BUILT_SOURCES += include/rpm/rpmplugins.h
++CLEANFILES += include/rpm/rpmplugins.h
++include/rpm/rpmsecurity.h: lib/rpmsecurity.h include/rpm/$(dirstamp)
++	$(INSTALL_DATA) $(top_srcdir)/lib/rpmsecurity.h include/rpm/rpmsecurity.h
++BUILT_SOURCES += include/rpm/rpmsecurity.h
++CLEANFILES += include/rpm/rpmsecurity.h
+ include/rpm/rpmsign.h: sign/rpmsign.h include/rpm/$(dirstamp)
+ 	$(INSTALL_DATA) $(top_srcdir)/sign/rpmsign.h include/rpm/rpmsign.h
+ BUILT_SOURCES += include/rpm/rpmsign.h
+diff -Nuarp rpm/security/Makefile.am rpm-security/security/Makefile.am
+--- rpm/security/Makefile.am	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/Makefile.am	2012-10-01 10:29:50.315983644 +0300
+@@ -0,0 +1,24 @@
++# Makefile for rpm library.
++
++include $(top_srcdir)/rpm.am
++
++AM_CPPFLAGS = -I$(top_builddir) -I$(top_srcdir) -I$(top_builddir)/include/
++AM_CPPFLAGS += -I$(top_srcdir)/misc
++AM_CPPFLAGS += -DLOCALEDIR="\"$(localedir)\""
++AM_CPPFLAGS += -DSYSCONFDIR="\"$(sysconfdir)\""
++AM_CPPFLAGS += -DLOCALSTATEDIR="\"$(localstatedir)\""
++AM_CPPFLAGS += -DLIBRPMALIAS_FILENAME="\"rpmpopt-${VERSION}\""
++if MSM
++AM_CPPFLAGS += @WITH_MSM_INCLUDE@
++endif
++AM_LDFLAGS = -avoid-version -module -shared
++
++pluginsdir = $(libdir)/rpm-plugins
++
++if MSM
++plugins_LTLIBRARIES = msm.la
++endif
++if MSM
++msm_la_SOURCES = security.h msm.h msm.c msmconfig.c msmmanifest.c msmxattr.c msmmatch.c 
++msm_la_LIBADD = $(top_builddir)/lib/librpm.la $(top_builddir)/rpmio/librpmio.la  @WITH_MSM_LIB@
++endif
+diff -Nuarp rpm/security/Makefile.msm rpm-security/security/Makefile.msm
+--- rpm/security/Makefile.msm	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/Makefile.msm	2012-10-01 10:29:50.315983644 +0300
+@@ -0,0 +1,15 @@
++CC=gcc
++CFLAGS=-g -Wall 
++LDFLAGS=-lxml2 -lcap -lattr -lrpmio -lsmack
++INCLUDES=-I/usr/include/libxml2 -I..
++
++all: msmmatch
++
++msmmatch: msmmatch.o
++	 $(CC) -o $@ $^ $(LDFLAGS)
++
++.c.o:
++	$(CC) $(INCLUDES) $(CFLAGS) -c $< -o $@
++
++clean:
++	rm msmmatch *.o
+diff -Nuarp rpm/security/msm.c rpm-security/security/msm.c
+--- rpm/security/msm.c	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/msm.c	2012-10-01 10:53:48.919919507 +0300
+@@ -0,0 +1,982 @@
++/*
++ * This file is part of MSM security plugin
++ * Greatly based on the code of MSSF security plugin
++ *
++ * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).
++ *
++ * Contact: Tero Aho <ext-tero.aho@nokia.com>
++ *
++ * Copyright (C) 2011 -2012 Intel Corporation.
++ *
++ * Contact: Elena Reshetova <elena.reshetova@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA
++ */
++
++#include "debug.h"
++
++#include <errno.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include <sys/wait.h>
++#include <sys/prctl.h>
++#include <sys/capability.h>
++#include <sys/stat.h>
++
++#include <rpm/rpmfileutil.h>
++#include <rpm/rpmmacro.h>
++#include <rpm/rpmpgp.h>
++#include <rpm/rpmkeyring.h>
++#include <lib/rpmts_internal.h>
++#include <rpm/rpmdb.h>
++
++#include "rpmio/base64.h"
++#include "rpmio/rpmio.h"
++
++#include "msm.h"
++
++typedef struct fileconflict {
++    const char *path;
++    sw_source_x *sw_source;
++    UT_hash_handle hh;
++} fileconflict;
++
++typedef struct packagecontext {
++    char *data;	        			/*!< base64 manifest data */
++    manifest_x *mfx;     			/*!< parsed manifest data */
++    rpmte te;                   		/*!< related te */
++    struct packagecontext *next;		/*!< next in linked list */
++    struct smack_accesses *smack_accesses;	/*!<  handle to smack_accesses */
++} packagecontext;
++
++static rpmts ts = NULL;
++static int rootSWSource= 0;
++static manifest_x *root = NULL; /* pointer to device security policy file */
++static packagecontext *context = NULL;
++static sw_source_x *current = NULL;
++static packagecontext *contextsHead = NULL;
++static packagecontext *contextsTail = NULL;
++static fileconflict *allfileconflicts = NULL;
++static char* ownSmackLabel = NULL;
++static int SmackEnabled = 0;
++static magic_t cookie = NULL;
++
++static int copyFile(char *old_filename, char  *new_filename)
++{
++    FD_t ptr_old, ptr_new;
++    int res;
++
++    ptr_old = Fopen(old_filename, "r.fdio");
++    ptr_new = Fopen(new_filename, "w.fdio");
++
++    if ((ptr_old == NULL) || (Ferror(ptr_old))) {
++        return  -1;
++    }
++
++    if ((ptr_new == NULL) || (Ferror(ptr_new))) {
++        Fclose(ptr_old);
++        return  -1;
++    }
++
++    res = ufdCopy(ptr_old, ptr_new);
++
++    Fclose(ptr_new);
++    Fclose(ptr_old);
++    return res;
++}
++
++rpmRC SECURITYHOOK_INIT_FUNC(rpmts _ts, const char *_opts)
++{
++    ts = _ts;
++    char *fullPath = NULL, *fullPath1 = NULL;
++    struct stat buf;
++
++    fullPath = rpmGenPath(ts->rootDir, DEVICE_SECURITY_POLICY, NULL);
++    rpmlog(RPMLOG_DEBUG, "fullPath %s\n", fullPath);
++    if (!fullPath) {
++        rpmlog(RPMLOG_ERR, "Building a full path failed for device security policy\n");
++        goto plugin_error;
++    }
++
++    if (stat(fullPath, &buf) != 0) { // the policy file is missing
++        if (ts->rootDir) { // we are running with --root option and policy is missing, need to copy it for now
++            // first create prefix for it
++            char *sysconfdir = rpmExpand("%{?_sysconfdir}", NULL);
++            if (!sysconfdir || !strcmp(sysconfdir, "")) {
++        rpmlog(RPMLOG_ERR, "Failed to expand %%_sysconfdir macro\n");
++                goto plugin_error;
++            }
++            fullPath1 = rpmGenPath(ts->rootDir, sysconfdir, NULL);
++            rpmlog(RPMLOG_DEBUG, "fullPath1 %s\n", fullPath1);
++            msmFreePointer((void**)&sysconfdir);
++            if (!fullPath1) {
++       rpmlog(RPMLOG_ERR, "Building a full path for sysconfdir failed\n");
++                goto plugin_error;
++            }
++            if (rpmioMkpath(fullPath1, 0755, getuid(), getgid()) != 0) {
++                    rpmlog(RPMLOG_ERR, "Failed to create a path for policy file\n");
++                    goto plugin_error;
++            }
++            if(copyFile(DEVICE_SECURITY_POLICY_DEF, fullPath) == -1) {
++        /* Do not allow plug-in to proceed without security policy existing */
++        rpmlog(RPMLOG_ERR, "Failed to copy the policy outside of chroot. Abort installation.\n");
++                goto plugin_error;
++            }
++    } else {
++            /* Do not allow plug-in to proceed without security policy existing */
++            rpmlog(RPMLOG_ERR, "Policy file is missing at %s. Abort installation.\n",
++          fullPath);
++            goto plugin_error;
++        }
++    }
++
++    rpmlog(RPMLOG_INFO, "reading device security policy from %s\n", fullPath);
++    root = msmProcessDevSecPolicyXml(fullPath);
++    if (!root) {
++        rpmlog(RPMLOG_ERR, "Failed process sw sources from %s\n", fullPath);
++        goto plugin_error;
++    } else {
++    if (msmSetupSWSources(NULL, root, NULL)) {
++            rpmlog(RPMLOG_ERR, "Failed to setup security policy from %s\n",fullPath);
++            goto plugin_error;
++    }
++    }
++     
++    msmFreePointer((void**)&fullPath);
++    msmFreePointer((void**)&fullPath1);
++
++    fullPath = rpmGenPath(ts->rootDir, SMACK_LOAD_PATH, NULL);
++    rpmlog(RPMLOG_DEBUG, "fullPath for SMACK_LOAD_PATH %s\n", fullPath);
++    if (!fullPath) {
++        rpmlog(RPMLOG_ERR, "Building a full path for smack load failed\n");
++        goto plugin_error;
++    }
++
++    /* check its own security context and store it for the case when packages without manifest will be installed */
++    if (stat(fullPath, &buf) == 0) {
++        int res = smack_new_label_from_self(&ownSmackLabel);
++        SmackEnabled = 1;
++        if (res < 0) {
++            rpmlog(RPMLOG_ERR, "Failed to obtain rpm security context\n");
++            goto plugin_error;
++        }
++    } else {
++        rpmlog(RPMLOG_INFO, "Smackfs isn't mounted at %s. Going to the image build mode. \n", fullPath);
++        ownSmackLabel = strdup("_");
++        SmackEnabled = 0;
++    }
++
++    msmFreePointer((void**)&fullPath);    
++    fullPath = rpmGenPath(ts->rootDir, SMACK_RULES_PATH, NULL);
++    fullPath1 = rpmGenPath(ts->rootDir, SMACK_RULES_PATH_BEG, NULL);
++    rpmlog(RPMLOG_DEBUG, "fullPath for SMACK_RULES_PATH %s\n", fullPath);
++    rpmlog(RPMLOG_DEBUG, "fullPath1 for SMACK_RULES_PATH_BEG %s\n", fullPath1);
++    if ((!fullPath) || (!fullPath1)){
++        rpmlog(RPMLOG_ERR, "Building a full path failed for smack rules path\n");
++        goto plugin_error;
++    }
++
++    if (stat(fullPath, &buf) != 0) {
++        rpmlog(RPMLOG_DEBUG, "A directory for writing smack rules is missing. Creating one.\n");
++        mode_t mode = S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IROTH; // 644 -rwer--r--
++        if (stat(fullPath1, &buf) != 0) {
++            if (mkdir(fullPath1, mode) != 0) {
++                rpmlog(RPMLOG_ERR, "Failed to create a sub-directory for smack rules\n");
++                goto plugin_error;
++            }    
++        }
++        if (mkdir(fullPath, mode) != 0){
++            rpmlog(RPMLOG_ERR, "Failed to create a directory for smack rules\n");
++            goto plugin_error;
++        } 
++    }
++
++    msmFreePointer((void**)&fullPath);    
++    msmFreePointer((void**)&fullPath1);    
++
++    rpmlog(RPMLOG_DEBUG, "rpm security context: %s\n", ownSmackLabel);
++
++    cookie = magic_open(0); 
++    if (!cookie)
++	return RPMRC_FAIL; 
++
++    if (magic_load(cookie, NULL) != 0) {
++   	rpmlog(RPMLOG_ERR, "cannot load magic database - %s\n", magic_error(cookie));	
++       magic_close(cookie);
++       return RPMRC_FAIL;
++    }
++    
++    return RPMRC_OK;
++
++plugin_error:
++    msmFreePointer((void**)&fullPath);
++    msmFreePointer((void**)&fullPath1);
++    return RPMRC_FAIL;
++}
++
++static int findSWSourceByName(sw_source_x *sw_source, void *param)
++{
++    const char *name = (const char *)param;
++    return strcmp(sw_source->name, name); 
++}
++
++static char *getFilePath(const char *dirName, const char *baseName)
++{
++    char *fullName = NULL;
++    size_t len = 0;
++
++    if (!dirName) return fullName; 
++    len = strlen(dirName);
++
++    if (baseName) {
++	    if (dirName[len-1] == '/') {
++	        len += strlen(baseName);
++	        fullName = malloc(len+1);
++	        if (fullName)
++		        sprintf(fullName, "%s%s", dirName, baseName);
++	    } else {
++	        len += strlen(baseName) + 1;
++	        fullName = malloc(len+1);
++	        if (fullName)
++		    sprintf(fullName, "%s/%s", dirName, baseName);
++	    }
++    } else {
++	    fullName = malloc(len+1);
++	    if (fullName)
++	        sprintf(fullName, "%s", dirName);
++    }
++    return fullName;
++}
++
++rpmRC SECURITYHOOK_FILE_CONFLICT_FUNC(rpmts ts, rpmte te, rpmfi fi,
++				      Header oldHeader, rpmfi oldFi, 
++				      int rpmrc)
++{
++    fileconflict *fc;
++
++    const char *name = headerGetString(oldHeader, RPMTAG_SECSWSOURCE);
++    if (!name || !root) {
++	    return rpmrc; /* no sw source(s) - abnormal state */
++    }
++
++    sw_source_x *sw_source = msmSWSourceTreeTraversal(root->sw_sources, findSWSourceByName, (void *)name);
++    if (!sw_source)
++	    return rpmrc; /* no old sw_source - abnormal state */
++
++    const char *path = getFilePath(rpmfiDN(fi), rpmfiBN(fi));
++    if (!path)	return RPMRC_FAIL;
++
++    HASH_FIND(hh, allfileconflicts, path, strlen(path), fc);
++    if (!fc) {
++	    /* Add new file conflict into hash */
++	    fc = xcalloc(1, sizeof(*fc));
++	    if (!fc) return RPMRC_FAIL;
++	    fc->path = path;
++	    fc->sw_source = sw_source;
++	    HASH_ADD_KEYPTR(hh, allfileconflicts, path, strlen(path), fc);
++    } else {
++	    /* Many packages have installed the same file */
++	    if (strcmp(sw_source->rankkey, fc->sw_source->rankkey) <= 0) {
++	        /* Change sw source to the higher ranked one */
++	        fc->sw_source = sw_source;
++	    }
++	    msmFreePointer((void**)&path);
++    }
++    
++    if (rpmtsFilterFlags(ts) & RPMPROB_FILTER_REPLACEOLDFILES) {
++	/* Conflict has been noted, now return ok. It will be actually */
++	/* resolved later when conflicting package signature is verified */
++	/* and sw_source is known. */
++	    return RPMRC_OK;
++    }
++    return rpmrc;
++}
++
++rpmRC SECURITYHOOK_PRE_TSM_FUNC(rpmts _ts)
++{
++    packagecontext *ctx = context;
++    if (!ctx) return RPMRC_FAIL;
++
++    return RPMRC_OK;
++}
++
++static int findSWSourceBySignature(sw_source_x *sw_source, void *param)
++{
++    origin_x *origin;
++    keyinfo_x *keyinfo;
++    pgpDig dig = (pgpDig)param;
++
++    for (origin = sw_source->origins; origin; origin = origin->prev) {
++	    for (keyinfo = origin->keyinfos; keyinfo; keyinfo = keyinfo->prev) {
++	        pgpDig ddig = pgpNewDig();
++	        if (pgpPrtPkts(keyinfo->keydata, keyinfo->keylen, ddig, 0)) {
++		        rpmlog(RPMLOG_INFO, "invalid sw source key\n");
++		        pgpFreeDig(ddig);
++		        return -1;
++	        }
++	        /* Compare all fields of RSA key. */
++	        if (SECITEM_ItemsAreEqual(&dig->keydata->u.rsa.publicExponent, &ddig->keydata->u.rsa.publicExponent) &&
++		        SECITEM_ItemsAreEqual(&dig->keydata->u.rsa.modulus, &ddig->keydata->u.rsa.modulus)) {
++		        pgpFreeDig(ddig);
++		        return 0;
++	        }
++	        pgpFreeDig(ddig);
++	    }
++    }
++    return 1;
++}
++
++rpmRC SECURITYHOOK_VERIFY_FUNC(rpmKeyring keyring, rpmtd sigtd, 
++			       pgpDig dig, rpmRC rpmrc)
++{
++    current = NULL;
++
++#if 0 
++    if (!root) {
++	if (rpmrc == RPMRC_NOKEY) {
++	    rpmlog(RPMLOG_INFO, "package verified as root sw source\n");
++	    rootSWSource = 1; /* accept any signed package as root */
++	    return RPMRC_OK;
++	}
++	rpmlog(RPMLOG_ERR, "No device security policy, cannot verify signature\n");
++	return rpmrc;
++    } 
++
++
++// make currently that even non-signed package with root policy will be treated as trusted
++
++   if (!root) {
++	    rpmlog(RPMLOG_INFO, "package verified as root sw source\n");
++	    rootSWSource = 1; /* accept any signed package as root */
++	    return RPMRC_OK;
++   } 
++
++//------------------
++#endif
++
++   if (!root) {
++	    rpmlog(RPMLOG_INFO, "No device policy found\n");
++	    rootSWSource = 1; /* accept any signed package as root */
++	    return rpmrc;
++   } 
++
++    if (rpmrc == RPMRC_NOKEY) {
++	    /* No key, revert to unknown sw source. */
++	    rpmlog(RPMLOG_INFO, "no key for signature, cannot search sw source\n");
++	    goto exit;
++    }
++    if (rpmrc) {
++	    /* RPM failed to verify signature */
++	    rpmlog(RPMLOG_ERR, "Invalid signature, cannot search sw source\n");
++	    return rpmrc;
++    }
++    if (sigtd->tag != RPMSIGTAG_RSA) {
++	    /* Not RSA, revert to unknown sw source. */
++	    rpmlog(RPMLOG_INFO, "no RSA signature, cannot search sw source\n");
++	    goto exit;
++    }
++    current = msmSWSourceTreeTraversal(root->sw_sources, findSWSourceBySignature, dig);
++    if (current)
++	    rpmlog(RPMLOG_INFO, "signature matches sw source %s\n", current->name);
++    else
++	    rpmlog(RPMLOG_INFO, "valid signature but no matching sw source\n");
++
++ exit:
++    if (!current) {
++	    current = msmSWSourceTreeTraversal(root->sw_sources, findSWSourceByName, (void *)"_default_");
++	    if (current)
++	        rpmlog(RPMLOG_INFO, "using _default_ sw source\n");
++        else { // for now in case default sw source isn't there yet, allow to think that it is coming from root
++        	current = msmSWSourceTreeTraversal(root->sw_sources, findSWSourceByName, (void *)"root");
++		    if (current)
++		        rpmlog(RPMLOG_INFO, "using _root_ sw source now for testing\n");
++	    }
++    }
++
++    return rpmrc;
++}
++
++static packagecontext *msmNew(rpmte te)
++{
++    Header h;
++    struct rpmtd_s msm;
++    int count;
++    packagecontext *ctx = NULL;
++    const char *sw_source = NULL;
++
++    rpmtdReset(&msm);
++
++    h = rpmteHeader(te);
++    if (!h) return NULL;
++    
++    ctx = xcalloc(1, sizeof(*ctx));
++    if (!ctx) {
++	    goto exit1;
++    }
++    ctx->te = te;
++
++    if (!headerIsEntry(h, RPMTAG_SECMANIFEST)) {
++	    goto exit1;
++    }
++
++    if (!headerGet(h, RPMTAG_SECMANIFEST, &msm, HEADERGET_MINMEM)) {
++	    goto exit1;
++    }
++
++    count = rpmtdCount(&msm);
++    if (count != 1) {
++	    goto exit2;
++    }
++
++    ctx->data = xstrdup(rpmtdNextString(&msm));
++    rpmlog(RPMLOG_INFO, "%s manifest b64 data: %.40s...\n", 
++	   rpmteN(ctx->te), ctx->data);
++
++    if (rpmteType(ctx->te) == TR_ADDED) {
++	    /* Save sw_source name into database, we need it when package */
++	    /* is removed because signature verify is not called then. */
++	    if (current) sw_source = current->name;
++	    else if (rootSWSource) sw_source = rpmteN(ctx->te);
++
++	    if (!sw_source || !headerPutString(h, RPMTAG_SECSWSOURCE, sw_source)) {
++	        rpmlog(RPMLOG_ERR, "Failed to save sw source for %s, sw_source: %s\n", 
++		       rpmteN(ctx->te), sw_source);
++	        msmFreePointer((void**)&ctx->data);
++	        msmFreePointer((void**)&ctx);
++	    }
++    }
++
++
++ exit2:
++    rpmtdFreeData(&msm);
++ exit1:
++    headerFree(h);
++
++    return ctx;
++}
++
++static packagecontext *msmAddTE(rpmte te)
++{
++    packagecontext *ctx = msmNew(te);
++    if (ctx) {
++	/* add the new policy to the list */
++	    if (!contextsHead) {
++	        contextsHead = ctx;
++	        contextsTail = ctx;
++	    } else {
++	        if (rpmteType(te) == TR_ADDED) {
++		        /* add to the end of the list */
++		        contextsTail->next = ctx;
++		        contextsTail = ctx;
++	        } else {
++		        /* add to the beginning of the list */
++		        ctx->next = contextsHead;
++		        contextsHead = ctx;
++	        }
++	    }
++    }
++    return ctx;
++}
++
++rpmRC SECURITYHOOK_PRE_PSM_FUNC(rpmte te)
++{
++    packagecontext *ctx = NULL;
++    manifest_x *mfx = NULL;
++    char *xml = NULL;
++    size_t xmllen;
++    rpmRC rc = RPMRC_OK;
++    int ret = 0;
++
++    if (!root && !rootSWSource) {
++	/* no sw source config, just exit */
++	goto exit;
++    }
++
++    if (!current) {
++        /* this means that verify hook has not been called */
++        current = msmSWSourceTreeTraversal(root->sw_sources, findSWSourceByName, (void *)"_default_");
++	    if (current)
++	        rpmlog(RPMLOG_INFO, "using _default_ sw source\n");
++        else { 
++            rpmlog(RPMLOG_ERR, "Default source isn't availiable. Package source can't be determined. Abort installation\n");
++	        goto fail;
++	    }
++    }
++
++    ctx = msmAddTE(te);
++    if (!ctx) {
++	    rpmlog(RPMLOG_ERR, "Failed to create security context for %s\n",
++	       rpmteNEVRA(te));
++	    goto fail;
++    }
++
++    if (rpmteType(ctx->te) == TR_REMOVED) {
++
++	    /* Verify hook is not called before remove, */
++	    /* so get the sw_source name from package header */
++	    Header h = rpmteHeader(te);
++	    if (h) {
++	        const char *name = headerGetString(h, RPMTAG_SECSWSOURCE);
++	        if (name) { 
++		    current = msmSWSourceTreeTraversal(root->sw_sources, findSWSourceByName, (void *)name);
++		    rpmlog(RPMLOG_INFO, "removing %s from sw source %s\n",
++		       rpmteN(ctx->te), name);
++	        }
++	        headerFree(h);
++	    }
++	    /* if (!current) {
++	        rpmlog(RPMLOG_INFO, "no sw source for removing %s\n", rpmteN(ctx->te));
++	        goto exit;
++	    }*/
++    }
++
++    if (!ctx->data) {
++	rpmlog(RPMLOG_INFO, "No manifest in this package. Creating default one\n");
++
++        /* create default manifest manually. Make the package to belong to the domain where rpm is running */
++
++        mfx = calloc(1, sizeof(manifest_x));
++	if (!mfx)  goto fail;
++        mfx->sw_source = current;
++	mfx->name = strdup(rpmteN(ctx->te));
++        mfx->request = calloc(1, sizeof(request_x));
++	if (!mfx->request) {
++        	msmFreePointer((void**)&mfx->name);
++	     	msmFreePointer((void**)&mfx);
++        	goto fail;
++        }
++        mfx->request->ac_domain = strdup(ownSmackLabel);
++        rpmlog(RPMLOG_DEBUG, "Done with manifest creation\n");
++	
++    } else {
++        if (b64decode(ctx->data, (void **) &xml, &xmllen) != 0) {
++	        rpmlog(RPMLOG_ERR, "Failed to decode manifest for %s\n",
++	            rpmteN(ctx->te));
++	        goto fail;
++        }
++
++        rpmlog(RPMLOG_INFO, "parsing %s manifest: \n%s", rpmteN(ctx->te), xml);
++        mfx = msmProcessManifestXml(xml, xmllen, current, rpmteN(ctx->te));
++
++        if (!mfx) {
++	        rpmlog(RPMLOG_ERR, "Failed to parse manifest for %s\n",
++	        rpmteN(ctx->te));
++	        goto fail;
++        }
++    }
++
++
++    ctx->mfx = mfx;
++
++    int res = smack_accesses_new(&(ctx->smack_accesses)); 
++    if (res != 0) {
++	    rpmlog(RPMLOG_ERR, "Failed to create smack access set\n");
++	    goto fail;
++    }
++
++    if (rpmteType(ctx->te) == TR_ADDED) {
++
++    	rpmlog(RPMLOG_DEBUG, "Installing the package\n");
++
++	package_x *package = NULL;
++
++	if (rootSWSource) {
++		/* this is the first package */
++	        package = msmCreatePackage(mfx->name, mfx->sw_sources, 
++					    mfx->provides, NULL);
++	} else if (mfx->sw_source) {
++	        /* all packages must have sw_source */
++	        package = msmCreatePackage(mfx->name, mfx->sw_source, 
++					    mfx->provides, NULL);
++	} else {
++        	rpmlog(RPMLOG_ERR, "Package doesn't have a sw source. Abnormal situation. Abort.\n");
++        	goto fail;
++        }
++
++	if (!package) {
++            	 rpmlog(RPMLOG_ERR, "Package could not be created. \n");
++		 goto fail; 
++	}
++	    
++	mfx->provides = NULL; /* owned by package now */
++
++	if (!package->sw_source) { /* this must never happen */
++		rpmlog(RPMLOG_ERR, "Install failed. Check that configuration has at least root sw source installed.\n");
++	        msmFreePackage(package);
++		package = NULL;
++		goto fail;
++	}
++	    
++	rpmlog(RPMLOG_INFO, "adding %s manifest data to system, package_name %s\n", 
++	           rpmteN(ctx->te), package->name);
++
++	if (msmSetupPackages(ctx->smack_accesses, package, package->sw_source)) {
++		rpmlog(RPMLOG_ERR, "Package setup failed for %s\n", rpmteN(ctx->te) );
++	        msmFreePackage(package);
++		package = NULL;
++	        goto fail;
++	}
++
++	if (rootSWSource) {
++		/* current is root */
++		root = ctx->mfx;
++	} 
++
++        rpmlog(RPMLOG_DEBUG, "Starting the security setup...\n");
++        unsigned int smackLabel = 0;
++
++	if (rootSWSource || ctx->mfx->sw_source) {
++		if (ctx->mfx->sw_sources) {
++               smackLabel = 1; /* setting this one on since this manifest doesn't have any define/request section */
++		        ret = msmSetupSWSources(ctx->smack_accesses, ctx->mfx, ts);
++		        if (ret) {
++		            rpmlog(RPMLOG_ERR, "SW source setup failed for %s\n",
++			           rpmteN(ctx->te));
++                            msmCancelPackage(ctx->mfx->name);
++		            goto fail;
++		        }
++	        }           
++     	    	if (ctx->mfx->define) {
++               		if (ctx->mfx->define->name)
++                    		smackLabel = 1;
++		        	ret = msmSetupDefine(ctx->smack_accesses, ctx->mfx);
++		        	if (ret) {
++		            		rpmlog(RPMLOG_ERR, "AC domain setup failed for %s\n",
++			           		rpmteN(ctx->te));
++	            	    		msmCancelPackage(ctx->mfx->name);
++		            		goto fail;
++		        	}
++	        	}           
++	        if (ctx->mfx->request) {	
++               		if (ctx->mfx->request->ac_domain)
++                    		smackLabel = 1;
++		        	ret = msmSetupRequests(ctx->mfx);
++		        	if (ret) {
++		            		rpmlog(RPMLOG_ERR, "Request setup failed for %s\n",
++			           		rpmteN(ctx->te));
++		            		msmCancelPackage(ctx->mfx->name);
++		            		goto fail;
++		        	}
++	        	}
++     	    	if (ctx->smack_accesses) {
++			ret = msmSetupSmackRules(ctx->smack_accesses, ctx->mfx->name, 0, SmackEnabled);
++		       	smack_accesses_free(ctx->smack_accesses);
++		       	ctx->smack_accesses = NULL;
++       		   	if (ret) {
++				rpmlog(RPMLOG_ERR, "Setting up smack rules for %s failed\n",
++			       		rpmteN(ctx->te));
++		       		msmCancelPackage(ctx->mfx->name);
++		       		goto fail; 
++		       	}
++	       }
++	       if (package->provides) {
++	        	ret = msmSetupDBusPolicies(package);
++		        if (ret) {
++		            rpmlog(RPMLOG_ERR, "Setting up dbus policies for %s failed\n",
++			           rpmteN(ctx->te));
++		            msmCancelPackage(ctx->mfx->name);
++		            goto fail;
++		        }
++	        }
++       
++		/* last check is needed in order to catch in advance 
++		the situation when no ac domain defined or requested */
++		if (smackLabel == 0) {
++			rpmlog(RPMLOG_ERR, "No ac domain defined or requested for package %s. Abort.\n",   rpmteN(ctx->te));
++			msmCancelPackage(ctx->mfx->name);
++			goto fail;
++		}
++	}
++
++
++	} else if (rpmteDependsOn(ctx->te)) { /* TR_REMOVED */
++		rpmlog(RPMLOG_INFO, "upgrading package %s by %s\n",
++	       		rpmteNEVR(ctx->te), rpmteNEVR(rpmteDependsOn(ctx->te)));
++    	} else if (mfx->sw_sources) {
++		rpmlog(RPMLOG_ERR, "Cannot remove sw source package %s\n",
++	       		rpmteN(ctx->te));
++		goto fail;
++	}
++
++	rpmlog(RPMLOG_DEBUG, "Finished with pre psm hook \n");
++
++	goto exit;
++
++ fail: /* error, cancel the rpm operation */
++	rc = RPMRC_FAIL;
++
++ exit: /* success, continue rpm operation */
++	context = ctx;
++	msmFreePointer((void**)&xml);
++
++	return rc;
++}
++
++rpmRC SECURITYHOOK_SCRIPT_EXEC_FUNC(ARGV_const_t argv)
++{
++	/* no functionality yet for scripts, just execute it like it is */
++	return execv(argv[0], argv);
++}
++
++rpmRC SECURITYHOOK_FSM_OPENED_FUNC(FSM_t fsm)
++{
++
++    //check if there any conflicts that prevent file being written to the disk
++
++    fileconflict *fc;
++    packagecontext *ctx = context;
++    if (!ctx) return RPMRC_FAIL; 
++   
++    char* fullpath = getFilePath(fsm->dirName, fsm->baseName);
++    if (!fullpath) return RPMRC_FAIL;
++    rpmlog(RPMLOG_DEBUG, "Constructed file name: %s\n", fullpath); 
++    HASH_FIND(hh, allfileconflicts, fullpath, strlen(fullpath), fc);
++    msmFreePointer((void**)&fullpath);
++
++    if (fc) {
++	/* There is a conflict, see if we are not allowed to overwrite */
++	    if (!current || (strcmp(current->rankkey, fc->sw_source->rankkey) > 0)) {
++	        rpmlog(RPMLOG_ERR, "%s has file conflict in %s from sw source %s\n",
++		       rpmteN(ctx->te), fc->path, fc->sw_source->name);
++	        return RPMRC_FAIL;
++	    }
++	    rpmlog(RPMLOG_INFO, "%s from %s overwrites %s from %s\n",
++	           rpmteN(ctx->te), current->name, fc->path, fc->sw_source->name);
++    }
++
++    return RPMRC_OK;
++}
++
++rpmRC SECURITYHOOK_FSM_UPDATED_FUNC(FSM_t fsm)
++{
++
++    packagecontext *ctx = context;
++    if (!ctx) return RPMRC_FAIL;
++
++    //no need to have any hashes calculation now
++
++    return RPMRC_OK;
++}
++
++rpmRC SECURITYHOOK_FSM_CLOSED_FUNC(FSM_t fsm, int rpmrc)
++{
++
++    packagecontext *ctx = context;
++    if (!ctx) return RPMRC_FAIL;
++    if (rpmrc) return rpmrc; 
++
++    rpmlog(RPMLOG_DEBUG, "Started with FSM_CLOSED_FUNC hook for file dir name: %s, base name %s \n", fsm->dirName, fsm->baseName);
++
++    if (ctx->mfx) {
++	file_x *file = xcalloc(1, sizeof(*file));
++	if (file) {
++		file->path = getFilePath(fsm->dirName, fsm->baseName);
++		LISTADD(ctx->mfx->files, file);
++		if (rpmteType(ctx->te) == TR_ADDED) {
++			if (msmSetFileXAttributes(ctx->mfx, file->path, cookie) < 0) {
++				rpmlog(RPMLOG_ERR, "Setting of extended attributes failed for file %s from package %s\n",
++			           		file->path, rpmteN(ctx->te));
++				return RPMRC_FAIL;
++			}
++		} 
++
++	} else
++		return RPMRC_FAIL;
++    } else {
++		rpmlog(RPMLOG_ERR, "Manifest is missing while it should be present for the package %s\n",
++			   rpmteN(ctx->te));
++		return RPMRC_FAIL;
++    }
++
++    rpmlog(RPMLOG_DEBUG, "Finished with FSM_CLOSED_FUNC hook for file dir name: %s, base name %s \n", fsm->dirName, fsm->baseName);
++    return RPMRC_OK;
++}
++
++rpmRC SECURITYHOOK_FSM_DIR_LABEL_FUNC(FSM_t fsm, int rpmrc)
++{
++    packagecontext *ctx = context;
++    if (!ctx) return RPMRC_FAIL;
++    if (rpmrc) return rpmrc; 
++
++    rpmlog(RPMLOG_DEBUG, "Started with FSM_DIR_LABEL_FUNC hook for file fsm->path: %s \n", fsm->path);
++    if (ctx->mfx) {
++	if (msmSetFileXAttributes(ctx->mfx, fsm->path, cookie) < 0) {
++		rpmlog(RPMLOG_ERR, "Setting of extended attributes failed for dir %s from package %s\n",
++			          fsm->path, rpmteN(ctx->te));
++		rpmrc = RPMRC_FAIL;
++	}
++ 
++    } else {
++		rpmlog(RPMLOG_ERR, "Manifest is missing while it should be present for the package %s\n",
++			   rpmteN(ctx->te));
++		return RPMRC_FAIL;
++    }
++
++    rpmlog(RPMLOG_DEBUG, "Finished with FSM_DIR_LABEL_FUNC hook for file fsm->path: %s \n", fsm->path);
++    return rpmrc;
++}
++
++
++rpmRC SECURITYHOOK_POST_PSM_FUNC(rpmte te, int rpmrc)
++{
++
++    rpmRC res = RPMRC_FAIL;
++    packagecontext *ctx = context;
++    if (!ctx) return res;
++
++    if (rpmrc == RPMRC_FAIL) {
++	/* failure in rpm psm, rollback */
++	if (rpmteType(ctx->te) == TR_ADDED)
++	    msmCancelPackage(ctx->mfx->name);
++	    goto exit;
++    }
++
++    if (!ctx->mfx){
++        rpmlog(RPMLOG_ERR, "Manifest is missing while it should be present for the package %s\n",
++			   rpmteN(ctx->te));
++		goto exit;
++    }
++
++    if (rootSWSource) {
++	    /* current is root */
++	    root = context->mfx;
++    } 
++
++
++    if (rpmteType(ctx->te) == TR_REMOVED) {
++	    if (ctx->mfx->sw_source) {
++	        if (rpmteDependsOn(ctx->te)) {
++		        rpmlog(RPMLOG_INFO, "upgrading %s manifest data\n", 
++		           rpmteN(ctx->te));
++	        } else {
++		        rpmlog(RPMLOG_INFO, "removing %s manifest data\n", 
++		           rpmteN(ctx->te));
++	            if (ctx->mfx->define || ctx->mfx->provides || ctx->mfx->sw_sources) {
++		            msmRemoveRules(ctx->smack_accesses, ctx->mfx, SmackEnabled);
++	            } 	    
++	            msmRemoveConfig(ctx->mfx);
++	        }
++	    }
++
++   }
++
++    res = RPMRC_OK;
++
++ exit:
++
++    current = NULL;
++
++    return res;
++}
++
++rpmRC SECURITYHOOK_POST_TSM_FUNC(rpmts _ts)
++{
++
++    packagecontext *ctx = context;
++    if (!ctx) return RPMRC_FAIL;
++    msmFreeInternalHashes(); // free hash structures first
++
++    if (root) {
++        msmSaveDeviceSecPolicyXml(root, ts->rootDir);
++        if (!rootSWSource) root = msmFreeManifestXml(root);
++    }
++    return RPMRC_OK;
++}
++
++static packagecontext *msmFree(packagecontext *ctx)
++{
++
++    while (ctx) {
++	    packagecontext *next = ctx->next;
++	    msmFreePointer((void**)&ctx->data);
++	    ctx->mfx = msmFreeManifestXml(ctx->mfx);
++	    if (ctx->smack_accesses) smack_accesses_free(ctx->smack_accesses);
++	    msmFreePointer((void**)&ctx);
++	    ctx = next;
++    }
++
++    return NULL;
++
++}
++
++rpmRC SECURITYHOOK_CLEANUP_FUNC(void)
++{
++    ts = NULL;
++
++    contextsHead = contextsTail = msmFree(contextsHead);
++    contextsHead = contextsTail = NULL;
++
++    if (allfileconflicts) {
++	    fileconflict *fc, *temp;
++	    HASH_ITER(hh, allfileconflicts, fc, temp) {
++	        HASH_DELETE(hh, allfileconflicts, fc);
++	        msmFreePointer((void**)&fc->path);
++	        msmFreePointer((void**)&fc);
++	    }
++    }
++
++    msmFreePointer((void**)&ownSmackLabel);
++    if (cookie) magic_close(cookie);
++
++    return RPMRC_OK;
++}
++
++const char *msmQueryPackageFile(const char *rfor, 
++				 const char **dname, const char **pname)
++{
++    int match = 0;
++    const char *path = NULL;
++
++    if (ts) {
++	    char *sep = strchr(rfor, ':');
++	    if (sep && sep[1] == ':' && sep[2] == '/') 
++	        path = &sep[2];
++	    if (!path) return NULL;
++
++	    rpmdbMatchIterator mi = rpmtsInitIterator(ts, RPMTAG_BASENAMES, path, 0);
++	    if (!mi)
++	        mi = rpmtsInitIterator(ts, RPMTAG_PROVIDENAME, path, 0);
++	    if (mi) {
++	        Header h;
++	        const char *name, *sw_source;
++	        while ((h = rpmdbNextIterator(mi))) {
++		        rpmdbCheckSignals();
++		        name = headerGetString(h, RPMTAG_NAME);
++		        sw_source = headerGetString(h, RPMTAG_SECSWSOURCE);
++		        if (name && sw_source) {
++		            match = !strncmp(rfor, name, path - rfor - 2);
++		            rpmlog(RPMLOG_INFO, "file %s belongs to package %s in sw source %s %s\n", path, name, sw_source, (match ? "(matched request)" : ""));
++		            if (match) {
++			            *pname = xstrdup(name);
++			            *dname = xstrdup(sw_source);
++			            break;
++		            }
++		        }
++	        }
++	        mi = rpmdbFreeIterator(mi);
++	    }
++    }
++    return match ? path : NULL;
++}
++
++void msmFreePointer(void** ptr)
++{
++	if (*ptr)
++		free(*ptr);
++	*ptr = NULL;
++	return;
++}
++
+diff -Nuarp rpm/security/msmconfig.c rpm-security/security/msmconfig.c
+--- rpm/security/msmconfig.c	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/msmconfig.c	2012-10-01 10:29:50.323983642 +0300
+@@ -0,0 +1,273 @@
++/*
++ * This file is part of MSM security plugin
++ * Greatly based on the code of MSSF security plugin
++ *
++ * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).
++ *
++ * Contact: Ilhan Gurel <ilhan.gurel@nokia.com>
++ *
++ * Copyright (C) 2011 - 2012 Intel Corporation.
++ *
++ * Contact: Elena Reshetova <elena.reshetova@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA
++ */
++
++#include <libxml/tree.h>
++
++#include "rpmio/base64.h"
++
++#include "msm.h"
++
++typedef enum credType_e {
++    CRED_ALLOWMATCHES  = 0,
++    CRED_ALLOW         = 1,
++    CRED_DENYMATCHES   = 2,
++    CRED_DENY          = 3,
++    CRED_PROVIDE       = 4
++} credType;
++
++/**
++ * Serializes key data
++ * @todo Problem with getting keydata
++ * @param parent	XML node
++ * @param keyinfo	keyinfo structure
++ * @return		none
++ */
++static void msmHandleKeyinfo(xmlNode *parent, keyinfo_x *keyinfo)
++{    
++    char *enc = NULL;
++
++    if (!parent)
++        return;
++    
++    while (keyinfo) {
++        xmlNode *node = xmlNewNode(NULL, BAD_CAST "keyinfo");
++
++        /* b64 encode keydata first */    
++        if ((enc = b64encode(keyinfo->keydata, keyinfo->keylen, -1)) != NULL) {
++            xmlAddChild(node, xmlNewText(BAD_CAST "\n"));        
++            xmlAddChild(node, xmlNewText(BAD_CAST enc));
++            msmFreePointer((void**)&enc);   
++        }
++
++        xmlAddChild(parent, node);
++        keyinfo = keyinfo->prev;
++    }
++}
++
++/**
++ * Serializes ac_domain data
++ * @param parent	XML node
++ * @param type	    Type (allow, deny,..)
++ * @param ac_domain	ac_domain structure
++ * @return		    none
++ */
++static void msmHandleACDomains(xmlNode *parent, credType type, 
++				  ac_domain_x *ac_domain)
++{
++    if (!ac_domain || !parent)
++        return;
++
++    xmlNode *node = NULL;
++
++    if ((type == CRED_ALLOWMATCHES) || (type == CRED_ALLOW)) {
++        node = xmlNewNode(NULL, BAD_CAST "allow");    
++    } else if ((type == CRED_DENYMATCHES) || (type == CRED_DENY)) {
++        node = xmlNewNode(NULL, BAD_CAST "deny"); 
++    } else if (type == CRED_PROVIDE) {
++	node = parent;
++    } else {
++        return;    
++    }
++
++    while (ac_domain) {
++        xmlNode *childnode = xmlNewNode(NULL, BAD_CAST "ac_domain");
++        if ((type == CRED_ALLOWMATCHES) || (type == CRED_DENYMATCHES)) {
++            xmlNewProp(childnode, BAD_CAST "match", BAD_CAST ac_domain->match);
++        } else {
++            xmlNewProp(childnode, BAD_CAST "name", BAD_CAST ac_domain->name);
++	    if (ac_domain->type)
++		xmlNewProp(childnode, BAD_CAST "policy", BAD_CAST ac_domain->type);
++	    if (ac_domain->plist)
++		xmlNewProp(childnode, BAD_CAST "plist", BAD_CAST ac_domain->plist);
++        }
++        xmlAddChild(node, childnode);
++	if (type == CRED_ALLOW || type == CRED_DENY)
++	    ac_domain = ac_domain->hh.next;
++	else
++	    ac_domain = ac_domain->prev;
++    }
++
++    if (type != CRED_PROVIDE)
++	    xmlAddChild(parent, node);
++}
++
++/**
++ * Serializes origin data
++ * @param parent	XML node
++ * @param origin	origin structure
++ * @return		    none
++ */
++static void msmHandleOrigin(xmlNode *parent, origin_x *origin)
++{    
++    if (!parent)
++        return;
++    
++    while (origin) {
++        xmlNode *node = xmlNewNode(NULL, BAD_CAST "origin");
++        xmlAddChild(parent, node);
++        msmHandleKeyinfo(node, origin->keyinfos);
++        origin = origin->prev;
++    }
++}
++
++/**
++ * Serializes provides data
++ * @param parent	XML node
++ * @param provide	provide structure
++ * @return		    none
++ */
++static void msmHandleProvide(xmlNode *parent, provide_x *provide)
++{    
++    if (!parent)
++        return;     
++
++    while (provide) {
++	if (provide->ac_domains) {
++		xmlNode *node = xmlNewNode(NULL, BAD_CAST "provide");
++		xmlAddChild(parent, node);
++		msmHandleACDomains(node, CRED_PROVIDE, provide->ac_domains);
++		if (provide->origin) {
++		    xmlNode *childnode = xmlNewNode(NULL, BAD_CAST "for");
++		    xmlNewProp(childnode, BAD_CAST "origin", BAD_CAST provide->origin);
++		    xmlAddChild(node, childnode);
++		}
++	}
++        provide = provide->prev;
++    }
++}
++
++/**
++ * Serializes packages data
++ * @param parent	XML node
++ * @param package	package structure
++ * @return		none
++ */
++static void msmHandlePackage(xmlNode *parent, package_x *package)
++{    
++    if (!parent)
++        return; 
++
++    while (package) {
++	if (!package->newer) {
++	    xmlNode *node = xmlNewNode(NULL, BAD_CAST "package");
++	    xmlNewProp(node, BAD_CAST "name", BAD_CAST package->name);
++	    if (package->modified) 
++		xmlNewProp(node, BAD_CAST "modified", BAD_CAST package->modified);
++	    xmlAddChild(parent, node);
++	    msmHandleProvide(node, package->provides);
++	}
++	package = package->prev;
++    }
++}
++
++/**
++ * Serializes sw source data
++ * @param parent	XML node
++ * @param sw_source	sw_source structure
++ * @return		    none
++ */
++static void msmHandleSWSource(xmlNode *parent, sw_source_x *sw_source)
++{
++    #define MAX_DEPTH 10
++    xmlNode *node[MAX_DEPTH];
++    sw_source_x *temp;
++    int depth = 0;
++
++    if (!sw_source || !parent)
++        return;
++
++    node[0] = parent;
++
++    while (sw_source) {
++	depth = 1; /* recalculate depth */
++	for (temp = sw_source->parent; temp; temp = temp->parent) depth++;
++	if (!sw_source->newer && depth < MAX_DEPTH) {
++	    node[depth] = xmlNewNode(NULL, BAD_CAST "sw_source");
++	    xmlNewProp(node[depth], BAD_CAST "name", BAD_CAST sw_source->name);
++	    xmlNewProp(node[depth], BAD_CAST "rankkey", BAD_CAST sw_source->rankkey);
++	    xmlAddChild(node[depth-1], node[depth]);
++	    msmHandleOrigin(node[depth], sw_source->origins);
++	    msmHandleACDomains(node[depth], CRED_ALLOWMATCHES, sw_source->allowmatches);
++	    msmHandleACDomains(node[depth], CRED_ALLOW, sw_source->allows);
++	    msmHandleACDomains(node[depth], CRED_DENYMATCHES, sw_source->denymatches);
++	    msmHandleACDomains(node[depth], CRED_DENY, sw_source->denys);
++	    msmHandlePackage(node[depth], sw_source->packages);
++	    if (sw_source->older) {
++		/* packages still belong to this sw_source */
++		msmHandlePackage(node[depth], sw_source->older->packages);
++	    }
++	}
++	sw_source = sw_source->next;
++    }
++}
++
++/**
++ * Saves sw_source configuration into /etc/dev-sec-policy.
++ * @param mfx		data to serialize
++ * @return		RPMRC_OK or RPMRC_FAIL
++ */
++rpmRC msmSaveDeviceSecPolicyXml(manifest_x *mfx, const char *rootDir)
++{    
++    FILE *outFile;
++    rpmRC rc = RPMRC_OK;
++    char *fullPath = NULL;
++
++    fullPath = rpmGenPath(rootDir, DEVICE_SECURITY_POLICY, NULL);
++    rpmlog(RPMLOG_DEBUG, "fullPath %s\n", fullPath);
++    if (!fullPath) {
++        rpmlog(RPMLOG_ERR, "Building a full path failed for device security policy\n");
++        return RPMRC_FAIL;
++    }
++
++    /* if data doesn't have sw_source information, no need to do anything */    
++    if (mfx && mfx->sw_sources) {    
++	sw_source_x *sw_source;
++	xmlDoc *doc = xmlNewDoc( BAD_CAST "1.0");
++	xmlNode *rootnode = xmlNewNode(NULL, BAD_CAST "config");
++	xmlDocSetRootElement(doc, rootnode);
++
++	LISTHEAD(mfx->sw_sources, sw_source);	
++        msmHandleSWSource(rootnode, sw_source);
++
++        outFile = fopen(fullPath, "w");
++        if (outFile) {
++            xmlElemDump(outFile, doc, rootnode);
++            fclose(outFile);
++        } else {
++            rpmlog(RPMLOG_ERR, "Unable to write device security policy%s\n", 
++	           fullPath);
++            rc = RPMRC_FAIL;
++        }
++        xmlFreeDoc(doc);
++        xmlCleanupParser();
++    }
++
++    msmFreePointer((void**)&fullPath);
++    return rc;
++}
++
+diff -Nuarp rpm/security/msm.h rpm-security/security/msm.h
+--- rpm/security/msm.h	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/msm.h	2012-10-01 10:29:50.323983642 +0300
+@@ -0,0 +1,471 @@
++/*
++ * This file is part of MSM security plugin
++ * Greatly based on the code of MSSF security plugin
++ *
++ * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).
++ *
++ * Contact: Tero Aho <ext-tero.aho@nokia.com>
++ *
++ * Copyright (C) 2011 - 2012 Intel Corporation.
++ *
++ * Contact: Elena Reshetova <elena.reshetova@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA
++ */
++
++#ifndef MSM_H
++#define MSM_H
++
++#include "security.h"
++
++#define IMA "security.ima"
++#define SMACK64TRANSMUTE "security.SMACK64TRANSMUTE"
++#define SMACK64 "security.SMACK64"
++#define SMACK64EXEC "security.SMACK64EXEC"
++
++#define SMACK_RULES_PATH "/etc/smack/accesses.d/"
++#define SMACK_RULES_PATH_BEG "/etc/smack/"
++#define DEVICE_SECURITY_POLICY "/etc/device-sec-policy"
++#define DEVICE_SECURITY_POLICY_DEF "/usr/lib/rpm-plugins/msm-device-sec-policy"
++#define SMACK_LOAD_PATH "/smack/load"
++
++#define SMACK_ISOLATED_LABEL "Isolated"
++
++#define SMACK_LABEL_LENGTH 255
++#define SMACK_ACCESS_TYPE_LENGHT 6
++#define SMACK_UNINSTALL 1 
++#define RANK_LIMIT 10000
++
++#define DBUS_SERVICE   1
++#define DBUS_PATH      2
++#define DBUS_INTERFACE 3
++#define DBUS_METHOD    4
++#define DBUS_SIGNAL    5
++
++#include <uthash.h>
++#include <sys/capability.h>
++#include <sys/smack.h>
++#include <magic.h>
++
++/** \ingroup msm
++ * List definitions.
++ * All lists are doubly-linked, the last element is stored to list pointer,
++ * which means that lists must be looped using the prev pointer, or by
++ * calling LISTHEAD first to go to start in order to use the next pointer.
++ */
++#define LISTADD(list, node)			\
++    do {					\
++	(node)->prev = (list);			\
++	if (list) (node)->next = (list)->next;	\
++	else (node)->next = NULL;		\
++	if (list) (list)->next = (node);	\
++	(list) = (node);			\
++    } while (0);
++
++#define NODEADD(node1, node2)					\
++    do {							\
++	(node2)->prev = (node1);				\
++	(node2)->next = (node1)->next;				\
++	if ((node1)->next) (node1)->next->prev = (node2);	\
++	(node1)->next = (node2);				\
++    } while (0);
++
++#define LISTCAT(list, first, last)		\
++    if ((first) && (last)) {			\
++	(first)->prev = (list);			\
++	(list) = (last);			\
++    }
++
++#define LISTDEL(list, node)					\
++    do {							\
++	if ((node)->prev) (node)->prev->next = (node)->next;	\
++	if ((node)->next) (node)->next->prev = (node)->prev;	\
++	if (!((node)->prev) && !((node)->next)) (list) = NULL;	\
++    } while (0);
++
++#define LISTHEAD(list, node)					\
++    for ((node) = (list); (node)->prev; (node) = (node)->prev);	
++    
++#define LISTTAIL(list, node)					\
++    for ((node) = (list); (node)->next; (node) = (node)->next);
++
++/** \ingroup msm
++ * Structure definitions.
++ * These structures represent the parsed security manifest of a package.
++ */
++
++
++typedef struct file_x {
++    const char *path; /* file path */
++    ino_t ino; /* file inode */
++    unsigned char digest[SHA1_LENGTH];
++    struct file_x *prev;
++    struct file_x *next;
++} file_x;
++
++typedef struct filesystem_x {
++    const char *path; /* filesystem object absolute path */
++    const char *label; /* SMACK64 xattr */
++    const char *exec_label; /* SMACK64EXEC xattr */
++    const char *type; /* can be set as TRANSMUTABLE for directory */
++    struct filesystem_x *prev;
++    struct filesystem_x *next;
++ } filesystem_x;
++
++typedef struct ac_domain_x { /* structure for storing ac domain */
++    const char *name; /* ac domain name */
++    const char *match;
++    const char *type; /* ac domain policy type: "shared" or "restricted" or "NULL" (private) */
++    const char *plist; /* list of packages that allowed to request domain, if policy is "restricted" */
++    const char *pkg_name; /* package that defined ac domain */
++    struct ac_domain_x *prev;
++    struct ac_domain_x *next;
++    struct sw_source_x *sw_source; /* sw source of the package that defined the domain */
++    const char *origin;
++    UT_hash_handle hh;
++    int allowed;
++    struct ac_domain_x *older; /* previous version in upgrades */
++    struct ac_domain_x *newer; /* the newer upgraded version */
++} ac_domain_x;
++
++typedef struct annotation_x {
++    const char *name;
++    const char *value;
++} annotation_x;
++
++typedef struct member_x {
++    int type;
++    const char *name;
++    struct annotation_x *annotation;
++    struct member_x *prev;
++    struct member_x *next;
++} member_x;
++
++typedef struct interface_x {
++    const char *name;
++    struct annotation_x *annotation;
++    struct member_x *members;
++    struct interface_x *prev;
++    struct interface_x *next;
++} interface_x;
++
++typedef struct node_x {
++    const char *name;
++    struct annotation_x *annotation;
++    struct member_x *members;
++    struct interface_x *interfaces;
++    struct node_x *prev;
++    struct node_x *next;
++} node_x;
++
++typedef struct dbus_x {
++    const char *name;
++    const char *own;
++    const char *bus;
++    struct annotation_x *annotation;
++    struct node_x *nodes;
++    struct dbus_x *prev;
++    struct dbus_x *next;
++} dbus_x;
++
++typedef struct provide_x {
++    const char *name; /* _system_ or NULL */
++    struct ac_domain_x *ac_domains;
++    struct filesystem_x *filesystems;
++    struct dbus_x *dbuss;
++    const char *origin;
++    struct provide_x *prev;
++    struct provide_x *next;
++} provide_x;
++
++typedef struct request_x {
++    const char *ac_domain;
++} request_x;
++ 
++typedef struct keyinfo_x {
++    const unsigned char *keydata;
++    size_t keylen;
++    struct keyinfo_x *prev;
++    struct keyinfo_x *next;
++} keyinfo_x;
++
++typedef struct access_x {
++    const char *data;
++    const char *type;
++    struct access_x *prev;
++    struct access_x *next;
++} access_x;
++
++typedef struct origin_x {
++    const char *type;
++    struct keyinfo_x *keyinfos;
++    struct access_x *accesses;
++    struct origin_x *prev;
++    struct origin_x *next;
++} origin_x;
++
++typedef struct constraint_x {
++    const char *name;
++    const char *value;
++    struct constraint_x *prev;
++    struct constraint_x *next;
++} constraint_x;
++
++typedef struct d_request_x {
++    const char *label_name;
++    const char *ac_type;
++    struct d_request_x *prev;
++    struct d_request_x *next;
++} d_request_x;
++
++typedef struct d_permit_x {
++    const char *label_name;
++    const char *to_label_name;
++    const char *ac_type;
++    struct d_permit_x *prev;
++    struct d_permit_x *next;
++} d_permit_x;
++
++typedef struct d_provide_x {
++    const char *label_name;    
++    struct d_provide_x *prev;
++    struct d_provide_x *next;
++} d_provide_x;
++
++typedef struct define_x {
++    const char *name; /* ac domain name */
++    const char *policy; 
++    const char *plist; /* list of packages that are allowed to request the ac domain */
++    struct d_request_x *d_requests;
++    struct d_permit_x *d_permits;
++    struct d_provide_x *d_provides;
++} define_x;
++
++typedef struct package_x {
++    const char *name; /* package name */
++    struct sw_source_x *sw_source; /* package sw source */
++    struct provide_x *provides;
++    const char *modified; /* internal packages */
++    struct package_x *prev;
++    struct package_x *next;
++    UT_hash_handle hh;
++    struct package_x *older; /* previous version in upgrades */
++    struct package_x *newer; /* the newer upgraded version */
++} package_x;
++
++typedef struct sw_source_x {
++    const char *name;
++    const char *rankkey;
++    struct package_x *packages; /* config processing */
++    struct ac_domain_x *allowmatches; /* list of allow wildcards */
++    struct ac_domain_x *allows; /* hash of allowed ac domains */
++    struct ac_domain_x *denymatches; /* list of deny wildcards */
++    struct ac_domain_x *denys; /* hash of denied ac domains */
++    struct origin_x *origins;
++    struct sw_source_x *prev;
++    struct sw_source_x *next;
++    struct sw_source_x *parent;
++    struct sw_source_x *older; /* previous version in upgrades */
++    struct sw_source_x *newer; /* the newer upgraded version */
++} sw_source_x;
++
++typedef struct manifest_x { /*package manifest */
++    struct sw_source_x *sw_source; /* package sw source */
++    const char *name; /* package name */
++    struct provide_x *provides; /* assign section */
++    struct request_x *request; /* request section */
++    struct sw_source_x *sw_sources; /*defined software sources(non-NULL only for configuration manifests)*/
++    struct define_x *define; /* define section */
++    struct file_x *files; /* installed files */
++} manifest_x;
++
++/** \ingroup msm
++ * Frees the given pointer and sets it to NULL
++ * @param ptr	address of pointer to be freed
++ * @return	
++ */
++void msmFreePointer(void **ptr);
++
++/** \ingroup msm
++ * Process package security manifest.
++ * @param buffer	xml data buffer
++ * @param size		buffer length
++ * @param current	sw source for package
++ * @param packagename	name of the package
++ * @return		pointer to structure on success
++ */
++manifest_x *msmProcessManifestXml(const char *buffer, int size, sw_source_x *current, const char *packagename);
++
++/** \ingroup msm
++ * Process device security policy file.
++ * @param filename	file name
++ * @return		pointer to structure on success
++ */
++manifest_x *msmProcessDevSecPolicyXml(const char *filename);
++
++/** \ingroup msm
++ * Free all structures reserved during manifest processing.
++ * @param mfx		pointer to structure
++ */
++manifest_x* msmFreeManifestXml(manifest_x * mfx);
++
++/** \ingroup msm
++ * Go through all sw sources in manifest, import keys to RPM keyring.
++ * @param smack_accesses	smack_accesses handle for setting smack rules
++ * @param mfx			package manifest
++ * @param ts			rpm transaction set
++ * @return			0 on success, else -1
++ */
++int msmSetupSWSources(struct smack_accesses *smack_accesses, manifest_x *mfx, rpmts ts);
++
++
++/** \ingroup msm
++ * Create package structure for package being installed.
++ * @param name		package name
++ * @param sw_source	package sw source
++ * @param provides	provided ac domains
++ * @param modified	for internal packages
++ * @return		allocated and initialized package struct
++ */
++package_x *msmCreatePackage(const char *name, sw_source_x *sw_source, provide_x *provides, const char *modified);
++
++/** \ingroup msm
++ * Go through all provides in manifest, add provided ac domains to hash.
++ * @param packages	pointer to packages list
++ * @param sw_source	link to sw source in device security policy
++ * @param rule_set	rule set for setting smack rules
++ * @return		0 on success, else -1
++ */
++int msmSetupPackages(struct smack_accesses *smack_accesses, package_x *packages, sw_source_x *sw_source);
++
++/** \ingroup msm
++ * Setup define section of manifest
++ * @param smack_accesses	smack_accesses handle for setting smack rules
++ * @param mfx			package manifest
++ * @return			0 on success, else -1
++ */
++int msmSetupDefine(struct smack_accesses *smack_accesses, manifest_x *mfx);
++
++/** \ingroup msm
++ * Setup smack rules according to the manifest
++ * @param smack_accesses	smack_accesses handle for setting smack rules
++ * @param package_name		package name
++ * @param flag			    flag to indicate installation or uninstallation  
++ * @param SmackEnabled      flag to indicate Smack presence in the kernel
++ * @return			        0 on success, else -1
++ */
++int msmSetupSmackRules(struct smack_accesses *smack_accesses, const char* package_name, int flag, int SmackEnabled);
++
++/** \ingroup msm
++ * Check previous installation of package. 
++ * @param name		package name
++ * @return		package or NULL
++ */
++package_x *msmCheckPackage(const char *name);
++
++/** \ingroup msm
++ * Cancel the installation of package (rules and config data). 
++ * @param name		package name
++ */
++void msmCancelPackage(const char *name);
++
++/** \ingroup msm
++ * Free package structure. 
++ * @param package	package
++ * @return		next package in list or NULL
++ */
++package_x *msmFreePackage(package_x *package);
++
++/** \ingroup msm
++ * Set extended attributes of the file based on manifest.
++ * @param mfx		package manifest
++ * @param filepath	path of the file
++ * @param cookie	magic cookie
++ * @return	0 on success, else -1
++ */
++int msmSetFileXAttributes(manifest_x *mfx, const char* filepath, magic_t cookie);
++
++/** \ingroup msm
++ * Set setup the request section of manifest.
++ * @param mfx			package manifest
++ * @return			0 on success, else -1
++ */
++int msmSetupRequests(manifest_x *mfx);
++
++/** \ingroup msm
++ * Package is removed, remove all related Smack rules.
++ * @param mfx			package manifest
++ * @param smack_accesses	smack_accesses handle for setting smack rules
++ * @param SmackEnabled      flag to indicate Smack presence in the kernel
++ */
++void msmRemoveRules(struct smack_accesses *smack_accesses, manifest_x *mfx, int SmackEnabled);
++
++/** \ingroup msm
++ * Setup DBus policies for package
++ * @param package	package 
++ */
++int msmSetupDBusPolicies(package_x *package);
++
++
++/** \ingroup msm
++ * Package is removed, remove related data in device security policy.
++ * @param mfx		package manifest
++ */
++void msmRemoveConfig(manifest_x *mfx);
++
++/** \ingroup msm
++ * String compare which allows wildcards (* and ?) in s2.
++ * @param s1		string to compare
++ * @param s2		string to compare
++ * @return		0 if s1 matches s2
++ */
++int strwcmp(const char *s1, const char *s2);
++
++/** \ingroup msm
++ * Saves configuration into /etc/dev-sec-policy.
++ * @param mfx		data to serialize
++ * @param rooDir   ts->rootDir prefix
++ * @return		RPMRC_OK or RPMRC_FAIL
++ */
++rpmRC msmSaveDeviceSecPolicyXml(manifest_x *root, const char *rootDir);
++
++/** \ingroup msm
++ * Depth first tree traversal for sw source tree.
++ * @param sw_sources	sw source tree
++ * @param func		function to call for each sw source until 0 is returned
++ * @param param		parameter for the function
++ * @return		matching sw source or NULL
++ */
++sw_source_x *msmSWSourceTreeTraversal(sw_source_x *sw_sources, int (func)(sw_source_x *, void *), void *param);
++
++/** \ingroup msm
++ * Free internal hashes.
++ */
++void msmFreeInternalHashes(void);
++
++/** \ingroup msm
++ * Query that requested package really owns the file.
++ * @param rfor		request for 'package::/file/path'
++ * @param sw_sname	sw source name, caller must free
++ * @param pname		package name, caller must free
++ * @return		pointer to the path part in rfor, or NULL if file
++ *			is not owned by the specified package
++ */
++const char *msmQueryPackageFile(const char *rfor, 
++				 const char **sw_sname, const char **pname);
++
++
++#endif
+diff -Nuarp rpm/security/msmmanifest.c rpm-security/security/msmmanifest.c
+--- rpm/security/msmmanifest.c	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/msmmanifest.c	2012-10-01 10:29:50.323983642 +0300
+@@ -0,0 +1,1501 @@
++/*
++ * This file is part of MSM security plugin
++ * Greatly based on the code of MSSF security plugin
++ *
++ * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).
++ *
++ * Contact: Tero Aho <ext-tero.aho@nokia.com>
++ *
++ * Copyright (C) 2011 -2012 Intel Corporation.
++ *
++ * Contact: Elena Reshetova <elena.reshetova@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA
++ */
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <stdarg.h>
++#include <string.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++
++#include <libxml/xmlreader.h>
++#include <sys/capability.h>
++
++#include "msm.h"
++
++#include "rpmio/base64.h"
++
++/* We'll support only the basic set of characters */
++#define ASCII(s) (const char *)s
++#define XMLCHAR(s) (const xmlChar *)s
++
++
++static int msmVerifyAccessType(const char* type)
++{
++	int res = 0, idx = 0;
++
++	if (type) {
++	    if (strlen(type) > SMACK_ACCESS_TYPE_LENGHT) {
++		    rpmlog(RPMLOG_ERR, "Lenght of the access type is bigger than allowed value: %s\n", type);
++		    return -1;
++	    }
++	    while ( type[idx] != '\0' ){
++		if ((type[idx] !='a') && (type[idx]!='r') && (type[idx]!='w') &&
++		    (type[idx]!='x') && (type[idx]!='t') && (type[idx] !='-') &&
++		    (type[idx] != 'l')) {
++		    rpmlog(RPMLOG_ERR, "Not allowed character in access type: %s\n", type);
++		    res = -1;
++		    break;
++		}
++		idx++;
++	    }
++	} else return -1; 
++	return res;
++}
++
++static int msmVerifySmackLabel(const char* label)
++{
++	int res = 0, idx = 0;
++
++	if (label) {
++	    if (strlen(ASCII(label)) > SMACK_LABEL_LENGTH) { //smack limitation on lenght
++		rpmlog(RPMLOG_ERR, "Domain or label name  %s lenght is longer than defined SMACK_LABEL_LENGTH\n", label);
++		return -1; 
++	    }
++           if (strlen(ASCII(label)) == 0){
++		rpmlog(RPMLOG_ERR, "An attempt to define an empty domain or label name\n");
++    		return -1; 
++	    }
++ 	    if (label[0] == '-') {
++		rpmlog(RPMLOG_ERR, "Dash is not allowed as first character in smack label: %s\n", label);
++		return -1;
++	    }
++	    while ( label[idx] != '\0' ){
++		if ((label[idx] =='\"') || (label[idx] =='\'') || (label[idx] =='/') ||
++		    (label[idx] =='\\') || (label[idx] > '~') || (label[idx] <= ' ')) {
++		    rpmlog(RPMLOG_ERR, "Not allowed character in smack label: %s, position: %d \n", label, idx);
++		    res = -1;
++		    break;
++		}
++		idx++;
++	    }
++	} else return -1; 
++
++	return res;
++}
++
++static int msmVerifyLabelPrefix(const char* sub_label, const char* domain_name) 
++{
++    char *tmp = NULL;
++    char sep[]= "::";
++
++    tmp = calloc(strlen(domain_name) + 3, sizeof (const char));
++    if (!tmp) 
++	return -1;
++
++    strncpy(tmp, domain_name, strlen(domain_name));
++    strncpy(tmp + strlen(domain_name), sep, 2);
++
++    if (strstr(ASCII(sub_label), tmp) != ASCII(sub_label)) { //sub label name should be prefixed by domain name and "::"
++	rpmlog(RPMLOG_ERR, "Label name %s isn't prefixed by domain name %s\n", ASCII(sub_label), domain_name);
++	msmFreePointer((void**)&tmp);
++	return -1;
++    } 
++
++    msmFreePointer((void**)&tmp);
++    return 0;
++
++}
++
++static int msmNextChildElement(xmlTextReaderPtr reader, int depth) 
++{
++    int ret = xmlTextReaderRead(reader);
++    int cur = xmlTextReaderDepth(reader);
++    while (ret == 1) {
++	/*
++	rpmlog(RPMLOG_DEBUG, "node %s %d\n", 
++	       ASCII(xmlTextReaderConstName(reader)), 
++	       xmlTextReaderDepth(reader));
++	*/
++	switch (xmlTextReaderNodeType(reader)) {
++	case XML_READER_TYPE_ELEMENT:
++	case XML_READER_TYPE_TEXT:
++	    if (cur == depth+1) 
++		return 1;
++	    break;
++	case XML_READER_TYPE_END_ELEMENT:
++	    if (cur == depth) 
++		return 0;
++	    break;
++	default:
++	    if (cur <= depth)
++		return 0;
++	    break;
++	}
++	ret = xmlTextReaderRead(reader);
++	cur = xmlTextReaderDepth(reader);
++    }
++    return ret;
++}
++
++static ac_domain_x *msmFreeACDomain(ac_domain_x *ac_domain)
++{
++	if (ac_domain) {
++	    ac_domain_x *prev = ac_domain->prev;
++	    msmFreePointer((void**)&ac_domain->name);
++	    msmFreePointer((void**)&ac_domain->type);
++	    msmFreePointer((void**)&ac_domain->match);
++	    msmFreePointer((void**)&ac_domain->plist);
++	    msmFreePointer((void**)&ac_domain);
++	    return prev;
++	} else return NULL;
++}
++
++static annotation_x *msmProcessAnnotation(xmlTextReaderPtr reader)
++{
++    const xmlChar *name, *value;
++
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    value = xmlTextReaderGetAttribute(reader, XMLCHAR("value"));
++    rpmlog(RPMLOG_DEBUG, "annotation %s %s\n", ASCII(name), ASCII(value));
++
++    if (name && value) {
++	    annotation_x *annotation = calloc(1, sizeof(annotation_x));
++	    if (annotation) {
++	        annotation->name = ASCII(name);
++	        annotation->value = ASCII(value);
++	        return annotation;
++	    }
++    }
++    msmFreePointer((void**)&name);
++    msmFreePointer((void**)&value);
++    return NULL;
++}
++
++static int msmProcessMember(xmlTextReaderPtr reader, member_x *member) 
++{
++    const xmlChar *node, *name;
++    int ret, depth;
++
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    rpmlog(RPMLOG_DEBUG, "member %s\n", ASCII(name));
++    member->name = ASCII(name);
++
++    if (!name) return -1;
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	    node = xmlTextReaderConstName(reader);
++	    if (!node) return -1;
++
++	    if (!strcmp(ASCII(node), "annotation")) {
++	        annotation_x *annotation = msmProcessAnnotation(reader);
++	        if (annotation) {
++		    member->annotation = annotation;
++	        } else return -1;
++	    } else return -1;
++
++	    if (ret < 0) return -1;
++    }
++    return ret;
++}
++
++static int msmProcessInterface(xmlTextReaderPtr reader, interface_x *interface) 
++{
++    const xmlChar *node, *name;
++    int ret, depth;
++
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    rpmlog(RPMLOG_DEBUG, "interface %s\n", ASCII(name));
++    interface->name = ASCII(name);
++
++    if (!name) return -1;
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "method")) {
++	    member_x *member = calloc(1, sizeof(member_x));
++	    if (member) {
++		member->type = DBUS_METHOD;
++		ret = msmProcessMember(reader, member);
++		LISTADD(interface->members, member);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "signal")) {
++	    member_x *member = calloc(1, sizeof(member_x));
++	    if (member) {
++		member->type = DBUS_SIGNAL;
++		ret = msmProcessMember(reader, member);
++		LISTADD(interface->members, member);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "annotation")) {
++	    annotation_x *annotation = msmProcessAnnotation(reader);
++	    if (annotation) {
++		interface->annotation = annotation;
++	    } else return -1;
++	} else return -1;
++
++	if (ret < 0) return -1;
++    }
++    return ret;
++}
++
++static int msmProcessNode(xmlTextReaderPtr reader, node_x *nodex) 
++{
++    const xmlChar *node, *name;
++    int ret, depth;
++
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    rpmlog(RPMLOG_DEBUG, "node %s\n", ASCII(name));
++    nodex->name = ASCII(name);
++
++    if (!name) return -1;
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "interface")) {
++	    interface_x *interface = calloc(1, sizeof(interface_x));
++	    if (interface) {
++		ret = msmProcessInterface(reader, interface);
++		LISTADD(nodex->interfaces, interface);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "method")) {
++	    member_x *member = calloc(1, sizeof(member_x));
++	    if (member) {
++		member->type = DBUS_METHOD;
++		ret = msmProcessMember(reader, member);
++		LISTADD(nodex->members, member);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "signal")) {
++	    member_x *member = calloc(1, sizeof(member_x));
++	    if (member) {
++		member->type = DBUS_SIGNAL;
++		ret = msmProcessMember(reader, member);
++		LISTADD(nodex->members, member);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "annotation")) {
++	    annotation_x *annotation = msmProcessAnnotation(reader);
++	    if (annotation) {
++		nodex->annotation = annotation;
++	    } else return -1;
++	} else return -1;
++
++	if (ret < 0) return -1;
++    }
++    return ret;
++}
++
++static int msmProcessDBus(xmlTextReaderPtr reader, dbus_x *dbus) 
++{
++    const xmlChar *node, *name, *own, *bus;
++    int ret, depth;
++
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    own = xmlTextReaderGetAttribute(reader, XMLCHAR("own"));
++    bus = xmlTextReaderGetAttribute(reader, XMLCHAR("bus"));
++    rpmlog(RPMLOG_DEBUG, "dbus %s %s %s\n", ASCII(name), ASCII(own), ASCII(bus));
++    dbus->name = ASCII(name);
++    dbus->own = ASCII(own);
++    dbus->bus = ASCII(bus);    
++
++    if (!name || !bus) return -1;
++    if (strcmp(dbus->bus, "session") && strcmp(dbus->bus, "system"))
++	return -1;
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "node")) {
++	    node_x *nodex = calloc(1, sizeof(node_x));
++	    if (nodex) {
++		ret = msmProcessNode(reader, nodex);
++		LISTADD(dbus->nodes, nodex);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "annotation")) {
++	    annotation_x *annotation = msmProcessAnnotation(reader);
++	    if (annotation) {
++		dbus->annotation = annotation;
++	    } else return -1;
++	} else return -1;
++
++	if (ret < 0) return -1;
++    }
++    return ret;
++}
++
++static ac_domain_x *msmProcessACDomain(xmlTextReaderPtr reader, sw_source_x *sw_source, const char* pkg_name)
++{
++    const xmlChar *name, *match, *policy, *plist;
++
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    match = xmlTextReaderGetAttribute(reader, XMLCHAR("match"));
++    policy = xmlTextReaderGetAttribute(reader, XMLCHAR("policy"));
++    plist = xmlTextReaderGetAttribute(reader, XMLCHAR("plist"));
++    rpmlog(RPMLOG_DEBUG, "ac_domain %s match %s policy %s plist %s\n", ASCII(name), ASCII(match), ASCII(policy), ASCII(plist));
++
++    if (!((!name && !match) || (name && match))) {
++	ac_domain_x *ac_domain = calloc(1, sizeof(ac_domain_x));
++	if (ac_domain) {
++	    ac_domain->name = ASCII(name);
++	    ac_domain->match = ASCII(match);
++ 	    ac_domain->type = ASCII(policy);
++ 	    ac_domain->plist = ASCII(plist);
++	    ac_domain->sw_source = sw_source;
++	    ac_domain->pkg_name = pkg_name;	
++	    return ac_domain;
++	}
++    }
++    rpmlog(RPMLOG_ERR, "Mandatory argument is missing for ac domain definition\n");
++    rpmlog(RPMLOG_ERR, "ac_domain %s match %s policy %s plist %s\n", ASCII(name), ASCII(match), ASCII(policy), ASCII(plist));
++    msmFreePointer((void**)&name);
++    msmFreePointer((void**)&match);
++    msmFreePointer((void**)&policy);
++    msmFreePointer((void**)&plist);
++    return NULL;
++}
++
++static filesystem_x *msmProcessFilesystem(xmlTextReaderPtr reader)
++{
++    const xmlChar *path, *label, *type, *exec_label;
++
++    path = xmlTextReaderGetAttribute(reader, XMLCHAR("path"));
++    label = xmlTextReaderGetAttribute(reader, XMLCHAR("label"));
++    exec_label = xmlTextReaderGetAttribute(reader, XMLCHAR("exec_label"));
++    type = xmlTextReaderGetAttribute(reader, XMLCHAR("type"));
++
++    rpmlog(RPMLOG_DEBUG, "filesystem path %s label %s exec label %s type %s\n", 
++	   ASCII(path), ASCII(label), ASCII(exec_label), ASCII(type));
++
++   if (path && (label || exec_label)) {
++	if ((label) && (msmVerifySmackLabel(ASCII(label)) < 0)) {
++		goto fail;
++	}
++	if ((exec_label) && (msmVerifySmackLabel(ASCII(exec_label)) < 0)) {
++		goto fail;
++	}
++
++	filesystem_x *filesystem = calloc(1, sizeof(filesystem_x));
++	if (filesystem) {
++	    filesystem->path = ASCII(path);
++	    filesystem->label = ASCII(label);
++	    filesystem->exec_label = ASCII(exec_label);
++	    filesystem->type = ASCII(type);
++	    return filesystem;
++	}
++
++    } else {
++	rpmlog(RPMLOG_ERR, "Mandatory argument is missing for filesystem assign request\n");
++	rpmlog(RPMLOG_ERR, "filesystem path %s label %s exec label %s\n", 
++	   ASCII(path), ASCII(label), ASCII(exec_label));
++    }
++
++fail:
++    msmFreePointer((void**)&path);
++    msmFreePointer((void**)&label);
++    msmFreePointer((void**)&exec_label);
++    msmFreePointer((void**)&type);
++    return NULL;
++}
++
++static int msmProcessProvide(xmlTextReaderPtr reader, provide_x *provide, sw_source_x *current, manifest_x *mfx, const char* pkg_name)
++{
++    const xmlChar *node, *name, *origin;
++    int ret, depth;
++
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    rpmlog(RPMLOG_DEBUG, "assign %s\n", ASCII(name));
++    provide->name = ASCII(name);
++
++    if (provide->name && 
++	(strcmp(provide->name, "_system_") || mfx->sw_source->parent))
++	return -1; /* only _system_ is accepted from root sw source */
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "dbus")) {
++	    dbus_x *dbus = calloc(1, sizeof(dbus_x));
++	    if (dbus) {
++		ret = msmProcessDBus(reader, dbus);
++		LISTADD(provide->dbuss, dbus);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "ac_domain")) {
++	    ac_domain_x *ac_domain = msmProcessACDomain(reader, current, pkg_name);
++	    if (ac_domain) {
++		const char *name = ac_domain->name;
++		LISTADD(provide->ac_domains, ac_domain);
++		if (!name) return -1;
++		if (mfx && !provide->name) {
++		    ac_domain->name = malloc(strlen(mfx->name) + 2 +
++					      strlen(name) + 1);
++		    sprintf((char *)ac_domain->name, "%s::%s", mfx->name, name);
++		    msmFreePointer((void**)&name);
++		}
++	    } else return -1;
++
++	} else if (!strcmp(ASCII(node), "for")) {
++	    origin = xmlTextReaderGetAttribute(reader, XMLCHAR("origin"));
++	    rpmlog(RPMLOG_DEBUG, "for %s\n", ASCII(origin));
++	    if (!origin) return -1;
++	    if (provide->origin) { 
++		msmFreePointer((void**)&origin);
++		return -1;
++	    }
++	    provide->origin = ASCII(origin);
++	    if (strcmp(ASCII(origin), "trusted") && 
++		strcmp(ASCII(origin), "current") &&
++		strcmp(ASCII(origin), "all"))
++		return -1;
++
++	} else if (!strcmp(ASCII(node), "filesystem")) {
++	    filesystem_x *filesystem = msmProcessFilesystem(reader);
++	    if (filesystem) {
++	    	LISTADD(provide->filesystems, filesystem);
++	    } else return -1;
++
++	} else {
++		rpmlog(RPMLOG_ERR, "No allowed element in assign section: %s\n", ASCII(node));
++		return -1;
++    	}
++
++	if (ret < 0) return ret;
++    }
++
++    return ret;
++}
++
++static int msmProcessPackage(xmlTextReaderPtr reader, package_x *package, sw_source_x *current)
++{
++    const xmlChar *node, *name, *modified;
++    int ret, depth;
++
++    /* config processing */
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    modified = xmlTextReaderGetAttribute(reader, XMLCHAR("modified"));
++    rpmlog(RPMLOG_DEBUG, "package %s %s\n", name, modified);
++
++    package->name = ASCII(name);
++    package->modified = ASCII(modified);
++    package->sw_source = current;
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "provide")) {
++	    provide_x *provide = calloc(1, sizeof(provide_x));
++	    if (provide) {
++		LISTADD(package->provides, provide);
++		ret = msmProcessProvide(reader, provide, current, NULL, package->name);
++	    } else return -1;
++	} else return -1;
++
++	if (ret < 0) return ret;
++    }
++    return ret;
++}
++
++static int msmProcessRequest(xmlTextReaderPtr reader, request_x *request) 
++{
++    const xmlChar *node, *name;
++    int ret, depth, requestPresent = 0;
++
++    rpmlog(RPMLOG_DEBUG, "request \n");
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	    if (!strcmp(ASCII(node), "domain")) {
++ 		if (requestPresent) {
++			rpmlog(RPMLOG_ERR, "A second domain defined inside a request section. Abort package installation\n");
++			return -1;
++		}
++		name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));   
++		rpmlog(RPMLOG_DEBUG, "ac domain name %s\n", ASCII(name));
++		if (name) {
++			request->ac_domain = ASCII(name);
++			requestPresent = 1;
++		} else {
++			rpmlog(RPMLOG_ERR, "No ac domain name defined in request.\n");
++			return -1;
++		}
++	    } else {
++		rpmlog(RPMLOG_ERR, "Not allowed element in request section: %s\n", ASCII(node));
++		return -1;
++	    }
++    }
++    
++    return ret;
++}
++
++static int msmProcessDRequest(xmlTextReaderPtr reader, define_x *define) 
++{
++    const xmlChar *node = NULL, *label = NULL, *type = NULL;
++    int ret, depth;
++
++    rpmlog(RPMLOG_DEBUG, "request\n");
++
++    if (!define->name) {
++        rpmlog(RPMLOG_ERR, "An attempt to define a domain without a name. Abort.\n");
++        return -1;
++    }
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "smack")) {
++	    label = xmlTextReaderGetAttribute(reader, XMLCHAR("request"));
++	    type = xmlTextReaderGetAttribute(reader, XMLCHAR("type"));
++	    rpmlog(RPMLOG_DEBUG, "request label %s type %s\n", ASCII(label), ASCII(type));
++	    if (label && type) {
++		    if (msmVerifyAccessType(ASCII(type)) < 0) {
++		    	msmFreePointer((void**)&label);
++		    	msmFreePointer((void**)&type);	
++			return -1; 
++		    }
++		    if (msmVerifySmackLabel(ASCII(label)) < 0) {
++		    	msmFreePointer((void**)&label);
++		    	msmFreePointer((void**)&type);
++			return -1;
++		    }
++		    d_request_x *request = calloc(1, sizeof(d_request_x));
++		    if (request) {
++			request->label_name = ASCII(label);
++			request->ac_type = ASCII(type);
++			LISTADD(define->d_requests, request);
++		    } else {
++			msmFreePointer((void**)&label);
++		   	msmFreePointer((void**)&type);
++			return -1;
++		    }
++
++	    } else  {
++		    rpmlog(RPMLOG_ERR, "One of the mandatory arguments for domain request is missing. Abort installation\n");
++		    rpmlog(RPMLOG_ERR, "smack request label %s type %s\n", ASCII(label), ASCII(type));
++		    msmFreePointer((void**)&label);
++		    msmFreePointer((void**)&type);	
++		    return -1;
++	    }
++	} else {
++		rpmlog(RPMLOG_ERR, "Not allowed element in domain request section: %s\n", ASCII(node));
++		return -1;
++	}
++	if (ret < 0) return ret;
++    }
++
++    return ret;
++}
++
++static int msmProcessDPermit(xmlTextReaderPtr reader, define_x *define) 
++{
++    const xmlChar *node, *label, *type, *to_label;
++    int ret, depth;
++
++    rpmlog(RPMLOG_DEBUG, "permit\n");
++
++    if (!define->name) {
++        rpmlog(RPMLOG_ERR, "An attempt to define a domain without a name. Abort.\n");
++        return -1;
++    }
++
++    depth = xmlTextReaderDepth(reader);
++
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "smack")) {
++	    label = xmlTextReaderGetAttribute(reader, XMLCHAR("permit"));
++	    to_label = xmlTextReaderGetAttribute(reader, XMLCHAR("to"));
++	    type = xmlTextReaderGetAttribute(reader, XMLCHAR("type"));
++	    rpmlog(RPMLOG_DEBUG, "permit %s to %s type %s\n", ASCII(label), ASCII(to_label), ASCII(type));
++
++	    if (label && type) {
++		    if (msmVerifyAccessType(ASCII(type)) < 0) {
++		    	msmFreePointer((void**)&label);
++		    	msmFreePointer((void**)&to_label);
++		    	msmFreePointer((void**)&type);	
++			return -1; 
++		    }
++		    if (msmVerifySmackLabel(ASCII(label)) < 0) {
++		    	msmFreePointer((void**)&label);
++		    	msmFreePointer((void**)&to_label);
++		    	msmFreePointer((void**)&type);
++			return -1;
++		    }
++		    if ((to_label) && (msmVerifyLabelPrefix(ASCII(to_label), define->name) < 0)) {
++		    	msmFreePointer((void**)&label);
++		    	msmFreePointer((void**)&to_label);
++		    	msmFreePointer((void**)&type);
++			return -1;
++		    }
++		    d_permit_x *permit = calloc(1, sizeof(d_permit_x));
++		    if (permit) {
++			permit->label_name = ASCII(label);
++			permit->to_label_name = ASCII(to_label);
++			permit->ac_type = ASCII(type);
++			LISTADD(define->d_permits, permit);
++		    } else {
++			msmFreePointer((void**)&label);
++		    	msmFreePointer((void**)&to_label);
++		   	msmFreePointer((void**)&type);
++			return -1;
++		    }
++
++	    } else  {
++		    rpmlog(RPMLOG_ERR, "One of the mandatory arguments for domain permit is missing. Abort installation\n");
++		    rpmlog(RPMLOG_ERR, "smack permit label %s type %s\n", ASCII(label), ASCII(type));
++		    msmFreePointer((void**)&label);
++		    msmFreePointer((void**)&to_label);
++		    msmFreePointer((void**)&type);	
++		    return -1;
++	    }
++	} else {
++		rpmlog(RPMLOG_ERR, "Not allowed element in domain permit section: %s\n", ASCII(node));
++		return -1;
++	}
++	if (ret < 0) return ret;
++    }
++
++    return ret;
++}
++
++static int msmProcessDProvide(xmlTextReaderPtr reader, define_x *define) 
++{
++    const xmlChar *node, *label;
++    int ret = 0, depth;
++
++    rpmlog(RPMLOG_DEBUG, "provide\n");
++
++    if (!define->name) {
++        rpmlog(RPMLOG_ERR, "An attempt to define a domain without a name. Abort.\n");
++        return -1;
++    }
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "label")) {
++	    label = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++	    rpmlog(RPMLOG_DEBUG, "label %s \n", ASCII(label));
++
++	    if (label) {
++		    if (msmVerifySmackLabel(ASCII(label)) < 0) {
++    			msmFreePointer((void**)&label);
++			return -1;
++		    }
++
++		    if (msmVerifyLabelPrefix(ASCII(label), define->name) < 0) {
++    			msmFreePointer((void**)&label);
++			return -1;
++		    }
++
++		    d_provide_x *provide = calloc(1, sizeof(d_provide_x));
++		    if (provide) {
++			provide->label_name = ASCII(label);
++			LISTADD(define->d_provides, provide);
++		    } else {
++			msmFreePointer((void**)&label);
++			return -1;
++		    }
++
++	    } else  {
++		    rpmlog(RPMLOG_INFO, "Label name is empty. Label provide is ignored\n");
++		    continue;
++	    }
++	} else {
++		rpmlog(RPMLOG_ERR, "Not allowed element in domain provide section: %s\n", ASCII(node));
++		return -1;
++	}
++	if (ret < 0) return ret;
++    }
++
++    return ret;
++}
++
++static int msmProcessDefine(xmlTextReaderPtr reader, define_x *define, manifest_x *mfx, sw_source_x *current) 
++{
++    const xmlChar *node, *name, *policy, *plist;
++    int ret, depth, domainPresent = 0;
++
++    rpmlog(RPMLOG_DEBUG, "define\n");
++
++    depth = xmlTextReaderDepth(reader);
++
++    while ((ret = msmNextChildElement(reader, depth))) {
++	    node = xmlTextReaderConstName(reader);
++	    if (!node) return -1;
++
++	    if (!strcmp(ASCII(node), "domain")) {
++		    if (domainPresent) {
++			rpmlog(RPMLOG_ERR, "Only one domain is allowed per define section. Abort installation\n");
++			return -1;
++		    }
++		    domainPresent = 1;
++		    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++		    policy = xmlTextReaderGetAttribute(reader, XMLCHAR("policy"));
++		    plist = xmlTextReaderGetAttribute(reader, XMLCHAR("plist"));
++		    rpmlog(RPMLOG_DEBUG, "domain %s policy %s plist %s\n", 
++			   ASCII(name), ASCII(policy), ASCII(plist));
++
++		    if (name) {	
++		    
++                	    if (msmVerifySmackLabel(ASCII(name)) < 0){
++    			    	msmFreePointer((void**)&name);
++    			    	msmFreePointer((void**)&policy);		
++    			    	msmFreePointer((void**)&plist);
++			    	return -1; 
++			    }
++
++			    define->name = ASCII(name);
++			    define->policy = ASCII(policy);
++			    define->plist = ASCII(plist);
++
++			    // store defined ac domain name 
++			    ac_domain_x *ac_domain = calloc(1, sizeof(ac_domain_x));
++			    if (ac_domain) {
++				    if (define->name) {
++				    	ac_domain->name = strdup(define->name);
++				    }
++				    ac_domain->match = strdup("trusted"); // hardcode trusted policy for ac domain definition
++				    if (define->policy) {
++				    	ac_domain->type = strdup(define->policy);
++				    }	
++				    if (define->plist) {
++				    	ac_domain->plist = strdup(define->plist);
++				    }				  
++				    ac_domain->sw_source = current;
++				    ac_domain->pkg_name = mfx->name;
++				    if (!mfx->provides){
++				 	provide_x *provide = calloc(1, sizeof(provide_x));
++					if (provide) {
++						LISTADD(mfx->provides, provide);
++					} else { 
++						if (ac_domain) {
++							msmFreeACDomain(ac_domain);
++							return -1;
++						}
++					}
++				    }
++				    LISTADD(mfx->provides->ac_domains, ac_domain);
++			    } else return -1;
++
++		    } else  {
++			    rpmlog(RPMLOG_ERR, "Domain name must be defined. Abort installation\n");
++    			    msmFreePointer((void**)&policy);	
++    			    msmFreePointer((void**)&plist);
++			    return -1; 
++		    }
++	    } else if (!strcmp(ASCII(node), "request")) {
++		    int res = msmProcessDRequest(reader, define);
++		    if (res < 0) return res;
++	    
++	    } else if (!strcmp(ASCII(node), "permit")) {
++		    int res = msmProcessDPermit(reader, define);
++		    if (res < 0) return res;
++
++	    } else if (!strcmp(ASCII(node), "provide")) {
++		    int res = msmProcessDProvide(reader, define);
++		    if (res < 0) return res;
++	    } else {
++		rpmlog(RPMLOG_ERR, "Not allowed element in domain define section: %s\n", ASCII(node));
++		return -1;
++	}
++
++	if (ret < 0) return ret;
++    }
++    return ret;
++}
++
++static int msmProcessKeyinfo(xmlTextReaderPtr reader, origin_x *origin) 
++{
++    const xmlChar *keydata;
++    keyinfo_x *keyinfo;
++    int ret, depth;
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	keydata = xmlTextReaderConstValue(reader);
++	rpmlog(RPMLOG_DEBUG, "keyinfo %.40s...\n", ASCII(keydata));
++	if (!keydata) return -1;
++	keyinfo = calloc(1, sizeof(keyinfo_x));
++	if (keyinfo) {
++	    if ((ret = b64decode(ASCII(keydata), (void **)&keyinfo->keydata, &keyinfo->keylen))) {
++		rpmlog(RPMLOG_ERR, "Failed to decode keyinfo %s, %d\n", keydata, ret);
++		ret = -1;
++	    }
++	    LISTADD(origin->keyinfos, keyinfo);
++	} else return -1;
++
++	if (ret < 0) return ret;
++    }
++    return ret;
++}
++
++static access_x *msmProcessAccess(xmlTextReaderPtr reader, origin_x *origin) 
++{
++    const xmlChar *data, *type;
++
++    data = xmlTextReaderGetAttribute(reader, XMLCHAR("data"));
++    type = xmlTextReaderGetAttribute(reader, XMLCHAR("type"));
++    rpmlog(RPMLOG_DEBUG, "access %s %s\n", ASCII(data), ASCII(type));
++
++    if (data) {
++	access_x *access = calloc(1, sizeof(access_x));
++	if (access) {
++	    access->data = ASCII(data);
++	    access->type = ASCII(type);
++	    return access;
++	}
++    }
++    msmFreePointer((void**)&data);
++    msmFreePointer((void**)&type);
++    return NULL;
++}
++
++static int msmProcessOrigin(xmlTextReaderPtr reader, origin_x *origin) 
++{
++    const xmlChar *node, *type;
++    int ret, depth;
++
++    type = xmlTextReaderGetAttribute(reader, XMLCHAR("type"));
++    rpmlog(RPMLOG_DEBUG, "origin %s\n", ASCII(type));
++    origin->type = ASCII(type);
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "keyinfo")) {
++	    ret = msmProcessKeyinfo(reader, origin);
++	} else if (!strcmp(ASCII(node), "access")) {
++	    access_x *access = msmProcessAccess(reader, origin);
++	    if (access) {
++		LISTADD(origin->accesses, access);
++	    } else return -1;
++	} else return -1;
++
++	if (ret < 0) return ret;
++    }
++    return ret;
++}
++
++static int msmProcessDeny(xmlTextReaderPtr reader, sw_source_x *sw_source) 
++{
++    const xmlChar *node;
++    int ret, depth;
++
++    rpmlog(RPMLOG_DEBUG, "deny\n");
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "ac_domain")) {
++	    ac_domain_x *ac_domain = msmProcessACDomain(reader, sw_source, NULL);
++	    if (ac_domain) {
++		if (ac_domain->name) {
++		    HASH_ADD_KEYPTR(hh, sw_source->denys, ac_domain->name, 
++				    strlen(ac_domain->name), ac_domain);
++		} else {
++		    LISTADD(sw_source->denymatches, ac_domain);
++		}
++	    } else return -1;
++	} else return -1;
++	if (ret < 0) return ret;
++    }
++    return ret;
++}
++
++static int msmProcessAllow(xmlTextReaderPtr reader, sw_source_x *sw_source) 
++{
++    const xmlChar *node;    
++    int ret, depth;
++
++    rpmlog(RPMLOG_DEBUG, "allow\n");
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "deny")) {
++	    ret = msmProcessDeny(reader, sw_source);
++	} else if (!strcmp(ASCII(node), "ac_domain")) {
++	    ac_domain_x *ac_domain = msmProcessACDomain(reader, sw_source, NULL);
++	    if (ac_domain) {
++		if (ac_domain->name) {
++		    HASH_ADD_KEYPTR(hh, sw_source->allows, ac_domain->name, 
++				    strlen(ac_domain->name), ac_domain);
++		} else {
++		    LISTADD(sw_source->allowmatches, ac_domain);
++		}
++	    } else return -1;
++	} else return -1;
++	if (ret < 0) return ret;
++    }
++    return ret;
++}
++
++static int msmFindSWSourceByName(sw_source_x *sw_source, void *param)
++{
++    const char *name = (const char *)param;
++    return strcmp(sw_source->name, name); 
++}
++
++static int msmProcessSWSource(xmlTextReaderPtr reader, sw_source_x *sw_source, const char *parentkey, manifest_x *mfx) 
++{
++    const xmlChar *name, *node, *rank, *rankkey;
++    sw_source_x *current;
++    int ret, depth, len;
++    int rankval = 0;
++
++    /* config processing */
++    current = sw_source;
++
++    name = xmlTextReaderGetAttribute(reader, XMLCHAR("name"));
++    rank = xmlTextReaderGetAttribute(reader, XMLCHAR("rank"));
++    rankkey = xmlTextReaderGetAttribute(reader, XMLCHAR("rankkey"));
++    rpmlog(RPMLOG_DEBUG, "sw source %s rank %s key %s\n", 
++	   ASCII(name), ASCII(rank), ASCII(rankkey));
++
++    sw_source->name = ASCII(name);
++
++    if (rankkey) {
++	/* config processing */
++	sw_source->rankkey = ASCII(rankkey);
++    } else {
++	if (rank) {
++	    rankval = atoi(ASCII(rank));
++	    msmFreePointer((void**)&rank); /* rankkey is used from now on */
++	}
++    }
++    if (!sw_source->name) return -1; /* sw source must have name */
++    if (!mfx && rankkey) return -1; /* manifest cannot set rankkey itself */
++
++    if (!mfx) {
++	sw_source_x *old = msmSWSourceTreeTraversal(sw_source->parent, msmFindSWSourceByName, (void *)sw_source->name);
++	if (old && old->parent != sw_source->parent) {
++	    if (!old->parent && old == sw_source->parent) {
++		/* root sw source upgrade (it's signed by root) */
++		parentkey = "";
++	    } else {
++		rpmlog(RPMLOG_ERR, "SW source called %s has already been installed\n", 
++		       sw_source->name);
++		return -1; /* sw_source names are unique (allow upgrade though) */
++	    }
++	}
++	/* rank algorithm is copied from harmattan dpkg wrapper */
++	if (rankval > RANK_LIMIT) rankval = RANK_LIMIT;
++	if (rankval < -RANK_LIMIT) rankval = -RANK_LIMIT;
++	rankval += RANK_LIMIT;
++
++	len = strlen(parentkey) + 1 + 5 + 1 + 5 + 1 + strlen(sw_source->name) + 1;
++	if (!(sw_source->rankkey = malloc(len))) return -1;
++	sprintf((char *)sw_source->rankkey, "%s/%05d/%05d.%s", 
++		parentkey, rankval, RANK_LIMIT, sw_source->name);
++    }
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "allow")) {
++	    ret = msmProcessAllow(reader, sw_source);
++	} else if (!strcmp(ASCII(node), "deny")) {
++	    ret = msmProcessDeny(reader, sw_source);
++	} else if (!strcmp(ASCII(node), "origin")) {
++	    origin_x *origin = calloc(1, sizeof(origin_x));
++	    if (origin) {
++		LISTADD(sw_source->origins, origin);
++		ret = msmProcessOrigin(reader, origin);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "package")) {
++	    /* config processing */
++	    if (!mfx) return -1;
++	    package_x *package = calloc(1, sizeof(package_x));
++	    if (package) {
++		LISTADD(sw_source->packages, package);
++		ret = msmProcessPackage(reader, package, current);
++	    } else return -1;
++	} else if (!strcmp(ASCII(node), "sw_source")) {
++	    /* config processing */
++	    if (!mfx) return -1;
++	    sw_source_x *sw_source = calloc(1, sizeof(sw_source_x));
++	    if (sw_source) {
++		sw_source->parent = current;
++		LISTADD(mfx->sw_sources, sw_source);
++	    } else return -1;
++	    ret = msmProcessSWSource(reader, sw_source, "", mfx);
++	} else return -1;
++
++	if (ret < 0) return ret;
++    }
++    return ret;
++}
++
++static int msmProcessMsm(xmlTextReaderPtr reader, manifest_x *mfx, sw_source_x *current)
++{
++    const xmlChar *node;
++    int ret, depth;
++    int assignPresent = 0, requestPresent = 0, definePresent = 0; /* there must be only one section per manifest */
++    mfx->sw_source = current;
++
++    rpmlog(RPMLOG_DEBUG, "manifest\n");
++
++    depth = xmlTextReaderDepth(reader);
++    while ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "assign")) {
++		if (assignPresent) {
++			rpmlog(RPMLOG_ERR, "A second assign section in manifest isn't allowed. Abort installation.\n");
++			return -1; 
++		}
++		assignPresent = 1;
++		provide_x *provide = calloc(1, sizeof(provide_x));
++		if (provide) {
++			LISTADD(mfx->provides, provide);
++			ret = msmProcessProvide(reader, provide, current, mfx, NULL);
++	    	} else return -1;
++	} else if (!strcmp(ASCII(node), "define")) {
++		if (definePresent) {
++			rpmlog(RPMLOG_ERR, "A second request section in manifest isn't allowed. Abort installation.\n");
++			return -1; 
++		}
++		definePresent = 1;
++	    	mfx->define = calloc(1, sizeof(define_x));
++	    	if (mfx->define) {
++			ret = msmProcessDefine(reader, mfx->define, mfx, current);
++	    	} else return -1;
++	} else if (!strcmp(ASCII(node), "request")) {
++		if (requestPresent) {
++			rpmlog(RPMLOG_ERR, "A second request section in manifest isn't allowed. Abort installation.\n");
++			return -1; 
++		}
++		requestPresent = 1;
++	    	mfx->request = calloc(1, sizeof(request_x));
++	    	if (mfx->request) {
++			ret = msmProcessRequest(reader, mfx->request);
++	   	} else return -1;
++	} else if (!strcmp(ASCII(node), "sw_source")) {
++	    sw_source_x *sw_source = calloc(1, sizeof(sw_source_x));
++	    if (sw_source) {
++		char parentkey[256] = { 0 };
++		sw_source->parent = current;
++		if (sw_source->parent) {
++		    snprintf(parentkey, sizeof(parentkey), 
++			     "%s", sw_source->parent->rankkey);
++		    char *sep = strrchr(parentkey, '/');
++		    if (sep) *sep = '\0';
++		}
++		LISTADD(mfx->sw_sources, sw_source);
++		ret = msmProcessSWSource(reader, sw_source, parentkey, NULL);
++	    } else return -1;
++	} else return -1;
++
++	if (ret < 0) return ret;
++    }
++
++    return ret;
++}
++
++static int msmProcessConfig(xmlTextReaderPtr reader, manifest_x *mfx)
++{
++    const xmlChar *node;
++    int ret, depth;
++
++    rpmlog(RPMLOG_DEBUG, "config\n");
++
++    depth = xmlTextReaderDepth(reader);
++    if ((ret = msmNextChildElement(reader, depth))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "sw_source")) {
++	    mfx->sw_sources = calloc(1, sizeof(sw_source_x));
++	    if (!mfx->sw_sources) return -1;
++	    ret = msmProcessSWSource(reader, mfx->sw_sources, "", mfx);
++	} else return -1;
++    }
++    return ret;
++}
++
++static int msmProcessManifest(xmlTextReaderPtr reader, manifest_x *mfx, sw_source_x *current) 
++{
++    const xmlChar *node;
++    int ret;
++
++    if ((ret = msmNextChildElement(reader, -1))) {
++	node = xmlTextReaderConstName(reader);
++	if (!node) return -1;
++
++	if (!strcmp(ASCII(node), "manifest")) {
++	    ret = msmProcessMsm(reader, mfx, current);
++	} else if (!strcmp(ASCII(node), "config")) {
++	    ret = msmProcessConfig(reader, mfx);
++	} else return -1;
++    }
++    return ret;
++}
++
++static filesystem_x *msmFreeFilesystem(filesystem_x *filesystem)
++{    
++	if (filesystem) {
++	    filesystem_x *prev = filesystem->prev;
++	    msmFreePointer((void**)&filesystem->path);
++	    msmFreePointer((void**)&filesystem->label);
++	    msmFreePointer((void**)&filesystem->exec_label);
++	    msmFreePointer((void**)&filesystem->type);
++	    msmFreePointer((void**)&filesystem);
++	    return prev;
++	} else
++		return NULL;
++
++}
++
++static member_x *msmFreeMember(member_x *member)
++{    
++
++	if (member) {
++	    member_x *prev = member->prev;
++	    msmFreePointer((void**)&member->name);
++ 	    if (member->annotation) {
++		msmFreePointer((void**)&member->annotation->name);
++	    	msmFreePointer((void**)&member->annotation->value);
++		msmFreePointer((void**)&member->annotation);
++	    }
++	    msmFreePointer((void**)&member);
++	    return prev;
++	} else
++		return NULL;
++
++}
++
++static interface_x *msmFreeInterface(interface_x *interface)
++{    
++
++       member_x *member;
++
++	if (interface) {
++	    interface_x *prev = interface->prev;
++	    msmFreePointer((void**)&interface->name);
++ 	    if (interface->annotation) {
++		msmFreePointer((void**)&interface->annotation->name);
++	    	msmFreePointer((void**)&interface->annotation->value);
++		msmFreePointer((void**)&interface->annotation);
++	    }
++           for (member = interface->members; member; member = msmFreeMember(member));
++	    msmFreePointer((void**)&interface);
++	    return prev;
++	} else
++		return NULL;
++
++}
++
++static node_x *msmFreeNode(node_x *node)
++{    
++ 	member_x *member;
++ 	interface_x *interface;
++
++	if (node) {
++	    node_x *prev = node->prev;
++	    msmFreePointer((void**)&node->name);
++ 	    if (node->annotation) {
++		msmFreePointer((void**)&node->annotation->name);
++	    	msmFreePointer((void**)&node->annotation->value);
++		msmFreePointer((void**)&node->annotation);
++	    }
++	    for (member = node->members; member; member = msmFreeMember(member));
++	    for (interface = node->interfaces; interface; interface = msmFreeInterface(interface));
++	    msmFreePointer((void**)&node);
++	    return prev;
++	} else
++		return NULL;
++
++}
++
++static dbus_x *msmFreeDBus(dbus_x *dbus)
++{
++	node_x *node;
++
++	if (dbus) {
++	    dbus_x *prev = dbus->prev;
++	    msmFreePointer((void**)&dbus->name);
++	    msmFreePointer((void**)&dbus->own);
++	    msmFreePointer((void**)&dbus->bus);
++            if (dbus->annotation) {
++		msmFreePointer((void**)&dbus->annotation->name);
++	    	msmFreePointer((void**)&dbus->annotation->value);
++		msmFreePointer((void**)&dbus->annotation);
++	    }
++	    for (node = dbus->nodes; node; node = msmFreeNode(node));
++	    msmFreePointer((void**)&dbus);
++	    return prev;
++	} else return NULL;
++}
++
++static provide_x *msmFreeProvide(provide_x *provide) 
++{
++    ac_domain_x *ac_domain;
++    filesystem_x *filesystem;
++    provide_x *prev = provide->prev;
++    dbus_x *dbus;
++
++    if (provide) {
++	    for (ac_domain = provide->ac_domains; ac_domain; ac_domain = msmFreeACDomain(ac_domain));
++	    if (provide->filesystems)
++	    	for (filesystem = provide->filesystems; filesystem; filesystem = msmFreeFilesystem(filesystem));
++	    msmFreePointer((void**)&provide->name);
++	    msmFreePointer((void**)&provide->origin);
++	    for (dbus = provide->dbuss; dbus; dbus = msmFreeDBus(dbus));
++	    msmFreePointer((void**)&provide);
++    }
++    return prev;
++}
++
++static file_x *msmFreeFile(file_x *file)
++{
++    file_x *prev = file->prev;
++    msmFreePointer((void**)&file->path);
++    msmFreePointer((void**)&file);
++    return prev;
++}
++
++package_x *msmFreePackage(package_x *package)
++{
++    provide_x *provide;
++    package_x *prev = package->prev;
++    for (provide = package->provides; provide; provide = msmFreeProvide(provide));
++    msmFreePointer((void**)&package->name);
++    msmFreePointer((void**)&package->modified);
++    msmFreePointer((void**)&package);
++    return prev;
++}
++
++static keyinfo_x *msmFreeKeyinfo(keyinfo_x *keyinfo)
++{
++    keyinfo_x *prev = keyinfo->prev;
++    msmFreePointer((void**)&keyinfo->keydata);
++    msmFreePointer((void**)&keyinfo);
++    return prev;
++}
++
++static access_x *msmFreeAccess(access_x *access)
++{
++    access_x *prev = access->prev;
++    msmFreePointer((void**)&access->data);
++    msmFreePointer((void**)&access->type);
++    msmFreePointer((void**)&access);
++    return prev;
++}
++
++static origin_x *msmFreeOrigin(origin_x *origin)
++{
++    keyinfo_x *keyinfo;
++    access_x *access;
++    origin_x *prev = origin->prev;
++    for (keyinfo = origin->keyinfos; keyinfo; keyinfo = msmFreeKeyinfo(keyinfo));
++    for (access = origin->accesses; access; access = msmFreeAccess(access));
++    msmFreePointer((void**)&origin->type);
++    msmFreePointer((void**)&origin);
++    return prev;
++}
++
++static sw_source_x *msmFreeSWSource(sw_source_x *sw_source)
++{
++    package_x *package;
++    ac_domain_x *ac_domain, *temp;
++    origin_x *origin;
++    sw_source_x *next = sw_source->next;
++
++    rpmlog(RPMLOG_DEBUG, "freeing sw source %s\n", sw_source->name);
++
++    for (package = sw_source->packages; package; package = msmFreePackage(package));
++    for (ac_domain = sw_source->allowmatches; ac_domain; ac_domain = msmFreeACDomain(ac_domain));
++    if (sw_source->allows) {
++	HASH_ITER(hh, sw_source->allows, ac_domain, temp) {
++	    HASH_DELETE(hh, sw_source->allows, ac_domain);
++	    msmFreeACDomain(ac_domain);
++	}
++    }
++
++    for (ac_domain = sw_source->denymatches; ac_domain; ac_domain = msmFreeACDomain(ac_domain));
++    if (sw_source->denys) {
++	HASH_ITER(hh, sw_source->denys, ac_domain, temp) {
++	    HASH_DELETE(hh, sw_source->denys, ac_domain);
++	    msmFreeACDomain(ac_domain);
++	}
++    }
++    for (origin = sw_source->origins; origin; origin = msmFreeOrigin(origin));
++    msmFreePointer((void**)&sw_source->name);
++    msmFreePointer((void**)&sw_source->rankkey);
++    msmFreePointer((void**)&sw_source);
++    return next;
++}
++
++static d_request_x *msmFreeDRequest(d_request_x *d_request)
++{
++    d_request_x *next = d_request->next;
++    rpmlog(RPMLOG_DEBUG, "freeing domain request %s\n", d_request->label_name);
++    msmFreePointer((void**)&d_request->label_name);
++    msmFreePointer((void**)&d_request->ac_type);
++    msmFreePointer((void**)&d_request);
++    return next;
++}
++
++static d_permit_x *msmFreeDPermit(d_permit_x *d_permit)
++{
++    d_permit_x *next = d_permit->next;
++    rpmlog(RPMLOG_DEBUG, "freeing domain permit %s\n", d_permit->label_name);
++    msmFreePointer((void**)&d_permit->label_name);
++    msmFreePointer((void**)&d_permit->to_label_name);
++    msmFreePointer((void**)&d_permit->ac_type);
++    msmFreePointer((void**)&d_permit);
++    return next;
++}
++
++static d_provide_x *msmFreeDProvide(d_provide_x *d_provide)
++{
++    d_provide_x *next = d_provide->next;
++    rpmlog(RPMLOG_DEBUG, "freeing domain provide %s\n", d_provide->label_name);
++    msmFreePointer((void**)&d_provide->label_name);
++    msmFreePointer((void**)&d_provide);
++    return next;
++}
++
++manifest_x* msmFreeManifestXml(manifest_x* mfx)
++{
++    provide_x *provide;
++    file_x *file;
++    sw_source_x *sw_source;
++    d_request_x *d_request;
++    d_permit_x *d_permit;
++    d_provide_x *d_provide;
++
++    rpmlog(RPMLOG_DEBUG, "in msmFreeManifestXml\n");
++    if (mfx) {
++	if (mfx->provides)
++		for (provide = mfx->provides; provide; provide = msmFreeProvide(provide));
++       rpmlog(RPMLOG_DEBUG, "after freeing provides\n");
++	if (mfx->request) {
++		msmFreePointer((void**)&mfx->request->ac_domain);
++		msmFreePointer((void**)&mfx->request);
++	}
++       rpmlog(RPMLOG_DEBUG, "after freeing requests\n");
++	for (file = mfx->files; file; file = msmFreeFile(file));
++       rpmlog(RPMLOG_DEBUG, "after freeing files\n");
++	if (mfx->sw_sources) {
++	    LISTHEAD(mfx->sw_sources, sw_source);	
++	    for (; sw_source; sw_source = msmFreeSWSource(sw_source));
++	}
++	msmFreePointer((void**)&mfx->name);
++       rpmlog(RPMLOG_DEBUG, "after freeing name\n");
++	if (mfx->define) {
++		msmFreePointer((void**)&mfx->define->name);
++		msmFreePointer((void**)&mfx->define->policy);
++		msmFreePointer((void**)&mfx->define->plist);
++		if (mfx->define->d_requests) {
++			LISTHEAD(mfx->define->d_requests, d_request);	
++	    		for (; d_request; d_request = msmFreeDRequest(d_request));
++		}
++        	rpmlog(RPMLOG_DEBUG, "after freeing define requests\n");
++		if (mfx->define->d_permits) {
++			LISTHEAD(mfx->define->d_permits, d_permit);	
++	    		for (; d_permit; d_permit = msmFreeDPermit(d_permit));
++		}
++        	rpmlog(RPMLOG_DEBUG, "after freeing define permits\n");
++		if (mfx->define->d_provides) {
++			LISTHEAD(mfx->define->d_provides, d_provide);	
++	    		for (; d_provide; d_provide = msmFreeDProvide(d_provide));
++		}
++        	rpmlog(RPMLOG_DEBUG, "after freeing provides\n");
++		msmFreePointer((void**)&mfx->define); 
++	}
++
++       rpmlog(RPMLOG_DEBUG, "after freeing defines \n");
++	msmFreePointer((void**)&mfx);
++    }
++    return mfx; 
++}
++
++manifest_x *msmProcessManifestXml(const char *buffer, int size, sw_source_x *current, const char *packagename) 
++{
++    xmlTextReaderPtr reader;
++    manifest_x *mfx = NULL;
++
++    reader = xmlReaderForMemory(buffer, size, NULL, NULL, 0);
++
++    if (reader) {
++	mfx = calloc(1, sizeof(manifest_x));
++	if (mfx) {
++	    mfx->name = strdup(packagename);
++	    if (msmProcessManifest(reader, mfx, current) < 0) {
++           /* error in parcing. Let's display some hint where we failed */
++           	rpmlog(RPMLOG_DEBUG, "Syntax error in processing manifest in the above line\n");
++		mfx = msmFreeManifestXml(mfx);
++	    }
++	}
++	xmlFreeTextReader(reader);
++    } else {
++        rpmlog(RPMLOG_ERR, "Unable to create xml reader\n");
++    }
++    return mfx;
++}
++
++manifest_x *msmProcessDevSecPolicyXml(const char *filename) 
++{
++    xmlTextReaderPtr reader;
++    manifest_x *mfx = NULL;
++
++    reader = xmlReaderForFile(filename, NULL, 0);
++
++    if (reader) {
++	mfx = calloc(1, sizeof(manifest_x));
++	if (mfx) {
++	    if (msmProcessManifest(reader, mfx, NULL) < 0) {
++		mfx = msmFreeManifestXml(mfx);
++	    }
++	}
++        xmlFreeTextReader(reader);
++    } else {
++        rpmlog(RPMLOG_ERR, "Unable to open device security policy %s\n", filename);
++    }
++    return mfx;
++}
+diff -Nuarp rpm/security/msmmatch.c rpm-security/security/msmmatch.c
+--- rpm/security/msmmatch.c	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/msmmatch.c	2012-10-01 10:29:50.327983644 +0300
+@@ -0,0 +1,71 @@
++/*
++ * This file is part of MSM security plugin
++ * Greatly based on the code of MSSF security plugin
++ *
++ * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).
++ *
++ * Contact: Tero Aho <ext-tero.aho@nokia.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA
++ */
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <errno.h>
++#include <string.h>
++#include <unistd.h>
++
++#include "msm.h"
++
++/* Wild card strcmp, wild cards * and ? allowed in s1 */
++int strwcmp(const char *s1, const char *s2)
++{
++    char *c1 = (char *)s1;
++    char *c2 = (char *)s2;
++    char *star = NULL;
++    int ok = 0;
++
++    if (!s1 || !s2) return 1;
++
++    while (*c2) {
++	if (*c1 == '*') {
++	    if (star && (c1 - star) != ok)
++		goto fail;
++	    c1++;
++	    star = c1;
++	    ok = 0;
++	}
++	if (*c1 == '?') {
++	    c1++;
++	    c2++;
++	    continue;
++	}	    
++	if (*c1 == *c2) {
++	    c1++;
++	    c2++;
++	    ok++;
++	} else if (star) {
++	    c1 = star;
++	    c2++;
++	    ok = 0;
++	} else goto fail;
++    }
++    if (*c1 == '\0' && *c2 == '\0' && (!star || (c1 - star) == ok))
++	return 0;
++ fail:
++    return (*c1 < *c2 ? -1 : 1);
++}
++
+diff -Nuarp rpm/security/msmxattr.c rpm-security/security/msmxattr.c
+--- rpm/security/msmxattr.c	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/msmxattr.c	2012-10-01 10:29:50.327983644 +0300
+@@ -0,0 +1,1344 @@
++/*
++ * This file is part of MSM security plugin
++ * Greatly based on the code of MSSF security plugin
++ *
++ * Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).
++ *
++ * Contact: Tero Aho <ext-tero.aho@nokia.com>
++ *
++ * Copyright (C) 2011 - 2013 Intel Corporation.
++ *
++ * Contact: Elena Reshetova <elena.reshetova@intel.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
++ * 02110-1301 USA
++ */
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <errno.h>
++#include <string.h>
++
++#include <sys/capability.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++#include <pwd.h>
++#include <grp.h>
++#include <attr/xattr.h>
++#include <uthash.h>
++#include <magic.h>
++
++#include "msm.h"
++
++static ac_domain_x *all_ac_domains = NULL; /* hash of all provided ac domains */
++static package_x *allpackages = NULL; /* hash of all installed packages */
++
++void msmFreeInternalHashes(void)
++{
++    if (all_ac_domains) {
++	HASH_CLEAR(hh,all_ac_domains);
++    }
++
++    if (allpackages) {
++	HASH_CLEAR(hh,allpackages);
++    }
++}
++
++static int msmCheckACDomainRules(ac_domain_x *ac_domain, 
++				    sw_source_x *requested, sw_source_x *provided)
++{
++    sw_source_x *sw_source;
++
++    /* go through sw source and its parents: ac domains must not match */
++    /* deny or deny wildcards and must match allow or allow wildcards */
++    /* in the whole path up to the level of the providing sw source */ 
++
++    for (sw_source = requested; sw_source->parent && sw_source->parent != sw_source; sw_source = sw_source->parent) {
++	ac_domain_x *denied;
++	ac_domain_x *allowed;
++	/* check first if requested ac domain is denied */
++	HASH_FIND(hh, sw_source->denys, ac_domain->name, strlen(ac_domain->name), denied);
++	if (denied) return 0; /* matched deny */
++	for (denied = sw_source->denymatches; denied; denied = denied->prev)
++	    if (!strwcmp(denied->match, ac_domain->name)) 
++		return 0; /* matched deny wildcard */
++
++	/* not denied, now check if it's in allows or allowmatches */
++	HASH_FIND(hh, sw_source->allows, ac_domain->name, strlen(ac_domain->name), allowed);
++	if (allowed) continue; /* matched allow */
++	for (allowed = sw_source->allowmatches; allowed; allowed = allowed->prev)
++	    if (!strwcmp(allowed->match, ac_domain->name)) 
++		break; /* matched allow wildcard */
++	if (allowed) continue; /* matched allow wildcard */
++
++	if (strcmp(sw_source->rankkey, provided->rankkey) <= 0)
++	    return 1; /* ranked higher (or same sw source), allow */
++	return 0; /* not mentioned, deny */
++    }
++    return 1; /* still here, allow for root sw source */
++}
++
++static int msmCheckLabelProvisioning(manifest_x *mfx, const char* label) 
++{
++
++    d_provide_x *provide = NULL;
++
++    if ((mfx) && (label) && (mfx->define) && (mfx->define->d_provides)) {
++	    for (provide = mfx->define->d_provides; provide; provide = provide->prev) {
++		if ( strcmp(provide->label_name, label) == 0 )
++			return 0;
++	    }
++    }
++    rpmlog(RPMLOG_ERR, "Label %s hasn't been provided in the manifest\n", label);
++    return -1;
++}
++
++static int msmSetSmackRules(struct smack_accesses *smack_accesses, ac_domain_x *ac_domains, const char *aid)
++{
++    ac_domain_x *ac_domain;
++    int ret = 0;
++
++    if (!smack_accesses) return ret;
++
++    for (ac_domain = ac_domains; ac_domain; ac_domain = ac_domain->prev) {
++	if (ac_domain->allowed) {
++	    ret = smack_accesses_add(smack_accesses, aid, ac_domain->name, "rw");
++	    if (ret < 0) {
++		rpmlog(RPMLOG_ERR, "smack_add failed for %s %s\n", 
++		       aid, ac_domain->name);
++		return ret;
++	    }
++	}/* else if (!ac_domain->allowed && !ac_domain->newer) {
++	    // remove not allowed rule in case something has changed 
++	    smack_rule_set_remove(rule_set, aid, ac_domain->name, NULL);
++	}*/
++    }
++    return ret;
++
++}
++
++static int msmIsProvideAllowed(ac_domain_x *provided, sw_source_x *sw_source, const char *origin)
++{
++
++    /* first check provided ac_domain attributes */
++    if (provided->sw_source == sw_source) {
++	/* allowed always if ac_domain is provided in the same sw source */
++	return 1;
++    } else if (origin && !strcmp(origin, "current")) {
++	/* denied if ac_domain is only meant for current sw source */
++	return 0;
++    }
++    if (origin && !strcmp(origin, "all")) {
++	/* ac_domain is allowed for all sw sources */
++	return 1;
++    }
++    if (!origin || !strcmp(origin, "trusted")) {
++	if (strcmp(sw_source->rankkey, provided->sw_source->rankkey) < 0) {
++	    /* higher ranked sw sources are allowed if ac_domain is trusted */
++	    return 1;
++	} /* else flow through to check denys and allows below */
++    } else return 0;
++
++    return msmCheckACDomainRules(provided, sw_source, provided->sw_source);
++}
++
++static int msmSetSmackProvide(struct smack_accesses *smack_accesses, provide_x *provide, sw_source_x *sw_source)
++{
++    ac_domain_x *ac_domain;
++    sw_source_x *current = sw_source;
++    int ret = -1;
++
++    if (!provide || (!provide->ac_domains)) return 0;
++
++    /* set smack rules for all sw sources */
++    LISTHEAD(current, sw_source);
++    for (; sw_source; sw_source = sw_source->next) {
++	if (!sw_source->newer) {
++	    for (ac_domain = provide->ac_domains; ac_domain; ac_domain = ac_domain->prev) {
++		    ac_domain->allowed = msmIsProvideAllowed(ac_domain, sw_source, ac_domain->origin);
++		    rpmlog(RPMLOG_INFO, "%s ac_domain %s provided in %s for %s\n", (ac_domain->allowed ? "allowing" : "not allowing"), 
++							ac_domain->name, ac_domain->sw_source->name, sw_source->name);
++	    }
++	    if (smack_accesses)
++	    	ret = msmSetSmackRules(smack_accesses, provide->ac_domains, sw_source->name);
++	    else 
++		ret = 0;
++	}
++    }
++    return ret;
++}
++
++static int msmSetupZypperRepo(access_x *access, sw_source_x *sw_source)
++{
++    struct stat sb;
++    char path[NAME_MAX+1];
++    FILE *file = NULL;
++    char data[512];
++    int ret = -1;
++
++    /* NOTE: Creating zypper repos manually here! */
++    /* A library call would be the correct way, but calling c++ from c */
++    /* is not nice. On the other hand, now there is no libzypp dependency. */
++
++    char *sysconfdir = rpmExpand("%{?_sysconfdir}", NULL);
++    if (!sysconfdir || !strcmp(sysconfdir, "")) {
++	rpmlog(RPMLOG_ERR, "Failed to expand %%_sysconfdir macro\n");
++	goto exit;
++    }
++    snprintf(path, sizeof(path), "%s/zypp", sysconfdir);
++    if (stat(path, &sb) == -1) {
++	rpmlog(RPMLOG_ERR, "Failed to stat %s: %s\n", 
++	       path, strerror(errno));
++	goto exit;
++    }
++    snprintf(path, sizeof(path), "%s/zypp/repos.d", sysconfdir);
++    if (stat(path, &sb) == -1) {
++	if (mkdir(path, 0755) == -1) {
++	    rpmlog(RPMLOG_ERR, "Failed to create %s: %s\n", 
++		   path, strerror(errno));
++	    goto exit;
++	}
++    }
++    snprintf(path, sizeof(path), "%s/zypp/repos.d/%s.repo", 
++	     sysconfdir, sw_source->name);
++    file = fopen(path, "w");
++    if (!file) {
++	rpmlog(RPMLOG_ERR, "Failed to open %s: %s\n", 
++	       path, strerror(errno));
++	goto exit;
++    }
++    snprintf(data, sizeof(data), 
++	     "[%s]\n"
++	     "name=%s\n"
++	     "enabled=1\n"
++	     "autorefresh=0\n"
++	     "baseurl=%s\n"
++	     "type=%s\n"
++	     "keeppackages=0\n", 
++	     sw_source->name, sw_source->name, access->data, 
++	     (access->type ? access->type : "NONE"));
++
++    if (fputs(data, file) == EOF) {
++	rpmlog(RPMLOG_ERR, "Failed to write %s: %s\n", 
++	       path, strerror(errno));
++	goto exit;
++    }
++    rpmlog(RPMLOG_INFO, "added zypper repository %s for sw source %s\n", 
++	   path, sw_source->name);
++
++    ret = 0;
++ exit:
++    if (file) fclose(file);
++    msmFreePointer((void**)&sysconfdir);
++
++    return ret;
++}
++
++static int msmSetSmackSWSource(struct smack_accesses *smack_accesses, sw_source_x *sw_source)
++{
++    package_x *package, *temp;
++    provide_x *provide;
++
++    if (!allpackages) return 0;
++
++    if (sw_source->older) {
++	ac_domain_x *ac_domain, *temp;
++	/* remove old domain rules in case of upgrade */
++	//smack_rule_set_remove_by_subject(rule_set, sw_source->name, NULL);
++	/* make sure domain's credentials point to upgraded domain */
++	HASH_ITER(hh, all_ac_domains, ac_domain, temp) {
++	    if (ac_domain->sw_source == sw_source->older)
++		ac_domain->sw_source = sw_source;
++	}
++    }
++
++    /* iterate through all packages to create smack rules for the domain */
++    HASH_ITER(hh, allpackages, package, temp) {
++	if (sw_source->older) {
++	    /* make sure domain's packages point to upgraded domain */
++	    if (package->sw_source == sw_source->older)
++		package->sw_source = sw_source;
++	}
++	if (!package->newer) {
++	    for (provide = package->provides; provide; provide = provide->prev) {
++		if (msmSetSmackProvide(smack_accesses, provide, package->sw_source))
++		    return -1;
++	    }
++	}
++    }
++    return 0;
++}
++
++int msmSetupSWSources(struct smack_accesses *smack_accesses, manifest_x *mfx, rpmts ts) 
++{
++    sw_source_x *sw_source;
++    origin_x *origin;
++    keyinfo_x *keyinfo;
++    access_x *access;
++    ac_domain_x *allow;
++    ac_domain_x *deny;
++    ac_domain_x *ac_domain;
++    int ret;
++    rpmRC rc;
++
++    LISTHEAD(mfx->sw_sources, sw_source);
++
++    while (sw_source) {
++	sw_source_x *next = sw_source->next;
++	sw_source_x *parent = sw_source->parent;
++	if (ts) {
++	    for (origin = sw_source->origins; origin; origin = origin->prev) {
++		for (keyinfo = origin->keyinfos; keyinfo; keyinfo = keyinfo->prev) {
++		    rpmlog(RPMLOG_INFO, "setting keyinfo for sw source %s\n", 
++			   sw_source->name);
++		    rc = rpmtsImportPubkey(ts, keyinfo->keydata, keyinfo->keylen);
++		    if (rc != RPMRC_OK) {
++			rpmlog(RPMLOG_ERR, "Key import failed for sw source %s\n",
++			       sw_source->name);
++			return rc;
++		    }
++		}
++		for (access = origin->accesses; access; access = access->prev) {
++		    rpmlog(RPMLOG_INFO, "setting access %s for sw source %s\n", 
++			   access->data, sw_source->name);
++		    if (origin->type && !strcmp(origin->type, "ZYPPER")) {
++			ret = msmSetupZypperRepo(access, sw_source);
++			if (ret) {
++			    rpmlog(RPMLOG_ERR, 
++				   "Failed to set access %s for sw source %s\n",
++				   access->data, sw_source->name);
++			    return ret;
++			}
++		    }
++		}
++	    }
++	} else {
++
++	    /* config processing */
++	    ret = msmSetupPackages(NULL, sw_source->packages, NULL);
++	    if (ret) {
++		rpmlog(RPMLOG_ERR, "Setup packages failed for sw source %s\n",
++		       sw_source->name);
++		return ret;
++	    }
++	}
++	if (ts) {
++	    for (allow = sw_source->allows; allow; allow = allow->hh.next) {
++		HASH_FIND(hh, all_ac_domains, allow->name, strlen(allow->name), ac_domain);
++		if (ac_domain) {
++		    rpmlog(RPMLOG_INFO, "sw source %s allows access to ac domain %s\n", 
++			   sw_source->name, allow->name);
++		} else {
++		    rpmlog(RPMLOG_WARNING, "sw source %s allows access to ac domain %s which doesn't exist\n", 
++			   sw_source->name, allow->name);
++		}
++	    }
++	    for (allow = sw_source->allowmatches; allow; allow = allow->prev)
++		rpmlog(RPMLOG_INFO, "sw source %s allows access to ac domain match %s\n", 
++		       sw_source->name, allow->match);
++
++	    for (deny = sw_source->denys; deny; deny = deny->hh.next) {
++		HASH_FIND(hh, all_ac_domains, deny->name, strlen(deny->name), ac_domain);
++		if (ac_domain) {
++		    rpmlog(RPMLOG_INFO, "sw source %s denies access to ac domain %s\n", 
++			   sw_source->name, deny->name);
++		} else {
++		    rpmlog(RPMLOG_WARNING, "sw source %s denies access to ac domain %s which doesn't exist\n", 
++			   sw_source->name, deny->name);
++		}
++	    }
++	    for (deny = sw_source->denymatches; deny; deny = deny->prev)
++		rpmlog(RPMLOG_INFO, "sw source %s denies access to ac domain match %s\n", 
++		       sw_source->name, deny->match);
++
++	    if (parent) {
++		if (strcmp(parent->name, sw_source->name)) {
++		    sw_source_x *older;
++		    for (older = parent; older; older = older->next) {
++			if (!strcmp(sw_source->name, older->name)) {
++			    sw_source->older = older;
++			    older->newer = sw_source;
++			    break;
++			}
++		    }
++		} else if (!parent->parent) {
++		    /* root sw_source upgrade */
++		    sw_source->older = parent;
++		    parent->newer = sw_source;
++		    sw_source->parent = NULL;
++		} else return -1;
++
++		LISTDEL(mfx->sw_sources, sw_source); /* take out from sw sources list */
++		NODEADD(parent, sw_source); /* add to sw source tree */
++	    }
++
++	    /* set smack rules for the new/upgraded sw source */
++	    ret = msmSetSmackSWSource(smack_accesses, sw_source);
++	    if (ret) {
++		rpmlog(RPMLOG_ERR, "Setting smack rules failed for sw source %s\n",
++		       sw_source->name);
++		return ret;
++	    }
++
++	}
++	sw_source = next;
++    }
++    return 0;
++}
++
++static void msmRemoveDBusConfig(package_x *package, dbus_x *dbuss)
++{
++    dbus_x *dbus;
++
++    for (dbus = dbuss; dbus; dbus = dbus->prev) {
++	char path[NAME_MAX+1];
++	snprintf(path, sizeof(path), "/etc/dbus-1/%s.d/manifest.%s.conf", 
++		 dbus->bus, package->name);
++	unlink(path);
++    }
++}
++
++static int msmSetupDBusRule(FILE *file, const char *creds, int type, const char *service, const char *name, const char *parentType, const char *parentValue)
++{
++    char data[1024];
++
++    if (creds && *creds) {
++	switch (type) {
++	case DBUS_SERVICE:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <deny send_destination=\"%s\"/>\n"
++		     "  </policy>\n"
++		     "  <policy smack=\"%s\">\n"
++		     "    <allow send_destination=\"%s\"/>\n"
++		     "  </policy>\n",
++		     name, creds, name);
++	    break;
++	case DBUS_PATH:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <deny send_destination=\"%s\" send_path=\"%s\"/>\n"
++		     "    <deny receive_sender=\"%s\" receive_path=\"%s\"/>\n"
++		     "  </policy>\n"
++		     "  <policy smack=\"%s\">\n"
++		     "    <allow send_destination=\"%s\" send_path=\"%s\"/>\n"
++		     "    <allow receive_sender=\"%s\" receive_path=\"%s\"/>\n"
++		     "  </policy>\n",
++		     service, name, service, name, creds,
++		     service, name, service, name);
++	    break;
++	case DBUS_INTERFACE:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <deny send_destination=\"%s\" send_interface=\"%s\"/>\n"
++		     "    <deny receive_sender=\"%s\" receive_interface=\"%s\"/>\n"
++		     "  </policy>\n"
++		     "  <policy smack=\"%s\">\n"
++		     "    <allow send_destination=\"%s\" send_interface=\"%s\"/>\n"
++		     "    <allow receive_sender=\"%s\" receive_interface=\"%s\"/>\n"
++		     "  </policy>\n",
++		     service, name, service, name, creds,
++		     service, name, service, name);
++	    break;
++	case DBUS_METHOD:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <deny send_destination=\"%s\" send_%s=\"%s\" send_member=\"%s\"/>\n"
++		     "  </policy>\n"
++		     "  <policy smack=\"%s\">\n"
++		     "    <allow send_destination=\"%s\" send_%s=\"%s\" send_member=\"%s\"/>\n"
++		     "  </policy>\n",
++		     service, parentType, parentValue, name, creds,
++		     service, parentType, parentValue, name);
++	    break;
++	case DBUS_SIGNAL:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <deny receive_sender=\"%s\" receive_%s=\"%s\" receive_member=\"%s\"/>\n"
++		     "  </policy>\n"
++		     "  <policy smack=\"%s\">\n"
++		     "    <allow receive_sender=\"%s\" receive_%s=\"%s\" receive_member=\"%s\"/>\n"
++		     "  </policy>\n",
++		     service, parentType, parentValue, name, creds,
++		     service, parentType, parentValue, name);
++	    break;
++	default:
++	    return -1;
++	}
++    } else {
++	switch (type) {
++	case DBUS_SERVICE:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <allow send_destination=\"%s\"/>\n"
++		     "  </policy>\n",
++		     name);
++	    break;
++	case DBUS_PATH:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <allow send_destination=\"%s\" send_path=\"%s\"/>\n"
++		     "    <allow receive_sender=\"%s\" receive_path=\"%s\"/>\n"
++		     "  </policy>\n",
++		     service, name, service, name);
++	    break;
++	case DBUS_INTERFACE:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <allow send_destination=\"%s\" send_interface=\"%s\"/>\n"
++		     "    <allow receive_sender=\"%s\" receive_interface=\"%s\"/>\n"
++		     "  </policy>\n",
++		     service, name, service, name);
++	    break;
++	case DBUS_METHOD:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <allow send_destination=\"%s\" send_%s=\"%s\" send_member=\"%s\"/>\n"
++		     "  </policy>\n",
++		     service, parentType, parentValue, name);
++	    break;
++	case DBUS_SIGNAL:
++	    snprintf(data, sizeof(data), 
++		     "  <policy context=\"default\">\n"
++		     "    <allow receive_sender=\"%s\" receive_%s=\"%s\" receive_member=\"%s\"/>\n"
++		     "  </policy>\n",
++		     service, parentType, parentValue, name);
++	    break;
++	default:
++	    return -1;
++	}
++    }
++    if (fputs(data, file) == EOF) {
++	rpmlog(RPMLOG_ERR, "Failed to write DBus rule %s: %s\n", 
++	       data, strerror(errno));
++	return -1;
++    }
++    return 0;
++}
++
++static int msmSetupDBusConfig(package_x *package, dbus_x *dbus, int phase)
++{
++    char path[NAME_MAX+1];
++    FILE *file = NULL;
++    char data[512];
++    node_x *node;
++    interface_x *interface;
++    member_x *member;
++    int ret = -1;
++
++    char *sysconfdir = rpmExpand("%{?_sysconfdir}", NULL);
++    if (!sysconfdir || !strcmp(sysconfdir, "")) {
++	rpmlog(RPMLOG_ERR, "Failed to expand %%_sysconfdir macro\n");
++	goto exit;
++    }
++    snprintf(path, sizeof(path), "%s/dbus-1/%s.d/manifest.%s.conf", 
++	     sysconfdir, dbus->bus, package->name);
++
++    file = fopen(path, phase ? "a" : "w");
++    if (!file) {
++	rpmlog(RPMLOG_ERR, "Cannot open %s: %s\n", path, strerror(errno));
++	goto exit;
++    }
++
++    if (phase == 0) {
++	snprintf(data, sizeof(data), 
++		 "<!-- This configuration is automatically generated from Manifest by RPM %s security plugin -->\n"
++		 "<!DOCTYPE busconfig PUBLIC \"-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN\" \"http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd\">\n"
++		 "<busconfig>\n",
++		 rpmEVR);
++	if (fputs(data, file) == EOF) {
++	    rpmlog(RPMLOG_ERR, "Failed to write %s: %s\n", 
++		   path, strerror(errno));
++	    goto exit;
++	}
++    }
++
++    if (phase >= 0) {
++	if (dbus->own) {
++		snprintf(data, sizeof(data), 
++			 "  <policy context=\"default\">\n"
++			 "    <deny own=\"%s\"/>\n"
++			 "  </policy>\n"
++			 "  <policy smack=\"%s\">\n"
++			 "    <allow own=\"%s\"/>\n"
++			 "  </policy>\n",
++			 dbus->name, dbus->own, dbus->name);
++		if (fputs(data, file) == EOF) {
++		    rpmlog(RPMLOG_ERR, "Failed to write %s: %s\n", 
++			   path, strerror(errno));
++		    goto exit;
++		}
++	}
++	if (dbus->annotation) {
++		msmSetupDBusRule(file, dbus->annotation->value, DBUS_SERVICE, 
++				  NULL, dbus->name, NULL, NULL);
++	}
++	for (node = dbus->nodes; node; node = node->prev) {
++	    if (node->annotation) {
++		    msmSetupDBusRule(file, node->annotation->value, DBUS_PATH,
++				      dbus->name, node->name, NULL, NULL);
++	    }
++	    for (member = node->members; member; member = member->prev) {
++		if (member->annotation) {
++			msmSetupDBusRule(file, member->annotation->value, member->type, 
++					  dbus->name, member->name, 
++					  "path", node->name);
++		}
++	    }
++	    for (interface = node->interfaces; interface; interface = interface->prev) {
++		if (interface->annotation) {
++			msmSetupDBusRule(file, interface->annotation->value, DBUS_INTERFACE, 
++					  dbus->name, interface->name, NULL, NULL);
++		}
++		for (member = interface->members; member; member = member->prev) {
++		    if (member->annotation) {
++			    msmSetupDBusRule(file, member->annotation->value, member->type, 
++					      dbus->name, member->name,
++					      "interface", interface->name);
++		    }
++		}
++	    }
++	}
++    }
++
++    if (phase < 0) {
++	snprintf(data, sizeof(data), "</busconfig>\n");
++	if (fputs(data, file) == EOF) {
++	    rpmlog(RPMLOG_ERR, "Failed to write %s: %s\n", 
++		   path, strerror(errno));
++	    goto exit;
++	}
++	rpmlog(RPMLOG_INFO, "wrote dbus config %s\n", path);	
++    }
++    ret = 0;
++
++ exit:
++    if (file) fclose(file);
++    if (ret) unlink(path);
++    msmFreePointer((void**)&sysconfdir);
++
++    return ret;
++}
++
++static int msmIsRequestAllowed(manifest_x *mfx, ac_domain_x *provided)
++{
++  
++    if (mfx->sw_source == provided->sw_source) {
++	/* allowed always if ac domain is provided in the same sw source */
++	return 1;
++    } else if (provided->origin && !strcmp(provided->origin, "current")) {
++	/* denied if ac domain is only meant for current sw source */
++	return 0;
++    }
++    if (provided->origin && !strcmp(provided->origin, "all")) {
++	/* ac_domain is allowed for all sw sources */
++	return 1;
++    }
++    if (!provided->origin || !strcmp(provided->origin, "trusted")) {
++	if (strcmp(mfx->sw_source->rankkey, provided->sw_source->rankkey) < 0) {
++	    /* higher ranked sw sources are allowed if ac domain is trusted */
++	    return 1;
++	} /* else flow through to check denys and allows below */
++    } else return 0;
++
++    return msmCheckACDomainRules(provided, mfx->sw_source, provided->sw_source);
++}
++
++static int msmCheckDomainJoinPossibility(manifest_x *mfx, ac_domain_x *defined_ac_domain) 
++{
++
++    char *tmp = NULL, *pch = NULL;
++    unsigned int found = 0;
++
++    if ((!mfx) || (!defined_ac_domain))
++    	return -1; 
++
++    if (defined_ac_domain->type) {
++	if (strcmp(defined_ac_domain->type, "restricted") == 0) {
++		if (defined_ac_domain->plist) {
++			tmp = calloc(strlen(defined_ac_domain->plist) + 1, sizeof(char));
++			if (!tmp) return -1; 
++			strncpy(tmp, defined_ac_domain->plist, strlen(defined_ac_domain->plist));
++			pch = strtok (tmp, ", ");
++			while (pch != NULL)
++			{
++				if (strcmp(pch, mfx->name) == 0) {
++					found = 1; 
++					break;
++				}					
++				pch = strtok(NULL, ", ");
++			}
++			msmFreePointer((void**)&tmp);
++		}
++		if (found != 1) {
++	   		rpmlog(RPMLOG_ERR, "Request for a domain name %s isn't allowed ", mfx->request->ac_domain);
++	   		rpmlog(RPMLOG_ERR, "because ac domain is marked as restricted\n");
++		   	return -1;
++		}
++   	} else if (strcmp(defined_ac_domain->type, "shared") == 0) {
++	   	return 0;			
++   	} else {
++	   	// domain hasn't been marked as shared 
++	   	rpmlog(RPMLOG_ERR, "Request for a domain name %s isn't allowed ", mfx->request->ac_domain);
++	   	rpmlog(RPMLOG_ERR, "because ac domain is marked as private\n");
++		return -1;
++	}
++   } else { 
++	// by default ac domains are private
++   	rpmlog(RPMLOG_ERR, "Request for a domain name %s isn't allowed ", mfx->request->ac_domain);
++	rpmlog(RPMLOG_ERR, "because ac domain is marked as private\n");
++	return -1;
++  }
++
++  return 0;
++}
++
++int msmSetupRequests(manifest_x *mfx) 
++{
++
++  	ac_domain_x *defined_ac_domain = NULL; 
++
++	if ((!mfx) || (!mfx->request) || (!mfx->request->ac_domain))
++		return -1;
++	
++	HASH_FIND(hh, all_ac_domains, mfx->request->ac_domain, strlen(mfx->request->ac_domain), defined_ac_domain);
++	if (!defined_ac_domain){ // request for a undefined domain. 
++		rpmlog(RPMLOG_ERR, "Request for a domain name %s that hasn't been yet defined by any package\n", mfx->request->ac_domain);
++ #ifdef ENABLE_DCHECKS
++		return -1;
++ #else
++               return 0;
++ #endif
++	}
++
++	//now check that the package can join the requested AC domain
++
++       if (mfx->define){
++		rpmlog(RPMLOG_DEBUG, "mfx->define->name %s mfx->request->ac_domain %s\n", mfx->define->name, mfx->request->ac_domain);
++		if (strcmp(mfx->define->name, mfx->request->ac_domain) == 0)
++			//ac domain is requested from the same package where it was define. This case is always allowed
++			return 0;		
++	} 
++
++	//need to check if developer allowed other packages to join this domain
++	if (msmCheckDomainJoinPossibility(mfx, defined_ac_domain) < 0 )
++ #ifdef ENABLE_DCHECKS
++		return -1;
++ #else
++               return 0;
++ #endif
++	
++	// now checking if security policy allows to join this domain
++	if (msmIsRequestAllowed(mfx, defined_ac_domain)) {
++	    rpmlog(RPMLOG_INFO, "Request for a domain name %s is allowed based on package sw source\n", mfx->request->ac_domain);
++	    return 0;
++		
++	} else {
++	    rpmlog(RPMLOG_ERR, "Request for a domain name %s isn't allowed based on package sw source\n", mfx->request->ac_domain);
++ #ifdef ENABLE_DCHECKS
++	    return -1;
++ #else
++           return 0;
++ #endif
++	}
++  return 0;
++}
++
++static int msmSetupProvides(struct smack_accesses *smack_accesses, package_x *package)
++{
++    provide_x *provide;
++    ac_domain_x *ac_domain;
++
++    for (provide = package->provides; provide; provide = provide->prev) {
++	for (ac_domain = provide->ac_domains; ac_domain; ac_domain = ac_domain->prev) {
++	    ac_domain_x *current_d = NULL;
++	    ac_domain->origin = provide->origin;
++
++	    HASH_FIND(hh, all_ac_domains, ac_domain->name, strlen(ac_domain->name), current_d);
++
++	    if (current_d) { /* ac domain has been previously defined */
++
++		if (strcmp(ac_domain->pkg_name, current_d->pkg_name) == 0) { /* check that it was provided by same package */		
++			HASH_DELETE(hh, all_ac_domains, current_d);
++			HASH_ADD_KEYPTR(hh, all_ac_domains, ac_domain->name, strlen(ac_domain->name), ac_domain);
++			current_d->newer = ac_domain;
++			ac_domain->older = current_d;
++			rpmlog(RPMLOG_INFO, "package %s upgraded ac domain %s\n", ac_domain->pkg_name, ac_domain->name);
++		  
++		} else {
++		    rpmlog(RPMLOG_ERR, "package %s can't upgrade ac domain %s previously defined in package %s\n", 
++									ac_domain->pkg_name, ac_domain->name, current_d->pkg_name);
++		    return -1;
++		}
++	    } else {
++		HASH_ADD_KEYPTR(hh, all_ac_domains, ac_domain->name, strlen(ac_domain->name), ac_domain);
++		rpmlog(RPMLOG_INFO, "package %s defined ac domain %s\n", ac_domain->pkg_name, ac_domain->name);		
++	    }
++	}
++	int ret = msmSetSmackProvide(smack_accesses, provide, package->sw_source);
++
++	if (ret < 0) {
++		rpmlog(RPMLOG_ERR, "Failed to set smack rules for provide\n");
++		return -1;
++	}
++    }
++    return 0;
++}
++
++int msmSetupDBusPolicies(package_x *package) 
++{
++
++	dbus_x *session = NULL;
++	dbus_x *system = NULL;
++    	provide_x *provide;
++    	dbus_x *dbus;
++
++    	for (provide = package->provides; provide; provide = provide->prev) {
++		for (dbus = provide->dbuss; dbus; dbus = dbus->prev) {
++			if (!strcmp(dbus->bus, "session")) {
++			    msmSetupDBusConfig(package, dbus, session ? 1 : 0);
++			    session = dbus;
++			} else if (!strcmp(dbus->bus, "system")) {
++			    msmSetupDBusConfig(package, dbus, system ? 1 : 0);
++			    system = dbus;
++			} else return -1;
++		}
++		if (session) msmSetupDBusConfig(package, session, -1);
++		if (system) msmSetupDBusConfig(package, system, -1);
++       session = system = NULL;
++     	}
++	return 0;
++
++}
++
++static int msmCheckDomainRequestOrPermit(manifest_x *mfx, const char* domain) 
++{
++
++  	ac_domain_x *defined_ac_domain = NULL; 
++	char* name = NULL;
++
++	if ((!mfx) || (!domain))
++		return -1;
++
++	name = calloc(strlen(domain) + 1, sizeof(char));
++	if (!name) return -1;
++	strncpy(name, domain, strlen(domain));
++	strtok(name, ":");  // remove label name if present
++	rpmlog(RPMLOG_DEBUG, "label name %s domain name %s \n", domain, name);
++	
++	HASH_FIND(hh, all_ac_domains, name, strlen(name), defined_ac_domain);
++	if (!defined_ac_domain) { // request or permit for an undefined domain. 
++		rpmlog(RPMLOG_ERR, "A domain name %s hasn't been yet defined by any package. Can't verify if it is allowed\n", name);
++		msmFreePointer((void**)&name);
++		return -1;
++	}
++
++	//now check that this ac_domain can be requested
++
++        if ((mfx->define) && (mfx->define->name)) {
++		rpmlog(RPMLOG_DEBUG, "mfx->define->name %s domain %s\n", mfx->define->name, name);
++		if (strcmp(mfx->define->name, name) == 0) {
++			// AC domain access is requested or permitted from the same package where it was defined. 
++			// This case is always allowed
++			msmFreePointer((void**)&name);
++			return 0;		
++		}
++	 } 
++
++	 // no need to check if developer allowed other packages to request/permit this domain
++        // because this isn't a request to belong to a domain, but request/permit for domain access
++	
++	if (msmIsRequestAllowed(mfx, defined_ac_domain)) {
++	    // request or permit is allowed by domain policy
++	    rpmlog(RPMLOG_DEBUG, "Request/Permit to access a domain name %s is allowed based on package sw source\n", name);
++	    msmFreePointer((void**)&name);
++	    return 0;
++		
++	} else {
++	    rpmlog(RPMLOG_ERR, "Request/Permit to access a domain name %s isn't allowed based on package sw source\n", name);
++	    msmFreePointer((void**)&name);
++	    return -1;
++	}
++}
++
++int msmSetupDefine(struct smack_accesses *smack_accesses, manifest_x *mfx)
++{
++    d_request_x *d_request;
++    d_permit_x *d_permit;
++    ac_domain_x * defined_ac_domain = NULL;
++    int ret;
++
++    if ( (!mfx) || (!mfx->define) || (!mfx->define->name)) {
++	rpmlog(RPMLOG_ERR, "Failed to setup define with empty name\n");
++	return -1;
++    }
++
++    /* need to check if domain hasn't been already defined by other package */
++
++    HASH_FIND(hh, all_ac_domains, mfx->define->name, strlen(mfx->define->name), defined_ac_domain);
++    if ((defined_ac_domain) && (defined_ac_domain->pkg_name)) { // this domain has been previously defined
++		if (strcmp(defined_ac_domain->pkg_name, mfx->name) != 0) {
++			rpmlog(RPMLOG_ERR, "Attempt to define a domain name %s that has been already defined by package %s\n",
++											 mfx->define->name, defined_ac_domain->pkg_name);
++			return -1;
++		}
++
++    }
++
++    if (mfx->define->d_requests) {
++	    for (d_request = mfx->define->d_requests; d_request; d_request = d_request->prev) {
++			// first check if the current's package sw source can grant access to requested domain
++			if ( msmCheckDomainRequestOrPermit(mfx, d_request->label_name) < 0 ) {
++ #ifdef ENABLE_DCHECKS
++				return -1;
++ #endif
++			}
++			if ( smack_accesses_add(smack_accesses, mfx->define->name, d_request->label_name, d_request->ac_type) < 0 ) {
++				rpmlog(RPMLOG_ERR, "Failed to set smack rules for domain requests\n");
++				return -1;
++			}	
++	
++	    }
++    }
++
++    if (mfx->define->d_permits) {
++	    for (d_permit = mfx->define->d_permits; d_permit; d_permit = d_permit->prev) {
++			// first check if the current's package sw source can grant access to permited domain
++			if ( msmCheckDomainRequestOrPermit(mfx, d_permit->label_name) < 0 ) {
++ #ifdef ENABLE_DCHECKS
++				return -1;
++ #endif
++			}
++			if (!d_permit->to_label_name)
++				ret = smack_accesses_add(smack_accesses, d_permit->label_name, mfx->define->name, d_permit->ac_type);
++			else {
++				if ( msmCheckLabelProvisioning(mfx, d_permit->to_label_name) < 0 )
++ #ifdef ENABLE_DCHECKS
++						return -1;
++ #endif
++				ret = smack_accesses_add(smack_accesses, d_permit->label_name, d_permit->to_label_name, d_permit->ac_type);
++			}
++			if (ret < 0) {
++				rpmlog(RPMLOG_ERR, "Failed to set smack rules for domain permits\n");
++				return -1;
++			}	
++	    }
++    }
++ 
++    return 0;
++}
++
++package_x *msmCreatePackage(const char *name, sw_source_x *sw_source, provide_x *provides, const char *modified)
++{
++    if (!name) return NULL;
++
++    package_x *package = calloc(1, sizeof(package_x));
++    if (package) {
++	package->name = strdup(name);
++	if (!package->name) goto exit;
++	package->sw_source = sw_source;
++	package->provides = provides;
++	if (modified) {
++	    package->modified = strdup(modified);
++	    if (!package->modified) goto exit;
++	}
++    }
++    return package;
++
++ exit:
++    msmFreePointer((void**)&package->name);
++    msmFreePointer((void**)&package->modified);
++    msmFreePointer((void**)&package);
++
++    return NULL;
++}
++
++int msmSetupSmackRules(struct smack_accesses *smack_accesses, const char* package_name, int flag, int SmackEnabled)
++{
++    int ret = 0;
++    char * buffer = calloc(strlen(SMACK_RULES_PATH) + strlen(package_name) + 1, sizeof(char));
++    if (!buffer) return -1;    
++    strncpy(buffer, SMACK_RULES_PATH, strlen(SMACK_RULES_PATH));
++    strncpy(buffer + strlen(SMACK_RULES_PATH), package_name, strlen(package_name));
++    rpmlog(RPMLOG_DEBUG, "smack rule file path %s, SmackEnabled %d\n", buffer, SmackEnabled);
++
++    if (flag == SMACK_UNINSTALL) { /* uninstallation case */
++	FILE* fd = fopen(buffer, "r");
++    if (fd) {
++        rpmlog(RPMLOG_DEBUG, "uninstall case \n");
++	    struct smack_accesses *old_rule_set = NULL;
++	    ret = smack_accesses_new(&old_rule_set);
++	    if (ret != 0) return -1;
++	    ret = smack_accesses_add_from_file(old_rule_set, fileno(fd));
++	    if (ret == 0) {
++            if (SmackEnabled == 1) 
++    	        ret = smack_accesses_clear(old_rule_set); /* deletes rules from kernel */
++            
++        }
++        smack_accesses_free(old_rule_set);
++        fclose(fd);
++	    remove(buffer); /* delete rules file from system */
++    }
++    } else { /*installation case */
++        /* first attempt to clean previous version of rules, if exists */
++	    FILE* fd = fopen(buffer, "r");
++    	if (fd) {
++		    struct smack_accesses *old_rule_set = NULL;
++		    ret = smack_accesses_new(&old_rule_set);
++		    if (ret != 0) return -1;
++		    ret = smack_accesses_add_from_file(old_rule_set, fileno(fd));
++	        if (ret == 0) {
++                if (SmackEnabled == 1) 
++                    ret = smack_accesses_clear(old_rule_set); /* deletes old rules from kernel */
++            }
++		    fclose(fd);
++		    smack_accesses_free(old_rule_set);
++	    } 
++        /* now write new rules to the system */
++        fd = fopen(buffer, "w");
++    	if (!fd) {
++            rpmlog(RPMLOG_ERR, "Can't write smack rules\n");
++            return -1;
++        }
++    	ret = smack_accesses_save(smack_accesses, fileno(fd));
++    	rpmlog(RPMLOG_DEBUG, "ret in installation %d\n", ret);
++        if (!ret) {
++            if (SmackEnabled == 1) 
++                    ret = smack_accesses_apply(smack_accesses);
++        }
++    	fclose(fd);
++    }
++    
++    free(buffer);
++    if (ret)
++        return -1;
++    return 0;	
++
++}
++
++int msmSetupPackages(struct smack_accesses *smack_accesses, package_x *packages, sw_source_x *sw_source)
++{
++    package_x *package, *first = NULL;
++    char *p_rankkey, *c_rankkey;
++    for (package = packages; package; package = package->prev) {
++	package_x *current_p;
++	     rpmlog(RPMLOG_DEBUG, "before HASH_FIND, package->name %s\n", package->name);
++	HASH_FIND(hh, allpackages, package->name, strlen(package->name), current_p);
++	     rpmlog(RPMLOG_DEBUG, "after HASH_FIND\n");
++	if (current_p) {
++	    if (!current_p->sw_source) {
++		return -1;
++	    }
++	    p_rankkey = strdup(package->sw_source->rankkey);
++	    c_rankkey = strdup(current_p->sw_source->rankkey);
++ 	    p_rankkey = strtok(p_rankkey, ".");
++ 	    c_rankkey = strtok(c_rankkey, ".");
++	    /* this is an upgrade, remove old one from config */
++	    if ((strcmp(p_rankkey, c_rankkey) < 0) ||
++		(strcmp(package->sw_source->name, current_p->sw_source->name) == 0)) {
++		HASH_DELETE(hh, allpackages, current_p);
++		rpmlog(RPMLOG_INFO, "sw source %s upgraded package %s previously provided in sw source %s\n", 
++								package->sw_source->name, package->name, current_p->sw_source->name);
++		current_p->newer = package;
++		package->older = current_p;
++	    } else {
++		/* upgrade from lower or similary ranked sw source is not allowed */
++		rpmlog(RPMLOG_ERR, "sw source %s tried to upgrade package %s previously provided in sw source %s\n", 
++								package->sw_source->name, package->name, current_p->sw_source->name);
++		return -1;
++	    }
++	    msmFreePointer((void**)&p_rankkey);
++	    msmFreePointer((void**)&c_rankkey);
++	} else {
++	    if (sw_source) {
++	    rpmlog(RPMLOG_INFO, "sw source %s provided package %s\n", package->sw_source->name, package->name);
++	    }
++	}
++	rpmlog(RPMLOG_DEBUG, "before HASH_ADD_KEYPTR\n");
++	HASH_ADD_KEYPTR(hh, allpackages, package->name, strlen(package->name), package);   
++	/* set sw source smack rules*/
++	if ((msmSetupProvides(smack_accesses, package)) < 0 ) {
++		msmCancelPackage(package->name);  
++		return -1;
++	}
++	first = package;
++    }
++    if (sw_source && packages) {
++	/* catenate list to sw_source config */
++	LISTCAT(sw_source->packages, first, packages);
++    }
++    return 0;
++}
++
++package_x *msmCheckPackage(const char *name)
++{
++    package_x *package = NULL;
++
++    if (name)
++	HASH_FIND(hh, allpackages, name, strlen(name), package);
++
++    return package;
++}
++
++static void msmCancelACDomain(const char *name)
++{
++    if (name) {
++	ac_domain_x *domain;
++	HASH_FIND(hh, all_ac_domains, name, strlen(name), domain);
++	if (domain) {
++	    HASH_DELETE(hh, all_ac_domains, domain);
++	    if (domain->older) {
++		/* resume previous version */
++		HASH_ADD_KEYPTR(hh, all_ac_domains, domain->older->name, strlen(domain->older->name), domain->older);
++		domain->older->older = domain->older->newer;
++		domain->older->newer = NULL;
++		domain->newer = domain->older;
++		domain->older = NULL;
++	    } else {
++		/* no previous, just take this one out */
++		domain->newer = domain;
++	    }
++	}
++    }
++}
++
++void msmCancelPackage(const char *name)
++{
++    provide_x *provide;
++    ac_domain_x *ac_domain;
++
++    if (name) {
++	package_x *package;
++	HASH_FIND(hh, allpackages, name, strlen(name), package);
++	if (package) {
++	    HASH_DELETE(hh, allpackages, package);
++	    if (package->older) {
++		/* resume previous version */
++		HASH_ADD_KEYPTR(hh, allpackages, package->older->name, strlen(package->older->name), package->older);
++		package->older->older = package->older->newer;
++		package->older->newer = NULL;
++		package->newer = package->older;
++		package->older = NULL;
++	    } else {
++		/* no previous, just take this one out */
++		package->newer = package;
++	    }
++	   /* need to clean up the all_ac_domain list, too */
++    	   for (provide = package->provides; provide; provide = provide->prev) {
++		for (ac_domain = provide->ac_domains; ac_domain; ac_domain = ac_domain->prev) 
++			msmCancelACDomain(ac_domain->name);
++	   }
++	}
++    }
++}
++
++static int is_executable(const char* path, magic_t cookie) 
++{
++   const char* buffer = NULL;
++   int result = -1;
++   char* ptr = NULL;
++
++   if ((!path) || (!cookie))
++	return result;
++
++   buffer = magic_file(cookie, path);
++
++   rpmlog(RPMLOG_DEBUG, "buffer: %s\n", buffer);	
++
++   if (buffer != NULL) { 
++	ptr = strstr(buffer,"executable");
++	if (ptr) result = 0;	
++	ptr = strstr(buffer,"ELF");
++	if (ptr) result = 0;		
++   }
++
++   return result;
++}
++
++int msmSetFileXAttributes(manifest_x *mfx, const char* filepath, magic_t cookie) 
++{
++    provide_x *provide = NULL;
++    filesystem_x *filesystem = NULL;    
++    size_t len = 0, match = 0;
++    const char *label = NULL;
++    const char *exec_label = NULL;
++    const char *type = NULL;
++    const char isolatedLabel[] = SMACK_ISOLATED_LABEL;
++    struct stat st;
++
++    if (!filepath) return -1;
++    if (mfx->name) {
++	package_x *package = msmCheckPackage(mfx->name);
++	if (!package)
++		return -1;
++	for (provide = package->provides; provide; provide = provide->prev) {
++		for (filesystem = provide->filesystems; filesystem; filesystem = filesystem->prev) {
++			if (!strcmp(filepath, filesystem->path)) {
++			    /* exact match */
++			    label = filesystem->label;
++			    exec_label = filesystem->exec_label;
++			    if (filesystem->type) type = filesystem->type;
++			    goto found;
++			}
++
++			len = strlen(filesystem->path);
++			rpmlog(RPMLOG_DEBUG, "filesystem->path: %s, length %d\n", filesystem->path, len);
++			rpmlog(RPMLOG_DEBUG, "filesystem->path + len - 1: %s\n", filesystem->path + len - 1);
++			if (len > match) {
++			    if ((!strncmp(filepath, filesystem->path, len)) && (filesystem->type)) {
++				/* partial match and the directory marked as transmutable*/
++				label = filesystem->label;
++			    	exec_label = filesystem->exec_label;
++				match = len;
++			    }
++			    if (!strncmp(filesystem->path + len - 1, "*", 1)) { 
++			    	if (!strncmp(filepath, filesystem->path, len - 1))  {
++				    /* partial match and the path is marked with wildcard*/
++				    label = filesystem->label;
++			    	    exec_label = filesystem->exec_label;
++				    match = len - 1;
++			    	}
++ 			    }
++			}
++		}
++	}
++    } else 
++	return -1;
++
++    found:
++	if ((!label) || (!exec_label)) {
++	    /* no match, use default label of AC domain */
++	    if (mfx->request) { //AC domain is requested in manifest
++		if (mfx->request->ac_domain) {
++			if (!label) label = mfx->request->ac_domain;
++			if (!exec_label) exec_label = mfx->request->ac_domain;
++		} else {
++			rpmlog(RPMLOG_INFO, "Request for AC domain is empty. Can't identify default file label\n");
++			rpmlog(RPMLOG_INFO, "File will be labelled with the label \"Isolated\"\n");
++			if (!label) label = isolatedLabel;
++			if (!exec_label) exec_label = isolatedLabel;
++		}
++	     } else if (mfx->define) { // AC domain defined in manifest
++		if (mfx->define->name) {
++			if (!label) label = mfx->define->name;
++			if (!exec_label) exec_label = mfx->define->name;
++		} else {
++			rpmlog(RPMLOG_INFO, "Define for AC domain is empty. Can't identify default file label\n");
++			rpmlog(RPMLOG_INFO, "File will be labelled with the label \"Isolated\"\n");
++			if (!label) label = isolatedLabel;
++			if (!exec_label) exec_label = isolatedLabel;
++		}		 
++	     } else { // no request or definition of domain
++			rpmlog(RPMLOG_INFO, "Both define and request sections are empty. Can't identify default file label\n");
++			rpmlog(RPMLOG_INFO, "File will be labelled with the label \"Isolated\"\n");
++			if (!label) label = isolatedLabel;
++			if (!exec_label) exec_label = isolatedLabel;
++	     }
++	} 
++ 
++
++	rpmlog(RPMLOG_INFO, "setting SMACK64 %s for %s\n", label, filepath);
++
++	if (lsetxattr(filepath, SMACK64, label, strlen(label), 0) < 0 ) {
++	    rpmlog(RPMLOG_ERR, "Failed to set SMACK64 %s for %s: %s\n", 
++		   label, filepath, strerror(errno));
++	}
++
++	if ((is_executable(filepath, cookie)) == 0) {
++		if ((exec_label) && (strcmp(exec_label, "none") == 0)) {
++			// do not set SMACK64EXEC
++			rpmlog(RPMLOG_INFO, "not setting SMACK64EXEC for %s as requested in manifest\n", filepath);
++		} else {
++			rpmlog(RPMLOG_INFO, "setting SMACK64EXEC %s for %s\n", exec_label, filepath);
++			if (lsetxattr(filepath, SMACK64EXEC, exec_label, strlen(exec_label), 0) < 0 ) {
++		    		rpmlog(RPMLOG_ERR, "Failed to set SMACK64EXEC %s for %s: %s\n", 
++			   		exec_label, filepath, strerror(errno));
++			}
++		}
++	}
++		
++	if (type) { //marked as transmutable+
++		if ((lstat(filepath, &st) != -1) && (S_ISDIR(st.st_mode))) { //check that it is a directory
++			char at_true[] = "TRUE";
++			rpmlog(RPMLOG_INFO, "setting SMACK64TRANSMUTE %s for %s\n", at_true, filepath);
++			if ( lsetxattr(filepath, SMACK64TRANSMUTE, at_true, strlen(at_true), 0) < 0 ) {
++			    rpmlog(RPMLOG_ERR, "Failed to set SMACK64TRANSMUTE %s for %s: %s\n", 
++				   at_true, filepath, strerror(errno));
++			}
++		} else {
++			rpmlog(RPMLOG_DEBUG, "No setting up of transmute attr for a non-directory, path %s\n", 
++				   filepath);
++		}
++	
++	}
++
++    
++
++    return 0;
++
++}
++
++void msmRemoveRules(struct smack_accesses *smack_accesses, manifest_x *mfx, int SmackEnabled)
++{
++    provide_x *provide;
++    package_x *package;
++
++    HASH_FIND(hh, allpackages, mfx->name, strlen(mfx->name), package);
++    if (!package)
++	return;
++
++    if ((mfx->define) || (mfx->sw_sources)) {
++	    /* remove smack rule file and rule set from kernel */
++	rpmlog(RPMLOG_DEBUG, "removing smack rules for %s\n", mfx->name);
++	    msmSetupSmackRules(smack_accesses, mfx->name, SMACK_UNINSTALL, SmackEnabled);
++    }
++
++    for (provide = mfx->provides; provide; provide = provide->prev) {
++	if (provide->dbuss && !package->older) 
++	    msmRemoveDBusConfig(package, provide->dbuss);
++
++    }
++
++}
++
++void msmRemoveConfig(manifest_x *mfx)
++{
++    package_x *package;
++
++    HASH_FIND(hh, allpackages, mfx->name, strlen(mfx->name), package);
++    if (package) {
++	if (!package->older) {
++	    /* set newer to remove from config list */
++	    package->newer = package;
++	    rpmlog(RPMLOG_INFO, "removing package for %s\n", mfx->name);
++	}
++    }
++}
++
++sw_source_x *msmSWSourceTreeTraversal(sw_source_x *sw_sources, int (func)(sw_source_x *, void *), void *param)
++{
++    sw_source_x *sw_source;
++
++    if (sw_sources) {
++	LISTHEAD(sw_sources, sw_source);
++	/* sw source tree is actually a list ordered into tree traversal path */
++	for (; sw_source; sw_source = sw_source->next)
++	    if (!sw_source->newer)
++		if (!(func)(sw_source, param)) return sw_source;
++    }
++    return NULL;
++}
++
+diff -Nuarp rpm/security/security.h rpm-security/security/security.h
+--- rpm/security/security.h	1970-01-01 02:00:00.000000000 +0200
++++ rpm-security/security/security.h	2012-10-01 10:29:50.327983644 +0300
+@@ -0,0 +1,26 @@
++#include "system.h"
++
++#include <rpm/rpmmacro.h>
++#include <rpm/rpmlib.h>
++#include <rpm/rpmlog.h>
++#include <rpm/rpmts.h>
++#include <rpm/rpmte.h>
++
++#include "rpmio/digest.h"
++#include "lib/rpmsecurity.h"
++
++rpmRC SECURITYHOOK_INIT_FUNC(rpmts ts, const char *opts);
++rpmRC SECURITYHOOK_CLEANUP_FUNC(void);
++rpmRC SECURITYHOOK_PRE_TSM_FUNC(rpmts _ts);
++rpmRC SECURITYHOOK_POST_TSM_FUNC(rpmts _ts);
++rpmRC SECURITYHOOK_PRE_PSM_FUNC(rpmte _te);
++rpmRC SECURITYHOOK_POST_PSM_FUNC(rpmte _te, int rpmrc);
++rpmRC SECURITYHOOK_SCRIPT_EXEC_FUNC(ARGV_const_t argv);
++rpmRC SECURITYHOOK_FSM_OPENED_FUNC(FSM_t fsm);
++rpmRC SECURITYHOOK_FSM_UPDATED_FUNC(FSM_t fsm);
++rpmRC SECURITYHOOK_FSM_CLOSED_FUNC(FSM_t fsm, int rpmrc);
++rpmRC SECURITYHOOK_FSM_DIR_LABEL_FUNC(FSM_t fsm, int rpmrc);
++rpmRC SECURITYHOOK_VERIFY_FUNC(rpmKeyring keyring, rpmtd sigtd, 
++			       pgpDig dig, rpmRC rpmrc);
++rpmRC SECURITYHOOK_FILE_CONFLICT_FUNC(rpmts ts, rpmte te, rpmfi fi,
++				      Header oldHeader, rpmfi oldFi, int rpmrc);

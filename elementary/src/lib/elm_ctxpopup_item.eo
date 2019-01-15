@@ -1,0 +1,27 @@
+class Elm_Ctxpopup_Item(Elm_Widget_Item)
+{
+   eo_prefix: elm_obj_ctxpopup_item;
+   methods {
+      init {
+         params {
+            Evas_Smart_Cb func;
+            const(void) * data;
+         }
+      }
+   }
+   implements {
+        Eo.Base.constructor;
+        Eo.Base.destructor;
+        Elm_Widget_Item.disable;
+        Elm_Widget_Item.signal_emit;
+        Elm_Widget_Item.style.set;
+        Elm_Widget_Item.part_text.get;
+        Elm_Widget_Item.part_text.set;
+        Elm_Widget_Item.part_content.get;
+        Elm_Widget_Item.part_content.set;
+        Elm_Widget_Item.del_pre;
+        Elm_Widget_Item.focus.set;
+        Elm_Widget_Item.focus.get;
+        Elm_Interface_Atspi_Accessible.name.get;
+   }
+}

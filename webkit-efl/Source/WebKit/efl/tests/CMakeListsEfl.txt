@@ -1,0 +1,84 @@
+SET(EFLUnitTests_LIBRARIES
+    ${JavaScriptCore_LIBRARY_NAME}
+    ${WebCore_LIBRARY_NAME}
+    ${WebKit_LIBRARY_NAME}
+    ${ECORE_X_LIBRARIES}
+    ${EDJE_X_LIBRARIES}
+    ${EFLDEPS_LIBRARIES}
+    ${EVAS_LIBRARIES}
+    ${ELEMENTARY_LIBRARIES}
+    ${EDBUS_LIBRARIES}
+    ${DBUS-1_LIBRARIES}
+    ${EFLDEPS_LIBRARIES}
+    ${EFREET_LIBRARIES}
+    ${ETHUMB_LIBRARIES}
+)
+
+SET(EFLUnitTests_INCLUDE_DIRECTORIES
+    ${DERIVED_SOURCES_DIR}
+    ${CMAKE_SOURCE_DIR}/Source
+    ${WEBKIT_DIR}/efl/ewk
+    ${WEBKIT_DIR}/efl/tests/src/UnitTestLauncher
+    ${WEBCORE_DIR}/bindings/ewk
+    ${JAVASCRIPTCORE_DIR}
+    ${JAVASCRIPTCORE_DIR}/API
+    ${JAVASCRIPTCORE_DIR}/ForwardingHeaders
+    ${JAVASCRIPTCORE_DIR}/wtf/gobject
+    ${Cairo_INCLUDE_DIRS}
+    ${EDJE_INCLUDE_DIRS}
+    ${EFLDEPS_INCLUDE_DIRS}
+    ${EVAS_INCLUDE_DIRS}
+    ${ELEMENTARY_INCLUDE_DIRS}
+    ${EDBUS_INCLUDE_DIRS}
+    ${DBUS-1_INCLUDE_DIRS}
+    ${EFLDEPS_INCLUDE_DIRS}
+    ${EFREET_INCLUDE_DIRS}
+    ${ETHUMB_INCLUDE_DIRS}
+)
+
+SET(EFLUnitTests_LINK_FLAGS
+    ${ECORE_X_LDFLAGS}
+    ${EDJE_LDFLAGS}
+    ${EFLDEPS_LDFLAGS}
+    ${EVAS_LDFLAGS}
+)
+
+#SET(DEFAULT_TEST_PAGE_DIR ${CMAKE_BINARY_DIR}/WebKit/efl/tests)
+#REMOVE_DEFINITIONS(-DDEFAULT_TEST_PAGE_DIR=\"${DEFAULT_TEST_PAGE_DIR}\")
+#ADD_DEFINITIONS(-DDEFAULT_TEST_PAGE_DIR=\"${DEFAULT_TEST_PAGE_DIR}\")
+
+SET(DEFAULT_TEST_PAGE "/Source/WebKit/efl/tests/default_test_page.html")
+ADD_DEFINITIONS(-DDEFAULT_TEST_PAGE=\"${DEFAULT_TEST_PAGE}\")
+
+SET(DEFAULT_WEBKIT_THEME "/usr/share/edje/webkit.edj")
+ADD_DEFINITIONS(-DDEFAULT_WEBKIT_THEME=\"${DEFAULT_WEBKIT_THEME}\")
+
+SET(DOM_BINDINGS_TEST_DOCUMENT "/Source/WebKit/efl/tests/src/EwkDomBindingsTestDocument.html")
+ADD_DEFINITIONS(-DDOM_BINDINGS_TEST_DOCUMENT=\"${DOM_BINDINGS_TEST_DOCUMENT}\")
+
+ADD_DEFINITIONS(-DGTEST_TEST_FRAMEWORK)
+
+ADD_LIBRARY(efl_test_launcher
+    ${WEBKIT_DIR}/efl/tests/src/UnitTestLauncher/EFLTestLauncher.cpp
+    ${WEBKIT_DIR}/efl/tests/src/UnitTestLauncher/EFLTestView.cpp
+    ${WEBKIT_DIR}/efl/tests/src/UnitTestLauncher/EFLTestUtility.cpp
+)
+
+set(EUnitTests_SOURCES
+    ${WEBKIT_DIR}/efl/tests/src/EFLTestsRun.cpp
+    ${WEBKIT_DIR}/efl/tests/src/EwkUriTests.cpp
+    #{WEBKIT_DIR}/efl/tests/src/EwkEditableTests.cpp
+
+    ${WEBKIT_DIR}/efl/tests/src/EwkCacheReleaseTests.cpp
+    #${WEBKIT_DIR}/efl/tests/src/EwkDomBindingsTests.cpp
+    ${WEBKIT_DIR}/efl/tests/src/EwkHistoryTests.cpp
+    ${WEBKIT_DIR}/efl/tests/src/EwkScrollTests.cpp
+    ${WEBKIT_DIR}/efl/tests/src/EwkZoomTests.cpp
+    ${WEBKIT_DIR}/efl/tests/src/EwkSearchTests.cpp
+    #${WEBKIT_DIR}/efl/tests/src/EwkBackingstoreCacheGlobalManagmentTests.cpp
+)
+
+INCLUDE_DIRECTORIES(${EFLUnitTests_INCLUDE_DIRECTORIES})
+ADD_EXECUTABLE(Programs/EUnitTests ${EUnitTests_SOURCES})
+TARGET_LINK_LIBRARIES(Programs/EUnitTests ${EFLUnitTests_LIBRARIES} gtest efl_test_launcher)
+ADD_TARGET_PROPERTIES(Programs/EUnitTests LINK_FLAGS "${EFLUnitTests_LINK_FLAGS}")

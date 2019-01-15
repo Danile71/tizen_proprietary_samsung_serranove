@@ -1,0 +1,11 @@
+--- Modules/_curses_panel.c
++++ Modules/_curses_panel.c
+@@ -14,7 +14,7 @@
+ 
+ #include "py_curses.h"
+ 
+-#include <panel.h>
++#include <ncurses/panel.h>
+ 
+ static PyObject *PyCursesError;
+ 

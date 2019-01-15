@@ -1,0 +1,24 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (0,0) size 980x735
+      RenderBlock {DIV} at (0,0) size 980x121 [bgcolor=#008000] [border: (1px solid #FFFFFF) none]
+        RenderBlock {H1} at (0,51) size 980x70 [color=#FFFFFF]
+        RenderBlock {DIV} at (0,171) size 980x0
+          RenderBlock {UL} at (0,0) size 980x0
+            RenderBlock (floating) {LI} at (0,0) size 589x23 [border: (2px solid #0000FF)]
+              RenderText {#text} at (2,2) size 585x19
+                text run at (2,2) width 585: "There should be a gap between this float and the green rectangle above."
+      RenderBlock {DIV} at (0,221) size 980x55 [bgcolor=#DDDDDD] [border: (2px solid #000000)]
+        RenderBlock (floating) {DIV} at (2,2) size 32x32 [bgcolor=#FFFFFF]
+        RenderBlock {DIV} at (2,34) size 976x0
+        RenderBlock (anonymous) at (2,34) size 976x19
+          RenderText {#text} at (0,0) size 616x19
+            text run at (0,0) width 616: "This text should be inside a black rectangle and below the 2em white square."
+      RenderBlock {DIV} at (0,292) size 980x55 [bgcolor=#DDDDDD] [border: (2px solid #000000)]
+        RenderBlock (floating) {DIV} at (2,2) size 32x32 [bgcolor=#FFFFFF]
+        RenderBlock {DIV} at (2,34) size 976x0
+        RenderBlock (anonymous) at (2,34) size 976x19
+          RenderText {#text} at (0,0) size 653x19
+            text run at (0,0) width 653: "This text should also be inside a black rectangle and below the 2em white square."

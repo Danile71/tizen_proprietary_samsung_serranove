@@ -1,0 +1,78 @@
+From 653849e098fa3b8e30fc93e12a57fb75b958fa1a Mon Sep 17 00:00:00 2001
+From: Elena, Reshetova <elena.reshetova@intel.com>
+Date: Mon, 20 Feb 2012 15:47:41 +0200
+Subject: [PATCH] Fix for lib rpmdb functionality
+
+---
+ lib/rpmdb.c |   13 ++++++++-----
+ 1 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/lib/rpmdb.c b/lib/rpmdb.c
+index 50bb6b1..74cbfef 100644
+--- a/lib/rpmdb.c
++++ b/lib/rpmdb.c
+@@ -225,7 +225,7 @@ static inline void dbiGrowSet(dbiIndexSet set, unsigned int nrecs)
+  */
+ static int dbt2set(dbiIndex dbi, DBT * data, dbiIndexSet * setp)
+ {
+-    int _dbbyteswapped = dbiByteSwapped(dbi);
++    int _dbbyteswapped;
+     const char * sdbir;
+     dbiIndexSet set;
+     unsigned int i;
+@@ -239,6 +239,8 @@ static int dbt2set(dbiIndex dbi, DBT * data, dbiIndexSet * setp)
+ 	return 0;
+     }
+ 
++    _dbbyteswapped = dbiByteSwapped(dbi);
++
+     set = xcalloc(1, sizeof(*set));
+     dbiGrowSet(set, data->size / itype);
+     set->count = data->size / itype;
+@@ -288,7 +290,7 @@ static int dbt2set(dbiIndex dbi, DBT * data, dbiIndexSet * setp)
+  */
+ static int set2dbt(dbiIndex dbi, DBT * data, dbiIndexSet set)
+ {
+-    int _dbbyteswapped = dbiByteSwapped(dbi);
++    int _dbbyteswapped;
+     char * tdbir;
+     unsigned int i;
+     dbiIndexType itype = dbiType(dbi);
+@@ -303,6 +305,8 @@ static int set2dbt(dbiIndex dbi, DBT * data, dbiIndexSet set)
+     }
+     tdbir = data->data = xmalloc(data->size);
+ 
++    _dbbyteswapped = dbiByteSwapped(dbi);
++
+     switch (itype) {
+     default:
+     case DBI_SECONDARY:
+@@ -1650,7 +1654,7 @@ static rpmRC miVerifyHeader(rpmdbMatchIterator mi, const void *uh, size_t uhlen)
+ 	return rpmrc;
+ 
+     /* Don't bother re-checking a previously read header. */
+-    if (mi->mi_db->db_checked) {
++    if (mi->mi_db && mi->mi_db->db_checked) {
+ 	if (intHashHasEntry(mi->mi_db->db_checked, mi->mi_offset))
+ 	    rpmrc = RPMRC_OK;
+     }
+@@ -1686,6 +1690,7 @@ Header rpmdbNextIterator(rpmdbMatchIterator mi)
+     size_t keylen;
+     int rc;
+     int xx;
++    union _dbswap mi_offset;
+ 
+     if (mi == NULL)
+ 	return NULL;
+@@ -1711,8 +1716,6 @@ top:
+     uhlen = 0;
+ 
+     do {
+-	union _dbswap mi_offset;
+-
+ 	if (mi->mi_set) {
+ 	    if (!(mi->mi_setx < mi->mi_set->count))
+ 		return NULL;
+-- 
+1.7.4.1
+

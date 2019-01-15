@@ -1,0 +1,14 @@
+<manifest>
+    <define>
+        <domain name="bluez-hcidump"/>
+        <request>
+            <smack request="system::media" type="rwx"/>
+        </request>
+    </define>
+    <assign>
+        <filesystem path="/usr/sbin/hcidump" label="bluez-hcidump" exec_label="bluez-hcidump"/>
+    </assign>
+    <request>
+        <domain name="_"/>
+    </request>
+</manifest>

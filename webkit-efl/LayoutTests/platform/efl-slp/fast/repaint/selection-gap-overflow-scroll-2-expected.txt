@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 525x14
+          RenderInline {A} at (0,0) size 231x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 231x14
+              text run at (40,0) width 231: "https://bugs.webkit.org/show_bug.cgi?id=34946"
+          RenderText {#text} at (271,0) size 294x14
+            text run at (271,0) width 3: " "
+            text run at (274,0) width 291: "REGRESSION: Selection painting issue in bug review textbox"
+        RenderText {#text} at (565,0) size 3x14
+          text run at (565,0) width 3: "."
+layer at (13,34) size 126x126 clip at (16,37) size 120x120 scrollY 28 scrollHeight 148
+  RenderBlock {DIV} at (5,26) size 126x126 [border: (3px solid #000000)]
+    RenderBlock {DIV} at (13,13) size 100x100
+    RenderBlock (anonymous) at (13,113) size 100x28
+      RenderBlock {DIV} at (0,0) size 94x28
+        RenderInline {SPAN} at (0,0) size 31x28
+          RenderText {#text} at (0,0) size 31x14
+            text run at (0,0) width 31: "Lorem"
+          RenderBR {BR} at (31,11) size 0x0
+          RenderText {#text} at (0,14) size 29x14
+            text run at (0,14) width 29: "ipsum"
+      RenderText {#text} at (0,0) size 0x0

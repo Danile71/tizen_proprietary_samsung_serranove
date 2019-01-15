@@ -1,0 +1,20 @@
+ALERT: 0.1724137931034483
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 283x19
+          text run at (0,0) width 283: "This tests for a drag select crasher."
+      RenderBlock {DIV} at (0,35) size 964x29
+        RenderInline {SPAN} at (0,0) size 86x19
+          RenderText {#text} at (0,5) size 86x19
+            text run at (0,5) width 86: "Start here."
+        RenderText {#text} at (86,5) size 5x19
+          text run at (86,5) width 5: " "
+        RenderTextControl {INPUT} at (93,2) size 171x25 [bgcolor=#FFFFFF]
+      RenderBlock {UL} at (0,80) size 964x0
+layer at (105,51) size 164x15
+  RenderBlock {DIV} at (4,6) size 164x15
+caret: position 4 of child 0 {#text} of child 0 {SPAN} of child 2 {DIV} of body

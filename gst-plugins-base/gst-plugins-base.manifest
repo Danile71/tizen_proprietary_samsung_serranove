@@ -1,0 +1,10 @@
+<manifest>
+	<request>
+		<domain name="_" />
+	</request>
+	<assign>
+		<filesystem path="/usr/bin/gst-device-monitor-1.0" exec_label="none" />
+		<filesystem path="/usr/bin/gst-discoverer-1.0" exec_label="none" />
+		<filesystem path="/usr/bin/gst-play-1.0" exec_label="none" />
+	</assign>
+</manifest>

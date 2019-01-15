@@ -1,0 +1,240 @@
+-------------------------------------------------------------------
+Tue Jun 24 15:15:31 CEST 2008 - pgajdos@suse.cz
+
+- added warning for creation msdos on filesystem with sector size 
+   greater than 4096 [fate#303325] (unsupported-sector-size.patch)
+
+-------------------------------------------------------------------
+Thu Sep  6 16:26:57 CEST 2007 - pgajdos@suse.cz
+
+- determine sector size of device automatically or if -S parameter
+  present, verify, that it's not under physical sector size
+  (determine-sector-size.patch) 
+
+-------------------------------------------------------------------
+Thu Aug  9 17:08:41 CEST 2007 - olh@suse.de
+
+- remove inclusion of asm/unaligned.h, use private copy of 
+  asm-generic/unaligned.h
+
+-------------------------------------------------------------------
+Thu Apr 26 12:14:35 CEST 2007 - lnussel@suse.de
+
+- remove obsolete subfs patch
+- fix handling of zero heads and sectors
+
+-------------------------------------------------------------------
+Wed Apr  4 10:29:59 CEST 2007 - pgajdos@suse.cz
+
+- added Supplements: filesystem(vfat) line to spec file 
+  [fate#301966]
+
+-------------------------------------------------------------------
+Tue Jan 30 14:04:38 CET 2007 - prusnak@suse.cz
+
+- mkdosfs now opens device with O_EXCL [#238687]
+
+-------------------------------------------------------------------
+Sat May 27 19:15:11 CEST 2006 - schwab@suse.de
+
+- Don't strip binaries.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:33 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov  8 14:25:16 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Mon Nov  7 16:15:50 CET 2005 - yxu@suse.de
+
+- fixed overflowing buffer problem 
+
+-------------------------------------------------------------------
+Mon Apr 11 11:49:11 CEST 2005 - mcihar@suse.cz
+
+- update to 2.11
+- use sys/mount.h instead of linux/fs.h, this fixes compilation with current GCC
+
+-------------------------------------------------------------------
+Tue Feb 15 16:53:10 CET 2005 - mcihar@suse.cz
+
+- deal with subfs (bug #50838)
+    - use /proc/mounts if available for deciding whether device is
+      mounted or not
+    - just issue warning if it is mounted as subfs
+
+-------------------------------------------------------------------
+Thu Aug 19 14:05:43 CEST 2004 - mcihar@suse.cz
+
+- merged some dosfsck fixes from FreeDOS
+
+-------------------------------------------------------------------
+Thu Jul 15 17:18:39 CEST 2004 - schwab@suse.de
+
+- Fix unaligned accesses [#40296].
+
+-------------------------------------------------------------------
+Wed Jun  2 00:50:55 CEST 2004 - ro@suse.de
+
+- avoid inclusion of linux/audit.h
+
+-------------------------------------------------------------------
+Thu Mar 18 15:47:09 CET 2004 - mcihar@suse.cz
+
+- fix dosfsck man page (pointed out in bug #34757)
+
+-------------------------------------------------------------------
+Mon Mar 08 19:46:55 CET 2004 - mcihar@suse.cz
+
+- fix broken dosfsck (bug #34757)
+
+-------------------------------------------------------------------
+Thu Jan 29 21:42:36 CET 2004 - mcihar@suse.cz
+
+- include more documentation
+
+-------------------------------------------------------------------
+Thu Jan 15 08:56:16 CET 2004 - kukuk@suse.de
+
+- Make compile with kernel 2.6.1 headers
+
+-------------------------------------------------------------------
+Thu Oct 23 16:56:31 CEST 2003 - schwab@suse.de
+
+- Don't define llseek to lseek64, creates infinite recursion.
+
+-------------------------------------------------------------------
+Tue Oct 14 12:04:31 CEST 2003 - mcihar@suse.cz
+
+- install links also for {fsck,mkfs}.vfat + man pages (bug #32284)
+
+-------------------------------------------------------------------
+Mon Sep 29 13:32:05 CEST 2003 - mcihar@suse.cz
+
+- updated to 2.10:
+ - dosfsck: various 64-bit fixes and removed some warnings by Michal
+   Cihar <mcihar@suse.cz>
+ - mkdosfs: better error message if called without parameters (also
+   suggested by Michal)
+
+-------------------------------------------------------------------
+Mon Jun 09 17:36:02 CEST 2003 - mcihar@suse.cz
+
+- new upstream version 2.9:
+ * dosfsck: Fix potential for "Internal error: next_cluster on bad cluster".
+ * dosfsck: When clearing long file names, don't overwrite the dir
+   entries with all zeros, but put 0xe5 into the first byte.
+   Otherwise, some OSes stop reading the directory at that point...
+ * dosfsck: in statistics printed by -v, fix 32bit overflow in number
+   of data bytes.
+ * dosfsck: fix an potential overflow in "too many clusters" check
+ * dosfsck: allow FAT size > 32MB.
+ * dosfsck: allow for only one FAT
+ * dosfsck: with -v, also check that last sector of the filesystem can
+   be read (in case a partition is smaller than the fs thinks)
+- realy working large file support
+- don't package obsolette documentation
+
+-------------------------------------------------------------------
+Wed Dec 04 11:05:49 CET 2002 - mcihar@suse.cz
+
+- don't allow -fPIC on i386 in CFLAGS, even on i386-debug, because
+  this package doesn't build with it
+
+-------------------------------------------------------------------
+Mon Dec  2 00:00:36 CET 2002 - ro@suse.de
+
+- include errno.h where needed 
+
+-------------------------------------------------------------------
+Tue Sep 10 13:43:16 CEST 2002 - mcihar@suse.cz
+
+- added -D_FILE_OFFSET_BITS=64 to CFLAGS to support larger files/partitions
+
+-------------------------------------------------------------------
+Tue May 21 01:44:36 CEST 2002 - ro@suse.de
+
+- extend 64bit ifdefs for new platforms 
+
+-------------------------------------------------------------------
+Fri Mar  1 16:16:48 CET 2002 - jantos@suse.cz
+
+- Fixed missing files in documentation (bug 13973)
+
+-------------------------------------------------------------------
+Fri Sep 14 16:37:41 CEST 2001 - schwab@suse.de
+
+- Fix crash if mkdosfs is called without arguments.
+
+-------------------------------------------------------------------
+Tue May 22 18:04:31 CEST 2001 - pblaha@suse.cz
+
+- fixed include files on ia64 
+
+-------------------------------------------------------------------
+Sun Apr  8 17:45:37 CEST 2001 - schwab@suse.de
+
+- Fix to build on ia64.
+
+-------------------------------------------------------------------
+Mon Mar  5 17:11:41 CET 2001 - pblaha@suse.cz
+
+- update on 2.8 
+
+-------------------------------------------------------------------
+Mon Feb 12 07:58:30 CET 2001 - ro@suse.de
+
+- don't include linux/fs.h 
+
+-------------------------------------------------------------------
+Thu Jan 18 20:00:23 CET 2001 - schwab@suse.de
+
+- Add Obsoletes: dosfstls.
+
+-------------------------------------------------------------------
+Wed Jan 17 10:41:12 CET 2001 - pblaha@suse.cz
+
+- added message  "not enough memory to run dosfsck\n" 
+- if not free memory for malloc
+
+-------------------------------------------------------------------
+Fri Dec 22 10:14:48 CET 2000 - pblaha@suse.cz
+
+- upgrade on 2.6 and rename on dosfstools 
+
+-------------------------------------------------------------------
+Mon Dec  4 16:13:17 CET 2000 - sf@suse.de
+
+- corrected patch to compile on Alpha and ia64 
+
+-------------------------------------------------------------------
+Tue Nov 21 18:09:54 CET 2000 - uli@suse.de
+
+- worked around strncasecmp declaration conflict in mkdosfs.c
+
+-------------------------------------------------------------------
+Mon Nov 13 11:32:39 CET 2000 - ro@suse.de
+
+- hacked to compile on 2.4 includes 
+
+-------------------------------------------------------------------
+Thu Nov  2 11:44:12 CET 2000 - pblaha@suse.cz
+
+- update to version 2.4
+
+-------------------------------------------------------------------
+Mon Jun  5 18:33:32 CEST 2000 - schwab@suse.de
+
+- Fix llseek on ia64.
+
+-------------------------------------------------------------------
+Fri Jun  2 15:32:06 MEST 2000 - bubnikv@suse.cz
+
+- new package in SuSE, version 2.2
+- makes packages dosfsck and mkdosfs obsolette
+

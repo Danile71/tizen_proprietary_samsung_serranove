@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 944x19
+          text run at (0,0) width 125: "This is a test of "
+          text run at (125,0) width 241: "some code to make sure that "
+          text run at (366,0) width 283: "white-space gets properly ignored. "
+          text run at (649,0) width 295: "If it does, then this should render the"
+        RenderInline {A} at (0,0) size 37x19 [color=#0000EE]
+          RenderText {#text} at (0,19) size 37x19
+            text run at (0,19) width 37: "way "
+        RenderText {#text} at (37,19) size 457x19
+          text run at (37,19) width 151: "one would expect. "
+          text run at (188,19) width 306: "Hopefully it does render the way we w"
+        RenderInline {I} at (0,0) size 10x19
+          RenderText {#text} at (494,19) size 10x19
+            text run at (494,19) width 10: "a"
+        RenderInline {B} at (0,0) size 11x19
+          RenderText {#text} at (504,19) size 11x19
+            text run at (504,19) width 11: "n"
+        RenderText {#text} at (515,19) size 358x19
+          text run at (515,19) width 52: "t it to. "
+          text run at (567,19) width 105: "If it does not "
+          text run at (672,19) width 114: "that would be "
+          text run at (786,19) width 87: "a problem."

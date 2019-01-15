@@ -1,0 +1,28 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x112
+  RenderBlock {HTML} at (0,0) size 800x112
+    RenderBody {BODY} at (8,12) size 784x80
+      RenderBlock {P} at (0,0) size 784x14 [color=#000080]
+        RenderText {#text} at (0,0) size 442x14
+          text run at (0,0) width 279: "In the following test, the teal blocks must be just inside the "
+          text run at (279,0) width 163: "top and sides of the blue rectangle."
+      RenderBlock {DIV} at (0,26) size 784x54
+        RenderBlock {DIV} at (12,0) size 760x54 [color=#0000FF] [bgcolor=#000080] [border: (6px solid #0000FF) none (6px solid #0000FF)]
+          RenderBlock (floating) {P} at (6,6) size 132x68 [color=#00FFFF] [bgcolor=#008080] [border: (3px solid #00FFFF)]
+            RenderText {#text} at (6,6) size 107x56
+              text run at (6,6) width 107: "Teal block. Teal block."
+              text run at (6,20) width 107: "Teal block. Teal block."
+              text run at (6,34) width 107: "Teal block. Teal block."
+              text run at (6,48) width 107: "Teal block. Teal block."
+          RenderBlock (floating) {P} at (622,6) size 132x68 [color=#00FFFF] [bgcolor=#008080] [border: (3px solid #00FFFF)]
+            RenderText {#text} at (6,6) size 107x56
+              text run at (6,6) width 107: "Teal block. Teal block."
+              text run at (6,20) width 107: "Teal block. Teal block."
+              text run at (6,34) width 107: "Teal block. Teal block."
+              text run at (6,48) width 107: "Teal block. Teal block."
+          RenderText {#text} at (138,6) size 483x42
+            text run at (138,6) width 460: "Blue rectangle. Blue rectangle. Blue rectangle. Blue rectangle. Blue rectangle. Blue rectangle. Blue"
+            text run at (138,20) width 121: "rectangle. Blue rectangle. "
+            text run at (259,20) width 362: "Blue rectangle. Blue rectangle. Blue rectangle. Blue rectangle. Blue rectangle."
+            text run at (138,34) width 216: "Blue rectangle. Blue rectangle. Blue rectangle."

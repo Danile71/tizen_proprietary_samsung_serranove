@@ -1,0 +1,26 @@
+layer at (0,0) size 960x720
+  RenderView at (0,0) size 960x720
+layer at (0,0) size 960x720
+  RenderSVGRoot {svg} at (1,1) size 958x718
+    RenderSVGContainer {g} at (200,14) size 472x532
+      RenderSVGText {text} at (150,7) size 186x17 contains 1 chunk(s)
+        RenderSVGInlineText {#text} at (0,0) size 186x17
+          chunk 1 text run 1 at (150.00,20.00) startOffset 0 endOffset 28 width 185.50: "Test for clip-rule property."
+      RenderSVGResourceClipper {clipPath} [id="clip1"] [clipPathUnits=userSpaceOnUse]
+        RenderSVGPath {path} at (360,80) size 160x160 [fill={[type=SOLID] [color=#000000]}] [clip rule=EVEN-ODD] [data="M 200 40 L 220 40 L 220 100 L 240 100 L 240 80 L 180 80 L 180 60 L 260 60 L 260 120 L 200 120 L 200 40 Z"]
+      RenderSVGRect {rect} at (360,80) size 160x160 [fill={[type=SOLID] [color=#FF0000]}] [x=50.00] [y=30.00] [width=350.00] [height=100.00]
+        [clipPath="clip1"] RenderSVGResourceClipper {clipPath} at (180,40) size 80x80
+      RenderSVGText {text} at (100,129) size 111x14 contains 1 chunk(s)
+        RenderSVGInlineText {#text} at (0,0) size 111x14
+          chunk 1 text run 1 at (100.00,140.00) startOffset 0 endOffset 17 width 111.00: "clip-rule=evenodd"
+      RenderSVGResourceClipper {clipPath} [id="clip2"] [clipPathUnits=userSpaceOnUse]
+        RenderSVGPath {path} at (360,340) size 160x160 [fill={[type=SOLID] [color=#000000]}] [data="M 200 170 L 220 170 L 220 230 L 240 230 L 240 210 L 180 210 L 180 190 L 260 190 L 260 250 L 200 250 L 200 170 Z"]
+      RenderSVGRect {rect} at (360,340) size 160x160 [fill={[type=SOLID] [color=#0000FF]}] [x=50.00] [y=160.00] [width=350.00] [height=100.00]
+        [clipPath="clip2"] RenderSVGResourceClipper {clipPath} at (180,170) size 80x80
+      RenderSVGText {text} at (100,259) size 104x14 contains 1 chunk(s)
+        RenderSVGInlineText {#text} at (0,0) size 104x14
+          chunk 1 text run 1 at (100.00,270.00) startOffset 0 endOffset 16 width 103.50: "cliprule=nonzero"
+    RenderSVGText {text} at (10,303) size 322x47 contains 1 chunk(s)
+      RenderSVGInlineText {#text} at (0,0) size 322x47
+        chunk 1 text run 1 at (10.00,340.00) startOffset 0 endOffset 16 width 322.00: "$Revision: 1.2 $"
+    RenderSVGRect {rect} at (1,1) size 958x718 [stroke={[type=SOLID] [color=#000000]}] [x=1.00] [y=1.00] [width=478.00] [height=358.00]

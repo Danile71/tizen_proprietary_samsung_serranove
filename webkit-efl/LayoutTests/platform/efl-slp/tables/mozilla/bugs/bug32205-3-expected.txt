@@ -1,0 +1,30 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderTable {TABLE} at (0,0) size 784x584 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x582
+          RenderTableRow {TR} at (0,2) size 782x578
+            RenderTableCell {TD} at (2,275) size 361x32 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 59x14
+                text run at (2,2) width 59: "Outer Table:"
+              RenderBR {BR} at (61,13) size 0x0
+              RenderText {#text} at (2,16) size 245x14
+                text run at (2,16) width 245: "<table border=\"1\" width=\"100%\" height=\"100%\">"
+            RenderTableCell {TD} at (365,2) size 415x578 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderTable {TABLE} at (2,2) size 411x574 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 409x572
+                  RenderTableRow {TR} at (0,2) size 409x568
+                    RenderTableCell {TD} at (2,263) size 367x46 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,2) size 65x14
+                        text run at (2,2) width 65: "Nested Table:"
+                      RenderBR {BR} at (67,13) size 0x0
+                      RenderText {#text} at (2,16) size 245x14
+                        text run at (2,16) width 245: "<table border=\"1\" width=\"100%\" height=\"100%\">"
+                      RenderBR {BR} at (247,27) size 0x0
+                      RenderText {#text} at (2,30) size 100x14
+                        text run at (2,30) width 100: "<td height=\"100%\">"
+                    RenderTableCell {TD} at (371,277) size 36x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+                      RenderText {#text} at (2,2) size 20x14
+                        text run at (2,2) width 20: "asdf"

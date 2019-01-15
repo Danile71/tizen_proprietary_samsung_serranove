@@ -1,0 +1,66 @@
+Index: rpm-4.9.0/configure.ac
+===================================================================
+--- rpm-4.9.0.orig/configure.ac
++++ rpm-4.9.0/configure.ac
+@@ -831,6 +831,7 @@ unknown|pc|ibm|redhat|pld|mandrake|conec
+ 	test -f /etc/redhat-release &&		RPMCANONVENDOR=redhat
+ 	test -f /etc/SuSE-release &&		RPMCANONVENDOR=suse
+ 	test -f /etc/pld-release &&		RPMCANONVENDOR=pld
++	test -f /etc/tizen-release &&		RPMCANONVENDOR=tizen
+ 	test -f /etc/mandrake-release &&	RPMCANONVENDOR=mandrake
+ 	test -f /etc/conectiva-release &&	RPMCANONVENDOR=conectiva
+ 	test -f /etc/lvr-release &&		RPMCANONVENDOR=lvr
+Index: rpm-4.9.0/platform.in
+===================================================================
+--- rpm-4.9.0.orig/platform.in
++++ rpm-4.9.0/platform.in
+@@ -21,7 +21,7 @@
+ %_exec_prefix		@exec_prefix@
+ %_bindir		@bindir@
+ %_sbindir		@sbindir@
+-%_libexecdir		@libexecdir@
++%_libexecdir		@exec_prefix@/lib
+ %_datarootdir		@datarootdir@
+ %_datadir		@datadir@
+ %_sysconfdir		@sysconfdir@
+@@ -76,6 +76,26 @@
+ @redhat@#%defattr(-,root,root,-)\
+ @redhat@#%{nil}
+ 
++@tizen@#---------------------------------------------------------------------
++@tizen@#	Expanded at end of %prep
++@tizen@#
++@tizen@%__id_u		@__ID_U@
++@tizen@%__chown_Rhf	@__CHOWN_RHF@
++@tizen@%__chgrp_Rhf	@__CHGRP_RHF@
++@tizen@%_fixperms	%{__chmod} -Rf @FIXPERMS@
++@tizen@%__os_install_post    \
++@tizen@    %{_rpmconfigdir}/brp-compress \
++@tizen@    %{_rpmconfigdir}/brp-strip %{__strip} \
++@tizen@    %{_rpmconfigdir}/brp-strip-static-archive %{__strip} \
++@tizen@    %{_rpmconfigdir}/brp-strip-comment-note %{__strip} %{__objdump} \
++@tizen@    %{_rpmconfigdir}/tizen/find-docs.sh %{buildroot}\
++@tizen@%{nil}
++@tizen@#---------------------------------------------------------------------
++@tizen@#	Always use %defattr(-,root,root) in %files (added in rpm-4.0.4)
++@tizen@#
++@tizen@#%files(n:f:)	%%files%{?-f: -f %{-f*}}%{?-n: -n %{-n*}} %{?1}\
++@tizen@#%defattr(-,root,root,-)\
++@tizen@#%{nil}
+ 
+ @apple@#---------------------------------------------------------------------
+ @apple@#	Apple Darwin vendor specific macros
+Index: rpm-4.9.0/installplatform
+===================================================================
+--- rpm-4.9.0.orig/installplatform
++++ rpm-4.9.0/installplatform
+@@ -126,6 +126,9 @@ for SUBST in $SUBSTS ; do
+   redhat)
+     VENDORSED='-e s,^@redhat@,,'
+     ;;
++  tizen)
++    VENDORSED='-e s,^@tizen@,,'
++    ;;
+   apple)
+     VENDORSED='-e s,^@apple@,,'
+     ;;

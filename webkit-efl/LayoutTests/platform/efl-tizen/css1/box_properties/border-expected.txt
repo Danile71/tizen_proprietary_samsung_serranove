@@ -1,0 +1,184 @@
+layer at (0,0) size 980x1392
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1392
+  RenderBlock {HTML} at (0,0) size 980x1392
+    RenderBody {BODY} at (8,8) size 964x1376 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 451x19
+          text run at (0,0) width 451: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,35) size 964x135
+        RenderText {#text} at (0,0) size 230x135
+          text run at (0,0) width 230: ".one {border: medium black solid;}"
+          text run at (230,0) width 0: " "
+          text run at (0,15) width 218: ".two {border: thin maroon ridge;}"
+          text run at (218,15) width 0: " "
+          text run at (0,30) width 218: ".three {border: 10px teal outset;}"
+          text run at (218,30) width 0: " "
+          text run at (0,45) width 208: ".four {border: 10px olive inset;}"
+          text run at (208,45) width 0: " "
+          text run at (0,60) width 189: ".five {border: 10px maroon;}"
+          text run at (189,60) width 0: " "
+          text run at (0,75) width 195: ".six {border: maroon double;}"
+          text run at (195,75) width 0: " "
+          text run at (0,90) width 199: ".seven {border: left red solid;}"
+          text run at (199,90) width 0: " "
+          text run at (0,105) width 135: ".eight {border: 0px;}"
+          text run at (135,105) width 0: " "
+          text run at (0,120) width 192: "TD {border: 2px solid green;}"
+          text run at (192,120) width 0: " "
+      RenderBlock {HR} at (0,183) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,201) size 964x38
+        RenderText {#text} at (0,0) size 948x38
+          text run at (0,0) width 796: "Note that all table cells on this page should have a two-pixel solid green border along all four sides. "
+          text run at (796,0) width 152: "This border applies"
+          text run at (0,19) width 402: "only to the cells, not the rows which contain them."
+      RenderBlock {P} at (0,255) size 964x25 [border: (3px solid #000000)]
+        RenderText {#text} at (3,3) size 613x19
+          text run at (3,3) width 613: "This paragraph should have a medium black solid border all the way around."
+      RenderBlock {P} at (0,296) size 964x21 [border: (1px ridge #800000)]
+        RenderText {#text} at (1,1) size 613x19
+          text run at (1,1) width 613: "This paragraph should have a thin maroon ridged border all the way around."
+      RenderBlock {P} at (0,333) size 964x39 [border: (10px outset #008080)]
+        RenderText {#text} at (10,10) size 661x19
+          text run at (10,10) width 661: "This paragraph should have a ten-pixel-wide teal outset border all the way around."
+      RenderBlock {P} at (0,388) size 964x39 [border: (10px inset #808000)]
+        RenderText {#text} at (10,10) size 656x19
+          text run at (10,10) width 656: "This paragraph should have a ten-pixel-wide olive inset border all the way around."
+      RenderBlock {P} at (0,443) size 964x19
+        RenderText {#text} at (0,0) size 447x19
+          text run at (0,0) width 447: "This paragraph should have no border around it, as the "
+        RenderInline {TT} at (0,0) size 79x15
+          RenderText {#text} at (447,3) size 79x15
+            text run at (447,3) width 79: "border-style"
+        RenderText {#text} at (526,0) size 410x19
+          text run at (526,0) width 410: " was not set, and it should not be offset in any way."
+      RenderBlock {P} at (0,478) size 964x25 [border: (3px double #800000)]
+        RenderText {#text} at (3,3) size 686x19
+          text run at (3,3) width 686: "This paragraph should have a medium maroon double border around it, even though "
+        RenderInline {CODE} at (0,0) size 83x15
+          RenderText {#text} at (689,6) size 83x15
+            text run at (689,6) width 83: "border-width"
+        RenderText {#text} at (772,3) size 175x19
+          text run at (772,3) width 175: " was not explicitly set."
+      RenderBlock {P} at (0,519) size 964x19
+        RenderText {#text} at (0,0) size 790x19
+          text run at (0,0) width 790: "This paragraph should have no border around it, as its declaration is invalid and should be ignored."
+      RenderBlock {P} at (0,554) size 964x19
+        RenderInline {A} at (0,0) size 30x19
+          RenderText {#text} at (0,0) size 30x19
+            text run at (0,0) width 30: "The"
+        RenderText {#text} at (30,0) size 912x19
+          text run at (30,0) width 912: " following image is also an anchor which points to a target on this page, but it should not have a border around it: "
+        RenderInline {A} at (0,0) size 15x19 [color=#0000FF]
+          RenderImage {IMG} at (942,0) size 15x15
+        RenderText {#text} at (957,0) size 5x19
+          text run at (957,0) width 5: "."
+      RenderTable {TABLE} at (0,589) size 964x117 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x115
+          RenderTableRow {TR} at (0,5) size 962x44
+            RenderTableCell {TD} at (5,5) size 952x44 [border: (2px solid #008000)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (3,3) size 903x38
+                text run at (3,3) width 510: "Every cell in this table should have a 2-pixel solid green border. "
+                text run at (513,3) width 393: "This is also true of the table-testing section in the"
+                text run at (3,22) width 229: "second half of the test page."
+          RenderTableRow {TR} at (0,54) size 962x56
+            RenderTableCell {TD} at (5,69) size 237x25 [border: (2px solid #008000)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (3,3) size 64x19
+                text run at (3,3) width 64: "Cell one"
+            RenderTableCell {TD} at (247,54) size 710x56 [border: (2px solid #008000)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (3,3) size 704x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (3,22) size 203x31 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 201x29
+                  RenderTableRow {TR} at (0,2) size 201x25
+                    RenderTableCell {TD} at (2,2) size 197x25 [border: (2px solid #008000)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (3,3) size 191x19
+                        text run at (3,3) width 191: "Nested single-cell table!"
+      RenderBlock {P} at (0,722) size 964x19
+        RenderText {#text} at (0,0) size 222x19
+          text run at (0,0) width 222: "This is an unstyled element."
+      RenderTable {TABLE} at (0,757) size 964x619 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x617
+          RenderTableRow {TR} at (0,0) size 962x29
+            RenderTableCell {TD} at (0,0) size 962x29 [bgcolor=#C0C0C0] [border: (2px solid #008000)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 202x19
+                RenderText {#text} at (5,5) size 202x19
+                  text run at (5,5) width 202: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,29) size 962x588
+            RenderTableCell {TD} at (0,308) size 15x29 [bgcolor=#C0C0C0] [border: (2px solid #008000)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (5,5) size 5x19
+                text run at (5,5) width 5: " "
+            RenderTableCell {TD} at (15,29) size 947x588 [border: (2px solid #008000)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (5,5) size 937x38
+                RenderText {#text} at (0,0) size 887x38
+                  text run at (0,0) width 796: "Note that all table cells on this page should have a two-pixel solid green border along all four sides. "
+                  text run at (796,0) width 91: "This border"
+                  text run at (0,19) width 463: "applies only to the cells, not the rows which contain them."
+              RenderBlock {P} at (5,59) size 937x25 [border: (3px solid #000000)]
+                RenderText {#text} at (3,3) size 613x19
+                  text run at (3,3) width 613: "This paragraph should have a medium black solid border all the way around."
+              RenderBlock {P} at (5,100) size 937x21 [border: (1px ridge #800000)]
+                RenderText {#text} at (1,1) size 613x19
+                  text run at (1,1) width 613: "This paragraph should have a thin maroon ridged border all the way around."
+              RenderBlock {P} at (5,137) size 937x39 [border: (10px outset #008080)]
+                RenderText {#text} at (10,10) size 661x19
+                  text run at (10,10) width 661: "This paragraph should have a ten-pixel-wide teal outset border all the way around."
+              RenderBlock {P} at (5,192) size 937x39 [border: (10px inset #808000)]
+                RenderText {#text} at (10,10) size 656x19
+                  text run at (10,10) width 656: "This paragraph should have a ten-pixel-wide olive inset border all the way around."
+              RenderBlock {P} at (5,247) size 937x19
+                RenderText {#text} at (0,0) size 447x19
+                  text run at (0,0) width 447: "This paragraph should have no border around it, as the "
+                RenderInline {TT} at (0,0) size 79x15
+                  RenderText {#text} at (447,3) size 79x15
+                    text run at (447,3) width 79: "border-style"
+                RenderText {#text} at (526,0) size 410x19
+                  text run at (526,0) width 410: " was not set, and it should not be offset in any way."
+              RenderBlock {P} at (5,282) size 937x44 [border: (3px double #800000)]
+                RenderText {#text} at (3,3) size 686x19
+                  text run at (3,3) width 686: "This paragraph should have a medium maroon double border around it, even though "
+                RenderInline {CODE} at (0,0) size 83x15
+                  RenderText {#text} at (689,6) size 83x15
+                    text run at (689,6) width 83: "border-width"
+                RenderText {#text} at (772,3) size 910x38
+                  text run at (772,3) width 141: " was not explicitly"
+                  text run at (3,22) width 29: "set."
+              RenderBlock {P} at (5,342) size 937x19
+                RenderText {#text} at (0,0) size 790x19
+                  text run at (0,0) width 790: "This paragraph should have no border around it, as its declaration is invalid and should be ignored."
+              RenderBlock {P} at (5,377) size 937x38
+                RenderInline {A} at (0,0) size 30x19
+                  RenderText {#text} at (0,0) size 30x19
+                    text run at (0,0) width 30: "The"
+                RenderText {#text} at (30,0) size 907x19
+                  text run at (30,0) width 907: " following image is also an anchor which points to a target on this page, but it should not have a border around it:"
+                RenderInline {A} at (0,0) size 15x19 [color=#0000FF]
+                  RenderImage {IMG} at (0,19) size 15x15
+                RenderText {#text} at (15,19) size 5x19
+                  text run at (15,19) width 5: "."
+              RenderTable {TABLE} at (5,431) size 937x117 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 935x115
+                  RenderTableRow {TR} at (0,5) size 935x44
+                    RenderTableCell {TD} at (5,5) size 925x44 [border: (2px solid #008000)] [r=0 c=0 rs=1 cs=2]
+                      RenderText {#text} at (3,3) size 903x38
+                        text run at (3,3) width 510: "Every cell in this table should have a 2-pixel solid green border. "
+                        text run at (513,3) width 393: "This is also true of the table-testing section in the"
+                        text run at (3,22) width 229: "second half of the test page."
+                  RenderTableRow {TR} at (0,54) size 935x56
+                    RenderTableCell {TD} at (5,69) size 230x25 [border: (2px solid #008000)] [r=1 c=0 rs=1 cs=1]
+                      RenderText {#text} at (3,3) size 64x19
+                        text run at (3,3) width 64: "Cell one"
+                    RenderTableCell {TD} at (240,54) size 690x56 [border: (2px solid #008000)] [r=1 c=1 rs=1 cs=1]
+                      RenderBlock (anonymous) at (3,3) size 684x19
+                        RenderText {#text} at (0,0) size 63x19
+                          text run at (0,0) width 63: "Cell two"
+                      RenderTable {TABLE} at (3,22) size 203x31 [border: (1px outset #808080)]
+                        RenderTableSection {TBODY} at (1,1) size 201x29
+                          RenderTableRow {TR} at (0,2) size 201x25
+                            RenderTableCell {TD} at (2,2) size 197x25 [border: (2px solid #008000)] [r=0 c=0 rs=1 cs=1]
+                              RenderText {#text} at (3,3) size 191x19
+                                text run at (3,3) width 191: "Nested single-cell table!"
+              RenderBlock {P} at (5,564) size 937x19
+                RenderText {#text} at (0,0) size 222x19
+                  text run at (0,0) width 222: "This is an unstyled element."

@@ -1,0 +1,55 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x208
+  RenderBlock {HTML} at (0,0) size 800x208
+    RenderBody {BODY} at (8,8) size 784x192
+      RenderBlock {DIV} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 255x14
+          text run at (0,0) width 255: "The blue bits of text should be decorated as described."
+      RenderBlock {P} at (0,26) size 784x140 [color=#C0C0C0]
+        RenderText {#text} at (0,0) size 764x28
+          text run at (0,0) width 354: "dummy text dummy text dummy text dummy text dummy text dummy text "
+          text run at (354,0) width 354: "dummy text dummy text dummy text dummy text dummy text dummy text "
+          text run at (708,0) width 56: "dummy text"
+          text run at (0,14) width 295: "dummy text dummy text dummy text dummy text dummy text "
+          text run at (295,14) width 354: "dummy text dummy text dummy text dummy text dummy text dummy text "
+        RenderInline {SPAN} at (0,0) size 764x28 [color=#0000FF] [border: (10px double #0000FF) none]
+          RenderInline {SPAN} at (0,0) size 764x28 [color=#C0C0C0]
+            RenderText {#text} at (649,14) size 764x28
+              text run at (649,14) width 115: "dummy text dummy text"
+              text run at (0,28) width 118: "dummy text dummy text "
+              text run at (118,28) width 354: "dummy text dummy text dummy text dummy text dummy text dummy text "
+              text run at (472,28) width 115: "dummy text dummy text"
+          RenderText {#text} at (587,28) size 98x14
+            text run at (587,28) width 98: " two blue lines here: "
+        RenderText {#text} at (695,28) size 767x56
+          text run at (695,28) width 39: "dummy "
+          text run at (734,28) width 17: "text"
+          text run at (0,42) width 334: "dummy text dummy text dummy text dummy text dummy text dummy "
+          text run at (334,42) width 354: "text dummy text dummy text dummy text dummy text dummy text dummy "
+          text run at (688,42) width 76: "text dummy text"
+          text run at (0,56) width 275: "dummy text dummy text dummy text dummy text dummy "
+          text run at (275,56) width 354: "text dummy text dummy text dummy text dummy text dummy text dummy "
+          text run at (629,56) width 135: "text dummy text dummy text"
+          text run at (0,70) width 216: "dummy text dummy text dummy text dummy "
+          text run at (216,70) width 354: "text dummy text dummy text dummy text dummy text dummy text dummy "
+          text run at (570,70) width 197: "text dummy text dummy text dummy text "
+        RenderInline {SPAN} at (0,0) size 784x28 [color=#0000FF] [border: (1px solid #0000FF) none]
+          RenderText {#text} at (767,70) size 784x28
+            text run at (767,70) width 17: "one"
+            text run at (0,84) width 21: "thin "
+            text run at (21,84) width 69: "blue line here: "
+        RenderText {#text} at (91,84) size 784x56
+          text run at (91,84) width 236: "dummy text dummy text dummy text dummy text "
+          text run at (327,84) width 354: "dummy text dummy text dummy text dummy text dummy text dummy text "
+          text run at (681,84) width 95: "dummy text dummy"
+          text run at (0,98) width 256: "text dummy text dummy text dummy text dummy text "
+          text run at (256,98) width 354: "dummy text dummy text dummy text dummy text dummy text dummy text "
+          text run at (610,98) width 174: "dummy text dummy text dummy text"
+          text run at (0,112) width 177: "dummy text dummy text dummy text "
+          text run at (177,112) width 354: "dummy text dummy text dummy text dummy text dummy text dummy text "
+          text run at (531,112) width 233: "dummy text dummy text dummy text dummy text"
+          text run at (0,126) width 56: "dummy text"
+      RenderBlock {DIV} at (0,178) size 784x14
+        RenderText {#text} at (0,0) size 311x14
+          text run at (0,0) width 311: "(All the lines of text in the block above should be equally spaced.)"

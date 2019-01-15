@@ -1,0 +1,13 @@
+CONSOLE MESSAGE: line 67: TypeError: 'undefined' is not a function (evaluating 'layoutTestController.queueLoad(testCase)')
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderText {#text} at (0,0) size 923x38
+        text run at (0,0) width 923: "This page just kicks off a test, and should not appear in the expected test output. The files in the resources dir have"
+        text run at (0,19) width 215: "comments about the tests."
+
+============== Back Forward List ==============
+curr->  http://127.0.0.1:8000/navigation/postredirect-basic.html  **nav target**
+===============================================

@@ -1,0 +1,28 @@
+layer at (0,0) size 980x3177
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x3177
+  RenderBlock {HTML} at (0,0) size 980x3177
+    RenderBody {BODY} at (8,8) size 964x3153
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 67x19
+          text run at (0,0) width 67: "Test for "
+        RenderInline {A} at (0,0) size 85x19 [color=#0000EE]
+          RenderText {#text} at (67,0) size 85x19
+            text run at (67,0) width 85: "bug 12331"
+        RenderText {#text} at (152,0) size 5x19
+          text run at (152,0) width 5: "."
+      RenderBlock {P} at (0,35) size 964x38
+        RenderText {#text} at (0,0) size 935x38
+          text run at (0,0) width 935: "To test manually, scroll down until you find the input element. Select some text. If the bug occurs, the page will scroll"
+          text run at (0,19) width 151: "back up to the top."
+      RenderBlock {DIV} at (0,89) size 964x3000
+      RenderBlock (anonymous) at (0,3089) size 964x29
+        RenderTextControl {INPUT} at (2,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,3134) size 964x19
+        RenderText {#text} at (0,0) size 518x19
+          text run at (0,0) width 518: "If the bug does not occur, you'll be left down here at the bottom."
+layer at (14,3105) size 164x15
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (0,0) size 154x15
+      text run at (0,0) width 154: "select some of this text"

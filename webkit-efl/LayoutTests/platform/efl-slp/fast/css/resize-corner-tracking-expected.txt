@@ -1,0 +1,33 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {HR} at (0,0) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,14) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 503x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 262x14
+              text run at (40,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=9547"
+          RenderText {#text} at (302,0) size 241x14
+            text run at (302,0) width 3: " "
+            text run at (305,0) width 238: "Resize corner does not track the mouse accurately"
+        RenderText {#text} at (543,0) size 3x14
+          text run at (543,0) width 3: "."
+      RenderBlock {HR} at (0,40) size 784x2 [border: (1px inset #000000)]
+      RenderBlock (anonymous) at (0,152) size 784x153
+        RenderText {#text} at (150,89) size 3x14
+          text run at (150,89) width 3: " "
+        RenderBR {BR} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+layer at (8,56) size 154x104 clip at (10,58) size 150x100
+  RenderBlock {DIV} at (0,48) size 154x104 [border: (2px solid #0000FF)]
+layer at (8,160) size 150x100 clip at (10,162) size 146x96
+  RenderTextControl {TEXTAREA} at (0,0) size 150x100 [bgcolor=#FFFFFF] [border: (2px solid #0000FF)]
+    RenderBlock {DIV} at (4,4) size 142x18
+layer at (10,265) size 187x46
+  RenderTextControl {TEXTAREA} at (2,105) size 187x46 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 180x18
+caret: position 0 of child 0 {DIV} of {#shadow-root} of child 13 {TEXTAREA} of body

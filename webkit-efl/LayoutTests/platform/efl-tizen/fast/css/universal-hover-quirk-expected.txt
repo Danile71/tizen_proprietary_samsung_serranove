@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {DIV} at (0,0) size 964x19
+        RenderInline {SPAN} at (0,0) size 314x19
+          RenderText {#text} at (0,0) size 314x19
+            text run at (0,0) width 314: "This should not turn red when hovered."
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {HR} at (0,27) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,45) size 964x38
+        RenderText {#text} at (0,0) size 67x19
+          text run at (0,0) width 67: "Test for "
+        RenderInline {I} at (0,0) size 681x19
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (67,0) size 426x19
+              text run at (67,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=7218"
+          RenderText {#text} at (493,0) size 255x19
+            text run at (493,0) width 255: " Text underlined on mouse over"
+        RenderText {#text} at (748,0) size 127x19
+          text run at (748,0) width 127: ". This tests that "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (875,3) size 48x15
+            text run at (875,3) width 48: "*:hover"
+        RenderText {#text} at (0,19) size 327x19
+          text run at (0,19) width 327: "does not match anything in quirks mode."
+caret: position 1 of child 0 {#text} of child 1 {SPAN} of child 1 {DIV} of body

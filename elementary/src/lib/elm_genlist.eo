@@ -1,0 +1,51 @@
+
+class Elm_Genlist (Elm_Layout, Elm_Interface_Scrollable,
+                   Evas.Clickable_Interface, Elm_Interface_Atspi_Selection)
+{
+   eo_prefix: elm_obj_genlist;
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.member_add;
+      Evas.Object_Smart.move;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Evas.Object_Smart.resize;
+      Elm_Widget.theme_apply;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.sub_object_add;
+      Elm_Widget.access;
+      Elm_Widget.focus_highlight_geometry_get;
+      Elm_Widget.focus_next;
+      Elm_Widget.on_focus;
+      Elm_Widget.on_focus_region;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.sub_object_del;
+      Elm_Widget.event;
+      Elm_Widget.translate;
+      Elm_Layout.sub_object_add_enable;
+      Elm_Layout.sizing_eval;
+      Elm_Interface_Atspi_Accessible.children.get;
+      Elm_Interface_Atspi_Accessible.state_set.get;
+      Elm_Interface_Atspi_Selection.selected_children_count.get;
+      Elm_Interface_Atspi_Selection.selected_child.get;
+      Elm_Interface_Atspi_Selection.selected_child_deselect;
+      Elm_Interface_Atspi_Selection.child_select;
+      Elm_Interface_Atspi_Selection.child_deselect;
+      Elm_Interface_Atspi_Selection.is_child_selected;
+      Elm_Interface_Atspi_Selection.all_children_select;
+      Elm_Interface_Atspi_Selection.clear;
+// TIZEN only (20150914) : Accessibility: updated highlight change during genlist and list scroll
+      Elm_Interface_Scrollable.content_pos_set;
+// TIZEN only (20150914)
+   }
+   events {
+      language,changed;
+      access,changed;
+      focused;
+      unfocused;
+      item,focused;
+      item,unfocused;
+   }
+
+}

@@ -1,0 +1,23 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 790x19
+          text run at (0,0) width 560: "This tests caret movement through -webkit-user-select:none content. "
+          text run at (560,0) width 230: "The caret should move over "
+        RenderInline {B} at (0,0) size 30x19
+          RenderText {#text} at (790,0) size 30x19
+            text run at (790,0) width 30: "yyy"
+        RenderText {#text} at (820,0) size 5x19
+          text run at (820,0) width 5: "."
+      RenderBlock {DIV} at (0,35) size 964x19
+        RenderText {#text} at (0,0) size 9x19
+          text run at (0,0) width 9: "x"
+        RenderInline {SPAN} at (0,0) size 30x19
+          RenderText {#text} at (9,0) size 30x19
+            text run at (9,0) width 30: "yyy"
+        RenderText {#text} at (39,0) size 9x19
+          text run at (39,0) width 9: "x"
+caret: position 0 of child 2 {#text} of child 2 {DIV} of body

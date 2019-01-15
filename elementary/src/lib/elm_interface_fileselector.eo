@@ -1,0 +1,160 @@
+interface Elm_Interface_Fileselector ()
+{
+   legacy_prefix: null;
+   eo_prefix: elm_interface_fileselector;
+   properties {
+      folder_only {
+         set {
+            /*@ Enable/disable folder-only view for a given file selector widget */
+         }
+         get {
+            /*@ Get whether folder-only view is set for a given file selector */
+         }
+         values {
+            bool only;
+         }
+      }
+      selected {
+         set {
+            /*@ Set, programmatically, the currently selected file/directory in the given file selector widget */
+            return: bool;
+         }
+         get {
+            /*@ Get the currently selected item's (full) path, in the given file the given file selector widget */
+         }
+         values {
+            const(char)* path;
+         }
+      }
+      thumbnail_size {
+         set {
+            /*@ Set the size for the thumbnail of the file selector widget's view. */
+         }
+         get {
+            /*@ Get the size for the thumbnail of a given file selector widget */
+         }
+         values {
+            Evas_Coord w;
+            Evas_Coord h;
+         }
+      }
+      hidden_visible {
+         set {
+            /*@ Enable or disable visibility of hidden files/directories in the file selector widget. */
+         }
+         get {
+            /*@ Get if hiden files/directories in the file selector are visible or not. */
+         }
+         values {
+            bool multi;
+         }
+      }
+      sort_method {
+         set {
+            /*@ Set the sort method of the file selector widget. */
+         }
+         get {
+            /*@ Get the sort method of the file selector widget. */
+         }
+         values {
+            Elm_Fileselector_Sort sort;
+         }
+      }
+      multi_select {
+         set {
+            /*@ Enable or disable multi-selection in the fileselector */
+         }
+         get {
+            /*@ Gets if multi-selection in fileselector is enabled or disabled. */
+         }
+         values {
+            bool multi;
+         }
+      }
+      expandable {
+         set {
+            /*@ Enable/disable a tree view in the given file selector widget, <b>if it's in */
+         }
+         get {
+            /*@ Get whether tree view is enabled for the given file selector */
+         }
+         values {
+            bool expand;
+         }
+      }
+      path {
+         set {
+            /*@ Set, programmatically, the directory that a given file selector widget will display contents from */
+         }
+         get {
+            /*@ Get the parent directory's path that a given file selector selector widget will display contents from */
+         }
+         values {
+            const(char)* path;
+         }
+      }
+      mode {
+         set {
+            /*@ Set the mode in which a given file selector widget will display (layout) file system entries in its view */
+         }
+         get {
+            /*@ Get the mode in which a given file selector widget is displaying */
+         }
+         values {
+            Elm_Fileselector_Mode mode;
+         }
+      }
+      is_save {
+         set {
+            /*@ Enable/disable the file name entry box where the user can type in a name for a file, in a given file selector widget */
+         }
+         get {
+            /*@ Get whether the given file selector is in "saving dialog" mode */
+         }
+         values {
+            bool is_save;
+         }
+      }
+      selected_paths {
+         get {
+            /*@ Get a list of selected paths in the fileselector. */
+         }
+         values {
+            const(list)* ret;
+         }
+      }
+      current_name {
+         set {
+            /*@ Set, */
+         }
+         get {
+            /*@ Get */
+         }
+         values {
+            const(char)* name;
+         }
+      }
+   }
+   methods {
+      custom_filter_append {
+         /*@ Append custom filter into filter list */
+         params {
+            @in Elm_Fileselector_Filter_Func func; /*@ function */
+            @in void *data;
+            @in const(char)* filter_name;
+         }
+         return: bool;
+      }
+      filters_clear {
+         /*@ Clear all filters registered */
+      }
+      mime_types_filter_append {
+         /*@ Append mime type based filter into filter list */
+         params {
+            @in const(char)* mime_types;
+            @in const(char)* filter_name;
+         }
+         return: bool;
+      }
+   }
+}

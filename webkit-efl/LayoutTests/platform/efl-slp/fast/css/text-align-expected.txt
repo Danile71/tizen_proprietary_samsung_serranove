@@ -1,0 +1,58 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x398
+  RenderBlock {HTML} at (0,0) size 800x398
+    RenderBody {BODY} at (8,8) size 784x378
+      RenderBlock {H1} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 59x14
+          text run at (0,0) width 59: "Simple case"
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 47x14
+          text run at (0,0) width 47: "LTR Start"
+      RenderBlock {P} at (0,52) size 784x14
+        RenderText {#text} at (740,0) size 44x14
+          text run at (740,0) width 44: "LTR End"
+      RenderBlock {P} at (0,78) size 784x14
+        RenderText {#text} at (737,0) size 47x14
+          text run at (737,0) width 47: "RTL Start"
+      RenderBlock {P} at (0,104) size 784x14
+        RenderText {#text} at (0,0) size 44x14
+          text run at (0,0) width 44: "RTL End"
+      RenderBlock {H1} at (0,130) size 784x14
+        RenderText {#text} at (0,0) size 72x14
+          text run at (0,0) width 72: "Inherited case"
+      RenderBlock {DIV} at (0,156) size 784x14
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 47x14
+            text run at (0,0) width 47: "LTR Start"
+      RenderBlock {DIV} at (0,182) size 784x14
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (740,0) size 44x14
+            text run at (740,0) width 44: "LTR End"
+      RenderBlock {DIV} at (0,208) size 784x14
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (737,0) size 47x14
+            text run at (737,0) width 47: "RTL Start"
+      RenderBlock {DIV} at (0,234) size 784x14
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 44x14
+            text run at (0,0) width 44: "RTL End"
+      RenderBlock {H1} at (0,260) size 784x14
+        RenderText {#text} at (0,0) size 314x14
+          text run at (0,0) width 314: "Inherited case where parent block has opposite directionality."
+      RenderBlock {DIV} at (0,286) size 784x14
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 47x14
+            text run at (0,0) width 47: "LTR Start"
+      RenderBlock {DIV} at (0,312) size 784x14
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (740,0) size 44x14
+            text run at (740,0) width 44: "LTR End"
+      RenderBlock {DIV} at (0,338) size 784x14
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (737,0) size 47x14
+            text run at (737,0) width 47: "RTL Start"
+      RenderBlock {DIV} at (0,364) size 784x14
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 44x14
+            text run at (0,0) width 44: "RTL End"

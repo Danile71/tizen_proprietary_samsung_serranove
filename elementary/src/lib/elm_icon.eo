@@ -1,0 +1,132 @@
+class Elm_Icon (Elm_Image)
+{
+   eo_prefix: elm_obj_icon;
+   properties {
+      order_lookup {
+         set {
+            /*@
+            @brief Sets the icon lookup order used by elm_icon_standard_set().
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @see elm_icon_order_lookup_get()
+            @see Elm_Icon_Lookup_Order
+
+            @ingroup Icon */
+         }
+         get {
+            /*@
+            @brief Get the icon lookup order.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return The icon lookup order
+            (If getting the icon order loopup is failed, it returns #ELM_ICON_LOOKUP_THEME_FDO)
+
+            @see elm_icon_order_lookup_set()
+            @see Elm_Icon_Lookup_Order
+
+            @ingroup Icon */
+         }
+         values {
+            Elm_Icon_Lookup_Order order(1); /*@ The icon lookup order (can be one of
+            #ELM_ICON_LOOKUP_FDO_THEME, #ELM_ICON_LOOKUP_THEME_FDO, #ELM_ICON_LOOKUP_FDO
+            or #ELM_ICON_LOOKUP_THEME) */
+         }
+      }
+      standard {
+         set {
+            /*@
+            @brief Set the icon by icon standards names.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return (@c EINA_TRUE = success, @c EINA_FALSE = error)
+
+            @remark For example, freedesktop.org defines standard icon names such as "home",
+            "network", etc. There can be different icon sets to match those icon
+            keys. The @p name given as parameter is one of these "keys", and will be
+            used to look in the freedesktop.org paths and elementary theme. One can
+            change the lookup order with elm_icon_order_lookup_set().
+
+            @remark If name is not found in any of the expected locations and it is the
+            absolute path of an image file, this image will be used.
+
+            @remark The icon image set by this function can be changed by
+            elm_image_file_set().
+
+            @remark This function does not accept relative icon path.
+
+            @see elm_icon_standard_get()
+            @see elm_image_file_set()
+
+            @ingroup Icon */
+            return: bool;
+         }
+         get {
+            /*@
+            @brief Get the icon name set by icon standard names.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return The icon name
+
+            @remark If the icon image was set using elm_image_file_set() instead of
+            elm_icon_standard_set(), then this function will return @c NULL.
+
+            @see elm_icon_standard_set()
+
+            @ingroup Icon */
+         }
+         values {
+            const(char)* name; /*@ The icon name */
+         }
+      }
+      thumb {
+         set {
+            /*@
+            @brief Set the file that will be used, but use a generated thumbnail.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark This functions like elm_image_file_set() but requires the Ethumb library
+            support to be enabled successfully. When set
+            the file indicated has a thumbnail generated and cached on disk for
+            future use or will directly use an existing cached thumbnail if it
+            is valid.
+
+            @see elm_image_file_set()
+
+            @ingroup Icon */
+         }
+         values {
+            const(char)* file; /*@ The path to file that will be used as icon image */
+            const(char)* group; /*@ The group that the icon belongs to an edje file */
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Elm_Widget.theme_apply;
+      Elm_Image.memfile.set;
+      Efl.File.file.set;
+   }
+   events {
+      thumb,done;
+      thumb,error;
+   }
+
+}

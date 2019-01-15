@@ -1,0 +1,21 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 177x19
+          text run at (0,0) width 177: "TR VALIGN=BASELINE"
+      RenderTable {TABLE} at (0,19) size 964x218 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x216
+          RenderTableRow {TR} at (0,2) size 962x212
+            RenderTableCell {TD} at (2,2) size 304x189 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderImage {IMG} at (2,2) size 300x185
+            RenderTableCell {TD} at (308,172) size 325x42 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 311x38
+                text run at (2,2) width 311: "This text should be vertically aligned to"
+                text run at (2,21) width 97: "the baseline"
+            RenderTableCell {TD} at (635,172) size 325x42 [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 311x38
+                text run at (2,2) width 311: "This text should be vertically aligned to"
+                text run at (2,21) width 97: "the baseline"

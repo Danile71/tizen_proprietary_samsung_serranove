@@ -1,0 +1,23 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 327x19
+          text run at (0,0) width 327: "This test checks for a regression against "
+        RenderInline {I} at (0,0) size 946x38
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (327,0) size 426x19
+              text run at (327,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=6214"
+          RenderText {#text} at (753,0) size 946x38
+            text run at (753,0) width 193: " text-indent in RTL block"
+            text run at (0,19) width 142: "does the opposite"
+        RenderText {#text} at (142,19) size 5x19
+          text run at (142,19) width 5: "."
+      RenderBlock {HR} at (0,54) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,72) size 964x38 [bgcolor=#00FFFF]
+        RenderText {#text} at (29,0) size 935x38
+          text run at (29,0) width 885: "The first line of this sententce should be indented 50 pixels to the left, but the rest of it should be flush with the"
+          text run at (701,19) width 5 RTL: "."
+          text run at (706,19) width 258: "normal right margin of the page"

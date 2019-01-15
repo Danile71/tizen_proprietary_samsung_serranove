@@ -1,0 +1,15 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 915x38
+          text run at (0,0) width 514: "This tests insertion before/after links that are also display:block. "
+          text run at (514,0) width 401: "Insertion before/after display:block links should go"
+          text run at (0,19) width 523: "inside the links so that text is inserted in the expected paragraph."
+      RenderBlock {DIV} at (0,54) size 964x19
+        RenderBlock {A} at (0,0) size 964x19 [color=#0000EE]
+          RenderText {#text} at (0,0) size 313x19
+            text run at (0,0) width 313: "This sentence should all be on one line."
+caret: position 40 of child 0 {#text} of child 0 {A} of child 2 {DIV} of body

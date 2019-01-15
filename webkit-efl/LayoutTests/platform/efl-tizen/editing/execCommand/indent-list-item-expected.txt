@@ -1,0 +1,35 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 4 of UL > DIV > BODY > HTML > #document to 4 of UL > DIV > BODY > HTML > #document toDOMRange:range from 0 of LI > UL > UL > DIV > BODY > HTML > #document to 0 of LI > UL > UL > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {DIV} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 480x19
+          text run at (0,0) width 480: "This test uses the execCommand to Outdent the text below."
+      RenderBlock (anonymous) at (0,19) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {DIV} at (0,54) size 964x57
+        RenderBlock {UL} at (0,0) size 964x57
+          RenderListItem {LI} at (40,0) size 924x19
+            RenderListMarker at (-18,0) size 7x19: bullet
+            RenderText {#text} at (0,0) size 29x19
+              text run at (0,0) width 29: "Foo"
+          RenderBlock {UL} at (40,19) size 924x19
+            RenderListItem {LI} at (40,0) size 884x19
+              RenderListMarker at (-18,0) size 7x19: white bullet
+              RenderText {#text} at (0,0) size 28x19
+                text run at (0,0) width 28: "Bar"
+          RenderListItem {LI} at (40,38) size 924x19
+            RenderListMarker at (-18,0) size 7x19: bullet
+            RenderText {#text} at (0,0) size 29x19
+              text run at (0,0) width 29: "Baz"
+caret: position 0 of child 0 {#text} of child 0 {LI} of child 3 {UL} of child 1 {UL} of child 4 {DIV} of body

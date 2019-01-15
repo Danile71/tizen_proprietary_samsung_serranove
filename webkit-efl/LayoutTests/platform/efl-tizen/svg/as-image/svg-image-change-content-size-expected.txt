@@ -1,0 +1,12 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x500
+  RenderBlock {html} at (0,0) size 980x500
+    RenderBody {body} at (8,16) size 964x476
+      RenderBlock {p} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 925x38
+          text run at (0,0) width 925: "The svg image contained in the div element (red box) should not change its appearance when width is resized to be"
+          text run at (0,19) width 48: "larger"
+      RenderBlock {div} at (0,54) size 602x422 [border: (1px solid #FF0000)]
+        RenderImage {img} at (1,1) size 420x420
+        RenderText {#text} at (0,0) size 0x0

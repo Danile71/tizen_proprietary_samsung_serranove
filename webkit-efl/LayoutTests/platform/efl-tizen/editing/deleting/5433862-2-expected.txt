@@ -1,0 +1,45 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 953x38
+          text run at (0,0) width 747: "This tests for a bug where empty table rows well after the selection to delete were removed. "
+          text run at (747,0) width 206: "There should be five rows"
+          text run at (0,19) width 389: "in the table below, before and after the deletion."
+      RenderBlock {DIV} at (0,54) size 964x136
+        RenderTable {TABLE} at (0,0) size 127x136 [border: (1px outset #808080)]
+          RenderTableSection {TBODY} at (1,1) size 125x134
+            RenderTableRow {TR} at (0,2) size 125x31
+              RenderTableCell {TD} at (2,2) size 38x31 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+              RenderTableCell {TD} at (42,2) size 39x31 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+              RenderTableCell {TD} at (83,2) size 40x31 [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+            RenderTableRow {TR} at (0,35) size 125x31
+              RenderTableCell {TD} at (2,35) size 38x31 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+                RenderText {#text} at (6,6) size 26x19
+                  text run at (6,6) width 26: "foo"
+              RenderTableCell {TD} at (42,35) size 39x31 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+                RenderText {#text} at (6,6) size 27x19
+                  text run at (6,6) width 27: "bar"
+              RenderTableCell {TD} at (83,35) size 40x31 [border: (1px inset #808080)] [r=1 c=2 rs=1 cs=1]
+                RenderText {#text} at (6,6) size 28x19
+                  text run at (6,6) width 28: "baz"
+            RenderTableRow {TR} at (0,68) size 125x31
+              RenderTableCell {TD} at (2,68) size 38x31 [border: (1px inset #808080)] [r=2 c=0 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+              RenderTableCell {TD} at (42,68) size 39x31 [border: (1px inset #808080)] [r=2 c=1 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+              RenderTableCell {TD} at (83,68) size 40x31 [border: (1px inset #808080)] [r=2 c=2 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+            RenderTableRow {TR} at (0,101) size 125x31
+              RenderTableCell {TD} at (2,101) size 38x31 [border: (1px inset #808080)] [r=3 c=0 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+              RenderTableCell {TD} at (42,101) size 39x31 [border: (1px inset #808080)] [r=3 c=1 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+              RenderTableCell {TD} at (83,101) size 40x31 [border: (1px inset #808080)] [r=3 c=2 rs=1 cs=1]
+                RenderBR {BR} at (6,6) size 0x19
+caret: position 0 of child 0 {BR} of child 0 {TD} of child 0 {TR} of child 1 {TBODY} of child 1 {TABLE} of child 3 {DIV} of body

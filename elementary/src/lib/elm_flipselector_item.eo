@@ -1,0 +1,94 @@
+class Elm_Flipselector_Item(Elm_Widget_Item)
+{
+   eo_prefix: elm_obj_flipselector_item;
+   properties {
+        selected {
+             get {
+                 /*@
+                  @MOBILE_ONLY
+
+                  @brief Get whether a given flip selector widget's item is the currently
+                  selected one.
+
+                  @see elm_flipselector_item_selected_set()
+
+                  @if MOBILE @since_tizen 2.4
+                  @endif
+
+                  @ingroup Flipselector
+                 */
+             }
+             set {
+                 /*@
+                  @MOBILE_ONLY
+
+                  @brief Set whether a given flip selector widget's item should be the
+                  currently selected one.
+
+                  @remark This sets whether @p item is or not the selected (thus, under
+                  display) one. If @p item is different than the one under display,
+                  the latter will be unselected. If the @p item is set to be
+                  unselected, on the other hand, the @b first item in the widget's
+                  internal members list will be the new selected one.
+
+                  @see elm_flipselector_item_selected_get()
+
+                  @if MOBILE @since_tizen 2.4
+                  @endif
+
+                  @ingroup Flipselector
+                 */
+             }
+             values {
+                 Eina_Bool selected; /*@ EINA_TRUE if selected EINA_FALSE otherwise */
+             }
+        }
+   }
+   methods {
+      prev_get @const {
+            /*@
+             @MOBILE_ONLY
+
+             @brief Get the item before @p item in a flip selector widget's internal list of
+             items.
+
+             @return The item before the @p item, in its parent's list. If there is no
+                     previous item for @p item or there's an error, @c NULL is returned.
+
+             @see elm_flipselector_item_next_get()
+
+             @if MOBILE @since_tizen 2.4
+             @endif
+
+             @ingroup Flipselector
+            */
+            return: Elm_Object_Item *;
+        }
+      next_get @const {
+            /*@
+             @MOBILE_ONLY
+
+             @brief Get the item after @p item in a flip selector widget's
+             internal list of items.
+
+             @return The item after the @p item, in its parent's list. If there is no next
+                     item for @p item or there's an error, @c NULL is returned.
+
+             @see elm_flipselector_item_prev_get()
+
+             @if MOBILE @since_tizen 2.4
+             @endif
+
+             @ingroup Flipselector
+              */
+             return: Elm_Object_Item *;
+        }
+   }
+   implements {
+        Eo.Base.constructor;
+        Eo.Base.destructor;
+        Elm_Widget_Item.signal_emit;
+        Elm_Widget_Item.part_text.get;
+        Elm_Widget_Item.part_text.set;
+   }
+}

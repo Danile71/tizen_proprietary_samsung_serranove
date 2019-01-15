@@ -1,0 +1,13 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderSVGRoot {svg} at (0,2) size 777x78
+    RenderSVGHiddenContainer {defs} at (0,0) size 0x0
+      RenderSVGResourceFilter {filter} [id="myfilter"] [filterUnits=objectBoundingBox] [primitiveUnits=userSpaceOnUse]
+        [feGaussianBlur stdDeviation="3.00, 3.00"]
+          [SourceGraphic]
+    RenderSVGText {text} at (4,9) size 702x64 contains 1 chunk(s)
+      [filter="myfilter"] RenderSVGResourceFilter {filter} at (-66.20,2.60) size 842.40x76.80
+      RenderSVGInlineText {#text} at (0,0) size 702x64
+        [filter="myfilter"] RenderSVGResourceFilter {filter} at (-66.20,2.60) size 842.40x76.80
+        chunk 1 text run 1 at (4.00,60.00) startOffset 0 endOffset 26 width 702.00: "This text should be blury."

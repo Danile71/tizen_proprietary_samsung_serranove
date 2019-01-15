@@ -1,0 +1,83 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 271x14
+          text run at (0,0) width 271: "fixed table - 0 percentage width cell is not honored to min"
+      RenderTable {TABLE} at (0,14) size 300x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 298x22
+          RenderTableRow {TR} at (0,2) size 298x18
+            RenderTableCell {TD} at (2,2) size 146x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 16x14
+                text run at (2,2) width 16: "foo"
+            RenderTableCell {TD} at (150,2) size 146x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 16x14
+                text run at (2,2) width 16: "foo"
+      RenderBlock (anonymous) at (0,38) size 784x28
+        RenderBR {BR} at (0,0) size 0x14
+        RenderText {#text} at (0,14) size 298x14
+          text run at (0,14) width 298: "fixed table - too small a percentage width cell is honored to min"
+      RenderTable {TABLE} at (0,66) size 300x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 298x22
+          RenderTableRow {TR} at (0,2) size 298x18
+            RenderTableCell {TD} at (2,2) size 20x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 16x14
+                text run at (2,2) width 16: "foo"
+            RenderTableCell {TD} at (24,2) size 272x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 16x14
+                text run at (2,2) width 16: "foo"
+      RenderBlock (anonymous) at (0,90) size 784x28
+        RenderBR {BR} at (0,0) size 0x14
+        RenderText {#text} at (0,14) size 241x14
+          text run at (0,14) width 241: "fixed table - percentage cell width includes padding"
+      RenderTable {TABLE} at (0,118) size 300x62 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 298x60
+          RenderTableRow {TR} at (0,2) size 298x56
+            RenderTableCell {TD} at (2,2) size 146x56 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (21,21) size 45x14
+                text run at (21,21) width 45: "cell=50%"
+            RenderTableCell {TD} at (150,2) size 146x56 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (21,21) size 43x14
+                text run at (21,21) width 43: "cell=auto"
+      RenderBlock (anonymous) at (0,180) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderTable {TABLE} at (0,194) size 300x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 298x22
+          RenderTableRow {TR} at (0,2) size 298x18
+            RenderTableCell {TD} at (2,2) size 146x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 45x14
+                text run at (2,2) width 45: "cell=50%"
+            RenderTableCell {TD} at (150,2) size 146x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 43x14
+                text run at (2,2) width 43: "cell=auto"
+      RenderBlock (anonymous) at (0,218) size 784x28
+        RenderBR {BR} at (0,0) size 0x14
+        RenderText {#text} at (0,14) size 184x14
+          text run at (0,14) width 184: "fixed table - % cells don't get expanded"
+      RenderTable {TABLE} at (0,246) size 200x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 198x22
+          RenderTableRow {TR} at (0,2) size 198x18
+            RenderTableCell {TD} at (2,2) size 47x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 22x14
+                text run at (2,2) width 22: "25%"
+            RenderTableCell {TD} at (51,2) size 47x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 22x14
+                text run at (2,2) width 22: "25%"
+            RenderTableCell {TD} at (100,2) size 96x18 [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 20x14
+                text run at (2,2) width 20: "auto"
+      RenderBlock (anonymous) at (0,270) size 784x28
+        RenderBR {BR} at (0,0) size 0x14
+        RenderText {#text} at (0,14) size 152x14
+          text run at (0,14) width 152: "fixed table - % cells are honored"
+      RenderTable {TABLE} at (0,298) size 200x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 198x22
+          RenderTableRow {TR} at (0,2) size 198x18
+            RenderTableCell {TD} at (2,2) size 96x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 72x14
+                text run at (2,2) width 72: "50% 50% 50%"
+            RenderTableCell {TD} at (100,2) size 96x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 20x14
+                text run at (2,2) width 20: "auto"

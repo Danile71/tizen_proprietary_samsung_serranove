@@ -1,0 +1,14 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x14 [color=#008000]
+        RenderText {#text} at (0,0) size 333x14
+          text run at (0,0) width 333: "This text should be green and below should read \"media list is empty\"."
+      RenderBlock {P} at (0,26) size 784x14 [color=#008000]
+        RenderText {#text} at (0,0) size 88x14
+          text run at (0,0) width 88: "media list is empty"
+      RenderBlock {P} at (0,52) size 784x14 [color=#008000]
+        RenderText {#text} at (0,0) size 132x14
+          text run at (0,0) width 132: "Expected to fail (24.7.2005)"

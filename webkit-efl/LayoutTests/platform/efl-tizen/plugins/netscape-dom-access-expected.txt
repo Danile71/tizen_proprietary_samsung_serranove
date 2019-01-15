@@ -1,0 +1,14 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 915x38
+          text run at (0,0) width 644: "This page tests whether Netscape plug-ins can access their own DOM elements. "
+          text run at (644,0) width 271: "The plug-in should have a 3px red"
+          text run at (0,19) width 59: "border."
+      RenderBlock (anonymous) at (0,54) size 964x206
+        RenderText {#text} at (0,0) size 0x0
+layer at (8,62) size 206x206
+  RenderEmbeddedObject {EMBED} at (0,0) size 206x206 [border: (3px solid #FF0000)]

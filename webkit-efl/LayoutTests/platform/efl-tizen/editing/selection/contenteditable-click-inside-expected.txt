@@ -1,0 +1,17 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:(null) toDOMRange:range from 0 of DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {DIV} at (0,0) size 425x75 [bgcolor=#FFFF00]
+        RenderBlock {DIV} at (25,25) size 100x20 [bgcolor=#FFFFFF]
+      RenderBlock {P} at (0,91) size 964x38
+        RenderText {#text} at (0,0) size 938x38
+          text run at (0,0) width 938: "This test clicks inside an editable div element, and must result in the element receiving focus. If the test succeeds the"
+          text run at (0,19) width 271: "element should have a focus ring."
+caret: position 0 of child 0 {DIV} of child 0 {DIV} of body

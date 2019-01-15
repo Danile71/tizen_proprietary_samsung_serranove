@@ -1,0 +1,16 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x141
+        RenderBlock {DIV} at (0,0) size 964x103
+          RenderImage {IMG} at (888,0) size 76x103
+        RenderBlock (anonymous) at (0,103) size 964x0
+        RenderBlock {DIV} at (0,103) size 964x38
+          RenderText {#text} at (73,0) size 891x38
+            text run at (73,0) width 891: "This tests for a crash when changing the alignment of content that starts with an image not inside its own block"
+            text run at (964,0) width 0: " "
+            text run at (883,19) width 81: "container."
+selection start: position 0 of child 0 {IMG} of child 0 {DIV} of child 0 {DIV} of body
+selection end:   position 123 of child 0 {#text} of child 1 {DIV} of child 0 {DIV} of body

@@ -1,0 +1,36 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 629x19
+          text run at (0,0) width 629: "The following is a test for having non-text inline elements as base in a <ruby>."
+      RenderBlock {P} at (0,35) size 964x29
+        RenderText {#text} at (0,10) size 199x19
+          text run at (0,10) width 199: "<ruby> is defined in the "
+        RenderRuby (inline) {RUBY} at (0,0) size 155x19
+          RenderRubyRun (anonymous) at (195,10) size 50x19
+            RenderRubyText {RT} at (0,-10) size 50x10
+              RenderText {#text} at (0,0) size 50x10
+                text run at (0,0) width 50: "Hyper-text"
+            RenderRubyBase (anonymous) at (0,0) size 50x19
+              RenderInline {SPAN} at (0,0) size 22x19
+                RenderText {#text} at (14,0) size 22x19
+                  text run at (14,0) width 22: "HT"
+          RenderRubyRun (anonymous) at (245,10) size 113x19
+            RenderRubyText {RT} at (0,-10) size 113x10
+              RenderText {#text} at (0,0) size 113x10
+                text run at (0,0) width 113: "Markup Language Lvl. 5"
+            RenderRubyBase (anonymous) at (0,0) size 113x19
+              RenderInline {SPAN} at (0,0) size 14x19
+                RenderText {#text} at (40,0) size 14x19
+                  text run at (40,0) width 14: "M"
+              RenderInline {SPAN} at (0,0) size 9x19
+                RenderText {#text} at (54,0) size 9x19
+                  text run at (54,0) width 9: "L"
+              RenderInline {SPAN} at (0,0) size 10x19
+                RenderText {#text} at (63,0) size 10x19
+                  text run at (63,0) width 10: "5"
+        RenderText {#text} at (354,10) size 47x19
+          text run at (354,10) width 47: " spec."

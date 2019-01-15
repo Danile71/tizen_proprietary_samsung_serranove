@@ -1,0 +1,12 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x208
+  RenderBlock {HTML} at (0,0) size 980x208 [border: (100px solid #000000)]
+    RenderBody {BODY} at (108,108) size 764x0
+layer at (780,535) size 200x200
+  RenderBlock (positioned) {DIV} at (780,535) size 200x200 [bgcolor=#008000]
+    RenderText {#text} at (0,0) size 179x76
+      text run at (0,0) width 164: "This should be in the"
+      text run at (0,19) width 146: "bottom right-hand"
+      text run at (0,38) width 179: "corner of the viewport"
+      text run at (0,57) width 158: "even when resizing."

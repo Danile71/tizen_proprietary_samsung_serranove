@@ -1,0 +1,21 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x78
+  RenderBlock {test} at (0,0) size 800x78
+    RenderBlock {div} at (0,0) size 800x66
+      RenderBlock {q} at (0,0) size 800x14 [color=#FF0000]
+        RenderInline {r} at (0,0) size 90x14 [color=#00FF00]
+          RenderText {#text} at (0,0) size 90x14
+            text run at (0,0) width 90: "This text should be"
+        RenderText {#text} at (90,0) size 3x14
+          text run at (90,0) width 3: " "
+        RenderInline {r} at (0,0) size 88x14 [color=#00FF00]
+          RenderText {#text} at (93,0) size 88x14
+            text run at (93,0) width 88: "in green characters"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {s} at (0,26) size 800x14 [color=#00FF00]
+        RenderText {#text} at (0,0) size 181x14
+          text run at (0,0) width 181: "This text should be in green characters"
+      RenderBlock {p} at (0,52) size 800x14 [color=#00FF00]
+        RenderText {#text} at (0,0) size 181x14
+          text run at (0,0) width 181: "This text should be in green characters"

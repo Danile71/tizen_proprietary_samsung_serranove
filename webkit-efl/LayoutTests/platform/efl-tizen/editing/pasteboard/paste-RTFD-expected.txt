@@ -1,0 +1,20 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 896x38
+          text run at (0,0) width 896: "On Tiger, this test demonstrates a bug in AppKit's -[NSString _documentFromRange:] method where it produces"
+          text run at (0,19) width 410: "fragments with extra trailing and leading newlines. "
+          text run at (410,19) width 223: "This bug is fixed in Leopard."
+      RenderBlock {DIV} at (0,54) size 964x28 [border: (2px solid #FF0000)]
+        RenderBlock {DIV} at (14,14) size 936x0
+      RenderBlock {DIV} at (0,98) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 158x19
+            text run at (0,0) width 158: "FAIL - no objCPlugin"
+caret: position 0 of child 3 {DIV} of body

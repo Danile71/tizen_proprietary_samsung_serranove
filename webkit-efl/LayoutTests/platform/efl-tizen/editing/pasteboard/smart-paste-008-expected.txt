@@ -1,0 +1,46 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > BODY > HTML > #document toDOMRange:range from 0 of #text > DIV > DIV > BODY > HTML > #document to 3 of #text > DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldInsertNode:#document-fragment replacingDOMRange:range from 1 of #text > DIV > DIV > BODY > HTML > #document to 1 of #text > DIV > DIV > BODY > HTML > #document givenAction:WebViewInsertActionPasted
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of DIV > DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document toDOMRange:range from 2 of DIV > DIV > BODY > HTML > #document to 2 of DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x1427
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1427
+  RenderBlock {HTML} at (0,0) size 980x1427
+    RenderBody {BODY} at (8,8) size 964x1411
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 955x57
+          text run at (0,0) width 508: "There was a bug in paste's smart replace whitespace handling. "
+          text run at (508,0) width 447: "In some cases, it used information gathered at the start"
+          text run at (0,19) width 919: "of the selection being pasted into to decide whether or not a space needed to be added to the end of the incoming"
+          text run at (0,38) width 66: "content."
+      RenderBlock {P} at (0,73) size 964x38
+        RenderText {#text} at (0,0) size 926x38
+          text run at (0,0) width 704: "A smart paste is performed into a selection starting in one block and ending in another. "
+          text run at (704,0) width 222: "Spaces should surround the"
+          text run at (0,19) width 104: "pasted word."
+      RenderBlock {DIV} at (0,127) size 964x1284
+        RenderBlock {DIV} at (0,0) size 964x1284
+          RenderText {#text} at (0,1265) size 6x19
+            text run at (0,1265) width 6: "f"
+          RenderImage {IMG} at (6,0) size 720x1280
+          RenderText {#text} at (726,1265) size 32x19
+            text run at (726,1265) width 32: " bar"
+        RenderBlock (anonymous) at (0,1284) size 964x0
+caret: position 1 of child 1 {IMG} of child 0 {DIV} of child 4 {DIV} of body

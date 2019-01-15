@@ -1,0 +1,147 @@
+class Elm_Panel (Elm_Layout, Elm_Interface_Scrollable,
+                 Elm_Interface_Atspi_Widget_Action)
+{
+   eo_prefix: elm_obj_panel;
+   properties {
+      orient {
+         set {
+            /*@
+            @brief Sets the orientation of the panel
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark Sets from where the panel will (dis)appear.
+
+            @ingroup Panel */
+         }
+         get {
+            /*@
+            @brief Get the orientation of the panel.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return The Elm_Panel_Orient, or #ELM_PANEL_ORIENT_LEFT on failure.
+
+            @ingroup Panel */
+         }
+         values {
+            Elm_Panel_Orient orient(2); /*@ The panel orientation. Can be one of the following:
+            @li #ELM_PANEL_ORIENT_TOP
+            @li #ELM_PANEL_ORIENT_LEFT
+            @li #ELM_PANEL_ORIENT_RIGHT */
+         }
+      }
+      hidden {
+         set {
+            /*@
+            @brief Set the state of the panel.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @ingroup Panel */
+         }
+         get {
+            /*@
+            @brief Get the state of the panel.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return EINA_TRUE if it is hidden state
+
+            @ingroup Panel */
+         }
+         values {
+            bool hidden; /*@ If true, the panel will run the animation to disappear. */
+         }
+      }
+      scrollable {
+         set {
+            /*@
+            @brief Set the scrollability of the panel.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @ingroup Panel */
+         }
+         get {
+            /*@
+            @internal
+
+            @brief Get the state of the scrollability.
+
+            @return EINA_TRUE if it is scrollable
+
+            @ingroup Panel
+            @since 1.12 */
+         }
+         values {
+            bool scrollable;
+         }
+      }
+      scrollable_content_size {
+         set {
+            /*@
+            @internal
+
+            @brief Set the size of the scrollable panel.
+
+            @ingroup Panel */
+         }
+         values {
+            double ratio;
+         }
+      }
+   }
+   methods {
+      toggle {
+         /*@
+         @brief Toggle the hidden state of the panel from code
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @ingroup Panel */
+
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.member_add;
+      Evas.Object_Smart.del;
+      Evas.Object_Smart.resize;
+      Evas.Object_Smart.move;
+      Elm_Widget.theme_apply;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_next;
+      Elm_Widget.disable;
+      Elm_Widget.access;
+      Elm_Widget.event;
+      Elm_Widget.on_focus_region;
+      // TIZEN_ONLY(20150128): Panel implementation merge into 2.4
+      Elm_Widget.orientation.set;
+      ////////////////////////////////////////////////////////////
+      Elm_Container.content_get;
+      Elm_Container.content_unset;
+      Elm_Container.content_set;
+      Elm_Layout.sizing_eval;
+      Elm_Interface_Atspi_Widget_Action.elm_actions.get;
+   }
+   events {
+      focused;
+      unfocused;
+   }
+
+}

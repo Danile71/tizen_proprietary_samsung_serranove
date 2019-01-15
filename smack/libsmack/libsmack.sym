@@ -1,0 +1,32 @@
+LIBSMACK {
+global:
+	smack_accesses_new;
+	smack_accesses_free;
+	smack_accesses_save;
+	smack_accesses_apply;
+	smack_accesses_clear;
+	smack_accesses_add;
+	smack_accesses_add_modify;
+	smack_accesses_add_from_file;
+	smack_have_access;
+        smack_cipso_free;
+        smack_cipso_new;
+        smack_cipso_apply;
+	smack_smackfs_path;
+	smack_new_label_from_self;
+	smack_new_label_from_socket;
+	smack_set_label_for_self;
+	smack_revoke_subject;
+	smack_getlabel;
+	smack_lgetlabel;
+	smack_fgetlabel;
+	smack_setlabel;
+	smack_lsetlabel;
+	smack_fsetlabel;
+	smack_label_length;
+	smack_new_label_from_path;
+	smack_set_label_for_path;
+	smack_remove_label_for_path;
+local:
+	*;
+};

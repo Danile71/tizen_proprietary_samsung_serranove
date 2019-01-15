@@ -1,0 +1,32 @@
+--- net-tools-1.60/netplug-1.2.9/scripts/rc.netplugd.old	2007-06-08 13:03:45.000000000 +0200
++++ net-tools-1.60/netplug-1.2.9/scripts/rc.netplugd	2007-06-08 13:04:01.000000000 +0200
+@@ -17,11 +17,6 @@
+ # Source networking configuration.
+ . /etc/sysconfig/network
+ 
+-# Check that networking is up.
+-[ ${NETWORKING} = "no" ] && exit 0
+-
+-[ -x /sbin/netplugd ] || exit 0
+-
+ if [ -f /etc/sysconfig/netplugd ]; then
+     . /etc/sysconfig/netplugd
+ fi
+@@ -30,6 +25,8 @@
+ case "$1" in
+   start)
+ 	# Start daemon.
++	[ ${NETWORKING} = "no" ] && exit 1
++	[ -x /sbin/netplugd ] || exit 1
+ 	echo -n $"Starting network plug daemon: "
+ 	daemon /sbin/netplugd ${NETPLUGDARGS} -p /var/run/netplugd.pid
+ 	RETVAL=$?
+@@ -57,7 +54,7 @@
+ 	;;
+   *)
+ 	echo $"Usage: $0 {start|stop|status|restart}"
+-	RETVAL=1
++	RETVAL=3
+ 	;;
+ esac
+ 

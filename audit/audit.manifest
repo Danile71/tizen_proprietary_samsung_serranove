@@ -1,0 +1,17 @@
+<manifest>
+	<define>
+		<domain name="auditd"/>
+		<request>
+			<smack request="audit::log" type="rwxat"/>
+		</request>
+	</define>
+	<assign>
+		<filesystem path="/usr/bin/*" exec_label="none"/>
+		<filesystem path="/usr/sbin/*" exec_label="none"/>
+		<filesystem path="/usr/sbin/auditd" exec_label="auditd"/>
+		<filesystem path="/opt/var/log/audit/" label="audit::log" type="transmutable"/>
+	</assign>
+	<request>
+		<domain name="_"/>
+	</request>
+</manifest>

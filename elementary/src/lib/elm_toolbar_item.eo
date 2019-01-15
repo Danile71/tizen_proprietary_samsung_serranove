@@ -1,0 +1,542 @@
+class Elm_Toolbar_Item(Elm_Widget_Item)
+{
+      eo_prefix: elm_obj_toolbar_item;
+      properties {
+           prev {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the item before @p item in toolbar.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark If it is the first item, @c NULL will be returned.
+
+                      @see elm_toolbar_item_prepend()
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     Elm_Object_Item *item; /*@ The item before @p item, or @c NULL if none or on failure. */
+                }
+           }
+           next {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the item after @p item in toolbar.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark If it is the last item, @c NULL will be returned.
+
+                      @see elm_toolbar_item_append()
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     Elm_Object_Item *item; /*@ The item after @p item, or @c NULL if none or on failure. */
+                }
+           }
+           priority {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the priority of a toolbar item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @see elm_toolbar_item_priority_set() for details.
+
+                      @ingroup Toolbar
+                      */
+                }
+                set {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Set the priority of a toolbar item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark This is used only when the toolbar shrink mode is set
+                      to #ELM_TOOLBAR_SHRINK_MENU or #ELM_TOOLBAR_SHRINK_HIDE.
+                      When space is less than required, items with low priority
+                      will be removed from the toolbar and added to a dynamically-created menu,
+                      while items with higher priority will remain on the toolbar,
+                      with the same order they were added.
+
+                      @see elm_toolbar_item_priority_get()
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     int priority; /* The @p item priority. The default is zero for set and 0 is returned on failure. */
+                }
+           }
+           selected {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get whether the @p item is selected or not.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @return @c EINA_TRUE means item is selected. @c EINA_FALSE indicates
+                      it's not. If @p obj is @c NULL, @c EINA_FALSE is returned.
+
+                      @see elm_toolbar_selected_item_set() for details.
+                      @see elm_toolbar_item_selected_get()
+
+                      @ingroup Toolbar
+                      */
+                }
+                set {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Set the selected state of an item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark This sets the selected state of the given item @p it.
+                      @c EINA_TRUE for selected, @c EINA_FALSE for not selected.
+
+                      @remark If a new item is selected the previously selected will be unselected.
+                      Previously selected item can be get with function
+                      elm_toolbar_selected_item_get().
+
+                      @remark Selected items will be highlighted.
+
+                      @see elm_toolbar_item_selected_get()
+                      @see elm_toolbar_selected_item_get()
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     Eina_Bool selected; /*@ The selected state */
+                }
+           }
+           icon {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the string used to set the icon of @p item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @return The string associated with the icon object.
+
+                      @see elm_toolbar_item_icon_set() for details.
+
+                      @ingroup Toolbar
+                      */
+                }
+                set {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Set the icon associated with @p item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @param[in] icon A string with icon name or the absolute path of an image file.
+
+                      @remark Toolbar will load icon image from fdo or current theme.
+                      This behavior can be set by elm_toolbar_icon_order_lookup_set() function.
+                      If an absolute path is provided it will load it direct from a file.
+
+                      @remark This function does not accept relative icon path.
+
+                      @see elm_toolbar_icon_order_lookup_set()
+                      @see elm_toolbar_icon_order_lookup_get()
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     const (char) *icon;
+                }
+           }
+           object {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the real Evas(Edje) object created to implement the view of a given
+                      toolbar @p item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     Evas_Object *obj; /*@ The base Edje object associated with @p it. */
+                }
+           }
+           icon_object {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the icon object of @p item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @see elm_toolbar_item_icon_set(), elm_toolbar_item_icon_file_set(),
+                      or elm_toolbar_item_icon_memfile_set() for details.
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     Evas_Object *obj; /*@ The icon object */
+                }
+           }
+           separator {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get a value whether item is a separator or not.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @return @c EINA_TRUE means item @p it is a separator. @c EINA_FALSE
+                      indicates it's not. If @p it is @c NULL, @c EINA_FALSE is returned.
+
+                      @see elm_toolbar_item_separator_set() for details.
+
+                      @ingroup Toolbar
+                      */
+                }
+                set {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Set or unset item as a separator.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @param[in] separator @c EINA_TRUE to set item @p item as separator or
+                      @c EINA_FALSE to unset, i.e., item will be used as a regular item.
+
+                      @remark Items aren't set as separator by default.
+
+                      @remark If set as separator it will display separator theme, so won't display
+                      icons or label.
+
+                      @see elm_toolbar_item_separator_get()
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     Eina_Bool separator;
+                }
+           }
+           menu {
+                get {
+                     /*@
+                      @internal
+
+                      @brief Get toolbar item's menu.
+
+                      @ingroup Toolbar
+                      */
+                }
+                values {
+                     Evas_Object *menu; /*@ Item's menu object or @c NULL on failure. */
+                }
+           }
+           state {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the current state of @p it.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @return The selected state or @c NULL if none is selected or on failure.
+
+                      @see elm_toolbar_item_state_set() for details.
+                      @see elm_toolbar_item_state_unset()
+                      @see elm_toolbar_item_state_add()
+
+                      @ingroup Toolbar
+                      */
+                }
+                set {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Set @p state as the current state of @p it.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @param[in] state The state to use.
+                      @return @c EINA_TRUE on success or @c EINA_FALSE on failure.
+
+                      @remark If @p state is @c NULL, it won't select any state and the default item's
+                      icon and label will be used. It's the same behaviour than
+                      elm_toolbar_item_state_unset().
+
+                      @see elm_toolbar_item_state_unset()
+
+                      @ingroup Toolbar
+                      */
+                     return: bool;
+                }
+                values {
+                     Elm_Toolbar_Item_State *state;
+                }
+           }
+      }
+      methods {
+           /*      init { FIXME
+                   params {
+                   Evas_Smart_Cb func;
+                   const(void)* data;
+                   }
+                   }*/
+           icon_memfile_set {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Set the icon associated with @p item to an image in a binary buffer.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @remark The icon image set by this function can be changed by
+                 elm_toolbar_item_icon_set().
+
+                 @ingroup Toolbar
+                 */
+                params {
+                     @in const (void) *img; /*@ The binary data that will be used as an image */
+                     @in size_t size; /*@ The size of binary data @p img */
+                     @in const (char) *format; /*@ Optional format of @p img to pass to the image loader */
+                     @in const (char) *key; /*@ Optional key of @p img to pass to the image loader (eg. if @p img is an edje file) */
+                }
+                return: bool; /*@ (@c EINA_TRUE = success, @c EINA_FALSE = error) */
+           }
+           icon_file_set {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Set the icon associated with @p item to an image in a binary buffer.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @remark The icon image set by this function can be changed by
+                 elm_toolbar_item_icon_set().
+
+                 @ingroup Toolbar
+                 */
+                params {
+                     @in const (char) *file; /*@ The file that contains the image */
+                     @in const (char) *key; /*@ Optional key of @p img to pass to the image loader (eg. if @p img is an edje file) */
+                }
+                return: bool; /*@ (@c EINA_TRUE = success, @c EINA_FALSE = error) */
+           }
+           state_add {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Add a new state to @p item.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @remark Toolbar will load icon image from fdo or current theme.
+                 This behavior can be set by elm_toolbar_icon_order_lookup_set() function.
+                 If an absolute path is provided it will load it direct from a file.
+
+                 @remark States created with this function can be removed with
+                 elm_toolbar_item_state_del().
+
+                 @see elm_toolbar_item_state_del()
+                 @see elm_toolbar_item_state_sel()
+                 @see elm_toolbar_item_state_get()
+
+                 @ingroup Toolbar
+                 */
+                params {
+                     @in const (char) *icon; /*@ A string with icon name or the absolute path of an image file. */
+                     @in const (char) *label; /*@ The label of the new state. */
+                     @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked when this * state is selected. */
+                     @in const (void) *data; /*@ The data to associate with the state. */
+                }
+                return: Elm_Toolbar_Item_State *; /*@ The toolbar item state, or @c NULL upon failure. */
+           }
+           state_del {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Delete a previously added state to @p item.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @ingroup Toolbar
+
+                 @see elm_toolbar_item_state_add()
+                 */
+                params {
+                     @in Elm_Toolbar_Item_State *state; /*@ The state to be deleted. */
+                }
+                return: bool; /*@ @c EINA_TRUE on success or @c EINA_FALSE on failure. */
+           }
+           state_next {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Get the state after selected state in toolbar's @p item.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @remark If last state is selected, this function will return first state.
+
+                 @see elm_toolbar_item_state_set()
+                 @see elm_toolbar_item_state_add()
+
+                 @ingroup Toolbar
+                 */
+                return: Elm_Toolbar_Item_State *; /*@ The state after current state, or @c NULL on failure. */
+           }
+           state_prev {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Get the state before selected state in toolbar's @p item.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @remark If first state is selected, this function will return last state.
+
+                 @see elm_toolbar_item_state_set()
+                 @see elm_toolbar_item_state_add()
+
+                 @ingroup Toolbar
+                 */
+                return: Elm_Toolbar_Item_State *; /*@ The state before current state, or @c NULL on failure. */
+           }
+           show {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Show a specific item, when the toolbar can be scrolled.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @see elm_toolbar_item_bring_in()
+
+                 @since 1.8
+                 @ingroup Toolbar
+                 */
+                params {
+                     @in Elm_Toolbar_Item_Scrollto_Type scrollto; /*@ the position the item should appear at */
+                }
+           }
+           bring_in {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Show a specific item with scroll animation, when the toolbar can be scrolled.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @see elm_toolbar_item_show()
+
+                 @since 1.8
+                 @ingroup Toolbar
+                 */
+                params {
+                     @in Elm_Toolbar_Item_Scrollto_Type scrollto; /*@ the position the item should appear at */
+                }
+           }
+           menu_set {
+                /*@
+                 @internal
+
+                 @brief Set whether the toolbar item opens a menu.
+
+                 @remark A toolbar item can be set to be a menu, using this function.
+
+                 @remark Once it is set to be a menu, it can be manipulated through the
+                 menu-like function elm_toolbar_menu_parent_set() and the other
+                 elm_menu functions, using the Evas_Object @c menu returned by
+                 elm_toolbar_item_menu_get().
+
+                 @remark So, items to be displayed in this item's menu should be added with
+                 elm_menu_item_add().
+
+                 @remark The following code exemplifies the most basic usage:
+                 @code
+                 tb = elm_toolbar_add(win)
+                 item = elm_toolbar_item_append(tb, "refresh", "Menu", NULL, NULL);
+                 elm_toolbar_item_menu_set(item, EINA_TRUE);
+                 elm_toolbar_menu_parent_set(tb, win);
+                 menu = elm_toolbar_item_menu_get(item);
+                 elm_menu_item_add(menu, NULL, "edit-cut", "Cut", NULL, NULL);
+                 menu_item = elm_menu_item_add(menu, NULL, "edit-copy", "Copy", NULL,
+                 NULL);
+                 @endcode
+
+                 @see elm_toolbar_item_menu_get()
+
+                 @ingroup Toolbar
+                 */
+                params {
+                     @in Eina_Bool menu; /*@ If @c EINA_TRUE, @p item will opens a menu when selected. */
+                }
+           }
+      }
+      implements {
+           Eo.Base.constructor;
+           Eo.Base.destructor;
+           Elm_Widget_Item.disable;
+           Elm_Widget_Item.focus.set;
+           Elm_Widget_Item.focus.get;
+           Elm_Widget_Item.part_text.get;
+           Elm_Widget_Item.part_text.set;
+           Elm_Widget_Item.part_content.get;
+           Elm_Widget_Item.part_content.set;
+           Elm_Widget_Item.part_content_unset;
+           Elm_Interface_Atspi_Accessible.name.get;
+           Elm_Interface_Atspi_Accessible.state_set.get;
+           Elm_Interface_Atspi_Component.highlight_grab;
+           Elm_Interface_Atspi_Component.highlight_clear;
+      }
+}

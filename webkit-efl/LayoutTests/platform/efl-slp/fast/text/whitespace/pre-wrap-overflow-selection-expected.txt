@@ -1,0 +1,48 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x582
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 191x14
+          text run at (0,0) width 191: "This test checks for a regression against "
+        RenderInline {I} at (0,0) size 499x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (191,0) size 262x14
+              text run at (191,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=5619"
+          RenderText {#text} at (453,0) size 237x14
+            text run at (453,0) width 237: " CSS2: pre-wrap has overflow/selection problems"
+        RenderText {#text} at (690,0) size 3x14
+          text run at (690,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 520x14
+          text run at (0,0) width 520: "Both boxes should not have scroll bars. The selection should not spill out of the blue box to the right of \x{201C}text\x{201D}."
+      RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {HR} at (0,137) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {PRE} at (0,149) size 108x63 [border: (4px solid #0000FF)]
+        RenderText {#text} at (4,4) size 96x55
+          text run at (4,4) width 66: "This   text"
+          text run at (70,4) width 30: "     "
+          text run at (4,15) width 54: "will wrap"
+          text run at (58,15) width 0: " "
+          text run at (4,26) width 54: "and   fit"
+          text run at (58,26) width 18: "   "
+          text run at (4,37) width 60: "within the"
+          text run at (64,37) width 0: " "
+          text run at (4,48) width 24: "box."
+          text run at (28,48) width 0: " "
+layer at (8,72) size 108x63 clip at (12,76) size 100x55
+  RenderBlock {PRE} at (0,64) size 108x63 [border: (4px solid #A52A2A)]
+    RenderText {#text} at (4,4) size 96x55
+      text run at (4,4) width 66: "This   text"
+      text run at (70,4) width 30: "     "
+      text run at (4,15) width 54: "will wrap"
+      text run at (58,15) width 0: " "
+      text run at (4,26) width 54: "and   fit"
+      text run at (58,26) width 18: "   "
+      text run at (4,37) width 60: "within the"
+      text run at (64,37) width 0: " "
+      text run at (4,48) width 24: "box."
+      text run at (28,48) width 0: " "
+selection start: position 7 of child 0 {#text} of child 7 {PRE} of body
+selection end:   position 15 of child 0 {#text} of child 11 {PRE} of body

@@ -1,0 +1,21 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 660x14
+          RenderInline {A} at (0,0) size 226x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 226x14
+              text run at (40,0) width 226: "http://bugs.webkit.org/show_bug.cgi?id=12364"
+          RenderText {#text} at (266,0) size 434x14
+            text run at (266,0) width 3: " "
+            text run at (269,0) width 431: "REGRESSSION (NativeListBox): Selected option's background is not clipped to the list box"
+        RenderText {#text} at (700,0) size 3x14
+          text run at (700,0) width 3: "."
+      RenderBlock (anonymous) at (0,26) size 784x70
+        RenderListBox {SELECT} at (2,0) size 52x70 [bgcolor=#FFFFFF] [border: (3px solid #0000FF)]
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0

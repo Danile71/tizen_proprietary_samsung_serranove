@@ -1,0 +1,27 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x92
+  RenderBlock {html} at (0,0) size 800x92
+    RenderBody {body} at (8,12) size 784x68
+      RenderBlock {ul} at (0,0) size 784x28
+        RenderListItem {li} at (40,0) size 744x14 [bgcolor=#00FF00]
+          RenderListMarker at (-15,0) size 6x14: bullet
+          RenderText {#text} at (0,0) size 323x14
+            text run at (0,0) width 252: "This list item should be green because its language is "
+            text run at (252,0) width 71: "British English"
+        RenderListItem {li} at (40,14) size 744x14 [bgcolor=#00FF00]
+          RenderListMarker at (-15,0) size 6x14: bullet
+          RenderText {#text} at (0,0) size 363x14
+            text run at (0,0) width 241: "This list item should be green because its language "
+            text run at (241,0) width 122: "is British English (Wales)"
+      RenderBlock {ol} at (0,40) size 784x28
+        RenderListItem {li} at (40,0) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "1"
+          RenderText {#text} at (0,0) size 335x14
+            text run at (0,0) width 269: "This list item should NOT be green because its language "
+            text run at (269,0) width 66: "is US English"
+        RenderListItem {li} at (40,14) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "2"
+          RenderText {#text} at (0,0) size 313x14
+            text run at (0,0) width 280: "This list item should NOT be green because its language is "
+            text run at (280,0) width 33: "French"

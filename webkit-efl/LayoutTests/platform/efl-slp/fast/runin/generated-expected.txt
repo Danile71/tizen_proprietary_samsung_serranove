@@ -1,0 +1,24 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 378x14
+          RenderInline {A} at (0,0) size 117x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 117x14
+              text run at (40,0) width 117: "rdar://problem/6777374"
+          RenderText {#text} at (157,0) size 261x14
+            text run at (157,0) width 3: " "
+            text run at (160,0) width 258: "Generated content with display: run-in causes a crash"
+        RenderText {#text} at (418,0) size 3x14
+          text run at (418,0) width 3: "."
+      RenderBlock {DIV} at (0,26) size 784x14
+        RenderBlock {DIV} at (0,0) size 784x14
+          RenderInline (generated) at (0,0) size 30x14
+            RenderText at (0,0) size 30x14
+              text run at (0,0) width 30: "PASS"
+          RenderText {#text} at (30,0) size 127x14
+            text run at (30,0) width 127: " < this should say \x{201C}PASS\x{201D}"

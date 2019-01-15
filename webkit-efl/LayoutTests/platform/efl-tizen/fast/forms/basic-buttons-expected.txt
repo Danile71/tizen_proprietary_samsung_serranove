@@ -1,0 +1,167 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x316
+  RenderBlock {HTML} at (0,0) size 980x316
+    RenderBody {BODY} at (8,8) size 964x300
+      RenderBlock (anonymous) at (0,0) size 964x76
+        RenderText {#text} at (0,0) size 690x19
+          text run at (0,0) width 690: "Tests for basic button rendering. Creates a table with seven columns and seven rows. "
+        RenderBR {BR} at (690,0) size 0x19
+        RenderText {#text} at (0,19) size 660x19
+          text run at (0,19) width 660: "Creates two different types of buttons, one with an image (a red dot) and another "
+        RenderBR {BR} at (660,19) size 0x19
+        RenderText {#text} at (0,38) size 833x19
+          text run at (0,38) width 833: "with text (\"foo\") and then uses six different paddings to make sure each of the buttons render properly. "
+        RenderBR {BR} at (833,38) size 0x19
+        RenderBR {BR} at (0,57) size 0x19
+      RenderTable {TABLE} at (0,76) size 843x224
+        RenderTableSection {TBODY} at (0,0) size 843x224
+          RenderTableRow {TR} at (0,0) size 843x21
+            RenderTableCell {TD} at (0,0) size 207x21 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 51x19
+                text run at (1,1) width 51: "styling"
+            RenderTableCell {TD} at (207,0) size 80x21 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 78x19
+                text run at (1,1) width 78: "<button>"
+            RenderTableCell {TD} at (287,0) size 186x21 [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 184x19
+                text run at (1,1) width 184: "(offsetH,W) (clientH,W)"
+            RenderTableCell {TD} at (473,0) size 173x21 [r=0 c=3 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 171x19
+                text run at (1,1) width 171: "<input type=button>"
+            RenderTableCell {TD} at (646,0) size 197x21 [r=0 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 195x19
+                text run at (1,1) width 195: "(offsetH,W) (clientH, -W)"
+          RenderTableRow {TR} at (0,21) size 843x29
+            RenderTableCell {TD} at (0,25) size 207x21 [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 68x19
+                text run at (1,1) width 68: "(default)"
+            RenderTableCell {TD} at (207,21) size 80x29 [r=1 c=1 rs=1 cs=1]
+              RenderButton {BUTTON} at (3,3) size 18x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 10x15
+                  RenderImage {IMG} at (0,2) size 10x10
+            RenderTableCell {TD} at (287,25) size 186x21 [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 109x19
+                text run at (1,1) width 109: "(23, 8) (19, 4)"
+            RenderTableCell {TD} at (473,21) size 173x29 [r=1 c=3 rs=1 cs=1]
+              RenderButton {INPUT} at (3,3) size 29x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 21x15
+                  RenderText at (0,0) size 21x15
+                    text run at (0,0) width 21: "foo"
+            RenderTableCell {TD} at (646,25) size 197x21 [r=1 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 129x19
+                text run at (1,1) width 129: "(23, 29) (19, 25)"
+          RenderTableRow {TR} at (0,50) size 843x29
+            RenderTableCell {TD} at (0,54) size 207x21 [r=2 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 84x19
+                text run at (1,1) width 84: "padding: 0"
+            RenderTableCell {TD} at (207,50) size 80x29 [r=2 c=1 rs=1 cs=1]
+              RenderButton {BUTTON} at (3,3) size 18x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 10x15
+                  RenderImage {IMG} at (0,2) size 10x10
+            RenderTableCell {TD} at (287,54) size 186x21 [r=2 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 109x19
+                text run at (1,1) width 109: "(23, 8) (19, 4)"
+            RenderTableCell {TD} at (473,50) size 173x29 [r=2 c=3 rs=1 cs=1]
+              RenderButton {INPUT} at (3,3) size 29x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 21x15
+                  RenderText at (0,0) size 21x15
+                    text run at (0,0) width 21: "foo"
+            RenderTableCell {TD} at (646,54) size 197x21 [r=2 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 129x19
+                text run at (1,1) width 129: "(23, 29) (19, 25)"
+          RenderTableRow {TR} at (0,79) size 843x29
+            RenderTableCell {TD} at (0,83) size 207x21 [r=3 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 109x19
+                text run at (1,1) width 109: "padding: 10%"
+            RenderTableCell {TD} at (207,79) size 80x29 [r=3 c=1 rs=1 cs=1]
+              RenderButton {BUTTON} at (3,3) size 18x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 10x15
+                  RenderImage {IMG} at (0,2) size 10x10
+            RenderTableCell {TD} at (287,83) size 186x21 [r=3 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 109x19
+                text run at (1,1) width 109: "(23, 8) (19, 4)"
+            RenderTableCell {TD} at (473,79) size 173x29 [r=3 c=3 rs=1 cs=1]
+              RenderButton {INPUT} at (3,3) size 29x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 21x15
+                  RenderText at (0,0) size 21x15
+                    text run at (0,0) width 21: "foo"
+            RenderTableCell {TD} at (646,83) size 197x21 [r=3 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 129x19
+                text run at (1,1) width 129: "(23, 29) (19, 25)"
+          RenderTableRow {TR} at (0,108) size 843x29
+            RenderTableCell {TD} at (0,112) size 207x21 [r=4 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 103x19
+                text run at (1,1) width 103: "padding: 2px"
+            RenderTableCell {TD} at (207,108) size 80x29 [r=4 c=1 rs=1 cs=1]
+              RenderButton {BUTTON} at (3,3) size 18x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 10x15
+                  RenderImage {IMG} at (0,2) size 10x10
+            RenderTableCell {TD} at (287,112) size 186x21 [r=4 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 109x19
+                text run at (1,1) width 109: "(23, 8) (19, 4)"
+            RenderTableCell {TD} at (473,108) size 173x29 [r=4 c=3 rs=1 cs=1]
+              RenderButton {INPUT} at (3,3) size 29x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 21x15
+                  RenderText at (0,0) size 21x15
+                    text run at (0,0) width 21: "foo"
+            RenderTableCell {TD} at (646,112) size 197x21 [r=4 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 129x19
+                text run at (1,1) width 129: "(23, 29) (19, 25)"
+          RenderTableRow {TR} at (0,137) size 843x29
+            RenderTableCell {TD} at (0,141) size 207x21 [r=5 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 205x19
+                text run at (1,1) width 205: "padding: 2px 6px 3px 6px"
+            RenderTableCell {TD} at (207,137) size 80x29 [r=5 c=1 rs=1 cs=1]
+              RenderButton {BUTTON} at (3,3) size 18x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 10x15
+                  RenderImage {IMG} at (0,2) size 10x10
+            RenderTableCell {TD} at (287,141) size 186x21 [r=5 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 109x19
+                text run at (1,1) width 109: "(23, 8) (19, 4)"
+            RenderTableCell {TD} at (473,137) size 173x29 [r=5 c=3 rs=1 cs=1]
+              RenderButton {INPUT} at (3,3) size 29x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 21x15
+                  RenderText at (0,0) size 21x15
+                    text run at (0,0) width 21: "foo"
+            RenderTableCell {TD} at (646,141) size 197x21 [r=5 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 129x19
+                text run at (1,1) width 129: "(23, 29) (19, 25)"
+          RenderTableRow {TR} at (0,166) size 843x29
+            RenderTableCell {TD} at (0,170) size 207x21 [r=6 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 137x19
+                text run at (1,1) width 137: "padding: 3px 7px"
+            RenderTableCell {TD} at (207,166) size 80x29 [r=6 c=1 rs=1 cs=1]
+              RenderButton {BUTTON} at (3,3) size 18x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 10x15
+                  RenderImage {IMG} at (0,2) size 10x10
+            RenderTableCell {TD} at (287,170) size 186x21 [r=6 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 109x19
+                text run at (1,1) width 109: "(23, 8) (19, 4)"
+            RenderTableCell {TD} at (473,166) size 173x29 [r=6 c=3 rs=1 cs=1]
+              RenderButton {INPUT} at (3,3) size 29x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 21x15
+                  RenderText at (0,0) size 21x15
+                    text run at (0,0) width 21: "foo"
+            RenderTableCell {TD} at (646,170) size 197x21 [r=6 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 129x19
+                text run at (1,1) width 129: "(23, 29) (19, 25)"
+          RenderTableRow {TR} at (0,195) size 843x29
+            RenderTableCell {TD} at (0,199) size 207x21 [r=7 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 113x19
+                text run at (1,1) width 113: "padding: 20px"
+            RenderTableCell {TD} at (207,195) size 80x29 [r=7 c=1 rs=1 cs=1]
+              RenderButton {BUTTON} at (3,3) size 18x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 10x15
+                  RenderImage {IMG} at (0,2) size 10x10
+            RenderTableCell {TD} at (287,199) size 186x21 [r=7 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 109x19
+                text run at (1,1) width 109: "(23, 8) (19, 4)"
+            RenderTableCell {TD} at (473,195) size 173x29 [r=7 c=3 rs=1 cs=1]
+              RenderButton {INPUT} at (3,3) size 29x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 21x15
+                  RenderText at (0,0) size 21x15
+                    text run at (0,0) width 21: "foo"
+            RenderTableCell {TD} at (646,199) size 197x21 [r=7 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 129x19
+                text run at (1,1) width 129: "(23, 29) (19, 25)"

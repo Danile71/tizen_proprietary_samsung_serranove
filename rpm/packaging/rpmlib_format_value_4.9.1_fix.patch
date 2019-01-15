@@ -1,0 +1,40 @@
+From 8a0cc408da4644b67af0b57fc2c8e75e182f0e48 Mon Sep 17 00:00:00 2001
+From: Elena, Reshetova <elena.reshetova@intel.com>
+Date: Mon, 20 Feb 2012 15:51:50 +0200
+Subject: [PATCH] Fix for rpmlib format value
+
+---
+ lib/headerfmt.c |   15 ++++++++-------
+ 1 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/lib/headerfmt.c b/lib/headerfmt.c
+index 49c7047..05048f7 100644
+--- a/lib/headerfmt.c
++++ b/lib/headerfmt.c
+@@ -631,15 +631,16 @@ static char * formatValue(headerSprintfArgs hsa, sprintfTag tag, int element)
+ 	val = xstrdup("(none)");
+     }
+ 
+-    need = strlen(val);
++    if (val) {
++	need = strlen(val);
+ 
+-    if (val && need > 0) {
+-	t = hsaReserve(hsa, need);
+-	te = stpcpy(t, val);
+-	hsa->vallen += (te - t);
++	if (need > 0) {
++	    t = hsaReserve(hsa, need);
++	    te = stpcpy(t, val);
++	    hsa->vallen += (te - t);
++	}
++	free(val);
+     }
+-    free(val);
+-
+     return (hsa->val + hsa->vallen);
+ }
+ 
+-- 
+1.7.4.1
+

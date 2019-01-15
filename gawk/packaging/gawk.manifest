@@ -1,0 +1,10 @@
+<manifest>
+  <request>
+    <domain name="_"/>
+  </request>
+  <assign>
+    <filesystem path="/usr/lib/awk/grcat" exec_label="none" />
+    <filesystem path="/usr/lib/awk/pwcat" exec_label="none" />
+    <filesystem path="/bin/*" exec_label="none" />
+  </assign>
+</manifest>

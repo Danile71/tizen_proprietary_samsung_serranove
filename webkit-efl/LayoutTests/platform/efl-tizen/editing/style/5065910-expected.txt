@@ -1,0 +1,23 @@
+layer at (0,0) size 980x1350
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1350
+  RenderBlock {HTML} at (0,0) size 980x1350
+    RenderBody {BODY} at (8,8) size 964x1334
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 576x19
+          text run at (0,0) width 576: "This tests for a bug where the color of pasted text couldn't be changed.'"
+      RenderBlock {DIV} at (0,35) size 964x1299
+        RenderBlock (anonymous) at (0,0) size 964x19
+          RenderInline {FONT} at (0,0) size 155x19 [color=#FF0000]
+            RenderText {#text} at (0,0) size 155x19
+              text run at (0,0) width 155: "This text should be "
+          RenderInline {FONT} at (0,0) size 302x19 [color=#008000]
+            RenderText {#text} at (155,0) size 302x19
+              text run at (155,0) width 302: "a combination of green and blue, not "
+          RenderInline {FONT} at (0,0) size 32x19 [color=#FF0000]
+            RenderText {#text} at (457,0) size 32x19
+              text run at (457,0) width 32: "red."
+        RenderBlock {DIV} at (0,19) size 964x1280
+          RenderInline {FONT} at (0,0) size 720x19 [color=#0000FF]
+            RenderImage {IMG} at (0,0) size 720x1280
+caret: position 37 of child 0 {#text} of child 1 {FONT} of child 2 {DIV} of body

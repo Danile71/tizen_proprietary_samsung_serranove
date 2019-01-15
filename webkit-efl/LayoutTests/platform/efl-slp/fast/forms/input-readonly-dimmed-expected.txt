@@ -1,0 +1,14 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderText {#text} at (0,0) size 341x14
+        text run at (0,0) width 341: "This tests that the border of a readonly text field should appear dimmed. "
+      RenderBR {BR} at (341,11) size 0x0
+      RenderTextControl {INPUT} at (2,16) size 194x28 [color=#202020]
+      RenderText {#text} at (0,0) size 0x0
+layer at (14,30) size 187x18 scrollWidth 218
+  RenderBlock {DIV} at (4,6) size 187x18
+    RenderText {#text} at (1,0) size 216x17
+      text run at (1,0) width 216: "This border should be dimmed"

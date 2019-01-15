@@ -1,0 +1,34 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x120
+  RenderBlock {HTML} at (0,0) size 800x120
+    RenderBody {BODY} at (8,8) size 784x100
+      RenderBlock {DIV} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 62x14
+          text run at (0,0) width 62: "This is a test "
+        RenderInline (generated) at (0,0) size 132x14
+          RenderText at (62,0) size 132x14
+            text run at (62,0) width 132: "and generated hover content"
+      RenderBlock {HR} at (0,20) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,34) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 663x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 262x14
+              text run at (40,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=6431"
+          RenderText {#text} at (302,0) size 401x14
+            text run at (302,0) width 3: " "
+            text run at (305,0) width 398: "REGRESSION: style change where :hover changes only an :after style doesn't work"
+        RenderText {#text} at (703,0) size 3x14
+          text run at (703,0) width 3: "."
+      RenderBlock {P} at (0,60) size 784x14
+        RenderText {#text} at (0,0) size 766x14
+          text run at (0,0) width 377: "The line at the top of the page should read \x{201C}This is a test and generated content\x{201D} "
+          text run at (377,0) width 348: "or \x{201C}This is a test and generated hover content\x{201D} depending on whether it is "
+          text run at (725,0) width 41: "hovered."
+      RenderBlock {P} at (0,86) size 784x14
+        RenderText {#text} at (0,0) size 682x14
+          text run at (0,0) width 618: "To reproduce the bug outside of DumpRenderTree, mouse over the div several times, and the style change won't update every time "
+          text run at (618,0) width 64: "like it should."
+caret: position 4 of child 0 {#text} of child 1 {DIV} of body

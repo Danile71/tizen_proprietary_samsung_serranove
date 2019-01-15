@@ -1,0 +1,56 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 366x14
+          text run at (0,0) width 366: "BUG: Inside a cell, \"height:x%\" is ignored. It looks like 'auto' is used instead."
+        RenderBR {BR} at (366,11) size 0x0
+      RenderListItem {LI} at (0,14) size 784x14
+        RenderListMarker at (-1,0) size 6x14: bullet
+        RenderText {#text} at (11,0) size 196x14
+          text run at (11,0) width 196: "Absolute units work correctly (eg. 50px)."
+      RenderListItem {LI} at (0,28) size 784x470
+        RenderBlock (anonymous) at (0,0) size 784x14
+          RenderListMarker at (-1,0) size 6x14: bullet
+          RenderText {#text} at (11,0) size 136x14
+            text run at (11,0) width 136: "\"width:x%\" works correctly."
+        RenderBlock {HR} at (0,20) size 784x2 [border: (1px inset #000000)]
+        RenderTable {TABLE} at (0,28) size 784x100
+          RenderTableSection {TBODY} at (0,0) size 784x100
+            RenderTableRow {TR} at (0,2) size 784x96
+              RenderTableCell {TD} at (2,16) size 780x67 [bgcolor=#FF0000] [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (0,0) size 0x0
+        RenderBlock {HR} at (0,134) size 784x2 [border: (1px inset #000000)]
+        RenderTable {TABLE} at (0,142) size 784x100
+          RenderTableSection {TBODY} at (0,0) size 784x100
+            RenderTableRow {TR} at (0,2) size 784x96
+              RenderTableCell {TD} at (2,9) size 780x82 [bgcolor=#FF0000] [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (0,0) size 0x0
+        RenderBlock {HR} at (0,248) size 784x2 [border: (1px inset #000000)]
+        RenderTable {TABLE} at (0,256) size 784x100
+          RenderTableSection {TBODY} at (0,0) size 784x100
+            RenderTableRow {TR} at (0,2) size 784x96
+              RenderTableCell {TD} at (2,11) size 780x77 [bgcolor=#FF0000] [r=0 c=0 rs=1 cs=1]
+                RenderBlock {P} at (1,1) size 622x75 [bgcolor=#FFFFE0]
+                  RenderText {#text} at (0,0) size 172x14
+                    text run at (0,0) width 172: "BUG: the height of the P is not 80%"
+        RenderBlock {HR} at (0,362) size 784x2 [border: (1px inset #000000)]
+        RenderTable {TABLE} at (0,370) size 784x100
+          RenderTableSection {TBODY} at (0,0) size 784x100
+            RenderTableRow {TR} at (0,2) size 784x96
+              RenderTableCell {TD} at (2,9) size 780x82 [bgcolor=#FF0000] [r=0 c=0 rs=1 cs=1]
+                RenderBlock {P} at (1,1) size 622x80 [bgcolor=#FFFFE0]
+                  RenderText {#text} at (0,0) size 167x14
+                    text run at (0,0) width 167: "OK: the height of the P is 80 pixels"
+layer at (11,81) size 622x65
+  RenderTextControl {TEXTAREA} at (1,1) size 622x65 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 615x18
+      RenderText {#text} at (0,0) size 295x17
+        text run at (0,0) width 295: "BUG: the height of the textarea is not 80%"
+layer at (11,188) size 622x80
+  RenderTextControl {TEXTAREA} at (1,1) size 622x80 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 615x18
+      RenderText {#text} at (0,0) size 289x17
+        text run at (0,0) width 289: "OK: the height of the textarea is 80 pixels"

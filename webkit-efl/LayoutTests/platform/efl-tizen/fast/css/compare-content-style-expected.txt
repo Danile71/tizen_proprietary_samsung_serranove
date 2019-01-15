@@ -1,0 +1,49 @@
+CONSOLE MESSAGE: line 18: TypeError: 'undefined' is not a function (evaluating 'testRunner.queueReload()')
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x246
+  RenderBlock {HTML} at (0,0) size 980x246
+    RenderBody {BODY} at (8,8) size 964x222
+      RenderBlock {DIV} at (0,0) size 964x114
+        RenderBlock {DIV} at (0,0) size 964x19
+          RenderInline (generated) at (0,0) size 41x19
+            RenderText at (0,0) size 41x19
+              text run at (0,0) width 41: "PASS"
+        RenderBlock {DIV} at (0,19) size 964x19
+          RenderInline (generated) at (0,0) size 41x19
+            RenderText at (0,0) size 41x19
+              text run at (0,0) width 41: "PASS"
+        RenderBlock {DIV} at (0,38) size 964x19
+          RenderInline (generated) at (0,0) size 41x19
+            RenderText at (0,0) size 41x19
+              text run at (0,0) width 41: "PASS"
+        RenderBlock {DIV} at (0,57) size 964x19
+          RenderInline (generated) at (0,0) size 41x19
+            RenderText at (0,0) size 41x19
+              text run at (0,0) width 41: "PASS"
+        RenderBlock {DIV} at (0,76) size 964x19
+          RenderInline (generated) at (0,0) size 41x19
+            RenderText at (0,0) size 41x19
+              text run at (0,0) width 41: "PASS"
+        RenderBlock {DIV} at (0,95) size 964x19
+          RenderInline (generated) at (0,0) size 41x19
+            RenderText at (0,0) size 41x19
+              text run at (0,0) width 41: "PASS"
+      RenderBlock {DIV} at (0,130) size 964x92
+        RenderBlock {P} at (0,0) size 964x19
+          RenderInline {A} at (0,0) size 852x19 [color=#0000EE]
+            RenderText {#text} at (0,0) size 852x19
+              text run at (0,0) width 852: "Bug 23741: StyleRareNonInheritedData::operator==() should not compare ContentData objects by pointer"
+        RenderBlock {OL} at (0,35) size 964x57
+          RenderListItem {LI} at (40,0) size 924x19
+            RenderListMarker at (-25,0) size 20x19: "1"
+            RenderText {#text} at (0,0) size 417x19
+              text run at (0,0) width 417: "All lines above should be \"PASS\" on initial page load."
+          RenderListItem {LI} at (40,19) size 924x19
+            RenderListMarker at (-25,0) size 20x19: "2"
+            RenderText {#text} at (0,0) size 180x19
+              text run at (0,0) width 180: "Reload the page once."
+          RenderListItem {LI} at (40,38) size 924x19
+            RenderListMarker at (-25,0) size 20x19: "3"
+            RenderText {#text} at (0,0) size 292x19
+              text run at (0,0) width 292: "All lines above should still be \"PASS\"."

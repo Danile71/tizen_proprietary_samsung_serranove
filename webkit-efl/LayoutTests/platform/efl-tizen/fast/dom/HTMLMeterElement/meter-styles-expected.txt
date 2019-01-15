@@ -1,0 +1,134 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {H2} at (3,0) size 958x19
+        RenderText {#text} at (0,0) size 479x19
+          text run at (0,0) width 479: "Horizontal meters with the non-themed default style"
+      RenderBlock {UL} at (3,22) size 958x63
+        RenderListItem {LI} at (43,0) size 912x19
+          RenderMeter {METER} at (0,2) size 80x16
+            RenderBlock {DIV} at (0,0) size 80x16
+              RenderBlock {DIV} at (0,0) size 20x16
+          RenderText {#text} at (80,0) size 5x19
+            text run at (80,0) width 5: " "
+          RenderMeter {METER} at (85,2) size 80x16
+            RenderBlock {DIV} at (0,0) size 80x16
+              RenderBlock {DIV} at (0,0) size 36x16
+          RenderText {#text} at (165,0) size 5x19
+            text run at (165,0) width 5: " "
+          RenderMeter {METER} at (170,2) size 80x16
+            RenderBlock {DIV} at (0,0) size 80x16
+              RenderBlock {DIV} at (0,0) size 60x16
+        RenderListItem {LI} at (43,22) size 912x41
+          RenderMeter {METER} at (0,0) size 30x40
+            RenderBlock {DIV} at (0,0) size 30x40
+              RenderBlock {DIV} at (0,0) size 7x40
+          RenderText {#text} at (30,22) size 5x19
+            text run at (30,22) width 5: " "
+          RenderMeter {METER} at (35,0) size 30x40
+            RenderBlock {DIV} at (0,0) size 30x40
+              RenderBlock {DIV} at (0,0) size 13x40
+          RenderText {#text} at (65,22) size 5x19
+            text run at (65,22) width 5: " "
+          RenderMeter {METER} at (70,0) size 30x40
+            RenderBlock {DIV} at (0,0) size 30x40
+              RenderBlock {DIV} at (0,0) size 22x40
+      RenderBlock {H2} at (3,88) size 958x19
+        RenderText {#text} at (0,0) size 205x19
+          text run at (0,0) width 205: "Providing meter styles"
+      RenderBlock {DIV} at (0,110) size 964x71 [bgcolor=#EEEEEE]
+        RenderBlock {UL} at (3,0) size 958x71
+          RenderListItem {LI} at (43,0) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16 [bgcolor=#AAAACC] [border: (5px solid #222244) (20px solid #222244) (5px solid #222244) (10px solid #222244)]
+              RenderBlock {DIV} at (10,5) size 50x6
+                RenderBlock {DIV} at (0,0) size 40x6
+            RenderText {#text} at (80,0) size 92x19
+              text run at (80,0) width 92: " has border"
+          RenderListItem {LI} at (43,22) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16 [bgcolor=#AAAACC]
+              RenderBlock {DIV} at (10,5) size 50x6
+                RenderBlock {DIV} at (0,0) size 40x6
+            RenderText {#text} at (80,0) size 102x19
+              text run at (80,0) width 102: " has padding"
+          RenderListItem {LI} at (43,44) size 912x27
+            RenderMeter {METER} at (10,5) size 80x16 [bgcolor=#AAAACC]
+              RenderBlock {DIV} at (0,0) size 80x16
+                RenderBlock {DIV} at (0,0) size 64x16
+            RenderText {#text} at (110,8) size 95x19
+              text run at (110,8) width 95: " has margin"
+      RenderBlock {H2} at (3,184) size 958x19
+        RenderText {#text} at (0,0) size 298x19
+          text run at (0,0) width 298: "Providing bar and/or value styles"
+      RenderBlock {DIV} at (0,206) size 964x173 [bgcolor=#EEEEEE]
+        RenderBlock {UL} at (3,0) size 958x85
+          RenderBlock (anonymous) at (40,0) size 918x19
+            RenderText {#text} at (0,0) size 607x19
+              text run at (0,0) width 607: "default -webkit-appearance, thus should use platform theme (only for Mac.)"
+          RenderListItem {LI} at (43,22) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16
+              RenderBlock {DIV} at (0,0) size 80x16
+                RenderBlock {DIV} at (0,0) size 64x16 [bgcolor=#008000] [border: (2px solid #77CC77)]
+            RenderText {#text} at (80,0) size 271x19
+              text run at (80,0) width 271: " has bar style but should ignore it."
+          RenderListItem {LI} at (43,44) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16
+              RenderBlock {DIV} at (0,0) size 80x16 [bgcolor=#808080] [border: (2px solid #222222)]
+                RenderBlock {DIV} at (2,2) size 60x12
+            RenderText {#text} at (80,0) size 287x19
+              text run at (80,0) width 287: " has value style but should ignore it."
+          RenderListItem {LI} at (43,66) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16
+              RenderBlock {DIV} at (0,0) size 80x16 [bgcolor=#808080] [border: (2px solid #222222)]
+                RenderBlock {DIV} at (2,2) size 60x12 [bgcolor=#008000] [border: (2px solid #77CC77)]
+            RenderText {#text} at (80,0) size 320x19
+              text run at (80,0) width 320: " has both styles but should ignore them."
+        RenderBlock {UL} at (3,88) size 958x85
+          RenderBlock (anonymous) at (40,0) size 918x19
+            RenderText {#text} at (0,0) size 592x19
+              text run at (0,0) width 592: "-webkit-appearance: none, thus custom styled elements should be shown."
+          RenderListItem {LI} at (43,22) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16
+              RenderBlock {DIV} at (0,0) size 80x16
+                RenderBlock {DIV} at (0,0) size 64x16 [bgcolor=#008000] [border: (2px solid #77CC77)]
+            RenderText {#text} at (80,0) size 345x19
+              text run at (80,0) width 345: " has bar style, should have solid value part."
+          RenderListItem {LI} at (43,44) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16
+              RenderBlock {DIV} at (0,0) size 80x16 [bgcolor=#808080] [border: (2px solid #222222)]
+                RenderBlock {DIV} at (2,2) size 60x12
+            RenderText {#text} at (80,0) size 326x19
+              text run at (80,0) width 326: " has value style, should be solid bar part."
+          RenderListItem {LI} at (43,66) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16
+              RenderBlock {DIV} at (0,0) size 80x16 [bgcolor=#808080] [border: (2px solid #222222)]
+                RenderBlock {DIV} at (2,2) size 60x12 [bgcolor=#008000] [border: (2px solid #77CC77)]
+            RenderText {#text} at (80,0) size 300x19
+              text run at (80,0) width 300: " should have solid bar and value part."
+      RenderBlock {H2} at (3,382) size 958x19
+        RenderText {#text} at (0,0) size 205x19
+          text run at (0,0) width 205: "Providing appearances"
+      RenderBlock {DIV} at (0,404) size 964x41 [bgcolor=#EEEEEE]
+        RenderBlock {UL} at (3,0) size 958x41
+          RenderListItem {LI} at (43,0) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16
+              RenderBlock {DIV} at (0,0) size 80x16
+                RenderBlock {DIV} at (0,0) size 64x16
+            RenderText {#text} at (80,0) size 478x19
+              text run at (80,0) width 478: " has \"none\" appearance, should be styled with default style."
+          RenderListItem {LI} at (43,22) size 912x19
+            RenderMeter {METER} at (0,2) size 80x16
+              RenderBlock {DIV} at (0,0) size 80x16
+                RenderBlock {DIV} at (0,0) size 64x16
+            RenderText {#text} at (80,0) size 361x19
+              text run at (80,0) width 361: " has \"meter\" appearance, should be themed."
+      RenderBlock {H2} at (3,448) size 958x19
+        RenderText {#text} at (0,0) size 207x19
+          text run at (0,0) width 207: "Providing bar paddings"
+      RenderBlock {DIV} at (0,470) size 964x19 [bgcolor=#EEEEEE]
+        RenderMeter {METER} at (0,2) size 80x16
+          RenderBlock {DIV} at (0,0) size 80x16
+            RenderBlock {DIV} at (5,5) size 35x6
+        RenderText {#text} at (80,0) size 209x19
+          text run at (80,0) width 209: " has \"padding\" on the bar."

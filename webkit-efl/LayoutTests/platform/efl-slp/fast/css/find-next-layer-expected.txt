@@ -1,0 +1,22 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 548x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 262x14
+              text run at (40,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=9124"
+          RenderText {#text} at (302,0) size 286x14
+            text run at (302,0) width 3: " "
+            text run at (305,0) width 283: "Drop shadow obscures \"add more stuff\" bubble at live.com"
+        RenderText {#text} at (588,0) size 3x14
+          text run at (588,0) width 3: "."
+      RenderBlock {HR} at (0,26) size 784x2 [border: (1px inset #000000)]
+layer at (8,42) size 100x100
+  RenderBlock (positioned) {DIV} at (0,0) size 100x100 [bgcolor=#FF0000]
+layer at (8,42) size 100x100
+  RenderBlock (positioned) {DIV} at (0,0) size 100x100 [bgcolor=#008000]

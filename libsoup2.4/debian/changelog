@@ -1,0 +1,70 @@
+libsoup2.4 (2.46.0-2.0.0.4ubuntu9) unstable; urgency=medium
+
+  * [r.karu] Update sniffed content type in SoupCache
+  * [r.karu] Revert "Modified Updating of SoupCacheEntry's Content-Type
+    header"
+
+ --  <r.karu@samsung.com>  Wed, 09 Sep 2015 11:09:37 +0530
+
+libsoup2.4 (2.46.0-2.0.0.4ubuntu8) unstable; urgency=medium
+
+  * [r.karu] Modified Updating of SoupCacheEntry's Content-Type header
+  * [sowmya.b1] Merging libsoup (Z1) 307 Redirection Handling patch to libsoup
+    (Z3)
+
+ --  <r.karu@samsung.com>  Mon, 07 Sep 2015 10:45:07 +0530
+
+libsoup2.4 (2.46.0-2.0.0.4ubuntu7) unstable; urgency=medium
+
+  * [r.karu] Modify the authentication signal handling method
+
+ --  <r.karu@samsung.com>  Thu, 27 Aug 2015 08:20:28 +0530
+
+libsoup2.4 (2.46.0-2.0.0.4ubuntu6) unstable; urgency=medium
+
+  * [r.karu] Avoiding compilation warnings caused due to deprecated APIs
+  * [sowmya.b1] Validating cache object returned from soup_session_get_feature() to fix ndtv crash
+
+ --  <r.karu@samsung.com>  Wed, 19 Aug 2015 18:32:25 +0530
+
+libsoup2.4 (2.46.0-2.0.0.4ubuntu5) unstable; urgency=medium
+
+  * [r.karu] Ignore MIME sniffing for 'audio/mp4' type
+  * [r.karu] [UCPROXY] UCProxy Wrapper - Cache push functionality is added
+
+ --  <r.karu@samsung.com>  Wed, 29 Jul 2015 20:22:54 +0530
+
+libsoup2.4 (2.46.0-2.0.0.4ubuntu4) unstable; urgency=medium
+
+  * [r.karu] [UCPROXY] UCProxy Wrapper integration
+
+ --  <r.karu@samsung.com>  Sat, 25 Jul 2015 13:01:16 +0530
+
+libsoup2.4 (2.46.0-2.0.0.3ubuntu3) unstable; urgency=low
+
+  * [sowmya.b1] Merging libsoup (Z1) patches to libsoup (Z3) [patch 3]
+  * [sowmya.b1] Merging libsoup (Z1) patches to libsoup (Z3) [patch 2]
+  * [r.karu] Merging Z1 libsoup patches to Z3 libsoup [patch 1]
+  * [r.karu] HTML text is displayed in the web page instead of rendering content
+
+ -- sowmya.b1 <sowmya.b1@samsung.com>  Wed, 15 Jul 2015 13:02:16 +0530
+
+libsoup2.4 (2.46.0-2.0.0.2ubuntu2) unstable; urgency=medium
+
+  * [r.karu] Adding dlog library dependency in libsoup-2.4
+
+ --  <r.karu@samsung.com>  Mon, 29 Jun 2015 19:03:20 +0530
+
+libsoup2.4 (2.46.0-2.0.0.1ubuntu1) unstable; urgency=low
+
+  * [r.karu] Enabling TIZEN dlog support for libsoup
+  * [r.karu] Update Cache entry's Content-Type header value with sniffed Content-Type value
+  * [r.karu] Reverting timer patch for TLS DB intialization
+
+ --  <r.karu@samsung.com>  Fri, 26 Jun 2015 21:46:13 +0530
+
+libsoup2.4 (2.46.0-2.0) unstable; urgency=low
+
+  * Initial release.
+
+ -- Jenkins Continuous Build server <jenkins@SWDD0905.site>  Thu, 21 May 2015 09:02:44 +0530

@@ -1,0 +1,24 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock (anonymous) at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 764x28
+          text run at (0,0) width 381: "In this test, you should see three blocks that are aligned right within a black box. "
+          text run at (381,0) width 383: "They should be stacked vertically with the green box in between two olive boxes."
+          text run at (0,14) width 613: "The olive boxes and the green box should be 100x100, and there should be 100 pixels of padding on the left side of the box stack."
+layer at (8,48) size 784x14
+  RenderBlock (relative positioned) {DIV} at (0,40) size 784x14
+    RenderText {#text} at (84,0) size 700x14
+      text run at (84,0) width 3 RTL: "."
+      text run at (87,0) width 697: "The black box's top should be aligned with the end of the last line in this parargaph and its right side should begin right after the end of this sentence"
+    RenderText {#text} at (0,0) size 0x0
+layer at (-148,48) size 240x340 backgroundClip at (0,0) size 800x600 clip at (0,0) size 800x600 outlineClip at (0,0) size 800x600
+  RenderBlock (positioned) {SPAN} at (-156,0) size 240x340 [border: (20px solid #000000)]
+layer at (-28,168) size 100x100 backgroundClip at (0,0) size 800x600 clip at (0,0) size 800x600 outlineClip at (0,0) size 800x600
+  RenderBlock (positioned) {DIV} at (120,120) size 100x100 [bgcolor=#008000]
+layer at (-28,68) size 100x100 backgroundClip at (0,0) size 800x600 clip at (0,0) size 800x600 outlineClip at (0,0) size 800x600
+  RenderBlock (positioned) {DIV} at (120,20) size 100x100 [bgcolor=#808000]
+layer at (-28,268) size 100x100 backgroundClip at (0,0) size 800x600 clip at (0,0) size 800x600 outlineClip at (0,0) size 800x600
+  RenderBlock (positioned) {DIV} at (120,220) size 100x100 [bgcolor=#808000]

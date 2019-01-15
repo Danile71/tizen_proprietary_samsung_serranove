@@ -1,0 +1,25 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 482x14
+          RenderInline {A} at (0,0) size 226x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 226x14
+              text run at (40,0) width 226: "http://bugs.webkit.org/show_bug.cgi?id=15091"
+          RenderText {#text} at (266,0) size 256x14
+            text run at (266,0) width 3: " "
+            text run at (269,0) width 189: "Crash in RenderBlock::skipWhitespace "
+            text run at (458,0) width 64: "during layout"
+        RenderText {#text} at (522,0) size 3x14
+          text run at (522,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 452x14
+          text run at (0,0) width 452: "If Java is enabled, disable it and reload this page. You should see the word PASS at the bottom."
+layer at (8,586) size 30x14
+  RenderBlock (positioned) {APPLET} at (8,586) size 30x14
+    RenderText {#text} at (0,0) size 30x14
+      text run at (0,0) width 30: "PASS"

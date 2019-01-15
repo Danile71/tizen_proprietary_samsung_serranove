@@ -1,0 +1,73 @@
+Subject: Split sources for debugging into separate -debugsource package
+
+At the moment the -debuginfo package also include the sources where used to
+build the binary. The patches moves them into a separate package -debugsource.
+
+Index: macros.in
+===================================================================
+--- macros.in.orig
++++ macros.in
+@@ -180,15 +180,27 @@
+ %debug_package \
+ %ifnarch noarch\
+ %global __debug_package 1\
+-%package debug\
++%package debuginfo\
+ Summary: Debug information for package %{name}\
+ Group: Development/Debug\
+ AutoReqProv: 0\
+-%description debug\
++%description debuginfo\
+ This package provides debug information for package %{name}.\
+ Debug information is useful when developing applications that use this\
+ package or when debugging this package.\
+-%files debug -f debugfiles.list\
++%files debuginfo -f debugfiles.list\
++%defattr(-,root,root)\
++\
++%package debugsource\
++Summary: Debug sources for package %{name}\
++Group: Development/Debug\
++AutoReqProv: 0\
++Requires: %{name}-debuginfo = %{?epoch:%{epoch}:}%{version}-%{release}\
++%description debugsource\
++This package provides debug sources for package %{name}.\
++Debug sources are useful when developing applications that use this\
++package or when debugging this package.\
++%files debugsource -f debugsources.list\
+ %defattr(-,root,root)\
+ %endif\
+ %{nil}
+Index: scripts/find-debuginfo.sh
+===================================================================
+--- scripts/find-debuginfo.sh.orig
++++ scripts/find-debuginfo.sh
+@@ -187,8 +187,8 @@ set -o pipefail
+ strict_error=ERROR
+ $strict || strict_error=WARNING
+ 
+-# Strip ELF binaries
+-find $RPM_BUILD_ROOT ! -path "${debugdir}/*.debug" -type f \( -perm +111 -or -name "*.so*" -or -name "*.ko" \) -print |
++# Strip ELF binaries (and no static libraries)
++find $RPM_BUILD_ROOT ! -path "${debugdir}/*.debug" -type f \( -perm +111 -or -name "*.so*" -or -name "*.ko" \) ! -name "*.a" -print |
+ file -N -f - | sed -n -e 's/^\(.*\):[ 	]*.*ELF.*, not stripped/\1/p' |
+ xargs --no-run-if-empty stat -c '%h %D_%i %n' |
+ while read nlinks inum f; do
+@@ -300,10 +300,16 @@ if [ -d "${RPM_BUILD_ROOT}/usr/lib" -o -
+ 
+   (cd "${RPM_BUILD_ROOT}/usr"
+    test ! -d lib/debug || find lib/debug ! -type d
+-   test ! -d src/debug || find src/debug -mindepth 1 -maxdepth 1
+   ) | sed 's,^,/usr/,' >> "$LISTFILE"
+ fi
+ 
++: > "$SOURCEFILE"
++if [ -d "${RPM_BUILD_ROOT}/usr/src" ]; then
++  (cd "${RPM_BUILD_ROOT}/usr"
++   test ! -d src/debug || find src/debug -mindepth 1 -maxdepth 1
++  ) | sed 's,^,/usr/,' >> "$SOURCEFILE"
++fi
++
+ # Append to $1 only the lines from stdin not already in the file.
+ append_uniq()
+ {

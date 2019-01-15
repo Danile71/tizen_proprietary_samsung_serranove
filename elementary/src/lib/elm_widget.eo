@@ -1,0 +1,852 @@
+abstract Elm_Widget (Evas.Object_Smart, Elm_Interface_Atspi_Accessible, Elm_Interface_Atspi_Component)
+{
+   eo_prefix: elm_obj_widget;
+   data: Elm_Widget_Smart_Data;
+   properties {
+      focus {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool focus;
+         }
+      }
+      drag_lock_y {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool lock;
+         }
+      }
+      focus_highlight_style {
+         set {
+            /*@ This function set the widget focus highlight style. */
+            return: bool;
+         }
+         get {
+            /*@ This function returns the widget focus highlight style. */
+         }
+         values {
+            const(char)* style;
+         }
+      }
+      tree_unfocusable {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool tree_unfocusable;
+         }
+      }
+      mirrored {
+         set {
+            /*@ Sets the widget's mirrored mode. */
+         }
+         get {
+            /*@ Returns the widget's mirrored mode. */
+         }
+         values {
+            bool mirrored;
+         }
+      }
+      theme {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Elm_Theme *th;
+         }
+      }
+      disabled {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool disabled;
+         }
+      }
+      highlight_ignore {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool ignore;
+         }
+      }
+      mirrored_automatic {
+         set {
+            /*@ Sets the widget's mirrored mode setting. */
+         }
+         get {
+            /*@ Returns the widget's mirrored mode setting. */
+         }
+         values {
+            bool automatic;
+         }
+      }
+      orientation_mode_disabled {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool disabled;
+         }
+      }
+      style {
+         set {
+            /*@ No description supplied by the EAPI. */
+            return: bool;
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            const(char)* style;
+         }
+      }
+      scale {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            double scale;
+         }
+      }
+      focus_custom_chain {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            list *objs @const_get;
+         }
+      }
+      can_focus {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool can_focus;
+         }
+      }
+      highlight_in_theme {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool highlight;
+         }
+      }
+      parent {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Object *parent;
+         }
+      }
+      access_info {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            const(char)* txt;
+         }
+      }
+      drag_lock_x {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool lock;
+         }
+      }
+      access_highlight_in_theme {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool highlight; /*@ highlight */
+         }
+      }
+      parent_highlight {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool highlighted;
+         }
+      }
+      theme_object {
+         set {
+            /*@ No description supplied by the EAPI. */
+            return: bool;
+         }
+         values {
+            Evas_Object *edj;
+            const(char)* wname;
+            const(char)* welement;
+            const(char)* wstyle;
+         }
+      }
+      hover_object {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Object *sobj;
+         }
+      }
+      display_mode {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Display_Mode dispmode;
+         }
+      }
+      on_show_region_hook {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            region_hook_func_type func;
+            void *data;
+         }
+      }
+      domain_part_text_translatable {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            const(char)* part;
+            const(char)* domain;
+            bool translatable;
+         }
+      }
+      orientation {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            int rotation;
+         }
+      }
+      resize_object {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Object *sobj;
+            bool sub_obj;
+         }
+      }
+      domain_translatable_part_text {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            const(char)* part;
+            const(char)* domain;
+            const(char)* label;
+         }
+      }
+      scrollable_children {
+         get {
+            /*@
+            Function to operate on a given widget's scrollabe children when necessary.
+            @warning free the returned list with eina_list_free(). */
+            return: list *;
+         }
+      }
+      scroll_hold {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: int;
+         }
+      }
+      drag_child_locked_y {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: int;
+         }
+      }
+      item_loop_enabled {
+         set {
+            /*@ Set enable or disable item loop feature. */
+         }
+         get {
+            /*@ Get the value whether item loop feature is enabled or not. */
+         }
+         values {
+            bool enable;
+         }
+      }
+      child_can_focus {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: bool;
+         }
+      }
+      scroll_freeze {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: int;
+         }
+      }
+      focus_region {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: bool;
+         }
+         values {
+            Evas_Coord x;
+            Evas_Coord y;
+            Evas_Coord w;
+            Evas_Coord h;
+         }
+      }
+      top {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: Evas_Object *;
+         }
+      }
+      focus_order {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: uint;
+         }
+      }
+      drag_child_locked_x {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: int;
+         }
+      }
+      can_focus_child_list {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: list *;
+         }
+      }
+      focused_item {
+         get {
+            /*@ Get the focused widget item. */
+            return: Elm_Object_Item *;
+         }
+      }
+      parents_bounce {
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            bool horiz;
+            bool vert;
+         }
+      }
+      parent_widget {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: Evas_Object *;
+            legacy: null;
+         }
+      }
+      highlight {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: bool;
+         }
+      }
+      focused_object {
+         get {
+            /*@ No description supplied by the EAPI. */
+            return: Evas_Object *;
+         }
+      }
+      parent2 {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Object *parent;
+         }
+      }
+      part_text {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         keys {
+            const(char)* part;
+         }
+         values {
+            const(char)* label;
+         }
+      }
+      focus_move_policy {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Elm_Focus_Move_Policy policy;
+         }
+      }
+   }
+   methods {
+      newest_focus_order_get @const {
+         /*@ No description supplied by the EAPI. */
+         return: Evas_Object *;
+         params {
+            @out uint newest_focus_order;
+            @in bool can_focus_only;
+         }
+      }
+      scroll_hold_push {
+         /*@ No description supplied by the EAPI. */
+      }
+      cursor_add {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Elm_Cursor *cur;
+         }
+      }
+      focus_next_object_set {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Evas_Object *next;
+            @in Elm_Focus_Direction dir;
+         }
+      }
+      focus_next_object_get @const {
+         /*@ No description supplied by the EAPI. */
+         return: Evas_Object *;
+         params {
+            @in Elm_Focus_Direction dir;
+         }
+      }
+      focus_tree_unfocusable_handle {
+         /*@ No description supplied by the EAPI. */
+      }
+      focus_custom_chain_prepend {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Evas_Object *child;
+            @in Evas_Object *relative_child;
+         }
+      }
+      part_text_translate {
+         /*@ No description supplied by the EAPI. */
+         return: const(char)*;
+         params {
+            @in const(char)* part;
+            @in const(char)* text;
+         }
+      }
+      focus_highlight_geometry_get @const {
+         /*@ Get the focus highlight geometry of widget. */
+         params {
+            @in Evas_Coord *x;
+            @in Evas_Coord *y;
+            @in Evas_Coord *w;
+            @in Evas_Coord *h;
+         }
+      }
+      activate {
+         /*@ 'Virtual' function to activate widget. */
+         params {
+            @in Elm_Activate act;
+         }
+         return: bool;
+         legacy: null; /* the legacy API has not the same number of parameter to we don't generate it. */
+      }
+      sub_object_add {
+         /*@ 'Virtual' function handling sub objects being added. */
+         return: bool;
+         params {
+            @in Evas_Object *sobj;
+         }
+      }
+      focus_direction_manager_is {
+         /*@ 'Virtual' function which checks if handling of passing focus to sub-objects in given direction is supported by widget. */
+         return: bool;
+         legacy: null;
+      }
+      event {
+         /*@ 'Virtual' function handling input events on the widget. */
+         params {
+            @in Evas_Object *source;
+            @in Evas_Callback_Type type;
+            @in void *event_info;
+         }
+         return: bool;
+      }
+      event_callback_add {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Elm_Event_Cb func;
+            @in const(void)* data;
+         }
+      }
+      access {
+         /*@ 'Virtual' function on the widget being set access. */
+         params {
+            @in bool acs;
+         }
+         legacy: null;
+      }
+      cursor_del {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Elm_Cursor *cur;
+         }
+      }
+      event_callback_del {
+         /*@ No description supplied by the EAPI. */
+         return: void *;
+         params {
+            @in Elm_Event_Cb func;
+            @in const(void)* data;
+         }
+      }
+      on_focus {
+         /*@ 'Virtual' function handling focus in/out events on the widget.
+         return EINA_TRUE if this widget can handle focus, EINA_FALSE otherwise */
+         return: bool;
+      }
+      on_focus_region {
+         /*@ 'Virtual' function returning an inner area of a widget that should be brought into the visible area of a broader viewport, may this context arise. */
+         params {
+            @out Evas_Coord x;
+            @out Evas_Coord y;
+            @out Evas_Coord w;
+            @out Evas_Coord h;
+         }
+         return: bool;
+      }
+      focus_cycle {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Elm_Focus_Direction dir;
+         }
+      }
+      focus_direction {
+         /*@ 'Virtual' function handling passing focus to sub-objects given a direction, in degrees. */
+         params {
+            @in const(Evas_Object)* base;
+            @in double degree;
+            @out Evas_Object *direction;
+            @out double weight;
+         }
+         return: bool;
+      }
+      event_propagate {
+         /*@ No description supplied by the EAPI. */
+         return: bool;
+         params {
+            @in Evas_Callback_Type type;
+            @in void *event_info;
+            @in Evas_Event_Flags *event_flags;
+         }
+      }
+      signal_callback_add {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in const(char)* emission;
+            @in const(char)* source;
+            @in Edje_Signal_Cb func;
+            @in void *data;
+         }
+      }
+      focus_next_manager_is {
+         /*@ 'Virtual' function which checks if handling of passing focus to sub-objects is supported by widget. */
+         return: bool;
+      }
+      name_find @const {
+         /*@ No description supplied by the EAPI. */
+         return: Evas_Object *;
+         params {
+            @in const(char)* name;
+            @in int recurse;
+         }
+      }
+      focus_list_direction_get @const {
+         /*@ No description supplied by the EAPI. */
+         return: bool;
+         params {
+            @in const(Evas_Object)* base;
+            @in const(list)* items;
+            @in list_data_get_func_type list_data_get;
+            @in double degree;
+            @out Evas_Object *direction;
+            @out double weight;
+         }
+      }
+      focused_object_clear {
+         /*@ No description supplied by the EAPI. */
+      }
+      focus_direction_go {
+         /*@ No description supplied by the EAPI. */
+         return: bool;
+         params {
+            @in double degree;
+         }
+      }
+      show_region_set {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Evas_Coord x;
+            @in Evas_Coord y;
+            @in Evas_Coord w;
+            @in Evas_Coord h;
+            @in bool forceshow;
+         }
+      }
+      show_region_get @const {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @out Evas_Coord x;
+            @out Evas_Coord y;
+            @out Evas_Coord w;
+            @out Evas_Coord h;
+         }
+      }
+      scroll_freeze_pop {
+         /*@ No description supplied by the EAPI. */
+      }
+      tooltip_del {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Elm_Tooltip *tt;
+         }
+      }
+      focus_next_get @const {
+         /*@ No description supplied by the EAPI. */
+         return: bool;
+         params {
+            @in Elm_Focus_Direction dir;
+            @out Evas_Object *next;
+         }
+      }
+      translatable_part_text_get @const {
+         /*@ No description supplied by the EAPI. */
+         return: const(char)*;
+         params {
+            @in const(char)* part;
+         }
+      }
+      focus_restore {
+         /*@
+         @internal
+
+         Restore the focus state of the sub-tree.
+
+         This API will restore the focus state of the sub-tree to the latest
+         state. If a sub-tree is unfocused and wants to get back to the latest
+         focus state, this API will be helpful.
+
+         @ingroup Widget */
+
+      }
+      scroll_hold_pop {
+         /*@ No description supplied by the EAPI. */
+      }
+      translate {
+         /*@ 'Virtual' function handling language changes on Elementary. */
+         return: bool;
+         legacy: null;
+      }
+      scroll_freeze_push {
+         /*@ No description supplied by the EAPI. */
+      }
+      focus_custom_chain_unset {
+         /*@ No description supplied by the EAPI. */
+      }
+      focus_steal {
+         /*@ No description supplied by the EAPI. */
+      }
+      focus_hide_handle {
+         /*@ No description supplied by the EAPI. */
+      }
+      focus_next {
+         /*@ 'Virtual' function handling passing focus to sub-objects. */
+         params {
+            @in Elm_Focus_Direction dir;
+            @out Evas_Object *next;
+         }
+         return: bool;
+      }
+      focus_list_next_get @const {
+         /*@ No description supplied by the EAPI. */
+         return: bool;
+         params {
+            @in const(list)* items;
+            @in list_data_get_func_type list_data_get;
+            @in Elm_Focus_Direction dir;
+            @out Evas_Object *next;
+         }
+      }
+      focus_mouse_up_handle {
+         /*@ No description supplied by the EAPI. */
+         legacy: null;
+      }
+      theme_apply {
+         /*@ 'Virtual' function on the widget being re-themed. */
+         return: bool;
+      }
+      focus_direction_get @const {
+         /*@ No description supplied by the EAPI. */
+         return: bool;
+         params {
+            @in const(Evas_Object)* base;
+            @in double degree;
+            @out Evas_Object *direction;
+            @out double weight;
+         }
+      }
+      signal_callback_del {
+         /*@ No description supplied by the EAPI. */
+         return: void *;
+         params {
+            @in const(char)* emission;
+            @in const(char)* source;
+            @in Edje_Signal_Cb func;
+         }
+      }
+      signal_emit {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in const(char)* emission;
+            @in const(char)* source;
+         }
+      }
+      disable {
+         /*@ 'Virtual' function on the widget being disabled. */
+         return: bool;
+      }
+      sub_object_del {
+         /*@ 'Virtual' function handling sub objects being removed. */
+         return: bool;
+         params {
+            @in Evas_Object *sobj;
+         }
+      }
+      tooltip_add {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Elm_Tooltip *tt;
+         }
+      }
+      focus_region_show @const {
+         /*@ No description supplied by the EAPI. */
+      }
+      focus_disabled_handle {
+         /*@ No description supplied by the EAPI. */
+      }
+      focus_custom_chain_append {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @in Evas_Object *child;
+            @in Evas_Object *relative_child;
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Eo.Base.destructor;
+      Eo.Base.dbg_info_get;
+      Evas.Object_Smart.hide;
+      Evas.Object_Smart.calculate;
+      Evas.Object_Smart.clip_unset;
+      Evas.Object_Smart.show;
+      Evas.Object_Smart.color.set;
+      Evas.Object_Smart.move;
+      Evas.Object_Smart.member_del;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Evas.Object_Smart.clip.set;
+      Evas.Object_Smart.member_add;
+      Evas.Object_Smart.resize;
+      @virtual .focus_direction;
+      @virtual .focus_next;
+      @virtual .parent_widget.get;
+      Elm_Interface_Atspi_Accessible.name.get;
+      //TIZEN_ONLY(20150717) add widget name setter
+      Elm_Interface_Atspi_Accessible.name.set;
+      ///
+      Elm_Interface_Atspi_Accessible.description.get;
+      Elm_Interface_Atspi_Accessible.description.set;
+      Elm_Interface_Atspi_Accessible.role.get;
+      Elm_Interface_Atspi_Accessible.role.set;
+      Elm_Interface_Atspi_Accessible.state_set.get;
+      Elm_Interface_Atspi_Accessible.children.get;
+      Elm_Interface_Atspi_Accessible.parent.get;
+      Elm_Interface_Atspi_Accessible.parent.set;
+      Elm_Interface_Atspi_Accessible.attributes.get;
+      Elm_Interface_Atspi_Accessible.relation_set.get;
+      Elm_Interface_Atspi_Accessible.relationship_append;
+      Elm_Interface_Atspi_Accessible.relationship_remove;
+      //TIZEN_ONLY(20150731) : add i18n support for name and description
+      Elm_Interface_Atspi_Accessible.translation_domain.set;
+      Elm_Interface_Atspi_Accessible.translation_domain.get;
+      ///
+      Elm_Interface_Atspi_Component.focus_grab;
+      Elm_Interface_Atspi_Component.highlight_grab;
+      Elm_Interface_Atspi_Component.highlight_clear;
+      Elm_Interface_Atspi_Component.accessible_at_point_get;
+   }
+}

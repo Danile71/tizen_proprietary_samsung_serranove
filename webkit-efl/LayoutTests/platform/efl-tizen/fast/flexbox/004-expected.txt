@@ -1,0 +1,12 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 950x38
+          text run at (0,0) width 357: "You should see a green 100x100 box below. "
+          text run at (357,0) width 593: "If you see a red box, then the inner block is not properly growing to fill the"
+          text run at (0,19) width 221: "height of the enclosing box."
+      RenderDeprecatedFlexibleBox {DIV} at (0,54) size 100x100 [bgcolor=#FF0000]
+        RenderBlock {DIV} at (0,0) size 100x100 [bgcolor=#008000]

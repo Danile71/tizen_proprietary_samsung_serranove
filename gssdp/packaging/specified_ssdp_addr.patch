@@ -1,0 +1,110 @@
+--- a/libgssdp/gssdp-protocol.h
++++ b/libgssdp/gssdp-protocol.h
+@@ -24,17 +24,19 @@
+ 
+ G_BEGIN_DECLS
+ 
+-#define SSDP_ADDR "239.255.255.250"
++extern gboolean use_specified_addr;
++extern char *ssdp_addr;
++#define SSDP_ADDR (use_specified_addr? ssdp_addr : "239.255.255.250")
+ #define SSDP_PORT 1900
+ #define SSDP_PORT_STR "1900"
+ 
+ #define SSDP_DISCOVERY_REQUEST                      \
+         "M-SEARCH * HTTP/1.1\r\n"                   \
+-        "Host: " SSDP_ADDR ":" SSDP_PORT_STR "\r\n" \
++        "Host: %s:%s\r\n"                           \
+         "Man: \"ssdp:discover\"\r\n"                \
+         "ST: %s\r\n"                                \
+         "MX: %d\r\n"                                \
+-        "User-Agent: %s GSSDP/" VERSION "\r\n\r\n"  \
++        "User-Agent: %s GSSDP/" VERSION "\r\n\r\n"
+ 
+ #define SSDP_DISCOVERY_RESPONSE                     \
+         "HTTP/1.1 200 OK\r\n"                       \
+@@ -50,7 +52,7 @@ G_BEGIN_DECLS
+ 
+ #define SSDP_ALIVE_MESSAGE                          \
+         "NOTIFY * HTTP/1.1\r\n"                     \
+-        "Host: " SSDP_ADDR ":" SSDP_PORT_STR "\r\n" \
++        "Host: %s:%s\r\n" \
+         "Cache-Control: max-age=%d\r\n"             \
+         "Location: %s\r\n"                          \
+         "%s"                                        \
+@@ -61,7 +63,7 @@ G_BEGIN_DECLS
+ 
+ #define SSDP_BYEBYE_MESSAGE                         \
+         "NOTIFY * HTTP/1.1\r\n"                     \
+-        "Host: " SSDP_ADDR ":" SSDP_PORT_STR "\r\n" \
++        "Host: %s:%s\r\n" \
+         "NTS: ssdp:byebye\r\n"                     \
+         "NT: %s\r\n"                                \
+         "USN: %s\r\n\r\n"
+
+--- a/libgssdp/gssdp-resource-browser.c
++++ b/libgssdp/gssdp-resource-browser.c
+@@ -43,6 +43,9 @@
+ #define MAX_DISCOVERY_MESSAGES 3
+ #define DISCOVERY_FREQUENCY    500 /* 500 ms */
+ 
++gboolean use_specified_addr;
++char *ssdp_addr;
++
+ G_DEFINE_TYPE (GSSDPResourceBrowser,
+                gssdp_resource_browser,
+                G_TYPE_OBJECT);
+@@ -574,6 +577,23 @@ gssdp_resource_browser_get_active (GSSDPResourceBrowser *resource_browser)
+         return resource_browser->priv->active;
+ }
+ 
++gboolean
++gssdp_resource_browser_set_broadcast_addr(char *addr)
++{
++    gboolean ret = FALSE;
++
++    if (addr == NULL) {
++            ret = FALSE;
++            use_specified_addr = FALSE;
++    } else {
++            ssdp_addr = addr;
++            ret = TRUE;
++            use_specified_addr = TRUE;
++    }
++
++    return ret;
++}
++
+ /**
+  * Resource expired: Remove
+  **/
+@@ -923,6 +943,8 @@ send_discovery_request (GSSDPResourceBrowser *resource_browser)
+         char *message;
+ 
+         message = g_strdup_printf (SSDP_DISCOVERY_REQUEST,
++                                   SSDP_ADDR,
++                                   SSDP_PORT_STR,
+                                    resource_browser->priv->target,
+                                    resource_browser->priv->mx,
+                                    g_get_application_name () ?: "");
+
+--- a/libgssdp/gssdp-resource-group.c
++++ b/libgssdp/gssdp-resource-group.c
+@@ -1000,6 +1000,8 @@ resource_alive (Resource *resource)
+         al = construct_al (resource);
+ 
+         message = g_strdup_printf (SSDP_ALIVE_MESSAGE,
++                                   SSDP_ADDR,
++                                   SSDP_PORT_STR,
+                                    max_age,
+                                    (char *) resource->locations->data,
+                                    al ? al : "",
+@@ -1022,6 +1024,8 @@ resource_byebye (Resource *resource)
+ 
+         /* Queue message */
+         message = g_strdup_printf (SSDP_BYEBYE_MESSAGE,
++                                   SSDP_ADDR,
++                                   SSDP_PORT_STR,
+                                    resource->target,
+                                    resource->usn);
+         

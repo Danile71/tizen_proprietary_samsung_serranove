@@ -1,0 +1,26 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 801x19
+          text run at (0,0) width 282: "You should see two iframes below. "
+          text run at (282,0) width 266: "The narrow one should be black. "
+          text run at (548,0) width 253: "The wider one should be green."
+      RenderBlock {P} at (0,35) size 964x158
+        RenderPartObject {IFRAME} at (0,0) size 154x154 [border: (2px inset #000000)]
+          layer at (0,0) size 150x150
+            RenderView at (0,0) size 150x150
+          layer at (0,0) size 150x150
+            RenderBlock {HTML} at (0,0) size 150x150
+              RenderBody {BODY} at (8,8) size 134x134 [bgcolor=#000000]
+        RenderText {#text} at (154,139) size 5x19
+          text run at (154,139) width 5: " "
+        RenderPartObject {IFRAME} at (159,0) size 654x154 [border: (2px inset #000000)]
+          layer at (0,0) size 650x150
+            RenderView at (0,0) size 650x150
+          layer at (0,0) size 650x150
+            RenderBlock {HTML} at (0,0) size 650x150
+              RenderBody {BODY} at (8,8) size 634x134 [bgcolor=#008000]
+        RenderText {#text} at (0,0) size 0x0

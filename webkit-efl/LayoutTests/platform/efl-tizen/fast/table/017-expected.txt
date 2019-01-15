@@ -1,0 +1,25 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderTable {TABLE} at (0,0) size 915x54 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 913x52
+          RenderTableRow {TR} at (0,2) size 913x48
+            RenderTableCell {TD} at (2,2) size 289x48 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderTable {TABLE} at (2,2) size 285x44
+                RenderTableSection {TBODY} at (0,0) size 285x44
+                  RenderTableRow {TR} at (0,2) size 285x40
+                    RenderTableCell {TD} at (2,2) size 281x40 [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 234x38
+                        text run at (1,1) width 234: "This is the first column. It has"
+                        text run at (1,20) width 119: "some text in it."
+            RenderTableCell {TD} at (293,2) size 618x48 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderTable {TABLE} at (2,2) size 614x44
+                RenderTableSection {TBODY} at (0,0) size 614x44
+                  RenderTableRow {TR} at (0,2) size 614x40
+                    RenderTableCell {TD} at (2,2) size 610x40 [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 591x38
+                        text run at (1,1) width 216: "This is the second column. "
+                        text run at (217,1) width 375: "It has a lot more content than the first column."
+                        text run at (1,20) width 178: "That shouldn't matter."

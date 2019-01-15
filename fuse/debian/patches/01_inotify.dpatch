@@ -1,0 +1,48 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_inotify.dpatch by Youngjae Shin <yj99.shin@samsung.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: fix the removing inotify
+
+@DPATCH@
+
+diff -urN fuse-2.orig/lib/fuse.c fuse-2/lib/fuse.c
+--- fuse-2.orig/lib/fuse.c	2010-02-10 09:35:29.000000000 +0900
++++ fuse-2/lib/fuse.c	2010-02-10 09:43:59.000000000 +0900
+@@ -780,6 +780,7 @@
+ 	free(path2);
+ }
+ 
++#define FIX_INOTIFY_BROKEN
+ static void forget_node(struct fuse *f, fuse_ino_t nodeid, uint64_t nlookup)
+ {
+ 	struct node *node;
+@@ -805,11 +806,28 @@
+ 	}
+ 
+ 	assert(node->nlookup >= nlookup);
++#ifdef FIX_INOTIFY_BROKEN
++	struct node *temp_node;
++	int i;
++
++	for(i=0;i<f->id_table_size;i++) {
++		temp_node = f->id_table[i];
++		while(temp_node) {
++			if(temp_node->parent == node)
++				goto donot_forget;
++			temp_node = temp_node->id_next;
++		}
++	}
++#endif
+ 	node->nlookup -= nlookup;
+ 	if (!node->nlookup) {
+ 		unhash_name(f, node);
+ 		unref_node(f, node);
+ 	}
++
++#ifdef FIX_INOTIFY_BROKEN
++donot_forget:
++#endif
+ 	pthread_mutex_unlock(&f->lock);
+ }
+ 

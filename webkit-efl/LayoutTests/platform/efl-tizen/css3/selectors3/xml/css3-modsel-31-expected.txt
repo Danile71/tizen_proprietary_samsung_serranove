@@ -1,0 +1,53 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x400
+  RenderBlock {test} at (0,0) size 980x400
+    RenderBlock {p} at (0,16) size 980x19 [bgcolor=#00FF00]
+      RenderText {#text} at (0,0) size 374x19
+        text run at (0,0) width 374: "This paragraph should have green background"
+    RenderBlock {address} at (0,51) size 980x19
+      RenderText {#text} at (0,0) size 422x19
+        text run at (0,0) width 422: "But this address is here only to fill space in the dom.."
+    RenderBlock {p} at (0,86) size 980x19
+      RenderText {#text} at (0,0) size 196x19
+        text run at (0,0) width 196: "So does this paragraph !"
+    RenderBlock {p} at (0,121) size 980x19
+      RenderText {#text} at (0,0) size 201x19
+        text run at (0,0) width 201: "And so does this one too."
+    RenderBlock {dl} at (0,156) size 980x228
+      RenderBlock {dt} at (0,0) size 980x19
+        RenderText {#text} at (0,0) size 157x19
+          text run at (0,0) width 157: "First definition term"
+      RenderBlock {dd} at (40,19) size 940x19
+        RenderText {#text} at (0,0) size 113x19
+          text run at (0,0) width 113: "First definition"
+      RenderBlock {dt} at (0,38) size 980x19
+        RenderText {#text} at (0,0) size 182x19
+          text run at (0,0) width 182: "Second definition term"
+      RenderBlock {dd} at (40,57) size 940x19
+        RenderText {#text} at (0,0) size 138x19
+          text run at (0,0) width 138: "Second definition"
+      RenderBlock {dt} at (0,76) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 454x19
+          text run at (0,0) width 454: "Third definition term that should have green background"
+      RenderBlock {dd} at (40,95) size 940x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 410x19
+          text run at (0,0) width 410: "Third definition that should have green background"
+      RenderBlock {dt} at (0,114) size 980x19
+        RenderText {#text} at (0,0) size 175x19
+          text run at (0,0) width 175: "Fourth definition term"
+      RenderBlock {dd} at (40,133) size 940x19
+        RenderText {#text} at (0,0) size 131x19
+          text run at (0,0) width 131: "Fourth definition"
+      RenderBlock {dt} at (0,152) size 980x19
+        RenderText {#text} at (0,0) size 158x19
+          text run at (0,0) width 158: "Fifth definition term"
+      RenderBlock {dd} at (40,171) size 940x19
+        RenderText {#text} at (0,0) size 114x19
+          text run at (0,0) width 114: "Fifth definition"
+      RenderBlock {dt} at (0,190) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 452x19
+          text run at (0,0) width 452: "Sixth definition term that should have green background"
+      RenderBlock {dd} at (40,209) size 940x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 408x19
+          text run at (0,0) width 408: "Sixth definition that should have green background"

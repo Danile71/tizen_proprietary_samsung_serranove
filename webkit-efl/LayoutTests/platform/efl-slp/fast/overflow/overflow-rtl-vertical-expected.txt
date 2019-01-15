@@ -1,0 +1,63 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 270x600
+  RenderBlock {HTML} at (0,0) size 270x600
+    RenderBody {BODY} at (12,8) size 250x584
+      RenderBlock {P} at (0,0) size 28x584
+        RenderText {#text} at (0,0) size 14x102
+          text run at (0,0) width 102: "This is a test case for "
+        RenderInline {I} at (0,0) size 28x571
+          RenderText {#text} at (0,102) size 28x571
+            text run at (0,102) width 469: "http://bugzilla.opendarwin.org/show_bug.cgi?id=5826 Blocks with direction:rtl and overflow:auto"
+            text run at (14,0) width 164: "or scroll have incorrect scrollbars"
+        RenderText {#text} at (14,164) size 14x3
+          text run at (14,164) width 3: "."
+      RenderBlock (anonymous) at (40,0) size 14x584
+        RenderText {#text} at (0,0) size 14x343
+          text run at (0,0) width 343: "The right column should be a mirror-image of the left column in terms of"
+      RenderBlock {UL} at (66,0) size 42x584
+        RenderListItem {LI} at (0,40) size 14x544
+          RenderListMarker at (0,-15) size 14x6: bullet
+          RenderText {#text} at (0,0) size 14x123
+            text run at (0,0) width 123: "the presence of a scrollbar"
+        RenderListItem {LI} at (14,40) size 14x544
+          RenderListMarker at (0,-15) size 14x6: bullet
+          RenderText {#text} at (0,0) size 14x176
+            text run at (0,0) width 176: "the initial position of the scroll thumb"
+        RenderListItem {LI} at (28,40) size 14x544
+          RenderListMarker at (0,-15) size 14x6: bullet
+          RenderText {#text} at (0,0) size 14x248
+            text run at (0,0) width 248: "which letters are visible initially and when you scroll"
+      RenderTable {TABLE} at (120,0) size 130x256
+        RenderTableSection {TBODY} at (0,0) size 130x256
+          RenderTableRow {TR} at (0,2) size 126x256
+            RenderTableCell {TD} at (2,2) size 126x125 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (2,129) size 126x125 [r=0 c=1 rs=1 cs=1]
+layer at (139,15) size 36x115 clip at (139,25) size 36x100 scrollHeight 141
+  RenderBlock {DIV} at (5,5) size 36x115 [bgcolor=#FFFF00] [border: (10px solid #FF0000) none (5px solid #008000) none]
+    RenderText {#text} at (0,10) size 14x141
+      text run at (0,10) width 141: "abcdefghijklmnopqrstuvwxyz"
+layer at (179,15) size 36x115 clip at (179,25) size 36x100
+  RenderBlock {DIV} at (45,5) size 36x115 [bgcolor=#FFFF00] [border: (10px solid #FF0000) none (5px solid #008000) none]
+    RenderBlock {DIV} at (0,10) size 14x100 [bgcolor=#D3D3D3]
+      RenderText {#text} at (0,-41) size 14x141
+        text run at (0,-41) width 141: "abcdefghijklmnopqrstuvwxyz"
+layer at (219,15) size 36x115 clip at (219,25) size 36x100 scrollHeight 141
+  RenderBlock {DIV} at (85,5) size 36x115 [bgcolor=#FFFF00] [border: (10px solid #FF0000) none (5px solid #008000) none]
+    RenderBlock {DIV} at (0,10) size 14x100 [bgcolor=#D3D3D3]
+      RenderText {#text} at (0,0) size 14x141
+        text run at (0,0) width 141: "abcdefghijklmnopqrstuvwxyz"
+layer at (139,142) size 36x115 clip at (139,147) size 36x100 scrollY 41 scrollHeight 141
+  RenderBlock {DIV} at (5,5) size 36x115 [bgcolor=#FFFF00] [border: (5px solid #008000) none (10px solid #FF0000) none]
+    RenderText {#text} at (0,-36) size 14x141
+      text run at (0,-36) width 141: "zyxwvutsrqponmlkjihgfedcba"
+layer at (179,142) size 36x115 clip at (179,147) size 36x100
+  RenderBlock {DIV} at (45,5) size 36x115 [bgcolor=#FFFF00] [border: (5px solid #008000) none (10px solid #FF0000) none]
+    RenderBlock {DIV} at (0,5) size 14x100 [bgcolor=#D3D3D3]
+      RenderText {#text} at (0,0) size 14x141
+        text run at (0,0) width 141: "zyxwvutsrqponmlkjihgfedcba"
+layer at (219,142) size 36x115 clip at (219,147) size 36x100 scrollY 41 scrollHeight 141
+  RenderBlock {DIV} at (85,5) size 36x115 [bgcolor=#FFFF00] [border: (5px solid #008000) none (10px solid #FF0000) none]
+    RenderBlock {DIV} at (0,5) size 14x100 [bgcolor=#D3D3D3]
+      RenderText {#text} at (0,-41) size 14x141
+        text run at (0,-41) width 141: "zyxwvutsrqponmlkjihgfedcba"

@@ -1,0 +1,40 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 645x14
+          RenderInline {A} at (0,0) size 231x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 231x14
+              text run at (40,0) width 231: "https://bugs.webkit.org/show_bug.cgi?id=34735"
+          RenderText {#text} at (271,0) size 414x14
+            text run at (271,0) width 414: " [Chromium] OpenType font with CFF glyphs is not handled correctly on Windows XP"
+        RenderText {#text} at (685,0) size 3x14
+          text run at (685,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 613x14
+          text run at (0,0) width 613: "Check if glyphs in Ahem.otf can be rendered correctly. If the test passes, you should see dozens of black square characters below:"
+      RenderBlock (anonymous) at (0,52) size 784x14
+        RenderInline {SPAN} at (0,0) size 297x14
+          RenderText {#text} at (0,0) size 297x14
+            text run at (0,0) width 297: "!\"#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO"
+        RenderText {#text} at (297,0) size 3x14
+          text run at (297,0) width 3: " "
+        RenderInline {SPAN} at (0,0) size 275x14
+          RenderText {#text} at (300,0) size 275x14
+            text run at (300,0) width 275: "PQRSTUVWXYZ[\\]^_`abcdefghijklmnoqrstuvwxyz{|}~"
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,78) size 784x14
+        RenderText {#text} at (0,0) size 639x14
+          text run at (0,0) width 639: "Check if glyphs not in Ahem.otf can be rendered using a fallback font. If the test passes, you should see a single-quote character below:"
+      RenderBlock (anonymous) at (0,104) size 784x14
+        RenderInline {SPAN} at (0,0) size 2x14
+          RenderText {#text} at (0,0) size 2x14
+            text run at (0,0) width 2: "'"
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0

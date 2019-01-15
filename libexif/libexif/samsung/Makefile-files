@@ -1,0 +1,9 @@
+# -*- Makefile -*-
+if ADDITIONAL
+lib_LTLIBRARIES += libmnote-samsung.la
+libmnote_samsung_la_SOURCES = \
+	samsung/mnote-samsung-entry.c samsung/mnote-samsung-entry.h \
+	samsung/exif-mnote-data-samsung.c samsung/exif-mnote-data-samsung.h \
+	samsung/mnote-samsung-tag.c samsung/mnote-samsung-tag.h
+libmnote_samsung_la_LIBADD = $(LTLIBINTL)
+endif

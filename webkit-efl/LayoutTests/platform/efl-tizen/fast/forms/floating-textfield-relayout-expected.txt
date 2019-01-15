@@ -1,0 +1,26 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 132x19
+          text run at (0,0) width 132: "This is a test for "
+        RenderInline {I} at (0,0) size 917x38
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (132,0) size 426x19
+              text run at (132,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=9316"
+          RenderText {#text} at (558,0) size 917x38
+            text run at (558,0) width 5: " "
+            text run at (563,0) width 354: "REGRESSION: text field width shrinks on first"
+            text run at (0,19) width 78: "keystroke"
+        RenderText {#text} at (78,19) size 5x19
+          text run at (78,19) width 5: "."
+      RenderBlock {HR} at (0,54) size 964x2 [border: (1px inset #000000)]
+layer at (8,72) size 964x0
+  RenderBlock (relative positioned) {DIV} at (0,64) size 964x0
+    RenderTextControl {INPUT} at (0,2) size 482x25 [bgcolor=#FFFFFF]
+layer at (12,80) size 475x15
+  RenderBlock {DIV} at (4,6) size 475x15
+    RenderText {#text} at (0,0) size 21x15
+      text run at (0,0) width 21: "foo"

@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x582
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 738x14
+          RenderInline {A} at (0,0) size 226x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 226x14
+              text run at (40,0) width 226: "http://bugs.webkit.org/show_bug.cgi?id=14449"
+          RenderText {#text} at (266,0) size 512x14
+            text run at (266,0) width 3: " "
+            text run at (269,0) width 509: "REGRESSION (r14345-r14375): Absolutely positioned image does not scale to containing element's height"
+        RenderText {#text} at (778,0) size 3x14
+          text run at (778,0) width 3: "."
+layer at (18,34) size 764x200
+  RenderBlock (relative positioned) {DIV} at (10,26) size 764x200
+layer at (18,34) size 100x100
+  RenderBlock (relative positioned) {DIV} at (0,0) size 100x100 [bgcolor=#808080]
+    RenderBlock {DIV} at (0,0) size 100x100
+layer at (18,34) size 50x100
+  RenderImage {IMG} at (0,0) size 50x100 [bgcolor=#0000FF]
+layer at (18,244) size 764x200
+  RenderBlock (relative positioned) {DIV} at (10,236) size 764x200
+    RenderText {#text} at (0,0) size 0x0
+layer at (18,244) size 50x70
+  RenderImage {IMG} at (0,0) size 50x70 [bgcolor=#0000FF]

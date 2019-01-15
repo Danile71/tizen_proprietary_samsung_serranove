@@ -1,0 +1,54 @@
+From: Jan Blunck <jblunck@suse.de>
+Subject: Let debuginfo packages provide the build-id
+
+This patch lets debuginfo packages provide build-id like follows:
+
+ debuginfo(build-id) = c63cb23876c5fa85f36beaff58f8557e1bf22517
+
+Users can therefore ask zypper to install the correct debuginfo package with:
+
+ zypper install -C "debuginfo(build-id) = c63cb23876c5fa85f36beaff58f8557e1bf22517"
+
+Index: autodeps/linux.prov
+===================================================================
+--- autodeps/linux.prov.orig
++++ autodeps/linux.prov
+@@ -5,6 +5,9 @@
+ IFS=$'\n'
+ filelist=($(cat))
+ 
++debuginfolist=($(printf "%s\n" "${filelist[@]}" | grep "/usr/lib/debug/"))
++filelist=($(printf "%s\n" "${filelist[@]}" | grep -v "/usr/lib/debug/"))
++
+ solist=($(printf "%s\n" "${filelist[@]}" | grep "\\.so" | grep -v "^/lib/ld.so" | \
+ 	  tr '\n' '\0' | xargs -0 -r file -L | grep "ELF.*shared object" | \
+ 	  cut -d: -f1))
+@@ -71,6 +74,11 @@ done | sort -u
+      printf "%s\n" "${firmwarelist[@]}" | /usr/lib/rpm/firmware.prov | sort -u
+ 
+ #
++# --- debuginfo files
++[ -x /usr/lib/rpm/debuginfo.prov -a -n "$debuginfolist" ] &&
++     printf "%s\n" "${debuginfolist[@]}" | /usr/lib/rpm/debuginfo.prov | sort -u
++
++#
+ # --- Mono exes/dlls
+ : ${MONO_PREFIX=/usr}
+ if [ -x $MONO_PREFIX/bin/mono -a -n "$monolist" ] ; then
+Index: scripts/debuginfo.prov
+===================================================================
+--- /dev/null
++++ scripts/debuginfo.prov
+@@ -0,0 +1,12 @@
++#!/bin/sh
++
++while read instfile ; do
++    case $instfile in
++	*/usr/lib/debug/.build-id/*.debug)
++	    if [ -f "$instfile" ] ; then
++		BUILDID=$(echo $instfile | sed -ne 's|.*/usr/lib/debug/.build-id/\([0-9a-f]*\)/\([0-9a-f]*\)\.debug|\1\2|p')
++		echo "debuginfo(build-id) = $BUILDID"
++	    fi
++	    ;;
++    esac
++done

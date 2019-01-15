@@ -1,0 +1,40 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x217
+  RenderBlock {HTML} at (0,0) size 980x217
+    RenderBody {BODY} at (8,16) size 964x193
+      RenderBlock {P} at (0,0) size 964x19
+        RenderInline {B} at (0,0) size 69x19
+          RenderText {#text} at (0,0) size 69x19
+            text run at (0,0) width 69: "BUG ID:"
+        RenderText {#text} at (69,0) size 5x19
+          text run at (69,0) width 5: " "
+        RenderInline {A} at (0,0) size 141x19 [color=#0000EE]
+          RenderText {#text} at (74,0) size 141x19
+            text run at (74,0) width 141: "Bugzilla bug 8337"
+        RenderText {#text} at (215,0) size 412x19
+          text run at (215,0) width 412: " Incomplete repaint of inlines\x{2019} outline during editing"
+      RenderBlock {P} at (0,35) size 964x44 [bgcolor=#98FB98]
+        RenderInline {B} at (0,0) size 105x19
+          RenderText {#text} at (3,3) size 105x19
+            text run at (3,3) width 105: "TEST PASS:"
+        RenderText {#text} at (108,3) size 945x38
+          text run at (108,3) width 5: " "
+          text run at (113,3) width 835: "The words \x{201C}sit amet\x{201D} will be deleted, and the blue outline will shrink to surround only the remaining text,"
+          text run at (3,22) width 404: "without leaving behind any trails or other artifacts."
+      RenderBlock {P} at (0,95) size 964x44 [bgcolor=#FF3300]
+        RenderInline {B} at (0,0) size 96x19
+          RenderText {#text} at (3,3) size 96x19
+            text run at (3,3) width 96: "TEST FAIL:"
+        RenderText {#text} at (99,3) size 897x38
+          text run at (99,3) width 5: " "
+          text run at (104,3) width 796: "As the words \x{201C}sit amet\x{201D} will be deleted, the blue outline will leave trails behind as it shrinks to fit the"
+          text run at (3,22) width 122: "remaining text."
+      RenderBlock {DIV} at (0,155) size 100x38
+        RenderInline {SPAN} at (0,0) size 99x38
+          RenderText {#text} at (0,0) size 99x38
+            text run at (0,0) width 52: "Lorem"
+            text run at (52,0) width 5: " "
+            text run at (0,19) width 94: "ipsum dolor"
+            text run at (94,19) width 5: " "
+caret: position 18 of child 0 {#text} of child 1 {SPAN} of child 7 {DIV} of body

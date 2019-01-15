@@ -1,0 +1,37 @@
+Index: autodeps/linux.prov
+===================================================================
+--- autodeps/linux.prov.orig
++++ autodeps/linux.prov
+@@ -12,6 +12,7 @@ pythonlist=
+ tcllist=
+ monolist=($(printf "%s\n" "${filelist[@]}" | egrep "\\.(exe|dll)\$"))
+ mimetypelist=($(printf "%s\n" "${filelist[@]}" | egrep "\\.(desktop)\$"))
++firmwarelist=($(printf "%s\n" "${filelist[@]}" | grep "/lib/firmware/"))
+ 
+ #
+ # --- Alpha does not mark 64bit dependencies
+@@ -65,6 +66,11 @@ done | sort -u
+     printf "%s\n" "${mimetypelist[@]}" | /usr/lib/rpm/mimetypes.prov | sort -u
+ 
+ #
++# --- firmware files
++[ -x /usr/lib/rpm/firmware.prov -a -n "$firmwarelist" ] &&
++     printf "%s\n" "${firmwarelist[@]}" | /usr/lib/rpm/firmware.prov | sort -u
++
++#
+ # --- Mono exes/dlls
+ : ${MONO_PREFIX=/usr}
+ if [ -x $MONO_PREFIX/bin/mono -a -n "$monolist" ] ; then
+Index: scripts/firmware.prov
+===================================================================
+--- /dev/null
++++ scripts/firmware.prov
+@@ -0,0 +1,8 @@
++#!/bin/sh
++# Add firmware files in /lib/firmware into RPM provides
++
++while read instfile ; do
++  case $instfile in
++    */lib/firmware/*) test -f "$instfile" && echo "firmware(${instfile##*/lib/firmware/})" ;;
++  esac
++done

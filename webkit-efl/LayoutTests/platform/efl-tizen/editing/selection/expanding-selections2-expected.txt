@@ -1,0 +1,30 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:(null) toDOMRange:range from 1 of #text > SPAN > DIV > BODY > HTML > #document to 1 of #text > SPAN > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of #text > SPAN > DIV > BODY > HTML > #document to 1 of #text > SPAN > DIV > BODY > HTML > #document toDOMRange:range from 0 of #text > SPAN > DIV > BODY > HTML > #document to 1 of #text > SPAN > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 962x38
+          text run at (0,0) width 524: "This tests double clicking inside and at the end of an editable div. "
+          text run at (524,0) width 438: "The selection that is created should not extend outside"
+          text run at (0,19) width 156: "the editable region."
+      RenderBlock {DIV} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 226x19
+          text run at (0,0) width 226: "This text is in an editable div"
+        RenderInline {SPAN} at (0,0) size 5x19
+          RenderText {#text} at (226,0) size 5x19
+            text run at (226,0) width 5: "."
+      RenderBlock (anonymous) at (0,73) size 964x19
+        RenderText {#text} at (0,0) size 309x19
+          text run at (0,0) width 309: "This text is outside the editable region."
+        RenderText {#text} at (0,0) size 0x0
+selection start: position 0 of child 0 {#text} of child 1 {SPAN} of child 3 {DIV} of body
+selection end:   position 1 of child 0 {#text} of child 1 {SPAN} of child 3 {DIV} of body

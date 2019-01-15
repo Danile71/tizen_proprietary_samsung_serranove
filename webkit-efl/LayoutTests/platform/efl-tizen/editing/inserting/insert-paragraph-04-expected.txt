@@ -1,0 +1,41 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > B > BODY > HTML > #document to 3 of DIV > B > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 2 of DIV > B > BODY > HTML > #document to 2 of DIV > B > BODY > HTML > #document toDOMRange:range from 2 of DIV > B > BODY > HTML > #document to 2 of DIV > B > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 964x38
+          text run at (0,0) width 525: "This tests inserting a paragraph separator after a horizontal rule. "
+          text run at (525,0) width 439: "You should see 'foo', empty paragraph, horizontal rule,"
+          text run at (0,19) width 473: "'bar', and the caret should be just after the horizontal rule. "
+        RenderInline {B} at (0,0) size 955x38
+          RenderText {#text} at (473,19) size 955x38
+            text run at (473,19) width 232: "This demonstrates 8345. "
+            text run at (705,19) width 250: "The caret after a horizontal"
+            text run at (0,38) width 649: "rule is drawn in the same location as the caret before a horizontal rule."
+      RenderBlock (anonymous) at (0,73) size 964x0
+        RenderInline {B} at (0,0) size 0x0
+          RenderText {#text} at (0,0) size 0x0
+      RenderBlock (anonymous) at (0,73) size 964x75
+        RenderBlock {DIV} at (0,0) size 964x75
+          RenderBlock (anonymous) at (0,0) size 964x19
+            RenderText {#text} at (0,0) size 29x19
+              text run at (0,0) width 29: "foo"
+          RenderBlock {HR} at (0,27) size 964x2 [border: (1px inset #000000)]
+          RenderBlock (anonymous) at (0,37) size 964x38
+            RenderBR {BR} at (0,0) size 0x19
+            RenderText {#text} at (0,19) size 30x19
+              text run at (0,19) width 30: "bar"
+      RenderBlock (anonymous) at (0,148) size 964x0
+        RenderInline {B} at (0,0) size 0x0
+caret: position 0 of child 2 {BR} of child 1 {DIV} of child 1 {B} of body

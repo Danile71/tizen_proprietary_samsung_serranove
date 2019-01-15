@@ -1,0 +1,49 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 10 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document toDOMRange:range from 1 of #text > DIV > BODY > HTML > #document to 1 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldInsertNode:#document-fragment replacingDOMRange:range from 1 of #text > DIV > BODY > HTML > #document to 1 of #text > DIV > BODY > HTML > #document givenAction:WebViewInsertActionPasted
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of #text > DIV > BODY > HTML > #document to 1 of #text > DIV > BODY > HTML > #document toDOMRange:range from 2 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x1515
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1515
+  RenderBlock {HTML} at (0,0) size 980x1515
+    RenderBody {BODY} at (8,8) size 964x1499
+      RenderBlock (anonymous) at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 108x19
+          text run at (0,0) width 108: "See this bug: "
+        RenderInline {A} at (0,0) size 217x19 [color=#0000EE]
+          RenderText {#text} at (108,0) size 217x19
+            text run at (108,0) width 217: "<rdar://problem/3918712>"
+        RenderText {#text} at (325,0) size 964x57
+          text run at (325,0) width 619: " \"Paste as Quotation\" in Mail just pastes (<blockquote> tag seems to be lost)."
+          text run at (944,0) width 5: " "
+          text run at (0,19) width 962: "Should see one box with blockquoted \"foo\" text, followed by another box with an \"x\" (not in a blockquote) and \"foo\" (in a"
+          text run at (962,19) width 2: " "
+          text run at (0,38) width 99: "blockquote)."
+      RenderBlock {DIV} at (0,57) size 964x24
+      RenderBlock {DIV} at (0,81) size 964x104 [border: (2px solid #FF0000)]
+        RenderBlock {DIV} at (14,38) size 936x28
+          RenderBlock {BLOCKQUOTE} at (40,0) size 856x28
+            RenderText {#text} at (0,0) size 38x28
+              text run at (0,0) width 38: "foo"
+      RenderBlock {DIV} at (0,185) size 964x1314 [border: (2px solid #FF0000)]
+        RenderText {#text} at (14,1272) size 14x28
+          text run at (14,1272) width 14: "x"
+        RenderImage {IMG} at (28,14) size 720x1280
+      RenderBlock (anonymous) at (0,1499) size 964x0
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+caret: position 1 of child 1 {IMG} of child 7 {DIV} of body

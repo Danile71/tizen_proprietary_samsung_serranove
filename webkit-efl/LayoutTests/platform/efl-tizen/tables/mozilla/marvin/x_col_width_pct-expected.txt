@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x221
+  RenderBlock {html} at (0,0) size 980x221
+    RenderBody {body} at (8,16) size 964x197
+      RenderBlock {p} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 131x19
+          text run at (0,0) width 131: "COL WIDTH=pct"
+      RenderTable {table} at (0,35) size 400x162 [border: (1px outset #808080)]
+        RenderTableCol {colgroup} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+        RenderTableSection (anonymous) at (1,1) size 398x160
+          RenderTableRow {tr} at (0,2) size 398x156
+            RenderTableCell {td} at (2,2) size 98x156 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 71x152
+                text run at (2,2) width 32: "This"
+                text run at (2,21) width 59: "column"
+                text run at (2,40) width 52: "should"
+                text run at (2,59) width 54: "have a"
+                text run at (2,78) width 64: "width of"
+                text run at (2,97) width 56: "25% of"
+                text run at (2,116) width 71: "400px or"
+                text run at (2,135) width 49: "100px"
+            RenderTableCell {td} at (102,59) size 294x42 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 281x38
+                text run at (2,2) width 281: "This column should have a width of"
+                text run at (2,21) width 186: "75% of 400px or 300px"

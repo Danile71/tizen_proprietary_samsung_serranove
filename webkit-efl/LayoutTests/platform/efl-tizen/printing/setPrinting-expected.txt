@@ -1,0 +1,13 @@
+CONSOLE MESSAGE: line 5: TypeError: 'undefined' is not a function (evaluating 'testRunner.setPrinting()')
+layer at (0,0) size 980x787
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x787
+  RenderBlock {HTML} at (0,0) size 980x787
+    RenderBody {BODY} at (0,0) size 980x787
+      RenderBlock {DIV} at (0,0) size 800x749 [border: (1px solid #008000)]
+        RenderText {#text} at (1,1) size 296x19
+          text run at (1,1) width 296: "This test case should output 2 pages."
+      RenderBlock (anonymous) at (0,749) size 980x38
+        RenderText {#text} at (0,0) size 974x38
+          text run at (0,0) width 974: "There should be a blue line above this test. This line is the boundary of 2 pages. As the height of green box is shorter than"
+          text run at (0,19) width 828: "the height of a page by one pixel, there should be a white line between the green box and the blue line."

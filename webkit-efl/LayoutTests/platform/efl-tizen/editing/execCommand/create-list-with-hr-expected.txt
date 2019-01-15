@@ -1,0 +1,30 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document toDOMRange:range from 0 of LI > UL > DIV > BODY > HTML > #document to 0 of LI > UL > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 651x19
+          text run at (0,0) width 651: "This test pushes a horizontal rule into an unordered list with InsertUnorderedList. "
+        RenderInline {B} at (0,0) size 958x38
+          RenderText {#text} at (651,0) size 958x38
+            text run at (651,0) width 307: "This demonstrates what might be"
+            text run at (0,19) width 56: "a bug:"
+        RenderText {#text} at (56,19) size 553x19
+          text run at (56,19) width 553: " the horizontal rule appears before the list marker in the render tree."
+      RenderBlock {DIV} at (0,54) size 964x29
+        RenderBlock {UL} at (0,0) size 964x29
+          RenderListItem {LI} at (40,0) size 924x29
+            RenderBlock {HR} at (0,0) size 924x2 [border: (1px inset #000000)]
+            RenderBlock (anonymous) at (0,10) size 924x19
+              RenderListMarker at (-18,0) size 7x19: bullet
+        RenderBlock (anonymous) at (0,45) size 964x0
+caret: position 0 of child 0 {HR} of child 0 {LI} of child 0 {UL} of child 2 {DIV} of body

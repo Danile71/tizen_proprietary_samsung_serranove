@@ -1,0 +1,145 @@
+<!-- ##### SECTION Title ##### -->
+GSSDPResourceBrowser
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GSSDPResourceBrowser ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SIGNAL GSSDPResourceBrowser::resource-available ##### -->
+<para>
+
+</para>
+
+@gssdpresourcebrowser: the object which received the signal.
+@arg1: 
+@arg2: 
+
+<!-- ##### SIGNAL GSSDPResourceBrowser::resource-unavailable ##### -->
+<para>
+
+</para>
+
+@gssdpresourcebrowser: the object which received the signal.
+@arg1: 
+
+<!-- ##### ARG GSSDPResourceBrowser:active ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG GSSDPResourceBrowser:client ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG GSSDPResourceBrowser:mx ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG GSSDPResourceBrowser:target ##### -->
+<para>
+
+</para>
+
+<!-- ##### MACRO GSSDP_ALL_RESOURCES ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gssdp_resource_browser_new ##### -->
+<para>
+
+</para>
+
+@client: 
+@target: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gssdp_resource_browser_get_client ##### -->
+<para>
+
+</para>
+
+@resource_browser: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gssdp_resource_browser_set_target ##### -->
+<para>
+
+</para>
+
+@resource_browser: 
+@target: 
+
+
+<!-- ##### FUNCTION gssdp_resource_browser_get_target ##### -->
+<para>
+
+</para>
+
+@resource_browser: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gssdp_resource_browser_set_mx ##### -->
+<para>
+
+</para>
+
+@resource_browser: 
+@mx: 
+
+
+<!-- ##### FUNCTION gssdp_resource_browser_get_mx ##### -->
+<para>
+
+</para>
+
+@resource_browser: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gssdp_resource_browser_set_active ##### -->
+<para>
+
+</para>
+
+@resource_browser: 
+@active: 
+
+
+<!-- ##### FUNCTION gssdp_resource_browser_get_active ##### -->
+<para>
+
+</para>
+
+@resource_browser: 
+@Returns: 
+
+

@@ -1,0 +1,72 @@
+# To fix this testcase we need to use cairo_surface_create_for_rectangle, which is not implemented
+# for GL surface and hence effects the performance.
+fast/canvas/DrawImageSinglePixelStretch.html
+
+# cairo currently supports only 'image/png' mimetype for images.
+fast/canvas/canvas-toDataURL-case-insensitive-mimetype.html
+fast/canvas/toDataURL-supportedTypes.html
+fast/canvas/canvas-toDataURL-webp.html
+
+# dashboard compatibility mode is not supported
+fast/canvas/canvas-gradient-addStop-error.html
+
+# plug-ins on X11 need not to support this feature.
+plugins/npp-set-window-called-during-destruction.html
+
+# WebKitTestRunner needs layoutTestController.setCallCloseOnWebViews
+plugins/geturlnotify-during-document-teardown.html
+plugins/open-and-close-window-with-plugin.html
+
+# WebKitTestRunner needs layoutTestController.addDisallowedURL
+plugins/get-url-that-the-resource-load-delegate-will-disallow.html
+
+# These are plug-in tests that use Flash or QuickTime. We should convert these to use the test plug-in.
+plugins/iframe-shims.html
+plugins/embed-attributes-setting.html
+
+# This test checks that NPN_GetURL with a blank target will return an error if the window isn't opened. This behavior doesn't
+# match Firefox or Chrome. We should either fix the test, or get rid of it.
+plugins/get-url-with-blank-target.html
+
+# WebKitTestRunner needs layoutTestController.displayInvalidatedRegion
+plugins/windowless_plugin_paint_test.html
+
+# Tizen uses gesture event instead of mouse event directly.
+plugins/clicking-missing-plugin-fires-delegate.html
+plugins/keyboard-events.html
+plugins/mouse-click-iframe-to-plugin.html
+plugins/mouse-click-plugin-clears-selection.html
+plugins/mouse-events-fixedpos.html
+plugins/mouse-events.html
+plugins/resize-from-plugin.html
+plugins/fullscreen-plugins-dont-reload.html
+plugins/plugin-initiate-popup-window.html
+
+# Unexplained plugin failures that were formerly in the NPRuntime support for out-of-process plug-ins
+# list.
+plugins/netscape-plugin-setwindow-size.html
+plugins/netscape-plugin-setwindow-size-2.html
+plugins/npruntime/plugin-scriptable-object-invoke-default.html
+plugins/pass-different-npp-struct.html
+plugins/reentrant-update-widget-positions.html
+plugins/set-status.html
+
+# WebKitTestRunner needs layoutTestController.setAlwaysAcceptCookies
+http/tests/plugins/third-party-cookie-accept-policy.html
+
+# Tizen uses TNPSoftKey event instead of XKeyEvent
+http/tests/plugins/plugin-document-has-focus.html
+
+# EFL's LayoutTestController does not implement setScrollbarPolicy
+fast/overflow/scrollbar-restored-and-then-locked.html
+
+# WebKitTestRunner setTouchPointRadius() is not supported
+fast/events/touch/basic-single-touch-events.html
+
+# EFL's EventSender does not implement gesture-related callbacks
+fast/events/touch/gesture
+fast/events/touch/page-scaled-touch-gesture-click.html
+
+# Content Security Policy 1.1 (ENABLE_CSP_NEXT) is not enabled
+# https://bugs.webkit.org/show_bug.cgi?id=85558
+http/tests/security/contentSecurityPolicy/1.1

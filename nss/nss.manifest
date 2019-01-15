@@ -1,0 +1,8 @@
+<manifest>
+	<request>
+		<domain name="_"/>
+	</request>
+	<assign>
+		<filesystem path="/usr/lib/nss/unsupported-tools/shlibsign" exec_label="none"/>
+	</assign>
+</manifest>

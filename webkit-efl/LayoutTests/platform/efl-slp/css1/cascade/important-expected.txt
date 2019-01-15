@@ -1,0 +1,68 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 784x14 [color=#008000]
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x44
+        RenderText {#text} at (0,0) size 174x44
+          text run at (0,0) width 174: "P {color: green ! important;}"
+          text run at (174,0) width 0: " "
+          text run at (0,11) width 90: "P {color: red;}"
+          text run at (90,11) width 0: " "
+          text run at (0,22) width 132: "P#id1 {color: purple;}"
+          text run at (132,22) width 0: " "
+          text run at (0,33) width 0: " "
+      RenderBlock {HR} at (0,80) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,94) size 784x28 [color=#008000]
+        RenderText {#text} at (0,0) size 772x28
+          text run at (0,0) width 772: "This sentence should be green, because the declaration marked important should override any other normal declaration for the same element, even if it occurs later in"
+          text run at (0,14) width 66: "the stylesheet."
+      RenderBlock {P} at (0,134) size 784x28 [color=#008000]
+        RenderText {#text} at (0,0) size 302x14
+          text run at (0,0) width 302: "This sentence should also be green, even though it has an ID of "
+        RenderInline {TT} at (0,0) size 18x11
+          RenderText {#text} at (302,3) size 18x11
+            text run at (302,3) width 18: "id1"
+        RenderText {#text} at (320,0) size 782x28
+          text run at (320,0) width 193: ", which would ordinarily make it purple. "
+          text run at (513,0) width 269: "This is because declarations marked important have more"
+          text run at (0,14) width 283: "weight than normal declarations given in a STYLE attribute."
+      RenderBlock {P} at (0,174) size 784x28 [color=#008000]
+        RenderText {#text} at (0,0) size 777x28
+          text run at (0,0) width 450: "This sentence should also be green, even though it has a STYLE attribute declaring it to be red. "
+          text run at (450,0) width 327: "This is because declarations marked important have more weight than"
+          text run at (0,14) width 225: "normal declarations given in a STYLE attribute."
+      RenderTable {TABLE} at (0,214) size 784x140 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x138
+          RenderTableRow {TR} at (0,0) size 782x22
+            RenderTableCell {TD} at (0,0) size 782x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 782x116
+            RenderTableCell {TD} at (0,69) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 771x116 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 763x28 [color=#008000]
+                RenderText {#text} at (0,0) size 760x28
+                  text run at (0,0) width 760: "This sentence should be green, because the declaration marked important should override any other normal declaration for the same element, even if it occurs later"
+                  text run at (0,14) width 78: "in the stylesheet."
+              RenderBlock {P} at (4,44) size 763x28 [color=#008000]
+                RenderText {#text} at (0,0) size 302x14
+                  text run at (0,0) width 302: "This sentence should also be green, even though it has an ID of "
+                RenderInline {TT} at (0,0) size 18x11
+                  RenderText {#text} at (302,3) size 18x11
+                    text run at (302,3) width 18: "id1"
+                RenderText {#text} at (320,0) size 755x28
+                  text run at (320,0) width 193: ", which would ordinarily make it purple. "
+                  text run at (513,0) width 242: "This is because declarations marked important have"
+                  text run at (0,14) width 310: "more weight than normal declarations given in a STYLE attribute."
+              RenderBlock {P} at (4,84) size 763x28 [color=#008000]
+                RenderText {#text} at (0,0) size 754x28
+                  text run at (0,0) width 450: "This sentence should also be green, even though it has a STYLE attribute declaring it to be red. "
+                  text run at (450,0) width 304: "This is because declarations marked important have more weight"
+                  text run at (0,14) width 248: "than normal declarations given in a STYLE attribute."

@@ -1,0 +1,39 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of UL > DIV > BODY > HTML > #document to 0 of UL > DIV > BODY > HTML > #document toDOMRange:range from 0 of DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 3 of #text > B > DIV > DIV > BODY > HTML > #document to 3 of #text > B > DIV > DIV > BODY > HTML > #document toDOMRange:range from 3 of #text > B > DIV > DIV > BODY > HTML > #document to 3 of #text > B > DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 952x38
+          text run at (0,0) width 952: "This tests deletion when the caret is in an empty list item at the beginning of the document. It also makes sure that the"
+          text run at (0,19) width 342: "style inside the empty list item is retained. "
+          text run at (342,19) width 129: "You should see '"
+        RenderInline {B} at (0,0) size 29x19
+          RenderText {#text} at (471,19) size 29x19
+            text run at (471,19) width 29: "foo"
+        RenderText {#text} at (500,19) size 316x19
+          text run at (500,19) width 316: "' followed by a list item containing 'bar'."
+      RenderBlock {DIV} at (0,54) size 964x54
+        RenderBlock {DIV} at (0,0) size 964x19
+          RenderInline {B} at (0,0) size 29x19
+            RenderText {#text} at (0,0) size 29x19
+              text run at (0,0) width 29: "foo"
+        RenderBlock {UL} at (0,35) size 964x19
+          RenderListItem {LI} at (40,0) size 924x19
+            RenderListMarker at (-18,0) size 7x19: bullet
+            RenderText {#text} at (0,0) size 27x19
+              text run at (0,0) width 27: "bar"
+caret: position 3 of child 0 {#text} of child 0 {B} of child 0 {DIV} of child 2 {DIV} of body

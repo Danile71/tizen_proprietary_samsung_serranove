@@ -1,0 +1,24 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x226
+  RenderBlock {test} at (0,0) size 980x226
+    RenderBlock {div} at (0,16) size 980x194
+      RenderBlock {p} at (0,0) size 980x19
+        RenderText {#text} at (0,0) size 224x19
+          text run at (0,0) width 224: "This line should be unstyled."
+      RenderBlock {elementA} at (0,35) size 980x19
+        RenderText {#text} at (0,0) size 224x19
+          text run at (0,0) width 224: "This line should be unstyled."
+      RenderBlock {elementB} at (0,70) size 980x19
+        RenderText {#text} at (0,0) size 224x19
+          text run at (0,0) width 224: "This line should be unstyled."
+      RenderBlock {div} at (0,105) size 980x89
+        RenderBlock {p} at (0,0) size 980x19 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 333x19
+            text run at (0,0) width 333: "This line should have a green background"
+        RenderBlock {elementA} at (0,35) size 980x19 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 333x19
+            text run at (0,0) width 333: "This line should have a green background"
+        RenderBlock {elementB} at (0,70) size 980x19 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 333x19
+            text run at (0,0) width 333: "This line should have a green background"

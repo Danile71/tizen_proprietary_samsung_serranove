@@ -1,0 +1,40 @@
+layer at (0,0) size 800x1184
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x1184
+  RenderBlock {HTML} at (0,0) size 800x1184
+    RenderBody {BODY} at (8,8) size 784x1168
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 255x14
+          text run at (0,0) width 255: "This test should scroll recursively to reveal the button."
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,14) size 784x500
+      RenderBlock (anonymous) at (0,514) size 784x154
+        RenderPartObject {IFRAME} at (0,0) size 304x154 [border: (2px inset #000000)]
+          layer at (0,0) size 308x316
+            RenderView at (0,0) size 300x150
+          layer at (0,0) size 300x316
+            RenderBlock {HTML} at (0,0) size 300x316
+              RenderBody {BODY} at (8,8) size 284x300
+          layer at (8,8) size 300x300 scrollY 539 scrollHeight 1264
+            RenderBlock {DIV} at (0,0) size 300x300
+              RenderBlock (anonymous) at (0,0) size 300x14
+                RenderText {#text} at (0,0) size 66x14
+                  text run at (0,0) width 66: "overflow:auto"
+              RenderBlock {DIV} at (0,14) size 300x600
+              RenderBlock {DIV} at (0,764) size 300x500
+          layer at (8,83) size 150x150 scrollY 473 scrollHeight 868
+            RenderBlock {DIV} at (0,614) size 150x150
+              RenderBlock (anonymous) at (0,0) size 150x14
+                RenderText {#text} at (0,0) size 66x14
+                  text run at (0,0) width 66: "overflow:auto"
+              RenderBlock {DIV} at (0,14) size 150x500
+              RenderBlock (anonymous) at (0,514) size 150x54
+                RenderBR {BR} at (0,0) size 0x14
+                RenderButton {INPUT} at (2,16) size 76x36 [color=#202020]
+                  RenderBlock (anonymous) at (15,8) size 46x18
+                    RenderText at (0,0) size 46x17
+                      text run at (0,0) width 46: "Button"
+                RenderText {#text} at (0,0) size 0x0
+              RenderBlock {DIV} at (0,568) size 150x300
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,668) size 784x500

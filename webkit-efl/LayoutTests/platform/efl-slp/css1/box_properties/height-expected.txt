@@ -1,0 +1,74 @@
+layer at (0,0) size 800x841
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x841
+  RenderBlock {HTML} at (0,0) size 800x841
+    RenderBody {BODY} at (8,8) size 784x825 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x33
+        RenderText {#text} at (0,0) size 126x33
+          text run at (0,0) width 120: ".one {height: 50px;}"
+          text run at (120,0) width 0: " "
+          text run at (0,11) width 126: ".two {height: 100px;}"
+          text run at (126,11) width 0: " "
+          text run at (0,22) width 0: " "
+      RenderBlock {HR} at (0,69) size 784x2 [border: (1px inset #000000)]
+      RenderBlock (anonymous) at (0,77) size 784x50
+        RenderImage {IMG} at (0,0) size 50x50
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,139) size 784x14
+        RenderText {#text} at (0,0) size 206x14
+          text run at (0,0) width 206: "The square above should be fifty pixels tall."
+      RenderBlock (anonymous) at (0,165) size 784x100
+        RenderImage {IMG} at (0,0) size 100x100
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,277) size 784x14
+        RenderText {#text} at (0,0) size 250x14
+          text run at (0,0) width 250: "The square above should be 100 pixels tall and wide."
+      RenderBlock (anonymous) at (0,303) size 784x100
+        RenderImage {IMG} at (0,0) size 30x100
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,415) size 784x14
+        RenderText {#text} at (0,0) size 675x14
+          text run at (0,0) width 675: "The rectangular image above should be 100 pixels tall and 30 pixels wide (the original image is 50x15, and the size has been doubled using the "
+        RenderInline {CODE} at (0,0) size 36x11
+          RenderText {#text} at (675,3) size 36x11
+            text run at (675,3) width 36: "height"
+        RenderText {#text} at (711,0) size 50x14
+          text run at (711,0) width 50: " property)."
+      RenderTable {TABLE} at (0,441) size 782x384 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 780x382
+          RenderTableRow {TR} at (0,0) size 780x22
+            RenderTableCell {TD} at (0,0) size 780x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 780x360
+            RenderTableCell {TD} at (0,191) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 769x360 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (4,4) size 761x50
+                RenderImage {IMG} at (0,0) size 50x50
+                RenderText {#text} at (0,0) size 0x0
+              RenderBlock {P} at (4,66) size 761x14
+                RenderText {#text} at (0,0) size 206x14
+                  text run at (0,0) width 206: "The square above should be fifty pixels tall."
+              RenderBlock (anonymous) at (4,92) size 761x100
+                RenderImage {IMG} at (0,0) size 100x100
+                RenderText {#text} at (0,0) size 0x0
+              RenderBlock {P} at (4,204) size 761x14
+                RenderText {#text} at (0,0) size 250x14
+                  text run at (0,0) width 250: "The square above should be 100 pixels tall and wide."
+              RenderBlock (anonymous) at (4,230) size 761x100
+                RenderImage {IMG} at (0,0) size 30x100
+                RenderText {#text} at (0,0) size 0x0
+              RenderBlock {P} at (4,342) size 761x14
+                RenderText {#text} at (0,0) size 675x14
+                  text run at (0,0) width 675: "The rectangular image above should be 100 pixels tall and 30 pixels wide (the original image is 50x15, and the size has been doubled using the "
+                RenderInline {CODE} at (0,0) size 36x11
+                  RenderText {#text} at (675,3) size 36x11
+                    text run at (675,3) width 36: "height"
+                RenderText {#text} at (711,0) size 50x14
+                  text run at (711,0) width 50: " property)."

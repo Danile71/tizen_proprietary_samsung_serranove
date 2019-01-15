@@ -1,0 +1,285 @@
+/*
+    Copyright (C) 2013 Samsung Electronics
+
+    This file is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This file is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public License
+    along with this library; see the file COPYING.LIB.  If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
+*/
+
+   group {
+      name: "webkit/widget/mediacontrol/playpause_button";
+
+      images {
+         image: "widget/mediacontrol/playpausebutton/Pausebutton_focus_tizen.png" COMP;
+         image: "widget/mediacontrol/playpausebutton/Pausebutton_press_tizen.png" COMP;
+         image: "widget/mediacontrol/playpausebutton/Playbutton_focus_tizen.png" COMP;
+         image: "widget/mediacontrol/playpausebutton/Playbutton_press_tizen.png" COMP;
+         image: "widget/mediacontrol/playpausebutton/Pausebutton_focus_fullscreen_tizen.png" COMP;
+         image: "widget/mediacontrol/playpausebutton/Pausebutton_press_fullscreen_tizen.png" COMP;
+         image: "widget/mediacontrol/playpausebutton/Playbutton_focus_fullscreen_tizen.png" COMP;
+         image: "widget/mediacontrol/playpausebutton/Playbutton_press_fullscreen_tizen.png" COMP;
+      }
+
+      script {
+          public isEnabled;
+          public isPressed;
+          public isFocused;
+          public isHovered;
+          public isplay;
+          public ispause;
+          public isFullScreen;
+
+          public show() {
+              if (get_int(isFullScreen)) {
+                  if (get_int(isEnabled)) {
+                      if (get_int(isFocused)) {
+                          set_state(PART:"playpause_button_image", "focused_fs", 0.0);
+                          if (get_int(isPressed))
+                              set_state(PART:"playpause_button_image", "pressed_fs", 0.0);
+                      } else if (get_int(isHovered)) {
+                          if (get_int(isplay)) {
+                              set_state(PART:"playpause_button_image", "play_hovered_fs", 0.0);
+                              if (get_int(isPressed))
+                                  set_state(PART:"playpause_button_image", "play_hovered_pressed_fs", 0.0);
+                              set_int(isplay, 0);
+                          } else if (get_int(ispause)) {
+                              set_state(PART:"playpause_button_image", "pause_hovered_fs", 0.0);
+                              if (get_int(isPressed))
+                                  set_state(PART:"playpause_button_image", "pause_hovered_pressed_fs", 0.0);
+                              set_int(ispause, 0);
+                          }
+                      }
+                      if (get_int(isplay)) {
+                          set_state(PART:"playpause_button_image", "play_enabled_fs", 0.0);
+                          set_int(isplay, 0);
+                      } else if (get_int(ispause)) {
+                          set_state(PART:"playpause_button_image", "pause_enabled_fs", 0.0);
+                          set_int(ispause, 0);
+                      }
+                      set_int(isFullScreen, 0);
+                  } else
+                      set_state(PART:"playpause_button_image", "default_fs", 0.0);
+              } else {
+                  if (get_int(isEnabled)) {
+                      if (get_int(isFocused)) {
+                          set_state(PART:"playpause_button_image", "focused", 0.0);
+                          if (get_int(isPressed))
+                              set_state(PART:"playpause_button_image", "pressed", 0.0);
+                      } else if (get_int(isHovered)) {
+                          if (get_int(isplay)) {
+                              set_state(PART:"playpause_button_image", "play_hovered", 0.0);
+                              if (get_int(isPressed))
+                                  set_state(PART:"playpause_button_image", "play_hovered_pressed", 0.0);
+                              set_int(isplay, 0);
+                          } else if (get_int(ispause)) {
+                              set_state(PART:"playpause_button_image", "pause_hovered", 0.0);
+                              if (get_int(isPressed))
+                                  set_state(PART:"playpause_button_image", "pause_hovered_pressed", 0.0);
+                              set_int(ispause, 0);
+                          }
+                      }
+                      if (get_int(isplay)) {
+                          set_state(PART:"playpause_button_image", "play_enabled", 0.0);
+                          set_int(isplay, 0);
+                      } else if (get_int(ispause)) {
+                          set_state(PART:"playpause_button_image", "pause_enabled", 0.0);
+                          set_int(ispause, 0);
+                      }
+                  } else
+                      set_state(PART:"playpause_button_image", "default", 0.0);
+              }
+          }
+      }
+
+      parts {
+         part {
+            name: "playpause_button_image";
+            type: IMAGE;
+            description {
+               state: "default" 0.0;
+               min: 25 25;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_focus_tizen.png";
+            }
+            description {
+               state: "pressed" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_press_tizen.png";
+            }
+            description {
+               state: "focused" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_focus_tizen.png";
+            }
+            description {
+               state: "play_enabled" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_focus_tizen.png";
+            }
+            description {
+               state: "play_hovered" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_focus_tizen.png";
+            }
+            description {
+               state: "play_hovered_pressed" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_press_tizen.png";
+            }
+            description {
+               state: "pause_enabled" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Pausebutton_focus_tizen.png";
+            }
+            description {
+               state: "pause_hovered" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Pausebutton_focus_tizen.png";
+            }
+            description {
+               state: "pause_hovered_pressed" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Pausebutton_press_tizen.png";
+            }
+            description {
+               state: "default_fs" 0.0;
+               min:  25 25;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_focus_fullscreen_tizen.png";
+            }
+            description {
+               state: "pressed_fs" 0.0;
+               inherit: "default_fs" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_press_fullscreen_tizen.png";
+            }
+            description {
+               state: "focused_fs" 0.0;
+               inherit: "default_fs" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_focus_fullscreen_tizen.png";
+            }
+            description {
+               state: "play_enabled_fs" 0.0;
+               inherit: "default_fs" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_focus_fullscreen_tizen.png";
+            }
+            description {
+               state: "play_hovered_fs" 0.0;
+               inherit: "default_fs" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_focus_fullscreen_tizen.png";
+            }
+            description {
+               state: "play_hovered_pressed_fs" 0.0;
+               inherit: "default_fs" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Playbutton_press_fullscreen_tizen.png";
+            }
+            description {
+               state: "pause_enabled_fs" 0.0;
+               inherit: "default_fs" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Pausebutton_focus_fullscreen_tizen.png";
+            }
+            description {
+               state: "pause_hovered_fs" 0.0;
+               inherit: "default_fs" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Pausebutton_focus_fullscreen_tizen.png";
+            }
+            description {
+               state: "pause_hovered_pressed_fs" 0.0;
+               inherit: "default_fs" 0.0;
+               image.normal: "widget/mediacontrol/playpausebutton/Pausebutton_press_fullscreen_tizen.png";
+            }
+
+            part {
+               name: "playpause_button";
+               type: IMAGE;
+               description {
+                  state: "default" 0.0;
+                  min: 25 25;
+               }
+               description {
+                  state: "play" 0.0;
+                  inherit: "default" 0.0;
+               }
+               description {
+                  state: "pause" 0.0;
+                  inherit: "default" 0.0;
+               }
+            }
+         }
+      }
+
+      programs {
+         program {
+            name: "fullscreen";
+            signal: "fullscreen";
+            script {
+               set_int(isFullScreen, 1);
+            }
+         }
+         program {
+            name: "play";
+            signal: "play";
+            script {
+               set_int(isplay, 1);
+            }
+         }
+         program {
+            name: "pause";
+            signal: "pause";
+            script {
+               set_int(ispause, 1);
+            }
+         }
+         program {
+            name: "enabled";
+            signal: "enabled";
+            script {
+               set_int(isEnabled, 1);
+               show();
+            }
+         }
+         program {
+            name: "pressed";
+            signal: "pressed";
+            script {
+               set_int(isPressed, 1);
+               show();
+            }
+         }
+         program {
+            name: "focused";
+            signal: "focused";
+            script {
+               set_int(isFocused, 1);
+               show();
+            }
+         }
+         program {
+            name: "hovered";
+            signal: "hovered";
+            script {
+               set_int(isHovered, 1);
+               show();
+            }
+         }
+         program {
+            name: "reset";
+            signal: "reset";
+            script {
+               set_int(isEnabled, 0);
+               set_int(isPressed, 0);
+               set_int(isFocused, 0);
+               set_int(isHovered, 0);
+               show();
+            }
+         }
+      }
+   }

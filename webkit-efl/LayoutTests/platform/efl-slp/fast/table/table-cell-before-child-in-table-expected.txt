@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderTable {DIV} at (0,0) size 162x74 [color=#FF0000] [border: (3px solid #008000)]
+        RenderTableSection (anonymous) at (15,15) size 132x44 [color=#000000]
+          RenderTableRow (anonymous) at (0,0) size 132x44
+            RenderTableCell (anonymous) at (0,0) size 76x44 [color=#FF0000] [border: (3px solid #0000FF)] [r=0 c=0 rs=1 cs=1]
+              RenderText at (15,15) size 46x14
+                text run at (15,15) width 46: "BEFORE"
+            RenderTableCell (anonymous) at (76,15) size 56x14 [r=0 c=1 rs=1 cs=1]
+              RenderInline {SPAN} at (0,0) size 56x14 [color=#FF0000]
+                RenderText {#text} at (0,0) size 56x14
+                  text run at (0,0) width 56: "CONTENT"

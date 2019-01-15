@@ -1,0 +1,22 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 941x57
+          text run at (0,0) width 941: "This tests to see that clicking on content outside of an editable region with -webkit-user-select: ignore doesn't remove"
+          text run at (0,19) width 625: "the selection from the editable region. To run it manually, click on the button. "
+          text run at (625,19) width 268: "The editable region should not be"
+          text run at (0,38) width 412: "focused, but the text inside of it should be selected."
+      RenderBlock (anonymous) at (0,73) size 964x27
+        RenderButton {INPUT} at (2,2) size 85x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+          RenderBlock (anonymous) at (5,5) size 77x15
+            RenderText at (0,0) size 77x15
+              text run at (0,0) width 77: "Click on me"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,100) size 964x19
+        RenderText {#text} at (0,0) size 227x19
+          text run at (0,0) width 227: "This text should be selected."
+selection start: position 0 of child 0 {#text} of child 4 {DIV} of body
+selection end:   position 29 of child 0 {#text} of child 4 {DIV} of body

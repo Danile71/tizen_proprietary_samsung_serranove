@@ -1,0 +1,98 @@
+layer at (0,0) size 980x758
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x758
+  RenderBlock {HTML} at (0,0) size 980x758
+    RenderBody {BODY} at (8,8) size 964x742
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 305x19
+          text run at (0,0) width 305: "This tests minMaxWidth for text fields."
+      RenderBlock {P} at (0,35) size 964x19
+        RenderText {#text} at (0,0) size 91x19
+          text run at (0,0) width 91: "Test case 1"
+      RenderTable {TABLE} at (0,70) size 118x47 [border: (3px solid #0000FF)]
+        RenderTableSection {TBODY} at (3,3) size 112x41
+          RenderTableRow {TR} at (0,2) size 112x37
+            RenderTableCell {TD} at (2,2) size 108x37 [border: (3px solid #FF0000)] [r=0 c=0 rs=1 cs=1]
+              RenderTextControl {INPUT} at (4,6) size 100x25 [bgcolor=#FFFFFF]
+      RenderBlock {P} at (0,133) size 964x19
+        RenderText {#text} at (0,0) size 91x19
+          text run at (0,0) width 91: "Test case 2"
+      RenderTable {TABLE} at (0,168) size 179x86 [border: (3px solid #0000FF)]
+        RenderTableSection {TBODY} at (3,3) size 173x80
+          RenderTableRow {TR} at (0,2) size 173x37
+            RenderTableCell {TD} at (2,10) size 59x21 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 31x19
+                text run at (1,1) width 31: "first"
+            RenderTableCell {TD} at (63,2) size 108x37 [border: (3px solid #FF0000)] [r=0 c=1 rs=1 cs=1]
+              RenderTextControl {INPUT} at (4,6) size 100x25 [bgcolor=#FFFFFF]
+          RenderTableRow {TR} at (0,41) size 173x37
+            RenderTableCell {TD} at (2,49) size 59x21 [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 57x19
+                text run at (1,1) width 57: "second"
+            RenderTableCell {TD} at (63,41) size 108x37 [border: (3px solid #FF0000)] [r=1 c=1 rs=1 cs=1]
+              RenderTextControl {INPUT} at (4,6) size 100x25 [bgcolor=#FFFFFF]
+      RenderBlock {P} at (0,270) size 964x19
+        RenderText {#text} at (0,0) size 91x19
+          text run at (0,0) width 91: "Test case 3"
+      RenderTable {TABLE} at (0,305) size 61x85 [border: (3px solid #0000FF)]
+        RenderTableSection {TBODY} at (3,3) size 55x79
+          RenderTableRow {TR} at (0,2) size 55x75
+            RenderTableCell {TD} at (2,2) size 51x75 [border: (3px solid #FF0000)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 43x38
+                text run at (4,4) width 43: "width"
+                text run at (4,23) width 39: "30px"
+              RenderTextControl {INPUT} at (4,44) size 30x25 [bgcolor=#FFFFFF]
+      RenderBlock {P} at (0,406) size 964x19
+        RenderText {#text} at (0,0) size 91x19
+          text run at (0,0) width 91: "Test case 4"
+      RenderTable {TABLE} at (0,441) size 218x76 [border: (3px solid #0000FF)]
+        RenderTableSection {TBODY} at (3,3) size 212x70
+          RenderTableRow {TR} at (0,2) size 212x37
+            RenderTableCell {TD} at (2,2) size 208x37 [border: (3px solid #FF0000)] [r=0 c=0 rs=1 cs=1]
+              RenderTextControl {INPUT} at (4,6) size 200x25 [bgcolor=#FFFFFF]
+          RenderTableRow {TR} at (0,41) size 212x27
+            RenderTableCell {TD} at (2,41) size 208x27 [border: (3px solid #FF0000)] [r=1 c=0 rs=1 cs=1]
+              RenderBlock {DIV} at (4,4) size 200x19
+                RenderText {#text} at (0,0) size 49x19
+                  text run at (0,0) width 49: "200px"
+      RenderBlock {P} at (0,533) size 964x19
+        RenderText {#text} at (0,0) size 91x19
+          text run at (0,0) width 91: "Test case 5"
+      RenderTable {TABLE} at (0,568) size 92x47 [border: (3px solid #0000FF)]
+        RenderTableSection {TBODY} at (3,3) size 86x41
+          RenderTableRow {TR} at (0,2) size 86x37
+            RenderTableCell {TD} at (2,2) size 82x37 [border: (3px solid #FF0000)] [r=0 c=0 rs=1 cs=1]
+              RenderTextControl {INPUT} at (6,6) size 70x25 [bgcolor=#FFFFFF]
+      RenderBlock {P} at (0,631) size 964x19
+        RenderText {#text} at (0,0) size 91x19
+          text run at (0,0) width 91: "Test case 6"
+      RenderTable {TABLE} at (0,666) size 193x76 [border: (3px solid #0000FF)]
+        RenderTableSection {TBODY} at (3,3) size 187x70
+          RenderTableRow {TR} at (0,2) size 187x37
+            RenderTableCell {TD} at (2,2) size 183x37 [border: (3px solid #FF0000)] [r=0 c=0 rs=1 cs=1]
+              RenderTextControl {INPUT} at (6,6) size 171x25 [bgcolor=#FFFFFF]
+          RenderTableRow {TR} at (0,41) size 187x27
+            RenderTableCell {TD} at (2,41) size 183x27 [border: (3px solid #FF0000)] [r=1 c=0 rs=1 cs=1]
+              RenderBlock {DIV} at (4,4) size 70x19
+                RenderText {#text} at (0,0) size 39x19
+                  text run at (0,0) width 39: "70px"
+layer at (21,95) size 93x15
+  RenderBlock {DIV} at (4,6) size 93x15
+layer at (82,193) size 93x15
+  RenderBlock {DIV} at (4,6) size 93x15
+layer at (82,232) size 93x15
+  RenderBlock {DIV} at (4,6) size 93x15
+layer at (21,368) size 23x15
+  RenderBlock {DIV} at (4,6) size 23x15
+layer at (21,466) size 193x15
+  RenderBlock {DIV} at (4,6) size 193x15
+    RenderText {#text} at (0,0) size 76x15
+      text run at (0,0) width 76: "width 100%"
+layer at (23,593) size 63x15 scrollWidth 66
+  RenderBlock {DIV} at (4,6) size 63x15
+    RenderText {#text} at (0,0) size 65x15
+      text run at (0,0) width 65: "max 70px"
+layer at (23,691) size 164x15
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (0,0) size 110x15
+      text run at (0,0) width 110: "min-width 100px"

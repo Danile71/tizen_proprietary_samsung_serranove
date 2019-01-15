@@ -1,0 +1,113 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 87x14
+          text run at (0,0) width 87: "This is a test for "
+        RenderInline {I} at (0,0) size 784x28
+          RenderText {#text} at (87,0) size 784x28
+            text run at (87,0) width 697: "http://bugzilla.opendarwin.org/show_bug.cgi?id=5980 Bidi properties of an inline container whose first child is an inline container"
+            text run at (0,14) width 63: "are ignored"
+        RenderText {#text} at (63,14) size 3x14
+          text run at (63,14) width 3: "."
+      RenderBlock {HR} at (0,40) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,54) size 784x14
+        RenderText {#text} at (0,0) size 254x14
+          text run at (0,0) width 254: "The following lines should read \x{201C}ABCDEFGHI\x{201D}:"
+      RenderBlock {P} at (0,80) size 784x14
+        RenderText {#text} at (0,0) size 25x14
+          text run at (0,0) width 25: "ABC"
+        RenderInline {SPAN} at (0,0) size 24x14
+          RenderText {#text} at (25,0) size 24x14
+            text run at (25,0) width 24 RTL override: "FED"
+        RenderText {#text} at (49,0) size 21x14
+          text run at (49,0) width 21: "GHI"
+      RenderBlock {P} at (0,106) size 784x14
+        RenderText {#text} at (0,0) size 25x14
+          text run at (0,0) width 25: "ABC"
+        RenderInline {SPAN} at (0,0) size 24x14
+          RenderInline {SPAN} at (0,0) size 24x14
+            RenderText {#text} at (25,0) size 24x14
+              text run at (25,0) width 24 RTL override: "FED"
+        RenderText {#text} at (49,0) size 21x14
+          text run at (49,0) width 21: "GHI"
+      RenderBlock {P} at (0,132) size 784x14
+        RenderText {#text} at (0,0) size 25x14
+          text run at (0,0) width 25: "ABC"
+        RenderInline {SPAN} at (0,0) size 24x14
+          RenderText {#text} at (42,0) size 7x14
+            text run at (42,0) width 7 RTL override: "F"
+          RenderInline {SPAN} at (0,0) size 17x14
+            RenderText {#text} at (25,0) size 17x14
+              text run at (25,0) width 17 RTL override: "ED"
+        RenderText {#text} at (49,0) size 21x14
+          text run at (49,0) width 21: "GHI"
+      RenderBlock {P} at (0,158) size 784x14
+        RenderText {#text} at (0,0) size 25x14
+          text run at (0,0) width 25: "ABC"
+        RenderInline {SPAN} at (0,0) size 24x14
+          RenderText {#text} at (42,0) size 7x14
+            text run at (42,0) width 7 RTL override: "F"
+          RenderInline {SPAN} at (0,0) size 8x14
+            RenderText {#text} at (34,0) size 8x14
+              text run at (34,0) width 8 RTL override: "E"
+          RenderText {#text} at (25,0) size 9x14
+            text run at (25,0) width 9 RTL override: "D"
+        RenderText {#text} at (49,0) size 21x14
+          text run at (49,0) width 21: "GHI"
+      RenderBlock {P} at (0,184) size 784x14
+        RenderText {#text} at (0,0) size 25x14
+          text run at (0,0) width 25: "ABC"
+        RenderInline {SPAN} at (0,0) size 24x14
+          RenderInline {SPAN} at (0,0) size 15x14
+            RenderText {#text} at (34,0) size 15x14
+              text run at (34,0) width 15 RTL override: "FE"
+          RenderText {#text} at (25,0) size 9x14
+            text run at (25,0) width 9 RTL override: "D"
+        RenderText {#text} at (49,0) size 21x14
+          text run at (49,0) width 21: "GHI"
+      RenderBlock {P} at (0,210) size 784x14
+        RenderInline {SPAN} at (0,0) size 70x14
+          RenderText {#text} at (0,0) size 70x14
+            text run at (0,0) width 70 RTL override: "IHGFEDCBA"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,236) size 784x14
+        RenderInline {SPAN} at (0,0) size 70x14
+          RenderText {#text} at (0,0) size 70x14
+            text run at (0,0) width 70 RTL override: "IHGFEDCBA"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {HR} at (0,262) size 784x2 [border: (1px inset #000000)]
+      RenderBlock (anonymous) at (0,270) size 784x14
+        RenderText {#text} at (0,0) size 211x14
+          text run at (0,0) width 211: "The following lines should be identical:"
+      RenderBlock {P} at (0,296) size 784x14
+        RenderText {#text} at (0,0) size 42x14
+          text run at (0,0) width 16 RTL: "\x{5D3}\x{5D4}\x{5D5}"
+          text run at (16,0) width 7: "(["
+          text run at (23,0) width 19 RTL: "\x{202C}\x{5D0}\x{5D1}\x{5D2}"
+          text run at (42,0) width 0: "\x{202A}"
+      RenderBlock {P} at (0,322) size 784x14
+        RenderText {#text} at (0,0) size 23x14
+          text run at (0,0) width 16 RTL: "\x{5D3}\x{5D4}\x{5D5}"
+          text run at (16,0) width 7: "(["
+        RenderInline {SPAN} at (0,0) size 0x14
+        RenderText {#text} at (23,0) size 19x14
+          text run at (23,0) width 19 RTL: "\x{5D0}\x{5D1}\x{5D2}"
+      RenderBlock {P} at (0,348) size 784x14
+        RenderText {#text} at (0,0) size 23x14
+          text run at (0,0) width 16 RTL: "\x{5D3}\x{5D4}\x{5D5}"
+          text run at (16,0) width 7: "(["
+        RenderInline {SPAN} at (0,0) size 0x14
+          RenderInline {SPAN} at (0,0) size 0x14
+        RenderText {#text} at (23,0) size 19x14
+          text run at (23,0) width 19 RTL: "\x{5D0}\x{5D1}\x{5D2}"
+      RenderBlock {P} at (0,374) size 784x14
+        RenderText {#text} at (0,0) size 23x14
+          text run at (0,0) width 16 RTL: "\x{5D3}\x{5D4}\x{5D5}"
+          text run at (16,0) width 7: "(["
+        RenderInline {SPAN} at (0,0) size 0x14
+          RenderInline {SPAN} at (0,0) size 0x14
+        RenderText {#text} at (23,0) size 19x14
+          text run at (23,0) width 19 RTL: "\x{5D0}\x{5D1}\x{5D2}"

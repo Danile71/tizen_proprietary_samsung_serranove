@@ -1,0 +1,54 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldDeleteDOMRange:range from 1 of DIV > DIV > BODY > HTML > #document to 6 of #text > DIV > DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > BODY > HTML > #document toDOMRange:range from 0 of DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldInsertNode:#document-fragment replacingDOMRange:range from 0 of DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > BODY > HTML > #document givenAction:WebViewInsertActionPasted
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of DIV > DIV > BODY > HTML > #document to 1 of DIV > DIV > BODY > HTML > #document toDOMRange:range from 1 of DIV > DIV > BODY > HTML > #document to 1 of DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x1564
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1564
+  RenderBlock {HTML} at (0,0) size 980x1564
+    RenderBody {BODY} at (8,8) size 964x1548
+      RenderBlock {DIV} at (0,0) size 964x240 [border: (2px solid #0000FF)]
+        RenderBlock {DIV} at (14,14) size 936x84
+          RenderText {#text} at (0,0) size 89x28
+            text run at (0,0) width 89: "Tests: "
+          RenderBR {BR} at (0,0) size 0x0
+          RenderText {#text} at (0,28) size 132x28
+            text run at (0,28) width 132: "Bug fix for "
+          RenderInline {A} at (0,0) size 327x28 [color=#0000EE]
+            RenderText {#text} at (132,28) size 327x28
+              text run at (132,28) width 327: "<rdar://problem/4035648>"
+          RenderText {#text} at (459,28) size 851x56
+            text run at (459,28) width 392: " REGRESSION (Mail): line feed in"
+            text run at (0,56) width 600: "source HTML file causes bad copy/paste behavior"
+        RenderBlock {DIV} at (14,114) size 936x112
+          RenderText {#text} at (0,0) size 246x28
+            text run at (0,0) width 246: "Expected Results: "
+          RenderBR {BR} at (246,22) size 0x0
+          RenderText {#text} at (0,28) size 649x28
+            text run at (0,28) width 649: "Should see the text self-documenting itself correctly: "
+          RenderBR {BR} at (649,50) size 0x0
+          RenderInline {B} at (0,0) size 58x28
+            RenderText {#text} at (0,56) size 58x28
+              text run at (0,56) width 58: "bold"
+            RenderBR {BR} at (58,78) size 0x0
+          RenderText {#text} at (0,84) size 59x28
+            text run at (0,84) width 59: "plain"
+      RenderBlock {DIV} at (0,264) size 964x1284
+        RenderBlock {DIV} at (0,0) size 964x1284 [border: (2px solid #FF0000)]
+          RenderImage {IMG} at (2,2) size 720x1280
+caret: position 1 of child 0 {IMG} of child 1 {DIV} of child 3 {DIV} of body

@@ -1,0 +1,58 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x33
+        RenderText {#text} at (0,0) size 228x33
+          text run at (0,0) width 228: ".one {border-top: purple double 10px;}"
+          text run at (228,0) width 0: " "
+          text run at (0,11) width 222: ".two {border-top: purple thin solid;}"
+          text run at (222,11) width 0: " "
+          text run at (0,22) width 0: " "
+      RenderBlock {HR} at (0,69) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,83) size 784x28 [bgcolor=#C0C0C0]
+        RenderText {#text} at (0,0) size 499x14
+          text run at (0,0) width 499: "This is an unstyled element, save for the background color, and containing inline elements with classes of "
+        RenderInline {SPAN} at (0,0) size 43x24 [border: (10px double #800080) none]
+          RenderText {#text} at (499,0) size 43x14
+            text run at (499,0) width 43: "class one"
+        RenderText {#text} at (542,0) size 773x28
+          text run at (542,0) width 231: ", which should have a 10-pixel purple double top"
+          text run at (0,14) width 57: "border; and "
+        RenderInline {SPAN} at (0,0) size 44x15 [border: (1px solid #800080) none]
+          RenderText {#text} at (57,14) size 44x14
+            text run at (57,14) width 44: "class two"
+        RenderText {#text} at (101,14) size 560x14
+          text run at (101,14) width 241: ", which should have a thin solid purple top border. "
+          text run at (342,14) width 319: "The line-height of the parent element should not change on any line."
+      RenderTable {TABLE} at (0,123) size 784x60 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x58
+          RenderTableRow {TR} at (0,0) size 782x22
+            RenderTableCell {TD} at (0,0) size 782x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 782x36
+            RenderTableCell {TD} at (0,29) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 771x36 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 763x28 [bgcolor=#C0C0C0]
+                RenderText {#text} at (0,0) size 499x14
+                  text run at (0,0) width 499: "This is an unstyled element, save for the background color, and containing inline elements with classes of "
+                RenderInline {SPAN} at (0,0) size 43x24 [border: (10px double #800080) none]
+                  RenderText {#text} at (499,0) size 43x14
+                    text run at (499,0) width 43: "class one"
+                RenderText {#text} at (542,0) size 755x28
+                  text run at (542,0) width 213: ", which should have a 10-pixel purple double"
+                  text run at (0,14) width 75: "top border; and "
+                RenderInline {SPAN} at (0,0) size 44x15 [border: (1px solid #800080) none]
+                  RenderText {#text} at (75,14) size 44x14
+                    text run at (75,14) width 44: "class two"
+                RenderText {#text} at (119,14) size 560x14
+                  text run at (119,14) width 241: ", which should have a thin solid purple top border. "
+                  text run at (360,14) width 319: "The line-height of the parent element should not change on any line."

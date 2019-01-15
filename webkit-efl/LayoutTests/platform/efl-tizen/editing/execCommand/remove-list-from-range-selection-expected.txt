@@ -1,0 +1,40 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 6 of DIV > BODY > HTML > #document to 6 of DIV > BODY > HTML > #document toDOMRange:range from 2 of #text > DIV > BODY > HTML > #document to 2 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 668x19
+          text run at (0,0) width 668: "This tests Insert{Un}OrderedList on a range selection that is entirely within one list."
+      RenderBlock {DIV} at (0,35) size 964x111
+        RenderBlock (anonymous) at (0,0) size 964x76
+          RenderText {#text} at (0,0) size 94x19
+            text run at (0,0) width 94: "None of the"
+          RenderBR {BR} at (94,15) size 0x0
+          RenderText {#text} at (0,19) size 133x19
+            text run at (0,19) width 133: "selected content"
+          RenderBR {BR} at (133,34) size 0x0
+          RenderText {#text} at (0,38) size 77x19
+            text run at (0,38) width 77: "should be"
+          RenderBR {BR} at (77,53) size 0x0
+          RenderText {#text} at (0,57) size 61x19
+            text run at (0,57) width 61: "in a list."
+          RenderBR {BR} at (61,72) size 0x0
+        RenderBlock {OL} at (0,92) size 964x19
+          RenderListItem {LI} at (40,0) size 924x19
+            RenderListMarker at (-25,0) size 20x19: "1"
+            RenderText {#text} at (0,0) size 400x19
+              text run at (0,0) width 400: "This should be in a list and should not be selected."
+selection start: position 2 of child 0 {#text} of child 2 {DIV} of body
+selection end:   position 2 of child 6 {#text} of child 2 {DIV} of body

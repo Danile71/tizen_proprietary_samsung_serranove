@@ -1,0 +1,11 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x156
+  RenderBlock {HTML} at (0,0) size 800x156
+    RenderBody {BODY} at (8,12) size 784x136
+      RenderBlock {P} at (0,0) size 784x24
+        RenderText {#text} at (0,0) size 756x23
+          text run at (0,0) width 756: "Opacity should be applied after reflection, so you should see a green rectangle below. The overlap between the original"
+          text run at (0,12) width 225: "and reflection should not be visible."
+layer at (8,48) size 150x100
+  RenderBlock (relative positioned) {DIV} at (0,36) size 150x100 [bgcolor=#008000]

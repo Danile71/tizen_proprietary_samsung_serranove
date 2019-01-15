@@ -1,0 +1,36 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x118
+  RenderBlock {html} at (0,0) size 800x118
+    RenderBody {body} at (8,12) size 784x94
+      RenderBlock {p} at (0,0) size 784x14 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 559x14
+          text run at (0,0) width 169: "This paragraph should be unstyled. "
+          text run at (169,0) width 335: "The background of the following paragraph should become blue when "
+          text run at (504,0) width 55: "you follow "
+        RenderInline {a} at (0,0) size 38x14 [color=#0000EE]
+          RenderText {#text} at (559,0) size 38x14
+            text run at (559,0) width 38: "this link"
+        RenderText {#text} at (597,0) size 3x14
+          text run at (597,0) width 3: "."
+      RenderBlock {p} at (0,26) size 784x28 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 546x14
+          text run at (0,0) width 207: "This paragraph should initially be unstyled. "
+          text run at (207,0) width 339: "It should become blue when you select the link above. When you select "
+        RenderInline {a} at (0,0) size 38x14 [color=#0000EE]
+          RenderText {#text} at (546,0) size 38x14
+            text run at (546,0) width 38: "this link"
+        RenderText {#text} at (584,0) size 783x28
+          text run at (584,0) width 199: ", it should return to being unstyled and the"
+          text run at (0,14) width 268: "background of the paragraph below should become blue."
+      RenderBlock {p} at (0,66) size 784x28 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 551x14
+          text run at (0,0) width 207: "This paragraph should initially be unstyled. "
+          text run at (207,0) width 344: "It should become blue when you select the link above. When you follow "
+        RenderInline {a} at (0,0) size 38x14 [color=#0000EE]
+          RenderText {#text} at (551,0) size 38x14
+            text run at (551,0) width 38: "this link"
+        RenderText {#text} at (589,0) size 782x28
+          text run at (589,0) width 104: ", the three paragraphs "
+          text run at (693,0) width 89: "should all return to"
+          text run at (0,14) width 72: "being unstyled."

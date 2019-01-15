@@ -1,0 +1,58 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 653x19
+          text run at (0,0) width 653: "The layering and positions of the boxes should not be affected by oveflow:hidden."
+      RenderBlock (anonymous) at (0,35) size 964x320
+        RenderText {#text} at (320,148) size 5x19
+          text run at (320,148) width 5: " "
+        RenderText {#text} at (0,0) size 0x0
+layer at (68,103) size 200x200 layerType: background only
+layer at (28,63) size 150x150
+  RenderBlock (positioned) zI: -1 {DIV} at (-40,-40) size 150x150 [color=#808080] [bgcolor=#C86464] [border: (2px solid #000000)]
+    RenderText zI: -1 {#text} at (22,22) size 138x40
+      text run at (22,22) width 138: "Behind"
+    RenderText zI: -1 {#text} at (0,0) size 0x0
+layer at (50,145) size 100x100
+  RenderBlock (positioned) {DIV} at (22,82) size 100x100 [bgcolor=#008000] [border: (2px solid #000000)]
+    RenderText {#text} at (22,22) size 71x42
+      text run at (22,22) width 71: "Behind"
+      text run at (22,43) width 70: "behind"
+layer at (68,103) size 200x200 layerType: foreground only
+  RenderBlock (relative positioned) {DIV} at (60,60) size 200x200 [color=#0000FF] [bgcolor=#FFFFFFCC] [border: (10px solid #000000)]
+    RenderText {#text} at (30,30) size 174x81
+      text run at (30,30) width 74: "Box"
+      text run at (30,71) width 174: "contents"
+    RenderText {#text} at (0,0) size 0x0
+    RenderText {#text} at (0,0) size 0x0
+layer at (158,193) size 150x150
+  RenderBlock (positioned) zI: 1 {DIV} at (90,90) size 150x150 [color=#808080] [bgcolor=#C8C880] [border: (2px solid #000000)]
+    RenderText zI: 1 {#text} at (22,22) size 107x81
+      text run at (22,22) width 38: "In"
+      text run at (22,63) width 107: "Front"
+layer at (393,103) size 200x200 clip at (403,113) size 180x180 scrollWidth 230 scrollHeight 230 layerType: background only
+layer at (353,63) size 150x150 backgroundClip at (403,113) size 180x180 clip at (403,113) size 180x180 outlineClip at (403,113) size 180x180
+  RenderBlock (positioned) zI: -1 {DIV} at (-40,-40) size 150x150 [color=#808080] [bgcolor=#C86464] [border: (2px solid #000000)]
+    RenderText zI: -1 {#text} at (22,22) size 138x40
+      text run at (22,22) width 138: "Behind"
+    RenderText zI: -1 {#text} at (0,0) size 0x0
+layer at (375,145) size 100x100 backgroundClip at (403,113) size 180x180 clip at (403,113) size 180x180 outlineClip at (403,113) size 180x180
+  RenderBlock (positioned) {DIV} at (22,82) size 100x100 [bgcolor=#008000] [border: (2px solid #000000)]
+    RenderText {#text} at (22,22) size 71x42
+      text run at (22,22) width 71: "Behind"
+      text run at (22,43) width 70: "behind"
+layer at (393,103) size 200x200 clip at (403,113) size 180x180 scrollWidth 230 scrollHeight 230 layerType: foreground only
+  RenderBlock (relative positioned) {DIV} at (385,60) size 200x200 [color=#0000FF] [bgcolor=#FFFFFFCC] [border: (10px solid #000000)]
+    RenderText {#text} at (30,30) size 174x81
+      text run at (30,30) width 74: "Box"
+      text run at (30,71) width 174: "contents"
+    RenderText {#text} at (0,0) size 0x0
+    RenderText {#text} at (0,0) size 0x0
+layer at (483,193) size 150x150 backgroundClip at (403,113) size 180x180 clip at (403,113) size 180x180 outlineClip at (403,113) size 180x180
+  RenderBlock (positioned) zI: 1 {DIV} at (90,90) size 150x150 [color=#808080] [bgcolor=#C8C880] [border: (2px solid #000000)]
+    RenderText zI: 1 {#text} at (22,22) size 107x81
+      text run at (22,22) width 38: "In"
+      text run at (22,63) width 107: "Front"

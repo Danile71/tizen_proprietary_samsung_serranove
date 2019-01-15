@@ -1,0 +1,18 @@
+CONSOLE MESSAGE: line 14: TypeError: 'undefined' is not an object (evaluating 'document.styleSheets[1].disabled = false')
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x64
+  RenderBlock {HTML} at (0,0) size 800x64
+    RenderBody {BODY} at (8,8) size 784x48
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 143x14
+          text run at (0,0) width 143: "the text should be courier 24pt"
+      RenderTable {TABLE} at (0,14) size 61x20
+        RenderTableSection {TBODY} at (0,0) size 61x20
+          RenderTableRow {TR} at (0,2) size 61x16
+            RenderTableCell {TD} at (2,2) size 57x16 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 55x14
+                text run at (1,1) width 55: "inside a cell"
+      RenderBlock {DIV} at (0,34) size 784x14
+        RenderText {#text} at (0,0) size 54x14
+          text run at (0,0) width 54: "inside a div"

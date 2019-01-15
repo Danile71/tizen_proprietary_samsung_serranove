@@ -1,0 +1,119 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x364
+  RenderBlock {HTML} at (0,0) size 800x364
+    RenderBody {BODY} at (8,12) size 784x340
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 780x28
+          text run at (0,0) width 780: "In each line, reading from left to right, the bracket should appear before the parenthesis. The bracket should be a left bracket and the parenthesis"
+          text run at (0,14) width 640: "should be a right parenthesis. In each line, Roman characters and digits should be in increasing order from left to right."
+      RenderBlock {P} at (0,40) size 784x14
+        RenderText {#text} at (0,0) size 42x14
+          text run at (0,0) width 19 RTL: "\x{5D0}\x{5D1}\x{5D2}"
+          text run at (19,0) width 23: " def "
+        RenderInline {SPAN} at (0,0) size 26x14
+          RenderText {#text} at (42,0) size 26x14
+            text run at (42,0) width 26 RTL: "(\x{5D6}\x{5D7}\x{5D8}]"
+        RenderText {#text} at (68,0) size 15x14
+          text run at (68,0) width 15: " jkl"
+      RenderBlock {P} at (0,66) size 784x14
+        RenderText {#text} at (0,0) size 42x14
+          text run at (0,0) width 19 RTL: "\x{5D0}\x{5D1}\x{5D2}"
+          text run at (19,0) width 23: " def "
+        RenderInline {SPAN} at (0,0) size 24x14
+          RenderText {#text} at (42,0) size 24x14
+            text run at (42,0) width 3 RTL: "]"
+            text run at (45,0) width 17: "ghi"
+            text run at (62,0) width 4 RTL: "("
+        RenderText {#text} at (66,0) size 15x14
+          text run at (66,0) width 15: " jkl"
+      RenderBlock {P} at (0,92) size 784x14
+        RenderText {#text} at (0,0) size 23x14
+          text run at (0,0) width 23: "abc "
+        RenderInline {SPAN} at (0,0) size 38x14
+          RenderText {#text} at (23,0) size 38x14
+            text run at (23,0) width 3 RTL: "]"
+            text run at (26,0) width 14: "23"
+            text run at (40,0) width 3 RTL: " "
+            text run at (43,0) width 14: "45"
+            text run at (57,0) width 4 RTL: "("
+        RenderText {#text} at (61,0) size 20x14
+          text run at (61,0) width 20: " fgh"
+      RenderBlock {P} at (0,118) size 784x14
+        RenderText {#text} at (0,0) size 81x14
+          text run at (0,0) width 23: "abc "
+          text run at (23,0) width 3 RTL: "]"
+          text run at (26,0) width 14: "23"
+          text run at (40,0) width 3 RTL: " "
+          text run at (43,0) width 14: "45"
+          text run at (57,0) width 4 RTL: "\x{202B}("
+          text run at (61,0) width 20: "\x{202C} fgh"
+      RenderBlock {P} at (0,144) size 784x14
+        RenderText {#text} at (0,0) size 73x14
+          text run at (0,0) width 23: "abc "
+          text run at (23,0) width 3 RTL: "]"
+          text run at (26,0) width 27: "de fg"
+          text run at (53,0) width 4 RTL: "\x{202B}("
+          text run at (57,0) width 16: "\x{202C} hij"
+      RenderBlock {P} at (0,170) size 784x14
+        RenderText {#text} at (0,0) size 7x14
+          text run at (0,0) width 7: "1"
+        RenderInline {SPAN} at (0,0) size 37x14
+          RenderText {#text} at (7,0) size 37x14
+            text run at (7,0) width 3 RTL: "]"
+            text run at (10,0) width 30: "ab cd"
+            text run at (40,0) width 4 RTL: "("
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,196) size 784x14
+        RenderText {#text} at (0,0) size 7x14
+          text run at (0,0) width 7: "1"
+        RenderInline {SPAN} at (0,0) size 35x14
+          RenderText {#text} at (7,0) size 35x14
+            text run at (7,0) width 17 RTL: " \x{5D2}\x{5D3}]"
+            text run at (24,0) width 14: "ab"
+            text run at (38,0) width 4 RTL: "("
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,222) size 784x14
+        RenderText {#text} at (0,0) size 7x14
+          text run at (0,0) width 7: "1"
+        RenderInline {SPAN} at (0,0) size 14x14
+          RenderText {#text} at (7,0) size 14x14
+            text run at (7,0) width 3 RTL: "]"
+            text run at (10,0) width 7: "2"
+            text run at (17,0) width 4 RTL: "\x{202B}("
+            text run at (21,0) width 0: "\x{202C}"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,248) size 784x14
+        RenderText {#text} at (0,0) size 7x14
+          text run at (0,0) width 7: "1"
+        RenderInline {SPAN} at (0,0) size 14x14
+          RenderText {#text} at (7,0) size 14x14
+            text run at (7,0) width 3 RTL: "]"
+            text run at (10,0) width 7: "a"
+            text run at (17,0) width 4 RTL: "\x{202B}("
+            text run at (21,0) width 0: "\x{202C}"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,274) size 784x14
+        RenderText {#text} at (0,0) size 42x14
+          text run at (0,0) width 7: "1"
+          text run at (7,0) width 17 RTL: " \x{5D2}\x{5D3}]"
+          text run at (24,0) width 14: "ab"
+          text run at (38,0) width 4 RTL: "\x{202B}("
+          text run at (42,0) width 0: "\x{202C}"
+      RenderBlock {P} at (0,300) size 784x14
+        RenderInline {SPAN} at (0,0) size 69x14
+          RenderText {#text} at (0,0) size 69x14
+            text run at (0,0) width 3 RTL: "]"
+            text run at (3,0) width 20: "abc"
+            text run at (23,0) width 25 RTL: " \x{5D0}\x{5D1}\x{5D2} "
+            text run at (48,0) width 17: "def"
+            text run at (65,0) width 4 RTL: "("
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,326) size 784x14
+        RenderText {#text} at (0,0) size 69x14
+          text run at (0,0) width 3 RTL: "]"
+          text run at (3,0) width 20: "abc"
+          text run at (23,0) width 25 RTL: " \x{5D0}\x{5D1}\x{5D2} "
+          text run at (48,0) width 17: "def"
+          text run at (65,0) width 4 RTL: "\x{202B}("
+          text run at (69,0) width 0: "\x{202C}"

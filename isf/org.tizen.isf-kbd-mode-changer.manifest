@@ -1,0 +1,20 @@
+<manifest>
+    <define>
+        <domain name="org.tizen.isf-kbd-mode-changer" />
+    </define>
+    <request>
+        <domain name="org.tizen.isf-kbd-mode-changer" />
+    </request>
+    <assign>
+        <!-- Package manifest file -->
+        <filesystem path="/usr/share/packages/org.tizen.isf-kbd-mode-changer.xml" label="_" />
+
+        <!-- Package folder -->
+        <filesystem path="/usr/apps/org.tizen.isf-kbd-mode-changer" label="org.tizen.isf-kbd-mode-changer" />
+
+        <!-- Executable file -->
+        <filesystem path="/usr/apps/org.tizen.isf-kbd-mode-changer/bin/isf-kbd-mode-changer" label="org.tizen.isf-kbd-mode-changer" exec_label="org.tizen.isf-kbd-mode-changer" />
+
+    </assign>
+</manifest>
+

@@ -1,0 +1,21 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x191
+  RenderBlock {test} at (0,0) size 980x191
+    RenderBlock {div} at (0,16) size 980x159
+      RenderBlock {p} at (0,0) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 333x19
+          text run at (0,0) width 127: "This line should "
+          text run at (127,0) width 206: "have a green background"
+      RenderBlock {p} at (0,35) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 333x19
+          text run at (0,0) width 333: "This line should have a green background"
+      RenderBlock {q} at (0,70) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 333x19
+          text run at (0,0) width 333: "This line should have a green background"
+      RenderBlock {p} at (0,105) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 333x19
+          text run at (0,0) width 333: "This line should have a green background"
+      RenderBlock {foo} at (0,140) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 333x19
+          text run at (0,0) width 333: "This line should have a green background"

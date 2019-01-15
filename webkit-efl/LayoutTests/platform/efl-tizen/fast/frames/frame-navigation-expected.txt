@@ -1,0 +1,25 @@
+CONSOLE MESSAGE: line 5: TypeError: 'undefined' is not a function (evaluating 'testRunner.queueLoad('data:text/html,test1', 'target')')
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderFrameSet {FRAMESET} at (0,0) size 980x735
+      RenderFrame {FRAME} at (0,0) size 487x735
+        layer at (0,0) size 487x735
+          RenderView at (0,0) size 487x735
+        layer at (0,0) size 487x735
+          RenderBlock {HTML} at (0,0) size 487x735
+            RenderBody {BODY} at (8,8) size 471x711
+              RenderBlock {P} at (0,0) size 471x38
+                RenderText {#text} at (0,0) size 464x38
+                  text run at (0,0) width 464: "This tests that navigating to two pages in a subframe, and"
+                  text run at (0,19) width 362: "then going back does not cause an assertion."
+              RenderBlock {P} at (0,54) size 471x19
+                RenderText {#text} at (0,0) size 196x19
+                  text run at (0,0) width 196: "SUCCESS - Didn't assert!"
+      RenderFrame {FRAME} at (493,0) size 487x735
+        layer at (0,0) size 487x735
+          RenderView at (0,0) size 487x735
+        layer at (0,0) size 487x735
+          RenderBlock {HTML} at (0,0) size 487x735
+            RenderBody {BODY} at (8,8) size 471x719

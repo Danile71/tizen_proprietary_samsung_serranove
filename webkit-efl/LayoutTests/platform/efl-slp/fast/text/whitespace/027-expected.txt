@@ -1,0 +1,56 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderTable {TABLE} at (0,0) size 784x164
+        RenderTableSection {TBODY} at (0,0) size 784x164
+          RenderTableRow {TR} at (0,2) size 784x160
+            RenderTableCell {TD} at (2,2) size 62x160 [r=0 c=0 rs=1 cs=1]
+              RenderBlock (floating) {DIV} at (1,1) size 60x158 [border: (2px solid #FF0000)]
+                RenderText {#text} at (2,2) size 56x154
+                  text run at (2,2) width 39: "Here-is-"
+                  text run at (2,16) width 52: "some-info-"
+                  text run at (2,30) width 45: "from-the-"
+                  text run at (2,44) width 55: "complaints-"
+                  text run at (2,58) width 56: "department-"
+                  text run at (2,72) width 52: "some-info-"
+                  text run at (2,86) width 45: "from-the-"
+                  text run at (2,100) width 55: "complaints-"
+                  text run at (2,114) width 56: "department-"
+                  text run at (2,128) width 52: "some-info-"
+                  text run at (2,142) width 41: "from-the"
+            RenderTableCell {TD} at (66,81) size 716x2 [r=0 c=1 rs=1 cs=1]
+      RenderTable {TABLE} at (0,164) size 784x164
+        RenderTableSection {TBODY} at (0,0) size 784x164
+          RenderTableRow {TR} at (0,2) size 784x160
+            RenderTableCell {TD} at (2,2) size 58x160 [r=0 c=0 rs=1 cs=1]
+              RenderBlock (floating) {DIV} at (1,1) size 56x158 [border: (2px solid #FF0000)]
+                RenderText {#text} at (2,2) size 52x154
+                  text run at (2,2) width 34: "Here is"
+                  text run at (2,16) width 47: "some info"
+                  text run at (2,30) width 40: "from the"
+                  text run at (2,44) width 51: "complaints"
+                  text run at (2,58) width 52: "department"
+                  text run at (2,72) width 48: "some-info"
+                  text run at (2,86) width 40: "from the"
+                  text run at (2,100) width 51: "complaints"
+                  text run at (2,114) width 52: "department"
+                  text run at (2,128) width 47: "some info"
+                  text run at (2,142) width 40: "from the"
+            RenderTableCell {TD} at (62,81) size 720x2 [r=0 c=1 rs=1 cs=1]
+      RenderTable {TABLE} at (0,328) size 784x54 [border: (2px outset #808080)]
+        RenderTableSection {TBODY} at (2,2) size 780x50
+          RenderTableRow {TR} at (0,2) size 780x46
+            RenderTableCell {TD} at (2,2) size 429x46 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 99x14
+                text run at (2,2) width 99: "This is a test to see if"
+              RenderInline {SPAN} at (0,0) size 425x42
+                RenderText {#text} at (101,2) size 425x42
+                  text run at (101,2) width 77: "this is computed"
+                  text run at (178,2) width 0: " "
+                  text run at (2,16) width 425: "correctly.  In particular, we have a really long line here that could throw off the min-width."
+                  text run at (427,16) width 0: " "
+                  text run at (2,30) width 23: "Is it?"
+              RenderText {#text} at (0,0) size 0x0
+            RenderTableCell {TD} at (433,23) size 345x4 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]

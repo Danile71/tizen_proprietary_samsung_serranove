@@ -1,0 +1,138 @@
+
+Release notes for GStreamer Base Plugins 1.4.5
+
+The GStreamer team is pleased to announce a bugfix release of the stable
+1.4 release series. The 1.4 release series is adding new features on top
+of the 1.2 series and is part of the API and ABI-stable 1.x release
+series of the GStreamer multimedia framework that contains new features.
+The 1.4.x bugfix releases only contain important bugfixes compared to 1.4.0.
+
+
+Binaries for Android, iOS, Mac OS X and Windows are provided by the
+GStreamer project for this release.
+
+
+The 1.x series is a stable series targeted at end users. It is not API
+or ABI compatible with the 0.10.x series. It can, however, be installed
+in parallel with the 0.10.x series and will not affect an existing
+0.10.x installation.
+
+
+The stable 1.4.x release series is API and ABI compatible with 1.0.x and
+any other 1.x release series in the future. Compared to 1.0.x it contains
+some new features and more intrusive changes that were considered too
+risky as a bugfix.
+
+
+
+This module contains a set of reference plugins, base classes for other
+plugins, and helper libraries. It also includes essential elements such
+as audio and video format converters, and higher-level components like playbin,
+decodebin, encodebin, and discoverer.
+
+This module is kept up-to-date together with the core developments.  Element
+writers should look at the elements in this module as a reference for
+their development.
+
+This module contains elements for, among others:
+
+  device plugins: x(v)imagesink, alsa, v4lsrc, cdparanoia
+  containers: ogg
+  codecs: vorbis, theora
+  text: textoverlay, subparse
+  sources: audiotestsrc, videotestsrc, giosrc
+  network: tcp
+  typefind functions
+  audio processing: audioconvert, adder, audiorate, audioresample, volume
+  visualisation: libvisual
+  video processing: videoconvert, videoscale
+  high-level components: playbin, uridecodebin, decodebin, encodebin, discoverer
+  libraries: app, audio, fft, pbutils, riff, rtp, rtsp, sdp, tag, video
+
+
+Other modules containing plugins are:
+
+
+gst-plugins-good
+contains a set of well-supported plugins under our preferred license
+gst-plugins-ugly
+contains a set of well-supported plugins, but might pose problems for
+    distributors
+gst-plugins-bad
+contains a set of less supported plugins that haven't passed the
+    rigorous quality testing we expect, or are still missing documentation
+    and/or unit tests
+gst-libav
+contains a set of codecs plugins based on libav (formerly gst-ffmpeg)
+
+
+
+  
+
+Bugs fixed in this release
+     
+      * 741420 : video pools: should update size in configuration after applying alignment
+      * 715050 : add typefinder for audio/x-audible
+      * 739544 : tcp: Add test and fix memory leak in tcp elements
+      * 739840 : typefind should recognize Apple Core Audio Format (CAF)
+      * 740556 : videodecoder: don't complain when DTS != PTS on keyframes
+      * 740675 : playsink: continues playback, reset mute property
+      * 740730 : rtspconnection: don't remove child source if parent source is already destroyed
+      * 740853 : audiodecoder: Push pending events before sending EOS.
+      * 740952 : alsa: NetBSD fixes
+      * 741045 : audiorate can can lose timestamp precision in some cases
+      * 741198 : playbin: leaks GstPads
+
+==== Download ====
+
+You can find source releases of gst-plugins-base in the download
+directory: http://gstreamer.freedesktop.org/src/gst-plugins-base/
+
+The git repository and details how to clone it can be found at
+http://cgit.freedesktop.org/gstreamer/gst-plugins-base/
+
+==== Homepage ====
+
+The project's website is http://gstreamer.freedesktop.org/
+
+==== Support and Bugs ====
+
+We use GNOME's bugzilla for bug reports and feature requests:
+http://bugzilla.gnome.org/enter_bug.cgi?product=GStreamer
+
+Please submit patches via bugzilla as well.
+
+For help and support, please subscribe to and send questions to the
+gstreamer-devel mailing list (see below for details).
+
+There is also a #gstreamer IRC channel on the Freenode IRC network.
+
+==== Developers ====
+
+GStreamer is stored in Git, hosted at git.freedesktop.org, and can be cloned
+from there (see link above).
+
+Interested developers of the core library, plugins, and applications should
+subscribe to the gstreamer-devel list.
+
+        
+Contributors to this release
+    
+      * Andrei Sarakeev
+      * Chad
+      * Edward Hervey
+      * Göran Jönsson
+      * Jan Schmidt
+      * Jonathan Matthew
+      * Matej Knopp
+      * Mathieu Duponchelle
+      * Peter G. Baum
+      * Sebastian Dröge
+      * Song Bing
+      * Thiago Santos
+      * Thibault Saunier
+      * Thomas Klausner
+      * Tim-Philipp Müller
+      * William Manley
+      * Wim Taymans
+ 

@@ -1,0 +1,98 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 451x19
+          text run at (0,0) width 451: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,35) size 964x60
+        RenderText {#text} at (0,0) size 330x60
+          text run at (0,0) width 309: ".zero {background-color: silver; margin-top: 0;}"
+          text run at (309,0) width 0: " "
+          text run at (0,15) width 325: ".one {margin-top: 25px; background-color: aqua;}"
+          text run at (325,15) width 0: " "
+          text run at (0,30) width 330: ".two {margin-top: -10px; background-color: aqua;}"
+          text run at (330,30) width 0: " "
+          text run at (0,45) width 0: " "
+      RenderBlock {HR} at (0,108) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,126) size 964x57 [bgcolor=#808080]
+        RenderText {#text} at (0,0) size 607x19
+          text run at (0,0) width 494: "This element is unstyled save for a background color of gray. "
+          text run at (494,0) width 113: "It contains an "
+        RenderInline {SPAN} at (0,0) size 956x38 [bgcolor=#00FFFF]
+          RenderText {#text} at (607,0) size 183x19
+            text run at (607,0) width 183: "inline element of class "
+          RenderInline {TT} at (0,0) size 24x15
+            RenderText {#text} at (790,3) size 24x15
+              text run at (790,3) width 24: "one"
+          RenderText {#text} at (814,0) size 956x38
+            text run at (814,0) width 142: ", giving it an aqua"
+            text run at (0,19) width 282: "background and a 25px top margin"
+        RenderText {#text} at (282,19) size 946x38
+          text run at (282,19) width 10: ". "
+          text run at (292,19) width 654: "Margins on inline elements do not affect line-height calculations, so all lines in this"
+          text run at (0,38) width 341: "element should have the same line-height."
+      RenderBlock {P} at (0,199) size 964x57 [bgcolor=#808080]
+        RenderText {#text} at (0,0) size 607x19
+          text run at (0,0) width 494: "This element is unstyled save for a background color of gray. "
+          text run at (494,0) width 113: "It contains an "
+        RenderInline {SPAN} at (0,0) size 949x38 [bgcolor=#00FFFF]
+          RenderText {#text} at (607,0) size 183x19
+            text run at (607,0) width 183: "inline element of class "
+          RenderInline {TT} at (0,0) size 24x15
+            RenderText {#text} at (790,3) size 24x15
+              text run at (790,3) width 24: "two"
+          RenderText {#text} at (814,0) size 949x38
+            text run at (814,0) width 135: ", giving the inline"
+            text run at (0,19) width 429: "element an aqua background and a -10px top margin"
+        RenderText {#text} at (429,19) size 954x38
+          text run at (429,19) width 10: ". "
+          text run at (439,19) width 515: "Margins on inline elements do not affect line-height calculations,"
+          text run at (0,38) width 480: "so all lines in this element should have the same line-height."
+      RenderTable {TABLE} at (0,272) size 964x167 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x165
+          RenderTableRow {TR} at (0,0) size 962x27
+            RenderTableCell {TD} at (0,0) size 962x27 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 202x19
+                RenderText {#text} at (4,4) size 202x19
+                  text run at (4,4) width 202: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,27) size 962x138
+            RenderTableCell {TD} at (0,82) size 13x27 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 5x19
+                text run at (4,4) width 5: " "
+            RenderTableCell {TD} at (13,27) size 949x138 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 941x57 [bgcolor=#808080]
+                RenderText {#text} at (0,0) size 607x19
+                  text run at (0,0) width 494: "This element is unstyled save for a background color of gray. "
+                  text run at (494,0) width 113: "It contains an "
+                RenderInline {SPAN} at (0,0) size 911x38 [bgcolor=#00FFFF]
+                  RenderText {#text} at (607,0) size 183x19
+                    text run at (607,0) width 183: "inline element of class "
+                  RenderInline {TT} at (0,0) size 24x15
+                    RenderText {#text} at (790,3) size 24x15
+                      text run at (790,3) width 24: "one"
+                  RenderText {#text} at (814,0) size 911x38
+                    text run at (814,0) width 97: ", giving it an"
+                    text run at (0,19) width 327: "aqua background and a 25px top margin"
+                RenderText {#text} at (327,19) size 939x38
+                  text run at (327,19) width 10: ". "
+                  text run at (337,19) width 602: "Margins on inline elements do not affect line-height calculations, so all lines"
+                  text run at (0,38) width 393: "in this element should have the same line-height."
+              RenderBlock {P} at (4,77) size 941x57 [bgcolor=#808080]
+                RenderText {#text} at (0,0) size 607x19
+                  text run at (0,0) width 494: "This element is unstyled save for a background color of gray. "
+                  text run at (494,0) width 113: "It contains an "
+                RenderInline {SPAN} at (0,0) size 902x38 [bgcolor=#00FFFF]
+                  RenderText {#text} at (607,0) size 183x19
+                    text run at (607,0) width 183: "inline element of class "
+                  RenderInline {TT} at (0,0) size 24x15
+                    RenderText {#text} at (790,3) size 24x15
+                      text run at (790,3) width 24: "two"
+                  RenderText {#text} at (814,0) size 902x38
+                    text run at (814,0) width 88: ", giving the"
+                    text run at (0,19) width 476: "inline element an aqua background and a -10px top margin"
+                RenderText {#text} at (476,19) size 897x38
+                  text run at (476,19) width 10: ". "
+                  text run at (486,19) width 411: "Margins on inline elements do not affect line-height"
+                  text run at (0,38) width 584: "calculations, so all lines in this element should have the same line-height."

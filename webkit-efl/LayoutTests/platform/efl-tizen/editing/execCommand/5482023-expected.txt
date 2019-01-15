@@ -1,0 +1,14 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x706
+      RenderBlock {H1} at (0,0) size 964x111
+        RenderText {#text} at (0,0) size 957x112
+          text run at (0,0) width 946: "This tests for a bug when performing a FormatBlock"
+          text run at (946,0) width 11: " "
+          text run at (0,37) width 690: "inside a body with no visible content. "
+          text run at (690,37) width 159: "This text"
+          text run at (849,37) width 11: " "
+          text run at (0,74) width 580: "should be inside an h1 element."
+caret: position 132 of child 0 {#text} of child 0 {H1} of body

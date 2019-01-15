@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 162x14
+          text run at (0,0) width 162: "this table should be center aligned "
+        RenderBR {BR} at (162,11) size 0x0
+      RenderTable {TABLE} at (379,14) size 26x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 24x22
+          RenderTableRow {TR} at (0,2) size 24x18
+            RenderTableCell {TD} at (2,2) size 20x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 16x14
+                text run at (2,2) width 16: "foo"
+      RenderBlock (anonymous) at (0,38) size 784x14
+        RenderText {#text} at (0,0) size 340x14
+          text run at (0,0) width 340: "this div should be center aligned with an image and a table centered in it "
+        RenderBR {BR} at (340,11) size 0x0
+      RenderBlock {DIV} at (0,52) size 784x74
+        RenderBlock (anonymous) at (0,0) size 784x50
+          RenderImage {IMG} at (367,0) size 50x50
+          RenderText {#text} at (0,0) size 0x0
+        RenderTable {TABLE} at (92,50) size 600x24 [border: (1px outset #808080)]
+          RenderTableSection {TBODY} at (1,1) size 598x22
+            RenderTableRow {TR} at (0,2) size 598x18
+              RenderTableCell {TD} at (2,2) size 594x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (2,2) size 16x14
+                  text run at (2,2) width 16: "foo"

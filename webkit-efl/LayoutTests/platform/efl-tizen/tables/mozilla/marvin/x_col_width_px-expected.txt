@@ -1,0 +1,22 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x126
+  RenderBlock {html} at (0,0) size 980x126
+    RenderBody {body} at (8,16) size 964x102
+      RenderBlock {p} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 125x19
+          text run at (0,0) width 125: "COL WIDTH=px"
+      RenderTable {table} at (0,35) size 608x67 [border: (1px outset #808080)]
+        RenderTableCol {colgroup} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+        RenderTableSection (anonymous) at (1,1) size 606x65
+          RenderTableRow {tr} at (0,2) size 606x61
+            RenderTableCell {td} at (2,2) size 200x61 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 158x57
+                text run at (2,2) width 153: "This column should"
+                text run at (2,21) width 158: "have a width of 200"
+                text run at (2,40) width 45: "pixels"
+            RenderTableCell {td} at (204,21) size 400x23 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 366x19
+                text run at (2,2) width 366: "This column should have a width of 400 pixels"

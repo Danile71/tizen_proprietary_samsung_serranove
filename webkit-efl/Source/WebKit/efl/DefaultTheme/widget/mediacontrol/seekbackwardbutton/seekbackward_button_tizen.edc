@@ -1,0 +1,131 @@
+/*
+    Copyright (C) 2013 Samsung Electronics
+
+    This file is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This file is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public License
+    along with this library; see the file COPYING.LIB.  If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
+*/
+
+   group {
+      name: "webkit/widget/mediacontrol/seekbackward_button";
+
+      images {
+         image: "widget/mediacontrol/seekbackwardbutton/seekbackwardbutton_default_tizen.png" COMP;
+         image: "widget/mediacontrol/seekbackwardbutton/seekbackwardbutton_press_tizen.png" COMP;
+      }
+
+      script {
+          public isEnabled;
+          public isPressed;
+          public isFocused;
+          public isHovered;
+
+          public show() {
+              if (get_int(isEnabled)) {
+                  set_state(PART:"seekbackward_button_image", "default", 0.0);
+                  if (get_int(isFocused)) {
+                     set_state(PART:"seekbackward_button_image", "default", 0.0);
+                     if (get_int(isPressed))
+                        set_state(PART:"seekbackward_button_image", "pressed", 0.0);
+                  } else if (get_int(isHovered)) {
+                     set_state(PART:"seekbackward_button_image", "default", 0.0);
+                     if (get_int(isPressed))
+                        set_state(PART:"seekbackward_button_image", "pressed", 0.0);
+                  }
+              } else
+                  set_state(PART:"seekbackward_button_image", "default", 0.0);
+          }
+      }
+
+      parts {
+         part {
+            name: "seekbackward_button_image";
+            type: IMAGE;
+            description {
+               state: "default" 0.0;
+               min: 25 25;
+               image.normal: "widget/mediacontrol/seekbackwardbutton/seekbackwardbutton_default_tizen.png";
+            }
+            description {
+               state: "pressed" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "widget/mediacontrol/seekbackwardbutton/seekbackwardbutton_press_tizen.png";
+            }
+            part {
+               name: "seekbackward_button";
+               type: IMAGE;
+               description {
+                  state: "default" 0.0;
+                  min: 25 25;
+               }
+               description {
+                  state: "seekbackward" 0.0;
+                  inherit: "default" 0.0;
+               }
+            }
+         }
+      }
+
+      programs {
+         program {
+             name: "seekbackward";
+             signal: "seekbackward";
+             action: STATE_SET "seekbackward" 0.0;
+             target: "seekbackward_button";
+         }
+         program {
+            name: "enabled";
+            signal: "enabled";
+            script {
+               set_int(isEnabled, 1);
+               show();
+            }
+         }
+         program {
+            name: "pressed";
+            signal: "pressed";
+            script {
+               set_int(isPressed, 1);
+               show();
+            }
+         }
+         program {
+             name: "focused";
+             signal: "focused";
+             script {
+               set_int(isFocused, 1);
+               show();
+             }
+         }
+         program {
+             name: "hovered";
+             signal: "hovered";
+             script {
+               set_int(isHovered, 1);
+               show();
+            }
+         }
+         program {
+            name: "reset";
+            signal: "reset";
+            script {
+               set_int(isEnabled, 0);
+               set_int(isPressed, 0);
+               set_int(isFocused, 0);
+               set_int(isHovered, 0);
+               show();
+            }
+         }
+      }
+   }

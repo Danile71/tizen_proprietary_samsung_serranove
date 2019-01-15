@@ -1,0 +1,33 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x0
+        RenderInline {SPAN} at (0,0) size 0x0
+      RenderBlock (anonymous) at (0,0) size 784x0
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderInline {SPAN} at (0,0) size 699x14
+          RenderInline {SPAN} at (0,0) size 699x14
+            RenderText {#text} at (0,0) size 699x14
+              text run at (0,0) width 77: "Bug #3810389. "
+              text run at (77,0) width 290: "Make sure we don't crash manipulating blocks inside inlines. "
+              text run at (367,0) width 332: "You should see the numbers 1 and 2 vertically stacked below this line."
+      RenderBlock (anonymous) at (0,14) size 784x14
+        RenderBlock {DIV} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 6x14
+            text run at (0,0) width 6: "1"
+      RenderBlock (anonymous) at (0,28) size 784x14
+        RenderInline {SPAN} at (0,0) size 12x14
+          RenderInline {SPAN} at (0,0) size 6x14
+            RenderText {#text} at (0,0) size 6x14
+              text run at (0,0) width 6: "2"
+          RenderText {#text} at (6,0) size 3x14
+            text run at (6,0) width 3: " "
+          RenderImage {IMG} at (9,11) size 0x0
+          RenderText {#text} at (9,0) size 3x14
+            text run at (9,0) width 3: " "
+        RenderText {#text} at (0,0) size 0x0
+        RenderImage {IMG} at (12,11) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0

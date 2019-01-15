@@ -1,0 +1,20 @@
+<manifest>
+  <define>
+    <domain name="procps" />
+  </define>
+  <assign>
+    <filesystem path="/bin/*" label="procps" exec_label="^" />
+    <filesystem path="/sbin/*" label="procps" exec_label="^" />
+    <filesystem path="/sbin/sysctl" label="_" exec_label="none" />
+    <filesystem path="/usr/bin/*" label="procps" exec_label="^" />
+    <filesystem path="/usr/bin/pkill" label="_" exec_label="none" />
+    <filesystem path="/usr/bin/skill" label="_" exec_label="none" />
+    <filesystem path="/usr/bin/snice" label="_" exec_label="none" />
+    <filesystem path="/usr/sbin/*" label="procps" exec_label="^" />
+    <filesystem path="/lib/*" label="_" exec_label="none" />
+    <filesystem path="/usr/share/*" label="_" exec_label="none" />
+  </assign>
+  <request>
+    <domain name="procps"/>
+  </request>
+</manifest>

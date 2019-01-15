@@ -1,0 +1,31 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x160
+  RenderBlock {HTML} at (0,0) size 980x160
+    RenderBody {BODY} at (8,16) size 964x136
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 221x19
+          text run at (0,0) width 221: "This is a regression test for "
+        RenderInline {I} at (0,0) size 964x38
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (221,0) size 426x19
+              text run at (221,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=8835"
+          RenderText {#text} at (647,0) size 964x38
+            text run at (647,0) width 5: " "
+            text run at (652,0) width 312: "REGRESSION: Line moves but selection"
+            text run at (0,19) width 173: "highlight stays behind"
+        RenderText {#text} at (173,19) size 5x19
+          text run at (173,19) width 5: "."
+      RenderBlock {HR} at (0,54) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,64) size 964x72
+        RenderImage {IMG} at (0,0) size 0x30
+        RenderBR {BR} at (0,15) size 0x19
+        RenderBR {BR} at (0,34) size 0x19
+        RenderInline {SPAN} at (0,0) size 386x19
+          RenderText {#text} at (0,53) size 386x19
+            text run at (0,53) width 386: "The highlight should be on this line, not above it."
+        RenderText {#text} at (386,53) size 5x19
+          text run at (386,53) width 5: " "
+        RenderBR {BR} at (391,53) size 0x19
+selection start: position 0 of child 0 {#text} of child 6 {SPAN} of child 5 {DIV} of body
+selection end:   position 51 of child 0 {#text} of child 6 {SPAN} of child 5 {DIV} of body

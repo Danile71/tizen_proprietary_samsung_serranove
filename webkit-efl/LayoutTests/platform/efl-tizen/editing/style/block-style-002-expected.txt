@@ -1,0 +1,28 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 6 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x56 [border: (2px solid #FF0000)]
+        RenderText {#text} at (239,14) size 359x28
+          text run at (239,14) width 359: "Here is some text. Should be "
+        RenderInline {B} at (0,0) size 119x28
+          RenderText {#text} at (598,14) size 119x28
+            text run at (598,14) width 119: "centered"
+        RenderText {#text} at (717,14) size 8x28
+          text run at (717,14) width 8: "."
+      RenderBlock {DIV} at (0,56) size 964x56 [border: (2px solid #FF0000)]
+        RenderText {#text} at (14,14) size 359x28
+          text run at (14,14) width 359: "Here is some text. Should be "
+        RenderInline {B} at (0,0) size 119x28
+          RenderText {#text} at (373,14) size 119x28
+            text run at (373,14) width 119: "flush left"
+        RenderText {#text} at (492,14) size 8x28
+          text run at (492,14) width 8: "."
+caret: position 1 of child 0 {#text} of child 1 {DIV} of body

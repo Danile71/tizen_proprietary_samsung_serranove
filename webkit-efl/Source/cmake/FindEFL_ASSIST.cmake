@@ -1,0 +1,21 @@
+# - Try to find efl-assist
+# Once done, this will define
+#
+#  EFL_ASSIST_FOUND - system has efl-assist
+#  EFL_ASSIST_INCLUDE_DIRS - the efl-assist include directories
+#  EFL_ASSIST_LIBRARIES - link these to use efl-assist
+
+INCLUDE(FindPkgConfig)
+
+PKG_CHECK_MODULES(PC_EFL_ASSIST efl-assist)
+
+FIND_PATH(EFL_ASSIST_INCLUDE_DIRS NAMES efl_assist.h
+  HINTS ${PC_EFL_ASSIST_INCLUDE_DIRS} ${PC_EFL_ASSIST_INCLUDEDIR}
+)
+
+FIND_LIBRARY(EFL_ASSIST_LIBRARIES NAMES efl-assist
+  HINTS ${PC_EFL_ASSIST_LIBRARY_DIRS} ${PC_EFL_ASSIST_LIBDIR}
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(EFL_ASSIST DEFAULT_MSG EFL_ASSIST_INCLUDE_DIRS EFL_ASSIST_LIBRARIES)

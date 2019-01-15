@@ -1,0 +1,26 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 943x38
+          text run at (0,0) width 943: "This tests for a bug where autoscroll code would prevent text from being selected. To run manually create a selection"
+          text run at (0,19) width 743: "by clicking somewhere in the first sentence of the paragraph below and dragging downward."
+layer at (0,60) size 980x675
+  RenderBlock (positioned) {DIV} at (0,60) size 980x675
+layer at (0,60) size 980x95
+  RenderBlock (positioned) {DIV} at (0,0) size 980x95
+    RenderBlock {DIV} at (11,0) size 958x95
+      RenderText {#text} at (0,0) size 57x19
+        text run at (0,0) width 57: "Lorem "
+      RenderInline {SPAN} at (0,0) size 48x19
+        RenderText {#text} at (57,0) size 48x19
+          text run at (57,0) width 48: "ipsum"
+      RenderText {#text} at (105,0) size 950x95
+        text run at (105,0) width 845: " dolor sit amet, consectetuer adipiscing elit. Integer vehicula accumsan massa. Quisque elementum. Cras"
+        text run at (0,19) width 939: "id neque a mi rutrum scelerisque. Nulla sed dui a massa sodales posuere. Nulla libero. Nulla posuere, felis id tincidunt"
+        text run at (0,38) width 944: "tincidunt, ipsum metus tristique risus, et convallis turpis elit eget massa. Nunc consectetuer dolor vel nunc. Cum sociis"
+        text run at (0,57) width 927: "natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque dapibus ante et nulla. Cras nec"
+        text run at (0,76) width 866: "velit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Integer ut tortor."
+caret: position 3 of child 0 {#text} of child 1 {SPAN} of child 1 {DIV} of child 1 {DIV} of child 3 {DIV} of body

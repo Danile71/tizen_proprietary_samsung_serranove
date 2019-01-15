@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderText {#text} at (0,0) size 331x14
+        text run at (0,0) width 331: "This tests that you can tab out of a text field if an iframe comes after it."
+      RenderBR {BR} at (331,11) size 0x0
+      RenderTextControl {INPUT} at (2,146) size 194x28 [color=#202020]
+      RenderText {#text} at (198,155) size 3x14
+        text run at (198,155) width 3: " "
+      RenderPartObject {IFRAME} at (201,14) size 302x152 [border: (1px solid #000000)]
+        layer at (0,0) size 300x150
+          RenderView at (0,0) size 300x150
+        layer at (0,0) size 300x150
+          RenderBlock {HTML} at (0,0) size 300x150
+            RenderBody {BODY} at (8,8) size 284x134
+      RenderText {#text} at (503,155) size 3x14
+        text run at (503,155) width 3: " "
+      RenderTextControl {INPUT} at (508,146) size 194x28 [color=#202020]
+      RenderText {#text} at (0,0) size 0x0
+layer at (14,160) size 187x18
+  RenderBlock {DIV} at (4,6) size 187x18
+layer at (520,160) size 187x18
+  RenderBlock {DIV} at (4,6) size 187x18
+    RenderText {#text} at (1,0) size 164x17
+      text run at (1,0) width 164: "This should have focus"
+selection start: position 0 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 7 {INPUT} of body
+selection end:   position 22 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 7 {INPUT} of body

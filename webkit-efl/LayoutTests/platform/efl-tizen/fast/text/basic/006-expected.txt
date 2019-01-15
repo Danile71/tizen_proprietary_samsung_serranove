@@ -1,0 +1,14 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderTable {TABLE} at (0,0) size 964x31 [border: (2px outset #808080)]
+        RenderTableSection {TBODY} at (2,2) size 960x27
+          RenderTableRow {TR} at (0,2) size 960x23
+            RenderTableCell {TD} at (2,2) size 704x23 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 198x19
+                text run at (2,2) width 198: "Big cell gets all the width"
+            RenderTableCell {TD} at (708,2) size 250x23 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 246x19
+                text run at (2,2) width 246: "Icannotbreak noicannot \x{B7}break"

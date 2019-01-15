@@ -1,0 +1,53 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 16 of #text > DIV > BODY > HTML > #document to 16 of #text > DIV > BODY > HTML > #document toDOMRange:range from 16 of #text > DIV > BODY > HTML > #document to 16 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldEndEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidEndEditing:WebViewDidEndEditingNotification
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 11 of #text > DIV > BLOCKQUOTE > DIV > BODY > HTML > #document to 11 of #text > DIV > BLOCKQUOTE > DIV > BODY > HTML > #document toDOMRange:range from 3 of #text > DIV > BLOCKQUOTE > DIV > BODY > HTML > #document to 3 of #text > DIV > BLOCKQUOTE > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 772x19
+          text run at (0,0) width 512: "This tests pasting a Mail blockquote at the start of a paragraph. "
+          text run at (512,0) width 260: "Blockquoting should be stripped."
+      RenderBlock {DIV} at (0,35) size 964x19
+        RenderText {#text} at (0,0) size 139x19
+          text run at (0,0) width 139: "Blockquoted Text"
+        RenderText {#text} at (139,0) size 9x19
+          text run at (139,0) width 9: "x"
+      RenderBlock {P} at (0,70) size 964x38
+        RenderText {#text} at (0,0) size 935x38
+          text run at (0,0) width 364: "This tests pasting text into a Mail blockquote. "
+          text run at (364,0) width 571: "The last bit of content in the incoming fragment should be merged with"
+          text run at (0,19) width 405: "the paragraph after the position being pasted into."
+      RenderBlock {DIV} at (0,124) size 964x54
+        RenderBlock {BLOCKQUOTE} at (40,0) size 884x19
+          RenderBlock {DIV} at (0,0) size 884x19
+            RenderText {#text} at (0,0) size 99x19
+              text run at (0,0) width 99: "Blockquoted"
+            RenderText {#text} at (99,0) size 26x19
+              text run at (99,0) width 26: "foo"
+        RenderBlock (anonymous) at (0,35) size 964x0
+        RenderBlock {BLOCKQUOTE} at (40,35) size 884x19
+          RenderBlock {DIV} at (0,0) size 884x19
+            RenderText {#text} at (0,0) size 27x19
+              text run at (0,0) width 27: "bar"
+            RenderText {#text} at (27,0) size 35x19
+              text run at (27,0) width 35: "Text"
+caret: position 3 of child 0 {#text} of child 0 {DIV} of child 1 {BLOCKQUOTE} of child 10 {DIV} of body

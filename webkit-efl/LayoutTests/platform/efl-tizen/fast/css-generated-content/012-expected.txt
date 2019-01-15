@@ -1,0 +1,31 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x703
+      RenderBlock {H1} at (0,0) size 964x112
+        RenderText {#text} at (0,0) size 882x112
+          text run at (0,0) width 882: "Inheritance bug for floated first-"
+          text run at (0,56) width 152: "letter"
+      RenderBlock {P} at (0,144) size 964x170 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+        RenderInline (generated) at (0,0) size 62x86 [color=#008000] [border: (1px dashed #008000)]
+          RenderText {#text} at (2,1) size 60x84
+            text run at (2,1) width 60: "H"
+        RenderText {#text} at (63,46) size 954x123
+          text run at (63,46) width 865: "ere is the first paragraph. Here the CSS :first-line rule sets the text to a"
+          text run at (1,85) width 275: "green, sans-serif font. "
+          text run at (276,85) width 679: "Then, the CSS :first-letter rule sets the font size to 3em,"
+          text run at (1,113) width 952: "and makes the text bold. And here's some more text to pad out the paragraph"
+          text run at (1,141) width 909: "and make things look nice (or, at least, to illustrate the problem correctly)."
+      RenderBlock {P} at (0,338) size 964x142 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+        RenderBlock (floating) at (1,1) size 62x86 [color=#008000] [border: (1px dashed #008000)]
+          RenderText {#text} at (1,1) size 60x84
+            text run at (1,1) width 60: "H"
+        RenderText {#text} at (63,1) size 959x140
+          text run at (63,1) width 888: "ere is the second paragraph. This is just like the first except that the rule"
+          text run at (63,29) width 421: "p.floated:first-letter floats the first "
+          text run at (484,29) width 207: "letter to the left. "
+          text run at (691,29) width 259: "However, this floated"
+          text run at (63,57) width 897: "element should still inherit the font properties (green and sans-serif) from"
+          text run at (63,85) width 863: "the first-line: selector. It does not -- instead, the font is black, and uses"
+          text run at (1,113) width 580: "the serif font. .... And here's some more text ...."

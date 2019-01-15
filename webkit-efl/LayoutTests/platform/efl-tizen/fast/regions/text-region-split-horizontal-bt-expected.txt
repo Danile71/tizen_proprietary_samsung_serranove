@@ -1,0 +1,16 @@
+Text in region 1. This paragraph has "-webkit-region-break-after: always". There should be nothing in this region after this line.
+
+First element in the region 3. Some text inside a flow. Some text inside a flow. Some text inside a flow. Text in region 4.
+
+Simple line in region 4.
+First line in region 5. This paragraph displays in region 5 because it has a margin-top, which is too high to fit in the previous region.
+First line in region 6. This paragraph uses "-webkit-region-break-before: always".
+FAIL(check region1) outside bounding rect was: [532, 8, 592, 78, 70, 60], and inside was: [512, 8, 531, 25, 17, 19]
+FAIL(check region2) outside bounding rect was: [432, 8, 532, 208, 200, 100], and inside was: [412, 8, 431, 116, 108, 19]
+FAIL(check region2) outside bounding rect was: [432, 8, 532, 208, 200, 100], and inside was: [393, 8, 412, 86, 78, 19]
+FAIL(check region3) outside bounding rect was: [312, 8, 432, 118, 110, 120], and inside was: [276, 8, 295, 188, 180, 19]
+FAIL(check region3) outside bounding rect was: [312, 8, 432, 118, 110, 120], and inside was: [257, 8, 276, 88, 80, 19]
+FAIL(check region4) outside bounding rect was: [212, 8, 312, 228, 220, 100], and inside was: [192, 51, 211, 113, 62, 19]
+FAIL(check region4) outside bounding rect was: [212, 8, 312, 228, 220, 100], and inside was: [173, 8, 192, 88, 80, 19]
+FAIL(check region4) outside bounding rect was: [212, 8, 312, 228, 220, 100], and inside was: [138, 8, 157, 114, 106, 19]
+FAIL(check region4) outside bounding rect was: [212, 8, 312, 228, 220, 100], and inside was: [119, 8, 138, 79, 71, 19]

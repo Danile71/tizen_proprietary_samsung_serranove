@@ -1,0 +1,46 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 67x19
+          text run at (0,0) width 67: "Test for "
+        RenderInline {I} at (0,0) size 964x38
+          RenderInline {A} at (0,0) size 372x19 [color=#0000EE]
+            RenderText {#text} at (67,0) size 372x19
+              text run at (67,0) width 372: "http://bugs.webkit.org/show_bug.cgi?id=12910"
+          RenderText {#text} at (439,0) size 964x38
+            text run at (439,0) width 5: " "
+            text run at (444,0) width 520: "REGRESSION (r18756-r18765): list-bullet doesn't redraw properly"
+            text run at (0,19) width 389: "when changing the list's content using JavaScript"
+        RenderText {#text} at (389,19) size 5x19
+          text run at (389,19) width 5: "."
+      RenderBlock {UL} at (0,54) size 964x19
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderBlock (anonymous) at (0,0) size 924x19
+            RenderListMarker at (-18,0) size 7x19: bullet
+            RenderText {#text} at (0,0) size 26x19
+              text run at (0,0) width 26: "foo"
+          RenderBlock {DIV} at (10,29) size 904x0
+      RenderBlock {UL} at (0,89) size 964x19
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderBlock (anonymous) at (0,0) size 924x19
+            RenderListMarker at (-1,0) size 7x19: bullet
+            RenderText {#text} at (15,0) size 27x19
+              text run at (15,0) width 27: "bar"
+          RenderBlock {DIV} at (10,29) size 904x0
+      RenderBlock {UL} at (0,124) size 964x19
+        RenderListItem {LI} at (0,0) size 924x19
+          RenderBlock (anonymous) at (0,0) size 924x19
+            RenderListMarker at (935,0) size 7x19: bullet
+            RenderText {#text} at (898,0) size 26x19
+              text run at (898,0) width 26: "foo"
+          RenderBlock {DIV} at (10,29) size 904x0
+      RenderBlock {UL} at (0,159) size 964x19
+        RenderListItem {LI} at (0,0) size 924x19
+          RenderBlock (anonymous) at (0,0) size 924x19
+            RenderListMarker at (918,0) size 7x19: bullet
+            RenderText {#text} at (882,0) size 27x19
+              text run at (882,0) width 27: "bar"
+          RenderBlock {DIV} at (10,29) size 904x0

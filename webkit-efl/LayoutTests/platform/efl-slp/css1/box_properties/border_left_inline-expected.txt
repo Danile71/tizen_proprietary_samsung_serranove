@@ -1,0 +1,62 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (20,0) size 764x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x44
+        RenderText {#text} at (0,0) size 234x44
+          text run at (0,0) width 132: "P {margin-left: 20px;}"
+          text run at (132,0) width 0: " "
+          text run at (0,11) width 234: ".one {border-left: purple double 10px;}"
+          text run at (234,11) width 0: " "
+          text run at (0,22) width 228: ".two {border-left: purple thin solid;}"
+          text run at (228,22) width 0: " "
+          text run at (0,33) width 0: " "
+      RenderBlock {HR} at (0,80) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (20,94) size 764x42 [bgcolor=#C0C0C0]
+        RenderText {#text} at (0,0) size 573x14
+          text run at (0,0) width 573: "This paragraph has a background color of silver and a 20-pixel left margin, and it contains inline elements with classes of "
+        RenderInline {SPAN} at (0,0) size 53x14 [border: (10px double #800080)]
+          RenderText {#text} at (583,0) size 43x14
+            text run at (583,0) width 43: "class one"
+        RenderText {#text} at (626,0) size 748x28
+          text run at (626,0) width 122: ", which should have a 10-"
+          text run at (0,14) width 169: "pixel purple double left border; and "
+        RenderInline {SPAN} at (0,0) size 45x14 [border: (1px solid #800080)]
+          RenderText {#text} at (170,14) size 44x14
+            text run at (170,14) width 44: "class two"
+        RenderText {#text} at (214,14) size 751x28
+          text run at (214,14) width 241: ", which should have a thin solid purple left border. "
+          text run at (455,14) width 296: "The line-height of the parent element should not change on any"
+          text run at (0,28) width 20: "line."
+      RenderTable {TABLE} at (0,148) size 784x74 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x72
+          RenderTableRow {TR} at (0,0) size 782x22
+            RenderTableCell {TD} at (0,0) size 782x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 782x50
+            RenderTableCell {TD} at (0,36) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 771x50 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (24,4) size 743x42 [bgcolor=#C0C0C0]
+                RenderText {#text} at (0,0) size 573x14
+                  text run at (0,0) width 573: "This paragraph has a background color of silver and a 20-pixel left margin, and it contains inline elements with classes of "
+                RenderInline {SPAN} at (0,0) size 53x14 [border: (10px double #800080)]
+                  RenderText {#text} at (583,0) size 43x14
+                    text run at (583,0) width 43: "class one"
+                RenderText {#text} at (626,0) size 729x28
+                  text run at (626,0) width 103: ", which should have a"
+                  text run at (0,14) width 185: "10-pixel purple double left border; and "
+                RenderInline {SPAN} at (0,0) size 45x14 [border: (1px solid #800080)]
+                  RenderText {#text} at (186,14) size 44x14
+                    text run at (186,14) width 44: "class two"
+                RenderText {#text} at (230,14) size 732x28
+                  text run at (230,14) width 241: ", which should have a thin solid purple left border. "
+                  text run at (471,14) width 261: "The line-height of the parent element should not change"
+                  text run at (0,28) width 55: "on any line."

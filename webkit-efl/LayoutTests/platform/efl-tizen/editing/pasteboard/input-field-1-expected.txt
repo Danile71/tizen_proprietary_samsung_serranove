@@ -1,0 +1,33 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:(null) toDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document toDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldInsertNode:#document-fragment replacingDOMRange:range from 1 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document givenAction:WebViewInsertActionPasted
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document toDOMRange:range from 2 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x1383
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1383
+  RenderBlock {HTML} at (0,0) size 980x1383
+    RenderBody {BODY} at (8,8) size 964x1359
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 294x19
+          text run at (0,0) width 294: "This tests Copy/Paste of a input field."
+      RenderBlock {DIV} at (0,35) size 964x1289
+        RenderTextControl {INPUT} at (2,1262) size 171x25 [bgcolor=#FFFFFF]
+        RenderImage {IMG} at (175,0) size 720x1280
+      RenderBlock {UL} at (0,1340) size 964x19
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 238x19
+            text run at (0,0) width 238: "Failure. Expected: 1, Actual: 2"
+layer at (14,1311) size 164x15
+  RenderBlock {DIV} at (4,6) size 164x15
+caret: position 1 of child 1 {IMG} of child 2 {DIV} of body

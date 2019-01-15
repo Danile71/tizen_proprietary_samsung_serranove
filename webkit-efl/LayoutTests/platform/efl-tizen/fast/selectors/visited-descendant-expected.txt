@@ -1,0 +1,62 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 872x38
+          text run at (0,0) width 872: "Test that visited style matches to the topmost link in a decendant selector. The link should be green, with red"
+          text run at (0,19) width 94: "underlining."
+      RenderBlock {P} at (0,54) size 964x19
+        RenderInline {A} at (0,0) size 32x19 [color=#FF0000]
+          RenderInline {SPAN} at (0,0) size 32x19 [color=#008000]
+            RenderText {#text} at (0,0) size 32x19
+              text run at (0,0) width 32: "Link"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,89) size 964x19
+        RenderText {#text} at (0,0) size 923x19
+          text run at (0,0) width 923: "Test that visited style matches to the topmost link in a child selector. The link should be green, with red underlining."
+      RenderBlock {P} at (0,124) size 964x19
+        RenderInline {A} at (0,0) size 32x19 [color=#FF0000]
+          RenderInline {SPAN} at (0,0) size 32x19 [color=#008000]
+            RenderText {#text} at (0,0) size 32x19
+              text run at (0,0) width 32: "Link"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,159) size 964x19
+        RenderText {#text} at (0,0) size 827x19
+          text run at (0,0) width 827: "Test that visited style does not match to non-topmost links. The link should be red, with red underlining."
+      RenderBlock {P} at (0,194) size 964x19
+        RenderInline {A} at (0,0) size 0x0 [color=#FF0000]
+          RenderInline {SPAN} at (0,0) size 0x0
+        RenderInline {A} at (0,0) size 32x19 [color=#FF0000]
+          RenderText {#text} at (0,0) size 32x19
+            text run at (0,0) width 32: "Link"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,229) size 964x38
+        RenderText {#text} at (0,0) size 920x38
+          text run at (0,0) width 920: "Test that direct adjacent selector doesn't match visited style. The link should be red, with red underlining. The span"
+          text run at (0,19) width 134: "should be green."
+      RenderBlock {P} at (0,283) size 964x19
+        RenderInline {A} at (0,0) size 32x19 [color=#FF0000]
+          RenderText {#text} at (0,0) size 32x19
+            text run at (0,0) width 32: "Link"
+        RenderText {#text} at (32,0) size 5x19
+          text run at (32,0) width 5: " "
+        RenderInline {SPAN} at (0,0) size 40x19 [color=#008000]
+          RenderText {#text} at (37,0) size 40x19
+            text run at (37,0) width 40: "Span"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,318) size 964x38
+        RenderText {#text} at (0,0) size 934x38
+          text run at (0,0) width 934: "Test that indirect adjacent selector doesn't match visited style. The link should be red, with red underlining. The span"
+          text run at (0,19) width 134: "should be green."
+      RenderBlock {P} at (0,372) size 964x19
+        RenderInline {A} at (0,0) size 32x19 [color=#FF0000]
+          RenderText {#text} at (0,0) size 32x19
+            text run at (0,0) width 32: "Link"
+        RenderText {#text} at (32,0) size 5x19
+          text run at (32,0) width 5: " "
+        RenderInline {SPAN} at (0,0) size 40x19 [color=#008000]
+          RenderText {#text} at (37,0) size 40x19
+            text run at (37,0) width 40: "Span"
+        RenderText {#text} at (0,0) size 0x0

@@ -1,0 +1,15 @@
+--- ../../../slp_git/webkit-engine/Source/cmake/WebKitHelpers.cmake	2011-08-16 17:30:56.545861247 +0900
++++ webkit-engine-1.3.12/Source/cmake/WebKitHelpers.cmake	2011-08-25 16:42:20.761729335 +0900
+@@ -22,9 +22,9 @@
+     # For SBS. WebKit has build error on SBS gcc 4.5. "-fno-split-wide-types" solves it.
+     SET(OLD_COMPILE_FLAGS "-fno-exceptions -fno-strict-aliasing -fno-split-wide-types ${OLD_COMPILE_FLAGS}")
+ 
+-    IF ("${EFL_TARGET}" STREQUAL "arm")
+-        SET(OLD_COMPILE_FLAGS "-mfpu=vfp -mfloat-abi=softfp ${OLD_COMPILE_FLAGS}")
+-    ENDIF()
++#    IF ("${EFL_TARGET}" STREQUAL "arm")
++#        SET(OLD_COMPILE_FLAGS "-mfpu=vfp -mfloat-abi=softfp ${OLD_COMPILE_FLAGS}")
++#    ENDIF()
+ 
+     # Enable warnings by default
+     #SET(OLD_COMPILE_FLAGS "-W -Wall -Wextra -Wcast-align -Wchar-subscripts -Wformat -Wformat-security -Wmissing-format-attribute -Wno-format-y2k -Wno-parentheses -Wno-unused-parameter -Wpointer-arith  -Wreturn-type -Wundef -Wwrite-strings ${OLD_COMPILE_FLAGS}")

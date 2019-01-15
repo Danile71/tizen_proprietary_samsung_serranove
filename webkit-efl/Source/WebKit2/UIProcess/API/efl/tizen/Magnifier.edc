@@ -1,0 +1,76 @@
+collections {
+base_scale: 1.8;
+group {
+        name: "magnifier";
+        images {
+          image: "magnifier_line.png" COMP;
+          image: "magnifier_body.png" COMP;
+        }
+        parts {
+            part {
+                name: "bg";
+                mouse_events: 0;
+                scale: 1;
+                type: RECT;
+                description {
+                    state: "default" 0.0;
+                    fixed: 1 1;
+                    min: 200 106;
+                    align: 0.5 0.0;
+                    visible: 1;
+                    color: 0 0 0 0;
+                }
+            }
+            part {
+                name: "bg_middle";
+                mouse_events: 0;
+                scale: 1;
+                description {
+                state: "default" 0.0;
+                    align: 0.0 0.0;
+                    rel1 { relative: 0.0 0.0; to: "bg"; }
+                    rel2 { relative: 1.03 1.03; to: "bg"; }
+                    image{
+                        normal: "magnifier_body.png";
+                        border : 10 10 10 10;
+                    }
+                }
+            }
+            part {
+                name: "bg_middle_line";
+                mouse_events: 0;
+                scale: 1;
+                description {
+                    color: 7 176 201 255;
+                    state: "default" 0.0;
+                    rel1.to: "bg";
+                    rel2.to: "bg";
+                    image {
+                        normal: "magnifier_line.png";
+                        border: 10 10 10 10;
+                    }
+               }
+            }
+            part {
+                name: "swallow";
+                type: SWALLOW;
+                mouse_events: 0;
+                scale: 1;
+                description {
+                    visible: 1;
+                    state: "default" 0.0;
+                    fixed: 1 1;
+                    align: 0.0 0.0;
+                    rel1 {
+                        to: "bg";
+                        offset: 5 5; //need to update when image with rounded corners releases
+                    }
+                    rel2 {
+                        to: "bg";
+                        offset: -6 -6;
+                    }
+                }
+            }
+        }
+    }
+}

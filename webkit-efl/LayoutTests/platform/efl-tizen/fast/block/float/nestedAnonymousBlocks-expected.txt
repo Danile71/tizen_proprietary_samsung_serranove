@@ -1,0 +1,17 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (floating) {DIV} at (0,0) size 256x19
+        RenderBlock {DIV} at (0,0) size 256x19
+          RenderText {#text} at (0,0) size 256x19
+            text run at (0,0) width 256: "This is a test for rdar://5025925."
+      RenderBlock (floating) {DIV} at (256,0) size 387x19
+        RenderBlock {DIV} at (0,0) size 387x19
+          RenderText {#text} at (0,0) size 387x19
+            text run at (0,0) width 387: "The test succeeds if this does not hang or crash."
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (643,0) size 5x19
+          text run at (643,0) width 5: " "
+      RenderBlock {DIV} at (0,19) size 964x0

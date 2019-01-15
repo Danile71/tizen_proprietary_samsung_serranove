@@ -1,0 +1,32 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x227
+  RenderBlock {HTML} at (0,0) size 980x227
+    RenderBody {BODY} at (8,16) size 964x203
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 502x19
+          text run at (0,0) width 502: "Test passes if all the T and surrounding punctuation are green."
+      RenderBlock {DIV} at (0,35) size 964x42
+        RenderInline (generated) at (0,0) size 50x41 [color=#008000]
+          RenderText {#text} at (0,0) size 50x41
+            text run at (0,0) width 50: "(T)"
+        RenderText {#text} at (50,18) size 24x19
+          text run at (50,18) width 24: "est"
+      RenderBlock {DIV} at (0,77) size 964x42
+        RenderInline (generated) at (0,0) size 60x41 [color=#008000]
+          RenderText {#text} at (0,0) size 60x41
+            text run at (0,0) width 60: "\x{201C}T\x{201D}"
+        RenderText {#text} at (60,18) size 24x19
+          text run at (60,18) width 24: "est"
+      RenderBlock {DIV} at (0,119) size 964x42
+        RenderInline (generated) at (0,0) size 88x41 [color=#008000]
+          RenderText {#text} at (0,0) size 88x41
+            text run at (0,0) width 88: "\x{AB} T \x{BB}"
+        RenderText {#text} at (88,18) size 24x19
+          text run at (88,18) width 24: "est"
+      RenderBlock {DIV} at (0,161) size 964x42
+        RenderInline (generated) at (0,0) size 88x41 [color=#008000]
+          RenderText {#text} at (0,0) size 88x41
+            text run at (0,0) width 88: "\x{AB} T \x{BB}"
+        RenderText {#text} at (88,18) size 44x19
+          text run at (88,18) width 44: "    est"

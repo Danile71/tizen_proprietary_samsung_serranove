@@ -1,0 +1,45 @@
+EDITING DELEGATE: shouldChangeSelectedDOMRange:(null) toDOMRange:range from 1 of BODY > HTML > #document to 4 of BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 5 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderTable {TABLE} at (0,0) size 964x44
+        RenderTableSection {TBODY} at (0,0) size 964x44
+          RenderTableRow {TR} at (0,2) size 964x40
+            RenderTableCell {TD} at (2,2) size 817x40 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 767x38
+                text run at (1,1) width 762: "This tests that a style can be applied to a selection that contains both editable and non-editable"
+                text run at (763,1) width 5: " "
+                text run at (1,20) width 66: "content."
+            RenderTableCell {TD} at (821,2) size 141x40 [r=0 c=1 rs=1 cs=1]
+              RenderInline {SPAN} at (0,0) size 130x38
+                RenderInline {B} at (0,0) size 130x38
+                  RenderText {#text} at (1,1) size 130x38
+                    text run at (1,1) width 124: "Editable - line"
+                    text run at (125,1) width 6: " "
+                    text run at (1,20) width 11: "1"
+              RenderText {#text} at (0,0) size 0x0
+      RenderTable {TABLE} at (0,44) size 922x25
+        RenderTableSection {TBODY} at (0,0) size 922x25
+          RenderTableRow {TR} at (0,2) size 922x21
+            RenderTableCell {TD} at (2,2) size 773x21 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 771x19
+                text run at (1,1) width 771: "The test passes if the editable content is bold, and the non editable content remains unchanged."
+                text run at (772,1) width 0: "             "
+            RenderTableCell {TD} at (777,2) size 143x21 [r=0 c=1 rs=1 cs=1]
+              RenderInline {SPAN} at (0,0) size 141x19
+                RenderInline {B} at (0,0) size 141x19
+                  RenderText {#text} at (1,1) size 141x19
+                    text run at (1,1) width 141: "Editable - line 2"
+              RenderText {#text} at (142,1) size 0x19
+                text run at (142,1) width 0: "             "
+selection start: position 0 of child 1 {TABLE} of body
+selection end:   position 2 of child 3 {TABLE} of body

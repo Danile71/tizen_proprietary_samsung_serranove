@@ -1,0 +1,42 @@
+layer at (0,0) size 980x800
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x0
+      RenderBlock {P} at (0,0) size 964x0
+      RenderBlock {P} at (0,0) size 964x0
+      RenderBlock {P} at (0,0) size 964x0
+layer at (8,200) size 972x159
+  RenderBlock (positioned) {DIV} at (8,200) size 972x159
+    RenderBlock {P} at (0,16) size 972x38
+      RenderText {#text} at (0,0) size 965x38
+        text run at (0,0) width 573: "Test for iframe flattening, with three inner frames just outside the view "
+        text run at (573,0) width 392: "and of the size 200x200 px, plus one inner frame"
+        text run at (0,19) width 122: "is partly visible."
+    RenderBlock {P} at (0,70) size 972x38
+      RenderText {#text} at (0,0) size 937x38
+        text run at (0,0) width 570: "This yellow, red and blue inner frames must remain offscreen, and the "
+        text run at (570,0) width 367: "green inner frames should be of size 300x300"
+        text run at (0,19) width 140: "(200x200 visible)."
+    RenderBlock {P} at (0,124) size 972x19
+      RenderText {#text} at (0,0) size 567x19
+        text run at (0,0) width 567: "NOTE: The test only works in the DRT or with frame flattening enabled."
+layer at (-200,0) size 800x800 backgroundClip at (0,0) size 980x800 clip at (0,0) size 980x800 outlineClip at (0,0) size 980x800
+  RenderPartObject {IFRAME} at (-200,0) size 800x800
+    layer at (0,0) size 800x800
+      RenderView at (0,0) size 800x800
+    layer at (0,0) size 800x800
+      RenderBlock {HTML} at (0,0) size 800x800
+        RenderBody {BODY} at (8,8) size 784x784 [bgcolor=#0000FF]
+    layer at (0,0) size 800x800
+      RenderBlock (positioned) {DIV} at (0,0) size 800x800
+layer at (-100,-100) size 245x200 backgroundClip at (0,0) size 980x800 clip at (0,0) size 980x800 outlineClip at (0,0) size 980x800
+  RenderPartObject {IFRAME} at (-100,-100) size 245x200
+    layer at (0,0) size 300x300
+      RenderView at (0,0) size 245x200
+    layer at (0,0) size 245x200
+      RenderBlock {HTML} at (0,0) size 245x200
+        RenderBody {BODY} at (8,8) size 229x184 [bgcolor=#008000]
+    layer at (0,0) size 300x300
+      RenderBlock (positioned) {DIV} at (0,0) size 300x300

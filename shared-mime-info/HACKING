@@ -1,0 +1,76 @@
+A few ground rules for people interested in adding new mime-types.
+
+* Mime-types used should be IANA registered mime-types when possible
+* When old mime-types become registered, the new definition should
+  include an alias for the old mime-type
+* New entries or modifications should include a test case (see below)
+* Mime-types/file formats proprietary to one application should only
+  be added to a private .xml file and be bundled with the application
+  itself
+* No commits should be done that break the test suite, or the test suite
+  test in question should be amended, and reason for the changes clearly
+  documented in the ChangeLog
+
+Translations
+------------
+
+Translations should go through the Translation Project at:
+http://translationproject.org/latest/shared-mime-info/
+
+More details at:
+http://translationproject.org/html/maintainers.html
+
+CVS
+---
+
+Check it out using:
+cvs -d:pserver:anoncvs@anoncvs.freedesktop.org:/cvs/mime login
+cvs -d:pserver:anoncvs@anoncvs.freedesktop.org:/cvs/mime co shared-mime-info
+
+Filing bugs
+-----------
+
+Bugs can be filed at:
+https://bugs.freedesktop.org/enter_bug.cgi?product=shared-mime-info
+
+Bugs for new mime-types should include:
+- a patch generated against the current CVS, with the "-up" arguments for CVS
+- one or more test files to be added to the test suite
+
+Test suite
+----------
+
+You need to have xdgmime checked out and compile at the same level as
+shared-mime-info. ../xdgmime/src/test-mime-data will be run against
+tests/list.
+
+The format of the file is:
+<testcase filename> <expected mime-type> <expected failures>
+
+The expected failures is whether matching the file with the mime-type would
+fail when matched by file, data or name. "x" indicates expected failure, "o"
+indicates expected success. Trailing "o"s can be omitted.
+
+Releasing
+---------
+
+Before release, an updated shared-mime-info.pot is sent to
+<coordinator@translationproject.org> so the translators have a chance
+of updating the translations before release.
+
+The mail should be in form:
+Subject: shared-mime-info-version.pot
+Body: URL to shared-mime-info tarball
+
+Updated .po files are sent to <shared-mime-info-maint@freedesktop.org>
+
+To pull translations from the Translation Project website, use:
+make update-translations
+
+Updating the spec on the website
+--------------------------------
+
+- On gabe, go in /srv/specifications.freedesktop.org/www
+- Edit specs.idx
+- Run ../update.py
+

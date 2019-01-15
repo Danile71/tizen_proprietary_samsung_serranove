@@ -1,0 +1,74 @@
+layer at (0,0) size 892x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x580
+  RenderBlock {HTML} at (0,0) size 800x580
+    RenderBody {BODY} at (8,8) size 784x564
+      RenderBlock (anonymous) at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 446x14
+          text run at (0,0) width 446: "This test verifies the visual alignment of items in a select element while changing text direction."
+        RenderBR {BR} at (446,0) size 0x14
+        RenderText {#text} at (0,14) size 319x14
+          text run at (0,14) width 319: "All the items in the following select elements should be left-aligned."
+      RenderTable {TABLE} at (0,28) size 778x164
+        RenderTableSection {TBODY} at (0,0) size 778x164
+          RenderTableRow {TR} at (0,2) size 778x79
+            RenderTableCell {TD} at (2,2) size 189x79 [r=0 c=0 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 183x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (193,2) size 195x79 [r=0 c=1 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 189x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (390,2) size 189x79 [r=0 c=2 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 183x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (581,2) size 195x79 [r=0 c=3 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 189x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+          RenderTableRow {TR} at (0,83) size 778x79
+            RenderTableCell {TD} at (2,83) size 189x79 [r=1 c=0 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 183x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (193,83) size 195x79 [r=1 c=1 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 189x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+      RenderBlock (anonymous) at (0,192) size 784x14
+        RenderText {#text} at (0,0) size 326x14
+          text run at (0,0) width 326: "All the items in the following select elements should be right-aligned."
+      RenderTable {TABLE} at (0,206) size 768x164
+        RenderTableSection {TBODY} at (0,0) size 768x164
+          RenderTableRow {TR} at (0,2) size 768x79
+            RenderTableCell {TD} at (2,2) size 199x79 [r=0 c=0 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 193x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (203,2) size 180x79 [r=0 c=1 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 174x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (385,2) size 199x79 [r=0 c=2 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 193x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (586,2) size 180x79 [r=0 c=3 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 174x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+          RenderTableRow {TR} at (0,83) size 768x79
+            RenderTableCell {TD} at (2,83) size 199x79 [r=1 c=0 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 193x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (203,83) size 180x79 [r=1 c=1 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 174x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+      RenderBlock (anonymous) at (0,370) size 784x14
+        RenderText {#text} at (0,0) size 332x14
+          text run at (0,0) width 332: "All the items in the following select elements should be center-aligned."
+      RenderTable {TABLE} at (0,384) size 820x83
+        RenderTableSection {TBODY} at (0,0) size 820x83
+          RenderTableRow {TR} at (0,2) size 820x79
+            RenderTableCell {TD} at (2,2) size 212x79 [r=0 c=0 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 206x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (216,2) size 193x79 [r=0 c=1 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 187x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (411,2) size 212x79 [r=0 c=2 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 206x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (625,2) size 193x79 [r=0 c=3 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 187x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+      RenderBlock (anonymous) at (0,467) size 784x14
+        RenderText {#text} at (0,0) size 216x14
+          text run at (0,0) width 216: "The following tables check mixed alignments."
+      RenderTable {TABLE} at (0,481) size 884x83
+        RenderTableSection {TBODY} at (0,0) size 884x83
+          RenderTableRow {TR} at (0,2) size 884x79
+            RenderTableCell {TD} at (2,2) size 209x79 [r=0 c=0 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 203x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (213,2) size 209x79 [r=0 c=1 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 203x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (424,2) size 228x79 [r=0 c=2 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 222x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]
+            RenderTableCell {TD} at (654,2) size 228x79 [r=0 c=3 rs=1 cs=1]
+              RenderListBox {SELECT} at (3,3) size 222x73 [bgcolor=#FFFFFF] [border: (1px inset #808080)]

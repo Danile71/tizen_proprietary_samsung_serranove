@@ -1,0 +1,46 @@
+#filename "libdamemmanage.c"
+#lib "/lib/*"
+#feature FL_MEMORY_ALLOC_PROBING
+memset@*;      memset;     0
+memcmp@*;      memcmp;     0
+memcpy@*;      memcpy;     0
+
+
+#filename libdamemmanage.c
+#lib "/lib/*"
+#feature_always FL_MEMORY_ALLOC_ALWAYS_PROBING
+memset@*;      memset;     1
+memcmp@*;      memcmp;     1
+memcpy@*;      memcpy;     1
+
+
+#filename "libdanew.cpp"
+#lib "???"
+#feature FL_MEMORY_ALLOC_PROBING
+#feature_always FL_MEMORY_ALLOC_ALWAYS_PROBING
+name_1;    void *operator new(std::size_t size) throw (std::bad_alloc);                     0
+name_2;    void *operator new[](std::size_t size) throw (std::bad_alloc);                   0
+name_3;    void operator delete(void *ptr) throw();                                         0
+name_4;    void operator delete[](void *ptr) throw();                                       0
+name_5;    void *operator new(std::size_t size, const std::nothrow_t& nothrow) throw();     0
+name_6;    void *operator new[](std::size_t size, const std::nothrow_t& nothrow) throw();   0
+name_7;    void operator delete(void *ptr, const std::nothrow_t& nothrow) throw();          0
+name_8;    void operator delete[](void *ptr, const std::nothrow_t& nothrow) throw();        0
+
+
+#filename "libdamemalloc.c"
+#lib "/lib/*"
+#feature FL_MEMORY_ALLOC_PROBING
+malloc@*;      malloc;     4
+free@*;        free;       4
+realloc@*;     realloc;    4
+calloc@*;      calloc;     4
+
+
+#filename libdamemalloc.c
+#lib "/lib/*"
+#feature_always FL_MEMORY_ALLOC_ALWAYS_PROBING
+malloc@*;      malloc;     1
+free@*;        free;       1
+realloc@*;     realloc;    1
+calloc@*;      calloc;     1

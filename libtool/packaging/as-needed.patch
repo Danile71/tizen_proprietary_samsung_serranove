@@ -1,0 +1,32 @@
+diff --git a/libltdl/config/ltmain.m4sh b/libltdl/config/ltmain.m4sh
+index 814cc93..916d3f6 100644
+--- a/libltdl/config/ltmain.m4sh
++++ b/libltdl/config/ltmain.m4sh
+@@ -4274,6 +4274,11 @@ func_mode_link ()
+ 	arg=$func_stripname_result
+ 	;;
+ 
++      -Wl,--as-needed|-Wl,--no-as-needed)
++        deplibs="$deplibs $arg"
++        continue
++        ;;
++
+       -Wl,*)
+ 	func_stripname '-Wl,' '' "$arg"
+ 	args=$func_stripname_result
+@@ -4625,6 +4630,15 @@ func_mode_link ()
+ 	lib=
+ 	found=no
+ 	case $deplib in
++         -Wl,--as-needed|-Wl,--no-as-needed)
++	  if test "$linkmode,$pass" = "prog,link"; then
++	    compile_deplibs="$deplib $compile_deplibs"
++	    finalize_deplibs="$deplib $finalize_deplibs"
++	   else
++	    deplibs="$deplib $deplibs"
++	  fi
++	  continue
++	  ;;
+ 	-mt|-mthreads|-kthread|-Kthread|-pthread|-pthreads|--thread-safe|-threads)
+ 	  if test "$linkmode,$pass" = "prog,link"; then
+ 	    compile_deplibs="$deplib $compile_deplibs"

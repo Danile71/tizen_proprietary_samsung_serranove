@@ -1,0 +1,26 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580 [bgcolor=#008000]
+      RenderBlock {P} at (0,0) size 784x402
+        RenderPartObject {IFRAME} at (0,0) size 502x402 [bgcolor=#FFFFFF] [border: (1px solid #000000)]
+          layer at (0,0) size 500x400
+            RenderView at (0,0) size 500x400
+          layer at (0,0) size 500x221
+            RenderBlock {HTML} at (0,0) size 500x221
+              RenderBody {BODY} at (8,12) size 484x201
+                RenderBlock {P} at (0,0) size 484x14
+                  RenderText {#text} at (0,0) size 139x14
+                    text run at (0,0) width 139: "This is the intermediate frame"
+                RenderBlock (anonymous) at (0,26) size 484x175
+                  RenderPartObject {IFRAME} at (0,0) size 252x172 [border: (1px solid #000000)]
+                    layer at (0,0) size 250x170
+                      RenderView at (0,0) size 250x170
+                    layer at (0,0) size 250x38
+                      RenderBlock {HTML} at (0,0) size 250x38
+                        RenderBody {BODY} at (8,12) size 234x14 [bgcolor=#C0C0C0]
+                          RenderBlock {P} at (0,0) size 234x14
+                            RenderText {#text} at (0,0) size 109x14
+                              text run at (0,0) width 109: "This is the inner frame."
+                  RenderText {#text} at (0,0) size 0x0

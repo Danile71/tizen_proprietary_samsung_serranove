@@ -1,0 +1,27 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 926x38
+          text run at (0,0) width 926: "This tests to see if inserting a space inside normal whitespace inside of a whitespace:pre element will collapse other"
+          text run at (0,19) width 176: "spaces surrounding it."
+      RenderBlock {P} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 555x19
+          text run at (0,0) width 555: "If successful, you should see 'a' followed by 10 spaces followed by 'b'."
+      RenderBlock {HR} at (0,89) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,99) size 964x23 [border: (2px solid #FFAAAA)]
+        RenderBlock {PRE} at (2,2) size 960x19 [border: (2px solid #AAAAFF)]
+          RenderText {#text} at (2,2) size 56x15
+            text run at (2,2) width 56: "a          b"
+caret: position 3 of child 0 {#text} of child 1 {PRE} of child 7 {DIV} of body

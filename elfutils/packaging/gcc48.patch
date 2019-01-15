@@ -1,0 +1,44 @@
+diff --git a/src/ar.c b/src/ar.c
+index 149d116..8e2abbe 100644
+--- a/src/ar.c
++++ b/src/ar.c
+@@ -915,7 +915,7 @@ do_oper_delete (const char *arfname, char **argv, int argc,
+ 		long int instance)
+ {
+   bool *found = alloca (sizeof (bool) * argc);
+-  memset (found, '\0', sizeof (found));
++  memset (found, '\0', sizeof (bool) * argc);
+ 
+   /* List of the files we keep.  */
+   struct armem *to_copy = NULL;
+diff --git a/src/nm.c b/src/nm.c
+index 01519a5..7d1d1ce 100644
+--- a/src/nm.c
++++ b/src/nm.c
+@@ -752,8 +752,9 @@ show_symbols_sysv (Ebl *ebl, GElf_Word strndx,
+ 			       gelf_getshdr (scn, &shdr_mem)->sh_name);
+       if (unlikely (name == NULL))
+ 	{
+-	  name = alloca (sizeof "[invalid sh_name 0x12345678]");
+-	  snprintf (name, sizeof name, "[invalid sh_name %#" PRIx32 "]",
++	  const size_t bufsz = sizeof "[invalid sh_name 0x12345678]";
++	  name = alloca (bufsz);
++	  snprintf (name, bufsz, "[invalid sh_name %#" PRIx32 "]",
+ 		    gelf_getshdr (scn, &shdr_mem)->sh_name);
+ 	}
+       scnnames[elf_ndxscn (scn)] = name;
+diff --git a/src/readelf.c b/src/readelf.c
+old mode 100644
+new mode 100755
+index 81ef6a9..b52b56e
+--- a/src/readelf.c
++++ b/src/readelf.c
+@@ -4625,7 +4625,7 @@ register_info (Ebl *ebl, unsigned int regno, const Ebl_Register_Location *loc,
+ 				 bits ?: &ignore, type ?: &ignore);
+   if (n <= 0)
+     {
+-      snprintf (name, sizeof name, "reg%u", loc->regno);
++      snprintf (name, REGNAMESZ, "reg%u", loc->regno);
+       if (bits != NULL)
+ 	*bits = loc->bits;
+       if (type != NULL)

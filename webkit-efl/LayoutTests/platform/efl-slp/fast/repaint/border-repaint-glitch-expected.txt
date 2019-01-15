@@ -1,0 +1,39 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x422
+  RenderBlock {HTML} at (0,0) size 800x422
+    RenderBody {BODY} at (8,12) size 784x402
+      RenderBlock {P} at (0,0) size 784x14
+        RenderInline {B} at (0,0) size 47x14
+          RenderText {#text} at (0,0) size 47x14
+            text run at (0,0) width 47: "BUG ID:"
+        RenderText {#text} at (47,0) size 3x14
+          text run at (47,0) width 3: " "
+        RenderInline {A} at (0,0) size 87x14 [color=#0000EE]
+          RenderText {#text} at (50,0) size 87x14
+            text run at (50,0) width 87: "Bugzilla bug 6301"
+        RenderText {#text} at (137,0) size 181x14
+          text run at (137,0) width 181: " REGRESSION: Border repaint glitch"
+      RenderBlock {P} at (0,26) size 784x20 [bgcolor=#98FB98]
+        RenderInline {B} at (0,0) size 68x14
+          RenderText {#text} at (3,3) size 68x14
+            text run at (3,3) width 68: "TEST PASS:"
+        RenderText {#text} at (71,3) size 329x14
+          text run at (71,3) width 3: " "
+          text run at (74,3) width 326: "The boxes will resize, maintaining their solid red rectangular borders."
+      RenderBlock {P} at (0,58) size 784x34 [bgcolor=#FF3300]
+        RenderInline {B} at (0,0) size 67x14
+          RenderText {#text} at (3,3) size 67x14
+            text run at (3,3) width 67: "TEST FAIL:"
+        RenderText {#text} at (70,3) size 769x28
+          text run at (70,3) width 3: " "
+          text run at (73,3) width 699: "The boxes will resize, but the borders will break. The first box will be missing small segments from either side of its bottom border. The second box"
+          text run at (3,17) width 601: "will have small red horizontal segments protruding inwards from both sides of the border, where the bottom border was before."
+      RenderBlock {DIV} at (0,104) size 222x142 [border: (1px solid #0000FF)]
+        RenderBlock {DIV} at (11,11) size 200x68 [bgcolor=#008080] [border: (4px solid #FF0000)]
+          RenderBlock {DIV} at (14,14) size 172x40 [bgcolor=#C0C0C0]
+      RenderBlock (anonymous) at (0,246) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,260) size 222x142 [border: (1px solid #0000FF)]
+        RenderBlock {DIV} at (11,11) size 200x88 [bgcolor=#008080] [border: (4px solid #FF0000)]
+          RenderBlock {DIV} at (14,14) size 172x60 [bgcolor=#C0C0C0]

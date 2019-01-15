@@ -1,0 +1,13 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 723x19
+          text run at (0,0) width 421: "You should see a single 100x100 green block below. "
+          text run at (421,0) width 302: "If you see any red, the test has failed."
+      RenderBlock {UL} at (0,35) size 964x0
+        RenderBlock (floating) {LI} at (100,0) size 100x100 [bgcolor=#FF0000]
+layer at (108,43) size 100x100
+  RenderBlock (floating) {LI} at (0,0) size 100x100 [bgcolor=#008000]

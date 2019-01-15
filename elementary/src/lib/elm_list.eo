@@ -1,0 +1,722 @@
+class Elm_List (Elm_Layout, Elm_Interface_Scrollable,
+                Elm_Interface_Atspi_Widget_Action, Elm_Interface_Atspi_Selection)
+{
+   eo_prefix: elm_obj_list;
+   properties {
+      horizontal {
+         set {
+            /*@
+            @brief Enable or disable horizontal mode on the list object.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark Vertical mode is set by default.
+
+            @remark On horizontal mode items are displayed on list from left to right,
+            instead of from top to bottom. Also, the list will scroll horizontally.
+            Each item will presents left icon on top and right icon, or end, at
+            the bottom.
+
+            @see elm_list_horizontal_get()
+
+            @ingroup List */
+         }
+         get {
+            /*@
+            @brief Get a value whether horizontal mode is enabled or not.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return @c EINA_TRUE means horizontal mode selection is enabled.
+            @c EINA_FALSE indicates it's disabled. If @p obj is @c NULL,
+            @c EINA_FALSE is returned.
+
+            @see elm_list_horizontal_set() for details.
+
+            @ingroup List */
+         }
+         values {
+            bool horizontal; /*@ @c EINA_TRUE to enable horizontal or @c EINA_FALSE to
+            disable it, i.e., to enable vertical mode. */
+         }
+      }
+      select_mode {
+         set {
+            /*@
+            @brief Set the list select mode.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark elm_list_select_mode_set() changes item select mode in the list widget.
+            - #ELM_OBJECT_SELECT_MODE_DEFAULT : Items will only call their selection func and
+            callback when first becoming selected. Any further clicks will
+            do nothing, unless you set always select mode.
+            - #ELM_OBJECT_SELECT_MODE_ALWAYS : This means that, even if selected,
+            every click will make the selected callbacks be called.
+            - #ELM_OBJECT_SELECT_MODE_NONE : This will turn off the ability to select items
+            entirely and they will neither appear selected nor call selected
+            callback functions.
+
+            @see elm_list_select_mode_get()
+
+            @ingroup List */
+         }
+         get {
+            /*@
+            @brief Get the list select mode.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return The select mode
+            (If getting mode fails, it returns #ELM_OBJECT_SELECT_MODE_MAX)
+
+            @see elm_list_select_mode_set()
+
+            @ingroup List */
+         }
+         values {
+            Elm_Object_Select_Mode mode(4); /*@ The select mode */
+         }
+      }
+      focus_on_selection {
+         set {
+            /*@
+            @internal
+
+            Set focus upon items selection mode
+
+            When enabled, every selection of an item inside the genlist will automatically set focus to
+            its first focusable widget from the left. This is true of course if the selection was made by
+            clicking an unfocusable area in an item or selecting it with a key movement. Clicking on a
+            focusable widget inside an item will couse this particular item to get focus as usual.
+
+            @ingroup List */
+         }
+         get {
+            /*@
+            @internal
+
+            Get whether focus upon item's selection mode is enabled.
+
+            @return The tree effect status
+            (EINA_TRUE = enabled, EINA_FALSE = disabled)
+
+            @ingroup List */
+         }
+         values {
+            bool enabled; /*@ The tree effect status
+            (EINA_TRUE = enabled, EINA_FALSE = disabled) */
+         }
+      }
+      multi_select {
+         set {
+            /*@
+            @brief Enable or disable multiple items selection on the list object.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark Disabled by default. If disabled, the user can select a single item of
+            the list each time. Selected items are highlighted on list.
+            If enabled, many items can be selected.
+
+            @remark If a selected item is selected again, it will be unselected.
+
+            @see elm_list_multi_select_get()
+
+            @ingroup List */
+         }
+         get {
+            /*@
+            @brief Get a value whether multiple items selection is enabled or not.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @see elm_list_multi_select_set() for details.
+
+            @return @c EINA_TRUE means multiple items selection is enabled.
+            @c EINA_FALSE indicates it's disabled. If @p obj is @c NULL,
+            @c EINA_FALSE is returned.
+
+            @ingroup List */
+         }
+         values {
+            bool multi; /*@ @c EINA_TRUE to enable multi selection or @c EINA_FALSE to
+            disable it. */
+         }
+      }
+      multi_select_mode {
+         set {
+            /*@
+            @internal
+            Set the list multi select mode.
+
+            - #ELM_OBJECT_MULTI_SELECT_MODE_DEFAULT : select/unselect items whenever each
+            item is clicked.
+            - #ELM_OBJECT_MULTI_SELECT_MODE_WITH_CONTROL : Only one item will be selected
+            although multi-selection is enabled, if clicked without pressing control
+            key. This mode is only available with multi-selection.
+
+            @see elm_list_multi_select_set()
+            @see elm_list_multi_select_mode_get()
+
+            @ingroup List
+            @since 1.8 */
+         }
+         get {
+            /*@
+            @internal
+            Get the list multi select mode.
+
+            @return The multi select mode
+            (If getting mode fails, it returns #ELM_OBJECT_MULTI_SELECT_MODE_MAX)
+
+            @see elm_list_multi_select_set()
+            @see elm_list_multi_select_mode_set()
+
+            @ingroup List
+            @since 1.8 */
+         }
+         values {
+            Elm_Object_Multi_Select_Mode mode(2); /*@ The multi select mode */
+         }
+      }
+      mode {
+         set {
+            /*@
+            @brief Set which mode to use for the list object.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark Set list's resize behavior, transverse axis scroll and
+            items cropping. See each mode's description for more details.
+
+            @remark Default value is #ELM_LIST_SCROLL.
+
+            @remark Only one mode at a time can be set. If a previous one was set, it
+            will be changed by the new mode after this call. Bitmasks won't
+            work here as well.
+
+            @warning This function's behavior will clash with those of
+            elm_scroller_content_min_limit(), so use either one of them, but
+            not both.
+
+            @see elm_list_mode_get()
+
+            @ingroup List */
+         }
+         get {
+            /*@
+            @brief Get the mode the list is at.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return One of #Elm_List_Mode: #ELM_LIST_COMPRESS, #ELM_LIST_SCROLL, #ELM_LIST_LIMIT, #ELM_LIST_EXPAND or #ELM_LIST_LAST on errors.
+
+            @remark see elm_list_mode_set() for more information.
+
+            @ingroup List */
+         }
+         values {
+            Elm_List_Mode mode(4); /*@ One of #Elm_List_Mode: #ELM_LIST_COMPRESS,
+            #ELM_LIST_SCROLL, #ELM_LIST_LIMIT or #ELM_LIST_EXPAND. */
+         }
+      }
+      selected_item {
+         get {
+            /*@
+            @brief Get the selected item.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return The selected list item.
+
+            @remark The selected item can be unselected with function
+            elm_list_item_selected_set().
+
+            @remark The selected item always will be highlighted on list.
+
+            @see elm_list_selected_items_get()
+
+            @ingroup List */
+            return: Elm_Object_Item *;
+         }
+      }
+      items {
+         get {
+            /*@
+            @brief Get a list of all the list items.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return A @c list of list items, #Elm_Object_Item,
+            or @c NULL on failure.
+
+            @see elm_list_item_append()
+            @see elm_object_item_del()
+            @see elm_list_clear()
+
+            @ingroup List */
+            return: const(list)*;
+         }
+      }
+      first_item {
+         get {
+            /*@
+            @brief Get the first item in the list
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark This returns the first item in the list.
+
+            @return The first item, or NULL if none
+
+            @ingroup List */
+            return: Elm_Object_Item *;
+         }
+      }
+      selected_items {
+         get {
+            /*@
+            @brief Return a list of the currently selected list items.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return An @c list of list items, #Elm_Object_Item,
+            or @c NULL on failure.
+
+            @remark Multiple items can be selected if multi select is enabled. It can be
+            done with elm_list_multi_select_set().
+
+            @see elm_list_selected_item_get()
+            @see elm_list_multi_select_set()
+
+            @ingroup List */
+            return: const(list)*;
+         }
+      }
+      last_item {
+         get {
+            /*@
+            @brief Get the last item in the list
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark This returns the last item in the list.
+
+            @return The last item, or NULL if none
+
+            @ingroup List */
+            return: Elm_Object_Item *;
+         }
+      }
+   }
+   methods {
+      item_insert_before {
+         /*@
+         @brief Insert a new item into the list object before item @p before.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return The created item or @c NULL upon failure.
+
+         @remark A new item will be created and added to the list. Its position in
+         this list will be just before item @p before.
+
+         @remark Items created with this method can be deleted with elm_object_item_del().
+
+         @remark Associated @p data can be properly freed when item is deleted if a
+         callback function is set with elm_object_item_del_cb_set().
+
+         @remark If a function is passed as argument, it will be called every time this item
+         is selected, i.e., the user clicks over an unselected item.
+         If always select is enabled it will call this function every time
+         user clicks over an item (already selected or not).
+         If such function isn't needed, just passing
+         @c NULL as @p func is enough. The same should be done for @p data.
+
+         @remark Remember that the label parameter is copied inside the list. So if an
+         application dynamically allocated the label, the application should free the
+         label after this call.
+
+         @see elm_list_item_append() for a simple code example.
+         @see elm_list_select_mode_set()
+         @see elm_object_item_del()
+         @see elm_object_item_del_cb_set()
+         @see elm_list_clear()
+         @see elm_icon_add()
+
+         @ingroup List */
+
+         return: Elm_Object_Item *;
+         params {
+            @in Elm_Object_Item *before; /*@ The list item to insert before. */
+            @in const(char)* label; /*@ The label of the list item. */
+            @in Evas_Object *icon; /*@ The icon object to use for the left side of the item. An
+            icon can be any Evas object, but usually it is an icon created
+            with elm_icon_add(). */
+            @in Evas_Object *end; /*@ The icon object to use for the right side of the item. An
+            icon can be any Evas object. */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked. */
+            @in const(void)* data; /*@ The data to associate with the item for related callbacks. */
+         }
+      }
+      go {
+         /*@
+         @brief Starts the list.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @remark Call before running show() on the list object.
+         @warning If not called, it won't display the list properly.
+
+         @code
+         li = elm_list_add(win);
+         elm_list_item_append(li, "First", NULL, NULL, NULL, NULL);
+         elm_list_item_append(li, "Second", NULL, NULL, NULL, NULL);
+         elm_list_go(li);
+         evas_object_show(li);
+         @endcode
+
+         @ingroup List */
+
+      }
+      item_insert_after {
+         /*@
+         @brief Insert a new item into the list object after item @p after.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return The created item or @c NULL upon failure.
+
+         @remark A new item will be created and added to the list. Its position in
+         this list will be just after item @p after.
+
+         @remark Items created with this method can be deleted with elm_object_item_del().
+
+         @remark Associated @p data can be properly freed when item is deleted if a
+         callback function is set with elm_object_item_del_cb_set().
+
+         @remark If a function is passed as argument, it will be called every time this item
+         is selected, i.e., the user clicks over an unselected item.
+         If always select is enabled it will call this function every time
+         user clicks over an item (already selected or not).
+         If such function isn't needed, just passing
+         @c NULL as @p func is enough. The same should be done for @p data.
+
+         @remark Remember that the label parameter is copied inside the list. So if an
+         application dynamically allocated the label, the application should free the
+         label after this call.
+
+         @see elm_list_item_append() for a simple code example.
+         @see elm_list_select_mode_set()
+         @see elm_object_item_del()
+         @see elm_object_item_del_cb_set()
+         @see elm_list_clear()
+         @see elm_icon_add()
+
+         @ingroup List */
+
+         return: Elm_Object_Item *;
+         params {
+            @in Elm_Object_Item *after; /*@ The list item to insert after. */
+            @in const(char)* label; /*@ The label of the list item. */
+            @in Evas_Object *icon; /*@ The icon object to use for the left side of the item. An
+            icon can be any Evas object, but usually it is an icon created
+            with elm_icon_add(). */
+            @in Evas_Object *end; /*@ The icon object to use for the right side of the item. An
+            icon can be any Evas object. */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked. */
+            @in const(void)* data; /*@ The data to associate with the item for related callbacks. */
+         }
+      }
+      at_xy_item_get @const {
+         /*@
+         @brief Get the item that is at the x, y canvas coords.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return The item at the coordinates or NULL if none
+
+         @remark This returns the item at the given coordinates (which are canvas
+         relative, not object-relative). If an item is at that coordinate,
+         that item handle is returned, and if @p posret is not NULL, the
+         integer pointed to is set to a value of -1, 0 or 1, depending if
+         the coordinate is on the upper portion of that item (-1), on the
+         middle section (0) or on the lower part (1). If NULL is returned as
+         an item (no item found there), then posret may indicate -1 or 1
+         based if the coordinate is above or below all items respectively in
+         the list.
+
+
+         @ingroup List */
+         return: Elm_Object_Item *;
+         params {
+            @in Evas_Coord x; /*@ The input x coordinate */
+            @in Evas_Coord y; /*@ The input y coordinate */
+            @out int posret; /*@ The position relative to the item returned here */
+         }
+      }
+      item_append {
+         /*@
+         @brief Append a new item to the list object.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return The created item or @c NULL upon failure.
+
+         @remark A new item will be created and appended to the list, i.e., will
+         be set as @b last item.
+
+         @remark Items created with this method can be deleted with elm_object_item_del().
+
+         @remark Associated @p data can be properly freed when item is deleted if a
+         callback function is set with elm_object_item_del_cb_set().
+
+         @remark If a function is passed as argument, it will be called every time this item
+         is selected, i.e., the user clicks over an unselected item.
+         If always select is enabled it will call this function every time
+         user clicks over an item (already selected or not).
+         If such function isn't needed, just passing
+         @c NULL as @p func is enough. The same should be done for @p data.
+
+         @remark Remember that the label parameter is copied inside the list. So if an
+         application dynamically allocated the label, the application should free the
+         label after this call.
+
+         @see elm_list_select_mode_set()
+         @see elm_object_item_del()
+         @see elm_object_item_del_cb_set()
+         @see elm_list_clear()
+         @see elm_icon_add()
+
+         @ingroup List */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(char)* label; /*@ The label of the list item. */
+            @in Evas_Object *icon; /*@ The icon object to use for the left side of the item. An
+            icon can be any Evas object, but usually it is an icon created
+            with elm_icon_add(). */
+            @in Evas_Object *end; /*@ The icon object to use for the right side of the item. An
+            icon can be any Evas object. */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked. */
+            @in const(void)* data; /*@ The data to associate with the item for related callbacks. */
+         }
+      }
+      item_prepend {
+         /*@
+         @brief Prepend a new item to the list object.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return The created item or @c NULL upon failure.
+
+         @remark A new item will be created and prepended to the list, i.e., will
+         be set as @b first item.
+
+         @remark Items created with this method can be deleted with elm_object_item_del().
+
+         @remark Associated @p data can be properly freed when item is deleted if a
+         callback function is set with elm_object_item_del_cb_set().
+
+         @remark If a function is passed as argument, it will be called every time this item
+         is selected, i.e., the user clicks over an unselected item.
+         If always select is enabled it will call this function every time
+         user clicks over an item (already selected or not).
+         If such function isn't needed, just passing
+         @c NULL as @p func is enough. The same should be done for @p data.
+
+         @remark Remember that the label parameter is copied inside the list. So if an
+         application dynamically allocated the label, the application should free the
+         label after this call.
+
+         @see elm_list_item_append() for a simple code example.
+         @see elm_list_select_mode_set()
+         @see elm_object_item_del()
+         @see elm_object_item_del_cb_set()
+         @see elm_list_clear()
+         @see elm_icon_add()
+
+         @ingroup List */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(char)* label; /*@ The label of the list item. */
+            @in Evas_Object *icon; /*@ The icon object to use for the left side of the item. An
+            icon can be any Evas object, but usually it is an icon created
+            with elm_icon_add(). */
+            @in Evas_Object *end; /*@ The icon object to use for the right side of the item. An
+            icon can be any Evas object. */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked. */
+            @in const(void)* data; /*@ The data to associate with the item for related callbacks. */
+         }
+      }
+      clear {
+         /*@
+         @brief Remove all list's items.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @see elm_object_item_del()
+         @see elm_list_item_append()
+
+         @ingroup List */
+
+      }
+      item_sorted_insert {
+         /*@
+         @brief Insert a new item into the sorted list object.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return The created item or @c NULL upon failure.
+
+         @remark This function inserts values into a list object assuming it was
+         sorted and the result will be sorted.
+
+         @remark A new item will be created and added to the list. Its position in
+         this list will be found comparing the new item with previously inserted
+         items using function @p cmp_func.
+
+         @remark Items created with this method can be deleted with elm_object_item_del().
+
+         @remark Associated @p data can be properly freed when item is deleted if a
+         callback function is set with elm_object_item_del_cb_set().
+
+         @remark If a function is passed as argument, it will be called every time this item
+         is selected, i.e., the user clicks over an unselected item.
+         If always select is enabled it will call this function every time
+         user clicks over an item (already selected or not).
+         If such function isn't needed, just passing
+         @c NULL as @p func is enough. The same should be done for @p data.
+
+         @remark Remember that the label parameter is copied inside the list. So if an
+         application dynamically allocated the label, the application should free the
+         label after this call.
+
+         @see elm_list_item_append() for a simple code example.
+         @see elm_list_select_mode_set()
+         @see elm_object_item_del()
+         @see elm_object_item_del_cb_set()
+         @see elm_list_clear()
+         @see elm_icon_add()
+
+         @ingroup List */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(char)* label; /*@ The label of the list item. */
+            @in Evas_Object *icon; /*@ The icon object to use for the left side of the item. An
+            icon can be any Evas object, but usually it is an icon created
+            with elm_icon_add(). */
+            @in Evas_Object *end; /*@ The icon object to use for the right side of the item. An
+            icon can be any Evas object. */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked. */
+            @in const(void)* data; /*@ The data to associate with the item for related callbacks. */
+            @in Eina_Compare_Cb cmp_func; /*@ The comparing function to be used to sort list
+            items <b>by #Elm_Object_Item item handles</b>. This function will
+            receive two items and compare them, returning a non-negative integer
+            if the second item should be place after the first, or negative value
+            if should be placed before. */
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.member_add;
+      Evas.Object_Smart.move;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Evas.Object_Smart.resize;
+      Elm_Widget.theme_apply;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.access;
+      Elm_Widget.focus_highlight_geometry_get;
+      Elm_Widget.focus_next;
+      Elm_Widget.disable;
+      Elm_Widget.on_focus;
+      Elm_Widget.translate;
+      Elm_Widget.sub_object_del;
+      Elm_Widget.event;
+      Elm_Widget.focused_item.get;
+      Elm_Widget.item_loop_enabled.set;
+      Elm_Widget.item_loop_enabled.get;
+      Elm_Layout.sizing_eval;
+      Elm_Interface_Scrollable.policy.set;
+      Elm_Interface_Atspi_Widget_Action.elm_actions.get;
+      Elm_Interface_Atspi_Accessible.children.get;
+      Elm_Interface_Atspi_Selection.selected_children_count.get;
+      Elm_Interface_Atspi_Selection.selected_child.get;
+      Elm_Interface_Atspi_Selection.selected_child_deselect;
+      Elm_Interface_Atspi_Selection.child_select;
+      Elm_Interface_Atspi_Selection.child_deselect;
+      Elm_Interface_Atspi_Selection.is_child_selected;
+      Elm_Interface_Atspi_Selection.all_children_select;
+      Elm_Interface_Atspi_Selection.clear;
+   }
+   events {
+      activated;
+      clicked,double;
+      selected;
+      unselected;
+      longpressed;
+      edge,top;
+      edge,bottom;
+      edge,left;
+      edge,right;
+      swipe;
+      highlighted;
+      unhighlighted;
+      item,focused;
+      item,unfocused;
+      language,changed;
+      access,changed;
+      focused;
+      unfocused;
+   }
+
+}

@@ -1,0 +1,58 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x33
+        RenderText {#text} at (0,0) size 192x33
+          text run at (0,0) width 192: ".one {border: 10px teal outset;}"
+          text run at (192,0) width 0: " "
+          text run at (0,11) width 192: ".two {border: 10px olive inset;}"
+          text run at (192,11) width 0: " "
+          text run at (0,22) width 0: " "
+      RenderBlock {HR} at (0,69) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,83) size 784x28 [bgcolor=#C0C0C0]
+        RenderText {#text} at (0,0) size 507x14
+          text run at (0,0) width 507: "This is an unstyled element, save for the background color, and containing inline elements with a classes of "
+        RenderInline {SPAN} at (0,0) size 63x34 [border: (10px outset #008080)]
+          RenderText {#text} at (517,0) size 43x14
+            text run at (517,0) width 43: "class one"
+        RenderText {#text} at (570,0) size 781x28
+          text run at (570,0) width 211: ", which should result in a 10-pixel outset teal"
+          text run at (0,14) width 57: "border; and "
+        RenderInline {SPAN} at (0,0) size 64x34 [border: (10px inset #808000)]
+          RenderText {#text} at (67,14) size 44x14
+            text run at (67,14) width 44: "class two"
+        RenderText {#text} at (121,14) size 571x14
+          text run at (121,14) width 252: ", which should result in a 10-pixel inset olive border. "
+          text run at (373,14) width 319: "The line-height of the parent element should not change on any line."
+      RenderTable {TABLE} at (0,123) size 784x60 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x58
+          RenderTableRow {TR} at (0,0) size 782x22
+            RenderTableCell {TD} at (0,0) size 782x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 782x36
+            RenderTableCell {TD} at (0,29) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 771x36 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 763x28 [bgcolor=#C0C0C0]
+                RenderText {#text} at (0,0) size 507x14
+                  text run at (0,0) width 507: "This is an unstyled element, save for the background color, and containing inline elements with a classes of "
+                RenderInline {SPAN} at (0,0) size 63x34 [border: (10px outset #008080)]
+                  RenderText {#text} at (517,0) size 43x14
+                    text run at (517,0) width 43: "class one"
+                RenderText {#text} at (570,0) size 762x28
+                  text run at (570,0) width 192: ", which should result in a 10-pixel outset"
+                  text run at (0,14) width 76: "teal border; and "
+                RenderInline {SPAN} at (0,0) size 64x34 [border: (10px inset #808000)]
+                  RenderText {#text} at (86,14) size 44x14
+                    text run at (86,14) width 44: "class two"
+                RenderText {#text} at (140,14) size 571x14
+                  text run at (140,14) width 252: ", which should result in a 10-pixel inset olive border. "
+                  text run at (392,14) width 319: "The line-height of the parent element should not change on any line."

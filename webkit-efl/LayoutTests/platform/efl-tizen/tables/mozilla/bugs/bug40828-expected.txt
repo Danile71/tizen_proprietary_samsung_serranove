@@ -1,0 +1,19 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderText {#text} at (0,0) size 303x19
+        text run at (0,0) width 303: "The cell padding should not disappear"
+      RenderText {#text} at (0,0) size 0x0
+layer at (120,120) size 125x90
+  RenderTable {TABLE} at (120,120) size 125x90 [border: (1px outset #808080)]
+    RenderTableSection {TBODY} at (1,1) size 123x88
+      RenderTableRow {TR} at (0,2) size 123x41
+        RenderTableCell {TD} at (2,2) size 119x41 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+          RenderText {#text} at (11,11) size 73x19
+            text run at (11,11) width 73: "S\x{E9}lection"
+      RenderTableRow {TR} at (0,45) size 123x41
+        RenderTableCell {TD} at (2,45) size 119x41 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+          RenderText {#text} at (11,11) size 97x19
+            text run at (11,11) width 97: "Suppression"

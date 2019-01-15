@@ -1,0 +1,13 @@
+Index: Python-2.7/Makefile.pre.in
+===================================================================
+--- Python-2.7.orig/Makefile.pre.in
++++ Python-2.7/Makefile.pre.in
+@@ -94,7 +94,7 @@ LIBDIR=		@libdir@
+ MANDIR=		@mandir@
+ INCLUDEDIR=	@includedir@
+ CONFINCLUDEDIR=	$(exec_prefix)/include
+-SCRIPTDIR=	$(prefix)/lib
++SCRIPTDIR=	@libdir@
+ 
+ # Detailed destination directories
+ BINLIBDEST=	$(LIBDIR)/python$(VERSION)

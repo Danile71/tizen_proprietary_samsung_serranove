@@ -1,0 +1,275 @@
+layer at (0,0) size 800x792
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x792
+  RenderBlock {HTML} at (0,0) size 800x792
+    RenderBody {BODY} at (8,12) size 784x772
+      RenderBlock {P} at (0,0) size 784x42
+        RenderText {#text} at (24,0) size 760x42
+          text run at (24,0) width 301: "Test rendering of 3 text runs -- TextRun1 TextRun2 TextRun3, "
+          text run at (325,0) width 459: "in which TextRun1 and TextRun2's bidi level are 2, and TextRun3's bidi level is 1. TextRun2 and"
+          text run at (39,14) width 398: "TextRun3 are siblings. But their ancestor (not their parent) is a sibling of TextRun1. "
+          text run at (437,14) width 347: "The visual order should be TextRun3 TextRun1 TextRun2, not TextRun3"
+          text run at (684,28) width 100: "TextRun2 TextRun1."
+      RenderBlock {HR} at (0,54) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,68) size 784x14
+        RenderText {#text} at (435,0) size 349x14
+          text run at (435,0) width 256: "Pure text. The following 3 lines should all display as \""
+          text run at (691,0) width 22 RTL: "\x{5E9}\x{5E0}\x{5D1}"
+          text run at (713,0) width 71: " This is a Test\""
+      RenderBlock {DIV} at (0,94) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 88x14
+          RenderInline {SPAN} at (0,0) size 88x14
+            RenderText {#text} at (718,0) size 66x14
+              text run at (718,0) width 3 RTL: " "
+              text run at (764,0) width 20: "Test"
+            RenderInline {SPAN} at (0,0) size 22x14
+              RenderText {#text} at (696,0) size 22x14
+                text run at (696,0) width 22 RTL: "\x{5E9}\x{5E0}\x{5D1}"
+      RenderBlock {DIV} at (0,108) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 88x14
+          RenderInline {SPAN} at (0,0) size 88x14
+            RenderInline {SPAN} at (0,0) size 88x14
+              RenderText {#text} at (718,0) size 66x14
+                text run at (718,0) width 3 RTL: " "
+                text run at (764,0) width 20: "Test"
+              RenderInline {SPAN} at (0,0) size 22x14
+                RenderText {#text} at (696,0) size 22x14
+                  text run at (696,0) width 22 RTL: "\x{5E9}\x{5E0}\x{5D1}"
+      RenderBlock {DIV} at (0,122) size 784x14
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 88x14
+          RenderText {#text} at (718,0) size 66x14
+            text run at (718,0) width 3 RTL: " "
+            text run at (764,0) width 20: "Test"
+          RenderInline {SPAN} at (0,0) size 22x14
+            RenderText {#text} at (696,0) size 22x14
+              text run at (696,0) width 22 RTL: "\x{5E9}\x{5E0}\x{5D1}"
+      RenderBlock {HR} at (0,142) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,156) size 784x14
+        RenderText {#text} at (448,0) size 336x14
+          text run at (448,0) width 336: "Text in <em>. The English text should be displayed as \"This is a Test\"."
+      RenderBlock {DIV} at (0,182) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 63x14
+          RenderInline {EM} at (0,0) size 63x14
+            RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (764,0) size 20x14
+              text run at (764,0) width 20: "Test"
+            RenderInline {SPAN} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,196) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 63x14
+          RenderInline {EM} at (0,0) size 63x14
+            RenderText {#text} at (764,0) size 20x14
+              text run at (764,0) width 20: "Test"
+            RenderInline {SPAN} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,210) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 89x14
+          RenderInline {EM} at (0,0) size 89x14
+            RenderText {#text} at (718,0) size 66x14
+              text run at (718,0) width 3 RTL: " "
+              text run at (764,0) width 20: "Test"
+            RenderInline {SPAN} at (0,0) size 23x14
+              RenderText {#text} at (695,0) size 23x14
+                text run at (695,0) width 23 RTL: "\x{5D3}\x{5DE}\x{5D4}"
+      RenderBlock {DIV} at (0,224) size 784x14
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 20x14
+          RenderInline {EM} at (0,0) size 20x14
+            RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (764,0) size 20x14
+              text run at (764,0) width 20: "Test"
+      RenderBlock {DIV} at (0,238) size 784x14
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 20x14
+          RenderInline {EM} at (0,0) size 20x14
+            RenderText {#text} at (764,0) size 20x14
+              text run at (764,0) width 20: "Test"
+      RenderBlock {HR} at (0,258) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,272) size 784x14
+        RenderText {#text} at (428,0) size 356x14
+          text run at (428,0) width 356: "Text in <strong>. The following lines should all display as \"This is a Test\"."
+      RenderBlock {DIV} at (0,298) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (719,0) size 43x14
+          text run at (719,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 65x14
+          RenderInline {STRONG} at (0,0) size 65x14
+            RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (762,0) size 22x14
+              text run at (762,0) width 22: "Test"
+            RenderInline {SPAN} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,312) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (719,0) size 43x14
+          text run at (719,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 65x14
+          RenderInline {STRONG} at (0,0) size 65x14
+            RenderText {#text} at (762,0) size 22x14
+              text run at (762,0) width 22: "Test"
+            RenderInline {SPAN} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,326) size 784x14
+        RenderText {#text} at (719,0) size 43x14
+          text run at (719,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 22x14
+          RenderInline {STRONG} at (0,0) size 22x14
+            RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (762,0) size 22x14
+              text run at (762,0) width 22: "Test"
+      RenderBlock {DIV} at (0,340) size 784x14
+        RenderText {#text} at (719,0) size 43x14
+          text run at (719,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 22x14
+          RenderInline {STRONG} at (0,0) size 22x14
+            RenderText {#text} at (762,0) size 22x14
+              text run at (762,0) width 22: "Test"
+      RenderBlock {HR} at (0,360) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,374) size 784x14
+        RenderText {#text} at (455,0) size 329x14
+          text run at (455,0) width 329: "Text in <i>. The following lines should all display as \"This is a Test\"."
+      RenderBlock {DIV} at (0,400) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 63x14
+          RenderInline {I} at (0,0) size 63x14
+            RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (764,0) size 20x14
+              text run at (764,0) width 20: "Test"
+            RenderInline {SPAN} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,414) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 63x14
+          RenderInline {I} at (0,0) size 63x14
+            RenderText {#text} at (764,0) size 20x14
+              text run at (764,0) width 20: "Test"
+            RenderInline {SPAN} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,428) size 784x14
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 20x14
+          RenderInline {I} at (0,0) size 20x14
+            RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (764,0) size 20x14
+              text run at (764,0) width 20: "Test"
+      RenderBlock {DIV} at (0,442) size 784x14
+        RenderText {#text} at (721,0) size 43x14
+          text run at (721,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 20x14
+          RenderInline {I} at (0,0) size 20x14
+            RenderText {#text} at (764,0) size 20x14
+              text run at (764,0) width 20: "Test"
+      RenderBlock {HR} at (0,462) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,476) size 784x14
+        RenderText {#text} at (452,0) size 332x14
+          text run at (452,0) width 332: "Text in <b>. The following lines should all display as \"This is a Test\"."
+      RenderBlock {DIV} at (0,502) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (719,0) size 43x14
+          text run at (719,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 65x14
+          RenderInline {B} at (0,0) size 65x14
+            RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (762,0) size 22x14
+              text run at (762,0) width 22: "Test"
+            RenderInline {SPAN} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,516) size 784x14 [bgcolor=#FF0000]
+        RenderText {#text} at (719,0) size 43x14
+          text run at (719,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 65x14
+          RenderInline {B} at (0,0) size 65x14
+            RenderText {#text} at (762,0) size 22x14
+              text run at (762,0) width 22: "Test"
+            RenderInline {SPAN} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,530) size 784x14
+        RenderText {#text} at (719,0) size 43x14
+          text run at (719,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 22x14
+          RenderInline {B} at (0,0) size 22x14
+            RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (762,0) size 22x14
+              text run at (762,0) width 22: "Test"
+      RenderBlock {DIV} at (0,544) size 784x14
+        RenderText {#text} at (719,0) size 43x14
+          text run at (719,0) width 43: "This is a "
+        RenderInline {SPAN} at (0,0) size 22x14
+          RenderInline {B} at (0,0) size 22x14
+            RenderText {#text} at (762,0) size 22x14
+              text run at (762,0) width 22: "Test"
+      RenderBlock (anonymous) at (0,558) size 784x0
+        RenderInline {B} at (0,0) size 0x0
+          RenderText {#text} at (0,0) size 0x0
+      RenderBlock (anonymous) at (0,564) size 784x208
+        RenderBlock {HR} at (0,0) size 784x2 [border: (1px inset #000000)]
+        RenderBlock {P} at (0,14) size 784x14
+          RenderText {#text} at (272,0) size 512x14
+            text run at (272,0) width 512: "Text in <img>, <href>, <em>, <tr>. The following English text should all display as \"This is a Test\"."
+        RenderBlock {DIV} at (0,40) size 784x14 [bgcolor=#FF0000]
+          RenderText {#text} at (716,0) size 46x14
+            text run at (716,0) width 46: "This is a "
+          RenderInline {SPAN} at (0,0) size 72x14
+            RenderInline {A} at (0,0) size 72x14 [color=#0000EE]
+              RenderText {#text} at (762,0) size 22x14
+                text run at (762,0) width 22: "Test"
+              RenderInline {SPAN} at (0,0) size 4x14
+                RenderImage {IMG} at (712,7) size 4x4
+        RenderBlock {DIV} at (0,54) size 784x14 [bgcolor=#FF0000]
+          RenderText {#text} at (716,0) size 46x14
+            text run at (716,0) width 46: "This is a "
+          RenderInline {SPAN} at (0,0) size 93x14
+            RenderInline {A} at (0,0) size 93x14 [color=#0000EE]
+              RenderText {#text} at (713,0) size 71x14
+                text run at (713,0) width 3 RTL: " "
+                text run at (762,0) width 22: "Test"
+              RenderInline {SPAN} at (0,0) size 22x14
+                RenderText {#text} at (691,0) size 22x14
+                  text run at (691,0) width 22 RTL: "\x{5E9}\x{5E0}\x{5D1}"
+        RenderBlock {DIV} at (0,68) size 784x140
+          RenderText {#text} at (39,0) size 782x140
+            text run at (39,0) width 3 RTL: " "
+            text run at (42,0) width 742: "This is a <\x{FFFD}span style=\"text-decoration: underline;\"><\x{FFFD}em>Test<\x{FFFD}a href><\x{FFFD}/a><\x{FFFD}/em><\x{FFFD}/span><\x{FFFD}/div> <\x{FFFD}div contentEditable=\"true\""
+            text run at (2,14) width 782: "style=\"background:red;\">This is a <\x{FFFD}span style=\"text-decoration: underline;\"><\x{FFFD}em>Test<\x{FFFD}span><\x{FFFD}img src= d:/tmp/p1.png/><\x{FFFD}/span><\x{FFFD}/em>"
+            text run at (8,28) width 3 RTL: " "
+            text run at (11,28) width 773: "<\x{FFFD}/span><\x{FFFD}/div> <\x{FFFD}div>This is a <\x{FFFD}span style=\"text-decoration: underline;\"><\x{FFFD}a href>Test <\x{FFFD}span>again<\x{FFFD}/span><\x{FFFD}/a><\x{FFFD}/span><\x{FFFD}/div>"
+            text run at (15,42) width 769: "<\x{FFFD}div>This is a <\x{FFFD}span style=\"text-decoration: underline;\"><\x{FFFD}em>Test<\x{FFFD}table><\x{FFFD}tr><\x{FFFD}td>a<\x{FFFD}/td><\x{FFFD}/tr><\x{FFFD}/td><\x{FFFD}/tr><\x{FFFD}/table><\x{FFFD}/em>"
+            text run at (106,56) width 329: "<\x{FFFD}/span><\x{FFFD}/div> <\x{FFFD}hr> <\x{FFFD}ul id=\"console\" dir=ltr><\x{FFFD}/ul> "
+            text run at (435,56) width 58: "<\x{FFFD}script> "
+            text run at (493,56) width 86: "function log(str) "
+            text run at (579,56) width 8: "{ "
+            text run at (587,56) width 197: "var li = document.createElement(\"li\");"
+            text run at (80,70) width 3 RTL: " "
+            text run at (83,70) width 248: "li.appendChild(document.createTextNode(str)); "
+            text run at (331,70) width 273: "var console = document.getElementById(\"console\"); "
+            text run at (604,70) width 129: "console.appendChild(li); "
+            text run at (733,70) width 8: "} "
+            text run at (741,70) width 43: "function"
+            text run at (35,84) width 201: "assertEqual(message, actual, expected) "
+            text run at (236,84) width 8: "{ "
+            text run at (244,84) width 113: "if (actual != expected) "
+            text run at (357,84) width 409: "log(\"\\n\" + message + \": Failure, actual: \" + actual + \"; expected: \" + expected); "
+            text run at (766,84) width 18: "else"
+            text run at (7,98) width 182: "log(\"\\n\" + message + \": Success\"); "
+            text run at (189,98) width 8: "} "
+            text run at (197,98) width 273: "var tests = document.getElementsByTagName('div'); "
+            text run at (470,98) width 121: "var sel = getSelection(); "
+            text run at (591,98) width 193: "for (var i = 0; i <\x{FFFD} tests.length; ++i) {"
+            text run at (2,112) width 3 RTL: " "
+            text run at (5,112) width 129: "sel.setPosition(tests[i],0); "
+            text run at (134,112) width 269: "sel.modify(\"move\", \"backward\", \"lineboundary\"); "
+            text run at (403,112) width 224: "sel.modify(\"extend\", \"forward\", \"word\"); "
+            text run at (627,112) width 157: "assertEqual(\"Test \" + i + \": \","
+            text run at (484,126) width 7 RTL: ">"
+            text run at (491,126) width 120: "sel.toString(), \"This\"); "
+            text run at (611,126) width 69: "} <\x{FFFD}/script> "
+            text run at (680,126) width 58: "<\x{FFFD}/body> "
+            text run at (738,126) width 46: "<\x{FFFD}/html"
+      RenderBlock (anonymous) at (0,772) size 784x0
+        RenderInline {B} at (0,0) size 0x0

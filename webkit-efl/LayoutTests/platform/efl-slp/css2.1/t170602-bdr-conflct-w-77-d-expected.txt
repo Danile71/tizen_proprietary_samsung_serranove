@@ -1,0 +1,40 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x190
+  RenderBlock {HTML} at (0,0) size 800x190
+    RenderBody {BODY} at (8,12) size 784x170
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 237x14
+          text run at (0,0) width 237: "There should be no red borders on the table below"
+      RenderTable {TABLE} at (0,26) size 135x144 [border: (2px none #808080)]
+        RenderTableSection {TBODY} at (2,2) size 130x139
+          RenderTableRow {TR} at (0,0) size 130x46
+            RenderTableCell {TD} at (0,12) size 43x21 [border: (3px groove #00FF00)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 33x14
+                text run at (4,4) width 33: "groove"
+            RenderTableCell {TD} at (43,11) size 45x24 [border: (3px groove #00FF00) (5px groove #FF0000) (3px groove #00FF00)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 33x14
+                text run at (4,4) width 33: "groove"
+            RenderTableCell {TD} at (88,12) size 42x21 [border: (3px groove #00FF00)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 33x14
+                text run at (4,4) width 33: "groove"
+          RenderTableRow {TR} at (0,46) size 130x48
+            RenderTableCell {TD} at (0,59) size 43x21 [border: (3px groove #00FF00) (5px groove #FF0000) (2px groove #00FF00)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 33x14
+                text run at (4,4) width 33: "groove"
+            RenderTableCell {TD} at (43,57) size 45x26 [border: (5px groove #00FF00)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (6,6) size 33x14
+                text run at (6,6) width 33: "groove"
+            RenderTableCell {TD} at (88,59) size 42x21 [border: (3px groove #00FF00) (5px groove #FF0000)] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (6,4) size 33x14
+                text run at (6,4) width 33: "groove"
+          RenderTableRow {TR} at (0,94) size 130x45
+            RenderTableCell {TD} at (0,106) size 43x21 [border: (3px groove #00FF00)] [r=2 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 33x14
+                text run at (4,4) width 33: "groove"
+            RenderTableCell {TD} at (43,105) size 45x23 [border: (5px groove #FF0000) (2px groove #00FF00)] [r=2 c=1 rs=1 cs=1]
+              RenderText {#text} at (4,6) size 33x14
+                text run at (4,6) width 33: "groove"
+            RenderTableCell {TD} at (88,106) size 42x21 [border: (3px groove #00FF00)] [r=2 c=2 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 33x14
+                text run at (4,4) width 33: "groove"

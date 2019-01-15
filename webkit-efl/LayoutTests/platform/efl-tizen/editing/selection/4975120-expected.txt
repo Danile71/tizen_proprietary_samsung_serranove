@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 923x57
+          text run at (0,0) width 893: "This tests for a bug that caused the parent of an active frame to paint as though it were active when its window"
+          text run at (0,19) width 116: "becomes key. "
+          text run at (116,19) width 807: "To run manually, make another window active and then make this window active. Only the subframe"
+          text run at (0,38) width 172: "should appear active."
+      RenderBlock (anonymous) at (0,73) size 964x183
+        RenderTextControl {INPUT} at (2,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderBR {BR} at (175,20) size 0x0
+        RenderPartObject {IFRAME} at (0,29) size 304x154 [border: (2px inset #000000)]
+          layer at (0,0) size 300x150
+            RenderView at (0,0) size 300x150
+          layer at (0,0) size 300x150
+            RenderBlock {HTML} at (0,0) size 300x150
+              RenderBody {BODY} at (8,8) size 284x134 [bgcolor=#FFFFE0]
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+layer at (14,89) size 164x15
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (0,0) size 21x15
+      text run at (0,0) width 21: "foo"
+selection start: position 0 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 3 {INPUT} of body
+selection end:   position 3 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 3 {INPUT} of body

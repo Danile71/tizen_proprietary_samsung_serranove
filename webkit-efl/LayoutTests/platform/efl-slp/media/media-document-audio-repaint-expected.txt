@@ -1,0 +1,19 @@
+FAIL: Timed out waiting for notifyDone to be called
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x12
+        RenderText {#text} at (0,0) size 760x11
+          text run at (0,0) width 675: "This tests that in a standalone media document with audio content, the media element repaints correctly "
+          text run at (675,0) width 85: "while playing."
+      RenderBlock (anonymous) at (0,24) size 784x334
+        RenderPartObject {IFRAME} at (0,0) size 384x334 [border: (2px inset #000000)]
+          layer at (0,0) size 380x330
+            RenderView at (0,0) size 380x330
+          layer at (0,0) size 380x330
+            RenderBlock {HTML} at (0,0) size 380x330
+              RenderBody {BODY} at (8,8) size 364x314
+        RenderText {#text} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0

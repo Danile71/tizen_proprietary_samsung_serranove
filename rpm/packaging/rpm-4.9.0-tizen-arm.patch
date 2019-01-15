@@ -1,0 +1,87 @@
+Index: rpm-4.9.0/macros.in
+===================================================================
+--- rpm-4.9.0.orig/macros.in
++++ rpm-4.9.0/macros.in
+@@ -1032,7 +1032,7 @@ done \
+ 
+ #------------------------------------------------------------------------------
+ # arch macro for all supported ARM processors
+-%arm	armv3l armv4b armv4l armv4tl armv5tel armv5tejl armv6l armv7l
++%arm	armv3l armv4b armv4l armv4tl armv5tel armv5tejl armv6l armv7l armv7hl armv7nhl armv7tnhl armv7thl
+ 
+ #------------------------------------------------------------------------------
+ # arch macro for all supported Sparc processors
+Index: rpm-4.9.0/rpmrc.in
+===================================================================
+--- rpm-4.9.0.orig/rpmrc.in
++++ rpm-4.9.0/rpmrc.in
+@@ -66,6 +66,10 @@ optflags: armv5tel -O2 -g -march=armv5te
+ optflags: armv5tejl -O2 -g -march=armv5te
+ optflags: armv6l -O2 -g -march=armv6
+ optflags: armv7l -O2 -g -march=armv7
++optflags: armv7hl -O2 -g -march=armv7-a -mfloat-abi=hard -mfpu=vfpv3-d16
++optflags: armv7nhl -O2 -g -march=armv7-a -mfloat-abi=hard -mfpu=neon
++optflags: armv7thl -O2 -g -march=armv7-a -mfloat-abi=hard -mfpu=vfpv3-d16 -mthumb
++optflags: armv7tnhl -O2 -g -march=armv7-a -mfloat-abi=hard -mfpu=neon -mthumb
+ 
+ optflags: atarist -O2 -g -fomit-frame-pointer
+ optflags: atariste -O2 -g -fomit-frame-pointer
+@@ -140,6 +144,11 @@ arch_canon:     armv5tel: armv5tel 	12
+ arch_canon:     armv5tejl: armv5tejl 	12
+ arch_canon:     armv6l: armv6l 	12
+ arch_canon:     armv7l: armv7l 	12
++arch_canon:     armv7hl: armv7hl 	12
++arch_canon:     armv7nhl: armv7nhl 	12
++arch_canon:     armv7thl: armv7thl 	12
++arch_canon:     armv7tnhl: armv7tnhl 	12
++
+ 
+ arch_canon:	m68kmint: m68kmint	13
+ arch_canon:	atarist: m68kmint	13
+@@ -248,6 +257,10 @@ buildarchtranslate: armv5tel: armv5tel
+ buildarchtranslate: armv5tejl: armv5tejl
+ buildarchtranslate: armv6l: armv6l
+ buildarchtranslate: armv7l: armv7l
++buildarchtranslate: armv7hl: armv7hl
++buildarchtranslate: armv7nhl: armv7nhl
++buildarchtranslate: armv7thl: armv7thl
++buildarchtranslate: armv7tnhl: armv7tnhl
+ 
+ buildarchtranslate: atarist: m68kmint
+ buildarchtranslate: atariste: m68kmint
+@@ -336,6 +349,10 @@ arch_compat: armv5tel: armv4tl
+ arch_compat: armv4tl: armv4l
+ arch_compat: armv4l: armv3l
+ arch_compat: armv3l: noarch
++arch_compat: armv7tnhl: armv7nhl armv7thl
++arch_compat: armv7nhl: armv7hl
++arch_compat: armv7thl: armv7hl
++arch_compat: armv7hl: noarch
+ 
+ arch_compat: atarist: m68kmint noarch
+ arch_compat: atariste: m68kmint noarch
+@@ -441,6 +458,11 @@ buildarch_compat: armv4tl: armv4l
+ buildarch_compat: armv4l: armv3l
+ buildarch_compat: armv3l: noarch
+ 
++buildarch_compat: armv7tnhl: armv7nhl armv7thl
++buildarch_compat: armv7nhl: armv7hl
++buildarch_compat: armv7thl: armv7hl
++buildarch_compat: armv7hl: noarch
++
+ buildarch_compat: hppa2.0: hppa1.2
+ buildarch_compat: hppa1.2: hppa1.1
+ buildarch_compat: hppa1.1: hppa1.0
+Index: rpm-4.9.0/installplatform
+===================================================================
+--- rpm-4.9.0.orig/installplatform
++++ rpm-4.9.0/installplatform
+@@ -19,7 +19,7 @@ RPMRC_GNU="`$RPM --eval '%{_gnu}'`"
+ case "$arch" in
+   i[3456]86|pentium[34]|athlon|geode) SUBSTS='s_i386_i386_ s_i386_i486_ s_i386_i586_ s_i386_i686_ s_i386_pentium3_ s_i386_pentium4_ s_i386_athlon_ s_i386_geode_' ;;
+   alpha*) SUBSTS='s_alpha_alpha_ s_alpha_alphaev5_ s_alpha_alphaev56_ s_alpha_alphapca56_ s_alpha_alphaev6_ s_alpha_alphaev67_' ;;
+-  arm*) SUBSTS='s_arm_arm_ s_arm_armv3l_ s_arm_armv4l_ s_arm_armv4tl_ s_arm_armv5tel_ s_arm_armv5tejl_ s_arm_armv6l_ s_arm_armv7l_' ;;
++  arm*) SUBSTS='s_arm_arm_ s_arm_armv3l_ s_arm_armv4l_ s_arm_armv4tl_ s_arm_armv5tel_ s_arm_armv5tejl_ s_arm_armv6l_ s_arm_armv7l_ s_arm_armv7hl_ s_arm_armv7nhl_ s_arm_armv7tnhl_ s_arm_armv7thl_' ;;
+   sh4*) SUBSTS='s_sh4_sh4_ s_sh4_sh4a_' ;;
+   sparc*) SUBSTS='s_sparc\(64\|64v\|v9v\|v9\)_sparc_ s_sparc64_sparcv9_;s_sparc\([^v]\|$\)_sparcv9\1_ s_sparcv9_sparc64_;s_sparc\([^6]\|$\)_sparc64\1_' ;;
+   powerpc*|ppc*) SUBSTS='s_ppc64_ppc_ s_ppc\([^6ip]\|$\)_ppc64\1_ s_ppc\([^6ip]\|$\)_ppciseries_ s_ppc\([^6ip]\|$\)_ppcpseries_ s_ppc\([^6ip]\|$\)_ppc64iseries_ s_ppc\([^6ip]\|$\)_ppc64pseries_' ;;

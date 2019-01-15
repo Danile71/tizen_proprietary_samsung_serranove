@@ -1,0 +1,14 @@
+[Unit]
+Description=GStreamer Registry
+ConditionPathExists=!/home/system/.cache/gstreamer-1.0/registry.bin
+
+[Service]
+User=system
+Group=system
+SmackProcessLabel=gstreamer
+Type=oneshot
+Environment=GST_REGISTRY=/home/system/.cache/gstreamer-1.0/registry.bin
+ExecStart=/usr/bin/gst-inspect-1.0
+
+[Install]
+WantedBy=multi-user.target

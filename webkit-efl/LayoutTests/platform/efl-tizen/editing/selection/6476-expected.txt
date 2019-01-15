@@ -1,0 +1,41 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 5 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:(null) toDOMRange:range from 1 of #text > DIV > BODY > HTML > #document to 1 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {DIV} at (0,0) size 250x57
+        RenderText {#text} at (0,0) size 248x38
+          text run at (0,0) width 243: "Try to create a caret after this"
+          text run at (243,0) width 5: " "
+          text run at (0,19) width 18: "lin"
+        RenderInline {SPAN} at (0,0) size 10x19
+          RenderText {#text} at (18,19) size 10x19
+            text run at (18,19) width 10: "e"
+        RenderText {#text} at (28,19) size 5x19
+          text run at (28,19) width 5: " "
+        RenderInline {SPAN} at (0,0) size 0x19
+        RenderText {#text} at (0,38) size 231x19
+          text run at (0,38) width 231: "thisshouldbeonthesecondline"
+      RenderBlock {HR} at (0,65) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,83) size 964x38
+        RenderText {#text} at (0,0) size 169x19
+          text run at (0,0) width 169: "This is a testcase for "
+        RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+          RenderText {#text} at (169,0) size 426x19
+            text run at (169,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=6476"
+        RenderText {#text} at (595,0) size 955x38
+          text run at (595,0) width 10: ". "
+          text run at (605,0) width 350: "Creating an upstream caret with the mouse"
+          text run at (0,19) width 806: "was impossible if the upstream and downstream carets were separated only by unrendered content."
+      RenderBlock {P} at (0,137) size 964x38
+        RenderText {#text} at (0,0) size 960x38
+          text run at (0,0) width 409: "This test uses the eventSender to do mouse clicks. "
+          text run at (409,0) width 551: "To run it manually, click in the space after all the text on the first line"
+          text run at (0,19) width 234: "in the above editable region. "
+          text run at (234,19) width 503: "Clicking should create a caret after the first space after the 'e'."
+caret: position 1 of child 2 {#text} of child 1 {DIV} of body

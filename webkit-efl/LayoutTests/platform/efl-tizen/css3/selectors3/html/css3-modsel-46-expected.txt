@@ -1,0 +1,21 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x191
+  RenderBlock {HTML} at (0,0) size 980x191
+    RenderBody {BODY} at (8,16) size 964x159
+      RenderBlock {DIV} at (0,0) size 964x159
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 280x19
+            text run at (0,0) width 280: "This paragraph should be unstyled."
+        RenderBlock {P} at (0,35) size 964x19 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 363x19
+            text run at (0,0) width 363: "But this one should have a green background"
+        RenderBlock {P} at (0,70) size 964x19 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 404x19
+            text run at (0,0) width 404: "And this one should also have a green background"
+        RenderBlock {ADDRESS} at (0,105) size 964x19
+          RenderText {#text} at (0,0) size 547x19
+            text run at (0,0) width 547: "This address is only here to fill some space between two paragraphs"
+        RenderBlock {P} at (0,140) size 964x19 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 389x19
+            text run at (0,0) width 389: "This paragraph should have a green background"

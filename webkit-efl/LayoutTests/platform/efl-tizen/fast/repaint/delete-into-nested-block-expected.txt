@@ -1,0 +1,19 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {H4} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 452x19
+          text run at (0,0) width 452: "Deleting into a nested block (was Radar 4056100)"
+      RenderBlock {DIV} at (0,40) size 400x57
+        RenderText {#text} at (0,0) size 390x57
+          text run at (0,0) width 361: "The bug's symptom was that the visual result"
+          text run at (0,19) width 390: "were two instances of the word \"three\", because"
+          text run at (0,38) width 388: "the original was not erased. Resize cleared it up."
+      RenderBlock {HR} at (0,105) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,115) size 964x100
+        RenderBlock {DIV} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 43x19
+            text run at (0,0) width 43: "three"
+caret: position 0 of child 0 {#text} of child 1 {DIV} of child 7 {DIV} of body

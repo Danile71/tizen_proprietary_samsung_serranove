@@ -1,0 +1,38 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 3 of #text > PRE > DIV > BODY > HTML > #document to 3 of #text > PRE > DIV > BODY > HTML > #document toDOMRange:range from 0 of PRE > DIV > BODY > HTML > #document to 0 of PRE > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x714
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 948x57
+          text run at (0,0) width 948: "Tests for a bug in the paragraph separator insertion code that would add an extra newline when inserting a paragraph"
+          text run at (0,19) width 550: "separator at the end of a paragraph in text that preserves newlines. "
+          text run at (550,19) width 386: "Also, an extraneous space would be added after"
+          text run at (0,38) width 44: "'foo'. "
+          text run at (44,38) width 284: "Only one newline should be added. "
+          text run at (328,38) width 346: "And there should be no extraneous spaces."
+      RenderBlock {P} at (0,73) size 964x19
+        RenderInline {B} at (0,0) size 209x19
+          RenderText {#text} at (0,0) size 209x19
+            text run at (0,0) width 209: "It demonstrates a bug:"
+        RenderText {#text} at (209,0) size 748x19
+          text run at (209,0) width 748: " too much padding is left between the new line and the end of the paragraph containing 'foo'."
+      RenderBlock {DIV} at (0,108) size 964x58
+        RenderBlock {PRE} at (0,0) size 964x15
+          RenderText {#text} at (0,0) size 21x15
+            text run at (0,0) width 21: "foo"
+        RenderBlock {PRE} at (0,28) size 964x30
+          RenderText {#text} at (0,0) size 21x30
+            text run at (0,0) width 0: " "
+            text run at (0,15) width 21: "bar"
+caret: position 0 of child 0 {#text} of child 1 {PRE} of child 4 {DIV} of body

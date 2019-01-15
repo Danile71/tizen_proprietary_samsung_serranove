@@ -1,0 +1,15 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x41
+  RenderBlock {HTML} at (0,0) size 980x41 [color=#FFFFFF]
+    RenderBody {BODY} at (8,8) size 964x25
+      RenderRuby (inline) {RUBY} at (0,0) size 964x10
+        RenderRubyRun (anonymous) at (0,5) size 964x20
+          RenderRubyText {RT} at (0,-5) size 964x5
+            RenderText {#text} at (462,0) size 40x5
+              text run at (462,0) width 40: "rubytext"
+          RenderRubyBase (anonymous) at (0,0) size 964x20
+            RenderText {#text} at (0,0) size 964x20
+              text run at (0,0) width 964: "Attempt to create a positioned ruby text element. Non-static position is not supported for ruby"
+              text run at (0,10) width 964: "text, which should be apparent from the resulting render tree."
+      RenderText {#text} at (0,0) size 0x0

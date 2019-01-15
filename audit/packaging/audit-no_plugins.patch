@@ -1,0 +1,33 @@
+From: Tony Jones <tonyj@suse.de>
+Subject: Disable automatic building of plugins
+Upsteam: never
+
+Non builtin plugins is build as part of phase2 by audit-secondary.spec.
+Conf files for builtins are still installed
+
+---
+ audisp/plugins/Makefile.am |    2 +-
+ docs/Makefile.am           |    3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+--- a/audisp/plugins/Makefile.am
++++ b/audisp/plugins/Makefile.am
+@@ -22,7 +22,7 @@
+ 
+ CONFIG_CLEAN_FILES = *.loT *.rej *.orig
+ 
+-SUBDIRS = builtins zos-remote remote
++SUBDIRS = builtins
+ #SUBDIRS = builtins zos-remote
+ if HAVE_PRELUDE
+ SUBDIRS += prelude
+--- a/docs/Makefile.am
++++ b/docs/Makefile.am
+@@ -53,6 +53,5 @@ ausearch_add_expression.3 ausearch_add_t
+ ausearch_clear.3 \
+ ausearch_next_event.3 ausearch_set_stop.3 \
+ autrace.8 get_auditfail_action.3 set_aumessage_mode.3 \
+-audispd.8 audispd.conf.5 audispd-zos-remote.8 libaudit.conf.5 \
+-zos-remote.conf.5 
++audispd.8 audispd.conf.5 libaudit.conf.5
+ 

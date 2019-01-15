@@ -1,0 +1,31 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderTable {TABLE} at (0,0) size 115x50 [border: none]
+        RenderTableSection {TBODY} at (0,0) size 114x49
+          RenderTableRow {TR} at (0,0) size 114x17
+            RenderTableCell {TD} at (0,0) size 57x17 [border: (1px none #808080) none none (1px solid #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 54x14
+                text run at (2,2) width 54: "Row1 cell1"
+            RenderTableCell {TD} at (57,0) size 57x17 [border: (1px none #808080) none none (1px solid #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 54x14
+                text run at (2,2) width 54: "Row1 cell2"
+          RenderTableRow {TR} at (0,17) size 114x16
+            RenderTableCell {TD} at (0,17) size 57x16 [border: none none none (1px solid #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,1) size 54x14
+                text run at (2,1) width 54: "Row2 cell1"
+            RenderTableCell {TD} at (57,17) size 57x16 [border: none none none (1px solid #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,1) size 54x14
+                text run at (2,1) width 54: "Row2 cell2"
+          RenderTableRow {TR} at (0,33) size 114x16
+            RenderTableCell {TD} at (0,33) size 57x16 [border: none none none (1px solid #808080)] [r=2 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,1) size 54x14
+                text run at (2,1) width 54: "Row3 cell1"
+            RenderTableCell {TD} at (57,33) size 57x16 [border: none none none (1px solid #808080)] [r=2 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,1) size 54x14
+                text run at (2,1) width 54: "Row3 cell2"
+      RenderBlock {P} at (0,62) size 784x14
+        RenderText {#text} at (0,0) size 579x14
+          text run at (0,0) width 579: "The rules attribute is first set dynamically to rows, then to cols, so the table should show only column borders. Bug 14848."

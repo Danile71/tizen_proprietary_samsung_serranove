@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../../js/resources/js-test-pre.js"></script>
+</head>
+<body>
+<script>
+description("This test verifies itemtype, itemref, itemprop attributes behavior on adding a token in presence of trailing space characters.");
+
+var element;
+
+function createElement(attrName, value)
+{
+    element = document.createElement('div');
+    element.setAttribute(attrName, value);
+}
+
+function checkResult(actual, expected, description)
+{
+    if (actual == expected)
+        debug("PASS: " + description);
+    else
+        debug("FAIL: " + description + " expected '" + expected + "' but got " + actual);
+}
+
+debug("Test itemRef attribute's behavior");
+createElement('itemref', 'a ');
+element.itemRef.add('b');
+checkResult(element.itemRef.toString(), "a b", "itemRef.add should treat ' ' as a space");
+
+createElement('itemref', 'a\t');
+element.itemRef.add('b');
+checkResult(element.itemRef.toString(), "a\tb", "itemRef.add should treat '\\t' as a space");
+
+createElement('itemref', 'a\f');
+element.itemRef.add('b');
+checkResult(element.itemRef.toString(), "a\fb", "itemRef.add should treat '\\f' as a space");
+
+createElement('itemref', 'a\r');
+element.itemRef.add('b');
+checkResult(element.itemRef.toString(), "a\rb", "itemRef.add should treat '\\r' as a space");
+
+createElement('itemref', 'a\n');
+element.itemRef.add('b');
+checkResult(element.itemRef.toString(), "a\nb", "itemRef.add should treat '\\n' as a space");
+
+debug("");
+debug("Test itemType attribute's behavior");
+createElement('itemtype', 'a ');
+element.itemType.add('b');
+checkResult(element.itemType.toString(), "a b", "itemType.add should treat ' ' as a space");
+
+createElement('itemtype', 'a\t');
+element.itemType.add('b');
+checkResult(element.itemType.toString(), "a\tb", "itemType.add should treat '\\t' as a space");
+
+createElement('itemtype', 'a\f');
+element.itemType.add('b');
+checkResult(element.itemType.toString(), "a\fb", "itemType.add should treat '\\f' as a space");
+
+createElement('itemtype', 'a\r');
+element.itemType.add('b');
+checkResult(element.itemType.toString(), "a\rb", "itemType.add should treat '\\r' as a space");
+
+createElement('itemtype', 'a\n');
+element.itemType.add('b');
+checkResult(element.itemType.toString(), "a\nb", "itemType.add should treat '\\n' as a space");
+
+debug("");
+debug("Test itemProp attribute's behavior");
+createElement('itemprop', 'a ');
+element.itemProp.add('b');
+checkResult(element.itemProp.toString(), "a b", "itemType.add should treat ' ' as a space");
+
+createElement('itemprop', 'a\t');
+element.itemProp.add('b');
+checkResult(element.itemProp.toString(), "a\tb", "itemType.add should treat '\\t' as a space");
+
+createElement('itemprop', 'a\f');
+element.itemProp.add('b');
+checkResult(element.itemProp.toString(), "a\fb", "itemType.add should treat '\\f' as a space");
+
+createElement('itemprop', 'a\r');
+element.itemProp.add('b');
+checkResult(element.itemProp.toString(), "a\rb", "itemType.add should treat '\\r' as a space");
+
+createElement('itemprop', 'a\n');
+element.itemProp.add('b');
+checkResult(element.itemProp.toString(), "a\nb", "itemType.add should treat '\\n' as a space");
+</script>
+<script src="../../js/resources/js-test-post.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x61
+  RenderBlock {html} at (0,0) size 980x61
+    RenderBody {body} at (8,8) size 964x45
+      RenderTable {table} at (0,0) size 590x45 [border: (1px outset #808080)]
+        RenderTableSection (anonymous) at (1,1) size 588x43
+          RenderTableRow {tr} at (0,10) size 588x23
+            RenderTableCell {td} at (10,10) size 279x23 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 275x19
+                text run at (2,2) width 275: "This cell should have 10px spacing"
+            RenderTableCell {td} at (299,10) size 279x23 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 275x19
+                text run at (2,2) width 275: "This cell should have 10px spacing"

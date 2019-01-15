@@ -1,0 +1,18 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x542
+  RenderBlock {HTML} at (0,0) size 980x542 [bgcolor=#FFFFFF]
+    RenderBody {BODY} at (8,240) size 964x286
+      RenderBlock {P} at (0,248) size 964x38
+        RenderText {#text} at (0,0) size 129x19
+          text run at (0,0) width 129: "Repaint test for "
+        RenderInline {I} at (0,0) size 941x38
+          RenderInline {A} at (0,0) size 372x19 [color=#0000EE]
+            RenderText {#text} at (129,0) size 372x19
+              text run at (129,0) width 372: "http://bugs.webkit.org/show_bug.cgi?id=15157"
+          RenderText {#text} at (501,0) size 941x38
+            text run at (501,0) width 5: " "
+            text run at (506,0) width 435: "Image defined in background-position: top center gets"
+            text run at (0,19) width 190: "unexpectedly truncated"
+        RenderText {#text} at (190,19) size 5x19
+          text run at (190,19) width 5: "."

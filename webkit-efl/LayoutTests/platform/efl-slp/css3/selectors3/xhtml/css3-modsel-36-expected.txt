@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x90
+  RenderBlock {html} at (0,0) size 800x90
+    RenderBody {body} at (8,12) size 784x66
+      RenderBlock {p} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 226x14
+          text run at (0,0) width 226: "This paragraph should have normal background"
+      RenderBlock {div} at (0,26) size 784x40
+        RenderBlock (anonymous) at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 175x14
+            text run at (0,0) width 175: "This div contains only one paragraph"
+        RenderBlock {p} at (0,26) size 784x14 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 219x14
+            text run at (0,0) width 219: "This paragraph should have green background"

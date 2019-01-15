@@ -1,0 +1,23 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x51
+  RenderBlock {test} at (0,0) size 980x51
+    RenderBlock {p} at (0,16) size 980x19
+      RenderText {#text} at (0,0) size 224x19
+        text run at (0,0) width 224: "The background color of all "
+      RenderInline {a} at (0,0) size 64x19 [color=#0000EE]
+        RenderText {#text} at (224,0) size 64x19
+          text run at (224,0) width 64: "anchors"
+      RenderText {#text} at (288,0) size 132x19
+        text run at (288,0) width 5: " "
+        text run at (293,0) width 127: "should become "
+      RenderInline {a} at (0,0) size 47x19 [color=#0000EE]
+        RenderText {#text} at (420,0) size 47x19
+          text run at (420,0) width 47: "green"
+      RenderText {#text} at (467,0) size 168x19
+        text run at (467,0) width 168: " when they have the "
+      RenderInline {a} at (0,0) size 43x19 [color=#0000EE]
+        RenderText {#text} at (635,0) size 43x19
+          text run at (635,0) width 43: "focus"
+      RenderText {#text} at (678,0) size 5x19
+        text run at (678,0) width 5: "."

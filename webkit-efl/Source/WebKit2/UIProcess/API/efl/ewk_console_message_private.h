@@ -1,0 +1,41 @@
+/*
+   Copyright (C) 2013 Samsung Electronics
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Library General Public
+    License as published by the Free Software Foundation; either
+    version 2 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Library General Public License for more details.
+
+    You should have received a copy of the GNU Library General Public License
+    along with this library; see the file COPYING.LIB.  If not, write to
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
+*/
+
+#ifndef ewk_console_message_private_h
+#define ewk_console_message_private_h
+
+#include <wtf/PassOwnPtr.h>
+
+class Ewk_Console_Message {
+public:
+    unsigned m_level;
+    WKEinaSharedString m_message;
+    unsigned m_line;
+    WKEinaSharedString m_source;
+
+    static PassOwnPtr<Ewk_Console_Message> create(unsigned level, const String& message, unsigned int lineNumber, const String& source)
+    {
+        return adoptPtr(new Ewk_Console_Message(level, message, lineNumber, source));
+    }
+
+private:
+    explicit Ewk_Console_Message(unsigned level, const String& message, unsigned int lineNumber, const String& source);
+};
+
+#endif // ewk_console_message_private_h

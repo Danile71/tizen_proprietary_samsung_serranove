@@ -1,0 +1,52 @@
+Index: Python-2.7/Lib/distutils/tests/test_build_ext.py
+===================================================================
+--- Python-2.7.orig/Lib/distutils/tests/test_build_ext.py
++++ Python-2.7/Lib/distutils/tests/test_build_ext.py
+@@ -261,20 +261,14 @@ class BuildExtTestCase(support.TempdirMa
+ 
+         # issue #5977 : distutils build_ext.get_outputs
+         # returns wrong result with --inplace
+-        other_tmp_dir = os.path.realpath(self.mkdtemp())
+-        old_wd = os.getcwd()
+-        os.chdir(other_tmp_dir)
+-        try:
+-            cmd.inplace = 1
+-            cmd.run()
+-            so_file = cmd.get_outputs()[0]
+-        finally:
+-            os.chdir(old_wd)
++        cmd.inplace = 1
++        cmd.run()
++        so_file = cmd.get_outputs()[0]
+         self.assertTrue(os.path.exists(so_file))
+         self.assertEqual(os.path.splitext(so_file)[-1],
+                          sysconfig.get_config_var('SO'))
+         so_dir = os.path.dirname(so_file)
+-        self.assertEqual(so_dir, other_tmp_dir)
++        self.assertEqual(so_dir, os.getcwd())
+         cmd.compiler = None
+         cmd.inplace = 0
+         cmd.run()
+Index: Python-2.7/Lib/test/regrtest.py
+===================================================================
+--- Python-2.7.orig/Lib/test/regrtest.py
++++ Python-2.7/Lib/test/regrtest.py
+@@ -1503,16 +1503,5 @@ if __name__ == '__main__':
+         if not os.path.exists(TEMPDIR):
+             os.mkdir(TEMPDIR)
+ 
+-    # Define a writable temp dir that will be used as cwd while running
+-    # the tests. The name of the dir includes the pid to allow parallel
+-    # testing (see the -j option).
+-    TESTCWD = 'test_python_{}'.format(os.getpid())
+-
+-    TESTCWD = os.path.join(TEMPDIR, TESTCWD)
+-
+-    # Run the tests in a context manager that temporary changes the CWD to a
+-    # temporary and writable directory. If it's not possible to create or
+-    # change the CWD, the original CWD will be used. The original CWD is
+-    # available from test_support.SAVEDCWD.
+-    with test_support.temp_cwd(TESTCWD, quiet=True):
+-        main()
++    # do not change directory, because it breaks distutils tests
++    main()

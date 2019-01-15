@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -29,7 +29,7 @@ AM_INIT_AUTOMAKE([gnits 1.8 -Wno-portabi
+ AM_MAINTAINER_MODE
+ 
+ dnl Unique ID for this build.
+-MODVERSION="Build on $(hostname) $(date +%FT%R:%S%z)"
++MODVERSION="Build on build.meego.com 2010"
+ AC_SUBST([MODVERSION])
+ AC_DEFINE_UNQUOTED(MODVERSION, "$MODVERSION")
+ AH_TEMPLATE([MODVERSION], [Identifier for modules in the build.])

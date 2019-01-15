@@ -1,0 +1,159 @@
+/*
+ * Copyright (C) 2012 Google Inc.
+ * Copyright (C) 2012 Samsung Electronics.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/* Media controls for Tizen */
+
+video:-webkit-full-screen {
+    max-height: 100% !important;
+    max-width: 100% !important;
+}
+
+video:-webkit-full-screen::-webkit-media-default-image {
+    width: 360px;
+    height: 360px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-panel {
+    -webkit-transform-origin: left bottom;
+    -webkit-appearance: media-control-panel-background-image-vertical;
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    width: 720px;
+    height: 194px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-rotate-button {
+    -webkit-appearance: media-rotate-button;
+    -webkit-transform-origin: right bottom;
+    display: -webkit-box;
+    position: absolute;
+    right: 26px;
+    bottom: 270px;
+    width: 70px;
+    height: 70px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-mute-button {
+    display: none;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-play-button {
+    position: absolute;
+    left: 295px;
+    bottom: 4px;
+    width: 132px;
+    height: 132px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-seek-back-button {
+    display: -webkit-box;
+    position: absolute;
+    left: 160px;
+    bottom: 14px;
+    width: 108px;
+    height: 108px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-seek-forward-button {
+    display: -webkit-box;
+    position: absolute;
+    right: 160px;
+    bottom: 14px;
+    width: 108px;
+    height: 108px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-timeline-container {
+    display: -webkit-box;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 720px;
+    height: 90px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+video:-webkit-full-screen::-webkit-media-controls-current-time-display,
+video:-webkit-full-screen::-webkit-media-controls-time-remaining-display {
+    -webkit-user-select: none;
+    display: -webkit-box;
+    position: absolute;
+    bottom: 4px;
+    height: 30px;
+    line-height: 30px;
+    font-style: normal;
+    font-size: 34px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-current-time-display {
+    -webkit-appearance: media-current-time-display;
+    left: 32px;
+    text-align: left;
+    color: rgba(0, 157, 255, 1);
+}
+
+video:-webkit-full-screen::-webkit-media-controls-time-remaining-display {
+    right: 32px;
+    text-align: right;
+    color: rgba(245, 245, 245, 1);
+}
+
+video:-webkit-full-screen::-webkit-media-controls-timeline {
+    -webkit-user-select: auto;
+    position: absolute;
+    left: 25px;
+    bottom: 44px;
+    width: 670px;
+    height: 12px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-fullscreen-button {
+    position: absolute;
+    bottom: 23px;
+    right: 47px;
+    width: 90px;
+    height: 90px;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-volume-slider-container {
+    display: none;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-volume-slider {
+    display: none;
+}
+
+video:-webkit-full-screen::-webkit-media-controls-overlay-loading-spinner {
+    -webkit-appearance: media-overlay-loading-spinner;
+    border: none;
+    width: 122px;
+    height: 122px;
+    padding: 0;
+    -webkit-animation-name: -tizen-webkit-spinner-rotate;
+    -webkit-animation-duration: 0s, 1s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}

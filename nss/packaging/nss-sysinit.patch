@@ -1,0 +1,15 @@
+Index: mozilla/security/nss/lib/manifest.mn
+===================================================================
+RCS file: /cvsroot/mozilla/security/nss/lib/manifest.mn,v
+retrieving revision 1.20
+diff -u -p -r1.20 manifest.mn
+--- mozilla/security/nss/lib/manifest.mn	7 Nov 2009 05:57:41 -0000	1.20
++++ mozilla/security/nss/lib/manifest.mn	9 Dec 2009 21:37:15 -0000
+@@ -56,6 +56,7 @@ DIRS =  util freebl softoken \
+ 	pkcs12 pkcs7 smime \
+ 	crmf jar \
+ 	ckfw      \
++	sysinit      \
+ 	$(NULL)
+ 
+ #  fortcrypt  is no longer built

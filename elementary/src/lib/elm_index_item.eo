@@ -1,0 +1,80 @@
+class Elm_Index_Item(Elm_Widget_Item, Elm_Interface_Atspi_Widget_Action)
+{
+   eo_prefix: elm_obj_index_item;
+   properties {
+        selected {
+             set {
+                 /*@
+                  @brief Set the selected state of an item.
+
+                 @if MOBILE @since_tizen 2.3
+                 @elseif WEARABLE @since_tizen 2.3.1
+                 @endif
+
+                  @remark This sets the selected state of the given item @p it.
+                  @c EINA_TRUE for selected, @c EINA_FALSE for not selected.
+
+                  @remark If a new item is selected the previously selected will be unselected.
+                  Previously selected item can be get with function
+                  elm_index_selected_item_get().
+
+                  @remark Selected items will be highlighted.
+
+                  @see elm_index_selected_item_get()
+
+                  @ingroup Index
+                  */
+             }
+             values {
+                 Eina_Bool selected; /*@ EINA_TRUE if selected EINA_FALSE otherwise */
+             }
+        }
+        priority {
+             set {
+                 /*@
+                  @internal
+
+                  Sets the priority of an item.
+
+                  The priority is @c -1 by default, which means that the item doesn't belong to a group.
+                  The value of the priority starts from @c 0.
+
+                  In elm_index_level_go, the items are sorted in ascending order according to priority.
+                  Items of the same priority make a group and the primary group is shown by default.
+
+                  @see elm_index_item_priority_get()
+
+                  @ingroup Index
+                  */
+             }
+             values {
+                 int priority; /*@ The priority */
+             }
+        }
+   }
+   methods {
+      letter_get @const {
+            /*@
+             @brief Get the letter (string) set on a given index widget item.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+             @return The letter string set on @p item
+
+             @ingroup Index
+            */
+            return: const (char)*;
+        }
+   }
+   implements {
+        Eo.Base.constructor;
+        Eo.Base.destructor;
+        Elm_Widget_Item.access_register;
+        //TIZEN_ONLY(20150716) : improve atspi support
+        Elm_Interface_Atspi_Accessible.name.get;
+        Elm_Interface_Atspi_Widget_Action.elm_actions.get;
+        ///
+   }
+}

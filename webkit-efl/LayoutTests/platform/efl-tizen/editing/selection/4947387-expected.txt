@@ -1,0 +1,41 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 51 of #text > DIV > BODY > HTML > #document to 51 of #text > DIV > BODY > HTML > #document toDOMRange:range from 41 of #text > DIV > BODY > HTML > #document to 51 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document toDOMRange:range from 0 of #text > DIV > BODY > HTML > #document to 20 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 51 of #text > DIV > BODY > HTML > #document to 51 of #text > DIV > BODY > HTML > #document toDOMRange:range from 0 of #text > DIV > BODY > HTML > #document to 51 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document toDOMRange:range from 0 of #text > DIV > BODY > HTML > #document to 51 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x76
+        RenderText {#text} at (0,0) size 956x76
+          text run at (0,0) width 503: "This tests moveTo{Beginning, End}OfLineAndModifySelection. "
+          text run at (503,0) width 443: "It should operate on line boundaries and not paragraph"
+          text run at (0,19) width 99: "boundaries. "
+          text run at (99,19) width 857: "To run it manually, click inside the first line of the editable region below and do Command+Shift+Left/Right"
+          text run at (0,38) width 786: "Arrow, the selection should extend to the start/end of the line, not the start/end of the paragraph. "
+          text run at (786,38) width 38: "Also,"
+          text run at (0,57) width 570: "moveTo{Beginning, End}OfParagraphAndModifySelection should work."
+      RenderBlock {DIV} at (0,92) size 200x57
+        RenderText {#text} at (0,0) size 173x57
+          text run at (0,0) width 162: "The quick brown fox"
+          text run at (162,0) width 5: " "
+          text run at (0,19) width 168: "jumped over the lazy"
+          text run at (168,19) width 5: " "
+          text run at (0,38) width 90: "brown dog."
+selection start: position 0 of child 0 {#text} of child 2 {DIV} of body
+selection end:   position 51 of child 0 {#text} of child 2 {DIV} of body

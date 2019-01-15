@@ -1,0 +1,105 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 275x19
+          text run at (0,0) width 275: "This tests for a regression against "
+        RenderInline {I} at (0,0) size 937x38
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (275,0) size 426x19
+              text run at (275,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=6888"
+          RenderText {#text} at (701,0) size 937x38
+            text run at (701,0) width 236: " Collapsed borders appear on"
+            text run at (0,19) width 390: "the wrong side or on the wrong cell in RTL tables"
+        RenderText {#text} at (390,19) size 5x19
+          text run at (390,19) width 5: "."
+      RenderBlock {P} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 455x19
+          text run at (0,0) width 455: "The RTL table should be a mirror image of the LTR table."
+      RenderBlock {HR} at (0,89) size 964x2 [border: (1px inset #000000)]
+      RenderTable {TABLE} at (0,99) size 153x77
+        RenderTableSection {TBODY} at (0,0) size 153x77
+          RenderTableRow {TR} at (0,0) size 153x27
+            RenderTableCell {TD} at (0,0) size 77x27 [border: none (1px solid #000000) none] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (23,4) size 30x19
+                text run at (23,4) width 30: "RTL"
+            RenderTableCell {TD} at (77,0) size 76x27 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (23,4) size 30x19
+                text run at (23,4) width 30: "LTR"
+          RenderTableRow {TR} at (0,27) size 153x50
+            RenderTableCell {TD} at (0,27) size 77x50 [border: none (1px solid #000000) none] [r=1 c=0 rs=1 cs=1]
+              RenderTable {TABLE} at (4,4) size 68x42 [border: none (1px solid #0000FF) none (1px solid #FF0000)]
+                RenderTableCol {COLGROUP} at (0,0) size 0x0
+                  RenderTableCol {COL} at (0,0) size 0x0
+                  RenderTableCol {COL} at (0,0) size 0x0
+                  RenderTableCol {COL} at (0,0) size 0x0 [bgcolor=#FFFF00] [border: none (2px dotted #008000) none (1px solid #000000)]
+                  RenderTableCol {COL} at (0,0) size 0x0 [bgcolor=#C0C0C0]
+                RenderTableSection {TBODY} at (1,0) size 66x42
+                  RenderTableRow {TR} at (0,0) size 66x21
+                    RenderTableCell {TD} at (52,0) size 14x21 [border: none] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10 RTL: "  "
+                    RenderTableCell {TD} at (39,0) size 13x21 [border: none] [r=0 c=1 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10 RTL: "  "
+                    RenderTableCell {TD} at (13,0) size 26x21 [border: none] [r=0 c=2 rs=1 cs=2]
+                      RenderText {#text} at (14,1) size 10x19
+                        text run at (14,1) width 10 RTL: "  "
+                    RenderTableCell {TD} at (0,0) size 13x21 [border: none] [r=0 c=4 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10 RTL: "  "
+                  RenderTableRow {TR} at (0,21) size 66x21
+                    RenderTableCell {TD} at (52,21) size 14x21 [border: none (2px solid #800000) none] [r=1 c=0 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 10x19
+                        text run at (1,1) width 10 RTL: "  "
+                    RenderTableCell {TD} at (39,21) size 13x21 [border: none] [r=1 c=1 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10 RTL: "  "
+                    RenderTableCell {TD} at (25,21) size 14x21 [border: none] [r=1 c=2 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10 RTL: "  "
+                    RenderTableCell {TD} at (13,21) size 12x21 [r=1 c=3 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 10x19
+                        text run at (1,1) width 10 RTL: "  "
+                    RenderTableCell {TD} at (0,21) size 13x21 [border: none] [r=1 c=4 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10 RTL: "  "
+            RenderTableCell {TD} at (77,27) size 76x50 [r=1 c=1 rs=1 cs=1]
+              RenderTable {TABLE} at (4,4) size 68x42 [border: none (1px solid #FF0000) none (1px solid #0000FF)]
+                RenderTableCol {COLGROUP} at (0,0) size 0x0
+                  RenderTableCol {COL} at (0,0) size 0x0
+                  RenderTableCol {COL} at (0,0) size 0x0
+                  RenderTableCol {COL} at (0,0) size 0x0 [bgcolor=#FFFF00] [border: none (1px solid #000000) none (2px dotted #008000)]
+                  RenderTableCol {COL} at (0,0) size 0x0 [bgcolor=#C0C0C0]
+                RenderTableSection {TBODY} at (1,0) size 66x42
+                  RenderTableRow {TR} at (0,0) size 66x21
+                    RenderTableCell {TD} at (0,0) size 14x21 [border: none] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10: "  "
+                    RenderTableCell {TD} at (14,0) size 13x21 [border: none] [r=0 c=1 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 10x19
+                        text run at (1,1) width 10: "  "
+                    RenderTableCell {TD} at (27,0) size 26x21 [border: none] [r=0 c=2 rs=1 cs=2]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10: "  "
+                    RenderTableCell {TD} at (53,0) size 13x21 [border: none] [r=0 c=4 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 10x19
+                        text run at (1,1) width 10: "  "
+                  RenderTableRow {TR} at (0,21) size 66x21
+                    RenderTableCell {TD} at (0,21) size 14x21 [border: none (2px solid #800000)] [r=1 c=0 rs=1 cs=1]
+                      RenderText {#text} at (3,1) size 10x19
+                        text run at (3,1) width 10: "  "
+                    RenderTableCell {TD} at (14,21) size 13x21 [border: none] [r=1 c=1 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 10x19
+                        text run at (1,1) width 10: "  "
+                    RenderTableCell {TD} at (27,21) size 13x21 [border: none] [r=1 c=2 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10: "  "
+                    RenderTableCell {TD} at (40,21) size 13x21 [border: none] [r=1 c=3 rs=1 cs=1]
+                      RenderText {#text} at (2,1) size 10x19
+                        text run at (2,1) width 10: "  "
+                    RenderTableCell {TD} at (53,21) size 13x21 [border: none] [r=1 c=4 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 10x19
+                        text run at (1,1) width 10: "  "

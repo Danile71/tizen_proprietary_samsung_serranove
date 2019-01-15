@@ -1,0 +1,587 @@
+From e47cf82da294276d2c63a763431d1811e0b6b4ef Mon Sep 17 00:00:00 2001
+From: Lukasz Pawelczyk <l.pawelczyk@samsung.com>
+Date: Wed, 21 Jan 2015 14:21:19 +0100
+Subject: [PATCH] packaging/coreutils-6.9-smack-fix.patch
+
+---
+ src/copy.c    |  38 +++++++++++--
+ src/cp.c      |  14 +++--
+ src/install.c |   7 ++-
+ src/ls.c      |  15 +++--
+ src/mkdir.c   |  15 ++---
+ src/mkfifo.c  |  10 ++--
+ src/mknod.c   |   8 ++-
+ src/smack.h   | 179 +++++++++++++++++++++++++++++++++++++++++++++++++++-------
+ src/stat.c    |   7 ++-
+ 9 files changed, 234 insertions(+), 59 deletions(-)
+
+diff --git a/src/copy.c b/src/copy.c
+index 7846024..b42924b 100644
+--- a/src/copy.c
++++ b/src/copy.c
+@@ -573,22 +573,24 @@ copy_reg (char const *src_name, char const *dst_name,
+ 
+   if (x->preserve_context)
+     {
+-      char src_context[SMACK_LABELLEN];
+-      char dst_context[SMACK_LABELLEN];
++      struct smack_attrs src_context;
++      struct smack_attrs dst_context;
++      memset (&src_context, 0, sizeof(src_context));
++      memset (&dst_context, 0, sizeof(dst_context));
+ 
+-      if (smack_of_fd (source_desc, src_context, SMACK_LABELLEN) < 0)
++      if (smack_of_fd (source_desc, &src_context) < 0)
+         {
+           if (x->require_preserve)
+             ; //fail silently now // return_val = false;
+         }
+-      else if (smack_of_fd (dest_desc, dst_context, SMACK_LABELLEN) < 0)
++      else if (smack_of_fd (dest_desc, &dst_context) < 0)
+         {
+           if (x->require_preserve)
+             ; //fail silently now // return_val = false;
+         }
+-      else if (strcmp(src_context, dst_context))
++      else if (smack_differs (&src_context, &dst_context))
+         {
+-          if (smack_to_fd(dest_desc, src_context) < 0 && x->require_preserve)
++          if (smack_to_fd (dest_desc, &src_context) < 0 && x->require_preserve)
+             ; //fail silently now // return_val = false;
+         }
+     }
+@@ -1914,6 +1916,30 @@ copy_internal (char const *src_name, char const *dst_name,
+ 	}
+     }
+ 
++  if (x->preserve_context)
++    {
++      struct smack_attrs src_context;
++      struct smack_attrs dst_context;
++      memset (&src_context, 0, sizeof(src_context));
++      memset (&dst_context, 0, sizeof(dst_context));
++
++      if (smack_of_file (src_name, &src_context) < 0)
++        {
++          if (x->require_preserve)
++            ; //fail silently now // return false;
++        }
++      else if (smack_of_file (dst_name, &dst_context) < 0)
++        {
++          if (x->require_preserve)
++            ; //fail silently now // return false;
++        }
++      else if (smack_differs (&src_context, &dst_context))
++        {
++          if (smack_to_file (dst_name, &src_context) < 0 && x->require_preserve)
++            ; //fail silently now // return false;
++        }
++    }
++
+   return delayed_ok;
+ 
+ un_backup:
+diff --git a/src/cp.c b/src/cp.c
+index 8d57e5e..3f5d30f 100644
+--- a/src/cp.c
++++ b/src/cp.c
+@@ -320,18 +320,20 @@ re_protect (char const *const_dst_name, size_t src_offset,
+ 
+       if (x->preserve_context)
+         {
+-          char src_context[SMACK_LABELLEN];
+-          char dst_context[SMACK_LABELLEN];
++          struct smack_attrs src_context;
++          struct smack_attrs dst_context;
++          memset (&src_context, 0, sizeof(src_context));
++          memset (&dst_context, 0, sizeof(dst_context));
+ 
+-          if (smack_of_file (src_name, src_context, SMACK_LABELLEN) < 0 ||
+-              smack_of_file (dst_name, dst_context, SMACK_LABELLEN) < 0)
++          if (smack_of_file (src_name, &src_context) < 0 ||
++              smack_of_file (dst_name, &dst_context) < 0)
+             {
+ 	      ; //error (0, errno, _("failed to preserve context for %s"),
+ 		//     quote (dst_name));
+ 	      //return false;
+             }
+-          if (strcmp (src_context, dst_context) &&
+-              smack_to_file (dst_name, src_context) < 0)
++          if (smack_differs (&src_context, &dst_context) &&
++              smack_to_file (dst_name, &src_context) < 0)
+             {
+ 	      ; //error (0, errno, _("failed to preserve context for %s"),
+ 		//     quote (dst_name));
+diff --git a/src/install.c b/src/install.c
+index 9365ce6..40165d8 100644
+--- a/src/install.c
++++ b/src/install.c
+@@ -117,7 +117,7 @@ static mode_t dir_mode = DEFAULT_MODE;
+ static mode_t dir_mode_bits = CHMOD_MODE_BITS;
+ 
+ /* The security context to give all files. */
+-static char *context;
++static struct smack_attrs context;
+ 
+ /* If true, strip executable files after copying them. */
+ static bool strip_files;
+@@ -312,7 +312,8 @@ main (int argc, char **argv)
+ 	  no_target_directory = true;
+ 	  break;
+ 	case 'Z':
+-	  context = optarg;
++	  if (optarg)
++	    strncpy(context.attr, optarg, SMACK_LABELLEN);
+ 	  break;
+ 	case_GETOPT_HELP_CHAR;
+ 	case_GETOPT_VERSION_CHAR (PROGRAM_NAME, AUTHORS);
+@@ -529,7 +530,7 @@ change_attributes (char const *name)
+     error (0, errno, _("cannot change ownership of %s"), quote (name));
+   else if (chmod (name, mode) != 0)
+     error (0, errno, _("cannot change permissions of %s"), quote (name));
+-  else if (context && smack_to_file (name, context) < 0)
++  else if (context.attr[0] && smack_to_file (name, &context) < 0)
+    ; // error (0, errno, _("cannot change security context of %s"), quote (name));
+   else
+     return true;
+diff --git a/src/ls.c b/src/ls.c
+index 1951095..8517b41 100644
+--- a/src/ls.c
++++ b/src/ls.c
+@@ -180,7 +180,7 @@ struct fileinfo
+ #endif
+ 
+     /* Security context */
+-    char context[SMACK_LABELLEN];
++    struct smack_attrs context;
+   };
+ 
+ #if USE_ACL
+@@ -2619,7 +2619,7 @@ gobble_file (char const *name, enum filetype type, ino_t inode,
+       switch (dereference)
+ 	{
+ 	case DEREF_ALWAYS:
+-          err = smack_of_file_follow(absolute_name, f->context, SMACK_LABELLEN);
++          err = smack_of_file_follow(absolute_name, &f->context);
+ 	  err = stat (absolute_name, &f->stat);
+ 	  break;
+ 
+@@ -2628,8 +2628,7 @@ gobble_file (char const *name, enum filetype type, ino_t inode,
+ 	  if (command_line_arg)
+ 	    {
+ 	      bool need_lstat;
+-              err = smack_of_file_follow(absolute_name, f->context,
+-                                         SMACK_LABELLEN);
++              err = smack_of_file_follow(absolute_name, &f->context);
+ 	      err = stat (absolute_name, &f->stat);
+ 
+ 	      if (dereference == DEREF_COMMAND_LINE_ARGUMENTS)
+@@ -2648,7 +2647,7 @@ gobble_file (char const *name, enum filetype type, ino_t inode,
+ 	    }
+ 
+ 	default: /* DEREF_NEVER */
+-          err = smack_of_file(absolute_name, f->context, SMACK_LABELLEN);
++          err = smack_of_file(absolute_name, &f->context);
+ 	  err = lstat (absolute_name, &f->stat);
+ 	  break;
+ 	}
+@@ -2758,7 +2757,7 @@ gobble_file (char const *name, enum filetype type, ino_t inode,
+ 
+       if (print_context)
+ 	{
+-	  int len = strlen (f->context);
++	  int len = strlen (f->context.attr);
+ 	  if (context_width < len)
+ 	    context_width = len;
+ 	}
+@@ -3502,7 +3501,7 @@ print_long_format (const struct fileinfo *f)
+ 	format_user (f->stat.st_author, author_width, f->stat_ok);
+ 
+       if (print_context)
+-        format_user_or_group(f->context, 0, context_width);
++        format_user_or_group(f->context.attr, 0, context_width);
+ 
+       p = buf;
+     }
+@@ -4007,7 +4006,7 @@ length_of_file_name_and_frills (const struct fileinfo *f)
+ 		: block_size_width);
+ 
+   if (print_context)
+-    len += 1 + (format == with_commas ? strlen (f->context) : context_width);
++    len += 1 + (format == with_commas ? strlen (f->context.attr) : context_width);
+ 
+   quote_name (NULL, f->name, filename_quoting_options, &name_width);
+   len += name_width;
+diff --git a/src/mkdir.c b/src/mkdir.c
+index d410a35..61ba5dc 100644
+--- a/src/mkdir.c
++++ b/src/mkdir.c
+@@ -96,7 +96,7 @@ struct mkdir_options
+   mode_t mode_bits;
+ 
+   /* Security context.  */
+-  char *context;
++  struct smack_attrs context;
+ 
+   /* If not null, format to use when reporting newly made directories.  */
+   char const *created_directory_format;
+@@ -108,13 +108,13 @@ announce_mkdir (char const *dir, void *options)
+ {
+   struct mkdir_options const *o = options;
+ 
+-  if (o->context) {
++  if (o->context.attr[0]) {
+   char *sep = strrchr(dir, '/');
+   int res = 0;
+   if ((sep != NULL) && (strlen(sep) != strlen(dir)))
+-    res = smack_to_file (sep + 1, o->context);
+-  else 
+-    res = smack_to_file (dir, o->context);
++    res = smack_to_file (sep + 1, &o->context);
++  else
++    res = smack_to_file (dir, &o->context);
+   if (res < 0)
+     ; // error (0, errno, _("setting directory context failed"));
+   }
+@@ -161,7 +161,7 @@ main (int argc, char **argv)
+   options.make_ancestor_function = NULL;
+   options.mode = S_IRWXUGO;
+   options.mode_bits = 0;
+-  options.context = NULL;
++  memset(&options.context, 0, sizeof(options.context));
+   options.created_directory_format = NULL;
+ 
+   initialize_main (&argc, &argv);
+@@ -177,7 +177,8 @@ main (int argc, char **argv)
+       switch (optc)
+ 	{
+ 	case 'Z':
+-	  options.context = optarg;
++	  if (optarg)
++	    strncpy(options.context.attr, optarg, SMACK_LABELLEN);
+ 	  break;
+ 	case 'p':
+ 	  options.make_ancestor_function = make_ancestor;
+diff --git a/src/mkfifo.c b/src/mkfifo.c
+index 96be86a..e1d9283 100644
+--- a/src/mkfifo.c
++++ b/src/mkfifo.c
+@@ -78,7 +78,8 @@ int
+ main (int argc, char **argv)
+ {
+   mode_t newmode;
+-  char const *specified_context = NULL;
++  struct smack_attrs specified_context;
++  memset(&specified_context, 0, sizeof(specified_context));
+   char const *specified_mode = NULL;
+   int exit_status = EXIT_SUCCESS;
+   int optc;
+@@ -96,7 +97,8 @@ main (int argc, char **argv)
+       switch (optc)
+ 	{
+ 	case 'Z':
+-	  specified_context = optarg;
++	  if (optarg)
++	    strncpy(specified_context.attr, optarg, SMACK_LABELLEN);
+ 	  break;
+ 	case 'm':
+ 	  specified_mode = optarg;
+@@ -134,8 +136,8 @@ main (int argc, char **argv)
+ 	  error (0, errno, _("cannot create fifo %s"), quote (argv[optind]));
+ 	  exit_status = EXIT_FAILURE;
+         }
+-      if (specified_context &&
+-          smack_to_file(argv[optind], specified_context) < 0)
++      if (specified_context.attr[0] &&
++          smack_to_file(argv[optind], &specified_context) < 0)
+        ;// error (0, errno, _("context assignment of %s to %s failed"),
+        //        argv[optind], quote (specified_context));
+     }
+diff --git a/src/mknod.c b/src/mknod.c
+index 4fa0c10..ff9b0af 100644
+--- a/src/mknod.c
++++ b/src/mknod.c
+@@ -93,7 +93,8 @@ int
+ main (int argc, char **argv)
+ {
+   mode_t newmode;
+-  char const *specified_context = NULL;
++  struct smack_attrs specified_context;
++  memset(&specified_context, 0, sizeof(specified_context));
+   char const *specified_mode = NULL;
+   int optc;
+   int expected_operands;
+@@ -112,7 +113,8 @@ main (int argc, char **argv)
+       switch (optc)
+ 	{
+ 	case 'Z':
+-	  specified_context = optarg;
++	  if (optarg)
++	    strncpy(specified_context.attr, optarg, SMACK_LABELLEN);
+ 	  break;
+ 	case 'm':
+ 	  specified_mode = optarg;
+@@ -226,7 +228,7 @@ main (int argc, char **argv)
+       usage (EXIT_FAILURE);
+     }
+ 
+-  if (specified_context && smack_to_file (argv[optind], specified_context) < 0)
++  if (specified_context.attr[0] && smack_to_file (argv[optind], &specified_context) < 0)
+     ; //error (0, errno, _("context assignment to %s failed"),
+     //       quote (specified_context));
+ 
+diff --git a/src/smack.h b/src/smack.h
+index 71bed1a..7e54e8e 100644
+--- a/src/smack.h
++++ b/src/smack.h
+@@ -27,6 +27,18 @@
+ #define SMACK_PROC_FMT "/proc/%s/attr/current"
+ #define SMACK_CHECK_PATH "/smack/load"
+ #define SMACK_ATTRNAME "security.SMACK64"
++#define SMACK_EXECNAME "security.SMACK64EXEC"
++#define SMACK_MMAPNAME "security.SMACK64MMAP"
++#define SMACK_TRANSMUTENAME "security.SMACK64TRANSMUTE"
++#define SMACK_TRANSMUTETRUE "TRUE"
++
++struct smack_attrs
++{
++  char attr[SMACK_LABELLEN];
++  char exec[SMACK_LABELLEN];
++  char mmap[SMACK_LABELLEN];
++  int transmute;
++};
+ 
+ static inline int
+ smack_enabled(void)
+@@ -42,61 +54,190 @@ smack_enabled(void)
+   return 1;
+ }
+ 
++static inline bool
++smack_differs(const struct smack_attrs *smack1,
++              const struct smack_attrs *smack2)
++{
++  if (strcmp(smack1->attr, smack2->attr))
++    return 1;
++
++  if (strcmp(smack1->exec, smack2->exec))
++    return 1;
++
++  if (strcmp(smack1->mmap, smack2->mmap))
++    return 1;
++
++  if (smack1->transmute != smack2->transmute)
++    return 1;
++
++  return 0;
++}
++
+ static inline int
+-smack_of_file(const char *path, char *result, int rlen)
++smack_of_file(const char *path, struct smack_attrs *result)
+ {
+-  int i;
++  int ret, i;
++  int rlen = SMACK_LABELLEN;
++  char buffer[rlen];
+ 
+-  i = lgetxattr(path, SMACK_ATTRNAME, result, rlen);
++  i = lgetxattr(path, SMACK_ATTRNAME, result->attr, rlen);
+   if (i < 0)
+     return i;
+ 
+   if (i < rlen)
+-    result[i] = '\0';
++    result->attr[i] = '\0';
++
++  ret = i;
++
++  i = lgetxattr(path, SMACK_EXECNAME, result->exec, rlen);
++  if (i >= 0 && i < rlen)
++    result->exec[i] = '\0';
++
++  i = lgetxattr(path, SMACK_MMAPNAME, result->mmap, rlen);
++  if (i >= 0 && i < rlen)
++    result->mmap[i] = '\0';
+ 
+-  return i;
++  i = getxattr(path, SMACK_TRANSMUTENAME, buffer, rlen);
++  if (i >= 0 && i < rlen && strncmp(buffer, SMACK_TRANSMUTETRUE, i) == 0)
++    result->transmute = 1;
++
++  return ret;
+ }
+ 
+ static inline int
+-smack_of_file_follow(const char *path, char *result, int rlen)
++smack_of_file_follow(const char *path, struct smack_attrs *result)
+ {
+-  int i;
++  int ret, i;
++  int rlen = SMACK_LABELLEN;
++  char buffer[rlen];
+ 
+-  i = getxattr(path, SMACK_ATTRNAME, result, rlen);
++  i = getxattr(path, SMACK_ATTRNAME, result->attr, rlen);
+   if (i < 0)
+     return i;
+ 
+   if (i < rlen)
+-    result[i] = '\0';
++    result->attr[i] = '\0';
++
++  ret = i;
++
++  i = getxattr(path, SMACK_EXECNAME, result->exec, rlen);
++  if (i >= 0 && i < rlen)
++    result->exec[i] = '\0';
++
++  i = getxattr(path, SMACK_MMAPNAME, result->mmap, rlen);
++  if (i >= 0 && i < rlen)
++    result->mmap[i] = '\0';
++
++  i = getxattr(path, SMACK_TRANSMUTENAME, buffer, rlen);
++  if (i >= 0 && i < rlen && strncmp(buffer, SMACK_TRANSMUTETRUE, i) == 0)
++    result->transmute = 1;
+ 
+-  return i;
++  return ret;
+ }
+ 
+ static inline int
+-smack_of_fd(int fd, char *result, int rlen)
++smack_of_fd(int fd, struct smack_attrs *result)
+ {
+-  int i;
++  int ret, i;
++  int rlen = SMACK_LABELLEN;
++  char buffer[rlen];
+ 
+-  i = fgetxattr(fd, SMACK_ATTRNAME, result, rlen);
++  i = fgetxattr(fd, SMACK_ATTRNAME, result->attr, rlen);
+   if (i < 0)
+     return i;
+ 
+   if (i < rlen)
+-    result[i] = '\0';
++    result->attr[i] = '\0';
++
++  ret = i;
++
++  i = fgetxattr(fd, SMACK_EXECNAME, result->exec, rlen);
++  if (i >= 0 && i < rlen)
++    result->exec[i] = '\0';
+ 
+-  return i;
++  i = fgetxattr(fd, SMACK_MMAPNAME, result->mmap, rlen);
++  if (i >= 0 && i < rlen)
++    result->mmap[i] = '\0';
++
++  i = fgetxattr(fd, SMACK_TRANSMUTENAME, buffer, rlen);
++  if (i >= 0 && i < rlen && strncmp(buffer, SMACK_TRANSMUTETRUE, i) == 0)
++    result->transmute = 1;
++
++  return ret;
+ }
+ 
+ static inline int
+-smack_to_fd(int fd, char *smack)
++smack_to_fd(int fd, const struct smack_attrs *smack)
+ {
+-  return fsetxattr(fd, SMACK_ATTRNAME, smack, strlen(smack), 0);
++  int ret;
++
++  if (smack->attr[0])
++    {
++      ret = fsetxattr(fd, SMACK_ATTRNAME, smack->attr, strlen(smack->attr), 0);
++      if (ret < 0)
++        return ret;
++    }
++
++  if (smack->exec[0])
++    {
++      ret = fsetxattr(fd, SMACK_EXECNAME, smack->exec, strlen(smack->exec), 0);
++      if (ret < 0)
++        return ret;
++    }
++
++  if (smack->mmap[0])
++    {
++      ret = fsetxattr(fd, SMACK_MMAPNAME, smack->mmap, strlen(smack->mmap), 0);
++      if (ret < 0)
++        return ret;
++    }
++
++  if (smack->transmute)
++    {
++      ret = fsetxattr(fd, SMACK_TRANSMUTENAME, SMACK_TRANSMUTETRUE,
++                      strlen(SMACK_TRANSMUTETRUE), 0);
++      if (ret < 0)
++        return ret;
++    }
++
++  return 0;
+ }
+ 
+ static inline int
+-smack_to_file(const char *path, char *smack)
++smack_to_file(const char *path, const struct smack_attrs *smack)
+ {
+-  return lsetxattr(path, SMACK_ATTRNAME, smack, strlen(smack), 0);
++  int ret;
++
++  if (smack->attr[0])
++    {
++      ret = lsetxattr(path, SMACK_ATTRNAME, smack->attr, strlen(smack->attr), 0);
++      if (ret < 0)
++        return ret;
++    }
++
++  if (smack->exec[0])
++    {
++      ret = lsetxattr(path, SMACK_EXECNAME, smack->exec, strlen(smack->exec), 0);
++      if (ret < 0)
++        return ret;
++    }
++
++  if (smack->mmap[0])
++    {
++      ret = lsetxattr(path, SMACK_MMAPNAME, smack->mmap, strlen(smack->mmap), 0);
++      if (ret < 0)
++        return ret;
++    }
++
++  if (smack->transmute)
++    {
++      ret = lsetxattr(path, SMACK_TRANSMUTENAME, SMACK_TRANSMUTETRUE,
++                      strlen(SMACK_TRANSMUTETRUE), 0);
++      if (ret < 0)
++        return ret;
++    }
++
++  return 0;
+ }
+ 
+ static inline int
+diff --git a/src/stat.c b/src/stat.c
+index 19dc251..c7769b4 100644
+--- a/src/stat.c
++++ b/src/stat.c
+@@ -600,10 +600,11 @@ print_stat (char *pformat, size_t prefix_len, char m,
+       break;
+     case 'C':
+       {
+-        char context[SMACK_LABELLEN];
++	struct smack_attrs context;
++	memset(&context, 0, sizeof(context));
+ 
+-        if (smack_of_file(filename, context, SMACK_LABELLEN) > 0)
+-          out_string(pformat, prefix_len, context);
++        if (smack_of_file(filename, &context) > 0)
++          out_string(pformat, prefix_len, context.attr);
+       }
+       break;
+     default:
+-- 
+1.9.3
+

@@ -1,0 +1,14 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 802x19
+          text run at (0,0) width 802: "This tests for a bug where inserting at the end of a link would place content in the wrong paragraph."
+      RenderBlock {DIV} at (0,35) size 964x19
+        RenderInline {A} at (0,0) size 537x19 [color=#0000EE]
+          RenderText {#text} at (0,0) size 537x19
+            text run at (0,0) width 537: "Everything in this editable region should be in the same paragraph."
+          RenderBR {BR} at (537,15) size 0x0
+caret: position 67 of child 0 {#text} of child 0 {A} of child 3 {DIV} of body

@@ -1,0 +1,20 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 553x19
+          text run at (0,0) width 553: "This tests for a bug where images would act as sentence boundaries."
+      RenderBlock {DIV} at (0,35) size 964x107
+        RenderText {#text} at (0,88) size 164x19
+          text run at (0,88) width 164: "The caret should be "
+        RenderImage {IMG} at (164,0) size 76x103
+        RenderText {#text} at (240,88) size 267x19
+          text run at (240,88) width 267: "at the beginning of this sentence."
+caret: position 0 of child 0 {#text} of child 2 {DIV} of body

@@ -1,0 +1,63 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 43x14
+          text run at (0,0) width 43: "Test for "
+        RenderInline {I} at (0,0) size 772x28
+          RenderInline {A} at (0,0) size 253x14 [color=#0000EE]
+            RenderText {#text} at (43,0) size 253x14
+              text run at (43,0) width 253: "http://bugs.webkit.org/show_bug.cgi?id=13156"
+          RenderText {#text} at (296,0) size 772x28
+            text run at (296,0) width 3: " "
+            text run at (299,0) width 473: "REGRESSION (r19621): Pasting breakable content where wrapped line is too long to fit"
+            text run at (0,14) width 252: "in a textarea fails to draw a horizontal scrollbar"
+        RenderText {#text} at (252,14) size 3x14
+          text run at (252,14) width 3: "."
+      RenderBlock {P} at (0,40) size 784x28
+        RenderText {#text} at (0,0) size 773x28
+          text run at (0,0) width 773: "This tests that a line break will occur in the middle of the first word on a line if it\x{2019}s too long to fit on the line. The behavior is tested after breakable"
+          text run at (0,14) width 419: "characters (question mark and hyphen), after a space and after a soft hyphen."
+      RenderBlock {P} at (0,80) size 784x14
+        RenderText {#text} at (0,0) size 220x14
+          text run at (0,0) width 220: "The following blocks should be identical."
+      RenderBlock (floating) {DIV} at (4,110) size 300x126 [bgcolor=#FFFFE0]
+        RenderText {#text} at (0,0) size 300x126
+          text run at (0,0) width 162: "Curabiturpretium,quamquiss?"
+          text run at (0,14) width 300: "empermalesuada,estliberofeugiatlibero,velfringillaorcin"
+          text run at (0,28) width 76: "ibhsedneque-"
+          text run at (0,42) width 299: "Quisqueeunullanonnisimolestieaccumsan.Etiamtellusu"
+          text run at (0,56) width 134: "rna,laoreetac,laoreetnon"
+          text run at (0,70) width 298: "suscipitsed,sapien.Phasellusvehicula,sematposuereve"
+          text run at (0,84) width 164: "hicula,auguenibhmolestienisl\x{AD}" + hyphen string "\x{2010}"
+          text run at (0,98) width 298: "necullamcorperlacusantevulputatepede.Nasceturridicu"
+          text run at (0,112) width 42: "lusmus."
+      RenderBlock (floating) {DIV} at (312,110) size 300x126 [bgcolor=#FFFFE0]
+        RenderText {#text} at (0,0) size 162x14
+          text run at (0,0) width 162: "Curabiturpretium,quamquiss?"
+        RenderBR {BR} at (162,11) size 0x0
+        RenderText {#text} at (0,14) size 260x14
+          text run at (0,14) width 260: "empermalesuada,estliberofeugiatlibero,velfringi"
+        RenderBR {BR} at (260,25) size 0x0
+        RenderText {#text} at (0,28) size 116x14
+          text run at (0,28) width 116: "llaorcinibhsedneque-"
+        RenderBR {BR} at (116,39) size 0x0
+        RenderText {#text} at (0,42) size 263x14
+          text run at (0,42) width 263: "Quisqueeunullanonnisimolestieaccumsan.Etiam"
+        RenderBR {BR} at (263,53) size 0x0
+        RenderText {#text} at (0,56) size 170x14
+          text run at (0,56) width 170: "tellusurna,laoreetac,laoreetnon"
+        RenderBR {BR} at (170,67) size 0x0
+        RenderText {#text} at (0,70) size 267x14
+          text run at (0,70) width 267: "suscipitsed,sapien.Phasellusvehicula,sematposu"
+        RenderBR {BR} at (267,81) size 0x0
+        RenderText {#text} at (0,84) size 195x14
+          text run at (0,84) width 195: "erevehicula,auguenibhmolestienisl-"
+        RenderBR {BR} at (195,95) size 0x0
+        RenderText {#text} at (0,98) size 264x14
+          text run at (0,98) width 264: "necullamcorperlacusantevulputatepede.Nascetu"
+        RenderBR {BR} at (264,109) size 0x0
+        RenderText {#text} at (0,112) size 76x14
+          text run at (0,112) width 76: "rridiculusmus."

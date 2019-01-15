@@ -1,0 +1,23 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 285x19
+          text run at (0,0) width 285: "the lower left cell should be colored"
+      RenderTable {TABLE} at (0,19) size 36x54 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 34x52
+          RenderTableRow {TR} at (0,2) size 34x23
+            RenderTableCell {TD} at (2,2) size 14x23 [bgcolor=#FFFF00] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 10x19
+                text run at (2,2) width 10: "a"
+            RenderTableCell {TD} at (18,2) size 14x23 [bgcolor=#00FFFF] [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 10x19
+                text run at (2,2) width 10: "b"
+          RenderTableRow {TR} at (0,27) size 34x23
+            RenderTableCell {TD} at (2,27) size 14x23 [bgcolor=#FF00FF] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderBR {BR} at (2,2) size 0x19
+            RenderTableCell {TD} at (18,27) size 14x23 [bgcolor=#088880] [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 9x19
+                text run at (2,2) width 9: "c"

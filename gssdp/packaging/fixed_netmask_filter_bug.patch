@@ -1,0 +1,293 @@
+--- a/libgssdp/gssdp-client.c
++++ b/libgssdp/gssdp-client.c
+@@ -59,12 +59,20 @@ G_DEFINE_TYPE (GSSDPClient,
+                gssdp_client,
+                G_TYPE_OBJECT);
+
++struct _GSSDPNetworkDevice {
++        char *iface_name;
++        char *host_ip;
++        char *network;
++        struct sockaddr_in mask;
++};
++typedef struct _GSSDPNetworkDevice GSSDPNetworkDevice;
++
+ struct _GSSDPClientPrivate {
+         GMainContext      *main_context;
+
+         char              *server_id;
+-        char              *interface;
+-        char              *host_ip;
++
++        GSSDPNetworkDevice device;
+
+         GError            **error;
+
+@@ -79,6 +87,7 @@ enum {
+         PROP_MAIN_CONTEXT,
+         PROP_SERVER_ID,
+         PROP_IFACE,
++        PROP_NETWORK,
+         PROP_HOST_IP,
+         PROP_ACTIVE,
+         PROP_ERROR
+@@ -198,6 +207,10 @@ gssdp_client_get_property (GObject    *object,
+                 g_value_set_string (value,
+                                     gssdp_client_get_interface (client));
+                 break;
++        case PROP_NETWORK:
++                g_value_set_string (value,
++                                    gssdp_client_get_network (client));
++                break;
+         case PROP_HOST_IP:
+                 g_value_set_string (value,
+                                     gssdp_client_get_host_ip (client));
+@@ -234,7 +247,10 @@ gssdp_client_set_property (GObject      *object,
+                 client->priv->error = g_value_get_pointer (value);
+                 break;
+         case PROP_IFACE:
+-                client->priv->interface = g_value_dup_string (value);
++                client->priv->device.iface_name = g_value_dup_string (value);
++                break;
++        case PROP_NETWORK:
++                client->priv->device.network = g_value_dup_string (value);
+                 break;
+         case PROP_ACTIVE:
+                 client->priv->active = g_value_get_boolean (value);
+@@ -280,8 +296,9 @@ gssdp_client_finalize (GObject *object)
+         client = GSSDP_CLIENT (object);
+
+         g_free (client->priv->server_id);
+-        g_free (client->priv->interface);
+-        g_free (client->priv->host_ip);
++        g_free (client->priv->device.iface_name);
++        g_free (client->priv->device.host_ip);
++        g_free (client->priv->device.network);
+
+         G_OBJECT_CLASS (gssdp_client_parent_class)->finalize (object);
+ }
+@@ -374,6 +391,30 @@ gssdp_client_class_init (GSSDPClientClass *klass)
+                           G_PARAM_STATIC_BLURB));
+
+         /**
++         * GSSDPClient:network:
++         *
++         * The network this client is currently connected to. You could set this
++         * to anything you want to identify the network this client is
++         * associated with. If you are using #GUPnPContextManager and associated
++         * interface is a WiFi interface, this property is set to the ESSID of
++         * the network. Otherwise, expect this to be the network IP address by
++         * default.
++         **/
++        g_object_class_install_property
++                (object_class,
++                 PROP_NETWORK,
++                 g_param_spec_string
++                         ("network",
++                          "Network ID",
++                          "The network this client is currently connected to.",
++                          NULL,
++                          G_PARAM_READWRITE |
++                          G_PARAM_CONSTRUCT |
++                          G_PARAM_STATIC_NAME |
++                          G_PARAM_STATIC_NICK |
++                          G_PARAM_STATIC_BLURB));
++
++        /**
+          * GSSDPClient:host-ip
+          *
+          * The IP address of the assoicated network interface.
+@@ -535,7 +576,7 @@ gssdp_client_get_interface (GSSDPClient *client)
+ {
+         g_return_val_if_fail (GSSDP_IS_CLIENT (client), NULL);
+
+-        return client->priv->interface;
++        return client->priv->device.iface_name;
+ }
+
+ /**
+@@ -551,7 +592,23 @@ gssdp_client_get_host_ip (GSSDPClient *client)
+ {
+         g_return_val_if_fail (GSSDP_IS_CLIENT (client), NULL);
+
+-        return client->priv->host_ip;
++        return client->priv->device.host_ip;
++}
++
++/**
++ * gssdp_client_get_network:
++ * @client: A #GSSDPClient
++ *
++ * Get the network this client is associated with.
++ *
++ * Return value: The network identification. This string should not be freed.
++ **/
++const char *
++gssdp_client_get_network (GSSDPClient *client)
++{
++        g_return_val_if_fail (GSSDP_IS_CLIENT (client), NULL);
++
++        return client->priv->device.network;
+ }
+
+ /**
+@@ -718,9 +775,8 @@ socket_source_cb (GSSDPSocketSource *socket, GSSDPClient *client)
+         struct sockaddr_in addr;
+         socklen_t addr_size;
+         SoupMessageHeaders *headers;
+-        struct in_addr our_addr;
+-        in_addr_t our_network;
+-        in_addr_t recv_network;
++        in_addr_t our_addr;
++        in_addr_t mask;
+
+         /* Get FD */
+         fd = gssdp_socket_source_get_fd (socket);
+@@ -748,10 +804,9 @@ socket_source_cb (GSSDPSocketSource *socket, GSSDPClient *client)
+          * on this socket from a particular interface but AFAIK that is not
+          * possible, at least not in a portable way.
+          */
+-        recv_network = inet_netof (addr.sin_addr);
+-        our_addr.s_addr = inet_addr (gssdp_client_get_host_ip (client));
+-        our_network = inet_netof (our_addr);
+-        if (recv_network != our_network)
++        mask = client->priv->device.mask.sin_addr.s_addr;
++        our_addr = inet_addr (gssdp_client_get_host_ip(client));
++        if ((addr.sin_addr.s_addr & mask) != (our_addr & mask))
+                 return TRUE;
+
+         if (bytes >= BUF_SIZE) {
+@@ -834,6 +889,7 @@ multicast_socket_source_cb (gpointer user_data)
+  * it gets the IP of the first up & running interface and sets @interface
+  * appropriately.
+  */
++#if 0
+ static char *
+ get_host_ip (char **interface)
+ {
+@@ -909,17 +965,93 @@ get_host_ip (char **interface)
+
+         return ret;
+ }
++#else
++static gboolean
++get_host_ip (GSSDPNetworkDevice *device)
++{
++        struct ifaddrs *ifa_list, *ifa;
++        GList *up_ifaces, *ifaceptr;
++
++        up_ifaces = NULL;
++
++        if (getifaddrs (&ifa_list) != 0) {
++                g_error ("Failed to retrieve list of network interfaces:\n%s\n",
++                         strerror (errno));
++
++                return FALSE;
++        }
++
++        for (ifa = ifa_list; ifa != NULL; ifa = ifa->ifa_next) {
++                if (ifa->ifa_addr == NULL)
++                        continue;
++
++                if (device->iface_name &&
++                    strcmp (device->iface_name, ifa->ifa_name) != 0)
++                        continue;
++                else if (!(ifa->ifa_flags & IFF_UP))
++                        continue;
++                else if ((ifa->ifa_flags & IFF_POINTOPOINT))
++                        continue;
++
++                /* Loopback and IPv6 interfaces go at the bottom on the list */
++                if (ifa->ifa_flags & IFF_LOOPBACK ||
++                    ifa->ifa_addr->sa_family == AF_INET6)
++                        up_ifaces = g_list_append (up_ifaces, ifa);
++                else
++                        up_ifaces = g_list_prepend (up_ifaces, ifa);
++        }
++
++        for (ifaceptr = up_ifaces;
++             ifaceptr != NULL;
++             ifaceptr = ifaceptr->next) {
++                char ip[INET6_ADDRSTRLEN];
++                char net[INET6_ADDRSTRLEN];
++                const char *p, *q;
++                struct sockaddr_in *s4, *s4_mask;
++                struct in_addr net_addr;
++
++                ifa = ifaceptr->data;
++
++                if (ifa->ifa_addr->sa_family != AF_INET) {
++                        continue;
++                }
++
++                s4 = (struct sockaddr_in *) ifa->ifa_addr;
++                p = inet_ntop (AF_INET,
++                               &s4->sin_addr,
++                               ip,
++                               sizeof (ip));
++                device->host_ip = g_strdup (p);
++                s4_mask = (struct sockaddr_in *) ifa->ifa_netmask;
++                memcpy (&(device->mask), s4_mask, sizeof (struct sockaddr_in));
++                net_addr.s_addr = (in_addr_t) s4->sin_addr.s_addr &
++                                  (in_addr_t) s4_mask->sin_addr.s_addr;
++                q = inet_ntop (AF_INET, &net_addr, net, sizeof (net));
++
++                if (device->iface_name == NULL)
++                        device->iface_name = g_strdup (ifa->ifa_name);
++                if (device->network == NULL)
++                        device->network = g_strdup (q);
++                break;
++        }
++
++        g_list_free (up_ifaces);
++        freeifaddrs (ifa_list);
++
++        return TRUE;
++}
++#endif
+
+ static gboolean
+ init_network_info (GSSDPClient *client)
+ {
+         gboolean ret = TRUE;
+
+-        if (client->priv->interface == NULL || client->priv->host_ip == NULL)
+-                client->priv->host_ip =
+-                        get_host_ip (&client->priv->interface);
++        if (client->priv->device.iface_name == NULL || client->priv->device.host_ip == NULL)
++                get_host_ip (&(client->priv->device));
++
+
+-        if (client->priv->interface == NULL) {
++        if (client->priv->device.iface_name == NULL) {
+                 if (client->priv->error)
+                         g_set_error (client->priv->error,
+                                      GSSDP_ERROR,
+@@ -927,13 +1059,13 @@ init_network_info (GSSDPClient *client)
+                                      "No default route?");
+
+                 ret = FALSE;
+-        } else if (client->priv->host_ip == NULL) {
++        } else if (client->priv->device.host_ip == NULL) {
+                 if (client->priv->error)
+                         g_set_error (client->priv->error,
+                                      GSSDP_ERROR,
+                                      GSSDP_ERROR_NO_IP_ADDRESS,
+                                      "Failed to find IP of interface %s",
+-                                     client->priv->interface);
++                                     client->priv->device.iface_name);
+
+                 ret = FALSE;
+         }
+--- a/libgssdp/gssdp-client.h
++++ b/libgssdp/gssdp-client.h
+@@ -89,6 +89,9 @@ gssdp_client_get_interface    (GSSDPClient  *client);
+ const char *
+ gssdp_client_get_host_ip      (GSSDPClient  *client);
+
++const char *
++gssdp_client_get_network      (GSSDPClient  *client);
++
+ gboolean
+ gssdp_client_get_active       (GSSDPClient  *client);
+

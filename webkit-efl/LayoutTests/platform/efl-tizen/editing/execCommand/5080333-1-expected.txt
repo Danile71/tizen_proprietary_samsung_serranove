@@ -1,0 +1,22 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 947x57
+          text run at (0,0) width 947: "This tests for a bug where changing the alignment of an image would result in a selection that wasn't the one that was"
+          text run at (0,19) width 309: "present before the alignment change. "
+          text run at (309,19) width 612: "The image should be centered and the caret should be the same before and"
+          text run at (0,38) width 157: "after the operation."
+      RenderBlock {DIV} at (0,73) size 964x141
+        RenderBlock (anonymous) at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 26x19
+            text run at (0,0) width 26: "foo"
+          RenderBR {BR} at (26,15) size 0x0
+        RenderBlock {DIV} at (0,19) size 964x103
+          RenderImage {IMG} at (444,0) size 76x103
+        RenderBlock (anonymous) at (0,122) size 964x19
+          RenderText {#text} at (0,0) size 28x19
+            text run at (0,0) width 28: "baz"
+caret: position 0 of child 0 {IMG} of child 2 {DIV} of child 2 {DIV} of body

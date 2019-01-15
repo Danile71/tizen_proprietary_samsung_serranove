@@ -1,0 +1,117 @@
+Binary files iniparser/.git/index and iniparser_3.1/.git/index differ
+Only in iniparser_3.1/.git/objects/37: 10990f7726991967df604a6c635eb26f0337c6
+Only in iniparser_3.1/.git/objects: 5f
+Only in iniparser_3.1/.git/objects/e2: 893750416bbb6c6bd35bd6148e2c89b93580f4
+Only in iniparser_3.1/.git/objects: e8
+Only in iniparser_3.1: iniparser_getstr_add.patch
+diff -ru iniparser/src/iniparser.c iniparser_3.1/src/iniparser.c
+--- iniparser/src/iniparser.c	2015-02-25 14:37:27.509366130 +0900
++++ iniparser_3.1/src/iniparser.c	2015-02-25 16:34:03.297365295 +0900
+@@ -344,6 +344,29 @@
+ 
+ /*-------------------------------------------------------------------------*/
+ /**
++  @brief    Get the string associated to a key, return NULL if not found
++  @param    d   Dictionary to search
++  @param    key Key string to look for
++  @return   pointer to statically allocated character string, or NULL.
++
++  This function queries a dictionary for a key. A key as read from an
++  ini file is given as "section:key". If the key cannot be found,
++  NULL is returned.
++  The returned char pointer is pointing to a string allocated in
++  the dictionary, do not free or modify it.
++
++  This function is only provided for backwards compatibility with
++  previous versions of iniparser. It is recommended to use
++  iniparser_getstring() instead.
++ */
++/*--------------------------------------------------------------------------*/
++char * iniparser_getstr(dictionary * d, const char * key)
++{
++    return iniparser_getstring(d, key, NULL);
++}
++
++/*-------------------------------------------------------------------------*/
++/**
+   @brief    Get the string associated to a key
+   @param    d       Dictionary to search
+   @param    key     Key string to look for
+@@ -505,6 +528,25 @@
+ 
+ /*-------------------------------------------------------------------------*/
+ /**
++  @brief    Set an entry in a dictionary.
++  @param    ini     Dictionary to modify.
++  @param    entry   Entry to modify (entry name)
++  @param    val     New value to associate to the entry.
++  @return   int 0 if Ok, -1 otherwise.
++
++  If the given entry can be found in the dictionary, it is modified to
++  contain the provided value. If it cannot be found, -1 is returned.
++  It is Ok to set val to NULL.
++ */
++/*--------------------------------------------------------------------------*/
++int iniparser_setstr(dictionary * ini, char * entry, char * val)
++{
++    return iniparser_set(ini, entry, val);
++}
++
++
++/*-------------------------------------------------------------------------*/
++/**
+   @brief    Set an entry in a dictionary.
+   @param    ini     Dictionary to modify.
+   @param    entry   Entry to modify (entry name)
+diff -ru iniparser/src/iniparser.h iniparser_3.1/src/iniparser.h
+--- iniparser/src/iniparser.h	2015-02-25 14:37:27.509366130 +0900
++++ iniparser_3.1/src/iniparser.h	2015-02-25 16:32:06.201365309 +0900
+@@ -143,6 +143,26 @@
+ 
+ /*-------------------------------------------------------------------------*/
+ /**
++  @brief    Get the string associated to a key, return NULL if not found
++  @param    d   Dictionary to search
++  @param    key Key string to look for
++  @return   pointer to statically allocated character string, or NULL.
++
++  This function queries a dictionary for a key. A key as read from an
++  ini file is given as "section:key". If the key cannot be found,
++  NULL is returned.
++  The returned char pointer is pointing to a string allocated in
++  the dictionary, do not free or modify it.
++
++  This function is only provided for backwards compatibility with
++  previous versions of iniparser. It is recommended to use
++  iniparser_getstring() instead.
++ */
++/*--------------------------------------------------------------------------*/
++char * iniparser_getstr(dictionary * d, const char * key);
++
++/*-------------------------------------------------------------------------*/
++/**
+   @brief    Get the string associated to a key
+   @param    d       Dictionary to search
+   @param    key     Key string to look for
+@@ -239,6 +259,21 @@
+ 
+ /*-------------------------------------------------------------------------*/
+ /**
++  @brief    Set an entry in a dictionary.
++  @param    ini     Dictionary to modify.
++  @param    entry   Entry to modify (entry name)
++  @param    val     New value to associate to the entry.
++  @return   int 0 if Ok, -1 otherwise.
++
++  If the given entry can be found in the dictionary, it is modified to
++  contain the provided value. If it cannot be found, -1 is returned.
++  It is Ok to set val to NULL.
++ */
++/*--------------------------------------------------------------------------*/
++int iniparser_setstr(dictionary * ini, char * entry, char * val);
++
++/*-------------------------------------------------------------------------*/
++/**
+   @brief    Set an entry in a dictionary.
+   @param    ini     Dictionary to modify.
+   @param    entry   Entry to modify (entry name)

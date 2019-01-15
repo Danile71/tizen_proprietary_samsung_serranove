@@ -1,0 +1,23 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x116
+  RenderBlock {HTML} at (0,0) size 800x116
+    RenderBody {BODY} at (8,12) size 784x92
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 202x14
+          text run at (0,0) width 202: "The borders below should be as described:"
+      RenderBlock {P} at (0,26) size 784x14
+        RenderInline {SPAN} at (0,0) size 96x24 [border: (5px dashed #000000)]
+          RenderText {#text} at (5,0) size 86x14
+            text run at (5,0) width 86: "Black and dashed."
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,52) size 784x14
+        RenderInline {SPAN} at (0,0) size 110x24 [border: (5px groove #FFA500)]
+          RenderText {#text} at (5,0) size 100x14
+            text run at (5,0) width 100: "Orange and grooved."
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,78) size 784x14
+        RenderInline {SPAN} at (0,0) size 52x14
+          RenderText {#text} at (0,0) size 52x14
+            text run at (0,0) width 52: "No border."
+        RenderText {#text} at (0,0) size 0x0

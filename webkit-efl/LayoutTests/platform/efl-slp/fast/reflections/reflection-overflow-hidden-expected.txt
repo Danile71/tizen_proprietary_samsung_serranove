@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x114 layerType: background only
+layer at (50,100) size 400x50
+  RenderBlock (positioned) zI: -1 {DIV} at (50,100) size 400x50 [bgcolor=#FF0000]
+layer at (50,250) size 400x50
+  RenderBlock (positioned) zI: -1 {DIV} at (50,250) size 400x50 [bgcolor=#FF0000]
+layer at (0,0) size 800x114 layerType: foreground only
+  RenderBlock {HTML} at (0,0) size 800x114
+    RenderBody {BODY} at (50,50) size 700x14
+      RenderBlock {P} at (0,0) size 700x14
+        RenderInline {A} at (0,0) size 230x14 [color=#0000EE]
+          RenderText {#text} at (0,0) size 230x14
+            text run at (0,0) width 230: "https://bugs.webkit.org/show_bug.cgi?id=22570"
+        RenderText {#text} at (230,0) size 437x14
+          text run at (230,0) width 46: ". Test for "
+          text run at (276,0) width 391: "reflection painting on overflow:hidden element. You should not see any red below."
+layer at (50,100) size 400x200
+  RenderBlock (positioned) {DIV} at (50,100) size 400x200
+layer at (50,100) size 400x200
+  RenderBlock (relative positioned) {DIV} at (0,0) size 400x200
+layer at (50,100) size 400x50
+  RenderBlock (positioned) {DIV} at (0,0) size 400x50 [bgcolor=#008000]
+    RenderText {#text} at (0,0) size 19x14
+      text run at (0,0) width 19: "Top"
+layer at (50,250) size 400x50
+  RenderBlock (positioned) {DIV} at (0,150) size 400x50 [bgcolor=#008000]
+    RenderText {#text} at (0,0) size 35x14
+      text run at (0,0) width 35: "Bottom"

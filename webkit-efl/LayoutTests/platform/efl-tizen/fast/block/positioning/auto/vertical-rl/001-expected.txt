@@ -1,0 +1,21 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 956x719
+      RenderBlock {P} at (0,0) size 76x719
+        RenderText {#text} at (0,0) size 76x701
+          text run at (0,0) width 691: "In this test, you should see three blocks that are centered vertically within a black box."
+          text run at (19,0) width 671: "They should be stacked horizontally with the green box in between two olive boxes. "
+          text run at (19,671) width 30: "The"
+          text run at (38,0) width 663: "olive boxes and the green box should be 100x100, and there should be 50 pixels of"
+          text run at (57,0) width 316: "padding on either side of the box stack."
+layer at (540,8) size 340x240
+  RenderBlock (positioned) {DIV} at (100,8) size 340x240 [border: (20px solid #000000)]
+    RenderBlock {DIV} at (70,70) size 0x50
+layer at (660,78) size 100x100
+  RenderBlock (positioned) {SPAN} at (120,70) size 100x100 [bgcolor=#008000]
+layer at (760,78) size 100x100
+  RenderBlock (positioned) {DIV} at (20,70) size 100x100 [bgcolor=#808000]
+layer at (560,78) size 100x100
+  RenderBlock (positioned) {DIV} at (220,70) size 100x100 [bgcolor=#808000]

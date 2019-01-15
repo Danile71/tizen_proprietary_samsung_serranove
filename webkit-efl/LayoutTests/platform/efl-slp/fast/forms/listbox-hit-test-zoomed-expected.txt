@@ -1,0 +1,25 @@
+layer at (0,0) size 814x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (9,9) size 782x579
+      RenderBlock (anonymous) at (0,0) size 782x162
+        RenderListBox {SELECT} at (2,0) size 143x162 [bgcolor=#FFFFFF] [border: (12px solid #000000)]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,162) size 782x91
+        RenderBlock (anonymous) at (0,0) size 782x51
+          RenderText {#text} at (0,0) size 44x17
+            text run at (0,0) width 44: "Results:"
+          RenderBR {BR} at (44,13) size 0x0
+          RenderText {#text} at (0,17) size 76x17
+            text run at (0,17) width 76: "Test 1 Passed"
+          RenderBR {BR} at (76,30) size 0x0
+          RenderText {#text} at (0,34) size 74x17
+            text run at (0,34) width 74: "Test 2 Failed"
+          RenderBR {BR} at (74,47) size 0x0
+        RenderBlock {PRE} at (0,63) size 782x28
+          RenderText {#text} at (0,0) size 805x14
+            text run at (0,0) width 805: "     Expected: false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false"
+          RenderBR {BR} at (0,0) size 0x0
+          RenderText {#text} at (0,14) size 791x14
+            text run at (0,14) width 791: "     Actual: false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false"

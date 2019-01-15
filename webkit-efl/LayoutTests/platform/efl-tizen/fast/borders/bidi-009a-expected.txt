@@ -1,0 +1,79 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x291
+  RenderBlock {HTML} at (0,0) size 980x291
+    RenderBody {BODY} at (8,16) size 964x243
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 627x19
+          text run at (0,0) width 627: "The following two blocks should be identical, including overflow. (Force bidi: \x{D7}\x{90})"
+      RenderBlock {DIV} at (32,51) size 900x80 [color=#FFFF00] [bgcolor=#000000]
+        RenderTable at (24,24) size 302x32
+          RenderTableSection (anonymous) at (0,0) size 302x32
+            RenderTableRow {P} at (0,0) size 302x32
+              RenderTableCell (anonymous) at (0,0) size 302x32 [r=0 c=0 rs=1 cs=1]
+                RenderInline {SPAN} at (0,0) size 20x38
+                  RenderText {#text} at (0,-3) size 20x38
+                    text run at (0,-3) width 20: "a"
+                RenderInline {SPAN} at (0,0) size 23x50 [color=#FF00FF] [border: (3px solid #FF00FF) none (3px solid #FF00FF)]
+                  RenderText {#text} at (39,-3) size 20x38
+                    text run at (39,-3) width 20: "b"
+                RenderInline {SPAN} at (0,0) size 21x50 [color=#00FFFF] [border: (3px solid #00FFFF) none (3px solid #00FFFF)]
+                  RenderText {#text} at (78,-3) size 18x38
+                    text run at (78,-3) width 18: "c"
+                RenderInline {SPAN} at (0,0) size 20x50 [color=#FF00FF] [border: (3px solid #FF00FF) none (3px solid #FF00FF) none]
+                  RenderText {#text} at (96,-3) size 20x38
+                    text run at (96,-3) width 20: "d"
+                RenderInline {SPAN} at (0,0) size 20x50 [color=#00FFFF] [border: (3px solid #00FFFF) none (3px solid #00FFFF) none]
+                  RenderText {#text} at (116,-3) size 20x38
+                    text run at (116,-3) width 20: "e"
+                RenderInline {SPAN} at (0,0) size 11x38
+                  RenderText {#text} at (136,-3) size 11x38
+                    text run at (136,-3) width 11: "f"
+                RenderInline {SPAN} at (0,0) size 20x38
+                  RenderText {#text} at (147,-3) size 20x38
+                    text run at (147,-3) width 20: "g"
+                RenderInline {SPAN} at (0,0) size 20x38
+                  RenderText {#text} at (167,-3) size 20x38
+                    text run at (167,-3) width 20: "h"
+                RenderInline {SPAN} at (0,0) size 9x50 [color=#FF00FF] [border: (3px solid #FF00FF) none (3px solid #FF00FF) none]
+                  RenderText {#text} at (187,-3) size 9x38
+                    text run at (187,-3) width 9: "i"
+                RenderInline {SPAN} at (0,0) size 12x50 [color=#00FFFF] [border: (3px solid #00FFFF) none]
+                  RenderText {#text} at (196,-3) size 9x38
+                    text run at (196,-3) width 9: "j"
+                RenderInline {SPAN} at (0,0) size 22x50 [color=#FF00FF] [border: (3px solid #FF00FF) none]
+                  RenderText {#text} at (224,-3) size 19x38
+                    text run at (224,-3) width 19: "k"
+                RenderInline {SPAN} at (0,0) size 9x38
+                  RenderText {#text} at (262,-3) size 9x38
+                    text run at (262,-3) width 9: "l"
+                RenderInline {SPAN} at (0,0) size 31x38
+                  RenderText {#text} at (271,-3) size 31x38
+                    text run at (271,-3) width 31: "m"
+      RenderBlock {DIV} at (32,163) size 900x80 [color=#FFFF00] [bgcolor=#000000]
+        RenderTable at (24,24) size 302x32
+          RenderTableSection (anonymous) at (0,0) size 302x32
+            RenderTableRow {P} at (0,0) size 302x32
+              RenderTableCell (anonymous) at (0,0) size 302x32 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (0,-3) size 271x38
+                  text run at (0,-3) width 20: "a"
+                  text run at (59,-3) width 0 LTR override: "\x{202D}"
+                  text run at (262,-3) width 9 RTL override: "\x{202E}l"
+                RenderInline {SPAN} at (0,0) size 133x50 [color=#00FFFF] [border: (3px solid #00FFFF)]
+                  RenderText {#text} at (78,-3) size 127x38
+                    text run at (78,-3) width 18 LTR override: "c"
+                    text run at (116,-3) width 20 LTR override: "\x{202D}e"
+                    text run at (187,-3) width 0 RTL override: "\x{202E}"
+                    text run at (196,-3) width 9 RTL override: "\x{202E}j"
+                RenderText {#text} at (136,-3) size 51x38
+                  text run at (136,-3) width 11 RTL override: "\x{202C}f"
+                  text run at (147,-3) width 20 LTR override: "\x{202D}g"
+                  text run at (167,-3) width 20 RTL override: "h"
+                RenderInline {SPAN} at (0,0) size 210x50 [color=#FF00FF] [border: (3px solid #FF00FF)]
+                  RenderText {#text} at (39,-3) size 204x38
+                    text run at (39,-3) width 20 RTL override: "\x{202C}b"
+                    text run at (96,-3) width 20 RTL override: "\x{202C}d"
+                    text run at (187,-3) width 9 LTR override: "\x{202C}i"
+                    text run at (224,-3) width 19 LTR override: "\x{202C}k"
+                RenderText {#text} at (271,-3) size 31x38
+                  text run at (271,-3) width 31: "\x{202C}m"

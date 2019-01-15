@@ -1,0 +1,39 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 556x19
+          text run at (0,0) width 556: "This is a test for bug 3166276. Set the following preferences to see it:"
+      RenderBlock {UL} at (0,35) size 964x38
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 275x19
+            text run at (0,0) width 275: "Proportional font -- Times 15 point"
+        RenderListItem {LI} at (40,19) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 282x19
+            text run at (0,0) width 282: "Fixed width font -- Monaco 11 point"
+      RenderBlock {P} at (0,89) size 964x67
+        RenderTable {TABLE} at (0,0) size 964x67 [border: (1px outset #808080)]
+          RenderTableSection {TBODY} at (1,1) size 962x65
+            RenderTableRow {TR} at (0,2) size 962x61
+              RenderTableCell {TD} at (2,2) size 958x61 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (2,2) size 152x19
+                  text run at (2,2) width 152: "The following text: "
+                RenderInline {TT} at (0,0) size 72x15
+                  RenderText {#text} at (154,5) size 72x15
+                    text run at (154,5) width 72: "hello world"
+                RenderText {#text} at (226,2) size 945x57
+                  text run at (226,2) width 676: ", is written using the <tt> tag. It should show up as Monaco 11 point, but instead it is"
+                  text run at (2,21) width 945: "showing up as Monaco 15 point. The font is correct, but the point size is whatever is set for the proportional font. Note"
+                  text run at (2,40) width 370: "that this only happens to text inside a <table>"
+      RenderBlock {P} at (0,172) size 964x19
+        RenderText {#text} at (0,0) size 380x19
+          text run at (0,0) width 380: "Here is the same text again outside a <table>: "
+        RenderInline {TT} at (0,0) size 72x15
+          RenderText {#text} at (380,3) size 72x15
+            text run at (380,3) width 72: "hello world"
+        RenderText {#text} at (452,0) size 292x19
+          text run at (452,0) width 292: ". Notice it is displayed correctly now."

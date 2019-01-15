@@ -1,0 +1,174 @@
+mixin Elm_Interface_Atspi_Accessible ()
+{
+   eo_prefix: elm_interface_atspi_accessible;
+   legacy_prefix: elm_atspi_accessible;
+   data: null;
+   properties {
+      localized_role_name @protected {
+         get {
+            /*@ Gets an localized string describing ATSPI object role name. */
+         }
+         values {
+            const(char)* localized_name;
+         }
+      }
+      name {
+         get {
+            /*@ Gets an accessible name of the object.
+                Should be free by a user. */
+         }
+         set {
+            /*@ Sets an accessible name of the object. This string should be short,
+             * human-readable name identyfing gui element.
+             Example of good accessible name for icon-only button closing the
+             application is "exit" or "quit". */
+         }
+         values {
+            char* name; /*@ obj name */
+         }
+      }
+      relation_set @protected {
+         get {
+            /*@ Gets an string describing ATSPI object role name. Lists and
+            elements Should be free by a user. */
+         }
+         values {
+         //TIZEN_ONLY(20150709) : atspi relations api
+            Elm_Atspi_Relation_Set relations;
+         }
+         ////////////////////////
+      }
+      role {
+         get {
+            /*@ Gets the role of the object in ATSPI domain. */
+         }
+         set {
+            /*@ Sets the role of the object in ATSPI domain. Role describes a class
+              of gui elements that provides given functionality. Role list is
+              predefined and constant. */
+         }
+         values {
+            Elm_Atspi_Role role;
+         }
+      }
+      children @protected {
+         get {
+            /*@ Gets object's accessible children. */
+         }
+         values {
+            list *children;
+         }
+      }
+      role_name @protected {
+         get {
+            /*@ Gets human-readable string indentifying object accessibility
+            role. */
+         }
+         values {
+            const(char)* role_name;
+         }
+      }
+      attributes @protected {
+         get {
+            /*@ Gets key-value pairs indentifying object extra
+            attributes. Must be free by a user. */
+         }
+         values {
+            list *attributes;
+         }
+      }
+      index_in_parent @protected {
+         get {
+            /*@ Gets index of the child in parent's children list. */
+         }
+         values {
+            int idx;
+         }
+      }
+      description {
+         get {
+            /*@ Gets object contextual information about object. */
+         }
+         set {
+            /*@ Sets contextual information about object.
+             Description property contrary to "name" property contain more verbose
+             information about object. Property may contain description of
+             functionality which given element provides in application.
+
+             Example of good accessible description for icon-only button closing the
+             application is "Close the application".*/
+         }
+         values {
+            const(char)* description;
+         }
+      }
+      parent @protected {
+         get {
+            /*@ Gets object accessible parent. */
+         }
+         set {
+            /*@ Sets object accessible parent. */
+         }
+         values {
+            Eo *parent;
+         }
+      }
+      state_set @protected {
+         get {
+            /*@ Gets set describing object accessible states. */
+         }
+         values {
+            Elm_Atspi_State_Set states;
+         }
+      }
+      //TIZEN_ONLY(20150731) : add i18n support for name and description
+      translation_domain {
+         get {
+            /*@ Gets the translation domain of name and description. */
+         }
+         set {
+            /*@ Sets the translation domain of name and description. */
+         }
+         values {
+            const(char) *domain;
+         }
+      }
+      ///
+   }
+   //TIZEN_ONLY(20150709) : atspi relations api
+   methods {
+      relationship_append {
+         /*@ Defines the relationship between two accessible objects.
+          return EINA_TRUE is relationship was successfully appended, EINA_FALSE
+          otherwise. */
+         return: bool;
+         params {
+            @in Elm_Atspi_Relation_Type type;
+            @in const(Eo) *relation_object;
+         }
+      }
+      relationship_remove {
+         /*@ Removes the relationship between two accessible objects.*/
+         params {
+            @in Elm_Atspi_Relation_Type type;
+            @in const(Eo) *relation_object;
+         }
+      }
+   }
+   //////////////////////////
+   events {
+      property,changed: const(char)*;
+      children,changed: Elm_Atspi_Event_Children_Changed_Data;
+      state,changed: Elm_Atspi_Event_State_Changed_Data;
+      visible,data,changed;
+      active,descendant,changed;
+   }
+   //TIZEN_ONLY(20150709) : atspi relations api
+   implements {
+      @virtual .relationship_append;
+      @virtual .relationship_remove;
+      @virtual .translation_domain.get;
+      @virtual .translation_domain.set;
+   }
+   //////////
+}

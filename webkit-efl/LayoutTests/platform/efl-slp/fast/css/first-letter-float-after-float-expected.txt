@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 634x14
+          RenderInline {A} at (0,0) size 231x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 231x14
+              text run at (40,0) width 231: "https://bugs.webkit.org/show_bug.cgi?id=18818"
+          RenderText {#text} at (271,0) size 403x14
+            text run at (271,0) width 3: " "
+            text run at (274,0) width 400: "REGRESSION (3.1.1-TOT): Character order (float:left ordered after the first letter)"
+        RenderText {#text} at (674,0) size 3x14
+          text run at (674,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 149x14
+          text run at (0,0) width 149: "The next line should say \x{201C}123\x{201D}."
+      RenderBlock {DIV} at (0,52) size 784x14
+        RenderBlock (floating) {SPAN} at (0,0) size 6x14
+          RenderText {#text} at (0,0) size 6x14
+            text run at (0,0) width 6: "1"
+        RenderBlock (floating) at (6,0) size 6x14
+          RenderText {#text} at (0,0) size 6x14
+            text run at (0,0) width 6: "2"
+        RenderText {#text} at (12,0) size 6x14
+          text run at (12,0) width 6: "3"

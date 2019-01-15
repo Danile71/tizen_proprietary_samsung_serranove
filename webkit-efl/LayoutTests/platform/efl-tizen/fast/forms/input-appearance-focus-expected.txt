@@ -1,0 +1,36 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock (anonymous) at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 887x38
+          text run at (0,0) width 887: "This test uses the new text field to test focus() and blur() and to make sure that onFocus and onBlur events fire"
+          text run at (0,19) width 76: "correctly."
+      RenderBlock {P} at (0,54) size 964x29
+        RenderTextControl {INPUT} at (2,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderText {#text} at (175,5) size 5x19
+          text run at (175,5) width 5: " "
+        RenderTextControl {INPUT} at (182,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,99) size 964x76
+        RenderBR {BR} at (0,0) size 0x19
+        RenderText {#text} at (0,19) size 407x19
+          text run at (0,19) width 407: "Test Passed. Text field 1's onFocus event has fired."
+        RenderBR {BR} at (407,34) size 0x0
+        RenderText {#text} at (0,38) size 393x19
+          text run at (0,38) width 393: "Test Passed. Text field 1's onBlur event has fired."
+        RenderBR {BR} at (393,53) size 0x0
+        RenderText {#text} at (0,57) size 407x19
+          text run at (0,57) width 407: "Test Passed. Text field 2's onFocus event has fired."
+      RenderBlock {P} at (0,191) size 964x0
+layer at (14,70) size 164x15
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (0,0) size 99x15
+      text run at (0,0) width 99: "My Text Field 1"
+layer at (194,70) size 164x15
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (0,0) size 99x15
+      text run at (0,0) width 99: "My Text Field 2"
+selection start: position 0 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 3 {INPUT} of child 1 {P} of body
+selection end:   position 15 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 3 {INPUT} of child 1 {P} of body

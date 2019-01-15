@@ -1,0 +1,33 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 223x14
+          text run at (0,0) width 223: "The caption should be at the bottom of the table"
+      RenderTable {TABLE} at (0,26) size 130x58 [border: (1px outset #808080)]
+        RenderBlock {CAPTION} at (0,44) size 128x14
+          RenderText {#text} at (40,0) size 48x14
+            text run at (40,0) width 48: "Wild Cats"
+        RenderTableSection {TBODY} at (1,1) size 128x42
+          RenderTableRow {TR} at (0,2) size 128x18
+            RenderTableCell {TD} at (2,2) size 35x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 22x14
+                text run at (2,2) width 22: "Lion"
+            RenderTableCell {TD} at (39,2) size 43x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 39x14
+                text run at (2,2) width 39: "Leopard"
+            RenderTableCell {TD} at (84,2) size 42x18 [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 38x14
+                text run at (2,2) width 38: "Cheetah"
+          RenderTableRow {TR} at (0,22) size 128x18
+            RenderTableCell {TD} at (2,22) size 35x18 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 31x14
+                text run at (2,2) width 31: "Jaguar"
+            RenderTableCell {TD} at (39,22) size 43x18 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 33x14
+                text run at (2,2) width 33: "Bobcat"
+            RenderTableCell {TD} at (84,22) size 42x18 [border: (1px inset #808080)] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 31x14
+                text run at (2,2) width 31: "Ocelot"

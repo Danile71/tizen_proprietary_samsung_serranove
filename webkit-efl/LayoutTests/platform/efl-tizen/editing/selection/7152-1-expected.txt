@@ -1,0 +1,36 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 7 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of P > BODY > HTML > #document to 0 of P > BODY > HTML > #document toDOMRange:range from 0 of #text > P > BODY > HTML > #document to 6 of BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 169x19
+          text run at (0,0) width 169: "This is a testcase for "
+        RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+          RenderText {#text} at (169,0) size 426x19
+            text run at (169,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=7152"
+        RenderText {#text} at (595,0) size 955x57
+          text run at (595,0) width 10: ". "
+          text run at (605,0) width 324: "Adding visible candidates after tables, at"
+          text run at (929,0) width 5: " "
+          text run at (0,19) width 950: "[table, numberOfChildren], threw RenderView::setSelection for a loop because it assumed the end of a selection would"
+          text run at (950,19) width 5: " "
+          text run at (0,38) width 206: "be inside an atomic node."
+      RenderBlock {HR} at (0,73) size 964x2 [border: (1px inset #000000)]
+      RenderTable {TABLE} at (0,83) size 201x54 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 199x52
+          RenderTableRow {TR} at (0,2) size 199x23
+            RenderTableCell {TD} at (2,2) size 195x23 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 191x19
+                text run at (2,2) width 191: "This should be selected."
+          RenderTableRow {TR} at (0,27) size 199x23
+            RenderTableCell {TD} at (2,27) size 195x23 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 191x19
+                text run at (2,2) width 191: "This should be selected."
+selection start: position 0 of child 0 {#text} of child 1 {P} of body
+selection end:   position 1 of child 5 {TABLE} of body

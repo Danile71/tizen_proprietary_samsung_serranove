@@ -1,0 +1,34 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of #text > DIV > DIV > BODY > HTML > #document to 1 of #text > DIV > DIV > BODY > HTML > #document toDOMRange:range from 0 of DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 934x57
+          text run at (0,0) width 381: "This tests a change made with the fix for 8145. "
+          text run at (381,0) width 553: "The paragraph separator inserted to prevent nesting blocks from the"
+          text run at (0,19) width 884: "fragment to paste inside the block where the paste occured was not being inserted when the fragment had an"
+          text run at (0,38) width 254: "interchange newline at the end."
+      RenderBlock {DIV} at (0,73) size 964x59 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (1,1) size 962x19
+          RenderText {#text} at (0,0) size 6x19
+            text run at (0,0) width 6: "f"
+          RenderText {#text} at (6,0) size 27x19
+            text run at (6,0) width 27: "bar"
+        RenderBlock (anonymous) at (1,20) size 962x19
+          RenderText {#text} at (0,0) size 28x19
+            text run at (0,0) width 28: "baz"
+        RenderBlock {DIV} at (1,39) size 962x19
+          RenderText {#text} at (0,0) size 20x19
+            text run at (0,0) width 20: "oo"
+caret: position 0 of child 0 {#text} of child 2 {DIV} of child 2 {DIV} of body

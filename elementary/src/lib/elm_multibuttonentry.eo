@@ -1,0 +1,375 @@
+class Elm_Multibuttonentry (Elm_Layout)
+{
+   eo_prefix: elm_obj_multibuttonentry;
+   properties {
+      editable {
+         set {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Sets if the multibuttonentry is to be editable or not.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @ingroup Multibuttonentry
+
+            @since 1.7 */
+         }
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get whether the multibuttonentry is editable or not.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return @c EINA_TRUE if the multibuttonentry is editable by the user. @c EINA_FALSE if not.
+
+            @ingroup Multibuttonentry
+
+            @since 1.7 */
+         }
+         values {
+            bool editable; /*@ If @c EINA_TRUE, user can add/delete item in multibuttonentry, if not, the multibuttonentry is non-editable. */
+         }
+      }
+      expanded {
+         set {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Set/Unset the multibuttonentry to expanded state.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @remark In expanded state, the complete entry will be displayed.
+            Otherwise, only single line of the entry will be displayed.
+
+            @ingroup Multibuttonentry */
+         }
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get the value of expanded state.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @remark In expanded state, the complete entry will be displayed.
+            Otherwise, only single line of the entry will be displayed.
+
+            @return @c EINA_TRUE if the widget is in expanded state. @c EINA_FALSE if not.
+
+            @ingroup Multibuttonentry */
+         }
+         values {
+            bool expanded; /*@ the value of expanded state.
+            Set this to @c EINA_TRUE for expanded state.
+            Set this to EINA_FALSE for single line state. */
+         }
+      }
+      format_function {
+         set {
+            /*@
+            @internal
+
+            Set a function to format the string that will be used to display
+            the hidden items counter.
+
+            If @a format_function is @c NULL, the default format will be used,
+            which is @c "... + %d".
+
+            @see elm_multibuttonentry_format_function_set
+            @since 1.9
+
+            @ingroup Multibuttonentry */
+         }
+         values {
+            Elm_Multibuttonentry_Format_Cb format_function; /*@ format_function The actual format function */
+            const(void)* data; /*@ data User data to passed to @a format_function */
+         }
+      }
+      items {
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get a list of items in the multibuttonentry
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return The list of items, or NULL if none
+
+            @ingroup Multibuttonentry */
+            return: const(list)*;
+         }
+      }
+      first_item {
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get the first item in the multibuttonentry
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return The first item, or NULL if none
+
+            @ingroup Multibuttonentry */
+            return: Elm_Object_Item *;
+         }
+      }
+      last_item {
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get the last item in the multibuttonentry
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return The last item, or NULL if none
+
+            @ingroup Multibuttonentry */
+            return: Elm_Object_Item *;
+         }
+      }
+      entry {
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get the entry of the multibuttonentry object
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return The entry object, or NULL if none
+
+            @ingroup Multibuttonentry */
+            return: Evas_Object *;
+         }
+      }
+      selected_item {
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get the selected item in the multibuttonentry
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return The selected item, or NULL if none
+
+            @ingroup Multibuttonentry */
+            return: Elm_Object_Item *;
+         }
+      }
+   }
+   methods {
+      item_prepend {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Prepend a new item to the multibuttonentry
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return A handle to the item added or NULL if not possible
+
+         @see Use elm_object_item_del() to delete the item.
+
+         @ingroup Multibuttonentry */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(char)* label; /*@ The label of new item */
+            @in Evas_Smart_Cb func; /*@ The callback function to be invoked when this item is pressed. */
+            @in void *data; /*@ The pointer to the data to be attached */
+         }
+      }
+      clear {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Remove all items in the multibuttonentry.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @ingroup Multibuttonentry */
+
+      }
+      item_filter_remove {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Remove a filter from the list
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @remark Removes the given callback from the filter list. See elm_multibuttonentry_item_filter_append()
+         for more information.
+
+         @ingroup Multibuttonentry */
+
+         params {
+            @in Elm_Multibuttonentry_Item_Filter_Cb func; /*@ The filter function to remove */
+            @in void *data; /*@ The user data passed when adding the function */
+         }
+      }
+      item_insert_before {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Add a new item to the multibuttonentry before the indicated object
+         reference.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return A handle to the item added or NULL if not possible
+
+         @see Use elm_object_item_del() to delete the item.
+
+         @ingroup Multibuttonentry */
+
+         return: Elm_Object_Item *;
+         params {
+            @in Elm_Object_Item *before; /*@ The item before which to add it */
+            @in const(char)* label; /*@ The label of new item */
+            @in Evas_Smart_Cb func; /*@ The callback function to be invoked when this item is pressed. */
+            @in void *data; /*@ The pointer to the data to be attached */
+         }
+      }
+      item_append {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Append a new item to the multibuttonentry
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return A handle to the item added or NULL if not possible
+
+         @see Use elm_object_item_del() to delete the item.
+
+         @ingroup Multibuttonentry */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(char)* label; /*@ The label of new item */
+            @in Evas_Smart_Cb func; /*@ The callback function to be invoked when this item is pressed. */
+            @in void *data; /*@ The pointer to the data to be attached */
+         }
+      }
+      item_filter_prepend {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Prepend a filter function for text inserted in the Multibuttonentry
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @remark Prepend the given callback to the list. See elm_multibuttonentry_item_filter_append()
+         for more information
+
+         @ingroup Multibuttonentry */
+
+         params {
+            @in Elm_Multibuttonentry_Item_Filter_Cb func; /*@ The function to use as text filter */
+            @in void *data; /*@ User data to pass to @p func */
+         }
+      }
+      item_filter_append {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Append an item filter function for text inserted in the Multibuttonentry
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @remark Append the given callback to the list. This functions will be called
+         whenever any text is inserted into the Multibuttonentry, with the text to be inserted
+         as a parameter. The callback function is free to alter the text in any way
+         it wants, but it must remember to free the given pointer and update it.
+         If the new text is to be discarded, the function can free it and set it text
+         parameter to NULL. This will also prevent any following filters from being
+         called.
+
+         @ingroup Multibuttonentry */
+
+         params {
+            @in Elm_Multibuttonentry_Item_Filter_Cb func; /*@ The function to use as item filter */
+            @in void *data; /*@ User data to pass to @p func */
+         }
+      }
+      item_insert_after {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Add a new item to the multibuttonentry after the indicated object
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return A handle to the item added or NULL if not possible
+
+         @see Use elm_object_item_del() to delete the item.
+
+         @ingroup Multibuttonentry */
+
+         return: Elm_Object_Item *;
+         params {
+            @in Elm_Object_Item *after; /*@ The item after which to add it */
+            @in const(char)* label; /*@ The label of new item */
+            @in Evas_Smart_Cb func; /*@ The callback function to be invoked when this item is pressed. */
+            @in void *data; /*@ The pointer to the data to be attached */
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Elm_Widget.theme_apply;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.access;
+      Elm_Widget.focus_next;
+      Elm_Widget.on_focus;
+      Elm_Widget.translate;
+      Elm_Widget.event;
+      Elm_Layout.text_set;
+      Elm_Layout.text_get;
+      Elm_Layout.sizing_eval;
+   }
+   events {
+      item,selected;
+      item,added;
+      item,deleted;
+      item,clicked;
+      item,longpressed;
+      clicked;
+      focused;
+      unfocused;
+      expanded;
+      contracted;
+      expand,state,changed;
+   }
+
+}

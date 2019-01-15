@@ -1,0 +1,35 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (9,9) size 962x711
+      RenderBlock (anonymous) at (0,0) size 962x162
+        RenderMenuList {SELECT} at (2,0) size 111x162 [bgcolor=#FFFFFF]
+          RenderBlock (anonymous) at (6,5) size 83x19
+            RenderBR at (0,0) size 0x19 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,162) size 962x209
+        RenderBlock (anonymous) at (0,0) size 962x44
+          RenderText {#text} at (0,0) size 75x22
+            text run at (0,0) width 75: "Results:"
+          RenderBR {BR} at (75,18) size 0x0
+          RenderText {#text} at (0,22) size 122x22
+            text run at (0,22) width 122: "Test 1 Failed"
+          RenderBR {BR} at (122,40) size 0x0
+        RenderBlock {PRE} at (0,59) size 962x38
+          RenderText {#text} at (0,0) size 830x19
+            text run at (0,0) width 830: "     Expected: false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false"
+          RenderBR {BR} at (830,15) size 0x0
+          RenderText {#text} at (0,19) size 811x19
+            text run at (0,19) width 811: "     Actual: false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false"
+        RenderBlock (anonymous) at (0,112) size 962x44
+          RenderBR {BR} at (0,0) size 0x22
+          RenderText {#text} at (0,22) size 122x22
+            text run at (0,22) width 122: "Test 2 Failed"
+          RenderBR {BR} at (122,40) size 0x0
+        RenderBlock {PRE} at (0,171) size 962x38
+          RenderText {#text} at (0,0) size 830x19
+            text run at (0,0) width 830: "     Expected: false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false"
+          RenderBR {BR} at (830,15) size 0x0
+          RenderText {#text} at (0,19) size 811x19
+            text run at (0,19) width 811: "     Actual: false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false"

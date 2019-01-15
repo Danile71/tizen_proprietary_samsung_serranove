@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x44
+  RenderBlock {HTML} at (0,0) size 800x44
+    RenderBody {BODY} at (8,8) size 784x28
+      RenderText {#text} at (0,0) size 765x28
+        text run at (0,0) width 304: "You should see a 100x100 green square with a scrollbar below. "
+        text run at (304,0) width 178: "If you see any red, the test has failed. "
+        text run at (482,0) width 283: "This test is checking to make sure clip applies to the element"
+        text run at (0,14) width 277: "itself, starts from the border edge, and clips out scrollbars. "
+        text run at (277,14) width 273: "The bottom of the scrolling mechanism should be clipped."
+      RenderText {#text} at (0,0) size 0x0
+layer at (8,36) size 120x220 backgroundClip at (18,46) size 100x100 clip at (18,46) size 100x100 outlineClip at (18,46) size 100x100 scrollHeight 1000
+  RenderBlock (positioned) {DIV} at (8,36) size 120x220 [bgcolor=#008000] [border: (10px solid #FF0000)]
+    RenderBlock {DIV} at (10,10) size 100x1000

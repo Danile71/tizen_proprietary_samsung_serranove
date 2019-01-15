@@ -1,0 +1,20 @@
+diff -urNp rpm-4.9.1.orig/rpmqv.c rpm-4.9.1/rpmqv.c
+--- rpm-4.9.1.orig/rpmqv.c	2014-03-04 11:19:08.000000000 +0900
++++ rpm-4.9.1/rpmqv.c	2014-05-26 10:26:25.183992358 +0900
+@@ -76,12 +76,16 @@ int main(int argc, char *argv[])
+ 
+ #if defined(IAM_RPMQV)
+     QVA_t qva = &rpmQVKArgs;
++    qva->qva_flags |= VERIFY_FILEDIGEST;
+ #endif
+ 
+ #ifdef	IAM_RPMEIU
+    struct rpmInstallArguments_s * ia = &rpmIArgs;
++    ia->transFlags |= RPMTRANS_FLAG_NOFILEDIGEST;
+ #endif
+ 
++    rpmcliQueryFlags |= VERIFY_DIGEST;
++
+     poptContext optCon;
+     int ec = 0;
+ #ifdef	IAM_RPMEIU

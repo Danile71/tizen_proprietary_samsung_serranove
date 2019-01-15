@@ -1,0 +1,11 @@
+--- acl/Makefile.orig	2011-10-20 11:12:21.715195781 +0900
++++ acl/Makefile	2011-10-20 11:12:54.059195985 +0900
+@@ -36,7 +36,7 @@
+ 	Logs/* built .census install.* install-dev.* install-lib.* *.gz
+ 
+ LIB_SUBDIRS = include libmisc libacl
+-TOOL_SUBDIRS = getfacl setfacl chacl m4 man doc po test examples build debian
++TOOL_SUBDIRS = getfacl setfacl chacl m4 man doc po test examples build
+ 
+ SUBDIRS = $(LIB_SUBDIRS) $(TOOL_SUBDIRS)
+ 

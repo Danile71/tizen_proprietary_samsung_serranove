@@ -1,0 +1,15 @@
+CONSOLE MESSAGE: line 8: Namespace prefix foo on bar is not defined
+
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x64
+  RenderBlock {html} at (0,0) size 800x64
+    RenderBody {body} at (8,12) size 784x40
+      RenderBlock {p} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 171x14
+          text run at (0,0) width 171: "You should see error text above this"
+      RenderBlock (anonymous) at (0,26) size 784x0
+        RenderInline {bar} at (0,0) size 0x0
+      RenderBlock {p} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 261x14
+          text run at (0,0) width 261: "ERROR? this, and nothing below it should be rendered"

@@ -1,0 +1,190 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x42
+        RenderText {#text} at (0,0) size 776x28
+          text run at (0,0) width 776: "In this table (modeled after mozilla.org template) the cells in column two are requesting colspans of (2,3,2,6) respectively. Notice that they all want to span more than"
+          text run at (0,14) width 576: "one column (which means, in the case of this table, all rows are requesting to span more columns than the number of 'real' "
+        RenderInline {CODE} at (0,0) size 24x11
+          RenderText {#text} at (576,17) size 24x11
+            text run at (576,17) width 24: "<TD>"
+        RenderText {#text} at (600,14) size 784x28
+          text run at (600,14) width 184: " in any single rows [i.e., all rows in the"
+          text run at (0,28) width 279: "top table want to span 9 cells, but the maximum number of "
+        RenderInline {CODE} at (0,0) size 24x11
+          RenderText {#text} at (279,31) size 24x11
+            text run at (279,31) width 24: "<TD>"
+        RenderText {#text} at (303,28) size 81x14
+          text run at (303,28) width 81: " in any row is 8]."
+      RenderBlock {P} at (0,54) size 784x14
+        RenderText {#text} at (0,0) size 363x14
+          text run at (0,0) width 363: "This condition leads to the 'white gap' (in builds of 5.0 for jun04 and before)."
+      RenderTable {TABLE} at (0,80) size 784x66 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x64
+          RenderTableRow {TR} at (0,0) size 782x16
+            RenderTableCell {TD} at (0,0) size 97x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (97,0) size 97x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "2"
+            RenderTableCell {TD} at (194,0) size 98x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=0 c=3 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "4"
+            RenderTableCell {TD} at (292,0) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=0 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "5"
+            RenderTableCell {TD} at (390,0) size 98x16 [border: (1px inset #808080)] [r=0 c=5 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "6"
+            RenderTableCell {TD} at (488,0) size 98x16 [border: (1px inset #808080)] [r=0 c=6 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"
+            RenderTableCell {TD} at (586,0) size 98x16 [border: (1px inset #808080)] [r=0 c=7 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "8"
+            RenderTableCell {TD} at (684,0) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=0 c=8 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "9"
+          RenderTableRow {TR} at (0,16) size 782x16
+            RenderTableCell {TD} at (0,16) size 97x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (97,16) size 195x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=3]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "2"
+            RenderTableCell {TD} at (292,16) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=1 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "5"
+            RenderTableCell {TD} at (390,16) size 98x16 [border: (1px inset #808080)] [r=1 c=5 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "6"
+            RenderTableCell {TD} at (488,16) size 98x16 [border: (1px inset #808080)] [r=1 c=6 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"
+            RenderTableCell {TD} at (586,16) size 98x16 [border: (1px inset #808080)] [r=1 c=7 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "8"
+            RenderTableCell {TD} at (684,16) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=1 c=8 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "9"
+          RenderTableRow {TR} at (0,32) size 782x16
+            RenderTableCell {TD} at (0,32) size 97x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=2 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (97,32) size 97x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=2 c=1 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "2"
+            RenderTableCell {TD} at (194,32) size 98x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=2 c=3 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "4"
+            RenderTableCell {TD} at (292,32) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=2 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "5"
+            RenderTableCell {TD} at (390,32) size 196x16 [border: (1px inset #808080)] [r=2 c=5 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "6"
+            RenderTableCell {TD} at (586,32) size 98x16 [border: (1px inset #808080)] [r=2 c=7 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "8"
+            RenderTableCell {TD} at (684,32) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=2 c=8 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "9"
+          RenderTableRow {TR} at (0,48) size 782x16
+            RenderTableCell {TD} at (0,48) size 488x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=3 c=0 rs=1 cs=6]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (488,48) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=3 c=6 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"
+            RenderTableCell {TD} at (586,48) size 196x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=3 c=7 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "8"
+      RenderBlock {P} at (0,158) size 784x28
+        RenderText {#text} at (0,0) size 752x28
+          text run at (0,0) width 317: "This is the same table as above, but instead the cells in column two "
+          text run at (317,0) width 435: "are requesting colspans of (1,2,1,5) respectively (i.e., excess requests have been 'normalized'"
+          text run at (0,14) width 171: "away). There is no more 'white gap'."
+      RenderTable {TABLE} at (0,198) size 784x66 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x64
+          RenderTableRow {TR} at (0,0) size 782x16
+            RenderTableCell {TD} at (0,0) size 97x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (97,0) size 97x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "2"
+            RenderTableCell {TD} at (194,0) size 98x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "3"
+            RenderTableCell {TD} at (292,0) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=0 c=3 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "4"
+            RenderTableCell {TD} at (390,0) size 98x16 [border: (1px inset #808080)] [r=0 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "5"
+            RenderTableCell {TD} at (488,0) size 98x16 [border: (1px inset #808080)] [r=0 c=5 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "6"
+            RenderTableCell {TD} at (586,0) size 98x16 [border: (1px inset #808080)] [r=0 c=6 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"
+            RenderTableCell {TD} at (684,0) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=0 c=7 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "8"
+          RenderTableRow {TR} at (0,16) size 782x16
+            RenderTableCell {TD} at (0,16) size 97x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (97,16) size 195x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "2"
+            RenderTableCell {TD} at (292,16) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=1 c=3 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "4"
+            RenderTableCell {TD} at (390,16) size 98x16 [border: (1px inset #808080)] [r=1 c=4 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "5"
+            RenderTableCell {TD} at (488,16) size 98x16 [border: (1px inset #808080)] [r=1 c=5 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "6"
+            RenderTableCell {TD} at (586,16) size 98x16 [border: (1px inset #808080)] [r=1 c=6 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"
+            RenderTableCell {TD} at (684,16) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=1 c=7 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "8"
+          RenderTableRow {TR} at (0,32) size 782x16
+            RenderTableCell {TD} at (0,32) size 97x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=2 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (97,32) size 97x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=2 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "2"
+            RenderTableCell {TD} at (194,32) size 98x16 [bgcolor=#DDDDDD] [border: (1px inset #808080)] [r=2 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "3"
+            RenderTableCell {TD} at (292,32) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=2 c=3 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "4"
+            RenderTableCell {TD} at (390,32) size 196x16 [border: (1px inset #808080)] [r=2 c=4 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "5"
+            RenderTableCell {TD} at (586,32) size 98x16 [border: (1px inset #808080)] [r=2 c=6 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"
+            RenderTableCell {TD} at (684,32) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=2 c=7 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "8"
+          RenderTableRow {TR} at (0,48) size 782x16
+            RenderTableCell {TD} at (0,48) size 488x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=3 c=0 rs=1 cs=5]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "1"
+            RenderTableCell {TD} at (488,48) size 98x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=3 c=5 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "6"
+            RenderTableCell {TD} at (586,48) size 196x16 [bgcolor=#999999] [border: (1px inset #808080)] [r=3 c=6 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 6x14
+                text run at (1,1) width 6: "7"

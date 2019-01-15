@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x686
+  RenderBlock {HTML} at (0,0) size 980x686
+    RenderBody {BODY} at (8,16) size 964x662
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 942x38
+          text run at (0,0) width 942: "The first and last lines of text in the regions below should be clipped to the green box. The overflow section sizes itself"
+          text run at (0,19) width 237: "independently in each region."
+      RenderBlock {DIV} at (0,54) size 964x202
+        RenderBlock {DIV} at (5,5) size 954x192 [border: (1px solid #0000FF)]
+      RenderBlock {DIV} at (0,256) size 964x406
+        RenderBlock {DIV} at (0,0) size 202x102 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (0,102) size 302x182 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (0,284) size 122x122 [border: (1px solid #000000)]
+layer at (54,116) size 872x110 clip at (55,117) size 870x108
+  RenderBlock {DIV} at (41,41) size 872x110 [border: (1px solid #008000)]
+    RenderBlock {DIV} at (1,1) size 500x19
+      RenderText {#text} at (0,0) size 358x19
+        text run at (0,0) width 358: "Clipped line of text that should not be visible."
+    RenderBlock {P} at (1,36) size 870x38
+      RenderText {#text} at (0,0) size 870x38
+        text run at (0,0) width 684: "These lines will not spill out of the regions. These lines will not spill out of the regions. "
+        text run at (684,0) width 186: "These lines will not spill"
+        text run at (0,19) width 147: "out of the regions."
+    RenderBlock {DIV} at (1,90) size 500x19
+      RenderText {#text} at (0,0) size 358x19
+        text run at (0,0) width 358: "Clipped line of text that should not be visible."

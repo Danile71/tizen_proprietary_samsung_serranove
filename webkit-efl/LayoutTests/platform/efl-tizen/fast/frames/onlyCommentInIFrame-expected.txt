@@ -1,0 +1,37 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderText {#text} at (0,0) size 954x57
+        text run at (0,0) width 954: "The documents in the src attributes of the iframes below only contain comments. This test is for a bug where we would"
+        text run at (0,19) width 865: "only construct RenderViews for such iframes. We need to propery construct an empty frame instead, so the"
+        text run at (0,38) width 786: "RenderView should have a RenderBlock and RenderBody below it in the dump of the RenderTree. "
+      RenderBR {BR} at (786,53) size 0x0
+      RenderPartObject {IFRAME} at (0,57) size 968x14 [border: (2px inset #000000)]
+        layer at (0,0) size 964x10
+          RenderView at (0,0) size 964x10
+        layer at (0,0) size 964x10
+          RenderBlock {HTML} at (0,0) size 964x10
+            RenderBody {BODY} at (8,8) size 948x0
+      RenderText {#text} at (0,0) size 0x0
+      RenderBR {BR} at (0,0) size 0x0
+      RenderBR {BR} at (0,71) size 0x19
+      RenderPartObject {IFRAME} at (0,90) size 968x14 [border: (2px inset #000000)]
+        layer at (0,0) size 949x166
+          RenderView at (0,0) size 949x10
+        layer at (0,0) size 949x166
+          RenderBlock {html} at (0,0) size 949x166
+            RenderBody {body} at (8,16) size 933x134
+              RenderBlock {parsererror} at (16,0) size 901x134 [bgcolor=#FFDDDD] [border: (2px solid #CC7777)]
+                RenderBlock {h3} at (18,20) size 865x22
+                  RenderText {#text} at (0,0) size 435x22
+                    text run at (0,0) width 435: "This page contains the following errors:"
+                RenderBlock {div} at (18,60) size 865x14
+                  RenderText {#text} at (0,0) size 433x14
+                    text run at (0,0) width 433: "error on line 1 at column 15: Extra content at the end of the document"
+                    text run at (433,0) width 0: " "
+                RenderBlock {h3} at (18,92) size 865x22
+                  RenderText {#text} at (0,0) size 581x22
+                    text run at (0,0) width 581: "Below is a rendering of the page up to the first error."
+      RenderText {#text} at (0,0) size 0x0

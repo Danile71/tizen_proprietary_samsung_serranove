@@ -1,0 +1,17 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x140
+  RenderBlock {test} at (0,0) size 980x140
+    RenderBlock {div} at (0,0) size 980x124
+      RenderBlock {q} at (0,0) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 394x19
+          text run at (0,0) width 394: "This paragraph should have a green background."
+      RenderBlock {q} at (0,35) size 980x19 [bgcolor=#00FF00]
+        RenderText {#text} at (0,0) size 394x19
+          text run at (0,0) width 394: "This paragraph should have a green background."
+      RenderBlock {r} at (0,70) size 980x19
+        RenderText {#text} at (0,0) size 280x19
+          text run at (0,0) width 280: "This paragraph should be unstyled."
+      RenderBlock {s} at (0,105) size 980x19
+        RenderText {#text} at (0,0) size 280x19
+          text run at (0,0) width 280: "This paragraph should be unstyled."

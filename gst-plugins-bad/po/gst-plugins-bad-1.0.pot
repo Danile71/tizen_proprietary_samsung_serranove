@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gst-plugins-bad 1.4.5\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/\n"
+"POT-Creation-Date: 2014-12-18 12:07+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ext/dash/gstdashdemux.c:1513 ext/smoothstreaming/gstmssdemux.c:1532
+#: gst/mpegtsdemux/mpegtsbase.c:1353 gst/mpegtsdemux/mpegtsbase.c:1357
+#: gst/nuvdemux/gstnuvdemux.c:737
+msgid "Internal data stream error."
+msgstr ""
+
+#: ext/gl/gstgltestsrc.c:550
+msgid "format wasn't negotiated before get function"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:5
+msgid "default GStreamer sound events audiosink"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:6
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:19
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:32
+msgid ""
+"GStreamer can play audio using any number of output elements. Some possible "
+"choices are osssink, pulsesink and alsasink. The audiosink can be a partial "
+"pipeline instea of just one element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:13
+msgid "description for default GStreamer sound events audiosink"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:14
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:27
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:40
+msgid "Describes the selected audiosink element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:18
+msgid "default GStreamer audiosink for Audio/Video Conferencing"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:26
+msgid ""
+"description for default GStreamer audiosink for Audio/Video Conferencing"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:31
+msgid "default GStreamer audiosink for Music and Movies"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:39
+msgid "description for default GStreamer audiosink for Music and Movies"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:44
+msgid "default GStreamer videosink"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:45
+msgid ""
+"GStreamer can play video using any number of output elements. Some possible "
+"choices are xvimagesink, ximagesink, sdlvideosink and aasink. The videosink "
+"can be a partial pipeline instead of just one element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:52
+msgid "description for default GStreamer videosink"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:53
+msgid "Describes the selected videosink element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:57
+msgid "default GStreamer audiosrc"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:58
+msgid ""
+"GStreamer can record audio using any number of input elements. Some possible "
+"choices are osssrc, pulsesrc and alsasrc. The audio source can be a partial "
+"pipeline instead of just one element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:65
+msgid "description for default GStreamer audiosrc"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:66
+msgid "Describes the selected audiosrc element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:70
+msgid "default GStreamer videosrc"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:71
+msgid ""
+"GStreamer can record video from any number of input elements. Some possible "
+"choices are v4lsrc, v4l2src and videotestsrc. The video source can be a "
+"partial pipeline instead of just one element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:77
+msgid "description for default GStreamer videosrc"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:78
+msgid "Describes the selected videosrc element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:82
+msgid "default GStreamer visualization"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:83
+msgid ""
+"GStreamer can put visualization plugins in a pipeline to transform audio "
+"streams in video frames. Some possible choices are goom, goom2k1 and "
+"synaesthesia. The visualization plugin can be a partial pipeline instead of "
+"just one element."
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:90
+msgid "description for default GStreamer visualization"
+msgstr ""
+
+#: ext/gsettings/org.freedesktop.gstreamer.default-elements.gschema.xml.in:91
+msgid "Describes the selected visualization element."
+msgstr ""
+
+#: ext/resindvd/resindvdsrc.c:362
+msgid "Could not read title information for DVD."
+msgstr ""
+
+#: ext/resindvd/resindvdsrc.c:368
+#, c-format
+msgid "Failed to open DVD device '%s'."
+msgstr ""
+
+#: ext/resindvd/resindvdsrc.c:374
+msgid "Failed to set PGC based seeking."
+msgstr ""
+
+#: ext/resindvd/resindvdsrc.c:1166
+msgid ""
+"Could not read DVD. This may be because the DVD is encrypted and a DVD "
+"decryption library is not installed."
+msgstr ""
+
+#: ext/resindvd/resindvdsrc.c:1171 ext/resindvd/resindvdsrc.c:1180
+msgid "Could not read DVD."
+msgstr ""
+
+#: ext/smoothstreaming/gstmssdemux.c:802 ext/smoothstreaming/gstmssdemux.c:995
+msgid "This file contains no playable streams."
+msgstr ""
+
+#: ext/smoothstreaming/gstmssdemux.c:961
+msgid "Couldn't get the Manifest's URI"
+msgstr ""
+
+#: ext/smoothstreaming/gstmssdemux.c:1437
+msgid "Failed to get fragment URL."
+msgstr ""
+
+#: ext/smoothstreaming/gstmssdemux.c:1578
+msgid "Couldn't download fragments"
+msgstr ""
+
+#: ext/sndfile/gstsfdec.c:769
+msgid "Could not open sndfile stream for reading."
+msgstr ""
+
+#: ext/sndio/sndiosink.c:324 ext/sndio/sndiosrc.c:321
+msgid "Could not establish connection to sndio"
+msgstr ""
+
+#: ext/sndio/sndiosink.c:331 ext/sndio/sndiosrc.c:328
+msgid "Failed to query sndio capabilities"
+msgstr ""
+
+#: ext/sndio/sndiosink.c:424 ext/sndio/sndiosrc.c:422
+msgid "Could not configure sndio"
+msgstr ""
+
+#: ext/sndio/sndiosink.c:430 ext/sndio/sndiosrc.c:428
+msgid "Could not start sndio"
+msgstr ""
+
+#: gst/aiff/aiffparse.c:1462
+msgid "Internal data flow error."
+msgstr ""
+
+#: gst/asfmux/gstasfmux.c:1807
+msgid "Generated file has a larger preroll time than its streams duration"
+msgstr ""
+
+#: gst/camerabin2/camerabingeneral.c:166 gst/camerabin2/gstcamerabin2.c:1874
+#: gst/camerabin2/gstviewfinderbin.c:271
+#, c-format
+msgid "Missing element '%s' - check your GStreamer installation."
+msgstr ""
+
+#: gst/camerabin2/gstcamerabin2.c:370
+msgid "File location is set to NULL, please set it to a valid filename"
+msgstr ""
+
+#: gst/dvdspu/gstdvdspu.c:1037
+msgid "Subpicture format was not configured before data flow"
+msgstr ""
+
+#: gst/videomeasure/gstvideomeasure_collector.c:294
+msgid "No file name specified for writing."
+msgstr ""
+
+#: gst/videomeasure/gstvideomeasure_collector.c:300
+#, c-format
+msgid "Given file name \"%s\" can't be converted to local file name encoding."
+msgstr ""
+
+#: gst/videomeasure/gstvideomeasure_collector.c:307
+#, c-format
+msgid "Could not open file \"%s\" for writing."
+msgstr ""
+
+#: sys/dvb/gstdvbsrc.c:1118 sys/dvb/gstdvbsrc.c:1304
+#, c-format
+msgid "Device \"%s\" does not exist."
+msgstr ""
+
+#: sys/dvb/gstdvbsrc.c:1122
+#, c-format
+msgid "Could not open frontend device \"%s\"."
+msgstr ""
+
+#: sys/dvb/gstdvbsrc.c:1135
+#, c-format
+msgid "Could not get settings from frontend device \"%s\"."
+msgstr ""
+
+#: sys/dvb/gstdvbsrc.c:1151
+#, c-format
+msgid "Cannot enumerate delivery systems from frontend device \"%s\"."
+msgstr ""
+
+#: sys/dvb/gstdvbsrc.c:1308
+#, c-format
+msgid "Could not open file \"%s\" for reading."
+msgstr ""
+
+#: sys/dvb/parsechannels.c:159
+msgid "Couldn't find DVB channel configuration file"
+msgstr ""
+
+#: sys/dvb/parsechannels.c:162
+#, c-format
+msgid "Couldn't load DVB channel configuration file: %s"
+msgstr ""
+
+#: sys/dvb/parsechannels.c:171
+msgid "DVB channel configuration file doesn't contain any channels"
+msgstr ""
+
+#: sys/dvb/parsechannels.c:447
+#, c-format
+msgid "Couldn't find details for DVB channel %s"
+msgstr ""

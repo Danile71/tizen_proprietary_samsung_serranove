@@ -1,0 +1,978 @@
+# Vietnamese translation for CPIO.
+# Copyright © 2006 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2005-2006.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: cpio 2.7\n"
+"Report-Msgid-Bugs-To: bug-cpio@gnu.org\n"
+"POT-Creation-Date: 2007-06-07 14:16+0300\n"
+"PO-Revision-Date: 2006-12-03 17:41+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Mac PO Editor 1.0a10\n"
+
+#: src/copyin.c:45
+#, c-format
+msgid "warning: skipped %ld byte of junk"
+msgid_plural "warning: skipped %ld bytes of junk"
+msgstr[0] "cảnh báo : đã bỏ qua %ld byte rác"
+
+#: src/copyin.c:66
+#, c-format
+msgid "rename %s -> "
+msgstr "thay tên %s -> "
+
+#: src/copyin.c:95 src/copyout.c:562
+#, c-format
+msgid "%s: file name too long"
+msgstr "%s: tên tập tin quá dài"
+
+#: src/copyin.c:181 src/copyin.c:528 src/copyin.c:553 src/copyin.c:1524
+#, c-format
+msgid "%s: checksum error (0x%lx, should be 0x%lx)"
+msgstr "%s: gặp lỗi tổng kiểm tra (0x%lx, nên là 0x%lx)"
+
+#: src/copyin.c:208 src/copypass.c:129
+#, c-format
+msgid "%s not created: newer or same age version exists"
+msgstr "chưa tạo %s: một phiên bản mới hay cùng thời đã có"
+
+#: src/copyin.c:218 src/copypass.c:137
+#, c-format
+msgid "cannot remove current %s"
+msgstr "không thể gỡ bỏ %s hiện có"
+
+#: src/copyin.c:279 src/copyin.c:476 src/copyin.c:683 src/copypass.c:427
+#, c-format
+msgid "cannot link %s to %s"
+msgstr "không thể liên kết %s tới %s"
+
+#: src/copyin.c:509
+#, c-format
+msgid "cannot swap halfwords of %s: odd number of halfwords"
+msgstr "không thể trao đổi các nửa-từ của %s: có số lẻ nửa-từ"
+
+#: src/copyin.c:517
+#, c-format
+msgid "cannot swap bytes of %s: odd number of bytes"
+msgstr "không thể trao đổi các byte của %s: có số lẻ byte"
+
+#: src/copyin.c:642
+#, c-format
+msgid "%s is not a directory"
+msgstr "%s không phải là thư mục"
+
+#: src/copyin.c:755
+#, c-format
+msgid "%s: Cannot symlink to %s"
+msgstr "%s: không thể tạo liên kết tượng trưng tới %s"
+
+#: src/copyin.c:809 src/copyout.c:851 src/copypass.c:356
+#, c-format
+msgid "%s: unknown file type"
+msgstr "%s: không biết kiểu tập tin"
+
+#: src/copyin.c:994 src/copyin.c:1001
+#, c-format
+msgid "Malformed number %.*s"
+msgstr "Con số dạng sai %.*s"
+
+#: src/copyin.c:1011
+#, c-format
+msgid "Archive value %.*s is out of range"
+msgstr "Giá trị kho %.*s ở ngoại phạm vị"
+
+#: src/copyin.c:1046
+#, c-format
+msgid "premature end of archive"
+msgstr "gặp kết thúc kho quá sớm"
+
+#: src/copyin.c:1266
+#, c-format
+msgid "warning: archive header has reverse byte-order"
+msgstr "cảnh báo : dòng đầu kho có thứ tự byte đảo ngược"
+
+#: src/copyin.c:1413
+#, c-format
+msgid "standard input is closed"
+msgstr "thiết bị nhập chuẩn bị đóng"
+
+#: src/copyin.c:1576 src/copyout.c:893 src/copypass.c:370
+#, c-format
+msgid "%d block\n"
+msgid_plural "%d blocks\n"
+msgstr[0] "%d khối\n"
+
+#: src/copyout.c:51 src/copyout.c:60
+#, c-format
+msgid "cannot read checksum for %s"
+msgstr "không thể đọc tổng kiểm tra cho %s"
+
+#: src/copyout.c:300
+#, c-format
+msgid "%s: field width not sufficient for storing %s"
+msgstr "%s: độ rộng trường không đủ để cất giữ %s"
+
+#: src/copyout.c:308
+#, c-format
+msgid "%s: truncating %s"
+msgstr "%s: đang cắt ngắn %s"
+
+#: src/copyout.c:343 src/copyout.c:406 src/copyout.c:480
+msgid "inode number"
+msgstr "số nút thông tin"
+
+#: src/copyout.c:346 src/copyout.c:409 src/copyout.c:484
+msgid "file mode"
+msgstr "chế độ tập tin"
+
+#: src/copyout.c:349 src/copyout.c:411 src/copyout.c:488
+msgid "uid"
+msgstr "uid"
+
+#: src/copyout.c:352 src/copyout.c:413 src/copyout.c:492
+msgid "gid"
+msgstr "gid"
+
+#: src/copyout.c:355 src/copyout.c:416 src/copyout.c:496
+msgid "number of links"
+msgstr "số liên kết"
+
+#: src/copyout.c:358 src/copyout.c:421
+msgid "modification time"
+msgstr "thời gian sửa đổi"
+
+#: src/copyout.c:361 src/copyout.c:428 src/copyout.c:515
+msgid "file size"
+msgstr "kích cỡ tập tin"
+
+#: src/copyout.c:365
+msgid "device major number"
+msgstr "số hiệu thiết bị chính"
+
+#: src/copyout.c:369
+msgid "device minor number"
+msgstr "số hiệu thiết bị phụ"
+
+#: src/copyout.c:373
+msgid "rdev major"
+msgstr "rdev chính"
+
+#: src/copyout.c:377
+msgid "rdev minor"
+msgstr "rdev phụ"
+
+#: src/copyout.c:381 src/copyout.c:424 src/copyout.c:505
+msgid "name size"
+msgstr "kích cỡ tên"
+
+#: src/copyout.c:403
+msgid "device number"
+msgstr "số hiệu thiết bị"
+
+#: src/copyout.c:418
+msgid "rdev"
+msgstr "rdev"
+
+#: src/copyout.c:476
+#, c-format
+msgid "%s: truncating inode number"
+msgstr "%s: đang cắt bớt số nút thông tin"
+
+#: src/copyout.c:620
+#, c-format
+msgid "standard output is closed"
+msgstr "thiết bị xuất chuẩn bị đóng"
+
+#: src/copyout.c:641 src/copypass.c:86
+#, c-format
+msgid "blank line ignored"
+msgstr "dòng trống bị bỏ qua"
+
+#: src/copyout.c:776
+#, c-format
+msgid "%s not dumped: not a regular file"
+msgstr "chưa đổ %s: không phải là tâp tin chuẩn"
+
+#: src/copyout.c:827
+#, c-format
+msgid "%s: symbolic link too long"
+msgstr "%s: liên kết tượng trưng quá dài"
+
+#: src/copypass.c:422
+#, c-format
+msgid "%s linked to %s"
+msgstr "%s được liên kết tới %s"
+
+#: src/main.c:67
+msgid ""
+"GNU `cpio' copies files to and from archives\n"
+"\n"
+"Examples:\n"
+"  # Copy files named in name-list to the archive\n"
+"  cpio -o < name-list [> archive]\n"
+"  # Extract files from the archive\n"
+"  cpio -i [< archive]\n"
+"  # Copy files named in name-list to destination-directory\n"
+"  cpio -p destination-directory < name-list\n"
+msgstr ""
+"Trình « cpio » của GNU sao chép các tập tin vào/từ kho\n"
+"\n"
+"Thí dụ :\n"
+"  # Để sao chép các tập tin trong danh sách tên vào kho :\n"
+"  cpio -o < danh_sách_tên [> kho]\n"
+"  # Để rút các tập tin ra kho :\n"
+"  cpio -i [< kho]\n"
+"  # Để sao chép các tập tin trong danh sách tên vào thư mục đích\n"
+"  cpio -p thư_mục_đích < danh_sách_tên\n"
+
+#: src/main.c:81
+#, c-format
+msgid "%s is meaningless with %s"
+msgstr "%s với %s vô nghĩa"
+
+#: src/main.c:87
+msgid "Main operation mode:"
+msgstr "Chế độ thao tác chính:"
+
+#: src/main.c:89
+msgid "Create the archive (run in copy-out mode)"
+msgstr "Tạo kho (chạy trong chế độ chép ra)"
+
+#: src/main.c:91
+msgid "Extract files from an archive (run in copy-in mode)"
+msgstr "Rút các tập tin ra kho (chạy trong chế độ chép vào)"
+
+#: src/main.c:93
+msgid "Run in copy-pass mode"
+msgstr "Chạy trong chế độ chép qua"
+
+#: src/main.c:95
+msgid "Print a table of contents of the input"
+msgstr "In ra mục lục nhập"
+
+#: src/main.c:101
+msgid "Operation modifiers valid in any mode:"
+msgstr "Điều sửa đổi thao tác hợp lệ trong mọi chế độ :"
+
+#: src/main.c:103 src/main.c:170 src/main.c:199
+msgid "[[USER@]HOST:]FILE-NAME"
+msgstr "[[người_dụng@]máy:]tên_tập_tin"
+
+#: src/main.c:104
+msgid ""
+"Use this FILE-NAME instead of standard input or output. Optional USER and "
+"HOST specify the user and host names in case of a remote archive"
+msgstr ""
+"Hãy sử dụng tên tập tin này thay cho thiết bị nhập/xuất chuẩn. Có thể ghi rõ "
+"người dùng và máy khi kho lưu ở xa."
+
+#: src/main.c:106
+msgid "Archive file is local, even if its name contains colons"
+msgstr "Tập tin kho là cục bộ, thậm chí nếu tên nó chứa dấu hai chấm"
+
+#: src/main.c:107
+msgid "FORMAT"
+msgstr "ĐỊNH DẠNG"
+
+#: src/main.c:108
+msgid "Use given archive FORMAT"
+msgstr "Dùng định dạng kho đã cho"
+
+#: src/main.c:110
+msgid "Set the I/O block size to 5120 bytes"
+msgstr "Đặt kích cỡ khối vào/xuất thành 5120 byte"
+
+#: src/main.c:111
+msgid "BLOCK-SIZE"
+msgstr "CỠ KHỐI"
+
+#: src/main.c:112
+msgid "Set the I/O block size to BLOCK-SIZE * 512 bytes"
+msgstr "Đặt kích cỡ khối vào/xuất thành CỠ KHỐI * 512 byte"
+
+#: src/main.c:114
+msgid "Use the old portable (ASCII) archive format"
+msgstr "Sử dụng định dạng kho di động cũ (ASCII)"
+
+#: src/main.c:116
+msgid "Print a \".\" for each file processed"
+msgstr "In ra một dấu chấm \".\" cho mỗi tập tin đã được xử lý"
+
+#: src/main.c:117
+msgid "NUMBER"
+msgstr "SỐ"
+
+#: src/main.c:118
+msgid "Set the I/O block size to the given NUMBER of bytes"
+msgstr "Đặt kích cỡ khối vào/xuất thành số byte này"
+
+#: src/main.c:119
+msgid "STRING"
+msgstr "CHUỖI"
+
+#: src/main.c:120
+msgid "Print STRING when the end of a volume of the backup media is reached"
+msgstr "In ra chuỗi này khi găp kết thúc vật chứa sao lưu"
+
+#: src/main.c:123
+msgid "Only copy files that do not match any of the given patterns"
+msgstr "Chỉ sao chép các tập tin không khớp với bất cứ mẫu nào đã cho"
+
+#: src/main.c:125
+msgid "In the verbose table of contents listing, show numeric UID and GID"
+msgstr "Trong mục lục chi tiết, hiển thị UID và GID dạng số"
+
+#: src/main.c:127
+msgid "COMMAND"
+msgstr "LỆNH"
+
+#: src/main.c:128
+msgid "Use remote COMMAND instead of rsh"
+msgstr "Sử dụng lệnh ở xa này thay cho « rsh »"
+
+#: src/main.c:130
+msgid "Do not print the number of blocks copied"
+msgstr "Không in ra số khối đã được sao chép"
+
+#: src/main.c:132
+msgid "Verbosely list the files processed"
+msgstr "Liệt kệ chi tiết các tập tin đã được xử lý"
+
+#: src/main.c:135
+msgid "Enable debugging info"
+msgstr "Bật thông tin gỡ lỗi"
+
+#: src/main.c:137
+msgid "FLAG"
+msgstr "CỜ"
+
+#: src/main.c:138
+msgid ""
+"Control warning display. Currently FLAG is one of 'none', 'truncate', 'all'. "
+"Multiple options accumulate."
+msgstr ""
+"Điều khiển cách hiển thị cảnh báo. Hiện thời cờ này là một của những tùy "
+"chọn 'none' (không có), 'truncate' (cắt ngắn) hay 'all' (tất cả). Nhiều tùy "
+"chọn sẽ tích lũy."
+
+#: src/main.c:144
+msgid "Operation modifiers valid only in copy-in mode:"
+msgstr "Điều sửa đổi thao tác chỉ hợp lê trong chế độ chép vào :"
+
+#: src/main.c:145 src/main.c:151
+msgid "FILE"
+msgstr "TẬP TIN"
+
+#: src/main.c:146
+msgid ""
+"Read additional patterns specifying filenames to extract or list from FILE"
+msgstr ""
+"Đọc các mẫu thêm ghi rõ các tên tập tin cần rút hoặc liệt kê từ tập tin này"
+
+#: src/main.c:148
+msgid ""
+"When reading a CRC format archive, only verify the CRC's of each file in the "
+"archive, don't actually extract the files"
+msgstr ""
+"Khi đọc kho định dạng CRC (kiểm tra thừa theo chu kỳ), chỉ thẩm tra những "
+"CRC của mỗi tập tin nằm trong kho đó, không thật rút các tập tin"
+
+#: src/main.c:150
+msgid "Interactively rename files"
+msgstr "Thay đổi tên tập tin một cách tương tách"
+
+#: src/main.c:154
+msgid ""
+"Swap both halfwords of words and bytes of halfwords in the data. Equivalent "
+"to -sS"
+msgstr ""
+"Trao đổi cả hai nửa-từ của từ và byte của nửa-từ trong dữ liệu; bằng tùy "
+"chọn « -sS »"
+
+#: src/main.c:156
+msgid "Swap the bytes of each halfword in the files"
+msgstr "Trao đổi hai byte của mỗi nửa-từ trong các tập tin"
+
+#: src/main.c:158
+msgid "Swap the halfwords of each word (4 bytes) in the files"
+msgstr "Trao đổi hai nửa-từ của mỗi từ (4 byte) trong các tập tin"
+
+#: src/main.c:161
+msgid "Extract files to standard output"
+msgstr "Rút tập tin ra thiết bị xuất chuẩn"
+
+#: src/main.c:167
+msgid "Operation modifiers valid only in copy-out mode:"
+msgstr "Điều sửa đổi thao tác hợp lệ chỉ trong chế độ chép ra:"
+
+#: src/main.c:169
+msgid "Append to an existing archive."
+msgstr "Phụ thêm vào kho đã có."
+
+#: src/main.c:171
+msgid ""
+"Archive filename to use instead of standard output. Optional USER and HOST "
+"specify the user and host names in case of a remote archive"
+msgstr ""
+"Tên tập tin kho cần dùng thay cho thiết bị xuất chuẩn. USER (người dùng) và "
+"HOST (máy) kiểu tùy chọn có ghi rõ tên người dùng và tên máy trong trường "
+"hợp có kho ở xa."
+
+#: src/main.c:177
+msgid "Operation modifiers valid only in copy-pass mode:"
+msgstr "Điều sửa đổi thao tác hợp lệ chỉ trong chế độ chép qua:"
+
+#: src/main.c:179
+msgid "Link files instead of copying them, when  possible"
+msgstr "Liên kết tập tin thay vì sao chép chúng, khi có thể"
+
+#: src/main.c:186
+msgid "Operation modifiers valid in copy-in and copy-out modes:"
+msgstr "Điều sửa đổi thao tác hợp lệ trong cả hai chế độ chép vào và chép ra:"
+
+#: src/main.c:188
+msgid "Do not strip file system prefix components from the file names"
+msgstr "Không tước các thành phần tiền tố hệ thống tập tin ra tên tập tin"
+
+#: src/main.c:191
+msgid "Create all files relative to the current directory"
+msgstr "Tạo mọi tập tin liên quan đến thư mục hiện có"
+
+#: src/main.c:196
+msgid "Operation modifiers valid in copy-out and copy-pass modes:"
+msgstr "Điều sửa đổi thao tác hợp lệ trong cả hai chế độ chép ra và chép qua:"
+
+#: src/main.c:198
+msgid ""
+"A list of filenames is terminated by a null character instead of a newline"
+msgstr ""
+"Danh sách các tên tập tin bị kết thúc bằng một ký tự vô giá trị, thay cho ký "
+"tự dòng mới"
+
+#: src/main.c:200
+msgid ""
+"Archive filename to use instead of standard input. Optional USER and HOST "
+"specify the user and host names in case of a remote archive"
+msgstr ""
+"Tên tập tin kho cần dùng thay cho thiết bị nhập chuẩn. USER (người dùng) và "
+"HOST (máy) kiểu tùy chọn có ghi rõ tên người dùng và tên máy trong trường "
+"hợp có kho ở xa."
+
+#: src/main.c:202
+msgid ""
+"Dereference  symbolic  links  (copy  the files that they point to instead of "
+"copying the links)."
+msgstr ""
+"Dùng tập tin tham chiếu đến liên kết tượng trưng (sao chép tập tin tới đó "
+"liên kết chỉ, thay vì sao chép liên kết chính nó)."
+
+#: src/main.c:203
+msgid "[USER][:.][GROUP]"
+msgstr "[NGƯỜI_DÙNG][:.][NHÓM]"
+
+#: src/main.c:204
+msgid ""
+"Set the ownership of all files created to the specified USER and/or GROUP"
+msgstr ""
+"Đặt quyền sở hữu mọi tập tin đã được tạo cho NGƯỜI DÙNG và/hay NHÓM đã ghi rõ"
+
+#: src/main.c:206
+msgid "Reset the access times of files after reading them"
+msgstr "Đặt lại giờ truy cập tập tin sau khi đọc nó"
+
+#: src/main.c:212
+msgid "Operation modifiers valid in copy-in and copy-pass modes:"
+msgstr "Điều sửa đổi thao tác hợp lệ trong cả hai chế độ chép vào và chép qua:"
+
+#: src/main.c:214
+msgid "Retain previous file modification times when creating files"
+msgstr "Còn giữ giờ sửa đổi trước của tập tin khi tạo tâp tin"
+
+#: src/main.c:216
+msgid "Create leading directories where needed"
+msgstr "Tạo thư mục đi trước khi cần thiết"
+
+#: src/main.c:218
+msgid "Do not change the ownership of the files"
+msgstr "Không thay đổi quyền sở hữu tập tin"
+
+#: src/main.c:220
+msgid "Replace all files unconditionally"
+msgstr "Thay thế mọi tập tin một cách không điều kiện"
+
+#: src/main.c:222
+msgid "Write files with large blocks of zeros as sparse files"
+msgstr "Ghi tập tin có khối số không lơn như là tập tin thưa thớt (sparse)"
+
+#: src/main.c:228
+msgid "Informative options:"
+msgstr "Tùy chọn chi tiết:"
+
+#: src/main.c:230
+msgid "Give this help list"
+msgstr "Hiển thị trợ giúp này"
+
+#: src/main.c:231
+msgid "Give a short usage message"
+msgstr "Hiển thị thông điệp cách sử dụng ngắn"
+
+#: src/main.c:232
+msgid "Print license and exit"
+msgstr "In ra giấy phép rồi thoát"
+
+#: src/main.c:233
+msgid "Print program version"
+msgstr "In ra phiên bản chương trình"
+
+#: src/main.c:237
+msgid "hang for SECS seconds (default 3600)"
+msgstr "treo trong vòng SECS giây (mặc định 3600)"
+
+#: src/main.c:250
+#, c-format
+msgid ""
+"   GNU cpio is free software; you can redistribute it and/or modify\n"
+"   it under the terms of the GNU General Public License as published by\n"
+"   the Free Software Foundation; either version 2 of the License, or\n"
+"   (at your option) any later version.\n"
+"\n"
+"   GNU cpio is distributed in the hope that it will be useful,\n"
+"   but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"   GNU General Public License for more details.\n"
+"\n"
+"   You should have received a copy of the GNU General Public License\n"
+"   along with GNU cpio; if not, write to the Free Software Foundation,\n"
+"   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\n"
+"\n"
+msgstr ""
+"Chương trình này là phần mềm tự do; bạn có thể phát hành lại nó và/hoặc sửa "
+"đổi nó với điều kiện của Giấy Phép Công Cộng GNU như được xuất bản bởi Tổ "
+"Chức Phần Mềm Tự Do; hoặc phiên bản 2 của Giấy Phép này, hoặc (tùy chọn) bất "
+"kỳ phiên bản sau nào.\n"
+"\n"
+"Chương trình này được phát hành vì mong muốn nó có ích, nhưng KHÔNG CÓ BẢO "
+"HÀNH GÌ CẢ, THẬM CHÍ KHÔNG CÓ BẢO ĐẢM ĐƯỢC NGỤ Ý KHẢ NĂNG BÁN HAY KHẢ NĂNG "
+"LÀM ĐƯỢC VIỆC DỨT KHOÁT. Xem Giấy Phép Công Cộng GNU để biết thêm chi tiết.\n"
+"\n"
+"Bạn đã nhận một bản sao của Giấy Phép Công Cộng GNU cùng với chương trình "
+"này; nếu không, hãy viết thư cho Tổ Chức Phần Mềm Tự Do,\n"
+"Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor,\n"
+"Boston, MA  02110-1301, USA (Mỹ)\n"
+"\n"
+
+#: src/main.c:333 src/main.c:350
+#, c-format
+msgid "invalid block size"
+msgstr "kích cỡ khối không hợp lệ"
+
+#: src/main.c:339 src/main.c:371
+#, c-format
+msgid "Archive format multiply defined"
+msgstr "Định dạng kho đã được xác định nhiều lần"
+
+#: src/main.c:389
+#, c-format
+msgid ""
+"invalid archive format `%s'; valid formats are:\n"
+"crc newc odc bin ustar tar (all-caps also recognized)"
+msgstr ""
+"định dạng kho không hợp lệ « %s »; các định dạng hợp lệ là:crc newc odc bin "
+"ustar tar (cũng chấp nhận cả chữ hoa)"
+
+#: src/main.c:396 src/main.c:446 src/main.c:460
+#, c-format
+msgid "Mode already defined"
+msgstr "Chế độ đã được xác định"
+
+#: src/main.c:440
+#, c-format
+msgid "--no-preserve-owner cannot be used with --owner"
+msgstr ""
+"Không thể sử dụng tùy chọn « --no-preserve-owner » (không giữ lại người sở "
+"hữu) cùng với tùy chọn « --owner » (người sở hữu)"
+
+#: src/main.c:483
+#, c-format
+msgid "--owner cannot be used with --no-preserve-owner"
+msgstr ""
+"Không thể sử dụng tùy chọn « --owner » (người sở hữu) cùng với tùy chọn « --"
+"no-preserve-owner » (không giữ lại người sở hữu)"
+
+#: src/main.c:530
+#, c-format
+msgid "Invalid value for --warning option: %s"
+msgstr "Giá trị không hợp lệ cho tùy chọn « --warning » (cảnh báo): %s."
+
+#: src/main.c:583
+msgid "[destination-directory]"
+msgstr "[thư mục đích]"
+
+#: src/main.c:602 src/main.c:618
+#, c-format
+msgid ""
+"You must specify one of -oipt options.\n"
+"Try `%s --help' or `%s --usage' for more information.\n"
+msgstr ""
+"Phải ghi rõ một của những tùy chọn « -oipt ».\n"
+"Hãy thử lệnh « %s --help » (trợ giúp)\n"
+"hay « %s --usage » (cách sử dụng) để xem chi tiết.\n"
+
+#: src/main.c:646
+#, c-format
+msgid "Both -I and -F are used in copy-in mode"
+msgstr "Trong chế độ chép vào dùng cả hai tùy chọn « -I » và « -F »"
+
+#: src/main.c:658 src/main.c:694
+#, c-format
+msgid "Too many arguments"
+msgstr "Quá nhiều đôi số"
+
+#: src/main.c:677
+#, c-format
+msgid ""
+"--append is used but no archive file name is given (use -F or -O options)"
+msgstr ""
+"« --append » (phụ thêm) được sử dụng còn chưa ghi rõ tên tập tin kho (hãy "
+"dùng tùy chọn « -F » hay « -O »)"
+
+#: src/main.c:683
+#, c-format
+msgid "Both -O and -F are used in copy-out mode"
+msgstr "Trong chế độ chép ra dùng cả hai tùy chọn « -O » và « -F »"
+
+#: src/main.c:696
+#, fuzzy, c-format
+msgid "Not enough arguments"
+msgstr "Quá nhiều đôi số"
+
+#: src/main.c:700
+#, c-format
+msgid "Archive format is not specified in copy-pass mode (use --format option)"
+msgstr ""
+"Chưa ghi rõ định dạng kho trong chế độ chép qua (hãy dùng tùy chọn « --"
+"format » [định dạng])"
+
+#: src/main.c:722
+#, c-format
+msgid "-F can be used only with --create or --extract"
+msgstr ""
+"Tùy chọn « -F » dùng được chỉ với « --create » (tạo) hoặc « --extract "
+"» (rút) thôi"
+
+#: src/main.c:725
+#, c-format
+msgid "Cannot open %s"
+msgstr "Không thể mở %s"
+
+#: src/main.c:797
+#, c-format
+msgid "error closing archive"
+msgstr "gặp lỗi khi đóng kho"
+
+#: src/makepath.c:117 src/makepath.c:184
+#, c-format
+msgid "cannot make directory `%s'"
+msgstr "không thể tạo thư mục « %s »"
+
+#: src/makepath.c:159 src/makepath.c:237
+#, c-format
+msgid "`%s' exists but is not a directory"
+msgstr "« %s » tồn tại nhưng không phải là thư mục"
+
+#: src/mt.c:183
+#, c-format
+msgid "%s is not a character special file"
+msgstr "%s không phải là một tập tin đặc biệt ký tự"
+
+#: src/mt.c:196 src/mt.c:205
+#, c-format
+msgid "%s: rmtioctl failed"
+msgstr "%s: rmtioctl bị lỗi"
+
+#: src/mt.c:225
+#, c-format
+msgid ""
+"Usage: %s [-V] [-f device] [--file=device] [--rsh-command=command]\n"
+"\t[--help] [--version] operation [count]\n"
+msgstr ""
+"Cách sử dụng: %s [-V] [-f thiết_bị] [--file=thiết_bị] [--rsh-command=lệnh]\n"
+"\t[--help] [--version] thao_tác [số_đếm]\n"
+"\n"
+"[file = tập tin;\n"
+"command = lệnh;\n"
+"help = trợ giúp;\n"
+"version = phiên bản]\n"
+
+#: src/mt.c:307
+#, c-format
+msgid "no tape device specified"
+msgstr "chưa ghi rõ thiết bị băng"
+
+#: src/mt.c:320
+#, c-format
+msgid "%s: rmtopen failed"
+msgstr "%s: rmtopen bị lỗi"
+
+#: src/mt.c:333
+#, c-format
+msgid "%s: rmtclose failed"
+msgstr "%s: rmtclose bị lỗi"
+
+#: src/tar.c:308
+#, c-format
+msgid "invalid header: checksum error"
+msgstr "dòng đầu không hợp lệ: gặp lỗi tổng kiểm tra"
+
+#: src/userspec.c:142
+msgid "invalid user"
+msgstr "người dùng không hợp lệ"
+
+#: src/userspec.c:148
+msgid "cannot get the login group of a numeric UID"
+msgstr "không thể lấy nhóm đăng nhập của UID dạng số"
+
+#: src/userspec.c:188
+msgid "invalid group"
+msgstr "nhóm không hợp lệ"
+
+#: src/util.c:91 src/util.c:94 src/util.c:143
+#, c-format
+msgid "write error"
+msgstr "lỗi ghi"
+
+#: src/util.c:205 src/util.c:374
+#, c-format
+msgid "read error"
+msgstr "lỗi đọc"
+
+#: src/util.c:208
+#, c-format
+msgid "premature end of file"
+msgstr "gặp kết thúc tập tin quá sớm"
+
+#: src/util.c:493 src/util.c:543
+#, c-format
+msgid "File %s shrunk by %s byte, padding with zeros"
+msgid_plural "File %s shrunk by %s bytes, padding with zeros"
+msgstr[0] "Tập tin %s bị thu nhỏ theo %s byte nên đệm vào nhiều số không"
+
+#: src/util.c:499 src/util.c:549
+#, c-format
+msgid "Read error at byte %lld in file %s, padding with zeros"
+msgstr "Gặp lỗi đọc tại byte %lld trong tập tin %s nên đệm vào nhiều số không"
+
+#: src/util.c:584
+#, fuzzy, c-format
+msgid "File %s grew, %<PRIuMAX> new byte not copied"
+msgid_plural "File %s grew, %<PRIuMAX> new bytes not copied"
+msgstr[0] "Tập tin %s đã phóng ra, %ld byte mới chưa được sao chép"
+
+#: src/util.c:590
+#, c-format
+msgid "File %s was modified while being copied"
+msgstr "Tập tin %s bị sửa đổi trong khi được sao chép"
+
+#: src/util.c:618
+#, c-format
+msgid "virtual memory exhausted"
+msgstr "hết bộ nhớ ảo rồi"
+
+#: src/util.c:654 src/util.c:660
+#, c-format
+msgid "cannot seek on output"
+msgstr "không thể tìm nơi trên kết xuất"
+
+#: src/util.c:832
+#, c-format
+msgid "Found end of tape.  Load next tape and press RETURN. "
+msgstr "Gặp kết thúc băng. Hãy nạp băng kế tiếp rồi bấm phím Return. "
+
+#: src/util.c:834
+#, c-format
+msgid "Found end of tape.  To continue, type device/file name when ready.\n"
+msgstr ""
+"Gặp kết thúc băng. Để tiêp tục, hãy nhập tên thiết bị/tập tin khi sẵn sàng.\n"
+
+#: src/util.c:857
+#, c-format
+msgid "To continue, type device/file name when ready.\n"
+msgstr "Để tiêp tục, hãy nhập tên thiết bị/tập tin khi sẵn sàng.\n"
+
+#: src/util.c:882
+#, c-format
+msgid "internal error: tape descriptor changed from %d to %d"
+msgstr "gặp lỗi nội bộ: mô tả băng đã thay đổi từ %d thành %d"
+
+#: lib/getopt.c:531 lib/getopt.c:547
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: tùy chọn « %s » là mơ hồ\n"
+
+#: lib/getopt.c:580 lib/getopt.c:584
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: tùy chọn « --%s » không cho phép đối số\n"
+
+#: lib/getopt.c:593 lib/getopt.c:598
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: tùy chọn « %c%s » không cho phép đối số\n"
+
+#: lib/getopt.c:641 lib/getopt.c:660 lib/getopt.c:976 lib/getopt.c:995
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: tùy chọn « %s » cần đến đối số\n"
+
+#: lib/getopt.c:698 lib/getopt.c:701
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: không nhận diện tùy chọn « --%s »\n"
+
+#: lib/getopt.c:709 lib/getopt.c:712
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: không nhận diện tùy chọn « %c%s »\n"
+
+#: lib/getopt.c:764 lib/getopt.c:767
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: không cho phép tùy chọn « -- %c »\n"
+
+#: lib/getopt.c:773 lib/getopt.c:776
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: tùy chọn không hợp lệ « -- %c »\n"
+
+#: lib/getopt.c:828 lib/getopt.c:844 lib/getopt.c:1048 lib/getopt.c:1066
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: tùy chọn cần đến đối số « -- %c »\n"
+
+#: lib/getopt.c:897 lib/getopt.c:913
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: tùy chọn « -W %s » là mơ hồ\n"
+
+#: lib/getopt.c:937 lib/getopt.c:955
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: tùy chọn « -W %s » không cho phép đối số\n"
+
+#: lib/rtapelib.c:299
+#, c-format
+msgid "exec/tcp: Service not available"
+msgstr "exec/tcp: dịch vụ chưa sẵn sàng"
+
+#: lib/rtapelib.c:303
+#, c-format
+msgid "stdin"
+msgstr "thiết bị nhập chuẩn"
+
+#: lib/rtapelib.c:306
+#, c-format
+msgid "stdout"
+msgstr "thiết bị xuất chuẩn"
+
+#: lib/rtapelib.c:512
+#, c-format
+msgid "Cannot execute remote shell"
+msgstr "Không thể thực hiện trình bao từ xa"
+
+#. TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
+#. Directly translating this to another language will not work, first because
+#. %s itself is not translated.
+#. Translate it as `%s: Function %s failed'.
+#: lib/paxerror.c:58 lib/paxerror.c:71
+#, c-format
+msgid "%s: Cannot %s"
+msgstr "%s: hàm %s bị lỗi"
+
+#. TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
+#. Directly translating this to another language will not work, first because
+#. %s itself is not translated.
+#. Translate it as `%s: Function %s failed'.
+#: lib/paxerror.c:84
+#, c-format
+msgid "%s: Warning: Cannot %s"
+msgstr "%s: cảnh báo : hàm %s bị lỗi"
+
+#: lib/paxerror.c:93
+#, c-format
+msgid "%s: Cannot change mode to %s"
+msgstr "%s: không thể thay đổi chế độ thành %s"
+
+#: lib/paxerror.c:101
+#, c-format
+msgid "%s: Cannot change ownership to uid %lu, gid %lu"
+msgstr "%s: không thể thay đổi quyền sở hữu thành UID %lu, GID %lu"
+
+#: lib/paxerror.c:127
+#, c-format
+msgid "%s: Cannot hard link to %s"
+msgstr "%s: không thể liên kết cứng tới %s"
+
+#: lib/paxerror.c:179 lib/paxerror.c:211
+#, c-format
+msgid "%s: Read error at byte %s, while reading %lu byte"
+msgid_plural "%s: Read error at byte %s, while reading %lu bytes"
+msgstr[0] "%s: gặp lỗi đọc tại byte %s trong khi đọc %lu byte"
+
+#: lib/paxerror.c:192
+#, c-format
+msgid "%s: Warning: Read error at byte %s, while reading %lu byte"
+msgid_plural "%s: Warning: Read error at byte %s, while reading %lu bytes"
+msgstr[0] "%s: cảnh báo : gặp lỗi đọc tại byte %s trong khi đọc %lu byte"
+
+#: lib/paxerror.c:259
+#, c-format
+msgid "%s: Cannot seek to %s"
+msgstr "%s: không thể tìm nơi tới %s"
+
+#: lib/paxerror.c:275
+#, c-format
+msgid "%s: Warning: Cannot seek to %s"
+msgstr "%s: cảnh báo : không thể tìm nơi tới %s"
+
+#: lib/paxerror.c:284
+#, c-format
+msgid "%s: Cannot create symlink to %s"
+msgstr "%s: không thể táo liên kết tượng trưng tới %s"
+
+#: lib/paxerror.c:349
+#, c-format
+msgid "%s: Wrote only %lu of %lu byte"
+msgid_plural "%s: Wrote only %lu of %lu bytes"
+msgstr[0] "%s: đã ghi chỉ %lu trên %lu byte"
+
+#: lib/paxnames.c:132
+#, c-format
+msgid "Removing leading `%s' from member names"
+msgstr "Đang gỡ bỏ « %s » đi trước ra các tên thành viên"
+
+#: lib/paxnames.c:133
+#, c-format
+msgid "Removing leading `%s' from hard link targets"
+msgstr "Đang gỡ bỏ « %s » đi trước ra các đích liên kết cứng"
+
+#: lib/paxnames.c:146
+msgid "Substituting `.' for empty member name"
+msgstr "Đang thay thế dấu chấm « . » cho tên thành viên rỗng"
+
+#: lib/paxnames.c:147
+msgid "Substituting `.' for empty hard link target"
+msgstr "Đang thay thế dấu chấm « . » cho đích liên kết cứng rỗng"
+
+#~ msgid "error %d"
+#~ msgstr "gặp lỗi %d"
+
+#~ msgid "%s: Read error at byte %s, reading %lu byte"
+#~ msgid_plural "%s: Read error at byte %s, reading %lu bytes"
+#~ msgstr[0] "%s: gặp lỗi đọc tại byte %s khi đọc %lu byte"

@@ -1,0 +1,34 @@
+OLDGNU_MAGIC is of size 8. Copying it to header.magic, which is of
+size 6, overwrites 2 bytes following it. Although this is
+intentionally, it triggers gcc's buffer overflow checking. This patch
+fixed this issue by splitting it into two strncpy()s.
+
+Signed-off-by: Yan Li <yan.i.li@intel.com>
+---
+diff -Nur tar-1.17.orig/src/create.c tar-1.17/src/create.c
+--- tar-1.17.orig/src/create.c	2007-06-01 18:17:10.000000000 +0800
++++ tar-1.17/src/create.c	2010-07-11 16:11:05.000000000 +0800
+@@ -575,7 +575,9 @@
+   GNAME_TO_CHARS (tmpname, header->header.gname);
+   free (tmpname);
+ 
+-  strcpy (header->header.magic, OLDGNU_MAGIC);
++  strncpy (header->header.magic, OLDGNU_MAGIC, sizeof(header->header.magic));
++  strncpy (header->header.version, OLDGNU_MAGIC + sizeof(header->header.magic),
++           sizeof(header->header.version));
+   header->header.typeflag = type;
+   finish_header (st, header, -1);
+ 
+@@ -907,7 +909,11 @@
+     case OLDGNU_FORMAT:
+     case GNU_FORMAT:   /*FIXME?*/
+       /* Overwrite header->header.magic and header.version in one blow.  */
+-      strcpy (header->header.magic, OLDGNU_MAGIC);
++      strncpy (header->header.magic, OLDGNU_MAGIC,
++               sizeof(header->header.magic));
++      strncpy (header->header.version,
++               OLDGNU_MAGIC + sizeof(header->header.magic),
++               sizeof(header->header.version));
+       break;
+ 
+     case POSIX_FORMAT:

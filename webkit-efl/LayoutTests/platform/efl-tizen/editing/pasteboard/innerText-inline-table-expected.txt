@@ -1,0 +1,36 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {DIV} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 640x19
+          text run at (0,0) width 640: "Checks that the text iterator is emitting a space before and after an inline table."
+      RenderBlock {DIV} at (0,19) size 964x26
+        RenderText {#text} at (0,7) size 38x19
+          text run at (0,7) width 38: "hello"
+        RenderTable {TABLE} at (38,0) size 16x25
+          RenderTableSection {TBODY} at (0,0) size 16x25
+            RenderTableRow {TR} at (0,2) size 16x21
+              RenderTableCell {TD} at (2,2) size 12x21 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 10x19
+                  text run at (1,1) width 10: "1"
+        RenderText {#text} at (54,7) size 44x19
+          text run at (54,7) width 44: "world"
+      RenderBlock {DIV} at (0,45) size 964x26
+        RenderText {#text} at (0,7) size 31x19
+          text run at (0,7) width 31: "foo "
+        RenderTable {TABLE} at (31,0) size 16x25
+          RenderTableSection {TBODY} at (0,0) size 16x25
+            RenderTableRow {TR} at (0,2) size 16x21
+              RenderTableCell {TD} at (2,2) size 12x21 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 10x19
+                  text run at (1,1) width 10: "2"
+        RenderText {#text} at (47,7) size 32x19
+          text run at (47,7) width 32: " bar"
+      RenderBlock {UL} at (0,87) size 964x19
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderBlock {PRE} at (0,0) size 924x19
+            RenderListMarker at (-18,0) size 7x19: bullet
+            RenderText {#text} at (0,3) size 57x15
+              text run at (0,3) width 57: "Success!"

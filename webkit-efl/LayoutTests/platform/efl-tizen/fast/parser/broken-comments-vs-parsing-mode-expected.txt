@@ -1,0 +1,15 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderInline {A} at (0,0) size 75x19 [color=#0000EE]
+          RenderText {#text} at (0,0) size 75x19
+            text run at (0,0) width 75: "bug 8626"
+        RenderText {#text} at (75,0) size 469x19
+          text run at (75,0) width 10: ": "
+          text run at (85,0) width 459: "Strict mode erroneously triggered by a broken comment."
+      RenderBlock {P} at (0,35) size 964x19 [color=#00FF00]
+        RenderText {#text} at (0,0) size 801x19
+          text run at (0,0) width 801: "This text should be green, not black (CSS color values not beginning with '#' are OK in quirks mode)."

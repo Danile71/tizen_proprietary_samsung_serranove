@@ -1,0 +1,36 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x105
+  RenderBlock {HTML} at (0,0) size 800x105
+    RenderBody {BODY} at (8,8) size 784x85
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 369x14
+          text run at (0,0) width 194: "You should see a green rectangle below. "
+          text run at (194,0) width 175: "If you see any red, the test has failed."
+      RenderBlock {P} at (0,28) size 784x3 [border: (1px solid #000000)]
+        RenderText {#text} at (1,-10) size 207x14
+          text run at (1,-10) width 207: "this block should hug the lowercase glyphs."
+      RenderBlock {P} at (0,43) size 784x42
+        RenderBlock (floating) at (0,0) size 22x1
+          RenderText {#text} at (0,-33) size 22x41
+            text run at (0,-33) width 22: "T"
+        RenderText {#text} at (24,0) size 308x14
+          text run at (24,0) width 308: "he first letter here should look nicer because it uses glyph bounds"
+        RenderBR {BR} at (332,0) size 0x14
+        RenderText {#text} at (0,14) size 385x14
+          text run at (0,14) width 385: "This should make the top of the T line up with the line and not look shifted down."
+        RenderBR {BR} at (385,14) size 0x14
+        RenderText {#text} at (0,28) size 340x14
+          text run at (0,28) width 340: "Maybe we should do this by default for all first letters like Firefox does."
+layer at (8,22) size 384x2 scrollHeight 26
+  RenderBlock {DIV} at (0,14) size 384x2 [bgcolor=#FF0000]
+    RenderInline {SPAN} at (0,0) size 320x65 [color=#008000]
+      RenderText {#text} at (0,-52) size 320x65
+        text run at (0,-52) width 320: "xxxxx"
+    RenderInline {SPAN} at (0,0) size 64x129 [bgcolor=#008000]
+    RenderBR {BR} at (384,-52) size 0x65
+    RenderBlock {DIV} at (0,-126) size 64x128 [bgcolor=#008000]
+    RenderInline {SPAN} at (0,0) size 320x65 [color=#008000]
+      RenderText {#text} at (64,-51) size 320x65
+        text run at (64,-51) width 320: "xxxxx"
+    RenderText {#text} at (0,0) size 0x0

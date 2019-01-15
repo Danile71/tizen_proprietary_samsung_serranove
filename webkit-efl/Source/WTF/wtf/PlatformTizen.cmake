@@ -1,0 +1,14 @@
+LIST(APPEND WTF_INCLUDE_DIRECTORIES
+    ${DBUS-1_INCLUDE_DIRS}
+    ${E_DBUS_INCLUDE_DIRS}
+)
+
+LIST(APPEND WTF_LIBRARIES
+    ${DBUS-1_LIBRARIES}
+    ${E_DBUS_LIBRARIES}
+)
+
+LIST(APPEND WTF_SOURCES
+    efl/tizen/TizenSystemUtilities.cpp
+    efl/tizen/TizenProfiler.cpp
+)

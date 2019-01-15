@@ -1,0 +1,68 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 67x19
+          text run at (0,0) width 67: "Test for "
+        RenderInline {I} at (0,0) size 805x19
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (67,0) size 426x19
+              text run at (67,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=8408"
+          RenderText {#text} at (493,0) size 379x19
+            text run at (493,0) width 5: " "
+            text run at (498,0) width 374: "Paint the highlight behind selected list markers"
+        RenderText {#text} at (872,0) size 5x19
+          text run at (872,0) width 5: "."
+      RenderBlock {P} at (0,35) size 964x19
+        RenderText {#text} at (0,0) size 472x19
+          text run at (0,0) width 472: "This tests the rendering of list markers inside the selection."
+      RenderBlock (anonymous) at (0,70) size 964x0
+        RenderInline {A} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {HR} at (0,70) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {UL} at (0,88) size 964x19
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 202x19
+            text run at (0,0) width 202: "Item with outside marker"
+      RenderBlock {UL} at (0,123) size 964x19
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (-1,0) size 7x19: bullet
+          RenderText {#text} at (15,0) size 190x19
+            text run at (15,0) width 190: "Item with inside marker"
+      RenderBlock {UL} at (0,158) size 964x19
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (-17,5) size 10x10
+          RenderText {#text} at (0,0) size 257x19
+            text run at (0,0) width 257: "Item with outside image marker"
+      RenderBlock {UL} at (0,193) size 964x19
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (0,5) size 10x10
+          RenderText {#text} at (17,0) size 245x19
+            text run at (17,0) width 245: "Item with inside image marker"
+      RenderBlock {OL} at (0,228) size 964x38
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (-25,0) size 20x19: "1"
+          RenderText {#text} at (0,0) size 198x19
+            text run at (0,0) width 198: "Item with outside ordinal"
+        RenderListItem {LI} at (40,19) size 924x19
+          RenderListMarker at (-25,0) size 20x19: "2"
+          RenderText {#text} at (0,0) size 133x19
+            text run at (0,0) width 133: "and another one"
+      RenderBlock {OL} at (0,282) size 964x38
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (0,0) size 20x19: "1"
+          RenderText {#text} at (20,0) size 186x19
+            text run at (20,0) width 186: "Item with inside ordinal"
+        RenderListItem {LI} at (40,19) size 924x19
+          RenderListMarker at (0,0) size 20x19: "2"
+          RenderText {#text} at (20,0) size 133x19
+            text run at (20,0) width 133: "and another one"
+      RenderBlock {HR} at (0,336) size 964x2 [border: (1px inset #000000)]
+      RenderBlock (anonymous) at (0,346) size 964x0
+        RenderInline {A} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+selection start: position 0 of child 7 {HR} of body
+selection end:   position 1 of child 21 {HR} of body

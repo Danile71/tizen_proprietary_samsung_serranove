@@ -1,0 +1,35 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 4 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 304x19
+          text run at (0,0) width 304: "There was a workaround added to fix "
+        RenderInline {A} at (0,0) size 191x19 [color=#0000EE]
+          RenderText {#text} at (304,0) size 191x19
+            text run at (304,0) width 191: "rdar://problem/4033202"
+        RenderText {#text} at (495,0) size 374x19
+          text run at (495,0) width 10: ". "
+          text run at (505,0) width 364: "A bug to remove the workaround was filed as"
+        RenderInline {A} at (0,0) size 191x19 [color=#0000EE]
+          RenderText {#text} at (0,19) size 191x19
+            text run at (0,19) width 191: "rdar://problem/4040763"
+        RenderText {#text} at (191,19) size 953x38
+          text run at (191,19) width 10: ". "
+          text run at (201,19) width 752: "The underlying problem with VisiblePositions was fixed, and so I removed the workaround and"
+          text run at (0,38) width 177: "added this layout test."
+      RenderBlock {DIV} at (0,73) size 964x59 [border: (1px solid #0000FF)]
+        RenderBlock {P} at (1,1) size 962x19
+          RenderText {#text} at (0,0) size 14x19
+            text run at (0,0) width 14: "hi"
+          RenderInline {SPAN} at (0,0) size 0x19
+        RenderBlock (anonymous) at (1,20) size 962x38
+          RenderBR {BR} at (0,0) size 0x19
+          RenderText {#text} at (0,19) size 30x19
+            text run at (0,19) width 30: "test"
+caret: position 0 of child 2 {BR} of child 3 {DIV} of body

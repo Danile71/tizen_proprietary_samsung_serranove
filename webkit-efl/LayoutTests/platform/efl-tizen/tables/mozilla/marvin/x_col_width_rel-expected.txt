@@ -1,0 +1,30 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x183
+  RenderBlock {html} at (0,0) size 980x183
+    RenderBody {body} at (8,16) size 964x159
+      RenderBlock {p} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 166x19
+          text run at (0,0) width 166: "COL WIDTH=relative"
+      RenderTable {table} at (0,35) size 300x124 [border: (1px outset #808080)]
+        RenderTableCol {colgroup} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+          RenderTableCol {col} at (0,0) size 0x0
+        RenderTableSection (anonymous) at (1,1) size 298x122
+          RenderTableRow {tr} at (0,2) size 298x118
+            RenderTableCell {td} at (2,2) size 144x118 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 138x114
+                text run at (2,2) width 109: "Table width is"
+                text run at (2,21) width 91: "300px. This"
+                text run at (2,40) width 116: "column should"
+                text run at (2,59) width 138: "be 1/2 as wide as"
+                text run at (2,78) width 98: "Column 2 or"
+                text run at (2,97) width 49: "100px"
+            RenderTableCell {td} at (148,2) size 148x118 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 141x114
+                text run at (2,2) width 109: "Table width is"
+                text run at (2,21) width 91: "300px. This"
+                text run at (2,40) width 141: "column should be"
+                text run at (2,59) width 130: "twice as wide as"
+                text run at (2,78) width 98: "Column 1 or"
+                text run at (2,97) width 49: "200px"

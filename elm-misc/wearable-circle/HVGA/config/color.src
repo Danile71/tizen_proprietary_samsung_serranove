@@ -1,0 +1,26 @@
+group "Ea_Theme_Color_Config" struct {
+    value "index" int: 0;
+    value "style" string: "Dark";
+    group "list" list {
+        group "Ea_Theme_Color_hsv" struct {
+            value "h" int: 210;
+            value "s" int: 75;
+            value "v" int: 19;
+        }
+        group "Ea_Theme_Color_hsv" struct {
+            value "h" int: 212;
+            value "s" int: 95;
+            value "v" int: 40;
+        }
+        group "Ea_Theme_Color_hsv" struct {
+            value "h" int: 210;
+            value "s" int: 100;
+            value "v" int: 56;
+        }
+        group "Ea_Theme_Color_hsv" struct {
+            value "h" int: 65;
+            value "s" int: 75;
+            value "v" int: 100;
+        }
+    }
+}

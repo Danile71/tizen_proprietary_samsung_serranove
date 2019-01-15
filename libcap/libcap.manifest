@@ -1,0 +1,8 @@
+<manifest>
+	<assign>
+		<filesystem path="/usr/sbin/*" exec_label="none"/>
+	</assign>
+	<request>
+		<domain name="_"/>
+	</request>
+</manifest>

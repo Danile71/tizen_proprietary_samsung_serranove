@@ -1,0 +1,29 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 492x14
+          RenderInline {A} at (0,0) size 117x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 117x14
+              text run at (40,0) width 117: "rdar://problem/5615307"
+          RenderText {#text} at (157,0) size 375x14
+            text run at (157,0) width 375: " Repro crash in WebKit!WebCore::RenderContainer::destroyLeftoverChildren"
+        RenderText {#text} at (532,0) size 3x14
+          text run at (532,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 201x14
+          text run at (0,0) width 201: "There should be a line of green text below."
+      RenderTable {TABLE} at (0,52) size 114x26 [color=#FF0000]
+        RenderTableSection {TBODY} at (0,0) size 114x26
+          RenderTableRow {TR} at (0,2) size 114x22
+            RenderTableCell {TD} at (2,2) size 110x22 [r=0 c=0 rs=1 cs=1]
+              RenderTable {TABLE} at (1,1) size 108x20 [color=#000000]
+                RenderTableSection {TBODY} at (0,0) size 108x20
+                  RenderTableRow {TR} at (0,2) size 108x16 [color=#008000]
+                    RenderTableCell {TD} at (2,2) size 104x16 [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 102x14
+                        text run at (1,1) width 102: "This should be green."

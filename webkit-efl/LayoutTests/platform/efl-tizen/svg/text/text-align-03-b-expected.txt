@@ -1,0 +1,25 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderSVGRoot {svg} at (0,1) size 980x733
+    RenderSVGContainer {g} at (0,4) size 980x456
+      RenderSVGText {text} at (5,2) size 406x47 contains 1 chunk(s)
+        RenderSVGInlineText {#text} at (0,0) size 406x47
+          chunk 1 text run 1 at (5.00,40.00) startOffset 0 endOffset 21 width 405.55: "Test of 'text-anchor'"
+      RenderSVGPath {line} at (458,153) size 3x307 [stroke={[type=SOLID] [color=#FF0000]}] [fill={[type=SOLID] [color=#000000]}] [x1=225.00] [y1=75.00] [x2=225.00] [y2=225.00]
+      RenderSVGContainer {g} at (0,167) size 980x277
+        RenderSVGText {text} at (-37,82) size 545x135 contains 1 chunk(s)
+          RenderSVGInlineText {#text} at (0,0) size 262x35
+            chunk 1 (end anchor) text run 1 at (-36.55,110.00) startOffset 0 endOffset 17 width 261.55: "Begin with \"end\","
+          RenderSVGTSpan {tspan} at (0,0) size 461x35
+            RenderSVGInlineText {#text} at (31,50) size 460x35
+              chunk 1 (middle anchor) text run 1 at (-4.71,160.00) startOffset 0 endOffset 32 width 459.43: " switch to \"middle\" in a tspan, "
+          RenderSVGTSpan {tspan} at (0,0) size 284x35
+            RenderSVGInlineText {#text} at (261,100) size 284x35
+              chunk 1 text run 1 at (225.00,210.00) startOffset 0 endOffset 20 width 283.10: "and \"start\" ends it."
+    RenderSVGText {text} at (10,302) size 324x47 contains 1 chunk(s)
+      RenderSVGInlineText {#text} at (0,0) size 324x47
+        chunk 1 text run 1 at (10.00,340.00) startOffset 0 endOffset 16 width 323.76: "$Revision: 1.5 $"
+    RenderSVGRect {rect} at (1,1) size 978x733 [stroke={[type=SOLID] [color=#000000]}] [x=1.00] [y=1.00] [width=478.00] [height=358.00]
+selection start: position 0 of child 0 {#text} of child 1 {text} of child 13 {g} of child 28 {svg} of document
+selection end:   position 16 of child 0 {#text} of child 15 {text} of child 28 {svg} of document

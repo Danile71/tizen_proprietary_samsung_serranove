@@ -1,0 +1,42 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 275x19
+          text run at (0,0) width 275: "This tests for a regression against "
+        RenderInline {I} at (0,0) size 949x38
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (275,0) size 426x19
+              text run at (275,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=5813"
+          RenderText {#text} at (701,0) size 949x38
+            text run at (701,0) width 5: " "
+            text run at (706,0) width 243: "positioned blocks don't update"
+            text run at (0,19) width 282: "when resizing the window vertically"
+        RenderText {#text} at (282,19) size 5x19
+          text run at (282,19) width 5: "."
+      RenderBlock {P} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 364x19
+          text run at (0,0) width 364: "The two squares below should be solid green."
+      RenderBlock {HR} at (0,89) size 964x2 [border: (1px inset #000000)]
+      RenderBlock (anonymous) at (0,99) size 964x108
+        RenderPartObject {IFRAME} at (0,0) size 104x104 [border: (2px inset #000000)]
+          layer at (0,0) size 100x100
+            RenderView at (0,0) size 100x100
+          layer at (0,0) size 100x8
+            RenderBlock {HTML} at (0,0) size 100x8
+              RenderBody {BODY} at (8,8) size 84x0 [bgcolor=#FF0000]
+          layer at (0,0) size 100x100
+            RenderBlock (positioned) {DIV} at (0,0) size 100x100 [bgcolor=#008000]
+        RenderText {#text} at (104,89) size 5x19
+          text run at (104,89) width 5: " "
+        RenderPartObject {IFRAME} at (109,0) size 104x104 [border: (2px inset #000000)]
+          layer at (0,0) size 100x100
+            RenderView at (0,0) size 100x100
+          layer at (0,0) size 100x16
+            RenderDeprecatedFlexibleBox {HTML} at (0,0) size 100x16
+              RenderBody {BODY} at (8,8) size 0x0 [bgcolor=#FF0000]
+          layer at (0,0) size 100x100
+            RenderBlock (positioned) {DIV} at (0,0) size 100x100 [bgcolor=#008000]
+        RenderText {#text} at (0,0) size 0x0

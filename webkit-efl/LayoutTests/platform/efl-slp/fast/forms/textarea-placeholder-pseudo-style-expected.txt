@@ -1,0 +1,43 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderText {#text} at (0,0) size 245x14
+        text run at (0,0) width 245: "This tests that you can set the placeholder text color."
+      RenderBR {BR} at (245,11) size 0x0
+      RenderText {#text} at (191,53) size 3x14
+        text run at (191,53) width 3: " "
+      RenderText {#text} at (385,53) size 3x14
+        text run at (385,53) width 3: " "
+      RenderText {#text} at (579,53) size 3x14
+        text run at (579,53) width 3: " "
+      RenderText {#text} at (0,0) size 0x0
+layer at (10,24) size 187x46
+  RenderTextControl {TEXTAREA} at (2,16) size 187x46 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 180x18
+layer at (204,24) size 187x46
+  RenderTextControl {TEXTAREA} at (196,16) size 187x46 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 180x18
+layer at (398,24) size 187x46
+  RenderTextControl {TEXTAREA} at (390,16) size 187x46 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 180x18
+layer at (592,24) size 187x46
+  RenderTextControl {TEXTAREA} at (584,16) size 187x46 [color=#202020]
+    RenderBlock {DIV} at (4,6) size 180x18
+layer at (14,30) size 180x18
+  RenderBlock (relative positioned) {DIV} at (4,6) size 180x18 [color=#640000]
+    RenderText {#text} at (0,0) size 25x17
+      text run at (0,0) width 25: "text"
+layer at (208,30) size 180x18
+  RenderBlock (relative positioned) {DIV} at (4,6) size 180x18 [color=#640000]
+    RenderText {#text} at (0,0) size 90x17
+      text run at (0,0) width 90: "disabled text"
+layer at (402,30) size 180x18
+  RenderBlock (relative positioned) {DIV} at (4,6) size 180x18 [color=#A9A9A9]
+    RenderText {#text} at (0,0) size 48x17
+      text run at (0,0) width 48: "default"
+layer at (596,30) size 180x18
+  RenderBlock (relative positioned) {DIV} at (4,6) size 180x18 [color=#A9A9A9]
+    RenderText {#text} at (0,0) size 113x17
+      text run at (0,0) width 113: "default disabled"

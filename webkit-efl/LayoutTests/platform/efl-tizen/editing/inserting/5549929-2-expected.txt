@@ -1,0 +1,19 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 945x38
+          text run at (0,0) width 795: "This tests to make sure that a br isn't inserted into a tab span during an InsertLineBreak operation. "
+          text run at (795,0) width 150: "You can test for its"
+          text run at (0,19) width 550: "existence with the DOM inspector or you can look at the render tree."
+      RenderBlock {DIV} at (0,54) size 964x38
+        RenderBlock {DIV} at (0,0) size 964x38
+          RenderBR {BR} at (0,0) size 0x19
+          RenderInline {SPAN} at (0,0) size 40x19
+            RenderText {#text} at (0,19) size 40x19
+              text run at (0,19) width 40: "\x{9}"
+          RenderText {#text} at (40,19) size 27x19
+            text run at (40,19) width 27: "bar"
+caret: position 0 of child 0 {#text} of child 1 {SPAN} of child 1 {DIV} of child 2 {DIV} of body

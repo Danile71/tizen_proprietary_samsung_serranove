@@ -1,0 +1,18 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 752x19
+          text run at (0,0) width 752: "This tests for a bug where a newline inserted at the end of an anonymous block would be lost."
+      RenderBlock {DIV} at (0,35) size 964x57
+        RenderBlock (anonymous) at (0,0) size 964x38
+          RenderText {#text} at (0,0) size 26x19
+            text run at (0,0) width 26: "foo"
+          RenderBR {BR} at (26,15) size 0x0
+          RenderBR {BR} at (0,19) size 0x19
+        RenderBlock {DIV} at (0,38) size 964x19
+          RenderText {#text} at (0,0) size 27x19
+            text run at (0,0) width 27: "bar"
+caret: position 0 of child 2 {BR} of child 2 {DIV} of body

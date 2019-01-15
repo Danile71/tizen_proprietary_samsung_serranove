@@ -1,0 +1,17 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x714
+      RenderBlock (anonymous) at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 951x57
+          text run at (0,0) width 903: "This tests to see that a caret is placed inside an editable document that is entirely editable even when no caret is"
+          text run at (0,19) width 238: "requested programmatically. "
+          text run at (238,19) width 238: "We do this as a convenience. "
+          text run at (476,19) width 475: "Right now, we only do this convenience when a document's"
+          text run at (0,38) width 614: "frame becomes first responder or when a document's window becomes key."
+      RenderBlock {PRE} at (0,70) size 964x30
+        RenderText {#text} at (0,0) size 234x30
+          text run at (0,0) width 234: "Test Failed - there should be a caret"
+          text run at (234,0) width 0: " "
+          text run at (0,15) width 0: " "

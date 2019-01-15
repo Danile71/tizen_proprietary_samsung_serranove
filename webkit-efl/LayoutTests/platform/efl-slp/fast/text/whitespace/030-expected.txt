@@ -1,0 +1,14 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x75
+  RenderBlock {HTML} at (0,0) size 800x75
+    RenderBody {BODY} at (8,10) size 784x57
+      RenderBlock {PRE} at (0,0) size 784x15 [border: (2px solid #008000)]
+        RenderText {#text} at (2,2) size 102x11
+          text run at (2,2) width 102: "I am on one line."
+          text run at (104,2) width 0: " "
+      RenderBlock {DIV} at (0,25) size 784x32 [border: (2px solid #008000)]
+        RenderText {#text} at (2,2) size 569x28
+          text run at (2,2) width 0: " "
+          text run at (2,16) width 569: "This div is two lines.  The newline right after the tag opened is significant and is honored by Firefox and Opera (and us)."
+          text run at (571,16) width 0: " "

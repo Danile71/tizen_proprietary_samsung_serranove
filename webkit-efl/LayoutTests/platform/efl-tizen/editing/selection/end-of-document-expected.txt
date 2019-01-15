@@ -1,0 +1,81 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 4 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > DIV > DIV > BODY > HTML > #document to 0 of DIV > DIV > DIV > BODY > HTML > #document toDOMRange:range from 0 of #text > DIV > DIV > DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x336
+        RenderBlock {DIV} at (0,0) size 964x301
+          RenderBlock {DIV} at (0,0) size 964x19
+            RenderText {#text} at (0,0) size 376x19
+              text run at (0,0) width 376: "On Feb 1, 2006, at 7:37 PM, David Hyatt wrote:"
+          RenderBlock (anonymous) at (0,19) size 964x19
+            RenderBR {BR} at (0,0) size 0x19
+          RenderBlock {BLOCKQUOTE} at (40,54) size 884x247 [color=#0000FF]
+            RenderBlock {DIV} at (0,0) size 884x95
+              RenderText {#text} at (0,0) size 558x19
+                text run at (0,0) width 558: "While reworking images I ran into something that really concerns me."
+              RenderInline {SPAN} at (0,0) size 5x19
+                RenderText {#text} at (558,0) size 5x19
+                  text run at (558,0) width 5: " "
+              RenderText {#text} at (563,0) size 871x38
+                text run at (563,0) width 303: "WebElementImageKey is a key added"
+                text run at (866,0) width 5: " "
+                text run at (0,19) width 543: "to the elementAtPoint dictionary and the key's value is an NSImage."
+              RenderInline {SPAN} at (0,0) size 5x19
+                RenderText {#text} at (543,19) size 5x19
+                  text run at (543,19) width 5: " "
+              RenderText {#text} at (548,19) size 320x19
+                text run at (548,19) width 320: "Unfortunately we use CGImageRef now."
+              RenderInline {SPAN} at (0,0) size 5x19
+                RenderText {#text} at (868,19) size 5x19
+                  text run at (868,19) width 5: " "
+              RenderText {#text} at (0,38) size 884x57
+                text run at (0,38) width 877: "What this means is that as you move the mouse around a web page we are aggressively mallocing NSImages"
+                text run at (877,38) width 5: " "
+                text run at (0,57) width 883: "that then move into our image cache and stay around until the CGImageRef goes away (which could be a long"
+                text run at (883,57) width 1: " "
+                text run at (0,76) width 47: "time)."
+            RenderBlock {DIV} at (0,95) size 884x19
+              RenderBR {BR} at (0,0) size 0x19
+            RenderBlock {DIV} at (0,114) size 884x57
+              RenderText {#text} at (0,0) size 398x19
+                text run at (0,0) width 398: "I think this is terrible but am not sure how to fix it."
+              RenderInline {SPAN} at (0,0) size 5x19
+                RenderText {#text} at (398,0) size 5x19
+                  text run at (398,0) width 5: " "
+              RenderText {#text} at (403,0) size 243x19
+                text run at (403,0) width 243: "I assume this key is public API."
+              RenderInline {SPAN} at (0,0) size 5x19
+                RenderText {#text} at (646,0) size 5x19
+                  text run at (646,0) width 5: " "
+              RenderText {#text} at (651,0) size 869x38
+                text run at (651,0) width 213: "Could we change the key's"
+                text run at (864,0) width 5: " "
+                text run at (0,19) width 282: "value to be a CGImageRef instead?"
+              RenderInline {SPAN} at (0,0) size 5x19
+                RenderText {#text} at (282,19) size 5x19
+                  text run at (282,19) width 5: " "
+              RenderText {#text} at (287,19) size 864x38
+                text run at (287,19) width 572: "Could we just eliminate the key in favor of a DOM extension method for"
+                text run at (859,19) width 5: " "
+                text run at (0,38) width 190: "accessing an NSImage?"
+            RenderBlock {DIV} at (0,171) size 884x19
+              RenderBR {BR} at (0,0) size 0x19
+            RenderBlock {DIV} at (0,190) size 884x19
+              RenderText {#text} at (0,0) size 39x19
+                text run at (0,0) width 39: "dave"
+            RenderBlock {DIV} at (0,209) size 884x19
+              RenderText {#text} at (0,0) size 153x19
+                text run at (0,0) width 153: "(hyatt@apple.com)"
+            RenderBlock {DIV} at (0,228) size 884x19
+              RenderBR {BR} at (0,0) size 0x19
+        RenderBlock (anonymous) at (0,317) size 964x19
+          RenderBR {BR} at (0,0) size 0x19
+caret: position 0 of child 0 {BR} of child 6 {DIV} of child 2 {BLOCKQUOTE} of child 1 {DIV} of child 1 {DIV} of body

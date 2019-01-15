@@ -1,0 +1,63 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x714
+      RenderBlock {P} at (0,0) size 964x38
+        RenderInline {A} at (0,0) size 76x19 [color=#0000EE]
+          RenderText {#text} at (0,0) size 76x19
+            text run at (0,0) width 76: "Bug 5656"
+        RenderText {#text} at (76,0) size 947x38
+          text run at (76,0) width 871: " tests whether buttons force a white-space mode or not. These tests will only pass if the white-space mode is"
+          text run at (0,19) width 246: "not forced and if it is inherited."
+      RenderBlock {DIV} at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 458x19
+          text run at (0,0) width 458: "Buttons should appear next to each other in a single row:"
+      RenderTable {TABLE} at (0,73) size 212x33
+        RenderTableSection {TBODY} at (0,0) size 212x33
+          RenderTableRow {TR} at (0,2) size 212x29
+            RenderTableCell {TD} at (2,2) size 208x29 [r=0 c=0 rs=1 cs=1]
+              RenderButton {BUTTON} at (3,3) size 83x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 75x15
+                  RenderText {#text} at (0,0) size 75x15
+                    text run at (0,0) width 75: "Search Mail"
+              RenderText {#text} at (88,5) size 5x19
+                text run at (88,5) width 5: " "
+              RenderButton {BUTTON} at (95,3) size 110x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+                RenderBlock (anonymous) at (5,5) size 102x15
+                  RenderText {#text} at (0,0) size 102x15
+                    text run at (0,0) width 102: "Search the Web"
+              RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,106) size 964x19
+        RenderText {#text} at (0,0) size 233x19
+          text run at (0,0) width 233: "Buttons should look identical:"
+      RenderBlock {DIV} at (0,125) size 964x27
+        RenderButton {BUTTON} at (2,2) size 79x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+          RenderBlock (anonymous) at (5,5) size 71x15
+            RenderText {#text} at (0,0) size 71x15
+              text run at (0,0) width 71: "test button"
+      RenderBlock {DIV} at (0,152) size 964x27
+        RenderButton {BUTTON} at (2,2) size 79x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+          RenderBlock (anonymous) at (5,5) size 71x15
+            RenderText {#text} at (0,0) size 71x15
+              text run at (0,0) width 29: "test "
+              text run at (29,0) width 42: "button"
+      RenderBlock {DIV} at (0,179) size 964x19
+        RenderText {#text} at (0,0) size 431x19
+          text run at (0,0) width 431: "Buttons should look identical (ignore vertical spacing):"
+      RenderBlock {DIV} at (0,198) size 964x27
+        RenderButton {BUTTON} at (2,2) size 99x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+          RenderBlock (anonymous) at (5,5) size 91x15
+            RenderText {#text} at (0,0) size 91x15
+              text run at (0,0) width 91: "  test  button  "
+      RenderBlock {DIV} at (0,225) size 964x27
+        RenderButton {BUTTON} at (2,2) size 99x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+          RenderBlock (anonymous) at (5,5) size 91x15
+            RenderText {#text} at (0,0) size 91x15
+              text run at (0,0) width 91: "  test  button  "
+      RenderBlock {DIV} at (0,265) size 964x27
+        RenderBlock {PRE} at (0,0) size 964x27
+          RenderButton {BUTTON} at (2,2) size 99x23 [bgcolor=#C0C0C0] [border: (2px outset #C0C0C0)]
+            RenderBlock (anonymous) at (5,5) size 91x15
+              RenderText {#text} at (0,0) size 91x15
+                text run at (0,0) width 91: "  test  button  "

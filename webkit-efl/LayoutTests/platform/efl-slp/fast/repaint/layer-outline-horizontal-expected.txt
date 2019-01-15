@@ -1,0 +1,31 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 158x14
+          text run at (0,0) width 158: "This tests for regressions against "
+        RenderInline {I} at (0,0) size 408x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (158,0) size 262x14
+              text run at (158,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=7943"
+          RenderText {#text} at (420,0) size 146x14
+            text run at (420,0) width 146: " Layer outline does not repaint"
+        RenderText {#text} at (566,0) size 3x14
+          text run at (566,0) width 3: "."
+      RenderBlock {HR} at (0,26) size 784x2 [border: (1px inset #000000)]
+layer at (18,182) size 100x100 clip at (19,183) size 98x98
+  RenderBlock {DIV} at (10,174) size 100x100 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+layer at (8,42) size 784x130
+  RenderBlock (relative positioned) {DIV} at (0,34) size 784x130
+layer at (18,52) size 100x100
+  RenderBlock (positioned) {DIV} at (10,10) size 100x100 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+layer at (148,52) size 100x100 backgroundClip at (148,52) size 90x90 clip at (138,42) size 100x100 outlineClip at (138,42) size 100x100
+  RenderBlock (positioned) {DIV} at (140,10) size 100x100 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+layer at (408,52) size 100x100
+  RenderBlock (positioned) {DIV} at (400,10) size 100x100 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+layer at (538,52) size 100x100 backgroundClip at (548,62) size 90x90 clip at (548,62) size 100x100 outlineClip at (548,62) size 100x100
+  RenderBlock (positioned) {DIV} at (530,10) size 100x100 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+layer at (18,312) size 100x100
+  RenderBlock (relative positioned) {DIV} at (0,284) size 100x100 [bgcolor=#EEEEEE] [border: (1px solid #000000)]

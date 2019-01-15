@@ -1,0 +1,22 @@
+diff -urNp pkg-config-0.25.orig/pkg.c pkg-config-0.25/pkg.c
+--- pkg-config-0.25.orig/pkg.c	2013-12-18 15:57:30.000000000 +0900
++++ pkg-config-0.25/pkg.c	2014-06-13 14:16:11.415964065 +0900
+@@ -940,12 +940,16 @@ verify_package (Package *pkg)
+ #else
+ #define SYSTEM_LIBDIR "/usr/lib"
+ #endif
++#define SYSTEM_LIBDIR32 "/usr/lib"
++#define SYSTEM_LIBDIR64 "/usr/lib64"
+   count = 0;
+   iter = pkg->L_libs;
+   while (iter != NULL)
+     {
+-      if (strcmp (iter->data, "-L" SYSTEM_LIBDIR) == 0 ||
+-          strcmp (iter->data, "-L " SYSTEM_LIBDIR) == 0)
++      if (strcmp (iter->data, "-L" SYSTEM_LIBDIR32) == 0 ||
++          strcmp (iter->data, "-L " SYSTEM_LIBDIR32) == 0 ||
++          strcmp (iter->data, "-L" SYSTEM_LIBDIR64) == 0 ||
++          strcmp (iter->data, "-L " SYSTEM_LIBDIR64) == 0)
+         {
+           debug_spew ("Package %s has -L" SYSTEM_LIBDIR " in Libs\n",
+                       pkg->name);

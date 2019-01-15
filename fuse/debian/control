@@ -1,0 +1,19 @@
+Source: fuse
+Section: libs
+Priority: optional
+Maintainer: Hyungdeuk Kim <hd3.kim@samsung.com>, Youmin Ha <youmin.ha@samsung.com>
+Build-Depends: debhelper (>= 5), autotools-dev
+Standards-Version: 3.7.2
+
+Package: libfuse-dev
+XB-Public-Package: no
+Section: libdevel
+Architecture: any
+Depends: ${misc:Depends}
+Description: Filesystem in USErspace (development files)
+ Simple interface for userspace programs to export a virtual
+ filesystem to the Linux kernel.
+ .
+ This package contains the files necessary to write applications in C
+ or C++ using fuse.
+

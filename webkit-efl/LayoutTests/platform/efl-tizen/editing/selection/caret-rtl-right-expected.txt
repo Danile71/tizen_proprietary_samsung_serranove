@@ -1,0 +1,18 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x142
+  RenderBlock {HTML} at (0,0) size 980x142
+    RenderBody {BODY} at (8,16) size 964x118
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 944x38
+          text run at (0,0) width 944: "This tests that clicking in a contenteditable div will set the caret in the right position for RTL text in a RTL block. To test"
+          text run at (0,19) width 596: "manually, click the right of the text. The caret should be on the right edge."
+      RenderBlock {DIV} at (0,54) size 242x45 [border: (1px solid #000000)]
+        RenderText {#text} at (155,11) size 76x24
+          text run at (155,11) width 76 RTL: "\x{5E9}\x{5D3}\x{5D4} \x{5D1}\x{5D5}\x{5E8}"
+      RenderBlock (anonymous) at (0,99) size 964x19
+        RenderText {#text} at (0,0) size 41x19
+          text run at (0,0) width 41: "PASS"
+        RenderBR {BR} at (41,0) size 0x19
+        RenderText {#text} at (0,0) size 0x0
+caret: position 0 of child 0 {#text} of child 3 {DIV} of body

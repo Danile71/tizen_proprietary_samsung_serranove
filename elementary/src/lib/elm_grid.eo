@@ -1,0 +1,111 @@
+class Elm_Grid (Elm_Widget)
+{
+   eo_prefix: elm_obj_grid;
+   data: null;
+   properties {
+      size {
+         set {
+            /*@
+            @brief Set the virtual size of the grid
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @ingroup Grid */
+         }
+         get {
+            /*@
+            @brief Get the virtual size of the grid
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @ingroup Grid */
+         }
+         values {
+            Evas_Coord w; /*@ The virtual width of the grid */
+            Evas_Coord h; /*@ The virtual height of the grid */
+         }
+      }
+      children {
+         get {
+            /*@
+            @brief Get the list of the children for the grid.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark This is a duplicate of the list kept by the grid internally.
+            It's up to the user to destroy it when it no longer needs it.
+            It's possible to remove objects from the grid when walking this
+            list, but these removals won't be reflected on it.
+
+            @ingroup Grid */
+            return: list *;
+         }
+      }
+   }
+   methods {
+      clear {
+         /*@
+         @brief Faster way to remove all child objects from a grid object.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @ingroup Grid */
+
+         params {
+            @in bool clear; /*@ If true, it will delete just removed children */
+         }
+      }
+      unpack {
+         /*@
+         @brief Unpack a child from a grid object
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @ingroup Grid */
+
+         params {
+            @in Evas_Object *subobj; /*@ The child to unpack */
+         }
+      }
+      pack {
+         /*@
+         @brief Pack child at given position and size
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @ingroup Grid */
+
+         params {
+            @in Evas_Object *subobj; /*@ The child to pack */
+            @in Evas_Coord x; /*@ The virtual x coord at which to pack it */
+            @in Evas_Coord y; /*@ The virtual y coord at which to pack it */
+            @in Evas_Coord w; /*@ The virtual width at which to pack it */
+            @in Evas_Coord h; /*@ The virtual height at which to pack it */
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Elm_Widget.focus_direction;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_next;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.theme_apply;
+   }
+
+}

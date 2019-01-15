@@ -1,0 +1,27 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x0
+  RenderBlock {HTML} at (0,0) size 800x0
+layer at (8,8) size 784x28
+  RenderBody {BODY} at (8,8) size 784x28
+    RenderBlock {DIV} at (0,0) size 784x28
+      RenderText {#text} at (0,0) size 98x14
+        text run at (0,0) width 98: "You should see two "
+      RenderInline {I} at (0,0) size 81x14
+        RenderText {#text} at (98,0) size 81x14
+          text run at (98,0) width 81: "vertically stacked"
+      RenderText {#text} at (179,0) size 781x28
+        text run at (179,0) width 117: " green rectangles below. "
+        text run at (296,0) width 135: "Each one is 100 pixels wide "
+        text run at (431,0) width 86: "and 50 pixels tall. "
+        text run at (517,0) width 264: "If the two green rectangles are on the same line, then the"
+        text run at (0,14) width 70: "test has failed. "
+        text run at (70,14) width 199: "This is a test of section 10.3.7 in CSS2.1. "
+        text run at (269,14) width 252: "In particular it is a test of the shrink-to-fit algorithm's "
+        text run at (521,14) width 185: "preferred minimum width computation."
+layer at (8,36) size 100x106
+  RenderBlock (positioned) {DIV} at (0,0) size 100x106
+    RenderBlock {SPAN} at (0,0) size 100x50 [bgcolor=#008000]
+    RenderText {#text} at (0,0) size 0x0
+    RenderBlock {SPAN} at (0,53) size 100x50 [bgcolor=#008000]
+    RenderText {#text} at (0,0) size 0x0

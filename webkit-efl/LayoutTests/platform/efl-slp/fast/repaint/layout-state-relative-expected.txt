@@ -1,0 +1,21 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x60
+  RenderBlock {HTML} at (0,0) size 800x60
+    RenderBody {BODY} at (8,12) size 784x40
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 75x14
+          text run at (0,0) width 75: "Repaint test for "
+        RenderInline {I} at (0,0) size 389x14
+          RenderInline {A} at (0,0) size 117x14 [color=#0000EE]
+            RenderText {#text} at (75,0) size 117x14
+              text run at (75,0) width 117: "rdar://problem/6048566"
+          RenderText {#text} at (192,0) size 272x14
+            text run at (192,0) width 3: " "
+            text run at (195,0) width 269: "Repaint original element's position, not its offset position"
+        RenderText {#text} at (464,0) size 3x14
+          text run at (464,0) width 3: "."
+layer at (8,138) size 784x14
+  RenderBlock (relative positioned) {DIV} at (0,26) size 784x14
+    RenderText {#text} at (0,0) size 30x14
+      text run at (0,0) width 30: "PASS"

@@ -1,0 +1,990 @@
+# Ukrainian messages for GNU cpio
+# Copyright (C) 2006 Free Software Foundation, Inc.
+# Sergey Poznyakoff <gray@gnu.org>, 2005, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: cpio 2.6.90\n"
+"Report-Msgid-Bugs-To: bug-cpio@gnu.org\n"
+"POT-Creation-Date: 2007-06-07 14:16+0300\n"
+"PO-Revision-Date: 2007-06-08 12:07+0300\n"
+"Last-Translator: Sergey Poznyakoff <gray@gnu.org>\n"
+"Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: src/copyin.c:45
+#, c-format
+msgid "warning: skipped %ld byte of junk"
+msgid_plural "warning: skipped %ld bytes of junk"
+msgstr[0] "попередження: пропускається %ld байт зі сміттям"
+msgstr[1] "попередження: пропускається %ld байти зі сміттям"
+msgstr[2] "попередження: пропускається %ld байтів зі сміттям"
+
+#: src/copyin.c:66
+#, c-format
+msgid "rename %s -> "
+msgstr "перейменування %s ->"
+
+#: src/copyin.c:95 src/copyout.c:562
+#, c-format
+msgid "%s: file name too long"
+msgstr "%s: надто довга назва файлу"
+
+# FIXME: Should be %#х
+#: src/copyin.c:181 src/copyin.c:528 src/copyin.c:553 src/copyin.c:1524
+#, c-format
+msgid "%s: checksum error (0x%lx, should be 0x%lx)"
+msgstr "%s: помилка контрольної суми (0x%lx, мало бути 0x%lx)"
+
+#: src/copyin.c:208 src/copypass.c:129
+#, c-format
+msgid "%s not created: newer or same age version exists"
+msgstr "%s не створено: існуюча версія є новішою або ровесником архівної"
+
+#: src/copyin.c:218 src/copypass.c:137
+#, c-format
+msgid "cannot remove current %s"
+msgstr "не вдається видалити поточний %s"
+
+#: src/copyin.c:279 src/copyin.c:476 src/copyin.c:683 src/copypass.c:427
+#, c-format
+msgid "cannot link %s to %s"
+msgstr "не вдається створити посилання %s на %s"
+
+#: src/copyin.c:509
+#, c-format
+msgid "cannot swap halfwords of %s: odd number of halfwords"
+msgstr ""
+"не вдається замінити містами півслова у назві %s: непарна кількість півслів"
+
+#: src/copyin.c:517
+#, c-format
+msgid "cannot swap bytes of %s: odd number of bytes"
+msgstr ""
+"не вдається замінити містами байти у назві %s: непарна кількість півслів"
+
+#: src/copyin.c:642
+#, c-format
+msgid "%s is not a directory"
+msgstr "`%s' не є каталогом"
+
+#: src/copyin.c:755
+#, c-format
+msgid "%s: Cannot symlink to %s"
+msgstr "%s: не вдається створити посилання на %s"
+
+#: src/copyin.c:809 src/copyout.c:851 src/copypass.c:356
+#, c-format
+msgid "%s: unknown file type"
+msgstr "%s: невідомий тип файла"
+
+#: src/copyin.c:994 src/copyin.c:1001
+#, c-format
+msgid "Malformed number %.*s"
+msgstr "Недійсне число %.*s"
+
+#: src/copyin.c:1011
+#, c-format
+msgid "Archive value %.*s is out of range"
+msgstr "Архівне значення %.*s поза межами діапазону"
+
+#: src/copyin.c:1046
+#, c-format
+msgid "premature end of archive"
+msgstr "передчасне закінчення файла"
+
+#: src/copyin.c:1266
+#, c-format
+msgid "warning: archive header has reverse byte-order"
+msgstr "попередження: зворотний порядок байтів у заголовку архіву"
+
+#: src/copyin.c:1413
+#, c-format
+msgid "standard input is closed"
+msgstr "стандартний ввід замкнутий"
+
+#: src/copyin.c:1576 src/copyout.c:893 src/copypass.c:370
+#, c-format
+msgid "%d block\n"
+msgid_plural "%d blocks\n"
+msgstr[0] "%d блок\n"
+msgstr[1] "%d блокі\n"
+msgstr[2] "%d блоків\n"
+
+#: src/copyout.c:51 src/copyout.c:60
+#, c-format
+msgid "cannot read checksum for %s"
+msgstr "не можу прочитати контрольну суму для %s"
+
+#: src/copyout.c:300
+#, c-format
+msgid "%s: field width not sufficient for storing %s"
+msgstr "%s: недостатній розмір поля для запису %s"
+
+#: src/copyout.c:308
+#, c-format
+msgid "%s: truncating %s"
+msgstr "%s: поле `%s' обрізано"
+
+#: src/copyout.c:343 src/copyout.c:406 src/copyout.c:480
+msgid "inode number"
+msgstr "номер і-вузла"
+
+#: src/copyout.c:346 src/copyout.c:409 src/copyout.c:484
+msgid "file mode"
+msgstr "права доступу"
+
+#: src/copyout.c:349 src/copyout.c:411 src/copyout.c:488
+msgid "uid"
+msgstr "uid"
+
+#: src/copyout.c:352 src/copyout.c:413 src/copyout.c:492
+msgid "gid"
+msgstr "gid"
+
+#: src/copyout.c:355 src/copyout.c:416 src/copyout.c:496
+msgid "number of links"
+msgstr "кількість посилань"
+
+#: src/copyout.c:358 src/copyout.c:421
+msgid "modification time"
+msgstr "час модифікації"
+
+#: src/copyout.c:361 src/copyout.c:428 src/copyout.c:515
+msgid "file size"
+msgstr "розмір файлу"
+
+#: src/copyout.c:365
+msgid "device major number"
+msgstr "головний номер пристрою"
+
+#: src/copyout.c:369
+msgid "device minor number"
+msgstr "другорядний номер пристрою"
+
+#: src/copyout.c:373
+msgid "rdev major"
+msgstr "головний номер пристрою і-вузла"
+
+#: src/copyout.c:377
+msgid "rdev minor"
+msgstr "другорядний номер пристрою і-вузла"
+
+#: src/copyout.c:381 src/copyout.c:424 src/copyout.c:505
+msgid "name size"
+msgstr "довжина назви"
+
+#: src/copyout.c:403
+msgid "device number"
+msgstr "номер пристрою"
+
+#: src/copyout.c:418
+msgid "rdev"
+msgstr "пристрій і-вузла"
+
+#: src/copyout.c:476
+#, c-format
+msgid "%s: truncating inode number"
+msgstr "%s: номер і-вузла обрізано"
+
+#: src/copyout.c:620
+#, c-format
+msgid "standard output is closed"
+msgstr "стандартний вивід замкнутий"
+
+#: src/copyout.c:641 src/copypass.c:86
+#, c-format
+msgid "blank line ignored"
+msgstr "ігнорування пустого рядку"
+
+#: src/copyout.c:776
+#, c-format
+msgid "%s not dumped: not a regular file"
+msgstr "%s не архівується: не є звичайним файлом"
+
+#: src/copyout.c:827
+#, c-format
+msgid "%s: symbolic link too long"
+msgstr "%s: надто довге символічне посилання"
+
+#: src/copypass.c:422
+#, c-format
+msgid "%s linked to %s"
+msgstr "створено посилання %s до %s"
+
+#: src/main.c:67
+msgid ""
+"GNU `cpio' copies files to and from archives\n"
+"\n"
+"Examples:\n"
+"  # Copy files named in name-list to the archive\n"
+"  cpio -o < name-list [> archive]\n"
+"  # Extract files from the archive\n"
+"  cpio -i [< archive]\n"
+"  # Copy files named in name-list to destination-directory\n"
+"  cpio -p destination-directory < name-list\n"
+msgstr ""
+"GNU `cpio' копіює файли до або з архівів\n"
+"\n"
+"Приклади:\n"
+"  # Копіювати файли, вказані у переліку файлів, у архів\n"
+"  cpio -o < перелік-файлів [> архів]\n"
+"  # Витягувати файли з архіву\n"
+"  cpio -i [< архів]\n"
+"  # Копіювати файли, вказані у переліку файлів, до каталогу-призначення\n"
+"  cpio -p каталог-призначення < перелік-файлів\n"
+
+#: src/main.c:81
+#, c-format
+msgid "%s is meaningless with %s"
+msgstr "%s не має сенсу з %s"
+
+#: src/main.c:87
+msgid "Main operation mode:"
+msgstr "Режими роботи:"
+
+#: src/main.c:89
+msgid "Create the archive (run in copy-out mode)"
+msgstr "Створити архів (виконання у режимі \"копіювання-з\")"
+
+#: src/main.c:91
+msgid "Extract files from an archive (run in copy-in mode)"
+msgstr "Витягнути файли з архіву  (виконання у режимі \"копіювання-до\")"
+
+#: src/main.c:93
+msgid "Run in copy-pass mode"
+msgstr "(виконання у режимі \"копіювання-через\")"
+
+#: src/main.c:95
+msgid "Print a table of contents of the input"
+msgstr "Вивести зміст вхідного архіву"
+
+#: src/main.c:101
+msgid "Operation modifiers valid in any mode:"
+msgstr "Модифікатори дійсні у будь-якому режимі:"
+
+#: src/main.c:103 src/main.c:170 src/main.c:199
+msgid "[[USER@]HOST:]FILE-NAME"
+msgstr "[[КОРИСТУВАЧ@]МАШИНА:]НАЗВА-ФАЙЛУ"
+
+#: src/main.c:104
+msgid ""
+"Use this FILE-NAME instead of standard input or output. Optional USER and "
+"HOST specify the user and host names in case of a remote archive"
+msgstr ""
+"Використовувати цю назву файлу як стандартний ввід або вивід. Необов'язкові "
+"частини КОРИСТУВАЧ та МАШИНА визначають ім'я користувача та назву машини у "
+"випадку віддаленого архіву."
+
+#: src/main.c:106
+msgid "Archive file is local, even if its name contains colons"
+msgstr "Файл архіву є локальним, навіть якщо його назва містить двокрапки"
+
+#: src/main.c:107
+msgid "FORMAT"
+msgstr "ФОРМАТ"
+
+#: src/main.c:108
+msgid "Use given archive FORMAT"
+msgstr "Використовувати вказаний формат архіву"
+
+#: src/main.c:110
+msgid "Set the I/O block size to 5120 bytes"
+msgstr "Встановити розмір блоку вводу-виводу у 5120 байтів"
+
+#: src/main.c:111
+msgid "BLOCK-SIZE"
+msgstr "РОЗМІР-БЛОКУ"
+
+#: src/main.c:112
+msgid "Set the I/O block size to BLOCK-SIZE * 512 bytes"
+msgstr "Встановити розмір блоку вводу-виводу у РОЗМІР-БЛОКУ*512 байтів"
+
+#: src/main.c:114
+msgid "Use the old portable (ASCII) archive format"
+msgstr "Використовувати старий переносний формат архіву (ASCII)"
+
+#: src/main.c:116
+msgid "Print a \".\" for each file processed"
+msgstr "Друкувати крапку після кожного обробленого файлу"
+
+#: src/main.c:117
+msgid "NUMBER"
+msgstr "ЧИСЛО"
+
+#: src/main.c:118
+msgid "Set the I/O block size to the given NUMBER of bytes"
+msgstr "Встановити розмір блоку вводу-виводу у вказане ЧИСЛО байтів"
+
+#: src/main.c:119
+msgid "STRING"
+msgstr "РЯДОК"
+
+#: src/main.c:120
+msgid "Print STRING when the end of a volume of the backup media is reached"
+msgstr "Друкувати РЯДОК після досягнення кінця тому на носії"
+
+#: src/main.c:123
+msgid "Only copy files that do not match any of the given patterns"
+msgstr ""
+"Копіювати лише такі файли, що їх назви не співпадають з жодним з вказаних "
+"шаблонів"
+
+#: src/main.c:125
+msgid "In the verbose table of contents listing, show numeric UID and GID"
+msgstr "У детальному змісті виводити цифрові значення UID та GID"
+
+#: src/main.c:127
+msgid "COMMAND"
+msgstr "КОМАНДА"
+
+#: src/main.c:128
+msgid "Use remote COMMAND instead of rsh"
+msgstr "Використовувати вказану команду замість rsh"
+
+#: src/main.c:130
+msgid "Do not print the number of blocks copied"
+msgstr "Не виводити кількість скопійованих блоків"
+
+#: src/main.c:132
+msgid "Verbosely list the files processed"
+msgstr "Виводити докладну інформацію про оброблені файли"
+
+#: src/main.c:135
+msgid "Enable debugging info"
+msgstr "Увімкнути налагодження"
+
+#: src/main.c:137
+msgid "FLAG"
+msgstr "ОЗНАКА"
+
+#: src/main.c:138
+msgid ""
+"Control warning display. Currently FLAG is one of 'none', 'truncate', 'all'. "
+"Multiple options accumulate."
+msgstr ""
+"Управління відображенням попереджень. Наразі ознака має бути однією з "
+"'none', 'truncate', 'all'. Дозволяється вказування декількох опцій -W"
+
+#: src/main.c:144
+msgid "Operation modifiers valid only in copy-in mode:"
+msgstr "Опції-модифікатори, що є дійсними лише у режимі \"копіювання-до\":"
+
+#: src/main.c:145 src/main.c:151
+msgid "FILE"
+msgstr "ФАЙЛ"
+
+#: src/main.c:146
+msgid ""
+"Read additional patterns specifying filenames to extract or list from FILE"
+msgstr ""
+"Прочитати з ФАЙЛУ додаткові шаблони назв файлів, що їх треба витягти або "
+"надрукувати"
+
+#: src/main.c:148
+msgid ""
+"When reading a CRC format archive, only verify the CRC's of each file in the "
+"archive, don't actually extract the files"
+msgstr ""
+"Під час читання архіву у форматі CRC, лише перевіряти контрольні суми файлів "
+"з архіву, але не витягувати їх"
+
+#: src/main.c:150
+msgid "Interactively rename files"
+msgstr "Інтерактивне перейменування файлів"
+
+#: src/main.c:154
+msgid ""
+"Swap both halfwords of words and bytes of halfwords in the data. Equivalent "
+"to -sS"
+msgstr "Міняти містами півслова у словах і байти у півсловах. Те ж саме, -sS"
+
+#: src/main.c:156
+msgid "Swap the bytes of each halfword in the files"
+msgstr "Міняти містами байти у півсловах"
+
+#: src/main.c:158
+msgid "Swap the halfwords of each word (4 bytes) in the files"
+msgstr "Міняти містами півслова у кожному слові (4 байти)"
+
+#: src/main.c:161
+msgid "Extract files to standard output"
+msgstr "Витягувати файли у стандартний вивід"
+
+#: src/main.c:167
+msgid "Operation modifiers valid only in copy-out mode:"
+msgstr "Опції-модифікатори, що є дійсними лише у режимі \"копіювання-з\""
+
+#: src/main.c:169
+msgid "Append to an existing archive."
+msgstr "Додати до існуючого архіву."
+
+#: src/main.c:171
+msgid ""
+"Archive filename to use instead of standard output. Optional USER and HOST "
+"specify the user and host names in case of a remote archive"
+msgstr ""
+"Використовувати вказану назву файлу замість стандартного виводу. "
+"Необов'язкові частини  МАШИНА та КОРИСТУВАЧ визначають назву машини та  ім'я "
+"користувача у випадку віддаленого архіву."
+
+#: src/main.c:177
+msgid "Operation modifiers valid only in copy-pass mode:"
+msgstr "Опції-модифікатори, що є дійсними лише у режимі \"копіювання-через\""
+
+#: src/main.c:179
+msgid "Link files instead of copying them, when  possible"
+msgstr "Коли це можливо, створювати посилання до файлів замість їх копіювання"
+
+#: src/main.c:186
+msgid "Operation modifiers valid in copy-in and copy-out modes:"
+msgstr ""
+"Опції-модифікатори, дійсні у режимах \"копіювання-з\" і \"копіювання-до\""
+
+#: src/main.c:188
+msgid "Do not strip file system prefix components from the file names"
+msgstr "Не видаляти префікс файлової системи з назв файлів"
+
+#: src/main.c:191
+msgid "Create all files relative to the current directory"
+msgstr "Створювати файли відносно поточного каталогу"
+
+#: src/main.c:196
+msgid "Operation modifiers valid in copy-out and copy-pass modes:"
+msgstr ""
+"Опції-модифікатори, дійсні у режимах \"копіювання-з\" і \"копіювання-через\":"
+
+#: src/main.c:198
+msgid ""
+"A list of filenames is terminated by a null character instead of a newline"
+msgstr ""
+"Роздільником назв файлів у переліку є нульовий символ, замість символу "
+"нового рядку"
+
+#: src/main.c:200
+msgid ""
+"Archive filename to use instead of standard input. Optional USER and HOST "
+"specify the user and host names in case of a remote archive"
+msgstr ""
+"Використовувати вказану назву файлу замість стандартного вводу. "
+"Необов'язкові частини КОРИСТУВАЧ та МАШИНА визначають ім'я користувача та "
+"назву машини у випадку віддаленого архіву."
+
+#: src/main.c:202
+msgid ""
+"Dereference  symbolic  links  (copy  the files that they point to instead of "
+"copying the links)."
+msgstr ""
+"Оброблювати файли на яки вказують символічні посилання (копіювати самі файли "
+"замість копіювання посилань)"
+
+#: src/main.c:203
+msgid "[USER][:.][GROUP]"
+msgstr "[КОРИСТУВАЧ][:.][ГРУПА]"
+
+#: src/main.c:204
+msgid ""
+"Set the ownership of all files created to the specified USER and/or GROUP"
+msgstr ""
+"Встановити вказаного користувача і/або ГРУПУ власником усіх створених файлів"
+
+#: src/main.c:206
+msgid "Reset the access times of files after reading them"
+msgstr "Відновляти час доступу після читання файлу"
+
+#: src/main.c:212
+msgid "Operation modifiers valid in copy-in and copy-pass modes:"
+msgstr ""
+"Опції-модифікатори, що є дійсними у режимах \"копіювання-до\" і \"копіювання-"
+"через\""
+
+#: src/main.c:214
+msgid "Retain previous file modification times when creating files"
+msgstr "Залишати без змін час модифікації після створення файлу"
+
+#: src/main.c:216
+msgid "Create leading directories where needed"
+msgstr "Створювати початкові каталоги якщо необхідно"
+
+#: src/main.c:218
+msgid "Do not change the ownership of the files"
+msgstr "Не змінювати власників файлів"
+
+#: src/main.c:220
+msgid "Replace all files unconditionally"
+msgstr "Завжди перезаписувати існуючі файли під час витягування"
+
+#: src/main.c:222
+msgid "Write files with large blocks of zeros as sparse files"
+msgstr "Записувати файли, що містять великі блоки нулів, як розсіяні файлі "
+
+#: src/main.c:228
+msgid "Informative options:"
+msgstr "Інформативний вивід:"
+
+#: src/main.c:230
+msgid "Give this help list"
+msgstr "Показати цю довідку"
+
+#: src/main.c:231
+msgid "Give a short usage message"
+msgstr "Показати коротке повідомлення про використання"
+
+#: src/main.c:232
+msgid "Print license and exit"
+msgstr "Вивести текст ліцензії та вийти"
+
+#: src/main.c:233
+msgid "Print program version"
+msgstr "Вивести версію програми"
+
+#: src/main.c:237
+msgid "hang for SECS seconds (default 3600)"
+msgstr "зачекати вказану кількість секунд (типово 3600)"
+
+#: src/main.c:250
+#, c-format
+msgid ""
+"   GNU cpio is free software; you can redistribute it and/or modify\n"
+"   it under the terms of the GNU General Public License as published by\n"
+"   the Free Software Foundation; either version 2 of the License, or\n"
+"   (at your option) any later version.\n"
+"\n"
+"   GNU cpio is distributed in the hope that it will be useful,\n"
+"   but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"   GNU General Public License for more details.\n"
+"\n"
+"   You should have received a copy of the GNU General Public License\n"
+"   along with GNU cpio; if not, write to the Free Software Foundation,\n"
+"   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\n"
+"\n"
+msgstr ""
+"   GNU cpio є вільною програмою; ви можете розповсюджувати її чи/та\n"
+"   змінювати її на умовах ліцензії GNU General Public License\n"
+"   опублікованої Free Software Foundation; версії 2 цієї ліцензії, або\n"
+"   (за вашим бажанням) будь-якої пізнішої версії.\n"
+"\n"
+"   GNU cpio розповсюджується з надією, що вона буде корисною, але\n"
+"   БЕЗ БУДЬ-ЯКОЇ ГАРАНТІЇ; навіть без неявної гарантії\n"
+"   КОМЕРЦІЙНОЇ ПРИДАТНОСТІ або ПРИДАТНОСТІ ДЛЯ ПЕВНОЇ МЕТИ. Докладніше\n"
+"   про це читайте у GNU General Public License.\n"
+"\n"
+"   Разом з програмою GNU cpio ви повинні були отримати копію GNU General\n"
+"   Public License; якщо це не так, напишіть до Free Software\n"
+"   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 "
+"USA\n"
+
+#: src/main.c:333 src/main.c:350
+#, c-format
+msgid "invalid block size"
+msgstr "невірний розмір блоку"
+
+#: src/main.c:339 src/main.c:371
+#, c-format
+msgid "Archive format multiply defined"
+msgstr "Формат архіву вказано декілька разів"
+
+#: src/main.c:389
+#, c-format
+msgid ""
+"invalid archive format `%s'; valid formats are:\n"
+"crc newc odc bin ustar tar (all-caps also recognized)"
+msgstr ""
+"недійсний формат архіву `%s'; дійсними форматами є:\n"
+"crc newx odc bin ustar tar (дозволяються також назви великими літерами)"
+
+#: src/main.c:396 src/main.c:446 src/main.c:460
+#, c-format
+msgid "Mode already defined"
+msgstr "Режим роботи вже встановлено"
+
+#: src/main.c:440
+#, c-format
+msgid "--no-preserve-owner cannot be used with --owner"
+msgstr ""
+"опцію --no-preserve-owner не можна використовувати разом з опцією --owner"
+
+#: src/main.c:483
+#, c-format
+msgid "--owner cannot be used with --no-preserve-owner"
+msgstr ""
+"опцію --owner не можна використовувати разом з опцією --no-preserve-owner"
+
+#: src/main.c:530
+#, c-format
+msgid "Invalid value for --warning option: %s"
+msgstr "Недійсне значення опції --warning: %s"
+
+#: src/main.c:583
+msgid "[destination-directory]"
+msgstr "[каталог-призначення]"
+
+#: src/main.c:602 src/main.c:618
+#, c-format
+msgid ""
+"You must specify one of -oipt options.\n"
+"Try `%s --help' or `%s --usage' for more information.\n"
+msgstr ""
+"Необхідно вказати одну з опцій -oipt.\n"
+"Спробуйте `%s --help' або `%s --usage' для отримання докладнішого опису.\n"
+
+#: src/main.c:646
+#, c-format
+msgid "Both -I and -F are used in copy-in mode"
+msgstr "Опції -I та -F використані разом у режимі \"копіювання-до\")"
+
+#: src/main.c:658 src/main.c:694
+#, c-format
+msgid "Too many arguments"
+msgstr "Забагато аргументів"
+
+#: src/main.c:677
+#, c-format
+msgid ""
+"--append is used but no archive file name is given (use -F or -O options)"
+msgstr ""
+"Використано опцію --append але не вказано назви архіву (використовуйте опцію "
+"-F або -O)"
+
+#: src/main.c:683
+#, c-format
+msgid "Both -O and -F are used in copy-out mode"
+msgstr "Опції -O та -F використані разом у режимі \"копіювання-з\")"
+
+#: src/main.c:696
+#, c-format
+msgid "Not enough arguments"
+msgstr "Забагато аргументів"
+
+#: src/main.c:700
+#, c-format
+msgid "Archive format is not specified in copy-pass mode (use --format option)"
+msgstr ""
+"Не вказано формату архіву у режимі \"копіювання-через\" (використовуйте "
+"опцію --format)"
+
+#: src/main.c:722
+#, c-format
+msgid "-F can be used only with --create or --extract"
+msgstr "-F можна використовувати лише з опціями --create або --extract"
+
+#: src/main.c:725
+#, c-format
+msgid "Cannot open %s"
+msgstr "не вдається відкрити %s"
+
+#: src/main.c:797
+#, c-format
+msgid "error closing archive"
+msgstr "помилка закривання архіву"
+
+#: src/makepath.c:117 src/makepath.c:184
+#, c-format
+msgid "cannot make directory `%s'"
+msgstr "не вдається створити каталог `%s'"
+
+#: src/makepath.c:159 src/makepath.c:237
+#, c-format
+msgid "`%s' exists but is not a directory"
+msgstr "`%s' існує, але не є каталогом"
+
+#: src/mt.c:183
+#, c-format
+msgid "%s is not a character special file"
+msgstr "%s: не є файлом символьного пристрою"
+
+#: src/mt.c:196 src/mt.c:205
+#, c-format
+msgid "%s: rmtioctl failed"
+msgstr "%s: не вдалося виконати операцію rmtioctl"
+
+#: src/mt.c:225
+#, c-format
+msgid ""
+"Usage: %s [-V] [-f device] [--file=device] [--rsh-command=command]\n"
+"\t[--help] [--version] operation [count]\n"
+msgstr ""
+"Використання: %s [-V] [-f пристрій] [--file=пристрій] [--rsh-"
+"command=команда]\n"
+"        [--help] [--version] операція [кількість]\n"
+
+#: src/mt.c:307
+#, c-format
+msgid "no tape device specified"
+msgstr "не вказано стрічкового пристрою"
+
+#: src/mt.c:320
+#, c-format
+msgid "%s: rmtopen failed"
+msgstr "%s: не вдалося виконати операцію rmtopen"
+
+#: src/mt.c:333
+#, c-format
+msgid "%s: rmtclose failed"
+msgstr "%s: не вдалося виконати операцію rmtclose"
+
+#: src/tar.c:308
+#, c-format
+msgid "invalid header: checksum error"
+msgstr "невірний заголовок: помилка контрольної суми"
+
+#: src/userspec.c:142
+msgid "invalid user"
+msgstr "невірний користувач"
+
+#: src/userspec.c:148
+msgid "cannot get the login group of a numeric UID"
+msgstr "не можу отримати групу реєстрації з її номера"
+
+#: src/userspec.c:188
+msgid "invalid group"
+msgstr "невірна група"
+
+#: src/util.c:91 src/util.c:94 src/util.c:143
+#, c-format
+msgid "write error"
+msgstr "помилка запису"
+
+#: src/util.c:205 src/util.c:374
+#, c-format
+msgid "read error"
+msgstr "помилка читання"
+
+#: src/util.c:208
+#, c-format
+msgid "premature end of file"
+msgstr "передчасне закінчення файла"
+
+#: src/util.c:493 src/util.c:543
+#, c-format
+msgid "File %s shrunk by %s byte, padding with zeros"
+msgid_plural "File %s shrunk by %s bytes, padding with zeros"
+msgstr[0] "Файл %s скоротився на %s байт; заповнення нулями"
+msgstr[1] "Файл %s скоротився на %s байти; заповнення нулями"
+msgstr[2] "Файл %s скоротився на %s байтів; заповнення нулями"
+
+#: src/util.c:499 src/util.c:549
+#, c-format
+msgid "Read error at byte %lld in file %s, padding with zeros"
+msgstr "Помилка читання файлу %2$s в позиції %1$lld; заповнення нулями"
+
+#: src/util.c:584
+#, c-format
+msgid "File %s grew, %<PRIuMAX> new byte not copied"
+msgid_plural "File %s grew, %<PRIuMAX> new bytes not copied"
+msgstr[0] "Розмір файлу %s збільшився, не скопійовано %<PRIuMAX> байтів"
+msgstr[1] "Розмір файлу %s збільшився, не скопійовано %<PRIuMAX> байтів"
+msgstr[2] "Розмір файлу %s збільшився, не скопійовано %<PRIuMAX> байтів"
+
+#: src/util.c:590
+#, c-format
+msgid "File %s was modified while being copied"
+msgstr "Файл %s був модифікований під час копіювання"
+
+#: src/util.c:618
+#, c-format
+msgid "virtual memory exhausted"
+msgstr "віртуальну пам'ять вичерпано"
+
+#: src/util.c:654 src/util.c:660
+#, c-format
+msgid "cannot seek on output"
+msgstr "не вдається виконати lseek на вихідному файлі"
+
+#: src/util.c:832
+#, c-format
+msgid "Found end of tape.  Load next tape and press RETURN. "
+msgstr "Кінець стрічки. Завантажте наступну стрічку та натисніть RETURN. "
+
+#: src/util.c:834
+#, c-format
+msgid "Found end of tape.  To continue, type device/file name when ready.\n"
+msgstr "Кінець стрічки. Щоб продовжити, введіть назву пристрою або файлу.\n"
+
+#: src/util.c:857
+#, c-format
+msgid "To continue, type device/file name when ready.\n"
+msgstr "Щоб продовжити, введіть назву пристрою або файлу.\n"
+
+#: src/util.c:882
+#, c-format
+msgid "internal error: tape descriptor changed from %d to %d"
+msgstr "внутрішня помилка: дескриптор стрічки змінився з %d на %d"
+
+#: lib/getopt.c:531 lib/getopt.c:547
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: опція `%s' неоднозначна\n"
+
+#: lib/getopt.c:580 lib/getopt.c:584
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: опція `--%s' не може мати аргументу\n"
+
+#: lib/getopt.c:593 lib/getopt.c:598
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: опція `%c%s' не може мати аргументу\n"
+
+#: lib/getopt.c:641 lib/getopt.c:660 lib/getopt.c:976 lib/getopt.c:995
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: опція `%s' вимагає аргумент\n"
+
+#: lib/getopt.c:698 lib/getopt.c:701
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: невідома опція `--%s'\n"
+
+#: lib/getopt.c:709 lib/getopt.c:712
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: невідома опція `%c%s'\n"
+
+#: lib/getopt.c:764 lib/getopt.c:767
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: недопустима опція -- %c\n"
+
+#: lib/getopt.c:773 lib/getopt.c:776
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: невірна опція -- %c\n"
+
+#: lib/getopt.c:828 lib/getopt.c:844 lib/getopt.c:1048 lib/getopt.c:1066
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: опція вимагає аргумент -- %c\n"
+
+#: lib/getopt.c:897 lib/getopt.c:913
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: опція `-W %s' неоднозначна\n"
+
+#: lib/getopt.c:937 lib/getopt.c:955
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: опція `-W %s' не може мати аргументу\n"
+
+#: lib/rtapelib.c:299
+#, c-format
+msgid "exec/tcp: Service not available"
+msgstr "exec/tcp: сервіс відсутній"
+
+#: lib/rtapelib.c:303
+#, c-format
+msgid "stdin"
+msgstr "stdin"
+
+#: lib/rtapelib.c:306
+#, c-format
+msgid "stdout"
+msgstr "stdout"
+
+#: lib/rtapelib.c:512
+#, c-format
+msgid "Cannot execute remote shell"
+msgstr "Не вдалося запустити віддалену оболонку"
+
+#. TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
+#. Directly translating this to another language will not work, first because
+#. %s itself is not translated.
+#. Translate it as `%s: Function %s failed'.
+#: lib/paxerror.c:58 lib/paxerror.c:71
+#, c-format
+msgid "%s: Cannot %s"
+msgstr "%s: Помилка у функції %s"
+
+#. TRANSLATORS: %s after `Cannot' is a function name, e.g. `Cannot open'.
+#. Directly translating this to another language will not work, first because
+#. %s itself is not translated.
+#. Translate it as `%s: Function %s failed'.
+#: lib/paxerror.c:84
+#, c-format
+msgid "%s: Warning: Cannot %s"
+msgstr "%s: Попередження: Помилка у функції %s"
+
+#: lib/paxerror.c:93
+#, c-format
+msgid "%s: Cannot change mode to %s"
+msgstr "%s: Не вдається змінити права доступу на %s"
+
+#: lib/paxerror.c:101
+#, c-format
+msgid "%s: Cannot change ownership to uid %lu, gid %lu"
+msgstr "%s: Не вдається змінити власника на uid %lu, gid %lu"
+
+#: lib/paxerror.c:127
+#, c-format
+msgid "%s: Cannot hard link to %s"
+msgstr "%s: не вдається створити посилання на %s"
+
+#: lib/paxerror.c:179 lib/paxerror.c:211
+#, c-format
+msgid "%s: Read error at byte %s, while reading %lu byte"
+msgid_plural "%s: Read error at byte %s, while reading %lu bytes"
+msgstr[0] "%s: Помилка в позиції %s, під час читання %lu байта"
+msgstr[1] "%s: Помилка в позиції %s, під час читання %lu байтів"
+msgstr[2] "%s: Помилка в позиції %s, під час читання %lu байтів"
+
+#: lib/paxerror.c:192
+#, c-format
+msgid "%s: Warning: Read error at byte %s, while reading %lu byte"
+msgid_plural "%s: Warning: Read error at byte %s, while reading %lu bytes"
+msgstr[0] "%s: Попередження: Помилка в позиції %s, під час читання %lu байта"
+msgstr[1] "%s: Попередження: Помилка в позиції %s, під час читання %lu байтів"
+msgstr[2] "%s: Попередження: Помилка в позиції %s, під час читання %lu байтів"
+
+#: lib/paxerror.c:259
+#, c-format
+msgid "%s: Cannot seek to %s"
+msgstr "%s: Не вдається створити посилання на %s"
+
+#: lib/paxerror.c:275
+#, c-format
+msgid "%s: Warning: Cannot seek to %s"
+msgstr "%s: Не вдається виконати lseek до %s"
+
+#: lib/paxerror.c:284
+#, c-format
+msgid "%s: Cannot create symlink to %s"
+msgstr "%s: Не вдається створити символічне посилання на %s"
+
+#: lib/paxerror.c:349
+#, c-format
+msgid "%s: Wrote only %lu of %lu byte"
+msgid_plural "%s: Wrote only %lu of %lu bytes"
+msgstr[0] "%s: Вдалося записати тільки %lu з %lu байта"
+msgstr[1] "%s: Вдалося записати тільки %lu з %lu байтів"
+msgstr[2] "%s: Вдалося записати тільки %lu з %lu байтів"
+
+#: lib/paxnames.c:132
+#, c-format
+msgid "Removing leading `%s' from member names"
+msgstr "Видалення початкового префіксу `%s' з назв файлів"
+
+#: lib/paxnames.c:133
+#, c-format
+msgid "Removing leading `%s' from hard link targets"
+msgstr "Видалення початкового префіксу `%s' з назви цілі жорсткого посилання"
+
+#: lib/paxnames.c:146
+msgid "Substituting `.' for empty member name"
+msgstr "Підстановка `.' замість пустої назви файлу"
+
+#: lib/paxnames.c:147
+msgid "Substituting `.' for empty hard link target"
+msgstr "Підстановка `.' замість пустої назви цілі жорсткого посилання"
+
+#~ msgid "error %d"
+#~ msgstr "помилка %d"
+
+#~ msgid "%s: Read error at byte %s, reading %lu byte"
+#~ msgid_plural "%s: Read error at byte %s, reading %lu bytes"
+#~ msgstr[0] "%s: Помилка в позиції %s, під час читання %lu байта"
+#~ msgstr[1] "%s: Помилка в позиції %s, під час читання %lu байтів"
+#~ msgstr[2] "%s: Помилка в позиції %s, під час читання %lu байтів"

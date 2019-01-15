@@ -1,0 +1,50 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x33
+        RenderText {#text} at (0,0) size 192x33
+          text run at (0,0) width 192: ".one {font-variant: small-caps;}"
+          text run at (192,0) width 0: " "
+          text run at (0,11) width 168: ".two {font-variant: normal;}"
+          text run at (168,11) width 0: " "
+          text run at (0,22) width 0: " "
+      RenderBlock {HR} at (0,69) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,83) size 784x14
+        RenderText {#text} at (0,0) size 196x14
+          text run at (0,0) width 196: "This Paragraph should be in Small Caps."
+      RenderBlock {P} at (0,109) size 784x14
+        RenderText {#text} at (0,0) size 420x14
+          text run at (0,0) width 420: "This Paragraph should be in Small Caps, but the Last Word in the Sentence should be "
+        RenderInline {SPAN} at (0,0) size 36x14
+          RenderText {#text} at (420,0) size 36x14
+            text run at (420,0) width 36: "Normal"
+        RenderText {#text} at (456,0) size 3x14
+          text run at (456,0) width 3: "."
+      RenderTable {TABLE} at (0,135) size 480x72 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 478x70
+          RenderTableRow {TR} at (0,0) size 478x22
+            RenderTableCell {TD} at (0,0) size 478x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 478x48
+            RenderTableCell {TD} at (0,35) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 467x48 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 459x14
+                RenderText {#text} at (0,0) size 196x14
+                  text run at (0,0) width 196: "This Paragraph should be in Small Caps."
+              RenderBlock {P} at (4,30) size 459x14
+                RenderText {#text} at (0,0) size 420x14
+                  text run at (0,0) width 420: "This Paragraph should be in Small Caps, but the Last Word in the Sentence should be "
+                RenderInline {SPAN} at (0,0) size 36x14
+                  RenderText {#text} at (420,0) size 36x14
+                    text run at (420,0) width 36: "Normal"
+                RenderText {#text} at (456,0) size 3x14
+                  text run at (456,0) width 3: "."

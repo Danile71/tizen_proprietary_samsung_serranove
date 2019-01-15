@@ -1,0 +1,112 @@
+layer at (0,0) size 800x1101
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x1101
+  RenderBlock {HTML} at (0,0) size 800x1101
+    RenderBody {BODY} at (8,8) size 784x1085 [bgcolor=#FFFFFF]
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 348x14
+          text run at (0,0) width 348: "This is a simple example of table height problems with only a single table."
+      RenderBlock {P} at (0,26) size 784x28
+        RenderText {#text} at (0,0) size 773x28
+          text run at (0,0) width 359: "The indention here is to specify a table with two rows. The table has a fixed "
+          text run at (359,0) width 392: "overall width (200 for the example) and two rows. The first row 'just high enough' "
+          text run at (751,0) width 22: "for a"
+          text run at (0,14) width 310: "title line, and the second contains the rest. Creating such a table is "
+          text run at (310,14) width 142: "hamperd by a number of bugs"
+      RenderBlock {OL} at (0,66) size 784x42
+        RenderListItem {LI} at (40,0) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "1"
+          RenderText {#text} at (0,0) size 343x14
+            text run at (0,0) width 343: "If a height is specified for only one row (not both) then it will be ignored"
+        RenderListItem {LI} at (40,14) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "2"
+          RenderText {#text} at (0,0) size 500x14
+            text run at (0,0) width 323: "If specified heights are insufficient (because the content is too large) "
+            text run at (323,0) width 177: "then the entire table will be expanded."
+        RenderListItem {LI} at (40,28) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "3"
+          RenderText {#text} at (0,0) size 587x14
+            text run at (0,0) width 344: "Percentage heights appear to simply be translated into pixel heights prior "
+            text run at (344,0) width 243: "to other processing, so offer no additional solutions"
+      RenderBlock {P} at (0,120) size 784x14
+        RenderText {#text} at (0,0) size 380x14
+          text run at (0,0) width 352: "This following table ought to give the desired results (small title line, large "
+          text run at (352,0) width 28: "body)"
+      RenderBlock {P} at (0,146) size 784x14
+        RenderText {#text} at (0,0) size 84x14
+          text run at (0,0) width 84: "It is specifiable as"
+      RenderBlock {BLOCKQUOTE} at (40,172) size 704x42
+        RenderBlock {P} at (0,0) size 704x42
+          RenderText {#text} at (0,0) size 85x14
+            text run at (0,0) width 85: "Table height: 200 "
+          RenderBR {BR} at (85,11) size 0x0
+          RenderText {#text} at (0,14) size 98x14
+            text run at (0,14) width 98: "First Row : 1 or 1% "
+          RenderInline {I} at (0,0) size 163x14
+            RenderText {#text} at (98,14) size 163x14
+              text run at (98,14) width 163: "(i.e. expand to minimum required)"
+          RenderBR {BR} at (261,25) size 0x0
+          RenderText {#text} at (0,28) size 127x14
+            text run at (0,28) width 127: "Second Row : unspecified "
+          RenderInline {I} at (0,0) size 232x14
+            RenderText {#text} at (127,28) size 232x14
+              text run at (127,28) width 232: "(i.e. table height - height of other rows+borders)"
+          RenderText {#text} at (0,0) size 0x0
+      RenderTable {TABLE} at (0,226) size 69x200 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 67x198
+          RenderTableRow {TR} at (0,2) size 67x20
+            RenderTableCell {TD} at (2,3) size 63x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 37x14
+                text run at (2,2) width 37: "title line"
+          RenderTableRow {TR} at (0,24) size 67x172
+            RenderTableCell {TD} at (2,101) size 63x18 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 59x14
+                text run at (2,2) width 59: "rest of space"
+      RenderBlock {P} at (0,438) size 784x14
+        RenderText {#text} at (0,0) size 227x14
+          text run at (0,0) width 227: "This doesn't work because of the 1st bug above."
+      RenderBlock {P} at (0,464) size 784x14
+        RenderText {#text} at (0,0) size 304x14
+          text run at (0,0) width 304: "A second attempt is to specify heights that do add up to the total."
+      RenderBlock {P} at (0,490) size 784x42
+        RenderText {#text} at (0,0) size 85x14
+          text run at (0,0) width 85: "Table height: 200 "
+        RenderBR {BR} at (85,11) size 0x0
+        RenderText {#text} at (0,14) size 66x14
+          text run at (0,14) width 66: "First Row : 1 "
+        RenderBR {BR} at (66,25) size 0x0
+        RenderText {#text} at (0,28) size 88x14
+          text run at (0,28) width 88: "Second Row : 199"
+      RenderTable {TABLE} at (0,544) size 69x225 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 67x223
+          RenderTableRow {TR} at (0,2) size 67x18
+            RenderTableCell {TD} at (2,2) size 63x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 37x14
+                text run at (2,2) width 37: "title line"
+          RenderTableRow {TR} at (0,22) size 67x199
+            RenderTableCell {TD} at (2,112) size 63x18 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 59x14
+                text run at (2,2) width 59: "rest of space"
+      RenderBlock {P} at (0,781) size 784x14
+        RenderText {#text} at (0,0) size 455x14
+          text run at (0,0) width 352: "This appears ok, but close inspection will show that the table is now >200 "
+          text run at (352,0) width 103: "pixels high (2rd bug)."
+      RenderBlock {P} at (0,807) size 784x14
+        RenderText {#text} at (0,0) size 319x14
+          text run at (0,0) width 319: "A third attempt using 1% and 99% gives identical results (3rd bug)."
+      RenderBlock {P} at (0,833) size 784x14
+        RenderText {#text} at (0,0) size 470x14
+          text run at (0,0) width 327: "A related bug is the the height of a row that is not specified explicitly "
+          text run at (327,0) width 143: "cannot be used by its children."
+      RenderBlock {P} at (0,859) size 784x14
+        RenderText {#text} at (0,0) size 740x14
+          text run at (0,0) width 366: "This example is a table of height 200 with a single row of unspecified height. "
+          text run at (366,0) width 349: "This contains a DIV whose style is height:100%. It ought to fill the entire "
+          text run at (715,0) width 25: "table."
+      RenderTable {TABLE} at (0,885) size 231x200 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 229x198
+          RenderTableRow {TR} at (0,2) size 229x194
+            RenderTableCell {TD} at (2,2) size 225x194 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderBlock {DIV} at (2,2) size 221x190 [bgcolor=#FF0000]
+                RenderText {#text} at (0,0) size 221x14
+                  text run at (0,0) width 221: "A 100% div inside a row of unspecified height"

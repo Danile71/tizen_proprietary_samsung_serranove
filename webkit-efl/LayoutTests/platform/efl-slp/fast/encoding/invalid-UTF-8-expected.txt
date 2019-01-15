@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 282x14
+          text run at (0,0) width 282: "This tests the rendering of invalid UTF-8 sequences."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 425x14
+          text run at (0,0) width 425: "The output should be: \"\x{442}??\x{442}\" (with black diamonds in place of question marks)."
+      RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,66) size 784x14
+        RenderText {#text} at (0,0) size 36x14
+          text run at (0,0) width 36: "\x{442}\x{FFFD}\x{FFFD}\x{442}"

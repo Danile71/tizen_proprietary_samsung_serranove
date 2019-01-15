@@ -1,0 +1,17 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x64
+  RenderBlock {HTML} at (0,0) size 800x64
+    RenderBody {BODY} at (8,12) size 784x40
+      RenderBlock {P} at (0,0) size 784x14
+        RenderInline {SPAN} at (0,0) size 192x18 [border: (1px solid #000000) (3px solid #000000)]
+          RenderText {#text} at (3,0) size 186x14
+            text run at (3,0) width 186: "This box should have a thin top border."
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 170x14
+          text run at (0,0) width 170: "There should be no red on this line. "
+        RenderInline {SPAN} at (0,0) size 9x14 [color=#FF0000]
+          RenderText {#text} at (170,0) size 9x14
+            text run at (170,0) width 9: "   "
+        RenderText {#text} at (0,0) size 0x0

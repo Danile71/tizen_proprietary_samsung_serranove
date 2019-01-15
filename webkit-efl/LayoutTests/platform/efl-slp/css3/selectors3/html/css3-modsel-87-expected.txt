@@ -1,0 +1,18 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x104
+  RenderBlock {HTML} at (0,0) size 800x104
+    RenderBody {BODY} at (8,12) size 784x80
+      RenderBlock {BLOCKQUOTE} at (40,0) size 704x14
+        RenderBlock {DIV} at (0,0) size 704x14
+          RenderText {#text} at (0,0) size 136x14
+            text run at (0,0) width 136: "This text should be unstyled."
+      RenderBlock {DIV} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 136x14
+          text run at (0,0) width 136: "This text should be unstyled."
+      RenderBlock {DIV} at (0,40) size 784x14
+        RenderText {#text} at (0,0) size 136x14
+          text run at (0,0) width 136: "This text should be unstyled."
+      RenderBlock {P} at (0,66) size 784x14 [color=#008000]
+        RenderText {#text} at (0,0) size 122x14
+          text run at (0,0) width 122: "This text should be green."

@@ -1,0 +1,41 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 3 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldDeleteDOMRange:range from 3 of DIV > DIV > BODY > HTML > #document to 7 of DIV > DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 3 of DIV > DIV > BODY > HTML > #document to 3 of DIV > DIV > BODY > HTML > #document toDOMRange:range from 3 of DIV > DIV > BODY > HTML > #document to 3 of DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x240 [border: (2px solid #0000FF)]
+        RenderBlock {DIV} at (14,14) size 936x84
+          RenderText {#text} at (0,0) size 89x28
+            text run at (0,0) width 89: "Tests: "
+          RenderBR {BR} at (0,0) size 0x0
+          RenderText {#text} at (0,28) size 931x56
+            text run at (0,28) width 931: "Deleting when a selection starts in a blank line created by a BR element and"
+            text run at (0,56) width 442: "extends to the end of the document."
+        RenderBlock {DIV} at (14,114) size 936x112
+          RenderText {#text} at (0,0) size 246x28
+            text run at (0,0) width 246: "Expected Results: "
+          RenderBR {BR} at (246,22) size 0x0
+          RenderText {#text} at (0,28) size 892x84
+            text run at (0,28) width 892: "Should see the two lines in the red box. First line should be \"A\". Next one"
+            text run at (0,56) width 843: "should be empty. Insertion point should be blinking at the start of the"
+            text run at (0,84) width 146: "second line."
+      RenderBlock {DIV} at (0,264) size 964x60
+        RenderBlock {DIV} at (0,0) size 964x60 [border: (2px solid #FF0000)]
+          RenderBlock {P} at (2,2) size 960x28
+            RenderText {#text} at (0,0) size 16x28
+              text run at (0,0) width 16: "A"
+          RenderBlock (anonymous) at (2,30) size 960x28
+            RenderBR {BR} at (0,0) size 0x28
+caret: position 0 of child 3 {BR} of child 1 {DIV} of child 3 {DIV} of body

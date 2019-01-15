@@ -1,0 +1,58 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x535
+  RenderBlock {HTML} at (0,0) size 980x535
+    RenderBody {BODY} at (8,10) size 964x509
+      RenderBlock {H1} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 108x19
+          text run at (0,0) width 108: "Simple case"
+      RenderBlock {P} at (0,35) size 964x19
+        RenderText {#text} at (0,0) size 74x19
+          text run at (0,0) width 74: "LTR Start"
+      RenderBlock {P} at (0,70) size 964x19
+        RenderText {#text} at (899,0) size 65x19
+          text run at (899,0) width 65: "LTR End"
+      RenderBlock {P} at (0,105) size 964x19
+        RenderText {#text} at (890,0) size 74x19
+          text run at (890,0) width 74: "RTL Start"
+      RenderBlock {P} at (0,140) size 964x19
+        RenderText {#text} at (0,0) size 65x19
+          text run at (0,0) width 65: "RTL End"
+      RenderBlock {H1} at (0,175) size 964x19
+        RenderText {#text} at (0,0) size 129x19
+          text run at (0,0) width 129: "Inherited case"
+      RenderBlock {DIV} at (0,210) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 74x19
+            text run at (0,0) width 74: "LTR Start"
+      RenderBlock {DIV} at (0,245) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (899,0) size 65x19
+            text run at (899,0) width 65: "LTR End"
+      RenderBlock {DIV} at (0,280) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (890,0) size 74x19
+            text run at (890,0) width 74: "RTL Start"
+      RenderBlock {DIV} at (0,315) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 65x19
+            text run at (0,0) width 65: "RTL End"
+      RenderBlock {H1} at (0,350) size 964x19
+        RenderText {#text} at (0,0) size 562x19
+          text run at (0,0) width 562: "Inherited case where parent block has opposite directionality."
+      RenderBlock {DIV} at (0,385) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 74x19
+            text run at (0,0) width 74: "LTR Start"
+      RenderBlock {DIV} at (0,420) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (899,0) size 65x19
+            text run at (899,0) width 65: "LTR End"
+      RenderBlock {DIV} at (0,455) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (890,0) size 74x19
+            text run at (890,0) width 74: "RTL Start"
+      RenderBlock {DIV} at (0,490) size 964x19
+        RenderBlock {P} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 65x19
+            text run at (0,0) width 65: "RTL End"

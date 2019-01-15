@@ -1,0 +1,60 @@
+class Elm_Hoversel_Item(Elm_Widget_Item)
+{
+   eo_prefix: elm_obj_hoversel_item;
+   properties {
+        icon {
+             get {
+                 /*@
+                  @MOBILE_ONLY
+
+                  @brief This sets the icon for the given hoversel item.
+
+                  @if MOBILE @since_tizen 2.4
+                  @endif
+
+                  @remark The icon can be loaded from the standard set, from an image file, or from
+                  an edje file.
+
+                  @see elm_hoversel_item_add()
+
+                  @ingroup Hoversel
+                 */
+             }
+             set {
+                 /*@
+                  @MOBILE_ONLY
+
+                  @brief Get the icon object of the hoversel item.
+
+                  @if MOBILE @since_tizen 2.4
+                  @endif
+
+                  @see elm_hoversel_item_add()
+
+                  @ingroup Hoversel
+                 */
+             }
+             values {
+                const (char) *icon_file; /*@ An image file path on disk to use for the icon or standard icon name */
+                const (char) *icon_group; /*@ The edje group to use if @p icon_file is an edje file. Set this to NULL if the icon is not an edje file */
+                Elm_Icon_Type icon_type; /*@ The icon type */
+             }
+        }
+   }
+   methods {
+   }
+   implements {
+        Eo.Base.constructor;
+        Eo.Base.destructor;
+/// TIZEN_ONLY(20150915): Item disabling support for hoversel
+        Elm_Widget_Item.disable;
+///
+        Elm_Widget_Item.signal_emit;
+        Elm_Widget_Item.part_text.get;
+        Elm_Widget_Item.part_text.set;
+        Elm_Widget_Item.style.get;
+        Elm_Widget_Item.style.set;
+        Elm_Widget_Item.focus.set;
+        Elm_Widget_Item.focus.get;
+   }
+}

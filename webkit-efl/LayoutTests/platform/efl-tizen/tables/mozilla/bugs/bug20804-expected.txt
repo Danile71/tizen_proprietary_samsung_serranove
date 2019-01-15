@@ -1,0 +1,79 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719 [bgcolor=#FFFFFF]
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 185x19
+          text run at (0,0) width 185: "Testcase distilled from "
+        RenderInline {A} at (0,0) size 207x19 [color=#0000EE]
+          RenderText {#text} at (185,0) size 207x19
+            text run at (185,0) width 207: "http://www.microsoft.com"
+        RenderBR {BR} at (392,15) size 0x0
+        RenderText {#text} at (0,19) size 735x19
+          text run at (0,19) width 735: "The problem seems to be that the last cell in each row have an \"excessive\" COLSPAN value."
+        RenderBR {BR} at (735,34) size 0x0
+        RenderText {#text} at (0,38) size 487x19
+          text run at (0,38) width 487: "I have added BORDER=1 to make the cell boundaries visible."
+      RenderTable {TABLE} at (0,73) size 964x87 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x85
+          RenderTableRow {TR} at (0,0) size 962x22
+            RenderTableCell {TD} at (0,0) size 320x62 [border: (1px inset #808080)] [r=0 c=0 rs=2 cs=1]
+              RenderImage {IMG} at (1,1) size 250x60
+            RenderTableCell {TD} at (320,0) size 21x22 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderImage {IMG} at (2,1) size 18x20
+            RenderTableCell {TD} at (341,0) size 621x21 [bgcolor=#000000] [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=2]
+              RenderText {#text} at (138,1) size 482x19
+                text run at (138,1) width 212: "  All Products  |  Support  | "
+                text run at (350,1) width 270: "  Search  |  microsoft.com Home  "
+          RenderTableRow {TR} at (0,22) size 962x42
+            RenderTableCell {TD} at (320,22) size 21x42 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderImage {IMG} at (1,1) size 19x40
+            RenderTableCell {TD} at (341,22) size 621x42 [border: (1px inset #808080)] [r=1 c=2 rs=1 cs=2]
+              RenderImage {IMG} at (308,1) size 200x40
+              RenderImage {IMG} at (508,1) size 112x40
+              RenderText {#text} at (0,0) size 0x0
+          RenderTableRow {TR} at (0,64) size 962x21
+            RenderTableCell {TD} at (0,64) size 962x21 [bgcolor=#6699CC] [border: (1px inset #808080)] [r=2 c=0 rs=1 cs=4]
+              RenderText {#text} at (1,1) size 854x19
+                text run at (1,1) width 78: "  Home  | "
+                text run at (79,1) width 153: "  Events/Training  | "
+                text run at (232,1) width 108: "  Subscribe  | "
+                text run at (340,1) width 156: "  About Microsoft  | "
+                text run at (496,1) width 141: "  US/Worldwide  | "
+                text run at (637,1) width 117: "  Downloads  | "
+                text run at (754,1) width 101: "  MSN.com  |"
+      RenderBlock {P} at (0,176) size 964x38
+        RenderText {#text} at (0,0) size 803x19
+          text run at (0,0) width 803: "The following table is exactly as above, but I have removed COLSPAN for the last cell in row 1 and 2,"
+        RenderBR {BR} at (803,15) size 0x0
+        RenderText {#text} at (0,19) size 456x19
+          text run at (0,19) width 456: "and changed COLSPAN=4 to COLSPAN=3 in the last row."
+      RenderTable {TABLE} at (0,230) size 964x87 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 962x85
+          RenderTableRow {TR} at (0,0) size 962x22
+            RenderTableCell {TD} at (0,0) size 320x62 [border: (1px inset #808080)] [r=0 c=0 rs=2 cs=1]
+              RenderImage {IMG} at (1,1) size 250x60
+            RenderTableCell {TD} at (320,0) size 21x22 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderImage {IMG} at (2,1) size 18x20
+            RenderTableCell {TD} at (341,0) size 621x21 [bgcolor=#000000] [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (138,1) size 482x19
+                text run at (138,1) width 212: "  All Products  |  Support  | "
+                text run at (350,1) width 270: "  Search  |  microsoft.com Home  "
+          RenderTableRow {TR} at (0,22) size 962x42
+            RenderTableCell {TD} at (320,22) size 21x42 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderImage {IMG} at (1,1) size 19x40
+            RenderTableCell {TD} at (341,22) size 621x42 [border: (1px inset #808080)] [r=1 c=2 rs=1 cs=1]
+              RenderImage {IMG} at (308,1) size 200x40
+              RenderImage {IMG} at (508,1) size 112x40
+              RenderText {#text} at (0,0) size 0x0
+          RenderTableRow {TR} at (0,64) size 962x21
+            RenderTableCell {TD} at (0,64) size 962x21 [bgcolor=#6699CC] [border: (1px inset #808080)] [r=2 c=0 rs=1 cs=3]
+              RenderText {#text} at (1,1) size 854x19
+                text run at (1,1) width 78: "  Home  | "
+                text run at (79,1) width 153: "  Events/Training  | "
+                text run at (232,1) width 108: "  Subscribe  | "
+                text run at (340,1) width 156: "  About Microsoft  | "
+                text run at (496,1) width 141: "  US/Worldwide  | "
+                text run at (637,1) width 117: "  Downloads  | "
+                text run at (754,1) width 101: "  MSN.com  |"

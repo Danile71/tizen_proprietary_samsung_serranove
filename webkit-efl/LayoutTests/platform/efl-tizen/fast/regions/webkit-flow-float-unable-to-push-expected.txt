@@ -1,0 +1,27 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x485
+  RenderBlock {HTML} at (0,0) size 980x485
+    RenderBody {BODY} at (8,8) size 964x469
+      RenderBlock {DIV} at (0,0) size 964x193
+        RenderBlock {DIV} at (5,5) size 954x183 [border: (1px solid #0000FF)]
+          RenderBlock {DIV} at (11,11) size 932x161 [border: (1px solid #008000)]
+            RenderBlock {P} at (1,17) size 930x38
+              RenderText {#text} at (0,0) size 131x19
+                text run at (0,0) width 131: "This line of text "
+              RenderImage {IMG} at (800,0) size 130x100 [bgcolor=#008000]
+              RenderText {#text} at (131,0) size 800x38
+                text run at (131,0) width 209: "should not get out of the "
+                text run at (340,0) width 460: "region. This line of text should not get out of the region."
+                text run at (0,19) width 775: "This line of text should not get out of the region. This line of text should not get out of the region."
+            RenderBlock {P} at (1,71) size 930x38
+              RenderText {#text} at (0,0) size 800x38
+                text run at (0,0) width 800: "This line of text should not get out of the region. This line of text should not get out of the region."
+                text run at (0,19) width 775: "This line of text should not get out of the region. This line of text should not get out of the region."
+            RenderBlock {P} at (1,125) size 930x19
+              RenderText {#text} at (0,0) size 385x19
+                text run at (0,0) width 385: "This line of text should not get out of the region."
+      RenderBlock {DIV} at (0,193) size 964x276
+        RenderBlock {DIV} at (0,0) size 402x92 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (0,92) size 302x92 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (0,184) size 402x92 [border: (1px solid #000000)]

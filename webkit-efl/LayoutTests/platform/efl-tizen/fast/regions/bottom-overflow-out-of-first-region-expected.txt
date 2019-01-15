@@ -1,0 +1,33 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x622
+  RenderBlock {HTML} at (0,0) size 980x622
+    RenderBody {BODY} at (8,16) size 964x598
+      RenderBlock {P} at (0,0) size 964x76
+        RenderText {#text} at (0,0) size 964x76
+          text run at (0,0) width 964: "In the test case below, the green block's width should not vary and should use the first region to determine its width. It is"
+          text run at (0,19) width 947: "overflowing downwards out of the blue block, and so the portion that overflows should continue to use the blue block's"
+          text run at (0,38) width 898: "containing block width. The blue block does not exist in region two, so using some hypothetical made-up width is"
+          text run at (0,57) width 792: "incorrect. The overflow should be spilling out of the top of region one and be painted in region two."
+      RenderBlock {DIV} at (0,92) size 964x200
+        RenderBlock {DIV} at (5,5) size 954x190 [border: (1px solid #0000FF)]
+          RenderBlock {DIV} at (119,1) size 716x180 [border: (1px solid #008000)]
+            RenderBlock {P} at (1,17) size 714x38
+              RenderText {#text} at (0,0) size 714x38
+                text run at (0,0) width 714: "These lines should all fit to the width of the block in the first region and spill out of the"
+                text run at (0,19) width 151: "bottom of the first "
+                text run at (151,19) width 56: "region."
+            RenderBlock {P} at (1,71) size 714x38
+              RenderText {#text} at (0,0) size 714x38
+                text run at (0,0) width 714: "These lines should all fit to the width of the block in the first region and spill out of the"
+                text run at (0,19) width 151: "bottom of the first "
+                text run at (151,19) width 56: "region."
+            RenderBlock {P} at (1,125) size 714x38
+              RenderText {#text} at (0,0) size 714x38
+                text run at (0,0) width 714: "These lines should all fit to the width of the block in the first region and spill out of the"
+                text run at (0,19) width 151: "bottom of the first "
+                text run at (151,19) width 56: "region."
+      RenderBlock {DIV} at (0,292) size 964x306
+        RenderBlock {DIV} at (0,0) size 402x202 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (0,202) size 302x102 [border: (1px solid #000000)]
+        RenderBlock {DIV} at (0,304) size 964x2 [border: (1px solid #000000)]

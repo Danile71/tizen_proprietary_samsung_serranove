@@ -1,0 +1,16 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderTable {TABLE} at (0,0) size 784x46
+        RenderTableSection {TBODY} at (0,0) size 784x46
+          RenderTableRow {TR} at (0,2) size 784x0
+            RenderTableCell {TD} at (2,1) size 780x44 [r=0 c=0 rs=8190 cs=1]
+              RenderText {#text} at (1,1) size 768x42
+                text run at (1,1) width 504: "This test succeeds if it does not crash. We implemented a heuristic a while back to prevent giant rowspans. "
+                text run at (505,1) width 233: "The heuristic did not, however, fix this case. This"
+                text run at (1,15) width 350: "rowpsan was small enough so that we thought it was okay to allocate, but "
+                text run at (351,15) width 418: "large enough so that it actually wasn't okay, and we crashed. Firefox seems to hold 8k as"
+                text run at (1,29) width 157: "the maximum size for rowspans. "
+                text run at (158,29) width 383: "So this change matches Firefox and clamps all rowspans to 8k right in the DOM."

@@ -1,0 +1,29 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 6 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldInsertNode:#document-fragment replacingDOMRange:range from 0 of #text > DIV > BODY > HTML > #document to 9 of #text > DIV > BODY > HTML > #document givenAction:WebViewInsertActionPasted
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document toDOMRange:range from 1 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x1321
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1321
+  RenderBlock {HTML} at (0,0) size 980x1321
+    RenderBody {BODY} at (8,8) size 964x1305
+      RenderTable {TABLE} at (0,0) size 92x25
+        RenderTableSection {TBODY} at (0,0) size 92x25
+          RenderTableRow {TR} at (0,2) size 92x21
+            RenderTableCell {TD} at (2,2) size 40x21 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 38x19
+                text run at (1,1) width 38: "hello"
+            RenderTableCell {TD} at (44,2) size 46x21 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 44x19
+                text run at (1,1) width 44: "world"
+      RenderBlock {DIV} at (0,25) size 964x1280
+        RenderImage {IMG} at (0,0) size 720x1280
+caret: position 1 of child 0 {IMG} of child 3 {DIV} of body

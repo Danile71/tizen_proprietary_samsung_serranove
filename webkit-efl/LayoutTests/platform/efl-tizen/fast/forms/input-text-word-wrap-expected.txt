@@ -1,0 +1,20 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 148x19
+          text run at (0,0) width 148: "This tests that the "
+        RenderInline {CODE} at (0,0) size 69x15
+          RenderText {#text} at (148,3) size 69x15
+            text run at (148,3) width 69: "word-wrap"
+        RenderText {#text} at (217,0) size 380x19
+          text run at (217,0) width 380: " property is ignored for single-line text controls."
+      RenderBlock (anonymous) at (0,35) size 964x39
+        RenderTextControl {INPUT} at (2,0) size 171x39 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 0x0
+layer at (14,56) size 164x15 scrollWidth 318
+  RenderBlock {DIV} at (4,13) size 164x15
+    RenderText {#text} at (0,0) size 317x15
+      text run at (0,0) width 317: "This sentence should not wrap into the next line."

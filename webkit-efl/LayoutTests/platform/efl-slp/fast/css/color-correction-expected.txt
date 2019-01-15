@@ -1,0 +1,20 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x56
+        RenderText {#text} at (0,0) size 777x56
+          text run at (0,0) width 761: "This test demonstrates -webkit-color-correction. Below are 3 images with 20 pixel borders. The images are all the same -- purple with an sRGB color profile. The"
+          text run at (0,14) width 768: "border is the same CSS color for all three images. The first image has no special CSS. The second has -webkit-color-correction set to default, so it matches the first"
+          text run at (0,28) width 777: "image. And the third has -webkit-color-correction set to sRGB. This color-corrects the purple border from the sRGB color space, and the result is that the border and"
+          text run at (0,42) width 79: "the image match."
+      RenderBlock (anonymous) at (0,68) size 784x143
+        RenderImage {IMG} at (0,0) size 140x140 [border: (20px solid #560063)]
+        RenderText {#text} at (140,129) size 3x14
+          text run at (140,129) width 3: " "
+        RenderImage {IMG} at (143,0) size 140x140 [border: (20px solid #560063)]
+        RenderText {#text} at (283,129) size 3x14
+          text run at (283,129) width 3: " "
+        RenderImage {IMG} at (286,0) size 140x140 [border: (20px solid #560063)]
+        RenderText {#text} at (0,0) size 0x0

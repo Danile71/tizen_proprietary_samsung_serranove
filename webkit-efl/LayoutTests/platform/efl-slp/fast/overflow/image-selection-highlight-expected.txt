@@ -1,0 +1,41 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 161x14
+          text run at (0,0) width 161: "This tests for a regression against "
+        RenderInline {I} at (0,0) size 756x28
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (161,0) size 262x14
+              text run at (161,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=6673"
+          RenderText {#text} at (423,0) size 756x28
+            text run at (423,0) width 3: " "
+            text run at (426,0) width 330: "Selection highlight doesn't scroll along with an image contained in an"
+            text run at (0,14) width 100: "overflow:scroll block"
+        RenderText {#text} at (100,14) size 3x14
+          text run at (100,14) width 3: "."
+      RenderBlock {P} at (0,40) size 784x14
+        RenderText {#text} at (0,0) size 588x14
+          text run at (0,0) width 307: "There should be one contiguous highlight from \x{201C}elit\x{201D} to \x{201C}Etiam\x{201D}, "
+          text run at (307,0) width 281: "including the orange square, and no other highlighted areas."
+      RenderBlock {HR} at (0,66) size 784x2 [border: (1px inset #000000)]
+layer at (8,82) size 100x200
+  RenderBlock {DIV} at (0,74) size 100x200
+    RenderText {#text} at (0,0) size 100x42
+      text run at (0,0) width 91: "Lorem ipsum dolor"
+      text run at (0,14) width 100: "sit amet, consectetuer"
+      text run at (0,28) width 71: "adipiscing elit. "
+    RenderImage {IMG} at (71,29) size 10x10
+    RenderText {#text} at (0,42) size 99x98
+      text run at (0,42) width 99: "Etiam et ipsum. Nam"
+      text run at (0,56) width 95: "consectetuer mi eget"
+      text run at (0,70) width 26: "velit. "
+      text run at (26,70) width 63: "Sed nec risus"
+      text run at (0,84) width 77: "vitae felis auctor"
+      text run at (0,98) width 40: "ultricies."
+      text run at (0,112) width 59: "Pellentesque"
+      text run at (0,126) width 40: "aliquet..."
+selection start: position 58 of child 0 {#text} of child 7 {DIV} of body
+selection end:   position 11 of child 2 {#text} of child 7 {DIV} of body

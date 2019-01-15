@@ -1,0 +1,40 @@
+* Fri Aug 09 2013 Eduardo Lima (Etrunko) <eduardo.lima@intel.com> upstream/1.7.5@fc1ed62
+- Updated to release 1.7.8
+
+* Thu Jun 27 23:48:26 UTC 2013 - tracy.graydon@intel.com
+- TIVI-1068: enable elementary examples 
+
+* Tue Jun 18 20:47:50 UTC 2013 - tracy.graydon@intel.com
+-  TIVI-1046: package fails to build via linkbuild for Tizen:IVI on /usr/bin/eet. 
+Adding eet-tools instead of eet-bin fixes build for Tizen:IVI without breaking Tizen project build.
+
+* Sun Jun 16 2013 Rusty Lynch <rusty.lynch@intel.com> accepted/tizen/20130606.163020@b8399a3
+- Add BuildRequires for eet-bin
+
+* Wed Jun 05 2013 Rusty Lynch <rusty.lynch@intel.com> upstream/1.7.5@55405ad
+- Update to release 1.7.7
+
+* Wed May 22 2013 Rusty Lynch <rusty.lynch@intel.com> accepted/tizen/20130520.103640@72102d0
+- Adding elm_win_wm_rotation support
+
+* Sun May 19 2013 Rusty Lynch <rusty.lynch@intel.com> submit/tizen/20130517.020932@944fb57
+- Add elm_gesture_layer_* support from Tizen 2.1
+
+* Fri May 10 2013 Rusty Lynch <rusty.lynch@intel.com> submit/tizen/20130509.174056@69ef9f4
+- Force ELM_WAYLAND_EGL if engine set called when DISPLAY not set
+- Adding tickernoti widget
+- Add elm_win_indicator_state_set
+- Add elm_widget_sub_object_list_get()
+- Adding elm_finger_size_get and elm_finger_size_set
+- Add elm_scale_get and elm_scale_set
+- Add dummy implemention of Tizen specific elm_config magnification
+
+* Thu Apr 18 2013 Rusty Lynch <rusty.lynch@intel.com> accepted/trunk/20130320.004832@059952f
+- Elementary: Patch from Alex Wu <zhiwen.wu@linux.intel.com> to fix glview tests in Wayland:
+
+* Tue Mar 19 2013 Anas Nashif <anas.nashif@intel.com> upstream/1.7.5@67e4f58
+- Update to 1.7.5
+
+* Fri Dec 21 2012 Anas Nashif <anas.nashif@intel.com> upstream/1.7.4@8ea39c5
+- Update tp 1.7.4
+

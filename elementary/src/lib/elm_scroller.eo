@@ -1,0 +1,119 @@
+class Elm_Scroller (Elm_Layout, Elm_Interface_Scrollable,
+                    Elm_Interface_Atspi_Widget_Action)
+{
+   eo_prefix: elm_obj_scroller;
+   properties {
+      propagate_events {
+         set {
+            /*@
+            @brief Set event propagation on a scroller
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark This enables or disables event propagation from the scroller
+            content to the scroller and its parent. By default event
+            propagation is @b enabled.
+
+            @ingroup Scroller */
+         }
+         get {
+            /*@
+            @brief Get event propagation for a scroller
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return The propagation state
+
+            @remark This gets the event propagation for a scroller.
+
+            @see elm_scroller_propagate_events_set()
+
+            @ingroup Scroller */
+         }
+         values {
+            bool propagation; /*@ If propagation is enabled or not */
+         }
+      }
+      custom_widget_base_theme {
+         set {
+            /*@ Set custom theme elements for the scroller */
+         }
+         values {
+            const(char)* klass;
+            const(char)* group;
+         }
+      }
+   }
+   methods {
+      page_scroll_limit_set @const {
+         /*@
+         @brief Set the maximum of the movable page at a flicking.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @remark The value of maximum movable page should be more than 1.
+
+         @see elm_scroller_page_scroll_limit_get()
+
+         @since 1.8
+
+         @ingroup Scroller */
+         params {
+            @in int page_limit_h; /*@ The maximum of the movable horizontal page */
+            @in int page_limit_v; /*@ The maximum of the movable vertical page */
+         }
+      }
+      page_scroll_limit_get @const {
+         /*@
+         @brief Get the maximum of the movable page at a flicking.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @see elm_scroller_page_scroll_limit_set()
+
+         @since 1.8
+
+         @ingroup Scroller */
+         params {
+            @in int *page_limit_h; /*@ The maximum of the movable horizontal page */
+            @in int *page_limit_v; /*@ The maximum of the movable vertical page */
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.move;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.member_add;
+      Evas.Object_Smart.resize;
+      Elm_Widget.theme_apply;
+      Elm_Widget.activate;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.focus_next;
+      Elm_Widget.sub_object_del;
+      Elm_Widget.event;
+      Elm_Container.content_get;
+      Elm_Container.content_set;
+      Elm_Container.content_unset;
+      Elm_Layout.sizing_eval;
+      Elm_Interface_Scrollable.page_size.set;
+      Elm_Interface_Scrollable.policy.set;
+      Elm_Interface_Scrollable.single_direction;
+      Elm_Interface_Atspi_Widget_Action.elm_actions.get;
+   }
+   events {
+      focused;
+      unfocused;
+   }
+
+}

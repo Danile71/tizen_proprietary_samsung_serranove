@@ -1,0 +1,35 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {DIV} at (0,0) size 784x76
+        RenderBlock {DIV} at (0,0) size 106x20 [border: (3px solid #000000)]
+          RenderText {#text} at (3,3) size 23x14
+            text run at (3,3) width 23: "a. b. "
+          RenderInline {SPAN} at (0,0) size 3x14
+            RenderText {#text} at (26,3) size 3x14
+              text run at (26,3) width 3: "i"
+          RenderText {#text} at (29,3) size 51x14
+            text run at (29,3) width 51: "\x{306F}xxxxxxx"
+        RenderBlock {DIV} at (0,28) size 106x20 [border: (3px solid #000000)]
+          RenderText {#text} at (3,3) size 77x14
+            text run at (3,3) width 77: "a. b. i\x{306F}xxxxxxx"
+        RenderBlock {DIV} at (0,56) size 106x20 [border: (3px solid #000000)]
+          RenderText {#text} at (3,3) size 153x14
+            text run at (3,3) width 153: "xxxxxxxxxxxxxxxxxxxxx\x{FF08}\x{624B}\x{FF09}"
+      RenderBlock {DIV} at (0,84) size 784x76
+        RenderBlock {DIV} at (0,0) size 106x20 [border: (3px solid #000000)]
+          RenderText {#text} at (3,3) size 0x14
+            text run at (3,3) width 0: "a. b. "
+          RenderInline {SPAN} at (0,0) size 0x14
+            RenderText {#text} at (3,3) size 0x14
+              text run at (3,3) width 0: "i"
+          RenderText {#text} at (3,3) size 0x14
+            text run at (3,3) width 0: "\x{306F}xxxxxxx"
+        RenderBlock {DIV} at (0,28) size 106x20 [border: (3px solid #000000)]
+          RenderText {#text} at (3,3) size 0x14
+            text run at (3,3) width 0: "a. b. i\x{306F}xxxxxxx"
+        RenderBlock {DIV} at (0,56) size 106x20 [border: (3px solid #000000)]
+          RenderText {#text} at (3,3) size 0x14
+            text run at (3,3) width 0: "xxxxxxxxxxxxxxxxxxxxx\x{FF08}\x{624B}\x{FF09}"

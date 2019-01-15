@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 769x28
+          text run at (0,0) width 769: "Assuming the port-specific theme draws focus rings, this test can be used to ensure that a focus ring is drawn for a text input element. This test PASSED if a focus"
+          text run at (0,14) width 245: "ring is drawn around the text input element (below)."
+      RenderBlock (anonymous) at (0,40) size 784x32
+        RenderTextControl {INPUT} at (2,2) size 194x28 [color=#202020]
+        RenderText {#text} at (0,0) size 0x0
+layer at (14,56) size 187x18
+  RenderBlock {DIV} at (4,6) size 187x18
+caret: position 0 of child 0 {DIV} of {#shadow-root} of child 3 {INPUT} of body

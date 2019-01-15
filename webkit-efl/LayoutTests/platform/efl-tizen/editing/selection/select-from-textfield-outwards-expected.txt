@@ -1,0 +1,45 @@
+EDITING DELEGATE: shouldChangeSelectedDOMRange:(null) toDOMRange:range from 11 of #text > DIV > #shadow-root to 11 of #text > DIV > #shadow-root affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 11 of #text > DIV > #shadow-root to 11 of #text > DIV > #shadow-root toDOMRange:range from 11 of #text > DIV > #shadow-root to 12 of #text > DIV > #shadow-root affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 132x19
+          text run at (0,0) width 132: "This is a test for "
+        RenderInline {I} at (0,0) size 925x38
+          RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+            RenderText {#text} at (132,0) size 426x19
+              text run at (132,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=9312"
+          RenderText {#text} at (558,0) size 925x38
+            text run at (558,0) width 5: " "
+            text run at (563,0) width 362: "REGRESSION: Selection bug in new text fields"
+            text run at (0,19) width 273: "when selecting past the first letter"
+        RenderText {#text} at (273,19) size 5x19
+          text run at (273,19) width 5: "."
+      RenderBlock {HR} at (0,54) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,72) size 964x57
+        RenderText {#text} at (0,0) size 949x57
+          text run at (0,0) width 949: "Curabitur pretium, quam quis semper malesuada, est libero feugiat libero, vel fringilla orci nibh sed neque. Quisque eu"
+          text run at (0,19) width 926: "nulla non nisi molestie accumsan. Etiam tellus urna, laoreet ac, laoreet non, suscipit sed, sapien. Phasellus vehicula,"
+          text run at (0,38) width 757: "sem at posuere vehicula, augue nibh molestie nisl, nec ullamcorper lacus ante vulputate pede."
+      RenderBlock (anonymous) at (0,145) size 964x78
+        RenderTextControl {INPUT} at (20,20) size 314x38 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,239) size 964x76
+        RenderText {#text} at (0,0) size 964x76
+          text run at (0,0) width 913: "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris viverra augue vitae"
+          text run at (0,19) width 957: "purus. Morbi sed sem. Donec dui nisi, ultrices non, pretium quis, hendrerit non, est. Donec tellus. Donec eget dui id eros"
+          text run at (0,38) width 964: "pharetra rutrum. Suspendisse sodales lectus sit amet nulla. Morbi tortor arcu, convallis blandit, elementum eu, aliquet a,"
+          text run at (0,57) width 47: "tellus."
+layer at (32,179) size 307x28
+  RenderBlock {DIV} at (4,6) size 307x28
+    RenderText {#text} at (0,0) size 227x28
+      text run at (0,0) width 227: "Lorem ipsum dolor"
+selection start: position 11 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 7 {INPUT} of body
+selection end:   position 12 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 7 {INPUT} of body

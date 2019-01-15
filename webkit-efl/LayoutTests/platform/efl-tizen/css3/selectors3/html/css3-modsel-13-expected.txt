@@ -1,0 +1,21 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x89
+  RenderBlock {HTML} at (0,0) size 980x89
+    RenderBody {BODY} at (8,16) size 964x57
+      RenderBlock {UL} at (0,0) size 964x57
+        RenderListItem {LI} at (40,0) size 924x19 [bgcolor=#00FF00]
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 544x19
+            text run at (0,0) width 544: "This list item should have green background because its class is \"t1\""
+        RenderListItem {LI} at (40,19) size 924x19 [bgcolor=#00FF00]
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 544x19
+            text run at (0,0) width 544: "This list item should have green background because its class is \"t2\""
+        RenderListItem {LI} at (40,38) size 924x19 [bgcolor=#00FF00]
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderInline {SPAN} at (0,0) size 749x19
+            RenderText {#text} at (0,0) size 749x19
+              text run at (0,0) width 430: "This list item should have green background because "
+              text run at (430,0) width 319: "the inner SPAN does not match SPAN.t3"
+          RenderText {#text} at (0,0) size 0x0

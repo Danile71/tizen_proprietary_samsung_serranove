@@ -1,0 +1,20 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 934x38
+          text run at (0,0) width 771: "This tests to make sure that a drag-selecting through a -webkit-user-select:ignore region works. "
+          text run at (771,0) width 163: "The selection should"
+          text run at (0,19) width 373: "end somewhere inside the word 'World' below."
+      RenderBlock {DIV} at (0,54) size 964x19
+        RenderInline {SPAN} at (0,0) size 40x19
+          RenderText {#text} at (0,0) size 40x19
+            text run at (0,0) width 40: "Hello"
+        RenderText {#text} at (40,0) size 5x19
+          text run at (40,0) width 5: " "
+        RenderInline {SPAN} at (0,0) size 47x19
+          RenderText {#text} at (45,0) size 47x19
+            text run at (45,0) width 47: "World"
+caret: position 0 of child 0 {#text} of child 0 {SPAN} of child 2 {DIV} of body

@@ -1,0 +1,27 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 1 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of #text > DIV > BODY > HTML > #document to 1 of #text > DIV > BODY > HTML > #document toDOMRange:range from 2 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 933x38
+          text run at (0,0) width 933: "This tests for a bug where attachments dragged into Mail documents blew all content after the position being pasted"
+          text run at (0,19) width 40: "into. "
+          text run at (40,19) width 382: "You should see \"Hello[black box] World!\" below."
+      RenderBlock {DIV} at (0,54) size 964x156
+        RenderText {#text} at (0,137) size 40x19
+          text run at (0,137) width 40: "Hello"
+        RenderEmbeddedObject {OBJECT} at (40,0) size 302x152 [border: (1px solid #AAAAAA)]
+        RenderText {#text} at (342,137) size 58x19
+          text run at (342,137) width 58: " World!"
+caret: position 1 of child 1 {OBJECT} of child 3 {DIV} of body

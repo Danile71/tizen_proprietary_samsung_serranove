@@ -1,0 +1,23 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 2 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x76
+        RenderText {#text} at (0,0) size 963x76
+          text run at (0,0) width 802: "This tests visible position creation in unrendered space after rendered text, just before a new block. "
+          text run at (802,0) width 159: "The caret should be"
+          text run at (0,19) width 926: "at the end of the line containing 'foo' because we choose to treat all positions in the unrendered space after 'foo' as"
+          text run at (0,38) width 963: "being visually equivalent to the position just after 'foo', and not visually equivalent to the position on the next line, before"
+          text run at (0,57) width 40: "'bar'."
+      RenderBlock {DIV} at (0,92) size 964x38
+        RenderBlock (anonymous) at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 26x19
+            text run at (0,0) width 26: "foo"
+        RenderBlock {DIV} at (0,19) size 964x19
+          RenderText {#text} at (0,0) size 27x19
+            text run at (0,0) width 27: "bar"
+caret: position 3 of child 0 {#text} of child 2 {DIV} of body

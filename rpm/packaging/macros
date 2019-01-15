@@ -1,0 +1,331 @@
+# Per-platform rpm configuration file.
+
+#==============================================================================
+# ---- per-platform macros.
+#
+%_vendor		tizen
+%_os			linux
+%_target_platform	%{_target_cpu}-%{_vendor}-%{_target_os}%{?_gnu}
+
+###_enable_debug_packages 1
+
+#       Default fuzz level for %patch in spec file.
+%_default_patch_fuzz    2
+%_enable_debug_packages 1
+
+%do_profiling 1
+%cflags_profile_generate -fprofile-generate
+%cflags_profile_feedback -fprofile-use
+
+# Tizen
+#
+%configure \
+  CFLAGS="${CFLAGS:-%optflags}" ; export CFLAGS ; \
+  CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
+  FFLAGS="${FFLAGS:-%optflags -I%_fmoddir}" ; export FFLAGS ; \
+  ./configure --build=%{_build} --host=%{_host} \\\
+	--target=%{_target_platform} \\\
+	--program-prefix=%{?_program_prefix} \\\
+	--prefix=%{_prefix} \\\
+	--exec-prefix=%{_exec_prefix} \\\
+	--bindir=%{_bindir} \\\
+	--sbindir=%{_sbindir} \\\
+	--sysconfdir=%{_sysconfdir} \\\
+	--datadir=%{_datadir} \\\
+	--includedir=%{_includedir} \\\
+	--libdir=%{_libdir} \\\
+	--libexecdir=%{_libexecdir} \\\
+	--localstatedir=%{_localstatedir} \\\
+	--sharedstatedir=%{_sharedstatedir} \\\
+	--mandir=%{_mandir} \\\
+	--infodir=%{_infodir}
+
+
+%reconfigure \
+  CFLAGS="${CFLAGS:-%optflags}" ; export CFLAGS ; \
+  CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
+  FFLAGS="${FFLAGS:-%optflags -I%_fmoddir}" ; export FFLAGS ; \
+  autoreconf -v --install --force || exit 1 \
+  ./configure --build=%{_build} --host=%{_host} \\\
+	--target=%{_target_platform} \\\
+	--program-prefix=%{?_program_prefix} \\\
+	--prefix=%{_prefix} \\\
+	--exec-prefix=%{_exec_prefix} \\\
+	--bindir=%{_bindir} \\\
+	--sbindir=%{_sbindir} \\\
+	--sysconfdir=%{_sysconfdir} \\\
+	--datadir=%{_datadir} \\\
+	--includedir=%{_includedir} \\\
+	--libdir=%{_libdir} \\\
+	--libexecdir=%{_libexecdir} \\\
+	--localstatedir=%{_localstatedir} \\\
+	--sharedstatedir=%{_sharedstatedir} \\\
+	--mandir=%{_mandir} \\\
+	--infodir=%{_infodir}
+
+%autogen \
+  CFLAGS="${CFLAGS:-%optflags}" ; export CFLAGS ; \
+  CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
+  FFLAGS="${FFLAGS:-%optflags -I%_fmoddir}" ; export FFLAGS ; \
+  ./autogen.sh --build=%{_build} --host=%{_host} \\\
+	--target=%{_target_platform} \\\
+	--program-prefix=%{?_program_prefix} \\\
+	--prefix=%{_prefix} \\\
+	--exec-prefix=%{_exec_prefix} \\\
+	--bindir=%{_bindir} \\\
+	--sbindir=%{_sbindir} \\\
+	--sysconfdir=%{_sysconfdir} \\\
+	--datadir=%{_datadir} \\\
+	--includedir=%{_includedir} \\\
+	--libdir=%{_libdir} \\\
+	--libexecdir=%{_libexecdir} \\\
+	--localstatedir=%{_localstatedir} \\\
+	--sharedstatedir=%{_sharedstatedir} \\\
+	--mandir=%{_mandir} \\\
+	--infodir=%{_infodir}
+
+
+%makeinstall \
+  %{__make} \\\
+	prefix=%{?buildroot:%{buildroot}}%{_prefix} \\\
+	exec_prefix=%{?buildroot:%{buildroot}}%{_exec_prefix} \\\
+	bindir=%{?buildroot:%{buildroot}}%{_bindir} \\\
+	sbindir=%{?buildroot:%{buildroot}}%{_sbindir} \\\
+	sysconfdir=%{?buildroot:%{buildroot}}%{_sysconfdir} \\\
+	datadir=%{?buildroot:%{buildroot}}%{_datadir} \\\
+	includedir=%{?buildroot:%{buildroot}}%{_includedir} \\\
+	libdir=%{?buildroot:%{buildroot}}%{_libdir} \\\
+	libexecdir=%{?buildroot:%{buildroot}}%{_libexecdir} \\\
+	localstatedir=%{?buildroot:%{buildroot}}%{_localstatedir} \\\
+	sharedstatedir=%{?buildroot:%{buildroot}}%{_sharedstatedir} \\\
+	mandir=%{?buildroot:%{buildroot}}%{_mandir} \\\
+	infodir=%{?buildroot:%{buildroot}}%{_infodir} \\\
+  install
+
+
+%make_install \
+  %{__make} \\\
+	DESTDIR=%{?buildroot:%{buildroot}} \\\
+	INSTALL_ROOT=%{?buildroot:%{buildroot}} \\\
+  install \
+  rm -f %{?buildroot:%{buildroot}}%{_infodir}/dir \
+  find %{?buildroot:%{buildroot}} -regex ".*\\.la$" | xargs rm -f -- \
+  %{!?keepstatic:find %{?buildroot:%{buildroot}} -regex ".*\\.a$" | xargs rm -f --}  
+
+%_smp_mflags %([ -z "$RPM_BUILD_NCPUS" ] \\\
+	&& RPM_BUILD_NCPUS="`/usr/bin/getconf _NPROCESSORS_ONLN`"; \\\
+	[ "$RPM_BUILD_NCPUS" -gt 1 ] && echo "-j$RPM_BUILD_NCPUS")
+
+
+%install_info(:-:) \
+        ALL_ARGS=(%{**}) \
+        NUM_ARGS=${#ALL_ARGS[@]} \
+        if test -x sbin/install-info ; then \
+            if test -e "${ALL_ARGS[$((NUM_ARGS-1))]}" ; then \
+                sbin/install-info "${ALL_ARGS[@]}" \
+            fi \
+        fi ;
+
+%install_info_delete(:-:) \
+        ALL_ARGS=(%{**}) \
+        NUM_ARGS=${#ALL_ARGS[@]} \
+        if test -x sbin/install-info ; then \
+           if ! test -e "${ALL_ARGS[$((NUM_ARGS-1))]}" ; then \
+                sbin/install-info --quiet --delete "${ALL_ARGS[@]}" \
+           fi ; \
+        fi ;
+
+#==============================================================================
+# ---- Build policy macros.
+#
+#---------------------------------------------------------------------
+#	Expanded at end of %install scriptlet.
+#
+
+%__arch_install_post   /usr/lib/rpm/check-buildroot
+
+%__os_install_post    \
+    /usr/lib/rpm//brp-compress \
+    %{!?__debug_package:/usr/lib/rpm/brp-strip %{__strip}} \
+    /usr/lib/rpm/brp-strip-static-archive %{__strip} \
+    /usr/lib/rpm/brp-strip-comment-note %{__strip} %{__objdump} \
+    /usr/lib/rpm/brp-python-hardlink \
+    %{!?disable_docs_package:/usr/lib/rpm/tizen/find-docs.sh %{buildroot}} \
+%{nil}
+
+#    /usr/lib/rpm/tizen/brp-implant-ident-static
+
+%__spec_install_post\
+    %{?__debug_package:%{__debug_install_post}}\
+    %{__arch_install_post}\
+    %{__os_install_post}\
+%{nil}
+
+
+%lang_package(n:f:) \
+%package %{-n:-n %{-n*}-}locale \
+Summary: Translations and Locale for package %{name}\
+Requires: %{-n:%{-n*}}%{!-n:%{name}} = %{version} \
+Provides: %{-n:%{-n*}}%{!-n:%{name}}-lang-all = %{version} \
+BuildArch:  noarch \
+%description %{-n:-n %{-n*}-}locale\
+This package provides translations for package %{name}.\
+%files %{-n:-n %{-n*}-}locale -f %{-f:%{-f*}.lang} %{!-f:%{name}.lang}\
+%defattr(-,root,root,-)\
+%{nil}
+
+
+%docs_package \
+%package docs \
+Summary: Documentation for package %{name}\
+Group: Documentation\
+AutoReqProv: 0\
+%description docs\
+This package provides documentation for package %{name}.\
+%files docs -f documentation.list\
+%defattr(-,root,root,-)\
+%{nil}
+
+
+
+# Bad hack to set $LANG to C during all RPM builds
+%prep \
+%%prep\
+LANG=C\
+export LANG\
+unset DISPLAY\
+%{nil}
+
+%build %%build\
+LANG=C\
+export LANG\
+unset DISPLAY\
+CFLAGS="%optflags" ; export CFLAGS ; \
+CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
+FFLAGS="${FFLAGS:-%optflags -I%_fmoddir}" ; export FFLAGS ; \
+LD_AS_NEEDED=1; export LD_AS_NEEDED ; \
+%{nil}
+
+%install %{?_enable_debug_packages:%{?buildsubdir:%{debug_package}}}\
+%%install\
+LANG=C\
+export LANG\
+unset DISPLAY\
+rm -rf %{?buildroot:%{buildroot}} \
+mkdir -p %{?buildroot:%{buildroot}} \
+%{nil}
+
+%check %%check\
+unset DISPLAY\
+%{nil}
+
+%clean %%clean\
+rm -rf %{?buildroot:%{buildroot}} \
+%{nil}
+
+%find_lang      /usr/lib/rpm/find-lang.sh %{buildroot}
+%find_docs      /usr/lib/rpm/tizen/find-docs.sh %{buildroot}
+
+#
+# use internal dep generator?
+%_use_internal_dependency_generator 1
+
+#
+# Should missing %doc files terminate a build?
+%_missing_doc_files_terminate_build    1
+#
+# Should missing buildids terminate a build?
+%_missing_build_ids_terminate_build    1
+
+#
+# Should unpackaged files in a build root terminate a build?
+%_unpackaged_files_terminate_build    1
+
+%__global_cflags	-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -Wl,--as-needed -Wl,-O1 -Wl,--hash-style=gnu
+
+# Disable lookups
+%_hkp_keyserver  %{nil}
+
+
+#==============================================================================
+# ---- default icons directories as per the icon theme freedesktop spec
+
+%_iconstheme    hicolor
+%_iconsbasedir  %{_datadir}/icons/%{_iconstheme}
+
+#
+# The following is a bit heavy and will be removed
+#
+%_icons16dir    %{_iconsbasedir}/16x16/apps
+%_icons22dir    %{_iconsbasedir}/22x22/apps
+%_icons48dir    %{_iconsbasedir}/48x48/apps
+%_icons64dir    %{_iconsbasedir}/64x64/apps
+%_icons96dir    %{_iconsbasedir}/96x96/apps
+%_icons192dir   %{_iconsbasedir}/192x192/apps
+%_iconsscaldir  %{_iconsbasedir}/scalable/apps
+
+
+#
+# Tizen icons
+#
+# %1	the name of the icon (typically the name of the package). RedHat
+#	requires 3 icons sizes (48, 32, 16), all should be present.
+%tizen_icons() \
+install -D -m 644 %1-48.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/48x48/apps/%{name}.png\
+install -D -m 644 %1-32.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/32x32/apps/%{name}.png\
+install -D -m 644 %1-16.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/16x16/apps/%{name}.png\
+%{nil}
+
+
+#==============================================================================
+# ---- default .desktop directories per the desktop-entry freedesktop.org spec
+
+%_desktopdir    %{_datadir}/applications
+
+#==============================================================================
+# ---- Generic auto req/prov filtering macros
+#
+# http://fedoraproject.org/wiki/PackagingDrafts/AutoProvidesAndRequiresFiltering
+
+# prevent anything matching from being scanned for provides
+%filter_provides_in(P) %{expand: \
+%global __filter_prov_cmd %{?__filter_prov_cmd} %{__grep} -v %{-P} '%*' | \
+}
+
+# prevent anything matching from being scanned for requires
+%filter_requires_in(P) %{expand: \
+%global __filter_req_cmd %{?__filter_req_cmd} %{__grep} -v %{-P} '%*' | \
+}
+
+# filter anything matching out of the provides stream
+%filter_from_provides() %{expand: \
+%global __filter_from_prov %{?__filter_from_prov} | %{__sed} -e '%*' \
+}
+
+# filter anything matching out of the requires stream
+%filter_from_requires() %{expand: \
+%global __filter_from_req %{?__filter_from_req} | %{__sed} -e '%*' \
+}
+
+# actually set up the filtering bits
+%filter_setup %{expand: \
+%global _use_internal_dependency_generator 0 \
+%global __deploop() while read FILE; do /usr/lib/rpm/rpmdeps -%{1} ${FILE}; done | /bin/sort -u \
+%global __find_provides /bin/sh -c "%{?__filter_prov_cmd} %{__deploop P} %{?__filter_from_prov}" \
+%global __find_requires /bin/sh -c "%{?__filter_req_cmd}  %{__deploop R} %{?__filter_from_req}" \
+}
+
+%remove_docs \
+  rm -rf %{?buildroot:%{buildroot}}%{_infodir} \
+  rm -rf %{?buildroot:%{buildroot}}%{_defaultdocdir} \
+  rm -rf %{?buildroot:%{buildroot}}%{_datadir}/doc/%{name} \
+  rm -rf %{?buildroot:%{buildroot}}%{_datadir}/doc/%{name}-%{version} \
+  rm -rf %{?buildroot:%{buildroot}}%{_datadir}/gtk-doc \
+  rm -rf %{?buildroot:%{buildroot}}%{_datadir}/doc \
+  rm -rf %{?buildroot:%{buildroot}}%{_datadir}/man \
+  find %{?buildroot:%{buildroot}} -regex ".*/man/man./.*\.[0-9]" | xargs rm -f -- \
+  find %{?buildroot:%{buildroot}} -regex ".*/man/../man./.*\.[0-9]" | xargs rm -f -- \
+  find %{?buildroot:%{buildroot}} -regex ".*/man/man./.*\.[0-9]pm" | xargs rm -f --
+
+%ext_info .gz
+%ext_man .gz

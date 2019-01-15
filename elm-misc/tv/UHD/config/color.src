@@ -1,0 +1,11 @@
+group "Ea_Theme_Color_Config" struct {
+    value "index" int: 0;
+    value "style" string: "Light";
+    group "list" list {
+        group "Ea_Theme_Color_hsv" struct {
+            value "h" int: 213;
+            value "s" int: 98;
+            value "v" int: 52;
+        }
+    }
+}

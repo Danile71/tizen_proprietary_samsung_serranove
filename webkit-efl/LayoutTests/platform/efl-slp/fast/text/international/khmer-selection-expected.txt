@@ -1,0 +1,45 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x78
+  RenderBlock {HTML} at (0,0) size 800x78
+    RenderBody {BODY} at (8,12) size 784x54
+      RenderBlock {P} at (0,0) size 784x14
+        RenderInline {NOBR} at (0,0) size 9x14
+          RenderInline {B} at (0,0) size 0x14
+            RenderText {#text} at (0,0) size 0x14
+              text run at (0,0) width 0: "\x{179C}\x{17C9}\x{17C2}\x{1794}"
+          RenderText {#text} at (0,0) size 3x14
+            text run at (0,0) width 3: " "
+          RenderInline {A} at (0,0) size 0x14 [color=#0000EE]
+            RenderText {#text} at (3,0) size 0x14
+              text run at (3,0) width 0: "\x{179A}\x{17BC}\x{1794}\x{1797}\x{17B6}\x{1796}"
+          RenderText {#text} at (3,0) size 3x14
+            text run at (3,0) width 3: " "
+          RenderInline {A} at (0,0) size 0x14 [color=#0000EE]
+            RenderText {#text} at (6,0) size 0x14
+              text run at (6,0) width 0: "\x{1780}\x{17D2}\x{179A}\x{17BB}\x{1798}"
+          RenderText {#text} at (6,0) size 3x14
+            text run at (6,0) width 3: " "
+          RenderInline {A} at (0,0) size 0x14 [color=#0000EE]
+            RenderText {#text} at (9,0) size 0x14
+              text run at (9,0) width 0: "\x{1790}\x{178F}\x{17AF}\x{1780}\x{179F}\x{17B6}\x{179A}"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,26) size 784x28
+        RenderText {#text} at (0,0) size 401x14
+          text run at (0,0) width 401: "Some Harfbuzz shapers will output cluster logs which suggest that some glyphs had "
+        RenderInline {I} at (0,0) size 12x14
+          RenderText {#text} at (401,0) size 12x14
+            text run at (401,0) width 12: "no"
+        RenderText {#text} at (413,0) size 297x14
+          text run at (413,0) width 297: " contributing code points. This test contains such text and uses "
+        RenderInline {TT} at (0,0) size 66x11
+          RenderText {#text} at (710,3) size 66x11
+            text run at (710,3) width 66: "eventSender"
+        RenderText {#text} at (0,14) size 327x14
+          text run at (0,14) width 327: "to select the text. You should see some of the above text selected and "
+        RenderInline {TT} at (0,0) size 60x11
+          RenderText {#text} at (327,17) size 60x11
+            text run at (327,17) width 60: "test_shell"
+        RenderText {#text} at (387,14) size 194x14
+          text run at (387,14) width 194: " shouldn't trigger any assertions or crash."
+caret: position 0 of child 0 {#text} of child 0 {B} of child 1 {NOBR} of child 1 {P} of body

@@ -1,0 +1,24 @@
+diff -up bzip2-1.0.5/Makefile.change_soname bzip2-1.0.5/Makefile
+--- bzip2-1.0.5/Makefile.change_soname	2011-07-19 21:04:23.441000820 +0900
++++ bzip2-1.0.5/Makefile	2011-07-19 21:05:39.457000819 +0900
+@@ -62,7 +62,7 @@ libbz2.so.$(somajor): libbz2.so.$(somino
+ 
+ libbz2.so.$(sominor): $(OBJS:%.o=%.sho)
+ 	$(CC) -o libbz2.so.$(sominor) -shared \
+-	  -Wl,-soname,libbz2.so.$(somajor) $^ -lc
++	  -Wl,-soname,libbz2.so.1 $^ -lc
+ 
+ %.sho: %.c
+ 	$(CC) $(CFLAGS) -D_REENTRANT -fPIC -o $@ -c $<
+diff -up bzip2-1.0.5/Makefile-libbz2_so.change_soname bzip2-1.0.5/Makefile-libbz2_so
+--- bzip2-1.0.5/Makefile-libbz2_so.change_soname	2007-12-09 22:00:50.000000000 +0900
++++ bzip2-1.0.5/Makefile-libbz2_so	2011-07-19 20:54:29.418000820 +0900
+@@ -35,7 +35,7 @@ OBJS= blocksort.o  \
+       bzlib.o
+ 
+ all: $(OBJS)
+-	$(CC) -shared -Wl,-soname -Wl,libbz2.so.1.0 -o libbz2.so.1.0.4 $(OBJS)
++	$(CC) -shared -Wl,-soname -Wl,libbz2.so.1 -o libbz2.so.1.0.4 $(OBJS)
+ 	$(CC) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.so.1.0.4
+ 	rm -f libbz2.so.1.0
+ 	ln -s libbz2.so.1.0.4 libbz2.so.1.0

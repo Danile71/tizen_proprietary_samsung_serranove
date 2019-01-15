@@ -1,0 +1,26 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock (anonymous) at (0,0) size 964x71
+        RenderText {#text} at (300,35) size 5x19
+          text run at (300,35) width 5: " "
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,87) size 964x38
+        RenderText {#text} at (0,0) size 954x38
+          text run at (0,0) width 954: "This is a pixel test that tests the linebox overflow in the padding on textareas. The div on the right is styled to look like a"
+          text run at (0,19) width 73: "textarea."
+layer at (8,8) size 300x50 clip at (11,11) size 294x44
+  RenderTextControl {TEXTAREA} at (0,0) size 300x50 [color=#0000FF] [bgcolor=#FFFFFF] [border: (3px solid #FFFF00)]
+    RenderBlock {DIV} at (18,18) size 264x0
+      RenderText {#text} at (0,-17) size 181x35
+        text run at (0,-17) width 171: "ggggggggg"
+        text run at (171,-17) width 10: " "
+        text run at (0,-17) width 171: "ggggggggg"
+layer at (313,29) size 300x50 clip at (316,32) size 294x44
+  RenderBlock {DIV} at (305,21) size 300x50 [color=#0000FF] [border: (3px solid #FFFF00)]
+    RenderBlock {DIV} at (18,18) size 264x0
+      RenderText {#text} at (0,-17) size 171x35
+        text run at (0,-17) width 171: "ggggggggg"
+        text run at (0,-17) width 171: "ggggggggg"

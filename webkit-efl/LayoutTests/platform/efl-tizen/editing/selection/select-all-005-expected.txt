@@ -1,0 +1,14 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 2 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderText {#text} at (0,0) size 945x38
+        text run at (0,0) width 945: "VisiblePositions created at [html, x] where html is non-editable should descend into an editable body, for convenience."
+        text run at (0,19) width 347: "Everything on this page should be selected."
+      RenderText {#text} at (0,0) size 0x0
+selection start: position 0 of child 0 {#text} of body
+selection end:   position 164 of child 0 {#text} of body

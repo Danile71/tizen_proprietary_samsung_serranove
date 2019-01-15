@@ -1,0 +1,61 @@
+#filename "gesture.cpp"
+#lib "???"
+#feature ---
+void GestureEventListener::OnCustomGestureCanceled (TouchGestureDetector &gestureDetector);                 void GestureEventListener::OnCustomGestureCanceled (TouchGestureDetector &gestureDetector);                 0
+void GestureEventListener::OnCustomGestureChanged (TouchGestureDetector &gestureDetector);                  void GestureEventListener::OnCustomGestureChanged (TouchGestureDetector &gestureDetector);                  0
+void GestureEventListener::OnCustomGestureFinished (TouchGestureDetector &gestureDetector);                 void GestureEventListener::OnCustomGestureFinished (TouchGestureDetector &gestureDetector);                 0
+void GestureEventListener::OnCustomGestureStarted (TouchGestureDetector &gestureDetector);                  void GestureEventListener::OnCustomGestureStarted (TouchGestureDetector &gestureDetector);                  0
+void GestureEventListener::OnFlickGestureCanceled (TouchFlickGestureDetector &gestureDetector);             void GestureEventListener::OnFlickGestureCanceled (TouchFlickGestureDetector &gestureDetector);             0
+void GestureEventListener::OnFlickGestureDetected (TouchFlickGestureDetector &gestureDetector);             void GestureEventListener::OnFlickGestureDetected (TouchFlickGestureDetector &gestureDetector);             0
+void GestureEventListener::OnLongPressGestureCanceled (TouchLongPressGestureDetector &gestureDetector);     void GestureEventListener::OnLongPressGestureCanceled (TouchLongPressGestureDetector &gestureDetector);     0
+void GestureEventListener::OnLongPressGestureDetected (TouchLongPressGestureDetector &gestureDetector);     void GestureEventListener::OnLongPressGestureDetected (TouchLongPressGestureDetector &gestureDetector);     0
+void GestureEventListener::OnPanningGestureCanceled (TouchPanningGestureDetector &gestureDetector);         void GestureEventListener::OnPanningGestureCanceled (TouchPanningGestureDetector &gestureDetector);         0
+void GestureEventListener::OnPanningGestureChanged (TouchPanningGestureDetector &gestureDetector);          void GestureEventListener::OnPanningGestureChanged (TouchPanningGestureDetector &gestureDetector);          0
+void GestureEventListener::OnPanningGestureFinished (TouchPanningGestureDetector &gestureDetector);         void GestureEventListener::OnPanningGestureFinished (TouchPanningGestureDetector &gestureDetector);         0
+void GestureEventListener::OnPanningGestureStarted (TouchPanningGestureDetector &gestureDetector);          void GestureEventListener::OnPanningGestureStarted (TouchPanningGestureDetector &gestureDetector);          0
+void GestureEventListener::OnPinchGestureCanceled (TouchPinchGestureDetector &gestureDetector);             void GestureEventListener::OnPinchGestureCanceled (TouchPinchGestureDetector &gestureDetector);             0
+void GestureEventListener::OnPinchGestureChanged (TouchPinchGestureDetector &gestureDetector);              void GestureEventListener::OnPinchGestureChanged (TouchPinchGestureDetector &gestureDetector);              0
+void GestureEventListener::OnPinchGestureFinished (TouchPinchGestureDetector &gestureDetector);             void GestureEventListener::OnPinchGestureFinished (TouchPinchGestureDetector &gestureDetector);             0
+void GestureEventListener::OnPinchGestureStarted (TouchPinchGestureDetector &gestureDetector);              void GestureEventListener::OnPinchGestureStarted (TouchPinchGestureDetector &gestureDetector);              0
+void GestureEventListener::OnRotationGestureCanceled (TouchRotationGestureDetector &gestureDetector);       void GestureEventListener::OnRotationGestureCanceled (TouchRotationGestureDetector &gestureDetector);       0
+void GestureEventListener::OnRotationGestureChanged (TouchRotationGestureDetector &gestureDetector);        void GestureEventListener::OnRotationGestureChanged (TouchRotationGestureDetector &gestureDetector);        0
+void GestureEventListener::OnRotationGestureFinished (TouchRotationGestureDetector &gestureDetector);       void GestureEventListener::OnRotationGestureFinished (TouchRotationGestureDetector &gestureDetector);       0
+void GestureEventListener::OnRotationGestureStarted (TouchRotationGestureDetector &gestureDetector);        void GestureEventListener::OnRotationGestureStarted (TouchRotationGestureDetector &gestureDetector);        0
+void GestureEventListener::OnTapGestureCanceled (TouchTapGestureDetector &gestureDetector);                 void GestureEventListener::OnTapGestureCanceled (TouchTapGestureDetector &gestureDetector);                 0
+void GestureEventListener::OnTapGestureDetected (TouchTapGestureDetector &gestureDetector);                 void GestureEventListener::OnTapGestureDetected (TouchTapGestureDetector &gestureDetector);                 0
+
+
+#filename "gesture.c"
+#lib "???"
+#feature ---
+__common_elm_gesture_layer_cb;  __common_elm_gesture_layer_cb; 0
+
+#filename "gesture.c"
+#lib "/usr/lib/libelementary.so.1"
+#feature FL_USER_EVENT
+elm_gesture_layer_cb_set;         elm_gesture_layer_cb_set;         0
+
+#filename "orientation.c"
+#lib "???"
+#feature ---
+Ecore_Event_Handler *register_orientation_event_listener();                 Ecore_Event_Handler *register_orientation_event_listener();                 0
+void unregister_orientation_event_listener(Ecore_Event_Handler **handler);  void unregister_orientation_event_listener(Ecore_Event_Handler **handler);  0
+
+#filename "orientation.c"
+#lib "/usr/lib/libecore_x.so.1"
+#feature ---
+ecore_x_init;                ecore_x_init;                      3
+
+#filename "da_event.c"
+#lib "???"
+#feature ---
+on_orientation_changed;     on_orientation_changed;     0
+
+#filename "keytouch.c"
+#lib "/usr/lib/libecore_input_evas.so.1"
+#feature FL_USER_EVENT
+ecore_event_evas_key_down;              ecore_event_evas_key_down;              1
+ecore_event_evas_key_up;                ecore_event_evas_key_up;                1
+ecore_event_evas_mouse_button_down;     ecore_event_evas_mouse_button_down;     1
+ecore_event_evas_mouse_button_up;       ecore_event_evas_mouse_button_up;       1
+ecore_event_evas_mouse_move;            ecore_event_evas_mouse_move;            1

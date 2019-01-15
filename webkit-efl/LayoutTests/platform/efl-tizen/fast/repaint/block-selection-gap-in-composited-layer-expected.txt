@@ -1,0 +1,14 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,50) size 964x677
+layer at (58,50) size 914x19
+  RenderBlock {DIV} at (50,0) size 914x19
+    RenderText {#text} at (0,0) size 10x19
+      text run at (0,0) width 10: "a"
+layer at (58,50) size 100x100
+  RenderBlock (positioned) {DIV} at (0,0) size 100x100 [bgcolor=#FF0000]
+    RenderBR {BR} at (0,0) size 0x19
+selection start: position 0 of child 0 {BR} of child 1 {DIV} of child 1 {DIV} of body
+selection end:   position 1 of child 2 {#text} of child 1 {DIV} of body

@@ -1,0 +1,113 @@
+layer at (0,0) size 800x718
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x718
+  RenderBlock {HTML} at (0,0) size 800x718
+    RenderBody {BODY} at (8,8) size 784x702 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x72
+        RenderText {#text} at (0,0) size 312x72
+          text run at (0,0) width 300: ".zero {background-color: silver; padding-left: 0;}"
+          text run at (300,0) width 0: " "
+          text run at (0,12) width 306: ".one {padding-left: 0.5in; background-color: aqua;}"
+          text run at (306,12) width 0: " "
+          text run at (0,24) width 300: ".two {padding-left: 25px; background-color: aqua;}"
+          text run at (300,24) width 0: " "
+          text run at (0,36) width 306: ".three {padding-left: 5em; background-color: aqua;}"
+          text run at (306,36) width 0: " "
+          text run at (0,48) width 300: ".four {padding-left: 25%; background-color: aqua;}"
+          text run at (300,48) width 0: " "
+          text run at (0,60) width 312: ".five {padding-left: -20px; background-color: aqua;}"
+          text run at (312,60) width 0: " "
+      RenderBlock {HR} at (0,108) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,122) size 784x14 [bgcolor=#C0C0C0]
+        RenderText {#text} at (0,0) size 152x14
+          text run at (0,0) width 152: "This element has a class of zero."
+      RenderBlock {P} at (0,148) size 784x28 [bgcolor=#00FFFF]
+        RenderText {#text} at (48,0) size 736x28
+          text run at (48,0) width 473: "This element should have a left padding of half an inch, which will require extra text in order to test. "
+          text run at (521,0) width 263: "Both the content background and the padding should be"
+          text run at (48,14) width 80: "aqua (light blue)."
+      RenderBlock {P} at (0,188) size 784x28 [bgcolor=#00FFFF]
+        RenderText {#text} at (25,0) size 749x28
+          text run at (25,0) width 461: "This element should have a left padding of 25 pixels, which will require extra text in order to test. "
+          text run at (486,0) width 288: "Both the content background and the padding should be aqua"
+          text run at (25,14) width 55: "(light blue)."
+      RenderBlock {P} at (0,228) size 784x28 [bgcolor=#00FFFF]
+        RenderText {#text} at (60,0) size 701x28
+          text run at (60,0) width 438: "This element should have a left padding of 5em, which will require extra text in order to test. "
+          text run at (498,0) width 263: "Both the content background and the padding should be"
+          text run at (60,14) width 80: "aqua (light blue)."
+      RenderBlock {P} at (0,268) size 784x28 [bgcolor=#00FFFF]
+        RenderText {#text} at (196,0) size 586x28
+          text run at (196,0) width 546: "This element should have a left padding of 25%, which is calculated with respect to the width of the parent element. "
+          text run at (742,0) width 40: "Both the"
+          text run at (196,14) width 303: "content background and the padding should be aqua (light blue)."
+      RenderBlock {UL} at (0,308) size 784x42 [bgcolor=#808080]
+        RenderListItem {LI} at (25,0) size 759x14
+          RenderListMarker at (-15,0) size 6x14: bullet
+          RenderText {#text} at (0,0) size 537x14
+            text run at (0,0) width 537: "The left padding on this unordered list has been set to 25 pixels, which will require some extra test in order to test."
+        RenderListItem {LI} at (25,14) size 759x28 [bgcolor=#FFFFFF]
+          RenderListMarker at (-15,0) size 6x14: bullet
+          RenderText {#text} at (25,0) size 726x28
+            text run at (25,0) width 535: "Another list item might not be such a bad idea, either, considering that such things do need to be double-checked. "
+            text run at (560,0) width 191: "This list item has its left padding also set"
+            text run at (25,14) width 412: "to 25 pixels, which should combine with the list's padding to make 50 pixels of margin."
+      RenderBlock {P} at (0,362) size 784x28 [bgcolor=#00FFFF]
+        RenderText {#text} at (0,0) size 773x28
+          text run at (0,0) width 421: "This element should have no left padding, since negative padding values are not allowed. "
+          text run at (421,0) width 352: "Both the content background and the normal padding should be aqua (light"
+          text run at (0,14) width 27: "blue)."
+      RenderTable {TABLE} at (0,402) size 784x300 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x298
+          RenderTableRow {TR} at (0,0) size 782x22
+            RenderTableCell {TD} at (0,0) size 782x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 782x276
+            RenderTableCell {TD} at (0,149) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 771x276 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 763x14 [bgcolor=#C0C0C0]
+                RenderText {#text} at (0,0) size 152x14
+                  text run at (0,0) width 152: "This element has a class of zero."
+              RenderBlock {P} at (4,30) size 763x28 [bgcolor=#00FFFF]
+                RenderText {#text} at (48,0) size 687x28
+                  text run at (48,0) width 473: "This element should have a left padding of half an inch, which will require extra text in order to test. "
+                  text run at (521,0) width 214: "Both the content background and the padding"
+                  text run at (48,14) width 129: "should be aqua (light blue)."
+              RenderBlock {P} at (4,70) size 763x28 [bgcolor=#00FFFF]
+                RenderText {#text} at (25,0) size 724x28
+                  text run at (25,0) width 461: "This element should have a left padding of 25 pixels, which will require extra text in order to test. "
+                  text run at (486,0) width 263: "Both the content background and the padding should be"
+                  text run at (25,14) width 80: "aqua (light blue)."
+              RenderBlock {P} at (4,110) size 763x28 [bgcolor=#00FFFF]
+                RenderText {#text} at (60,0) size 701x28
+                  text run at (60,0) width 438: "This element should have a left padding of 5em, which will require extra text in order to test. "
+                  text run at (498,0) width 263: "Both the content background and the padding should be"
+                  text run at (60,14) width 80: "aqua (light blue)."
+              RenderBlock {P} at (4,150) size 763x28 [bgcolor=#00FFFF]
+                RenderText {#text} at (190,0) size 569x28
+                  text run at (190,0) width 546: "This element should have a left padding of 25%, which is calculated with respect to the width of the parent element. "
+                  text run at (736,0) width 23: "Both"
+                  text run at (190,14) width 320: "the content background and the padding should be aqua (light blue)."
+              RenderBlock {UL} at (4,190) size 763x42 [bgcolor=#808080]
+                RenderListItem {LI} at (25,0) size 738x14
+                  RenderListMarker at (-15,0) size 6x14: bullet
+                  RenderText {#text} at (0,0) size 537x14
+                    text run at (0,0) width 537: "The left padding on this unordered list has been set to 25 pixels, which will require some extra test in order to test."
+                RenderListItem {LI} at (25,14) size 738x28 [bgcolor=#FFFFFF]
+                  RenderListMarker at (-15,0) size 6x14: bullet
+                  RenderText {#text} at (25,0) size 710x28
+                    text run at (25,0) width 535: "Another list item might not be such a bad idea, either, considering that such things do need to be double-checked. "
+                    text run at (560,0) width 175: "This list item has its left padding also"
+                    text run at (25,14) width 428: "set to 25 pixels, which should combine with the list's padding to make 50 pixels of margin."
+              RenderBlock {P} at (4,244) size 763x28 [bgcolor=#00FFFF]
+                RenderText {#text} at (0,0) size 745x28
+                  text run at (0,0) width 421: "This element should have no left padding, since negative padding values are not allowed. "
+                  text run at (421,0) width 324: "Both the content background and the normal padding should be aqua"
+                  text run at (0,14) width 55: "(light blue)."

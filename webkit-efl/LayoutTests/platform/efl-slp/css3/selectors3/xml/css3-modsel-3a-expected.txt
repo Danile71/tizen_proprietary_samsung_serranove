@@ -1,0 +1,15 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x64
+  RenderBlock {test} at (0,0) size 800x64 [color=#00FF00]
+    RenderBlock {p} at (0,12) size 800x14 [color=#FF0000]
+      RenderInline {span} at (0,0) size 346x14 [color=#00FF00]
+        RenderText {#text} at (0,0) size 346x14
+          text run at (0,0) width 268: "This paragraph, and all textual contents in the document, "
+          text run at (268,0) width 78: "should be green."
+      RenderText {#text} at (0,0) size 0x0
+    RenderBlock {ul} at (0,38) size 800x14 [color=#FF0000]
+      RenderListItem {li} at (40,0) size 760x14 [color=#00FF00]
+        RenderListMarker at (-15,0) size 6x14: bullet
+        RenderText {#text} at (0,0) size 125x14
+          text run at (0,0) width 125: "This item should be green."

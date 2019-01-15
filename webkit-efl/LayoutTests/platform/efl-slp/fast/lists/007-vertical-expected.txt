@@ -1,0 +1,18 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 780x584
+      RenderBlock {UL} at (0,0) size 70x584 [bgcolor=#808080] [border: (25px solid #008000) none]
+        RenderListItem {LI} at (0,50) size 28x534
+          RenderListMarker at (0,-15) size 14x6: bullet
+          RenderText {#text} at (0,0) size 28x515
+            text run at (0,0) width 515: "The top padding on this unordered list has been set to 25 pixels, which will require some extra test in order to"
+            text run at (14,0) width 19: "test."
+        RenderListItem {LI} at (28,50) size 42x534 [bgcolor=#FFFFFF] [border: (25px solid #008000) none]
+          RenderListMarker at (0,-15) size 14x6: bullet
+          RenderText {#text} at (0,50) size 42x483
+            text run at (0,50) width 452: "Another list item might not be such a bad idea, either, considering that such things do need to be"
+            text run at (14,50) width 80: "double-checked. "
+            text run at (14,130) width 403: "This list item has its left padding also set to 25 pixels, which should combine with the"
+            text run at (28,50) width 200: "list's padding to make 50 pixels of margin."

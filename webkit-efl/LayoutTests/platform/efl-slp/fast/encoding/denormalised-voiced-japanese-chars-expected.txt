@@ -1,0 +1,21 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x174
+  RenderBlock {HTML} at (0,0) size 800x174
+    RenderBody {BODY} at (8,8) size 784x154
+      RenderBlock (anonymous) at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 784x28
+          text run at (0,0) width 784: "This test checks that the decomposed unicode version of voiced japanese hiragana and katakana characters are rendered the same as the precomposed version. This test"
+          text run at (0,14) width 381: "is a pixel-test, and passes when the text in the two heading elements are identical."
+      RenderBlock {H2} at (0,42) size 784x21
+        RenderText {#text} at (0,0) size 77x20
+          text run at (0,0) width 77: "\x{30CF}\x{3099}\x{30CA}\x{30CA}\x{3068}\x{30CF}\x{309A}\x{30CA}\x{30DE}"
+      RenderBlock {P} at (0,77) size 784x14
+        RenderText {#text} at (0,0) size 122x14
+          text run at (0,0) width 122: "The above is decomposed"
+      RenderBlock {H2} at (0,105) size 784x21
+        RenderText {#text} at (0,0) size 77x20
+          text run at (0,0) width 77: "\x{30D0}\x{30CA}\x{30CA}\x{3068}\x{30D1}\x{30CA}\x{30DE}"
+      RenderBlock {P} at (0,140) size 784x14
+        RenderText {#text} at (0,0) size 126x14
+          text run at (0,0) width 126: "The above is precomposed"

@@ -1,0 +1,23 @@
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x707
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 957x19
+          text run at (0,0) width 957: "Tests that selection rects take transforms into account. The red box should be the bounds of the transformed selection."
+layer at (28,47) size 622x126
+  RenderBlock {DIV} at (20,39) size 622x126 [border: (1px solid #000000)]
+    RenderBlock {P} at (11,35) size 600x56
+      RenderText {#text} at (0,0) size 165x28
+        text run at (0,0) width 165: "Lorem ipsum "
+      RenderInline {SPAN} at (0,0) size 526x56
+        RenderText {#text} at (165,0) size 526x56
+          text run at (165,0) width 361: "dolor sit amet, consectetur"
+          text run at (0,28) width 144: "adipisicing"
+      RenderText {#text} at (144,28) size 54x28
+        text run at (144,28) width 54: " elit."
+selection start: position 0 of child 0 {#text} of child 1 {SPAN} of child 1 {P} of child 3 {DIV} of body
+selection end:   position 5 of child 0 {#text} of child 1 {SPAN} of child 1 {P} of child 3 {DIV} of body

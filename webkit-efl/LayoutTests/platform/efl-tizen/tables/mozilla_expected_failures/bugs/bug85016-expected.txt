@@ -1,0 +1,25 @@
+layer at (0,0) size 1181x3584
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x3584
+  RenderBlock {HTML} at (0,0) size 980x3584
+    RenderBody {BODY} at (32,32) size 916x3520
+      RenderBlock {DIV} at (32,0) size 852x803 [border: (1px solid #008000)]
+        RenderBlock {DIV} at (33,33) size 786x737 [border: (1px solid #FF0000)]
+          RenderImage {IMG} at (1,1) size 784x735
+          RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,835) size 916x19
+        RenderText {#text} at (0,0) size 673x19
+          text run at (0,0) width 673: "percentage height images in DIV with no height (red) in a DIV with no height (green)"
+      RenderBlock {DIV} at (32,886) size 852x807 [border: (3px dotted #008000)]
+        RenderBlock {DIV} at (35,35) size 782x737 [border: (1px solid #FF0000)]
+          RenderImage {IMG} at (1,1) size 1081x735
+          RenderText {#text} at (0,0) size 0x0
+      RenderBlock {P} at (0,1725) size 916x19
+        RenderText {#text} at (0,0) size 596x19
+          text run at (0,0) width 596: "percentage height image in table cell (red), in a DIV with no height (green)"
+      RenderBlock {DIV} at (32,1776) size 852x1744
+        RenderTable {TABLE} at (0,0) size 260x1744 [border: (1px solid #FF0000)]
+          RenderTableSection {TBODY} at (1,1) size 258x1742
+            RenderTableRow {TR} at (0,2) size 258x1738
+              RenderTableCell {TD} at (2,784) size 254x174 [border: (1px solid #FF0000)] [r=0 c=0 rs=1 cs=1]
+                RenderImage {IMG} at (2,2) size 250x170

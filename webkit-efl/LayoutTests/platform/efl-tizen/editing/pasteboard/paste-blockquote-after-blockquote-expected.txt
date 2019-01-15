@@ -1,0 +1,17 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 456x19
+          text run at (0,0) width 456: "This tests pasting a blockquote after another blockquote."
+      RenderBlock {DIV} at (0,35) size 964x38
+        RenderBlock {BLOCKQUOTE} at (0,0) size 964x19 [color=#0000FF] [border: none (2px solid #0000FF)]
+          RenderText {#text} at (22,0) size 48x19
+            text run at (22,0) width 48: "Line 1"
+        RenderBlock {BLOCKQUOTE} at (0,19) size 964x19 [color=#0000FF] [border: none (2px solid #0000FF)]
+          RenderText {#text} at (22,0) size 48x19
+            text run at (22,0) width 48: "Line 2"
+        RenderBlock (anonymous) at (0,38) size 964x0
+caret: position 6 of child 0 {#text} of child 1 {BLOCKQUOTE} of child 2 {DIV} of body

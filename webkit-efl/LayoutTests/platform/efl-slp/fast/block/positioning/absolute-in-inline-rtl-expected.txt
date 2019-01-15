@@ -1,0 +1,33 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 242x14
+          text run at (0,0) width 242: "The black outline box should stretch from the right "
+        RenderInline {SPAN} at (0,0) size 20x14 [color=#0000FF]
+          RenderText {#text} at (242,0) size 20x14
+            text run at (242,0) width 20: "blue"
+        RenderText {#text} at (262,0) size 161x14
+          text run at (262,0) width 161: " border on the first line, to the left "
+        RenderInline {SPAN} at (0,0) size 32x14 [color=#FFA500]
+          RenderText {#text} at (423,0) size 32x14
+            text run at (423,0) width 32: "orange"
+        RenderText {#text} at (455,0) size 114x14
+          text run at (455,0) width 114: " border on the third line."
+      RenderBlock {DIV} at (0,26) size 600x42
+        RenderText {#text} at (460,0) size 140x14
+          text run at (460,0) width 140 RTL override: "ILorem ipsum dolor sit amet, "
+        RenderText {#text} at (245,28) size 256x14
+          text run at (245,28) width 256 RTL override: "duis aute irure dolor in reprehenderit in voluptate velit."
+layer at (8,34) size 583x44
+  RenderInline (relative positioned) {SPAN} at (0,0) size 583x44 [bgcolor=#008000] [border: (1px solid #808080) (20px solid #0000FF) (1px solid #808080) (20px solid #FFA500)]
+    RenderText {#text} at (21,0) size 579x28
+      text run at (21,0) width 399 RTL override: "con a pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culp qui officia"
+      text run at (479,14) width 121 RTL override: "deserunt mollit animequs "
+    RenderText {#text} at (17,14) size 583x28
+      text run at (17,14) width 462 RTL override: "ILOREM ipsum dol sDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu"
+      text run at (541,28) width 59 RTL override: "fugiat nullat "
+layer at (539,34) size 0x42
+  RenderBlock (positioned) {DIV} at (510,1) size 0x42

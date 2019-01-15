@@ -1,0 +1,53 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x206
+  RenderBlock {HTML} at (0,0) size 980x206
+    RenderBody {BODY} at (8,8) size 964x190
+      RenderBlock (anonymous) at (0,0) size 964x76
+        RenderText {#text} at (0,0) size 719x19
+          text run at (0,0) width 719: "Each consecutive pair of lines should look exactly the same apart from the trailing ellipsis."
+        RenderBR {BR} at (719,0) size 0x19
+        RenderText {#text} at (0,19) size 677x19
+          text run at (0,19) width 677: "The ellipsis should appear on the left for the RTL case and on the right for LTR case. "
+        RenderBR {BR} at (0,0) size 0x0
+        RenderBR {BR} at (0,38) size 0x19
+        RenderText {#text} at (0,57) size 71x19
+          text run at (0,57) width 71: "RTL text:"
+      RenderBlock (anonymous) at (0,114) size 964x38
+        RenderBR {BR} at (0,0) size 0x19
+        RenderText {#text} at (0,19) size 70x19
+          text run at (0,19) width 70: "LTR Text"
+layer at (8,84) size 207x19 scrollX 181 scrollWidth 388
+  RenderBlock {DIV} at (0,76) size 207x19
+    RenderText {#text} at (-181,0) size 388x19
+      text run at (-181,0) width 0 RTL: "\x{202C}"
+      text run at (-181,0) width 287 RTL: " \x{5D8}\x{5E7}\x{5E1}\x{5D8} \x{5E2}\x{5D1}\x{5E8}\x{5D9} \x{5DC}\x{5D3}\x{5D5}\x{5D2}\x{5DE}\x{5D0} \x{5D8}\x{5E7}\x{5E1}\x{5D8} \x{5E2}\x{5D1}\x{5E8}\x{5D9} \x{5DC}\x{5D3}\x{5D5}\x{5D2}\x{5DE}\x{5D0} "
+      text run at (106,0) width 96: "English Text"
+      text run at (202,0) width 5 RTL: "\x{202B} "
+layer at (8,103) size 207x19 scrollX 181 scrollWidth 388
+  RenderBlock {DIV} at (0,95) size 207x19
+    RenderText {#text} at (-181,0) size 388x19
+      text run at (-181,0) width 0 RTL: "\x{202C}"
+      text run at (-181,0) width 287 RTL: " \x{5D8}\x{5E7}\x{5E1}\x{5D8} \x{5E2}\x{5D1}\x{5E8}\x{5D9} \x{5DC}\x{5D3}\x{5D5}\x{5D2}\x{5DE}\x{5D0} \x{5D8}\x{5E7}\x{5E1}\x{5D8} \x{5E2}\x{5D1}\x{5E8}\x{5D9} \x{5DC}\x{5D3}\x{5D5}\x{5D2}\x{5DE}\x{5D0} "
+      text run at (106,0) width 96: "English Text"
+      text run at (202,0) width 5 RTL: "\x{202B} "
+layer at (8,160) size 207x19 scrollWidth 291
+  RenderBlock {DIV} at (0,152) size 207x19
+    RenderText {#text} at (0,0) size 291x19
+      text run at (0,0) width 35 RTL: "\x{5DE}\x{5D9}\x{5DC}\x{5D4}"
+      text run at (35,0) width 50: " word "
+      text run at (85,0) width 40 RTL: "\x{5D0}\x{5D7}\x{5E8}\x{5EA}"
+      text run at (125,0) width 73: " another "
+      text run at (198,0) width 27 RTL: "\x{5D5}\x{5E2}\x{5D5}\x{5D3}"
+      text run at (225,0) width 35: " yet "
+      text run at (260,0) width 31 RTL: "\x{5D0}\x{5D7}\x{5EA}"
+layer at (8,179) size 207x19 scrollWidth 291
+  RenderBlock {DIV} at (0,171) size 207x19
+    RenderText {#text} at (0,0) size 291x19
+      text run at (0,0) width 35 RTL: "\x{5DE}\x{5D9}\x{5DC}\x{5D4}"
+      text run at (35,0) width 50: " word "
+      text run at (85,0) width 40 RTL: "\x{5D0}\x{5D7}\x{5E8}\x{5EA}"
+      text run at (125,0) width 73: " another "
+      text run at (198,0) width 27 RTL: "\x{5D5}\x{5E2}\x{5D5}\x{5D3}"
+      text run at (225,0) width 35: " yet "
+      text run at (260,0) width 31 RTL: "\x{5D0}\x{5D7}\x{5EA}"

@@ -1,0 +1,30 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x72
+  RenderBlock {HTML} at (0,0) size 800x72
+    RenderBody {BODY} at (8,8) size 784x56 [color=#0000FF]
+      RenderTable {TABLE} at (0,0) size 537x56
+        RenderTableSection {TBODY} at (0,0) size 537x56
+          RenderTableRow {TR} at (0,2) size 537x20
+            RenderTableCell {TD} at (2,2) size 533x20 [border: (2px solid #0000FF)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (3,3) size 243x14
+                text run at (3,3) width 243: "There should be a blue border around this sentence."
+          RenderTableRow {TR} at (0,24) size 537x30
+            RenderTableCell {TD} at (2,29) size 249x20 [border: (2px solid #0000FF)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (3,3) size 243x14
+                text run at (3,3) width 243: "There should be a blue border around this sentence."
+            RenderTableCell {TD} at (253,24) size 282x30 [border: (2px solid #0000FF)] [r=1 c=1 rs=1 cs=1]
+              RenderTable {TABLE} at (3,3) size 276x24
+                RenderTableSection {TBODY} at (0,0) size 276x24
+                  RenderTableRow {TR} at (0,2) size 276x20
+                    RenderTableCell {TD} at (2,2) size 272x20 [border: (2px solid #0000FF)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (3,3) size 79x14
+                        text run at (3,3) width 79: "There should be "
+                      RenderInline {STRONG} at (0,0) size 85x14
+                        RenderInline {EM} at (0,0) size 17x14
+                          RenderText {#text} at (82,3) size 17x14
+                            text run at (82,3) width 17: "two"
+                        RenderText {#text} at (99,3) size 68x14
+                          text run at (99,3) width 68: " blue borders"
+                      RenderText {#text} at (167,3) size 102x14
+                        text run at (167,3) width 102: " around this sentence."

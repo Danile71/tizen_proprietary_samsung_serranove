@@ -1,0 +1,23 @@
+#!/bin/bash
+
+CLOCK=/etc/sysconfig/clock
+
+if [ ! -e $CLOCK ]; then
+    exit
+fi
+
+# Read existing zone name from config
+# Cut 'Asia/Seoul' from line 'ZONE="Asia/Seoul"  UTC=True'
+while read line
+do
+	if [ ! -z "${line##*ZONE*}" ]; then
+		continue
+	fi
+	zonename=$(echo $line | sed -e 's#^[[:space:]]*ZONE[[:space:]]*=[[:space:]]*"\?\([^[:space:]\n"]*\).*#\1#')
+	zonefile="/usr/share/zoneinfo/${zonename}"
+	break
+done < $CLOCK
+
+if [ -e /etc/localtime ]; then
+    cp ${zonefile} /etc/localtime
+fi

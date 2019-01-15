@@ -1,0 +1,20 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (543,0) size 241x14
+          text run at (543,0) width 241: "This test tests bidi mirroring in Hebrew and Arabic"
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (440,0) size 344x14
+          text run at (440,0) width 344: "The parenthesis should be displayed as \"(...)...\" visually from left to right"
+      RenderBlock {DIV} at (0,52) size 784x14
+        RenderText {#text} at (760,0) size 24x14
+          text run at (760,0) width 24 RTL: "\x{5E9}(\x{5E9})"
+      RenderBlock {DIV} at (0,66) size 784x14
+        RenderText {#text} at (784,0) size 0x14
+          text run at (784,0) width 0 RTL: "\x{5C6}(\x{5C6})"
+      RenderBlock {DIV} at (0,80) size 784x14
+        RenderText {#text} at (784,0) size 0x14
+          text run at (784,0) width 0 RTL: "\x{644}(\x{644})"

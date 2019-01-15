@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 958x19
+          text run at (0,0) width 958: "There are two boxes inside a container that is rotated 180\x{B0} in Y. box2 has backface-visibility: hidden, so you can't see it."
+      RenderBlock {DIV} at (0,237) size 964x38
+        RenderText {#text} at (0,0) size 193x19
+          text run at (0,0) width 193: "Found box2 on left: FAIL"
+        RenderBR {BR} at (193,15) size 0x0
+        RenderText {#text} at (0,19) size 211x19
+          text run at (0,19) width 211: "Found box1 on right: PASS"
+        RenderBR {BR} at (211,34) size 0x0
+layer at (8,43) size 402x202
+  RenderBlock {DIV} at (0,35) size 402x202 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+    RenderText {#text} at (197,34) size 5x19
+      text run at (197,34) width 5: " "
+    RenderText {#text} at (0,0) size 0x0
+layer at (27,62) size 160x160
+  RenderBlock (relative positioned) {DIV} at (19,19) size 160x160 [bgcolor=#808080]
+    RenderText {#text} at (40,0) size 80x38
+      text run at (40,0) width 80: "box1"
+layer at (228,62) size 160x160
+  RenderBlock (relative positioned) {DIV} at (220,19) size 160x160 [bgcolor=#808080]
+    RenderText {#text} at (40,0) size 80x38
+      text run at (40,0) width 80: "box2"

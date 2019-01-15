@@ -1,0 +1,202 @@
+layer at (0,0) size 980x787
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x787
+  RenderBlock {HTML} at (0,0) size 980x787
+    RenderBody {BODY} at (0,0) size 980x787
+      RenderTable {TABLE} at (0,0) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,3) size 976x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 278x19
+                text run at (0,0) width 278: "First cell empty, second auto width"
+      RenderTable {TABLE} at (0,29) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,3) size 976x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 304x19
+                text run at (0,0) width 304: "First cell empty, second percent width"
+      RenderTable {TABLE} at (0,58) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,3) size 976x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 281x19
+                text run at (0,0) width 281: "First cell empty, second fixed width"
+      RenderTable {TABLE} at (0,87) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,3) size 488x19 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 5x19
+                text run at (0,0) width 5: " "
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 425x19
+                text run at (0,0) width 425: "First cell empty (with space) and has white-space:pre"
+      RenderTable {TABLE} at (0,116) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,3) size 976x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 412x19
+                text run at (0,0) width 412: "First cell empty (no space) and has white-space:pre"
+      RenderTable {TABLE} at (0,145) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,10) size 488x4 [border: (2px solid #008000)] [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 245x19
+                text run at (0,0) width 245: "First cell empty but has border"
+      RenderTable {TABLE} at (0,174) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,10) size 488x4 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 255x19
+                text run at (0,0) width 255: "First cell empty but has padding"
+      RenderTable {TABLE} at (0,203) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,11) size 488x2 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (488,2) size 488x21 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 301x19
+                text run at (1,1) width 301: "First cell empty, table has cellpadding"
+      RenderTable {TABLE} at (0,232) size 980x31 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x27
+          RenderTableRow {TR} at (0,1) size 976x25
+            RenderTableCell {TD} at (1,13) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (2,4) size 973x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 298x19
+                text run at (0,0) width 298: "First cell empty, table has cellspacing"
+      RenderTable {TABLE} at (0,263) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,3) size 976x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 248x19
+                text run at (0,0) width 248: "First cell empty but has margin"
+      RenderTable {TABLE} at (0,292) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 0x0 [bgcolor=#FFFF00] [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,3) size 976x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 331x19
+                text run at (0,0) width 331: "First cell empty but has background color"
+      RenderTable {TABLE} at (0,321) size 980x54 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x50
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 488x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 198x19
+                text run at (0,0) width 198: "First row, first cell empty"
+          RenderTableRow {TR} at (0,25) size 976x25
+            RenderTableCell {TD} at (0,28) size 488x19 [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 31x19
+                text run at (0,0) width 31: "text"
+            RenderTableCell {TD} at (488,28) size 488x19 [bgcolor=#FF0000] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 254x19
+                text run at (0,0) width 254: "Second row, first cell not empty"
+      RenderTable {TABLE} at (0,375) size 980x54 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x50
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,3) size 976x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 198x19
+                text run at (0,0) width 198: "First row, first cell empty"
+          RenderTableRow {TR} at (0,25) size 976x25
+            RenderTableCell {TD} at (0,37) size 0x0 [r=1 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,28) size 976x19 [bgcolor=#FF0000] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 223x19
+                text run at (0,0) width 223: "Second row, first cell empty"
+      RenderTable {TABLE} at (0,429) size 980x29 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x25
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 488x0 [r=0 c=0 rs=1 cs=2]
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 226x19
+                text run at (0,0) width 226: "First cell empty, has colspan"
+      RenderTable {TABLE} at (0,458) size 980x54 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x50
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,3) size 488x19 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 31x19
+                text run at (0,0) width 31: "text"
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 389x19
+                text run at (0,0) width 389: "First row, first cell empty, second cell non-empty"
+          RenderTableRow {TR} at (0,25) size 976x25
+            RenderTableCell {TD} at (0,37) size 488x0 [r=1 c=0 rs=1 cs=2]
+            RenderTableCell {TD} at (488,28) size 488x19 [bgcolor=#FF0000] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 350x19
+                text run at (0,0) width 350: "Second row, first cell empty with colspan=2"
+      RenderTable {TABLE} at (0,512) size 980x54 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x50
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,3) size 488x19 [bgcolor=#FF0000] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 31x19
+                text run at (0,0) width 31: "text"
+            RenderTableCell {TD} at (488,12) size 0x0 [r=0 c=1 rs=1 cs=1]
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 389x19
+                text run at (0,0) width 389: "First row, first cell non-empty, second cell empty"
+          RenderTableRow {TR} at (0,25) size 976x25
+            RenderTableCell {TD} at (0,37) size 488x0 [r=1 c=0 rs=1 cs=2]
+            RenderTableCell {TD} at (488,28) size 488x19 [bgcolor=#FF0000] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 350x19
+                text run at (0,0) width 350: "Second row, first cell empty with colspan=2"
+      RenderTable {TABLE} at (0,566) size 980x54 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x50
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 244x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (244,12) size 244x0 [r=0 c=1 rs=1 cs=1]
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 295x19
+                text run at (0,0) width 295: "First row, first and second cell empty"
+          RenderTableRow {TR} at (0,25) size 976x25
+            RenderTableCell {TD} at (0,37) size 488x0 [r=1 c=0 rs=1 cs=2]
+            RenderTableCell {TD} at (488,28) size 488x19 [bgcolor=#FF0000] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 350x19
+                text run at (0,0) width 350: "Second row, first cell empty, has colspan=2"
+      RenderTable {TABLE} at (0,620) size 980x67 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x63
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 244x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (244,12) size 244x0 [r=0 c=1 rs=1 cs=1]
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 295x19
+                text run at (0,0) width 295: "First row, first and second cell empty"
+          RenderTableRow {TR} at (0,25) size 976x38
+            RenderTableCell {TD} at (0,44) size 488x0 [r=1 c=0 rs=1 cs=2]
+            RenderTableCell {TD} at (488,25) size 488x38 [bgcolor=#FF0000] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 452x38
+                text run at (0,0) width 452: "Second row, first cell empty, has colspan=2 and percent"
+                text run at (0,19) width 43: "width"
+      RenderTable {TABLE} at (0,687) size 980x54 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x50
+          RenderTableRow {TR} at (0,0) size 976x25
+            RenderTableCell {TD} at (0,12) size 244x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (244,12) size 244x0 [r=0 c=1 rs=1 cs=1]
+            RenderTableCell {TD} at (488,3) size 488x19 [bgcolor=#FF0000] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 295x19
+                text run at (0,0) width 295: "First row, first and second cell empty"
+          RenderTableRow {TR} at (0,25) size 976x25
+            RenderTableCell {TD} at (0,37) size 488x0 [r=1 c=0 rs=1 cs=2]
+            RenderTableCell {TD} at (488,28) size 488x19 [bgcolor=#FF0000] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (0,0) size 477x19
+                text run at (0,0) width 477: "Second row, first cell empty, has colspan=2 and fixed width"
+      RenderBlock (anonymous) at (0,741) size 980x19
+        RenderText {#text} at (0,0) size 126x19
+          text run at (0,0) width 126: "One empty cell:"
+      RenderTable {TABLE} at (0,760) size 980x4 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x0
+          RenderTableRow {TR} at (0,0) size 976x0
+            RenderTableCell {TD} at (0,0) size 0x0 [r=0 c=0 rs=1 cs=1]
+      RenderBlock (anonymous) at (0,764) size 980x19
+        RenderText {#text} at (0,0) size 134x19
+          text run at (0,0) width 134: "Two empty cells:"
+      RenderTable {TABLE} at (0,783) size 980x4 [border: (2px solid #000000)]
+        RenderTableSection {TBODY} at (2,2) size 976x0
+          RenderTableRow {TR} at (0,0) size 976x0
+            RenderTableCell {TD} at (0,0) size 0x0 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (0,0) size 0x0 [r=0 c=1 rs=1 cs=1]

@@ -1,0 +1,19 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderTable {TABLE} at (0,0) size 771x67
+        RenderTableSection {TBODY} at (0,0) size 771x67
+          RenderTableRow {TR} at (0,2) size 771x63
+            RenderTableCell {TD} at (2,21) size 251x25 [border: (2px solid #FF0000)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (3,3) size 157x19
+                text run at (3,3) width 157: "Cell 1 (width=33%)."
+            RenderTableCell {TD} at (255,21) size 251x25 [border: (2px solid #008000)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (3,3) size 157x19
+                text run at (3,3) width 157: "Cell 2 (width=33%)."
+            RenderTableCell {TD} at (508,2) size 261x63 [border: (2px solid #0000FF)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (3,3) size 251x57
+                text run at (3,3) width 218: "Cell 3 (width=*) - should be"
+                text run at (3,22) width 251: "67% when cell 2 is hidden, 33%"
+                text run at (3,41) width 166: "when cell 2 is visible."

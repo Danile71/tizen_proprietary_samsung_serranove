@@ -1,0 +1,48 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x260
+  RenderBlock {HTML} at (0,0) size 800x260
+    RenderBody {BODY} at (8,14) size 784x238
+      RenderBlock {H3} at (0,0) size 784x16
+        RenderText {#text} at (0,0) size 393x15
+          text run at (0,0) width 393: "SPAN attribute of COL element being ignored in Mozilla 1.0 rc1"
+      RenderBlock {P} at (0,30) size 784x14
+        RenderText {#text} at (0,0) size 765x14
+          text run at (0,0) width 765: "(Note: this is a regression bug - I don't know when it appeared, but I remember the SPAN attribute on COL elements worked fine sometime before Mozilla 0.9.6)"
+      RenderBlock {P} at (0,56) size 784x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The following TABLE has a COLGROUP structure of:"
+      RenderBlock {PRE} at (15,82) size 769x44 [color=#000066]
+        RenderText {#text} at (0,0) size 162x44
+          text run at (0,0) width 60: "<colgroup>"
+          text run at (60,0) width 0: " "
+          text run at (0,11) width 162: " <col width=\"100\" span=\"2\">"
+          text run at (162,11) width 0: " "
+          text run at (0,22) width 108: " <col width=\"200\">"
+          text run at (108,22) width 0: " "
+          text run at (0,33) width 66: "</colgroup>"
+          text run at (66,33) width 0: " "
+      RenderBlock {P} at (0,138) size 784x14
+        RenderText {#text} at (0,0) size 418x14
+          text run at (0,0) width 418: "So the first two colums should both be 100px wide, and the third should be 200px wide."
+      RenderBlock {P} at (0,164) size 784x14
+        RenderText {#text} at (0,0) size 429x14
+          text run at (0,0) width 429: "However, the first column is 100px, the second is 200px, and the third is the default width."
+      RenderBlock {P} at (0,190) size 784x14
+        RenderText {#text} at (0,0) size 284x14
+          text run at (0,0) width 284: "So it would appear that the SPAN attribute is being ignored."
+      RenderTable {TABLE} at (0,216) size 408x22
+        RenderTableCol {COLGROUP} at (0,0) size 0x0
+          RenderTableCol {COL} at (0,0) size 0x0
+          RenderTableCol {COL} at (0,0) size 0x0
+        RenderTableSection {TBODY} at (0,0) size 408x22
+          RenderTableRow {TR} at (0,2) size 408x18
+            RenderTableCell {TD} at (2,2) size 100x18 [border: (1px solid #000000)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 23x14
+                text run at (2,2) width 23: "col 1"
+            RenderTableCell {TD} at (104,2) size 100x18 [border: (1px solid #000000)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 23x14
+                text run at (2,2) width 23: "col 2"
+            RenderTableCell {TD} at (206,2) size 200x18 [border: (1px solid #000000)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 23x14
+                text run at (2,2) width 23: "col 3"

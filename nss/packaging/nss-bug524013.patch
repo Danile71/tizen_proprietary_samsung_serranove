@@ -1,0 +1,158 @@
+Index: mozilla/security/nss/lib/libpkix/include/pkix_errorstrings.h
+===================================================================
+RCS file: /cvsroot/mozilla/security/nss/lib/libpkix/include/pkix_errorstrings.h,v
+retrieving revision 1.33
+diff -u -p -u -8 -r1.33 pkix_errorstrings.h
+--- mozilla/security/nss/lib/libpkix/include/pkix_errorstrings.h	28 Mar 2010 18:58:02 -0000	1.33
++++ mozilla/security/nss/lib/libpkix/include/pkix_errorstrings.h	23 Apr 2010 02:59:08 -0000
+@@ -308,16 +308,17 @@ PKIX_ERRORENTRY(COMCERTSELPARAMSSETBASIC
+ PKIX_ERRORENTRY(COMCERTSELPARAMSSETCERTIFICATEFAILED,PKIX_ComCertSelParams_SetCertificate failed,0),
+ PKIX_ERRORENTRY(COMCERTSELPARAMSSETCERTIFICATEVALIDFAILED,PKIX_ComCertSelParams_SetCertificateValid failed,0),
+ PKIX_ERRORENTRY(COMCERTSELPARAMSSETEXTKEYUSAGEFAILED,PKIX_ComCertSelParams_SetExtendedKeyUsage failed,0),
+ PKIX_ERRORENTRY(COMCERTSELPARAMSSETKEYUSAGEFAILED,PKIX_ComCertSelParams_SetKeyUsage failed,0),
+ PKIX_ERRORENTRY(COMCERTSELPARAMSSETLEAFCERTFLAGFAILED,PKIX_ComCertSelParams_SetLeafCertFlag failed,0),
+ PKIX_ERRORENTRY(COMCERTSELPARAMSSETNISTPOLICYENABLEDFAILED,PKIX_ComCertSelParams_SetNISTPolicyEnabled failed,0),
+ PKIX_ERRORENTRY(COMCERTSELPARAMSSETPATHTONAMESFAILED,PKIX_ComCertSelParams_SetPathToNames failed,0),
+ PKIX_ERRORENTRY(COMCERTSELPARAMSSETSUBJECTFAILED,PKIX_ComCertSelParams_SetSubject failed,0),
++PKIX_ERRORENTRY(COMCERTSELPARAMSSETSUBJKEYIDENTIFIERFAILED,PKIX_ComCertSelParams_SetSubjKeyIdentifier failed,0),
+ PKIX_ERRORENTRY(COMCRLSELPARAMSADDISSUERNAMEFAILED,PKIX_ComCRLSelParams_AddIssuerName failed,0),
+ PKIX_ERRORENTRY(COMCRLSELPARAMSCREATEFAILED,PKIX_ComCRLSelParams_Create failed,0),
+ PKIX_ERRORENTRY(COMCRLSELPARAMSEQUALSFAILED,pkix_ComCRLSelParams_Equals failed,0),
+ PKIX_ERRORENTRY(COMCRLSELPARAMSGETDATEANDTIMEFAILED,PKIX_ComCRLSelParams_GetDateAndTime failed,0),
+ PKIX_ERRORENTRY(COMCRLSELPARAMSGETISSUERNAMESFAILED,PKIX_ComCRLSelParams_GetIssuerNames failed,0),
+ PKIX_ERRORENTRY(COMCRLSELPARAMSGETMAXCRLNUMBERFAILED,PKIX_ComCRLSelParams_GetMaxCRLNumber failed,0),
+ PKIX_ERRORENTRY(COMCRLSELPARAMSGETMINCRLNUMBERFAILED,PKIX_ComCRLSelParams_GetMinCRLNumber failed,0),
+ PKIX_ERRORENTRY(COMCRLSELPARAMSGETNISTPOLICYENABLEDFAILED,PKIX_ComCRLSelParams_GetNISTPolicyEnabled failed,0),
+Index: mozilla/security/nss/lib/libpkix/pkix/certsel/pkix_certselector.c
+===================================================================
+RCS file: /cvsroot/mozilla/security/nss/lib/libpkix/pkix/certsel/pkix_certselector.c,v
+retrieving revision 1.11
+diff -u -p -u -8 -r1.11 pkix_certselector.c
+--- mozilla/security/nss/lib/libpkix/pkix/certsel/pkix_certselector.c	20 Apr 2009 05:17:46 -0000	1.11
++++ mozilla/security/nss/lib/libpkix/pkix/certsel/pkix_certselector.c	23 Apr 2010 02:59:08 -0000
+@@ -819,18 +819,19 @@ cleanup:
+ }
+ 
+ /*
+  * FUNCTION: pkix_CertSelector_Match_SubjKeyId
+  * DESCRIPTION:
+  *
+  *  Determines whether the bytes at subjKeyId in "params" matches with the
+  *  Subject Key Identifier pointed to by "cert". If the subjKeyId in params is
+- *  set to NULL, no checking is done and the Cert is considered a match. If
+- *  the Cert does not match, an Error pointer is returned.
++ *  set to NULL or the Cert doesn't have a Subject Key Identifier, no checking
++ *  is done and the Cert is considered a match. If the Cert does not match, an
++ *  Error pointer is returned.
+  *
+  * PARAMETERS:
+  *  "params"
+  *      Address of ComCertSelParams whose subjKeyId field is used.
+  *      Must be non-NULL.
+  *  "cert"
+  *      Address of Cert that is to be matched. Must be non-NULL.
+  *  "pResult"
+@@ -865,28 +866,27 @@ pkix_CertSelector_Match_SubjKeyId(
+ 
+         if (selSubjKeyId != NULL) {
+ 
+                 PKIX_CHECK(PKIX_PL_Cert_GetSubjectKeyIdentifier
+                     (cert, &certSubjKeyId, plContext),
+                     PKIX_CERTGETSUBJECTKEYIDENTIFIERFAILED);
+ 
+                 if (certSubjKeyId == NULL) {
+-                    *pResult = PKIX_FALSE;
+-                    PKIX_ERROR(PKIX_CERTSELECTORMATCHSUBJKEYIDFAILED);
++                    goto cleanup;
+                 }
+ 
+                 PKIX_CHECK(PKIX_PL_Object_Equals
+                            ((PKIX_PL_Object *)selSubjKeyId,
+                             (PKIX_PL_Object *)certSubjKeyId,
+                             &equals,
+                             plContext),
+                            PKIX_OBJECTEQUALSFAILED);
+                 
+-                if (equals != PKIX_TRUE) {
++                if (equals == PKIX_FALSE) {
+                     *pResult = PKIX_FALSE;
+                     PKIX_ERROR(PKIX_CERTSELECTORMATCHSUBJKEYIDFAILED);
+                 }
+         }
+ 
+ cleanup:
+ 
+         PKIX_DECREF(selSubjKeyId);
+Index: mozilla/security/nss/lib/libpkix/pkix/top/pkix_build.c
+===================================================================
+RCS file: /cvsroot/mozilla/security/nss/lib/libpkix/pkix/top/pkix_build.c,v
+retrieving revision 1.57
+diff -u -p -u -8 -r1.57 pkix_build.c
+--- mozilla/security/nss/lib/libpkix/pkix/top/pkix_build.c	20 Apr 2009 21:19:41 -0000	1.57
++++ mozilla/security/nss/lib/libpkix/pkix/top/pkix_build.c	23 Apr 2010 02:59:08 -0000
+@@ -1457,36 +1457,47 @@ cleanup:
+ static PKIX_Error *
+ pkix_Build_BuildSelectorAndParams(
+         PKIX_ForwardBuilderState *state,
+         void *plContext)
+ {
+         PKIX_ComCertSelParams *certSelParams = NULL;
+         PKIX_CertSelector *certSel = NULL;
+         PKIX_PL_X500Name *currentIssuer = NULL;
++        PKIX_PL_ByteArray *authKeyId = NULL;
+         PKIX_PL_Date *testDate = NULL;
+         PKIX_CertSelector *callerCertSelector = NULL;
+         PKIX_ComCertSelParams *callerComCertSelParams = NULL;
+         PKIX_UInt32 reqKu = 0;
+         PKIX_List   *reqEkuOids = NULL;
+ 
+         PKIX_ENTER(BUILD, "pkix_Build_BuildSelectorAndParams");
+         PKIX_NULLCHECK_THREE(state, state->prevCert, state->traversedSubjNames);
+ 
+         PKIX_CHECK(PKIX_PL_Cert_GetIssuer
+                 (state->prevCert, &currentIssuer, plContext),
+                 PKIX_CERTGETISSUERFAILED);
+ 
++        PKIX_CHECK(PKIX_PL_Cert_GetAuthorityKeyIdentifier
++                (state->prevCert, &authKeyId, plContext),
++                PKIX_CERTGETAUTHORITYKEYIDENTIFIERFAILED);
++
+         PKIX_CHECK(PKIX_ComCertSelParams_Create(&certSelParams, plContext),
+                 PKIX_COMCERTSELPARAMSCREATEFAILED);
+ 
+         PKIX_CHECK(PKIX_ComCertSelParams_SetSubject
+                 (certSelParams, currentIssuer, plContext),
+                 PKIX_COMCERTSELPARAMSSETSUBJECTFAILED);
+ 
++        if (authKeyId != NULL) {
++            PKIX_CHECK(PKIX_ComCertSelParams_SetSubjKeyIdentifier
++                    (certSelParams, authKeyId, plContext),
++                    PKIX_COMCERTSELPARAMSSETSUBJKEYIDENTIFIERFAILED);
++        }
++
+         PKIX_INCREF(state->buildConstants.testDate);
+         testDate = state->buildConstants.testDate;
+ 
+         PKIX_CHECK(PKIX_ComCertSelParams_SetCertificateValid
+                 (certSelParams, testDate, plContext),
+                 PKIX_COMCERTSELPARAMSSETCERTIFICATEVALIDFAILED);
+ 
+         PKIX_CHECK(PKIX_ComCertSelParams_SetBasicConstraints
+@@ -1543,16 +1554,17 @@ pkix_Build_BuildSelectorAndParams(
+                 PKIX_LISTCREATEFAILED);
+ 
+         state->certStoreIndex = 0;
+ 
+ cleanup:
+         PKIX_DECREF(certSelParams);
+         PKIX_DECREF(certSel);
+         PKIX_DECREF(currentIssuer);
++        PKIX_DECREF(authKeyId);
+         PKIX_DECREF(testDate);
+         PKIX_DECREF(reqEkuOids);
+         PKIX_DECREF(callerComCertSelParams);
+         PKIX_DECREF(callerCertSelector);
+ 
+         PKIX_RETURN(BUILD);
+ }
+ 

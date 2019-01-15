@@ -1,0 +1,46 @@
+--- ./fileattrs/Makefile.am.orig	2011-07-12 11:28:13.000000000 +0000
++++ ./fileattrs/Makefile.am	2011-07-18 17:29:11.000000000 +0000
+@@ -5,7 +5,8 @@ include $(top_srcdir)/rpm.am
+ fattrsdir = $(rpmconfigdir)/fileattrs
+ 
+ fattrs_DATA = \
+-	desktop.attr elf.attr font.attr libtool.attr perl.attr perllib.attr \
+-	pkgconfig.attr python.attr ocaml.attr script.attr mono.attr
++	elf.attr font.attr libtool.attr perl.attr perllib.attr \
++	pkgconfig.attr python.attr ocaml.attr script.attr mono.attr \
++	debuginfo.attr elflib.attr firmware.attr ksyms.attr 
+ 
+ EXTRA_DIST = $(fattrs_DATA)
+--- ./fileattrs/debuginfo.attr.orig	2011-07-18 17:29:11.000000000 +0000
++++ ./fileattrs/debuginfo.attr	2011-07-18 17:29:11.000000000 +0000
+@@ -0,0 +1,2 @@
++%__debuginfo_provides	%{_rpmconfigdir}/debuginfo.prov
++%__debuginfo_path	^/usr/lib/debug/
+--- ./fileattrs/elf.attr.orig	2011-07-15 09:32:41.000000000 +0000
++++ ./fileattrs/elf.attr	2011-07-18 17:31:52.000000000 +0000
+@@ -1,4 +1,5 @@
+ %__elf_provides		%{_rpmconfigdir}/elfdeps --provides %{?__filter_GLIBC_PRIVATE:--filter-private}
+ %__elf_requires		%{_rpmconfigdir}/elfdeps --requires %{?__filter_GLIBC_PRIVATE:--filter-private}
+-%__elf_magic		^(sticky )?ELF (32|64)-bit.*$
++%__elf_magic		^(setuid )?(setgid )?(sticky )?ELF (32|64)-bit.*executable
+ %__elf_flags		exeonly
++%__elf_exclude_path	^/usr/lib/debug/
+--- ./fileattrs/elflib.attr.orig	2011-07-18 17:29:11.000000000 +0000
++++ ./fileattrs/elflib.attr	2011-07-18 17:32:28.000000000 +0000
+@@ -0,0 +1,4 @@
++%__elflib_provides	%{_rpmconfigdir}/elfdeps --assume-exec --provides %{?__filter_GLIBC_PRIVATE:--filter-private}
++%__elflib_requires	%{_rpmconfigdir}/elfdeps --assume-exec --requires %{?__filter_GLIBC_PRIVATE:--filter-private}
++%__elflib_magic		^(setuid )?(setgid )?(sticky )?ELF (32|64)-bit.*shared object
++%__elflib_exclude_path	^/usr/lib/debug/
+--- ./fileattrs/firmware.attr.orig	2011-07-18 17:29:11.000000000 +0000
++++ ./fileattrs/firmware.attr	2011-07-18 17:29:11.000000000 +0000
+@@ -0,0 +1,2 @@
++%__firmware_provides	%{_rpmconfigdir}/firmware.prov
++%__firmware_path	/lib/firmware/
+--- ./fileattrs/ksyms.attr.orig	2011-07-18 17:29:11.000000000 +0000
++++ ./fileattrs/ksyms.attr	2011-07-18 17:29:11.000000000 +0000
+@@ -0,0 +1,4 @@
++%__ksyms_provides	%{_rpmconfigdir}/find-provides.ksyms %name
++%__ksyms_requires	%{_rpmconfigdir}/find-requires.ksyms %name
++%__ksyms_supplements	%{_rpmconfigdir}/find-supplements.ksyms %name
++%__ksyms_path	(/lib/modules/.*\.ko(\.gz)?)|(/boot/vmlinu[xz].*)$

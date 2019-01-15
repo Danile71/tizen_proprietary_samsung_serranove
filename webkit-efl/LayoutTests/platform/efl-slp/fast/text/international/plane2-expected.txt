@@ -1,0 +1,21 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {A} at (0,0) size 51x14 [color=#0000EE]
+          RenderText {#text} at (40,0) size 51x14
+            text run at (40,0) width 51: "bug 35605"
+        RenderText {#text} at (91,0) size 771x28
+          text run at (91,0) width 680: ": Two lines below have one character from CJK Ideograph, one from CJK Ext A (both in BMP) and three characters from CJK Ext B (plane 2)."
+          text run at (0,14) width 615: "The last group of characters are covered by Japanese fonts on Mac as well as two Chinese fonts for Ext B shipped with Windows."
+      RenderBlock {DIV} at (0,40) size 784x56
+        RenderBlock {DIV} at (0,0) size 784x28
+          RenderText {#text} at (0,1) size 102x26
+            text run at (0,1) width 102: "\x{4E00} \x{3400} \x{D867}\x{DE8A}\x{D867}\x{DE49}\x{D867}\x{DEDB}"
+        RenderBlock {DIV} at (0,28) size 784x28
+          RenderText {#text} at (0,1) size 102x26
+            text run at (0,1) width 102: "\x{4E00} \x{3400} \x{D867}\x{DE8A}\x{D867}\x{DE49}\x{D867}\x{DEDB}"

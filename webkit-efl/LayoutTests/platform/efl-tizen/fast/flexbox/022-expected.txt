@@ -1,0 +1,15 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 961x38
+          text run at (0,0) width 383: "You should see a 100x100 green square below. "
+          text run at (383,0) width 307: "If you see any red, the test has failed. "
+          text run at (690,0) width 271: "This test is checking to make sure"
+          text run at (0,19) width 542: "inlines get wrapped in anonymous blocks when placed inside boxes."
+      RenderDeprecatedFlexibleBox {DIV} at (0,54) size 100x100 [bgcolor=#008000]
+        RenderBlock (anonymous) at (0,0) size 0x100
+          RenderInline {SPAN} at (0,0) size 0x0 [bgcolor=#FF0000]
+          RenderText {#text} at (0,0) size 0x0

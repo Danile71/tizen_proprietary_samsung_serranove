@@ -1,0 +1,44 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x309
+  RenderBlock {HTML} at (0,0) size 980x309
+    RenderBody {BODY} at (8,16) size 964x285
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 601x19
+          text run at (0,0) width 601: "Test passes if the center box in the table below has a border similar to this:"
+      RenderTable {TABLE} at (0,35) size 60x60 [border: (2px none #808080)]
+        RenderTableSection {TBODY} at (2,2) size 55x55
+          RenderTableRow {TR} at (0,0) size 55x55
+            RenderTableCell {TD} at (0,24) size 55x7 [border: (3px ridge #00FF00)] [r=0 c=0 rs=1 cs=1]
+      RenderTable {TABLE} at (0,115) size 172x170 [border: (2px none #808080)]
+        RenderTableSection {TBODY} at (2,2) size 167x165
+          RenderTableRow {TR} at (0,0) size 167x55
+            RenderTableCell {TD} at (0,14) size 55x26 [border: (3px ridge #00FF00)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 41x19
+                text run at (4,4) width 41: "ridge"
+            RenderTableCell {TD} at (55,14) size 57x26 [border: (3px ridge #00FF00)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 41x19
+                text run at (4,4) width 41: "ridge"
+            RenderTableCell {TD} at (112,14) size 55x26 [border: (3px ridge #00FF00)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 41x19
+                text run at (4,4) width 41: "ridge"
+          RenderTableRow {TR} at (0,55) size 167x55
+            RenderTableCell {TD} at (0,69) size 55x26 [border: (3px ridge #00FF00)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 41x19
+                text run at (4,4) width 41: "ridge"
+            RenderTableCell {TD} at (55,69) size 57x26 [border: (3px outset #FF0000)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 50x19
+                text run at (4,4) width 50: "outset"
+            RenderTableCell {TD} at (112,69) size 55x26 [border: (3px ridge #00FF00)] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 41x19
+                text run at (4,4) width 41: "ridge"
+          RenderTableRow {TR} at (0,110) size 167x55
+            RenderTableCell {TD} at (0,124) size 55x26 [border: (3px ridge #00FF00)] [r=2 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 41x19
+                text run at (4,4) width 41: "ridge"
+            RenderTableCell {TD} at (55,124) size 57x26 [border: (3px ridge #00FF00)] [r=2 c=1 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 41x19
+                text run at (4,4) width 41: "ridge"
+            RenderTableCell {TD} at (112,124) size 55x26 [border: (3px ridge #00FF00)] [r=2 c=2 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 41x19
+                text run at (4,4) width 41: "ridge"

@@ -1,0 +1,154 @@
+layer at (0,0) size 800x718
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x718
+  RenderBlock {HTML} at (0,0) size 800x718
+    RenderBody {BODY} at (8,8) size 784x702
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 100x14
+          text run at (0,0) width 100: "This is a table with a "
+        RenderInline {CODE} at (0,0) size 90x12
+          RenderText {#text} at (100,2) size 90x12
+            text run at (100,2) width 90: "td align=center"
+        RenderText {#text} at (190,0) size 135x14
+          text run at (190,0) width 135: " that has a p, a table, and a p."
+      RenderTable {TABLE} at (0,26) size 235x86 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 233x84
+          RenderTableRow {TR} at (0,2) size 233x80
+            RenderTableCell {TD} at (2,2) size 229x80 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderBlock {P} at (2,2) size 225x14
+                RenderText {#text} at (104,0) size 17x14
+                  text run at (104,0) width 17: "text"
+              RenderTable {TABLE} at (24,28) size 180x24 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 178x22
+                  RenderTableRow {TR} at (0,2) size 178x18
+                    RenderTableCell {TD} at (2,2) size 174x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,2) size 26x14
+                        text run at (2,2) width 26: "text 3"
+              RenderBlock {P} at (2,64) size 225x14
+                RenderText {#text} at (104,0) size 17x14
+                  text run at (104,0) width 17: "text"
+      RenderBlock {P} at (0,124) size 784x42
+        RenderText {#text} at (0,0) size 135x14
+          text run at (0,0) width 135: "This time the inner table has "
+        RenderInline {CODE} at (0,0) size 72x12
+          RenderText {#text} at (135,2) size 72x12
+            text run at (135,2) width 72: "width=\"100%\""
+        RenderText {#text} at (207,0) size 762x42
+          text run at (207,0) width 289: ", so you can see that the CSS spec isn't quite being followed. "
+          text run at (496,0) width 266: "The CSS spec says that the align=center carries down as"
+          text run at (0,14) width 668: "text-align and never acts to move blocks. You're not moving the block for the table (above), but you're not doing the text-align inside it either. "
+          text run at (668,14) width 93: "In quirks mode you"
+          text run at (0,28) width 235: "should do the former, in standard mode, the latter."
+      RenderTable {TABLE} at (0,178) size 235x86 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 233x84
+          RenderTableRow {TR} at (0,2) size 233x80
+            RenderTableCell {TD} at (2,2) size 229x80 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderBlock {P} at (2,2) size 225x14
+                RenderText {#text} at (104,0) size 17x14
+                  text run at (104,0) width 17: "text"
+              RenderTable {TABLE} at (2,28) size 225x24 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 223x22
+                  RenderTableRow {TR} at (0,2) size 223x18
+                    RenderTableCell {TD} at (2,2) size 219x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,2) size 26x14
+                        text run at (2,2) width 26: "text 3"
+              RenderBlock {P} at (2,64) size 225x14
+                RenderText {#text} at (104,0) size 17x14
+                  text run at (104,0) width 17: "text"
+      RenderBlock (anonymous) at (0,264) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderTable {TABLE} at (242,278) size 300x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 298x22
+          RenderTableRow {TR} at (0,2) size 298x18
+            RenderTableCell {TD} at (2,2) size 294x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 77x14
+                text run at (2,2) width 77: "Data of Table 1!"
+      RenderBlock (anonymous) at (0,302) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderTable {TABLE} at (0,316) size 300x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 298x22
+          RenderTableRow {TR} at (0,2) size 298x18
+            RenderTableCell {TD} at (2,2) size 294x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (108,2) size 78x14
+                text run at (108,2) width 78: "Data of Table 2!"
+      RenderBlock (anonymous) at (0,340) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,354) size 784x22 [border: (1px solid #000000)]
+        RenderTable {TABLE} at (350,1) size 83x20
+          RenderTableSection {TBODY} at (0,0) size 83x20
+            RenderTableRow {TR} at (0,2) size 83x16
+              RenderTableCell {TD} at (2,2) size 79x16 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 77x14
+                  text run at (1,1) width 77: "Data of Table 3!"
+      RenderBlock (anonymous) at (0,376) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,390) size 784x22 [border: (1px solid #000000)]
+        RenderTable {TABLE} at (1,1) size 83x20
+          RenderTableSection {TBODY} at (0,0) size 83x20
+            RenderTableRow {TR} at (0,2) size 83x16
+              RenderTableCell {TD} at (2,2) size 79x16 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 77x14
+                  text run at (1,1) width 77: "Data of Table 4!"
+      RenderBlock (anonymous) at (0,412) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderTable {TABLE} at (0,426) size 784x40
+        RenderTableSection {TBODY} at (0,0) size 784x40
+          RenderTableRow {TR} at (0,2) size 784x36
+            RenderTableCell {TD} at (2,2) size 780x36 [r=0 c=0 rs=1 cs=1]
+              RenderBlock (anonymous) at (1,1) size 778x14
+                RenderText {#text} at (347,0) size 84x14
+                  text run at (347,0) width 84: "Text, followed by"
+              RenderTable {TABLE} at (368,15) size 43x20
+                RenderTableSection {TBODY} at (0,0) size 43x20
+                  RenderTableRow {TR} at (0,2) size 43x16
+                    RenderTableCell {TD} at (2,2) size 39x16 [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 37x14
+                        text run at (1,1) width 37: "A table."
+      RenderBlock {P} at (0,478) size 784x14
+        RenderText {#text} at (0,0) size 213x14
+          text run at (0,0) width 213: "...should look identical to the first one below:"
+      RenderTable {TABLE} at (0,504) size 784x40
+        RenderTableSection {TBODY} at (0,0) size 784x40
+          RenderTableRow {TR} at (0,2) size 784x36
+            RenderTableCell {TD} at (2,2) size 780x36 [r=0 c=0 rs=1 cs=1]
+              RenderBlock {DIV} at (1,1) size 778x14
+                RenderText {#text} at (347,0) size 84x14
+                  text run at (347,0) width 84: "Text, followed by"
+              RenderTable {TABLE} at (1,15) size 778x20
+                RenderTableSection {TBODY} at (0,0) size 778x20
+                  RenderTableRow {TR} at (0,2) size 778x16
+                    RenderTableCell {TD} at (2,2) size 774x16 [r=0 c=0 rs=1 cs=1]
+                      RenderBlock {DIV} at (1,1) size 772x14
+                        RenderText {#text} at (367,0) size 38x14
+                          text run at (367,0) width 38: "A table."
+      RenderBlock {P} at (0,556) size 784x54
+        RenderBlock (anonymous) at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 300x14
+            text run at (0,0) width 300: "However, in standard mode, the first table should look like this:"
+        RenderTable {TABLE} at (0,14) size 784x40
+          RenderTableSection {TBODY} at (0,0) size 784x40
+            RenderTableRow {TR} at (0,2) size 784x36
+              RenderTableCell {TD} at (2,2) size 780x36 [r=0 c=0 rs=1 cs=1]
+                RenderBlock {DIV} at (1,1) size 778x14
+                  RenderText {#text} at (347,0) size 84x14
+                    text run at (347,0) width 84: "Text, followed by"
+                RenderTable {TABLE} at (1,15) size 778x20
+                  RenderTableSection {TBODY} at (0,0) size 778x20
+                    RenderTableRow {TR} at (0,2) size 778x16
+                      RenderTableCell {TD} at (2,2) size 774x16 [r=0 c=0 rs=1 cs=1]
+                        RenderText {#text} at (1,1) size 37x14
+                          text run at (1,1) width 37: "A table."
+      RenderBlock {P} at (0,622) size 784x14
+        RenderText {#text} at (0,0) size 487x14
+          text run at (0,0) width 487: "For reference, the second table has its text all centered, the third table has the \"A table.\" line aligned left."
+      RenderBlock {HR} at (0,648) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,662) size 784x14
+        RenderText {#text} at (0,0) size 45x14
+          text run at (0,0) width 45: "See also: "
+        RenderInline {A} at (0,0) size 97x14 [color=#0000EE]
+          RenderText {#text} at (45,0) size 97x14
+            text run at (45,0) width 97: "Strict Mode Version"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock (anonymous) at (0,688) size 784x14
+        RenderText {#text} at (0,0) size 15x14
+          text run at (0,0) width 15: "-->"

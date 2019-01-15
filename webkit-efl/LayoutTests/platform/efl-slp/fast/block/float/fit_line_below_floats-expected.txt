@@ -1,0 +1,31 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x214
+  RenderBlock {HTML} at (0,0) size 800x214
+    RenderBody {BODY} at (8,8) size 784x198
+      RenderBlock {DIV} at (0,0) size 202x99 [border: (1px solid #000000)]
+        RenderBlock (floating) {DIV} at (1,1) size 100x50 [bgcolor=#008000]
+        RenderBlock (floating) {DIV} at (201,1) size 0x30
+        RenderBlock (floating) {DIV} at (181,31) size 20x50 [bgcolor=#008000]
+        RenderBlock {DIV} at (1,1) size 200x97
+          RenderBlock {DIV} at (30,50) size 101x30 [bgcolor=#00FFFF]
+          RenderText {#text} at (131,69) size 3x14
+            text run at (131,69) width 3: " "
+          RenderText {#text} at (0,0) size 0x0
+          RenderBlock (floating) {DIV} at (0,50) size 30x30 [bgcolor=#0000FF]
+          RenderText {#text} at (134,69) size 177x28
+            text run at (134,69) width 27: "Some"
+            text run at (0,83) width 177: "text that should not overlap the floats."
+      RenderBlock {DIV} at (0,99) size 202x99 [border: (1px solid #000000)]
+        RenderBlock (floating) {DIV} at (101,1) size 100x50 [bgcolor=#008000]
+        RenderBlock (floating) {DIV} at (1,1) size 0x30
+        RenderBlock (floating) {DIV} at (1,31) size 20x50 [bgcolor=#008000]
+        RenderBlock {DIV} at (1,1) size 200x97
+          RenderBlock {DIV} at (20,50) size 101x30 [bgcolor=#00FFFF]
+          RenderText {#text} at (121,69) size 3x14
+            text run at (121,69) width 3: " "
+          RenderText {#text} at (0,0) size 0x0
+          RenderBlock (floating) {DIV} at (170,50) size 30x30 [bgcolor=#0000FF]
+          RenderText {#text} at (124,69) size 177x28
+            text run at (124,69) width 27: "Some"
+            text run at (0,83) width 177: "text that should not overlap the floats."

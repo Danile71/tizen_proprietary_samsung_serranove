@@ -1,0 +1,158 @@
+From 3a0d3dea6d7cd4d66144ee6a68e91e327adaf874 Mon Sep 17 00:00:00 2001
+From: Elena, Reshetova <elena.reshetova@intel.com>
+Date: Mon, 20 Feb 2012 15:50:05 +0200
+Subject: [PATCH] Fix for rpmbuild rpmfc functionality
+
+---
+ build/rpmfc.c |  127 +++++++++++++++++++++++++++++----------------------------
+ 1 files changed, 64 insertions(+), 63 deletions(-)
+
+diff --git a/build/rpmfc.c b/build/rpmfc.c
+index a779b6a..698d485 100644
+--- a/build/rpmfc.c
++++ b/build/rpmfc.c
+@@ -681,79 +681,80 @@ void rpmfcPrint(const char * msg, rpmfc fc, FILE * fp)
+     int dx;
+     int fx;
+ 
+-int nprovides;
+-int nrequires;
++    int nprovides;
++    int nrequires;
+ 
+     if (fp == NULL) fp = stderr;
+ 
+     if (msg)
+ 	fprintf(fp, "===================================== %s\n", msg);
+ 
+-nprovides = rpmdsCount(fc->provides);
+-nrequires = rpmdsCount(fc->requires);
+-
+-    if (fc)
+-    for (fx = 0; fx < fc->nfiles; fx++) {
+-assert(fx < fc->fcdictx->nvals);
+-	cx = fc->fcdictx->vals[fx];
+-assert(fx < fc->fcolor->nvals);
+-	fcolor = fc->fcolor->vals[fx];
+-	ARGV_t fattrs = fc->fattrs[fx];
+-
+-	fprintf(fp, "%3d %s", fx, fc->fn[fx]);
+-	if (fcolor != RPMFC_BLACK)
++    if (fc) {
++	nprovides = rpmdsCount(fc->provides);
++	nrequires = rpmdsCount(fc->requires);
++
++	for (fx = 0; fx < fc->nfiles; fx++) {
++	    assert(fx < fc->fcdictx->nvals);
++	    cx = fc->fcdictx->vals[fx];
++	    assert(fx < fc->fcolor->nvals);
++	    fcolor = fc->fcolor->vals[fx];
++	    ARGV_t fattrs = fc->fattrs[fx];
++
++	    fprintf(fp, "%3d %s", fx, fc->fn[fx]);
++	    if (fcolor != RPMFC_BLACK)
+ 		fprintf(fp, "\t0x%x", fc->fcolor->vals[fx]);
+-	else
++	    else
+ 		fprintf(fp, "\t%s", fc->cdict[cx]);
+-	if (fattrs) {
+-	    char *attrs = argvJoin(fattrs, ",");
+-	    fprintf(fp, " [%s]", attrs);
+-	    free(attrs);
+-	} else {
+-	    fprintf(fp, " [none]");
+-	}
+-	fprintf(fp, "\n");
++	    if (fattrs) {
++		char *attrs = argvJoin(fattrs, ",");
++		fprintf(fp, " [%s]", attrs);
++		free(attrs);
++	    } else {
++		fprintf(fp, " [none]");
++	    }
++	    fprintf(fp, "\n");
+ 
+-	if (fc->fddictx == NULL || fc->fddictn == NULL)
+-	    continue;
++	    if (fc->fddictx == NULL || fc->fddictn == NULL)
++		continue;
+ 
+-assert(fx < fc->fddictx->nvals);
+-	dx = fc->fddictx->vals[fx];
+-assert(fx < fc->fddictn->nvals);
+-	ndx = fc->fddictn->vals[fx];
+-
+-	while (ndx-- > 0) {
+-	    const char * depval;
+-	    unsigned char deptype;
+-	    unsigned ix;
+-
+-	    ix = fc->ddictx->vals[dx++];
+-	    deptype = ((ix >> 24) & 0xff);
+-	    ix &= 0x00ffffff;
+-	    depval = NULL;
+-	    switch (deptype) {
+-	    default:
+-assert(depval != NULL);
+-		break;
+-	    case 'P':
+-		if (nprovides > 0) {
+-assert(ix < nprovides);
+-		    (void) rpmdsSetIx(fc->provides, ix-1);
+-		    if (rpmdsNext(fc->provides) >= 0)
+-			depval = rpmdsDNEVR(fc->provides);
+-		}
+-		break;
+-	    case 'R':
+-		if (nrequires > 0) {
+-assert(ix < nrequires);
+-		    (void) rpmdsSetIx(fc->requires, ix-1);
+-		    if (rpmdsNext(fc->requires) >= 0)
+-			depval = rpmdsDNEVR(fc->requires);
++	    assert(fx < fc->fddictx->nvals);
++	    dx = fc->fddictx->vals[fx];
++	    assert(fx < fc->fddictn->nvals);
++	    ndx = fc->fddictn->vals[fx];
++
++	    while (ndx-- > 0) {
++		const char * depval;
++		unsigned char deptype;
++		unsigned ix;
++
++		ix = fc->ddictx->vals[dx++];
++		deptype = ((ix >> 24) & 0xff);
++		ix &= 0x00ffffff;
++		depval = NULL;
++		switch (deptype) {
++		default:
++		    assert(depval != NULL);
++		    break;
++		case 'P':
++		    if (nprovides > 0) {
++			assert(ix < nprovides);
++			(void) rpmdsSetIx(fc->provides, ix-1);
++			if (rpmdsNext(fc->provides) >= 0)
++			    depval = rpmdsDNEVR(fc->provides);
++		    }
++		    break;
++		case 'R':
++		    if (nrequires > 0) {
++			assert(ix < nrequires);
++			(void) rpmdsSetIx(fc->requires, ix-1);
++			if (rpmdsNext(fc->requires) >= 0)
++			    depval = rpmdsDNEVR(fc->requires);
++		    }
++		    break;
+ 		}
+-		break;
++		if (depval)
++		    fprintf(fp, "\t%s\n", depval);
+ 	    }
+-	    if (depval)
+-		fprintf(fp, "\t%s\n", depval);
+ 	}
+     }
+ }
+-- 
+1.7.4.1
+

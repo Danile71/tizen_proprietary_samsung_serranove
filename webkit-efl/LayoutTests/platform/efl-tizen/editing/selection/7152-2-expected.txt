@@ -1,0 +1,39 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of BODY > HTML > #document to 7 of BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 1 of BODY > HTML > #document to 1 of BODY > HTML > #document toDOMRange:range from 1 of BODY > HTML > #document to 341 of #text > P > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderTable {TABLE} at (0,0) size 201x54 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 199x52
+          RenderTableRow {TR} at (0,2) size 199x23
+            RenderTableCell {TD} at (2,2) size 195x23 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 191x19
+                text run at (2,2) width 191: "This should be selected."
+          RenderTableRow {TR} at (0,27) size 199x23
+            RenderTableCell {TD} at (2,27) size 195x23 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 191x19
+                text run at (2,2) width 191: "This should be selected."
+      RenderBlock {HR} at (0,62) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,80) size 964x76
+        RenderText {#text} at (0,0) size 169x19
+          text run at (0,0) width 169: "This is a testcase for "
+        RenderInline {A} at (0,0) size 426x19 [color=#0000EE]
+          RenderText {#text} at (169,0) size 426x19
+            text run at (169,0) width 426: "http://bugzilla.opendarwin.org/show_bug.cgi?id=7152"
+        RenderText {#text} at (595,0) size 963x76
+          text run at (595,0) width 10: ". "
+          text run at (605,0) width 324: "Adding visible candidates after tables, at"
+          text run at (929,0) width 5: " "
+          text run at (0,19) width 950: "[table, numberOfChildren], threw RenderView::setSelection for a loop because it assumed the end of a selection would"
+          text run at (950,19) width 5: " "
+          text run at (0,38) width 211: "be inside an atomic node. "
+          text run at (211,38) width 747: "It didn't make the same assumption about start of a selection, but for good measure, we also"
+          text run at (958,38) width 5: " "
+          text run at (0,57) width 434: "test a selection that starts at a position before a table."
+selection start: position 0 of child 1 {TABLE} of body
+selection end:   position 341 of child 2 {#text} of child 5 {P} of body

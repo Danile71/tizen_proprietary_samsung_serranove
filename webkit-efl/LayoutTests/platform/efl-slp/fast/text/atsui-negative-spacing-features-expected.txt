@@ -1,0 +1,48 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x174
+  RenderBlock {HTML} at (0,0) size 800x174
+    RenderBody {BODY} at (8,12) size 784x154
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 277x14
+          text run at (0,0) width 277: "Test for negative spacing values in complex text rendering."
+      RenderBlock (anonymous) at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 378x14
+          text run at (0,0) width 378: "Each green box should be identical to the blue box it follows, except for accents."
+      RenderBlock {HR} at (0,46) size 784x2 [border: (1px inset #000000)]
+      RenderTable {TABLE} at (0,54) size 414x100
+        RenderTableSection {TBODY} at (0,0) size 414x100
+          RenderTableRow {TR} at (0,2) size 414x16
+            RenderTableCell {TD} at (2,2) size 204x16 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (69,1) size 66x14
+                text run at (69,1) width 66: "Word spacing"
+            RenderTableCell {TD} at (208,2) size 204x16 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (69,1) size 66x14
+                text run at (69,1) width 66: "Letter spacing"
+          RenderTableRow {TR} at (0,20) size 414x78
+            RenderTableCell {TD} at (2,20) size 204x78 [r=1 c=0 rs=1 cs=1]
+              RenderBlock {DIV} at (1,1) size 202x76
+                RenderBlock {DIV} at (0,0) size 202x20 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (201,3) size 0x14
+                    text run at (201,3) width 0 RTL: "\x{5E6}\x{5B0}\x{5DE}\x{5B4}\x{5D9}\x{5EA}\x{5D5}\x{5BC}\x{5EA} \x{5DC}\x{5B8}\x{5DA}\x{5B0} \x{5DE}\x{5B0}\x{5DB}\x{5B7}\x{5E8}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5}."
+                    text run at (201,3) width 0 RTL: "\x{5D9}\x{5B0}\x{5D4}\x{5B4}\x{5D9}, \x{5D0}\x{5B8}\x{5D7}\x{5B4}\x{5D9}, \x{5DC}\x{5B0}\x{5DA}\x{5B8} \x{5E1}\x{5B5}\x{5E4}\x{5B6}\x{5E8} \x{5E9}\x{5C1}\x{5B0}\x{5DC}\x{5B7}\x{5D7}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5} \x{5D5}\x{5BC}\x{5DE}\x{5B4}\x{5DE}\x{5B0}\x{5DB}\x{5BC}\x{5B6}\x{5E8}\x{5B6}\x{5EA} "
+                RenderBlock {DIV} at (0,25) size 202x16 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (1,1) size 0x14
+                    text run at (1,1) width 0: "Lore\x{300}m ipsum dolor sit ame\x{300}t, consectetuer adipiscing e\x{300}lit."
+                RenderBlock {DIV} at (0,46) size 202x30 [border: (1px solid #008000)]
+                  RenderText {#text} at (1,1) size 184x28
+                    text run at (1,1) width 184: "Lorem ipsum dolor sit amet, consectetuer"
+                    text run at (1,15) width 66: "adipiscing elit."
+            RenderTableCell {TD} at (208,20) size 204x78 [r=1 c=1 rs=1 cs=1]
+              RenderBlock {DIV} at (1,1) size 202x76
+                RenderBlock {DIV} at (0,0) size 202x20 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (201,3) size 0x14
+                    text run at (201,3) width 0 RTL: "\x{5E6}\x{5B0}\x{5DE}\x{5B4}\x{5D9}\x{5EA}\x{5D5}\x{5BC}\x{5EA} \x{5DC}\x{5B8}\x{5DA}\x{5B0} \x{5DE}\x{5B0}\x{5DB}\x{5B7}\x{5E8}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5}."
+                    text run at (201,3) width 0 RTL: "\x{5D9}\x{5B0}\x{5D4}\x{5B4}\x{5D9}, \x{5D0}\x{5B8}\x{5D7}\x{5B4}\x{5D9}, \x{5DC}\x{5B0}\x{5DA}\x{5B8} \x{5E1}\x{5B5}\x{5E4}\x{5B6}\x{5E8} \x{5E9}\x{5C1}\x{5B0}\x{5DC}\x{5B7}\x{5D7}\x{5B0}\x{5EA}\x{5BC}\x{5B4}\x{5D9}\x{5D5} \x{5D5}\x{5BC}\x{5DE}\x{5B4}\x{5DE}\x{5B0}\x{5DB}\x{5BC}\x{5B6}\x{5E8}\x{5B6}\x{5EA} "
+                RenderBlock {DIV} at (0,25) size 202x16 [border: (1px solid #0000FF)]
+                  RenderText {#text} at (1,1) size 0x14
+                    text run at (1,1) width 0: "Lore\x{300}m ipsum dolor sit ame\x{300}t, consectetue\x{300}r adipiscing e\x{300}lit."
+                RenderBlock {DIV} at (0,46) size 202x30 [border: (1px solid #008000)]
+                  RenderText {#text} at (1,1) size 194x28
+                    text run at (1,1) width 194: "Lorem ipsum dolor sit amet, consectetuer adipiscing"
+                    text run at (1,15) width 12: "elit."

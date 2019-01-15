@@ -1,0 +1,81 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 470x582
+      RenderBlock (anonymous) at (0,0) size 470x196
+        RenderText {#text} at (0,0) size 246x14
+          text run at (0,0) width 246: "This tests basic inputs. Here's what you should see: "
+        RenderBR {BR} at (246,11) size 0x0
+        RenderBR {BR} at (0,14) size 0x14
+        RenderText {#text} at (0,28) size 457x28
+          text run at (0,28) width 388: "first line: the letter \"a\" and then a text input field filled with repeating \"foobarbaz\", "
+          text run at (388,28) width 65: "then the word"
+          text run at (0,42) width 457: "\"text\" followed by a disabled text input field filled with \"foo\" and then the letter \"b\" and then \"a\" "
+        RenderBR {BR} at (457,53) size 0x0
+        RenderBR {BR} at (0,56) size 0x14
+        RenderText {#text} at (0,70) size 459x28
+          text run at (0,70) width 459: "second line: and then a password input field that's filled and then the word \"password\" and then a"
+          text run at (0,84) width 274: "disabled password field that's filled and then the letter \"b\" "
+        RenderBR {BR} at (274,95) size 0x0
+        RenderBR {BR} at (0,98) size 0x14
+        RenderText {#text} at (0,112) size 444x28
+          text run at (0,112) width 444: "third line: the letter \"a\" and then a checkbox (unchecked) with the word \"checkbox\" and then a"
+          text run at (0,126) width 155: "disabled checkbox and letter \"b\" "
+        RenderBR {BR} at (155,137) size 0x0
+        RenderBR {BR} at (0,140) size 0x14
+        RenderText {#text} at (0,154) size 447x28
+          text run at (0,154) width 447: "fourth line: the last line has the letter \"a\" and then a redio button (unselected) and then the word"
+          text run at (0,168) width 272: "\"radio\" and then a disabled radio button and the letter \"b\" "
+        RenderBR {BR} at (272,179) size 0x0
+        RenderBR {BR} at (0,182) size 0x14
+      RenderBlock {DIV} at (10,206) size 450x82 [border: (1px solid #FF0000)]
+        RenderText {#text} at (1,13) size 5x14
+          text run at (1,13) width 5: "a"
+        RenderTextControl {INPUT} at (8,3) size 195x29 [color=#202020]
+        RenderText {#text} at (205,13) size 20x14
+          text run at (205,13) width 20: "text "
+        RenderTextControl {INPUT} at (227,3) size 195x29 [color=#202020]
+        RenderText {#text} at (424,13) size 14x14
+          text run at (424,13) width 9: "b "
+          text run at (433,13) width 5: "a"
+        RenderTextControl {INPUT} at (3,36) size 195x29 [color=#202020]
+        RenderText {#text} at (200,46) size 49x14
+          text run at (200,46) width 49: "password "
+        RenderTextControl {INPUT} at (251,36) size 195x29 [color=#202020]
+        RenderText {#text} at (1,67) size 6x14
+          text run at (1,67) width 6: "b"
+      RenderBlock {DIV} at (10,298) size 450x20 [border: (1px solid #FF0000)]
+        RenderText {#text} at (1,2) size 5x14
+          text run at (1,2) width 5: "a"
+        RenderBlock {INPUT} at (10,4) size 12x12
+        RenderText {#text} at (26,2) size 48x14
+          text run at (26,2) width 48: "checkbox "
+        RenderBlock {INPUT} at (78,4) size 12x12
+        RenderText {#text} at (94,2) size 6x14
+          text run at (94,2) width 6: "b"
+      RenderBlock {DIV} at (10,328) size 450x20 [border: (1px solid #FF0000)]
+        RenderText {#text} at (1,2) size 5x14
+          text run at (1,2) width 5: "a"
+        RenderBlock {INPUT} at (10,4) size 12x12
+        RenderText {#text} at (26,2) size 27x14
+          text run at (26,2) width 27: "radio "
+        RenderBlock {INPUT} at (57,4) size 12x12
+        RenderText {#text} at (73,2) size 6x14
+          text run at (73,2) width 6: "b"
+layer at (30,223) size 188x19 scrollWidth 215
+  RenderBlock {DIV} at (4,6) size 188x19
+    RenderText {#text} at (1,0) size 213x19
+      text run at (1,0) width 213: "foobarbazfoobarbazfoobarbaz"
+layer at (249,223) size 188x19
+  RenderBlock {DIV} at (4,6) size 188x19
+    RenderText {#text} at (1,0) size 22x19
+      text run at (1,0) width 22: "foo"
+layer at (25,256) size 188x19
+  RenderBlock {DIV} at (4,6) size 188x19
+    RenderText {#text} at (1,0) size 18x19
+      text run at (1,0) width 18: "\x{2022}\x{2022}\x{2022}"
+layer at (273,256) size 188x19
+  RenderBlock {DIV} at (4,6) size 188x19
+    RenderText {#text} at (1,0) size 18x19
+      text run at (1,0) width 18: "\x{2022}\x{2022}\x{2022}"

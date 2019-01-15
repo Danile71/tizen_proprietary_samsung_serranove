@@ -1,0 +1,50 @@
+group "uxt_theme_color_config_s" struct {
+    group "list" list {
+        group "uxt_theme_color_hsv_s" struct {
+            value "h" int: 186;
+            value "s" int: 69;
+            value "v" int: 80;
+        }
+        group "uxt_theme_color_hsv_s" struct {
+            value "h" int: 186;
+            value "s" int: 69;
+            value "v" int: 80;
+        }
+        group "uxt_theme_color_hsv_s" struct {
+            value "h" int: 169;
+            value "s" int: 88;
+            value "v" int: 58;
+        }
+        group "uxt_theme_color_hsv_s" struct {
+            value "h" int: 203;
+            value "s" int: 57;
+            value "v" int: 64;
+        }
+        group "uxt_theme_color_hsv_s" struct {
+            value "h" int: 203;
+            value "s" int: 57;
+            value "v" int: 64;
+        }
+        group "uxt_theme_color_hsv_s" struct {
+            value "h" int: 225;
+            value "s" int: 59;
+            value "v" int: 66;
+        }
+    }
+    value "index" int: 1007;
+    value "style" string: "Light";
+    group "black" struct {
+        group "uxt_theme_color_hsv_s" struct {
+            value "h" int: 0;
+            value "s" int: 0;
+            value "v" int: 0;
+        }
+    }
+    group "white" struct {
+        group "uxt_theme_color_hsv_s" struct {
+            value "h" int: 0;
+            value "s" int: 0;
+            value "v" int: 100;
+        }
+    }
+}

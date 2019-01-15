@@ -1,0 +1,20 @@
+layer at (0,0) size 800x2016
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x2016
+  RenderBlock {HTML} at (0,0) size 800x2016
+    RenderBody {BODY} at (8,8) size 784x2000
+layer at (8,28) size 784x14
+  RenderBlock (relative positioned) {P} at (0,0) size 784x14
+    RenderText {#text} at (0,0) size 75x14
+      text run at (0,0) width 75: "Repaint test for "
+    RenderInline {I} at (0,0) size 539x14
+      RenderInline {A} at (0,0) size 226x14 [color=#0000EE]
+        RenderText {#text} at (75,0) size 226x14
+          text run at (75,0) width 226: "http://bugs.webkit.org/show_bug.cgi?id=11452"
+      RenderText {#text} at (301,0) size 313x14
+        text run at (301,0) width 3: " "
+        text run at (304,0) width 310: "REGRESSION (r16736-r16801): Incorrect repaint of fixed boxes"
+    RenderText {#text} at (614,0) size 3x14
+      text run at (614,0) width 3: "."
+layer at (8,54) size 100x100
+  RenderBlock (positioned) {DIV} at (8,34) size 100x100 [bgcolor=#008000]

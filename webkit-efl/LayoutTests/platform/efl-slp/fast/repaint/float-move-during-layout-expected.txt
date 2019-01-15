@@ -1,0 +1,24 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 114x14
+          text run at (0,0) width 114: "This is a repaint test for "
+        RenderInline {I} at (0,0) size 538x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (114,0) size 262x14
+              text run at (114,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=7204"
+          RenderText {#text} at (376,0) size 276x14
+            text run at (376,0) width 3: " "
+            text run at (379,0) width 273: "float inserted in fixed height block via DOM not repainted"
+        RenderText {#text} at (652,0) size 3x14
+          text run at (652,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 182x14
+          text run at (0,0) width 182: "There should be a green square below."
+      RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,60) size 784x100
+      RenderBlock {DIV} at (0,160) size 784x0
+        RenderBlock (floating) {DIV} at (0,0) size 100x100 [bgcolor=#008000]

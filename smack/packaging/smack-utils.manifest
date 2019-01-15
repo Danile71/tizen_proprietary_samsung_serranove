@@ -1,0 +1,16 @@
+<manifest>
+    <request>
+        <domain name="_" />
+    </request>
+    <assign>
+        <filesystem path="/etc/rc.d/init.d/smack-utils" exec_label="none"/>
+		<filesystem path="/usr/bin/chsmack" exec_label="none"/>
+		<filesystem path="/usr/bin/smackaccess" exec_label="none"/>
+		<filesystem path="/usr/bin/smackcipso" exec_label="none"/>
+		<filesystem path="/usr/bin/smackctl" exec_label="none"/>
+		<filesystem path="/usr/bin/smackd" exec_label="none"/>
+		<filesystem path="/usr/bin/smackload" exec_label="none"/>
+		<filesystem path="/usr/bin/smackload-fast" exec_label="none"/>
+		<filesystem path="/etc/init.d/smack-utils" exec_label="none"/>
+	</assign>
+</manifest>

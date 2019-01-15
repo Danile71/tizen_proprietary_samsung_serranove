@@ -1,0 +1,31 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 158x14
+          text run at (0,0) width 158: "This tests for regressions against "
+        RenderInline {I} at (0,0) size 498x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (158,0) size 262x14
+              text run at (158,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=8081"
+          RenderText {#text} at (420,0) size 236x14
+            text run at (420,0) width 3: " "
+            text run at (423,0) width 233: "REGRESSION: Drop-down menu has gap at top"
+        RenderText {#text} at (656,0) size 3x14
+          text run at (656,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 400x14
+          text run at (0,0) width 400: "You should see two identical green squares, 100x100 pixels each, next to each other."
+      RenderTable {TABLE} at (0,52) size 107x156
+        RenderTableSection {TBODY} at (0,0) size 107x156
+          RenderTableRow {TR} at (0,2) size 107x50
+            RenderTableCell {TD} at (2,26) size 103x2 [r=0 c=0 rs=1 cs=2]
+          RenderTableRow {TR} at (0,54) size 107x100
+            RenderTableCell {TD} at (2,54) size 100x2 [bgcolor=#008000] [r=1 c=0 rs=1 cs=1]
+            RenderTableCell (anonymous) at (104,54) size 1x0 [r=1 c=1 rs=1 cs=1]
+layer at (11,115) size 98x98
+  RenderBlock (positioned) {DIV} at (11,115) size 98x98
+layer at (112,114) size 102x102
+  RenderBlock (positioned) {TD} at (112,114) size 102x102 [bgcolor=#008000]

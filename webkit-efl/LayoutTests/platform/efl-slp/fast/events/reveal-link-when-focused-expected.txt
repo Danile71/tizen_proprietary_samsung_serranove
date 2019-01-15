@@ -1,0 +1,13 @@
+layer at (0,0) size 800x2030
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x2030
+  RenderBlock {HTML} at (0,0) size 800x2030
+    RenderBody {BODY} at (8,8) size 784x2014
+      RenderBlock {DIV} at (0,0) size 784x2000
+        RenderText {#text} at (0,0) size 248x14
+          text run at (0,0) width 248: "padding to make link be initially scrolled out of sight"
+      RenderBlock (anonymous) at (0,2000) size 784x14
+        RenderInline {A} at (0,0) size 266x14 [color=#0000EE]
+          RenderText {#text} at (0,0) size 266x14
+            text run at (0,0) width 266: "this link should be focused and revealed after page loads"
+        RenderText {#text} at (0,0) size 0x0

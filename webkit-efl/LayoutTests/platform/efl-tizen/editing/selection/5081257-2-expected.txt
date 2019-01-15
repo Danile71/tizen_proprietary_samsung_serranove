@@ -1,0 +1,12 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 956x38
+          text run at (0,0) width 654: "This tests for setting the selection at a position inside a document in designMode. "
+          text run at (654,0) width 297: "You should see a caret at the start of"
+          text run at (951,0) width 5: " "
+          text run at (0,19) width 75: "the body."
+caret: position 0 of child 0 {#text} of child 1 {P} of body

@@ -1,0 +1,15 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 9x19
+          text run at (0,0) width 9: "x"
+      RenderBlock {DIV} at (0,35) size 964x19 [color=#0000FF]
+        RenderBlock {DIV} at (0,0) size 964x19
+          RenderInline (generated) at (0,0) size 41x19
+            RenderText at (0,0) size 41x19
+              text run at (0,0) width 41: "PASS"
+          RenderText {#text} at (41,0) size 265x19
+            text run at (41,0) width 265: " < this should say still say \x{201C}PASS\x{201D}"

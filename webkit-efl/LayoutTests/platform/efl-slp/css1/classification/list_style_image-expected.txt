@@ -1,0 +1,80 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x33
+        RenderText {#text} at (0,0) size 330x33
+          text run at (0,0) width 330: ".one {list-style-image: url(../resources/oransqr.gif);}"
+          text run at (330,0) width 0: " "
+          text run at (0,11) width 180: ".two {list-style-image: none;}"
+          text run at (180,11) width 0: " "
+          text run at (0,22) width 0: " "
+      RenderBlock {HR} at (0,69) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {UL} at (0,83) size 784x54
+        RenderListItem {LI} at (40,0) size 744x18
+          RenderListMarker at (-22,0) size 15x15
+          RenderText {#text} at (0,4) size 47x14
+            text run at (0,4) width 47: "This list..."
+        RenderListItem {LI} at (40,18) size 744x18
+          RenderListMarker at (-22,0) size 15x15
+          RenderText {#text} at (0,4) size 85x14
+            text run at (0,4) width 85: "...should feature..."
+        RenderListItem {LI} at (40,36) size 744x18
+          RenderListMarker at (-22,0) size 15x15
+          RenderText {#text} at (0,4) size 109x14
+            text run at (0,4) width 109: "...images for each item."
+      RenderBlock {UL} at (0,149) size 784x42
+        RenderListItem {LI} at (40,0) size 744x14
+          RenderListMarker at (-15,0) size 6x14: bullet
+          RenderText {#text} at (0,0) size 47x14
+            text run at (0,0) width 47: "This list..."
+        RenderListItem {LI} at (40,14) size 744x14
+          RenderListMarker at (-15,0) size 6x14: bullet
+          RenderText {#text} at (0,0) size 85x14
+            text run at (0,0) width 85: "...should feature..."
+        RenderListItem {LI} at (40,28) size 744x14
+          RenderListMarker at (-15,0) size 6x14: bullet
+          RenderText {#text} at (0,0) size 174x14
+            text run at (0,0) width 174: "...standard list markers for each item."
+      RenderTable {TABLE} at (0,203) size 235x152 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 233x150
+          RenderTableRow {TR} at (0,0) size 233x22
+            RenderTableCell {TD} at (0,0) size 233x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 233x128
+            RenderTableCell {TD} at (0,75) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 222x128 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {UL} at (4,4) size 214x54
+                RenderListItem {LI} at (40,0) size 174x18
+                  RenderListMarker at (-22,0) size 15x15
+                  RenderText {#text} at (0,4) size 47x14
+                    text run at (0,4) width 47: "This list..."
+                RenderListItem {LI} at (40,18) size 174x18
+                  RenderListMarker at (-22,0) size 15x15
+                  RenderText {#text} at (0,4) size 85x14
+                    text run at (0,4) width 85: "...should feature..."
+                RenderListItem {LI} at (40,36) size 174x18
+                  RenderListMarker at (-22,0) size 15x15
+                  RenderText {#text} at (0,4) size 109x14
+                    text run at (0,4) width 109: "...images for each item."
+              RenderBlock {UL} at (4,70) size 214x42
+                RenderListItem {LI} at (40,0) size 174x14
+                  RenderListMarker at (-15,0) size 6x14: bullet
+                  RenderText {#text} at (0,0) size 47x14
+                    text run at (0,0) width 47: "This list..."
+                RenderListItem {LI} at (40,14) size 174x14
+                  RenderListMarker at (-15,0) size 6x14: bullet
+                  RenderText {#text} at (0,0) size 85x14
+                    text run at (0,0) width 85: "...should feature..."
+                RenderListItem {LI} at (40,28) size 174x14
+                  RenderListMarker at (-15,0) size 6x14: bullet
+                  RenderText {#text} at (0,0) size 174x14
+                    text run at (0,0) width 174: "...standard list markers for each item."

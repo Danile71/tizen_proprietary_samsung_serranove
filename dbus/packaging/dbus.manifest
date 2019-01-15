@@ -1,0 +1,14 @@
+<manifest>
+  <define>
+    <domain name="dbus"/>
+  </define>
+  <request>
+    <domain name="dbus"/>
+  </request>
+  <assign>
+    <filesystem path="/usr/bin/*" label="_" exec_label="none" />
+    <filesystem path="/usr/bin/dbus-daemon" label="dbus" exec_label="dbus" />
+    <filesystem path="/usr/lib/dbus-1/dbus-daemon-launch-helper" label="_" exec_label="none" />
+    <filesystem path="/usr/lib/systemd/*" label="_" exec_label="none" />
+  </assign>
+</manifest>

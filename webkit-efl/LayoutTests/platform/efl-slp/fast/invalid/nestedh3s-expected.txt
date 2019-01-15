@@ -1,0 +1,36 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x578
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 424x14
+          text run at (0,0) width 424: "In this sample, the H3s should be nested. This matches Firefox, IE, and the HTML5 spec."
+      RenderBlock {H3} at (0,28) size 784x227 [border: (2px solid #FF0000)]
+        RenderBlock (anonymous) at (4,4) size 776x16
+          RenderInline {I} at (0,0) size 24x15
+            RenderText {#text} at (0,0) size 24x15
+              text run at (0,0) width 24: "One"
+        RenderBlock (anonymous) at (4,36) size 776x171
+          RenderBlock {H3} at (0,0) size 776x171 [border: (2px solid #FF0000)]
+            RenderBlock (anonymous) at (4,4) size 768x18
+              RenderInline {I} at (0,0) size 29x17
+                RenderText {#text} at (0,0) size 29x17
+                  text run at (0,0) width 29: "Two"
+            RenderBlock (anonymous) at (4,41) size 768x107
+              RenderBlock {H3} at (0,0) size 768x107 [border: (2px solid #FF0000)]
+                RenderBlock (anonymous) at (4,4) size 760x22
+                  RenderInline {I} at (0,0) size 46x21
+                    RenderText {#text} at (0,0) size 46x21
+                      text run at (0,0) width 46: "Three"
+                RenderBlock (anonymous) at (4,48) size 760x33
+                  RenderBlock {H3} at (0,0) size 760x33 [border: (2px solid #FF0000)]
+                    RenderInline {I} at (0,0) size 47x25
+                      RenderText {#text} at (4,4) size 47x25
+                        text run at (4,4) width 47: "Four"
+                RenderBlock (anonymous) at (4,103) size 760x0
+                  RenderInline {I} at (0,0) size 0x0
+            RenderBlock (anonymous) at (4,167) size 768x0
+              RenderInline {I} at (0,0) size 0x0
+        RenderBlock (anonymous) at (4,223) size 776x0
+          RenderInline {I} at (0,0) size 0x0

@@ -1,0 +1,39 @@
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > #shadow-root to 0 of DIV > #shadow-root toDOMRange:range from 0 of #text > DIV > #shadow-root to 11 of #text > DIV > #shadow-root affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldInsertText:Tab->	<-Tab replacingDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document givenAction:WebViewInsertActionPasted
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document toDOMRange:range from 5 of #text > DIV > BODY > HTML > #document to 5 of #text > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 953x38
+          text run at (0,0) width 827: "This tests copying plain text with tabs and pasting it into an editable region using paste and match tyle. "
+          text run at (827,0) width 126: "The tabs should"
+          text run at (0,19) width 111: "be preserved."
+      RenderBlock (anonymous) at (0,54) size 964x44
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,98) size 964x19
+        RenderText {#text} at (0,0) size 49x19
+          text run at (0,0) width 49: "Tab->"
+        RenderInline {SPAN} at (0,0) size 31x19
+          RenderText {#text} at (49,0) size 31x19
+            text run at (49,0) width 31: "\x{9}"
+        RenderText {#text} at (80,0) size 49x19
+          text run at (80,0) width 49: "<-Tab"
+layer at (10,64) size 182x40
+  RenderTextControl {TEXTAREA} at (2,2) size 182x40 [bgcolor=#FFFFFF]
+    RenderBlock {DIV} at (4,6) size 175x15
+      RenderText {#text} at (0,0) size 104x15
+        text run at (0,0) width 104: "Tab->\x{9}<-Tab"
+caret: position 5 of child 2 {#text} of child 4 {DIV} of body

@@ -1,0 +1,50 @@
+// These are the layout test expectations for the EFL port(s) of WebKit.
+//
+// See http://trac.webkit.org/wiki/TestExpectations for more information on this file.
+
+// We divide our test_expectations.txt into several categories:
+// 1. TESTS EXPECTED TO FAIL
+//    Test cases related to features that we don't expect to be activated for EFL since e.g.
+//    * the feature implementation in WebCore is not complete yet
+//    * the feature is not relevant for the EFL port
+//    * the feature is meant to solve a backwards compatibility issue on other platforms
+//    Test cases that don't apply for the EFL platform permanently.
+//    If in doubt, please discuss on webkit-efl mailing list whether a set of test cases
+//    should be moved here.
+
+// 2. CRASHES
+
+// 3. FLAKY TESTS
+
+// 4. FAILING TESTS
+//    * Interim failures that are moved here for further investigation as a result of daily
+//      gardening. They should be analysed quickly and either resolved or moved to 1).
+//    * Remaining failures that are moved here until further investigation after
+//      unskipping a directory or block of tests in the Skipped list. Mark cases as MISSING
+//      if you cannot yet generate new results since another feature is missing.
+//    * Tests that we expect to pass once the respective fix for DRT is available or
+//      a relevant compile time feature can be enabled for EFL.
+
+
+// Each line should have an associated bug. Please don't file new lines without one.
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// TESTS EXPECTED TO FAIL
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// CRASHES
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// FLAKY TESTS
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// FAILING TESTS
+//////////////////////////////////////////////////////////////////////////////////////////
+
+

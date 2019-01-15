@@ -1,0 +1,76 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 753x28
+          text run at (0,0) width 753: "Test of various CSS display types for list elements. All visible elements that have a display-type of list-item are given a number. This is generally going to be LI"
+          text run at (0,14) width 39: "element."
+      RenderBlock {OL} at (0,40) size 784x238
+        RenderListItem {LI} at (40,0) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "3"
+          RenderText {#text} at (0,0) size 57x14
+            text run at (0,0) width 57: "Should be 3"
+        RenderListItem {LI} at (40,14) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "4"
+          RenderText {#text} at (0,0) size 57x14
+            text run at (0,0) width 57: "Should be 4"
+        RenderBlock {LI} at (40,28) size 744x14
+          RenderText {#text} at (0,0) size 124x14
+            text run at (0,0) width 124: "Should not have a number"
+        RenderListItem {LI} at (40,42) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "5"
+          RenderText {#text} at (0,0) size 57x14
+            text run at (0,0) width 57: "Should be 5"
+        RenderBlock (anonymous) at (40,56) size 744x14
+          RenderInline {LI} at (0,0) size 124x14
+            RenderText {#text} at (0,0) size 124x14
+              text run at (0,0) width 124: "Should not have a number"
+          RenderText {#text} at (0,0) size 0x0
+        RenderListItem {LI} at (40,70) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "6"
+          RenderText {#text} at (0,0) size 57x14
+            text run at (0,0) width 57: "Should be 6"
+        RenderBlock {DIV} at (40,84) size 744x14
+          RenderText {#text} at (0,0) size 124x14
+            text run at (0,0) width 124: "Should not have a number"
+        RenderListItem {DIV} at (40,98) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "7"
+          RenderText {#text} at (0,0) size 57x14
+            text run at (0,0) width 57: "Should be 7"
+        RenderListItem {LI} at (40,112) size 744x14
+          RenderListMarker at (-15,0) size 12x14: "8"
+          RenderText {#text} at (0,0) size 57x14
+            text run at (0,0) width 57: "Should be 8"
+        RenderListItem {LI} at (40,126) size 744x14
+          RenderText {#text} at (0,0) size 124x14
+            text run at (0,0) width 124: "Should not have a number"
+        RenderListItem {LI} at (40,140) size 744x14
+          RenderListMarker at (-21,0) size 18x14: "10"
+          RenderText {#text} at (0,0) size 63x14
+            text run at (0,0) width 63: "Should be 10"
+        RenderListItem {LI} at (40,154) size 744x14
+          RenderListMarker at (-15,0) size 6x14: bullet
+          RenderText {#text} at (0,0) size 89x14
+            text run at (0,0) width 89: "Should have a disc"
+        RenderListItem {LI} at (40,168) size 744x14
+          RenderListMarker at (-21,0) size 18x14: "12"
+          RenderText {#text} at (0,0) size 63x14
+            text run at (0,0) width 63: "Should be 12"
+        RenderListItem {LI} at (40,182) size 744x14
+          RenderListMarker at (-15,0) size 6x14: black square
+          RenderText {#text} at (0,0) size 101x14
+            text run at (0,0) width 101: "Should have a square"
+        RenderListItem {LI} at (40,196) size 744x14
+          RenderListMarker at (-21,0) size 18x14: "14"
+          RenderText {#text} at (0,0) size 63x14
+            text run at (0,0) width 63: "Should be 14"
+        RenderListItem {LI} at (40,210) size 744x14
+          RenderListMarker at (-15,0) size 6x14: white bullet
+          RenderText {#text} at (0,0) size 95x14
+            text run at (0,0) width 95: "Should have a circle"
+        RenderListItem {LI} at (40,224) size 744x14
+          RenderListMarker at (-21,0) size 18x14: "16"
+          RenderText {#text} at (0,0) size 63x14
+            text run at (0,0) width 63: "Should be 16"

@@ -1,0 +1,18 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock (anonymous) at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 951x38
+          text run at (0,0) width 615: "This tests whether alt text is shown for image-type form input elements with "
+          text run at (615,0) width 336: "no src attribute. You should see \"Success\""
+          text run at (0,19) width 283: "twice, followed by a blue rectangle."
+      RenderBlock {P} at (0,54) size 964x0
+      RenderBlock {FORM} at (0,54) size 964x92
+        RenderImage {INPUT} at (0,0) size 52x15
+        RenderBR {BR} at (52,15) size 0x0
+        RenderImage {INPUT} at (0,15) size 102x52 [border: (1px solid #000000)]
+        RenderBR {BR} at (102,67) size 0x0
+        RenderImage {INPUT} at (0,67) size 75x25
+        RenderBR {BR} at (75,92) size 0x0

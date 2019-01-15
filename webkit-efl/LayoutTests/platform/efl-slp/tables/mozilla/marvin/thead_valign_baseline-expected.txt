@@ -1,0 +1,33 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 156x14
+          text run at (0,0) width 156: "THEAD VALIGN=BASELINE"
+      RenderTable {TABLE} at (0,14) size 723x244 [border: (1px outset #808080)]
+        RenderTableSection {THEAD} at (1,1) size 721x196
+          RenderTableRow {TR} at (0,2) size 721x192
+            RenderTableCell {TD} at (2,2) size 304x189 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderImage {IMG} at (2,2) size 300x185
+            RenderTableCell {TD} at (308,176) size 411x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 407x14
+                text run at (2,2) width 407: "This text is within the THEAD element and should be vertically aligned to the baseline"
+        RenderTableSection {TFOOT} at (1,221) size 721x22
+          RenderTableRow {TR} at (0,2) size 721x18
+            RenderTableCell {TD} at (2,2) size 304x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 39x14
+                text run at (2,2) width 39: "TFOOT"
+            RenderTableCell {TD} at (308,2) size 411x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 39x14
+                text run at (2,2) width 39: "TFOOT"
+        RenderTableSection {TBODY} at (1,197) size 721x22
+          RenderTableRow {TR} at (0,2) size 721x18
+            RenderTableCell {TD} at (2,2) size 304x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 42x14
+                text run at (2,2) width 42: "TBODY"
+            RenderTableCell {TD} at (308,2) size 411x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 42x14
+                text run at (2,2) width 42: "TBODY"
+        RenderTableSection {TBODY} at (1,219) size 721x2

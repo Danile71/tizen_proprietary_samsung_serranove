@@ -1,0 +1,33 @@
+layer at (0,0) size 800x630
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x630
+  RenderBlock {HTML} at (0,0) size 800x630
+    RenderBody {BODY} at (8,8) size 784x614
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 207x14
+          text run at (0,0) width 207: "These two tables should be the same height."
+      RenderBlock {DIV} at (0,14) size 66x600
+        RenderTable {TABLE} at (0,0) size 22x320
+          RenderTableSection {TBODY} at (0,0) size 22x320
+            RenderTableRow {TR} at (0,0) size 22x320
+              RenderTableCell {TD} at (0,0) size 22x64 [border: (1px solid #008000)] [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 14x6
+                  text run at (1,1) width 6: "1"
+              RenderTableCell {TD} at (0,70) size 22x238 [border: (1px solid #008000)] [r=0 c=1 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 14x6
+                  text run at (1,1) width 6: "2"
+              RenderTableCell {TD} at (0,314) size 22x6 [border: (1px solid #008000)] [r=0 c=2 rs=1 cs=1]
+                RenderImage {IMG} at (1,1) size 20x4 [bgcolor=#FFA500]
+        RenderBlock {P} at (34,0) size 0x600
+        RenderTable {TABLE} at (34,0) size 32x320
+          RenderTableSection {TBODY} at (0,0) size 32x320
+            RenderTableRow {TR} at (0,0) size 16x320
+              RenderTableCell {TD} at (0,0) size 16x64 [border: (1px solid #008000)] [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 14x6
+                  text run at (1,1) width 6: "1"
+              RenderTableCell {TD} at (0,66) size 16x252 [border: (1px solid #008000)] [r=0 c=1 rs=1 cs=1]
+                RenderImage {IMG} at (3,-1) size 10x254 [bgcolor=#FFA500]
+            RenderTableRow {TR} at (0,16) size 16x320
+              RenderTableCell {TD} at (16,0) size 16x320 [border: (1px solid #008000)] [r=1 c=0 rs=1 cs=3]
+                RenderText {#text} at (1,1) size 14x6
+                  text run at (1,1) width 6: "1"

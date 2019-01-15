@@ -1,0 +1,474 @@
+class Elm_Index (Elm_Layout)
+{
+   eo_prefix: elm_obj_index;
+   properties {
+      autohide_disabled {
+         set {
+            /*@
+            @brief Enable or disable auto hiding feature for a given index widget.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @see elm_index_autohide_disabled_get()
+
+            @ingroup Index */
+         }
+         get {
+            /*@
+            @brief Get whether auto hiding feature is enabled or not for a given index widget.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return @c EINA_TRUE, if auto hiding is disabled, @c EINA_FALSE otherwise
+
+            @see elm_index_autohide_disabled_set() for more details
+
+            @ingroup Index */
+         }
+         values {
+            bool disabled; /*@ @c EINA_TRUE to disable auto hiding, @c EINA_FALSE to enable */
+         }
+      }
+      omit_enabled {
+         set {
+            /*@
+            @brief Enable or disable omit feature for a given index widget.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @see elm_index_omit_enabled_get()
+
+            @since 1.8
+
+            @ingroup Index */
+         }
+         get {
+            /*@
+            @brief Get whether omit feature is enabled or not for a given index widget.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return @c EINA_TRUE, if omit feature is enabled, @c EINA_FALSE otherwise
+
+            @see elm_index_omit_enabled_set()
+
+            @since 1.8
+
+            @ingroup Index */
+         }
+         values {
+            bool enabled; /*@ @c EINA_TRUE to enable omit feature, @c EINA_FALSE to disable */
+         }
+      }
+      priority {
+         set {
+            /*@
+            Set priority group of index. Priority group will be shown as many items as it can,
+            and other group will be shown one character only.
+
+            @since tizen 2.4
+
+            @ingroup Index */
+         }
+         get {
+            /*@
+            Get current priority group of index.
+
+            @return priority value in index
+
+            @since tizen 2.4
+
+            @ingroup Index */
+         }
+         values {
+            int priority; /*@ @c priority target priority value in index */
+         }
+      }
+      horizontal {
+         set {
+            /*@
+            @brief Enable or disable horizontal mode on the index object
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark Vertical mode is set by default.
+
+            @remark On horizontal mode items are displayed on index from left to right,
+            instead of from top to bottom. Also, the index will scroll horizontally.
+
+            @see elm_index_horizontal_get()
+
+            @ingroup Index */
+         }
+         get {
+            /*@
+            @brief Get a value whether horizontal mode is enabled or not.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return @c EINA_TRUE means horizontal mode selection is enabled.
+            @c EINA_FALSE indicates it's disabled. If @p obj is @c NULL,
+            @c EINA_FALSE is returned.
+
+            @see elm_index_horizontal_set() for details.
+
+            @ingroup Index */
+         }
+         values {
+            bool horizontal; /*@ @c EINA_TRUE to enable horizontal or @c EINA_FALSE to
+            disable it, i.e., to enable vertical mode. it's an area one @ref Fingers
+            "finger" wide on the bottom side of the index widget's container. */
+         }
+      }
+      delay_change_time {
+         set {
+            /*@
+            @brief Set a delay change time for index object.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark delay time is 0.2 sec by default.
+
+            @see elm_index_delay_change_time_get
+
+            @ingroup Index */
+         }
+         get {
+            /*@
+            @brief Get a delay change time for index object.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return delay change time in seconds
+
+            @see elm_index_delay_change_time_set
+
+            @ingroup Index */
+         }
+         values {
+            double dtime; /*@ The delay change time to set. */
+         }
+      }
+      indicator_disabled {
+         set {
+            /*@
+            @brief Set the indicator as to be disabled.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @remark In Index widget, Indicator notes popup text, which shows a letter has been selecting.
+
+            @see elm_index_indicator_disabled_get()
+
+            @ingroup Index */
+         }
+         get {
+            /*@
+            @brief Get the value of indicator's disabled status.
+
+            @if MOBILE @since_tizen 2.3
+            @elseif WEARABLE @since_tizen 2.3.1
+            @endif
+
+            @return EINA_TRUE if the indicator is disabled.
+
+            @see elm_index_indicator_disabled_set()
+
+            @ingroup Index */
+         }
+         values {
+            bool disabled; /*@ @c EINA_TRUE to disable it, @c EINA_FALSE to enable it */
+         }
+      }
+      item_level {
+         set {
+            /*@
+            Set the items level for a given index widget.
+
+            @see elm_index_item_level_get()
+
+            @ingroup Index */
+         }
+         get {
+            /*@
+            Get the items level set for a given index widget.
+
+            @return @c 0 or @c 1, which are the levels @p obj might be at.
+
+            @see elm_index_item_level_set() for more information
+
+            @ingroup Index */
+         }
+         values {
+            int level; /*@ @c 0 or @c 1, the currently implemented levels. */
+         }
+      }
+   }
+   methods {
+      level_go {
+         /*@
+         @brief Flush the changes made to the index items so they work correctly
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @remark This flushes any changes made to items indicating the object is ready to
+         go. You should call this before any changes you expect to work. This
+         is similar to elm_list_go().
+
+         @warning If not called, it won't display the index properly.
+
+         @ingroup Index */
+
+         params {
+            @in int level; /*@ The index level (one of @c 0 or @c 1) where changes were made */
+         }
+      }
+      item_prepend {
+         /*@
+         @brief Prepend a new item on a given index widget.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return A handle to the item added or @c NULL, on errors
+
+         @remark Despite the most common usage of the @p letter argument is for
+         single char strings, one could use arbitrary strings as index
+         entries.
+
+         @c item will be the pointer returned back on @c "changed", @c
+         "delay,changed" and @c "selected" smart events.
+
+         @ingroup Index */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(char)* letter; /*@ Letter under which the item should be indexed */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is selected. */
+            @in const(void)* data; /*@ The item data to set for the index's item */
+         }
+      }
+      item_clear {
+         /*@
+         @brief Removes @b all items from a given index widget.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @remark If deletion callbacks are set, via elm_object_item_del_cb_set(),
+         that callback function will be called for each item in @p obj.
+
+         @ingroup Index */
+
+      }
+      item_insert_after {
+         /*@
+         @brief Insert a new item into the index object after item @p after.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return A handle to the item added or @c NULL, on errors
+
+         @remark Despite the most common usage of the @p letter argument is for
+         single char strings, one could use arbitrary strings as index
+         entries.
+
+         @c item will be the pointer returned back on @c "changed", @c
+         "delay,changed" and @c "selected" smart events.
+
+         @remark If @p relative is @c NULL this function will behave as
+         elm_index_item_append().
+
+         @ingroup Index */
+
+         return: Elm_Object_Item *;
+         params {
+            @in Elm_Object_Item *after; /*@ The index item to insert after. */
+            @in const(char)* letter; /*@ Letter under which the item should be indexed */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked. */
+            @in const(void)* data; /*@ The item data to set for the index's item */
+         }
+      }
+      item_find {
+         /*@
+         @brief Find a given index widget's item, <b>using item data</b>.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return The index item handle, if found, or @c NULL otherwise
+
+         @ingroup Index */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(void)* data; /*@ The item data pointed to by the desired index item */
+         }
+      }
+      item_insert_before {
+         /*@
+         @brief Insert a new item into the index object before item @p before.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return A handle to the item added or @c NULL, on errors
+
+         @remark Despite the most common usage of the @p letter argument is for
+         single char strings, one could use arbitrary strings as index
+         entries.
+
+         @c item will be the pointer returned back on @c "changed", @c
+         "delay,changed" and @c "selected" smart events.
+
+         @remark If @p relative is @c NULL this function will behave as
+         elm_index_item_prepend().
+
+         @ingroup Index */
+
+         return: Elm_Object_Item *;
+         params {
+            @in Elm_Object_Item *before; /*@ The index item to insert after. */
+            @in const(char)* letter; /*@ Letter under which the item should be indexed */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked. */
+            @in const(void)* data; /*@ The item data to set for the index's item */
+         }
+      }
+      item_append {
+         /*@
+         @brief Append a new item on a given index widget.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return A handle to the item added or @c NULL, on errors
+
+         @remark Despite the most common usage of the @p letter argument is for
+         single char strings, one could use arbitrary strings as index
+         entries.
+
+         @c item will be the pointer returned back on @c "changed", @c
+         "delay,changed" and @c "selected" smart events.
+
+         @ingroup Index */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(char)* letter; /*@ Letter under which the item should be indexed */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is selected. */
+            @in const(void)* data; /*@ The item data to set for the index's item */
+         }
+      }
+      selected_item_get @const {
+         /*@
+         @brief Returns the last selected item, for a given index widget.
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return The last item @b selected on @p obj (or @c NULL, on errors).
+
+         @ingroup Index */
+         return: Elm_Object_Item *;
+         params {
+            @in int level; /*@ @c 0 or @c 1, the currently implemented levels. */
+         }
+      }
+      item_sorted_insert {
+         /*@
+         @brief Insert a new item into the given index widget, using @p cmp_func
+         function to sort items (by item handles).
+
+         @if MOBILE @since_tizen 2.3
+         @elseif WEARABLE @since_tizen 2.3.1
+         @endif
+
+         @return A handle to the item added or @c NULL, on errors
+
+         @remark Despite the most common usage of the @p letter argument is for
+         single char strings, one could use arbitrary strings as index
+         entries.
+
+         @c item will be the pointer returned back on @c "changed", @c
+         "delay,changed" and @c "selected" smart events.
+
+         @ingroup Index */
+
+         return: Elm_Object_Item *;
+         params {
+            @in const(char)* letter; /*@ Letter under which the item should be indexed */
+            @in Evas_Smart_Cb func; /*@ The function to call when the item is clicked. */
+            @in const(void)* data; /*@ The item data to set for the index's item */
+            @in Eina_Compare_Cb cmp_func; /*@ The comparing function to be used to sort index
+            items <b>by index item handles</b> */
+            @in Eina_Compare_Cb cmp_data_func; /*@ A @b fallback function to be called for the
+            sorting of index items <b>by item data</b>). It will be used
+            when @p cmp_func returns @c 0 (equality), which means an index
+            item with provided item data already exists. To decide which
+            data item should be pointed to by the index item in question, @p
+            cmp_data_func will be used. If @p cmp_data_func returns a
+            non-negative value, the previous index item data will be
+            replaced by the given @p item pointer. If the previous data need
+            to be freed, it should be done by the @p cmp_data_func function,
+            because all references to it will be lost. If this function is
+            not provided (@c NULL is given), index items will be @b
+            duplicated, if @p cmp_func returns @c 0. */
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Elm_Widget.theme_apply;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.access;
+      Elm_Widget.focus_next;
+      Elm_Layout.sizing_eval;
+      //TIZEN_ONLY(20150716) : improve atspi support
+      Elm_Interface_Atspi_Accessible.children.get;
+      ///
+   }
+   events {
+      changed;
+      delay,changed;
+      selected;
+      level,up;
+      level,down;
+      language,changed;
+      access,changed;
+      focused;
+      unfocused;
+   }
+
+}

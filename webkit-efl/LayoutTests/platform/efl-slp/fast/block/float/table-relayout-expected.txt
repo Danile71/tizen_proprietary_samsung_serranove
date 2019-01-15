@@ -1,0 +1,39 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 131x14
+          text run at (0,0) width 131: "This is a regression test for "
+        RenderInline {I} at (0,0) size 584x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (131,0) size 262x14
+              text run at (131,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=7395"
+          RenderText {#text} at (393,0) size 322x14
+            text run at (393,0) width 3: " "
+            text run at (396,0) width 319: "Table not properly re-flowed when floated div removed from layout"
+        RenderText {#text} at (715,0) size 3x14
+          text run at (715,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 196x14
+          text run at (0,0) width 196: "The two boxes below should be identical."
+      RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,60) size 200x34 [bgcolor=#C0C0C0]
+        RenderTable {TABLE} at (0,0) size 200x34
+          RenderTableSection {TBODY} at (0,0) size 200x34
+            RenderTableRow {TR} at (0,2) size 200x30
+              RenderTableCell {TD} at (2,2) size 196x30 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 194x28
+                  text run at (1,1) width 194: "Lorem ipsum dolor sit amet, consectetuer"
+                  text run at (1,15) width 131: "adipiscing elit. Nunc neque."
+      RenderBlock (anonymous) at (0,94) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderBlock {DIV} at (0,108) size 200x34 [bgcolor=#C0C0C0]
+        RenderTable {TABLE} at (0,0) size 200x34
+          RenderTableSection {TBODY} at (0,0) size 200x34
+            RenderTableRow {TR} at (0,2) size 200x30
+              RenderTableCell {TD} at (2,2) size 196x30 [r=0 c=0 rs=1 cs=1]
+                RenderText {#text} at (1,1) size 194x28
+                  text run at (1,1) width 194: "Lorem ipsum dolor sit amet, consectetuer"
+                  text run at (1,15) width 131: "adipiscing elit. Nunc neque."

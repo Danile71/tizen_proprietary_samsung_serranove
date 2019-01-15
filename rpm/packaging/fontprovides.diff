@@ -1,0 +1,50 @@
+--- ./autodeps/linux.prov.orig	2011-05-11 16:39:09.000000000 +0000
++++ ./autodeps/linux.prov	2011-05-11 16:40:49.000000000 +0000
+@@ -16,6 +16,8 @@ tcllist=
+ monolist=($(printf "%s\n" "${filelist[@]}" | egrep "\\.(exe|dll)\$"))
+ mimetypelist=($(printf "%s\n" "${filelist[@]}" | egrep "\\.(desktop)\$"))
+ firmwarelist=($(printf "%s\n" "${filelist[@]}" | grep "/lib/firmware/"))
++pkgconfiglist=($(printf "%s\n" "${filelist[@]}" | egrep '\.pc$'))
++fontlist=($(printf "%s\n" "${filelist[@]}" | egrep -i "/usr/share/fonts/.*\.(ttf|otf|pfa)$"))
+ 
+ #
+ # --- Alpha does not mark 64bit dependencies
+@@ -86,6 +88,16 @@ if [ -x $MONO_PREFIX/bin/mono -a -n "$mo
+ fi
+ 
+ #
++# --- pkgconfig provides
++[ -x /usr/lib/rpm/pkgconfigdeps.sh -a -n "$pkgconfiglist" ] &&
++     printf "%s\n" "${pkgconfiglist[@]}" | /usr/lib/rpm/pkgconfigdeps.sh -P | sort -u
++
++#
++# --- font provides
++[ -x /usr/lib/rpm/fontconfig.prov -a -n "$fontlist" ] &&
++     printf "%s\n" "${fontlist[@]}" | /usr/lib/rpm/fontconfig.prov | sort -u
++
++#
+ # --- Kernel module exported symbols
+ [ -x /usr/lib/rpm/find-provides.ksyms ] &&
+     printf "%s\n" "${filelist[@]}" | /usr/lib/rpm/find-provides.ksyms "$@"
+--- ./autodeps/linux.req.orig	2011-05-11 16:39:09.000000000 +0000
++++ ./autodeps/linux.req	2011-05-11 16:40:49.000000000 +0000
+@@ -34,6 +34,7 @@ perllist=()
+ pythonlist=($(printf "%s\n" "${filelist[@]}" | egrep '/usr/lib[^/]*/python.\..'))
+ tcllist=()
+ monolist=($(printf "%s\n" "${filelist[@]}" | egrep "\\.(exe|dll)(\\.config)?\$"))
++pkgconfiglist=($(printf "%s\n" "${filelist[@]}" | egrep '\.pc$'))
+ 
+ #
+ # --- Alpha does not mark 64bit dependencies
+@@ -143,6 +144,11 @@ if [ -x $MONO_PREFIX/bin/mono -a -n "$mo
+ fi
+ 
+ #
++# --- pkgconfig requires
++[ -x /usr/lib/rpm/pkgconfigdeps.sh -a -n "$pkgconfiglist" ] &&
++     printf "%s\n" "${pkgconfiglist[@]}" | /usr/lib/rpm/pkgconfigdeps.sh -R | sort -u
++
++#
+ # --- Kernel module imported symbols
+ [ -x ${0%/*}/find-requires.ksyms ] &&
+     printf "%s\n" "${filelist[@]}" | ${0%/*}/find-requires.ksyms "$@"

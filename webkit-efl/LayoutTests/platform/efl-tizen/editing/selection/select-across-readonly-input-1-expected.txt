@@ -1,0 +1,26 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 937x38
+          text run at (0,0) width 937: "This test ensures selection that crosses the shadow DOM boundary of a readonly input element cannot be made by a"
+          text run at (0,19) width 101: "mouse drag."
+      RenderBlock {P} at (0,54) size 964x38
+        RenderText {#text} at (0,0) size 922x38
+          text run at (0,0) width 922: "To manually test, select text by a mouse drag starting in \"hello\" and ending in \"world\". Selection should only extend"
+          text run at (0,19) width 198: "inside the input element."
+      RenderBlock {DIV} at (0,108) size 964x33
+        RenderTextControl {INPUT} at (0,2) size 63x29 [bgcolor=#FFFFFF]
+        RenderText {#text} at (63,8) size 5x19
+          text run at (63,8) width 5: " "
+        RenderInline {SPAN} at (0,0) size 44x19
+          RenderText {#text} at (68,8) size 44x19
+            text run at (68,8) width 44: "world"
+        RenderText {#text} at (0,0) size 0x0
+layer at (12,124) size 56x19
+  RenderBlock {DIV} at (4,6) size 56x19
+    RenderText {#text} at (0,0) size 38x19
+      text run at (0,0) width 38: "hello"
+caret: position 4 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 1 {INPUT} of child 5 {DIV} of body

@@ -1,0 +1,12 @@
+diff -urNp nss-3.12.9.orig/mozilla/security/nss/lib/freebl/Makefile nss-3.12.9/mozilla/security/nss/lib/freebl/Makefile
+--- nss-3.12.9.orig/mozilla/security/nss/lib/freebl/Makefile	2014-06-26 10:47:11.000000000 +0900
++++ nss-3.12.9/mozilla/security/nss/lib/freebl/Makefile	2015-02-26 09:29:20.555921342 +0900
+@@ -175,7 +175,7 @@ endif
+ ifeq ($(CPU_ARCH),x86)
+     ASFILES  = mpi_x86.s
+     DEFINES += -DMP_ASSEMBLY_MULTIPLY -DMP_ASSEMBLY_SQUARE 
+-    DEFINES += -DMP_ASSEMBLY_DIV_2DX1D
++    DEFINES += -DMP_ASSEMBLY_DIV_2DX1D -DMP_USE_UINT_DIGIT
+     DEFINES += -DMP_CHAR_STORE_SLOW -DMP_IS_LITTLE_ENDIAN
+     # The floating point ECC code doesn't work on Linux x86 (bug 311432).
+     #ECL_USE_FP = 1

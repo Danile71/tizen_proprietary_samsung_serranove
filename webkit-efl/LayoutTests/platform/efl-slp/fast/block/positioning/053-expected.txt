@@ -1,0 +1,25 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {DIV} at (0,0) size 770x70 [bgcolor=#000000]
+layer at (8,8) size 770x70
+  RenderBlock (relative positioned) {DIV} at (0,0) size 770x70 [bgcolor=#FF0000]
+    RenderTable {TABLE} at (0,0) size 73x56
+      RenderTableSection {TBODY} at (0,0) size 73x56
+        RenderTableRow {TR} at (0,2) size 73x16
+          RenderTableCell {TD} at (2,2) size 69x16 [r=0 c=0 rs=1 cs=1]
+            RenderText {#text} at (1,1) size 67x14
+              text run at (1,1) width 67: "Some content."
+        RenderTableRow {TR} at (0,20) size 73x16
+          RenderTableCell {TD} at (2,20) size 69x16 [r=1 c=0 rs=1 cs=1]
+            RenderText {#text} at (1,1) size 64x14
+              text run at (1,1) width 64: "more content."
+        RenderTableRow {TR} at (0,38) size 73x16
+          RenderTableCell {TD} at (2,38) size 69x16 [r=2 c=0 rs=1 cs=1]
+            RenderText {#text} at (1,1) size 52x14
+              text run at (1,1) width 52: "even more."
+    RenderBlock {DIV} at (0,56) size 770x14 [color=#FFFFFF] [bgcolor=#008000]
+      RenderText {#text} at (0,0) size 114x14
+        text run at (0,0) width 114: "Hello. Here I am below."

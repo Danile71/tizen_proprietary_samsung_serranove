@@ -1,0 +1,81 @@
+class Elm_Pan (Evas.Smart_Clipped)
+{
+   eo_prefix: elm_obj_pan;
+   data: Elm_Pan_Smart_Data;
+   properties {
+      gravity {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            double x;
+            double y;
+         }
+      }
+      pos {
+         set {
+            /*@ No description supplied by the EAPI. */
+         }
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Coord x;
+            Evas_Coord y;
+         }
+      }
+      content_size {
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Coord w;
+            Evas_Coord h;
+         }
+      }
+      pos_min {
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Coord x;
+            Evas_Coord y;
+         }
+      }
+      pos_max {
+         get {
+            /*@ No description supplied by the EAPI. */
+         }
+         values {
+            Evas_Coord x;
+            Evas_Coord y;
+         }
+      }
+   }
+   methods {
+      pos_adjust {
+         /*@ No description supplied by the EAPI. */
+         params {
+            @out Evas_Coord x;
+            @out Evas_Coord y;
+         }
+      }
+   }
+   implements {
+      Eo.Base.constructor;
+      class.constructor;
+      Evas.Object_Smart.hide;
+      Evas.Object_Smart.show;
+      Evas.Object_Smart.move;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Evas.Object_Smart.resize;
+   }
+   events {
+      changed;
+   }
+
+}

@@ -1,0 +1,21 @@
+Index: Python-3.2/Makefile.pre.in
+===================================================================
+--- Python-3.2.orig/Makefile.pre.in
++++ Python-3.2/Makefile.pre.in
+@@ -554,7 +554,15 @@ Modules/getbuildinfo.o: $(PARSER_OBJS) \
+ 		$(SIGNAL_OBJS) \
+ 		$(MODOBJS) \
+ 		$(srcdir)/Modules/getbuildinfo.c
+-	$(CC) -c $(PY_CFLAGS) -DSVNVERSION="\"`LC_ALL=C $(SVNVERSION)`\"" -o $@ $(srcdir)/Modules/getbuildinfo.c
++	$(CC) -c $(PY_CFLAGS) -DSVNVERSION="\"`LC_ALL=C $(SVNVERSION)`\"" \
++		-DDATE="\"`LC_ALL=C date -u -r Makefile.pre.in +"%b %d %Y"`\"" \
++		-DTIME="\"`LC_ALL=C date -u -r Makefile.pre.in +"%T"`\"" \
++		-o $@ $(srcdir)/Modules/getbuildinfo.c
++
++Python/getcompiler.o: $(srcdir)/Python/getcompiler.c Makefile
++	$(CC) -c $(PY_CFLAGS) \
++		-DCOMPILER='"[GCC]"' \
++		-o $@ $(srcdir)/Python/getcompiler.c
+ 
+ Modules/getpath.o: $(srcdir)/Modules/getpath.c Makefile
+ 	$(CC) -c $(PY_CFLAGS) -DPYTHONPATH='"$(PYTHONPATH)"' \

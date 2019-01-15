@@ -1,0 +1,17 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderSVGRoot {svg} at (0,0) size 570x114
+    RenderSVGContainer {g} at (0,4) size 570x110
+      RenderSVGPath {svg:line} at (58,4) size 7x74 [stroke={[type=SOLID] [color=#008000]}] [fill={[type=SOLID] [color=#000000]}] [x1=10.00] [y1=0.69] [x2=10.00] [y2=12.59]
+      RenderSVGPath {svg:line} at (551,4) size 8x74 [stroke={[type=SOLID] [color=#008000]}] [fill={[type=SOLID] [color=#000000]}] [x1=90.61] [y1=0.69] [x2=90.61] [y2=12.59]
+      RenderSVGRect {svg:rect} at (61,4) size 494x72 [fill={[type=SOLID] [color=#FF0000] [opacity=0.40]}] [x=10.00] [y=0.69] [width=80.61] [height=11.59]
+      RenderSVGText {svg:text} at (0,27) size 186x10 contains 1 chunk(s)
+        RenderSVGInlineText {#text} at (0,0) size 186x10
+          chunk 1 text run 1 at (0.00,35.00) startOffset 0 endOffset 49 width 185.80: "Expected 'This is a test' to be selected, got: ''"
+    RenderSVGText {text} at (10,0) size 81x12 contains 1 chunk(s)
+      RenderSVGInlineText {#text} at (0,0) size 81x12
+        chunk 1 text run 1 at (10.00,10.00) startOffset 0 endOffset 1 width 6.04: "T"
+        chunk 1 text run 1 at (20.00,10.00) startOffset 0 endOffset 1 width 6.37: "h"
+        chunk 1 text run 1 at (40.00,10.00) startOffset 0 endOffset 12 width 50.61: "is is a test"
+caret: position 0 of child 0 {#text} of child 5 {text} of child 0 {svg} of document

@@ -1,0 +1,20 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x86
+  RenderBlock {HTML} at (0,0) size 980x86
+    RenderBody {BODY} at (8,16) size 964x54
+      RenderBlock {P} at (0,0) size 964x19
+        RenderInline {A} at (0,0) size 36x19 [color=#0000FF]
+          RenderInline (generated) at (0,0) size 11x19
+            RenderText {#text} at (0,0) size 11x19
+              text run at (0,0) width 11: "F"
+          RenderText {#text} at (11,0) size 25x19
+            text run at (11,0) width 25: "irst"
+        RenderText {#text} at (36,0) size 243x19
+          text run at (36,0) width 243: " letter should be bold and blue"
+      RenderBlock {P} at (0,35) size 964x19
+        RenderInline (generated) at (0,0) size 13x19
+          RenderText {#text} at (0,0) size 13x19
+            text run at (0,0) width 13: "H"
+        RenderText {#text} at (13,0) size 783x19
+          text run at (13,0) width 783: "ere the first letter should be bold and black, but with Safari build 416.13 it is blue. See bug #6170."

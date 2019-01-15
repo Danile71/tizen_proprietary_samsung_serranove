@@ -1,0 +1,10 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x147
+  RenderBlock {test} at (0,0) size 980x147
+    RenderBlock {div} at (0,16) size 980x115
+      RenderBlock {p} at (0,0) size 980x19
+        RenderText {#text} at (0,0) size 319x19
+          text run at (0,0) width 319: "The following two bars should be green."
+      RenderBlock {div} at (16,35) size 948x32 [bgcolor=#00FF00]
+      RenderBlock {div} at (16,83) size 948x32 [bgcolor=#FF0000]

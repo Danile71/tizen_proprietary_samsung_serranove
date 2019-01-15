@@ -1,0 +1,167 @@
+layer at (0,0) size 980x910
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x910
+  RenderBlock {HTML} at (0,0) size 980x910
+    RenderBody {BODY} at (8,8) size 964x886 [bgcolor=#FFFFFF]
+      RenderBlock {H1} at (0,0) size 964x37
+        RenderText {#text} at (0,0) size 474x38
+          text run at (0,0) width 474: "Tests de conformit\x{E9} CSS 2"
+      RenderBlock {H3} at (0,58) size 964x22
+        RenderText {#text} at (0,0) size 208x22
+          text run at (0,0) width 208: "Tableaux, test 13.8"
+      RenderBlock {H6} at (0,104) size 964x13
+        RenderText {#text} at (0,0) size 157x13
+          text run at (0,0) width 157: "\x{A9} \x{C9}ditions Eyrolles 1998"
+      RenderTable {TABLE} at (241,141) size 723x47
+        RenderTableSection {TBODY} at (0,0) size 723x47
+          RenderTableRow {TR} at (0,2) size 723x20
+            RenderTableCell {TD} at (2,2) size 719x20 [r=0 c=0 rs=1 cs=3]
+              RenderBlock {HR} at (1,9) size 719x2 [bgcolor=#808080] [border: (1px solid #808080)]
+          RenderTableRow {TR} at (0,24) size 723x21
+            RenderTableCell {TD} at (2,24) size 179x21 [r=1 c=0 rs=1 cs=1]
+              RenderInline {A} at (0,0) size 117x19 [color=#0000EE]
+                RenderText {#text} at (1,1) size 117x19
+                  text run at (1,1) width 117: "test pr\x{E9}c\x{E9}dent"
+            RenderTableCell {TD} at (183,24) size 358x21 [r=1 c=1 rs=1 cs=1]
+              RenderInline {B} at (0,0) size 176x19
+                RenderText {#text} at (91,1) size 176x19
+                  text run at (91,1) width 176: "Cadres de tableaux"
+            RenderTableCell {TD} at (543,24) size 178x21 [r=1 c=2 rs=1 cs=1]
+              RenderInline {A} at (0,0) size 92x19 [color=#0000EE]
+                RenderText {#text} at (85,1) size 92x19
+                  text run at (85,1) width 92: "test suivant"
+      RenderBlock {P} at (0,141) size 964x19
+        RenderText {#text} at (0,0) size 5x19
+          text run at (0,0) width 5: " "
+      RenderBlock {P} at (0,176) size 964x19
+        RenderText {#text} at (0,0) size 5x19
+          text run at (0,0) width 5: " "
+      RenderBlock {P} at (0,211) size 964x19
+        RenderText {#text} at (0,0) size 485x19
+          text run at (0,0) width 485: "Ce test v\x{E9}rifie que les cadres s'appliquent bien aux tableaux."
+      RenderBlock {PRE} at (0,246) size 964x180
+        RenderText {#text} at (0,0) size 431x180
+          text run at (0,0) width 357: ".firsttable { border-width : 10pt ; border-color : yellow ;"
+          text run at (357,0) width 0: " "
+          text run at (0,15) width 211: "                border-style : double }"
+          text run at (211,15) width 0: " "
+          text run at (0,30) width 314: ".t1 { border-color : black ; border-style : double ;"
+          text run at (314,30) width 0: " "
+          text run at (0,45) width 192: "                border-width : 5pt }"
+          text run at (192,45) width 0: " "
+          text run at (0,60) width 287: ".t2 { border-color : red ; border-style : solid ;"
+          text run at (287,60) width 0: " "
+          text run at (0,75) width 196: "                border-width : 5pt  }"
+          text run at (196,75) width 0: " "
+          text run at (0,90) width 309: ".t3 { border-color : lime ; border-style : groove ;"
+          text run at (309,90) width 0: " "
+          text run at (0,105) width 196: "                border-width : 5pt  }"
+          text run at (196,105) width 0: " "
+          text run at (0,120) width 431: ".t4 { border-color : blue ; border-style : inset ; border-width : 5pt  }"
+          text run at (431,120) width 0: " "
+          text run at (0,135) width 377: ".secondtable { border-width : 10pt ; border-color : yellow ;"
+          text run at (377,135) width 0: " "
+          text run at (0,150) width 207: "                border-style : double ;"
+          text run at (207,150) width 0: " "
+          text run at (0,165) width 243: "                border-collapse : collapse }"
+      RenderTable {TABLE} at (120,439) size 723x133 [border: (13px double #FFFF00)]
+        RenderTableSection {TBODY} at (13,13) size 697x107
+          RenderTableRow {TR} at (0,2) size 697x33
+            RenderTableCell {TD} at (2,2) size 229x33 [border: (6px double #000000)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "1"
+            RenderTableCell {TD} at (233,2) size 230x33 [border: (6px solid #FF0000)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "2"
+            RenderTableCell {TD} at (465,2) size 230x33 [border: (6px groove #00FF00)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "3"
+          RenderTableRow {TR} at (0,37) size 697x33
+            RenderTableCell {TD} at (2,37) size 229x33 [border: (6px inset #0000FF)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "4"
+            RenderTableCell {TD} at (233,37) size 230x33 [border: (6px double #000000)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "5"
+            RenderTableCell {TD} at (465,37) size 230x33 [border: (6px solid #FF0000)] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "6"
+          RenderTableRow {TR} at (0,72) size 697x33
+            RenderTableCell {TD} at (2,72) size 229x33 [border: (6px groove #00FF00)] [r=2 c=0 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "7"
+            RenderTableCell {TD} at (233,72) size 230x33 [border: (6px inset #0000FF)] [r=2 c=1 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "8"
+            RenderTableCell {TD} at (465,72) size 230x33 [border: (6px double #000000)] [r=2 c=2 rs=1 cs=1]
+              RenderText {#text} at (7,7) size 10x19
+                text run at (7,7) width 10: "9"
+      RenderBlock (anonymous) at (0,572) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderTable {TABLE} at (120,591) size 723x101 [border: (6px double #FFFF00)]
+        RenderTableSection {TBODY} at (6,6) size 710x88
+          RenderTableRow {TR} at (0,0) size 710x31
+            RenderTableCell {TD} at (0,0) size 256x31 [border: (7px double #000000)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (8,8) size 10x19
+                text run at (8,8) width 10: "1"
+            RenderTableCell {TD} at (256,0) size 209x31 [border: (7px solid #FF0000)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (4,8) size 10x19
+                text run at (4,8) width 10: "2"
+            RenderTableCell {TD} at (465,0) size 245x31 [border: (7px groove #00FF00)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (4,8) size 10x19
+                text run at (4,8) width 10: "3"
+          RenderTableRow {TR} at (0,31) size 710x27
+            RenderTableCell {TD} at (0,31) size 256x27 [border: (3px inset #0000FF)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (8,4) size 10x19
+                text run at (8,4) width 10: "4"
+            RenderTableCell {TD} at (256,31) size 209x27 [border: (3px double #000000)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 10x19
+                text run at (4,4) width 10: "5"
+            RenderTableCell {TD} at (465,31) size 245x27 [border: (3px solid #FF0000)] [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 10x19
+                text run at (4,4) width 10: "6"
+          RenderTableRow {TR} at (0,58) size 710x30
+            RenderTableCell {TD} at (0,58) size 256x30 [border: (3px groove #00FF00)] [r=2 c=0 rs=1 cs=1]
+              RenderText {#text} at (8,4) size 10x19
+                text run at (8,4) width 10: "7"
+            RenderTableCell {TD} at (256,58) size 209x30 [border: (3px inset #0000FF)] [r=2 c=1 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 10x19
+                text run at (4,4) width 10: "8"
+            RenderTableCell {TD} at (465,58) size 245x30 [border: (3px double #000000)] [r=2 c=2 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 10x19
+                text run at (4,4) width 10: "9"
+      RenderBlock {P} at (0,708) size 964x38
+        RenderText {#text} at (0,0) size 953x38
+          text run at (0,0) width 389: "Si toutes les conditions exprim\x{E9}es par les r\x{E8}gles "
+          text run at (389,0) width 564: "CSS ci-dessus se retrouvent dans le formatage des tableaux ci-dessus,"
+          text run at (0,19) width 74: "la valeur "
+          text run at (74,19) width 211: "de ce test est 2 et 0 sinon."
+      RenderTable {TABLE} at (241,762) size 723x47
+        RenderTableSection {TBODY} at (0,0) size 723x47
+          RenderTableRow {TR} at (0,2) size 723x20
+            RenderTableCell {TD} at (2,2) size 719x20 [r=0 c=0 rs=1 cs=3]
+              RenderBlock {HR} at (1,9) size 719x2 [bgcolor=#808080] [border: (1px solid #808080)]
+          RenderTableRow {TR} at (0,24) size 723x21
+            RenderTableCell {TD} at (2,24) size 179x21 [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 117x19
+                text run at (1,1) width 117: "test pr\x{E9}c\x{E9}dent"
+            RenderTableCell {TD} at (183,24) size 358x21 [r=1 c=1 rs=1 cs=1]
+              RenderInline {B} at (0,0) size 176x19
+                RenderText {#text} at (91,1) size 176x19
+                  text run at (91,1) width 176: "Cadres de tableaux"
+            RenderTableCell {TD} at (543,24) size 178x21 [r=1 c=2 rs=1 cs=1]
+              RenderInline {A} at (0,0) size 92x19 [color=#0000EE]
+                RenderText {#text} at (85,1) size 92x19
+                  text run at (85,1) width 92: "test suivant"
+      RenderBlock {P} at (0,762) size 964x19
+        RenderText {#text} at (0,0) size 5x19
+          text run at (0,0) width 5: " "
+      RenderBlock {P} at (0,797) size 964x19
+        RenderText {#text} at (0,0) size 5x19
+          text run at (0,0) width 5: " "
+      RenderBlock {P} at (0,832) size 964x19
+        RenderText {#text} at (0,0) size 5x19
+          text run at (0,0) width 5: " "
+      RenderBlock {P} at (0,867) size 964x19
+        RenderText {#text} at (0,0) size 199x19
+          text run at (0,0) width 199: "Auteur : Daniel Glazman."

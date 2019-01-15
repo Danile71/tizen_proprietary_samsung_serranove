@@ -1,0 +1,19 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x60
+        RenderText {#text} at (0,0) size 758x14
+          text run at (0,0) width 758: "This test checks that undoing a paste into an empty text field doesn't cause it to collapse vertically. When running manually, you have to paste and undo by hand. "
+        RenderBR {BR} at (758,11) size 0x0
+        RenderBR {BR} at (0,14) size 0x14
+        RenderTextControl {INPUT} at (2,30) size 194x28 [color=#202020]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,60) size 784x14
+        RenderText {#text} at (0,0) size 60x14
+          text run at (0,0) width 60: "Text to paste"
+      RenderBlock {DIV} at (0,74) size 784x0
+layer at (14,44) size 187x18
+  RenderBlock {DIV} at (4,6) size 187x18
+caret: position 0 of child 0 {DIV} of {#shadow-root} of child 4 {INPUT} of body

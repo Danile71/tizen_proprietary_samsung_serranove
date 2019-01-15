@@ -1,0 +1,61 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {H1} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 334x28
+          text run at (0,0) width 334: "DOMParser/XMLSerializer test"
+      RenderBlock {DIV} at (0,44) size 784x14
+        RenderText {#text} at (0,0) size 703x14
+          text run at (0,0) width 703: "The \"text to parse\" and \"document object serialized\" boxes should show the same text, and it should be an XML document, not \"@@No result@@\"."
+      RenderBlock {DIV} at (0,58) size 784x144 [border: (1px solid #000000)]
+        RenderBlock (anonymous) at (1,1) size 782x14
+          RenderInline {SPAN} at (0,0) size 63x14 [color=#800000]
+            RenderText {#text} at (0,0) size 63x14
+              text run at (0,0) width 63: "text to parse"
+          RenderText {#text} at (0,0) size 0x0
+        RenderBlock {PRE} at (21,25) size 762x108
+          RenderText {#text} at (0,0) size 402x108
+            text run at (0,0) width 126: "<?xml version=\"1.0\"?>"
+            text run at (126,0) width 0: " "
+            text run at (0,12) width 318: "<?xml-stylesheet href=\"display.css\" type=\"text/css\"?>"
+            text run at (318,12) width 0: " "
+            text run at (0,24) width 90: "<!DOCTYPE doc ["
+            text run at (90,24) width 0: " "
+            text run at (0,36) width 162: "<!ATTLIST d id ID #IMPLIED>"
+            text run at (162,36) width 0: " "
+            text run at (0,48) width 12: "]>"
+            text run at (12,48) width 0: " "
+            text run at (0,60) width 30: "<doc>"
+            text run at (30,60) width 0: " "
+            text run at (0,72) width 402: "  <foo xmlns=\"foobar\">One</foo> <x:bar xmlns:x=\"barfoo\">Two</x:bar>"
+            text run at (402,72) width 0: " "
+            text run at (0,84) width 138: "  <d id=\"id3\">Three</d>"
+            text run at (138,84) width 0: " "
+            text run at (0,96) width 36: "</doc>"
+            text run at (36,96) width 0: " "
+      RenderBlock {DIV} at (0,208) size 784x48 [border: (1px solid #000000)]
+        RenderBlock (anonymous) at (1,1) size 782x14
+          RenderInline {SPAN} at (0,0) size 85x14 [color=#800000]
+            RenderText {#text} at (0,0) size 85x14
+              text run at (0,0) width 85: "document object"
+          RenderText {#text} at (0,0) size 0x0
+        RenderBlock {PRE} at (21,25) size 762x12
+          RenderText {#text} at (0,0) size 102x12
+            text run at (0,0) width 102: "[object Document]"
+      RenderBlock {DIV} at (0,262) size 784x84 [border: (1px solid #000000)]
+        RenderBlock (anonymous) at (1,1) size 782x14
+          RenderInline {SPAN} at (0,0) size 135x14 [color=#800000]
+            RenderText {#text} at (0,0) size 135x14
+              text run at (0,0) width 135: "document object serialized"
+          RenderText {#text} at (0,0) size 0x0
+        RenderBlock {PRE} at (21,25) size 762x48
+          RenderText {#text} at (0,0) size 432x48
+            text run at (0,0) width 432: "<?xml-stylesheet href=\"display.css\" type=\"text/css\"?><!DOCTYPE doc><doc>"
+            text run at (432,0) width 0: " "
+            text run at (0,12) width 402: "  <foo xmlns=\"foobar\">One</foo> <x:bar xmlns:x=\"barfoo\">Two</x:bar>"
+            text run at (402,12) width 0: " "
+            text run at (0,24) width 138: "  <d id=\"id3\">Three</d>"
+            text run at (138,24) width 0: " "
+            text run at (0,36) width 36: "</doc>"

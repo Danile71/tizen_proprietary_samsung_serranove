@@ -1,0 +1,49 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 83x14
+          text run at (0,0) width 83: "Tests: the bdo tag"
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 244x14
+          text run at (0,0) width 244: "The bdo element overrides the default text direction."
+      RenderBlock {P} at (0,52) size 784x28
+        RenderText {#text} at (0,0) size 768x28
+          text run at (0,0) width 544: "If successful, the first sentence would be backward, and the second sentence regular. There should then be an extra "
+          text run at (544,0) width 224: "blank line, followed by a line reading only \"A,\""
+          text run at (0,14) width 322: "and finally, a sentence where only the word \"umbrella\" is backward."
+      RenderBlock {HR} at (0,92) size 784x2 [border: (1px inset #000000)]
+      RenderBlock (anonymous) at (0,100) size 784x84
+        RenderBR {BR} at (0,0) size 0x14
+        RenderInline {BDO} at (0,0) size 165x14
+          RenderText {#text} at (0,14) size 165x14
+            text run at (0,14) width 165 RTL override: "This sentence should be backward."
+        RenderText {#text} at (165,14) size 3x14
+          text run at (165,14) width 3: " "
+        RenderBR {BR} at (168,25) size 0x0
+        RenderInline {BDO} at (0,0) size 157x14
+          RenderText {#text} at (0,28) size 157x14
+            text run at (0,28) width 157 LTR override: "This sentence should be forward."
+        RenderText {#text} at (157,28) size 3x14
+          text run at (157,28) width 3: " "
+        RenderBR {BR} at (160,39) size 0x0
+        RenderInline {BDO} at (0,0) size 0x0
+        RenderText {#text} at (0,0) size 0x0
+        RenderBR {BR} at (0,42) size 0x14
+        RenderInline {BDO} at (0,0) size 9x14
+          RenderText {#text} at (0,56) size 9x14
+            text run at (0,56) width 9 RTL override: "A"
+        RenderText {#text} at (9,56) size 3x14
+          text run at (9,56) width 3: " "
+        RenderBR {BR} at (12,67) size 0x0
+        RenderInline {BDO} at (0,0) size 219x14
+          RenderText {#text} at (0,70) size 20x14
+            text run at (0,70) width 20 LTR override: "My "
+          RenderInline {BDO} at (0,0) size 41x14
+            RenderText {#text} at (20,70) size 41x14
+              text run at (20,70) width 41 RTL override: "umbrella"
+          RenderText {#text} at (61,70) size 158x14
+            text run at (61,70) width 158 LTR override: " sure would be useful in this rain."
+        RenderText {#text} at (0,0) size 0x0

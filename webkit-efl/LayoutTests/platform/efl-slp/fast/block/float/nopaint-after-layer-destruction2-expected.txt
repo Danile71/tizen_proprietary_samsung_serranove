@@ -1,0 +1,33 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 105x14
+          text run at (0,0) width 105: "This is a pixel test for "
+        RenderInline {I} at (0,0) size 674x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (105,0) size 262x14
+              text run at (105,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=4334"
+          RenderText {#text} at (367,0) size 412x14
+            text run at (367,0) width 3: " "
+            text run at (370,0) width 409: "REGRESSION: Flickering when css-hover should change opacity on floating elements"
+        RenderText {#text} at (779,0) size 3x14
+          text run at (779,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 367x14
+          text run at (0,0) width 367: "There should be a solid green square below mixed in with a paragraph of text."
+      RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,68) size 784x86
+        RenderBlock {DIV} at (0,0) size 784x86
+          RenderBlock (floating) {DIV} at (3,3) size 75x75 [bgcolor=#008000]
+          RenderBlock {H3} at (0,0) size 784x16
+            RenderText {#text} at (81,0) size 121x15
+              text run at (81,0) width 121: "Stanley Park Forest"
+          RenderBlock {P} at (0,30) size 784x56
+            RenderText {#text} at (81,0) size 700x56
+              text run at (81,0) width 696: "The forest is primarily second and third growth. The area was saved from development because of its status as a federal military reserve; it occupied"
+              text run at (81,14) width 676: "a strategic location for defending the former provincial capital of New Westminster in the case of an American naval invasion. Nevertheless, the"
+              text run at (81,28) width 700: "federal government allowed logging operations there in the mid-nineteenth century. Large swathes of the park were also deforested by natural causes"
+              text run at (81,42) width 176: "on two occasions in the 20th century."

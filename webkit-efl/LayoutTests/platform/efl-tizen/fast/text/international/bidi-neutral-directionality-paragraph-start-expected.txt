@@ -1,0 +1,36 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 702x19
+          text run at (0,0) width 702: "Mitz Pettel contributed this fix to KDE, and now we're rolling it in. Here's his explanation:"
+      RenderBlock {P} at (0,35) size 964x95
+        RenderText {#text} at (0,0) size 960x95
+          text run at (0,0) width 883: "The directionality of a neutral character at the beginning of a paragraph (or after a hard line break) is decided"
+          text run at (0,19) width 955: "incorrectly if the first non-neutral character in the paragraph has directionality opposite to the paragraph directionality."
+          text run at (0,38) width 960: "For example, if the paragraph direction is LTR, the first character on the paragraph is a question mark and the next one"
+          text run at (0,57) width 928: "is a Hebrew character, then the question mark will is considered right-to-left and appears to the right of the Hebrew"
+          text run at (0,76) width 83: "character."
+      RenderBlock {P} at (0,146) size 964x38
+        RenderText {#text} at (0,0) size 625x19
+          text run at (0,0) width 625: "The rule to follow is 3.3.4.N2 in the Unicode Standard's Bidirectional Algorithm"
+        RenderInline {A} at (0,0) size 493x19 [color=#0000EE]
+          RenderText {#text} at (0,19) size 493x19
+            text run at (0,19) width 493: "http://www.unicode.org/reports/tr9/#Resolving_Neutral_Types"
+        RenderText {#text} at (493,19) size 5x19
+          text run at (493,19) width 5: "."
+      RenderBlock {P} at (0,200) size 964x19
+        RenderText {#text} at (0,0) size 875x19
+          text run at (0,0) width 875: "If the test is successful, the question marks should be on the far left and far right of the next two paragraphs."
+      RenderBlock {P} at (0,235) size 964x19
+        RenderText {#text} at (0,0) size 85x19
+          text run at (0,0) width 14: "? "
+          text run at (14,0) width 33 RTL: "\x{FEB2} \x{FEED}"
+          text run at (47,0) width 38: "hello"
+      RenderBlock {P} at (0,270) size 964x19
+        RenderText {#text} at (874,0) size 90x19
+          text run at (874,0) width 38 RTL: " \x{FEB2} \x{FEED}"
+          text run at (912,0) width 38: "hello"
+          text run at (950,0) width 14 RTL: "? "

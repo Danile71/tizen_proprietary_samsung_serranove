@@ -1,0 +1,157 @@
+* Wed Mar 02 2011 Jian-feng Ding <jian-feng.ding@intel.com> - 4.8.7
+- Update to 4.8.7 to meet fennec requirement, fixed #BMC13425
+
+* Tue 16 Nov 2010 Stephan Binner <stephan.binner@basyskom.de> 4.8.6
+- Update to 4.8.6 as requirement for fennec-qt, BMC#10122
+
+* Fri Jan 29 2010 Jian-feng Ding <jian-feng.ding@intel.com> 4.8.2
+- Update to 4.8.2
+  Will not convert it to spectacle until now. Though the origin
+  spec is very clean and easy to be converted. The problem is the
+  script in %pre between %setup and %patch: it can be resolved
+  by changing the patch1, but it will become more bigger, and not
+  readable ever.
+
+* Mon Oct 12 2009 Neil Roberts <neil@linux.intel.com> - 4.8
+- Bug 1727 - xulrunner has a 1 second polling loop
+  This adds PR_WaitCondVarSeconds which xulrunner-headless now uses
+
+* Fri Jul 24 2009 Anas Nashif <anas.nashif@intel.com> - 4.8
+- Update to 4.8 to satisfy xulrunner
+
+* Sat Apr 25 2009 Anas Nashif <anas.nashif@intel.com> 4.7.3
+- Update to 4.7.3
+
+* Fri Apr 24 2009 Anas Nashif <anas.nashif@intel.com> 4.7.3
+- Initial import into Moblin
+
+* Wed Mar 04 2009 Kai Engert <kaie@redhat.com> - 4.7.3-5
+- add a workaround for bug 487844
+
+* Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 4.7.3-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+* Wed Dec  3 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 4.7.3-3
+- Rebuild for pkgconfig
+
+* Wed Nov 19 2008 Kai Engert <kaie@redhat.com> - 4.7.3-2
+- update to 4.7.3
+* Thu Oct 23 2008 Kai Engert <kaie@redhat.com> - 4.7.2-2
+- update to 4.7.2
+
+* Thu Oct  9 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 4.7.1-5
+- forgot to cvs add patch... whoops. :/
+
+* Thu Oct  9 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 4.7.1-4
+- properly handle sparc64 in nspr code
+
+* Tue Sep 30 2008 Dennis Gilmore <dennis@ausil.us> - 4.7.1-3
+- add sparc64 to the list of 64 bit arches
+
+* Mon Jun 02 2008 Kai Engert <kengert@redhat.com> - 4.7.1-2
+- Update to 4.7.1
+
+* Thu Mar 20 2008 Jesse Keating <jkeating@redhat.com> - 4.7.0.99.2-2
+- Drop the old obsoletes/provides that aren't needed anymore.
+
+* Mon Mar 17 2008 Kai Engert <kengert@redhat.com> - 4.7.0.99.2-1
+- Update to NSPR_4_7_1_BETA2
+* Tue Feb 26 2008 Kai Engert <kengert@redhat.com> - 4.7.0.99.1-2
+- Addressed cosmetic review comments from bug 226202
+* Fri Feb 22 2008 Kai Engert <kengert@redhat.com> - 4.7.0.99.1-1
+- Update to NSPR 4.7.1 Beta 1
+- Use /usr/lib{64} as devel libdir, create symbolic links.
+* Sat Feb 09 2008 Kai Engert <kengert@redhat.com> - 4.7-1
+- Update to NSPR 4.7
+
+* Thu Jan 24 2008 Kai Engert <kengert@redhat.com> - 4.6.99.3-1
+* NSPR 4.7 beta snapshot 20080120
+
+* Mon Jan 07 2008 Kai Engert <kengert@redhat.com> - 4.6.99-2
+- move .so files to /lib
+
+* Wed Nov 07 2007 Kai Engert <kengert@redhat.com> - 4.6.99-1
+- NSPR 4.7 alpha
+
+* Tue Aug 28 2007 Kai Engert <kengert@redhat.com> - 4.6.7-3
+- Updated license tag
+
+* Fri Jul 06 2007 Kai Engert <kengert@redhat.com> - 4.6.7-2
+- Update to 4.6.7
+
+* Fri Jul 06 2007 Kai Engert <kengert@redhat.com> - 4.6.6-2
+- Update thread-cleanup patch to latest upstream version
+- Add upstream patch to support PR_STATIC_ASSERT
+
+* Wed Mar 07 2007 Kai Engert <kengert@redhat.com> - 4.6.6-1
+- Update to 4.6.6
+- Adjust IPv6 patch to latest upstream version
+
+* Sat Feb 24 2007 Kai Engert <kengert@redhat.com> - 4.6.5-2
+- Update to latest ipv6 upstream patch
+- Add upstream patch to fix a thread cleanup issue
+- Now requires pkgconfig
+
+* Mon Jan 22 2007 Wan-Teh Chang <wtchang@redhat.com> - 4.6.5-1
+- Update to 4.6.5
+
+* Tue Jan 16 2007 Kai Engert <kengert@redhat.com> - 4.6.4-2
+- Include upstream patch to fix ipv6 support (rhbz 222554)
+
+* Tue Nov 21 2006 Kai Engert <kengert@redhat.com> - 4.6.4-1
+- Update to 4.6.4
+
+* Thu Sep 14 2006 Kai Engert <kengert@redhat.com> - 4.6.3-1
+- Update to 4.6.3
+
+* Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - 4.6.2-1.1
+- rebuild
+
+* Fri May 26 2006 Kai Engert <kengert@redhat.com> - 4.6.2-1
+- Update to 4.6.2
+- Tweak nspr-config to be identical on all platforms.
+
+* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 4.6.1-2.2
+- bump again for double-long bug on ppc(64)
+
+* Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 4.6.1-2.1
+- rebuilt for new gcc4.1 snapshot and glibc changes
+
+* Thu Jan  5 2006 Kai Engert <kengert@redhat.com> 4.6.1-2
+- Do not use -ansi when compiling, because of a compilation
+  problem with latest glibc and anonymous unions.
+  See also bugzilla.mozilla.org # 322427.
+
+* Wed Jan  4 2006 Kai Engert <kengert@redhat.com>
+- Add an upstream patch to fix gcc visibility issues.
+
+* Tue Jan  3 2006 Christopher Aillon <caillon@redhat.com>
+- Stop shipping static libraries; NSS and dependencies no longer
+  require static libraries to build.
+
+* Thu Dec 15 2005 Christopher Aillon <caillon@redhat.com> 4.6.1-1
+- Update to 4.6.1
+
+* Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
+- rebuilt
+
+* Fri Jul 15 2005 Christopher Aillon <caillon@redhat.com> 4.6-4
+- Use the NSPR version numbering scheme reported by NSPR,
+  which unfortunately is not exactly the same as the real
+  version (4.6 != 4.6.0 according to RPM and pkgconfig).
+
+* Fri Jul 15 2005 Christopher Aillon <caillon@redhat.com> 4.6-3
+- Correct the CFLAGS reported by pkgconfig
+
+* Tue Jul 12 2005 Christopher Aillon <caillon@redhat.com> 4.6-2
+- Temporarily include the static libraries allowing nss and 
+  its dependencies to build. 
+
+* Tue Jul 12 2005 Christopher Aillon <caillon@redhat.com> 4.6-1
+- Update to NSPR 4.6
+
+* Wed Apr 20 2005 Christopher Aillon <caillon@redhat.com> 4.4.1-2
+- NSPR doesn't have make install, but it has make real_install.  Use it.
+
+* Thu Apr 14 2005 Christopher Aillon <caillon@redhat.com> 4.4.1-1
+- Let's make an RPM.

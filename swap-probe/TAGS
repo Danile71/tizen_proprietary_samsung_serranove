@@ -1,0 +1,1682 @@
+
+include/api_names_global.h,68
+#define __API_NAMES_GLOBAL_H__2,31
+#define PROBE_NAME_PREFIX 4,63
+
+include/probeinfo.h,6352
+#define __PROBEINFO_H__34,1125
+#define		VT_INT	42,1216
+#define		VT_UINT	43,1238
+#define		VT_LONG	44,1261
+#define		VT_ULONG	45,1284
+#define		VT_STR	46,1307
+#define		VT_CHAR	47,1329
+#define		VT_PTR	48,1352
+#define		VT_NULL	49,1374
+#define		VT_OFF_T	50,1397
+#define		VT_SIZE_T	51,1420
+#define		VT_SSIZE_T	52,1444
+#define		VT_SOCKLEN_T	53,1469
+#define		VT_UINT16_T	54,1496
+#define		VT_UINT32_T	55,1522
+#define		VT_UINT64_T	56,1548
+#define		VT_MODE_T	57,1574
+#define		VT_DEV_T	58,1598
+#define		FD_API_OPEN	78,2091
+#define		FD_API_CLOSE	79,2116
+#define		FD_API_READ_START	80,2142
+#define		FD_API_READ_END 81,2172
+#define		FD_API_WRITE_START	82,2201
+#define		FD_API_WRITE_END	83,2232
+#define		FD_API_DIRECTORY	84,2261
+#define		FD_API_PERMISSION	85,2290
+#define		FD_API_OTHER	86,2320
+#define		FD_API_SEND	87,2346
+#define		FD_API_RECEIVE	88,2371
+#define		FD_API_OPTION	89,2400
+#define		FD_API_MANAGE	90,2428
+#define		FD_API_LOCK_START	91,2456
+#define		FD_API_LOCK_END	92,2487
+#define		FD_API_LOCK_RELEASE	93,2517
+#define		SOCKET_API_FD_OPEN	96,2552
+#define		SOCKET_API_FD_CLOSE	97,2583
+#define		SOCKET_API_RECV_START	98,2615
+#define		SOCKET_API_RECV_END	99,2649
+#define		SOCKET_API_SEND_START	100,2681
+#define		SOCKET_API_SEND_END	101,2715
+#define		SOCKET_API_BIND	102,2747
+#define		SOCKET_API_LISTEN	103,2776
+#define		SOCKET_API_CONNECT	104,2806
+#define		SOCKET_API_ACCEPT_START	105,2837
+#define		SOCKET_API_ACCEPT_END	106,2873
+#define		SOCKET_API_EVENT_START	107,2908
+#define		SOCKET_API_EVENT_END	108,2944
+#define		SOCKET_API_OTHER	109,2978
+#define		HTTP_API_SESSION_CONSTRUCT	110,3008
+#define		HTTP_API_SESSION_CLOSE	111,3047
+#define		HTTP_API_TRANSACTION_OPEN	112,3083
+#define		HTTP_API_TRANSACTION_CLOSE	113,3121
+#define		HTTP_API_ALLOCATION	114,3160
+#define		HTTP_API_SUBMIT	115,3193
+#define		HTTP_API_REQUEST	116,3223
+#define		HTTP_API_RESPONSE	117,3253
+#define		HTTP_API_OTHER	118,3284
+#define		HTTP_API_CLOSE	119,3313
+#define		MEMORY_API_ALLOC	122,3344
+#define		MEMORY_API_FREE	123,3372
+#define		MEMORY_API_MANAGE	124,3400
+#define 	EVENT_TYPE_DOWN	131,3570
+#define 	EVENT_TYPE_UP	132,3598
+#define 	EVENT_TYPE_MOVE	133,3624
+#define		USERFUNC_ENTER	135,3653
+#define		USERFUNC_EXIT	136,3680
+#define		THREAD_PTHREAD	138,3707
+#define		THREAD_TIZENTHREAD_WORKER	139,3735
+#define		THREAD_TIZENTHREAD_EVENTDRIVEN	140,3773
+#define THREAD_CLASS_BLANK 142,3816
+#define		THREAD_API_NEW	144,3847
+#define		THREAD_API_START	145,3876
+#define		THREAD_API_STOP	146,3906
+#define		THREAD_API_EXIT	147,3936
+#define		THREAD_API_WAIT_START	148,3966
+#define		THREAD_API_WAIT_END	149,4001
+#define		THREAD_API_INTERNAL_START	150,4034
+#define		THREAD_API_INTERNAL_STOP	151,4072
+#define		THREAD_API_OTHER	152,4109
+#define 	SYNC_TIZEN_MUTEX	154,4140
+#define		SYNC_TIZEN_MONITOR	155,4171
+#define		SYNC_TIZEN_SEMAPHORE	156,4203
+#define		SYNC_PTHREAD_MUTEX	157,4237
+#define		SYNC_PTHREAD_COND_VARIABLE	158,4269
+#define		SYNC_PTHREAD_RWLOCK	159,4308
+#define		SYNC_PTHREAD_SPINLOCK	160,4341
+#define		SYNC_PTHREAD_BARRIER	161,4376
+#define		SYNC_API_NEW	163,4411
+#define		SYNC_API_ACQUIRE_WAIT_START	164,4438
+#define		SYNC_API_ACQUIRE_WAIT_END	165,4478
+#define		SYNC_API_RELEASE	166,4516
+#define		SYNC_API_TRY_ACQUIRE	167,4546
+#define		SYNC_API_COND_WAIT_START	168,4580
+#define		SYNC_API_COND_WAIT_END	169,4617
+#define		SYNC_API_NOTIFY	170,4653
+#define		SYNC_API_NOTIFY_ALL	171,4683
+#define		SYNC_API_OTHER	172,4716
+enum DaOptions174,4746
+	FL_MEMORY_ALLOC_PROBING	176,4763
+	FL_MEMORY_ALLOC_PROBING		= 0x000000000008ULL,x000000000008ULL176,4763
+	FL_FILE_API_PROBING	177,4843
+	FL_FILE_API_PROBING		= 0x000000000010ULL,x000000000010ULL177,4843
+	FL_THREAD_API_PROBING	178,4911
+	FL_THREAD_API_PROBING		= 0x000000000020ULL,x000000000020ULL178,4911
+	FL_OSP_UI_API_PROBING	179,4983
+	FL_OSP_UI_API_PROBING		= 0x000000000040ULL,x000000000040ULL179,4983
+	FL_SCREENSHOT	180,5044
+	FL_SCREENSHOT			= 0x000000000080ULL,x000000000080ULL180,5044
+	FL_USER_EVENT	181,5096
+	FL_USER_EVENT			= 0x000000000100ULL,x000000000100ULL181,5096
+	FL_RECORDING	182,5180
+	FL_RECORDING			= 0x000000000200ULL,x000000000200ULL182,5180
+	FL_NETWORK_API_PROBING	183,5245
+	FL_NETWORK_API_PROBING		= 0x000000020000ULL,x000000020000ULL183,5245
+	FL_OPENGL_API_PROBING	184,5337
+	FL_OPENGL_API_PROBING		= 0x000000040000ULL,x000000040000ULL184,5337
+	FL_MEMORY_ALLOC_ALWAYS_PROBING	186,5397
+	FL_MEMORY_ALLOC_ALWAYS_PROBING	= 0x000010000000ULL,x000010000000ULL186,5397
+	FL_FILE_API_ALWAYS_PROBING	187,5513
+	FL_FILE_API_ALWAYS_PROBING	= 0x000020000000ULL,x000020000000ULL187,5513
+	FL_THREAD_API_ALWAYS_PROBING	188,5617
+	FL_THREAD_API_ALWAYS_PROBING	= 0x000040000000ULL,x000040000000ULL188,5617
+	FL_OSP_UI_API_ALWAYS_PROBING	189,5725
+	FL_OSP_UI_API_ALWAYS_PROBING	= 0x000080000000ULL,x000080000000ULL189,5725
+	FL_NETWORK_API_ALWAYS_PROBING	190,5822
+	FL_NETWORK_API_ALWAYS_PROBING	= 0x000100000000ULL,x000100000000ULL190,5822
+	FL_OPENGL_API_ALWAYS_PROBING	191,5950
+	FL_OPENGL_API_ALWAYS_PROBING	= 0x000200000000ULL,x000200000000ULL191,5950
+	OPT_ALWAYSOFF	194,6116
+	OPT_ALWAYSOFF		= 0x000000000,x000000000194,6116
+	OPT_ALLOC	195,6147
+	OPT_ALLOC		= FL_MEMORY_ALLOC_PROBING,195,6147
+	OPT_FILE	196,6186
+	OPT_FILE		= FL_FILE_API_PROBING,196,6186
+	OPT_THREAD	197,6220
+	OPT_THREAD		= FL_THREAD_API_PROBING,197,6220
+	OPT_UI	198,6258
+	OPT_UI			= FL_OSP_UI_API_PROBING,198,6258
+	OPT_SNAPSHOT	199,6293
+	OPT_SNAPSHOT		= FL_SCREENSHOT,199,6293
+	OPT_EVENT	200,6325
+	OPT_EVENT		= FL_USER_EVENT,200,6325
+	OPT_RECORD	201,6354
+	OPT_RECORD		= FL_RECORDING,201,6354
+	OPT_NETWORK	202,6383
+	OPT_NETWORK		= FL_NETWORK_API_PROBING,202,6383
+	OPT_GLES	203,6423
+	OPT_GLES		= FL_OPENGL_API_PROBING,203,6423
+	OPT_ALWAYSON	204,6459
+	OPT_ALWAYSON		= 0xfffffffff,xfffffffff204,6459
+	OPT_ALLOC_ALWAYS	205,6489
+	OPT_ALLOC_ALWAYS	= FL_MEMORY_ALLOC_ALWAYS_PROBING,205,6489
+	OPT_FILE_ALWAYS	206,6541
+	OPT_FILE_ALWAYS		= FL_FILE_API_ALWAYS_PROBING,206,6541
+	OPT_THREAD_ALWAYS	207,6589
+	OPT_THREAD_ALWAYS	= FL_THREAD_API_ALWAYS_PROBING,207,6589
+	OPT_UI_ALWAYS	208,6640
+	OPT_UI_ALWAYS		= FL_OSP_UI_API_ALWAYS_PROBING,208,6640
+	OPT_NETWORK_ALWAYS	209,6688
+	OPT_NETWORK_ALWAYS	= FL_NETWORK_API_ALWAYS_PROBING,209,6688
+	OPT_GLES_ALWAYS	210,6741
+	OPT_GLES_ALWAYS		= FL_OPENGL_API_ALWAYS_PROBING210,6741
+
+include/tizen_probe.h,108
+#define __BADA_PROBE_H__32,1051
+#define GET_REAL_FUNC_TIZEN(42,1158
+#define PRE_PROBEBLOCK_TIZEN(63,1922
+
+include/da_gl_api_func_list.h,73
+#define _DA_GL_API_FUNC_LIST_H30,1000
+#define GL_ALL_FUNCTIONS 32,1032
+
+include/daerror.h,333
+#define DAERROR_H_31,1042
+#define ERR_SUCCESS	37,1101
+#define ERR_OUTOFMEMORY	38,1126
+#define ERR_WRONGPARAMETER	39,1156
+#define ERR_NOTINITIALIZED	40,1188
+#define ERR_NOTEXIST	41,1220
+#define ERR_ALREADYEXIST	42,1247
+#define ERR_OTHER	43,1277
+#define ERR_DLOPEN	44,1302
+#define ERR_DLSYM	45,1329
+#define ERR_USER	46,1355
+
+include/khash.h,2283
+#define __AC_KHASH_H87,3475
+#define AC_VERSION_KHASH_H 94,3546
+typedef unsigned int khint32_t;103,3710
+typedef unsigned long khint32_t;105,3773
+typedef unsigned long khint64_t;109,3842
+typedef unsigned long long khint64_t;111,3881
+#define kh_inline 116,3961
+#define kh_inline 118,3994
+typedef khint32_t khint_t;122,4050
+typedef khint_t khiter_t;123,4077
+#define __ac_isempty(125,4104
+#define __ac_isdel(126,4166
+#define __ac_iseither(127,4226
+#define __ac_set_isdel_false(128,4289
+#define __ac_set_isempty_false(129,4363
+#define __ac_set_isboth_false(130,4439
+#define __ac_set_isdel_true(131,4514
+#define __ac_fsize(133,4585
+#define kroundup32(136,4650
+#define kcalloc(140,4777
+#define kmalloc(143,4833
+#define krealloc(146,4886
+#define kfree(149,4942
+static const double __ac_HASH_UPPER 152,4975
+#define __KHASH_TYPE(154,5020
+#define __KHASH_PROTOTYPES(162,5236
+#define __KHASH_IMPL(171,5756
+#define KHASH_DECLARE(317,12469
+#define KHASH_INIT2(321,12623
+#define KHASH_INIT3(325,12852
+#define KHASH_INIT(328,13030
+#define kh_int_hash_func(338,13386
+#define kh_int_hash_equal(342,13495
+#define kh_int64_hash_func(348,13684
+#define kh_int64_hash_equal(352,13824
+static kh_inline khint_t __ac_X31_hash_string(358,14014
+#define kh_str_hash_func(369,14373
+#define kh_str_hash_equal(373,14495
+static kh_inline khint_t __ac_Wang_hash(375,14548
+#define kh_int_hash_func2(385,14769
+#define khash_t(395,14991
+#define kh_init(402,15192
+#define kh_destroy(409,15395
+#define kh_clear(416,15634
+#define kh_resize(424,15877
+#define kh_put(437,16432
+#define kh_get(446,16793
+#define kh_del(454,17080
+#define kh_exist(462,17363
+#define kh_key(470,17624
+#define kh_val(479,17935
+#define kh_value(484,18024
+#define kh_begin(491,18224
+#define kh_end(498,18415
+#define kh_size(505,18652
+#define kh_n_buckets(512,18883
+#define kh_foreach(521,19214
+#define kh_foreach_value(535,19700
+#define KHASH_SET_INIT_INT(548,20081
+#define KHASH_MAP_INIT_INT(556,20374
+#define KHASH_SET_INIT_INT64(563,20643
+#define KHASH_MAP_INIT_INT64(571,20949
+typedef const char *kh_cstr_t;kh_cstr_t574,21088
+#define KHASH_SET_INIT_STR(579,21252
+#define KHASH_MAP_INIT_STR(587,21549
+#define KHASH_MAP_INIT_VOIDP(590,21682
+#define KHASH_INIT_TYPE_VOIDP(593,21814
+
+include/real_functions.h,34
+#define _REAL_FUNCTIONS_H_30,983
+
+include/binproto.h,2632
+#define __BIN_PROTO_H__31,1029
+#define MSG_PROBE_MEMORY 51,1338
+#define MSG_PROBE_UICONTROL 52,1370
+#define MSG_PROBE_UIEVENT 53,1405
+#define MSG_PROBE_RESOURCE 54,1438
+#define MSG_PROBE_LIFECYCLE 55,1472
+#define MSG_PROBE_SCREENSHOT 56,1507
+#define MSG_PROBE_SCENE 57,1543
+#define MSG_PROBE_THREAD 58,1574
+#define MSG_PROBE_CUSTOM 59,1606
+#define MSG_PROBE_SYNC 60,1638
+#define MSG_PROBE_NETWORK 61,1668
+#define MSG_PROBE_GL 62,1701
+#define SCREENSHOT_DIRECTORY	64,1730
+#define MAX_PACK_FILENAME_LEN 66,1770
+#define MAX_SHADER_LEN 67,1811
+#define ADD_LOCAL_BUF_SIZE 68,1845
+#define MAX_GL_CONTEXT_VALUE_SIZE 69,1879
+#define MAX_LOCAL_BUF_SIZE 70,1920
+#define LOCAL_BUF 71,1985
+#define WRITE_MSG_CALLER_ADDR 74,2042
+static inline uint64_t voidp_to_uint64(77,2082
+static inline char *pack_int32(pack_int3283,2183
+static inline char *pack_int64(pack_int6489,2298
+static char __attribute__((used)) *pack_string(pack_string95,2413
+static char __attribute__((used)) *pack_bin(pack_bin107,2625
+static inline char *pack_double(pack_double114,2767
+static inline char *pack_timestamp(pack_timestamp120,2877
+static char *pack_array(pack_array142,3502
+static char __attribute__((used)) *pack_string_to_file(pack_string_to_file167,4015
+static char __attribute__((used)) *pack_value_by_type(pack_value_by_type191,4670
+static char __attribute__((used)) *pack_args(pack_args293,6608
+static char __attribute__((used)) *pack_ret(pack_ret319,7038
+#define BUF_PTR 332,7300
+#define RET_PTR 333,7318
+#define CALLER_PTR 334,7340
+#define CALL_TYPE_PTR 335,7368
+#define PACK_INT32(336,7402
+#define PACK_INT64(338,7468
+#define PACK_STRING(340,7534
+#define PACK_COMMON_BEGIN(343,7602
+#define PACK_COMMON_END(356,8182
+#define PACK_COMMON_END_THOUGH(368,8736
+#define PACK_RETURN_END(378,9232
+#define PACK_MEMORY(381,9353
+#define PACK_UICONTROL(388,9646
+#define PACK_UIEVENT_HEAD(408,10285
+#define PACK_UIEVENT_XY(412,10438
+#define PACK_UIEVENT_INFO1(416,10556
+#define PACK_UIEVENT_INFO2(419,10642
+#define PACK_UIEVENT(422,10727
+#define PACK_RESOURCE(430,10985
+#define PACK_SCREENSHOT(442,11428
+#define PACK_SCENE(448,11646
+#define PACK_THREAD(479,12805
+#define PACK_CUSTOM(497,13584
+#define PACK_SYNC(506,13889
+#define PREPARE_LOCAL_BUF(515,14244
+#define PREPARE_LOCAL_BUF_THOUGH(522,14465
+#define MSG_LEN_OFFSET 527,14597
+#define MSG_HDR_LEN 528,14623
+#define SET_MSG_LEN(530,14647
+#define GET_MSG_LEN(533,14751
+#define FLUSH_LOCAL_BUF(536,14812
+#define POST_PACK_PROBEBLOCK_BEGIN(544,15080
+#define POST_PACK_PROBEBLOCK_END(548,15156
+#define POST_PACK_PROBEBLOCK_ADD_END(553,15293
+
+include/dacollection.h,1224
+#define __COLLECTIONS_H__32,1052
+#define SYMBOLHASH	44,1234
+#define SYMBOLHASH_LOCK	45,1273
+#define SYMBOLHASH_UNLOCK	46,1344
+#define MEMORYHASH	48,1419
+#define MEMORYHASH_LOCK	49,1458
+#define MEMORYHASH_UNLOCK	50,1529
+#define UIOBJECTHASH	52,1604
+#define UIOBJECTHASH_LOCK	53,1646
+#define UIOBJECTHASH_UNLOCK	54,1720
+#define OBJECTHASH	56,1799
+#define OBJECTHASH_LOCK	57,1838
+#define OBJECTHASH_UNLOCK	58,1909
+#define DETECTORHASH	60,1984
+#define DETECTORHASH_LOCK	61,2024
+#define DETECTORHASH_UNLOCK	62,2096
+#define GESTUREHASH	64,2173
+#define GESTUREHASH_LOCK	65,2213
+#define GESTUREHASH_UNLOCK	66,2285
+#define MEMTYPE_ALLOC	68,2362
+#define MEMTYPE_FREE	69,2389
+#define MEMTYPE_NEW	70,2415
+#define MEMTYPE_DELETE	71,2441
+#define MEM_INTERNAL	73,2470
+#define MEM_EXTERNAL	74,2496
+#define MEMMASK_CALLER	76,2523
+#define MEMMASK_TYPE	77,2566
+#define MEMMASK_SIZE	78,2607
+#define GET_MEMSIZE(80,2649
+#define GET_MEMCALLER(81,2710
+#define GET_MEMTYPE(82,2790
+#define MAKE_MEMINFO(84,2868
+#define OBJECT_INTERNAL	87,2984
+#define OBJECT_EXTERNAL	88,3013
+	char* type;92,3060
+	char* name;93,3073
+} _uiobjectinfo;94,3086
+KHASH_INIT_TYPE_VOIDP(96,3104
+	khash_t(105,3373
+} __hashInfo;117,3740
+
+include/da_gles20.h,736
+#define DA_GLES20_H_32,1059
+#define EGLContext 50,1358
+#define NO_RETURN_FORMAT 53,1431
+#define NO_RETURN_VALUE 54,1461
+#define APITYPE_INIT 55,1487
+#define APITYPE_CONTEXT 56,1510
+#define APITYPE_NO_CONTEXT 57,1536
+#define FUNC(59,1566
+#define FUNCSTR(60,1598
+#define FUNCID(61,1634
+#define PACK_GL_ADD_COMMON(63,1678
+#define PACK_GL_ADD(72,2106
+#define PACK_GL_SHADER(78,2331
+#define BEFORE_GL_ORIG(88,2736
+#define BEFORE_GL_API(102,3193
+#define INIT_LIB_ID_STR(115,3600
+#define INIT_LIB(127,4003
+#define BEFORE_EGL_NATIVE(131,4094
+#define EGL_GET_ERROR(143,4510
+#define AFTER(148,4609
+#define AFTER_NO_PARAM(157,5012
+#define GL_GET_ERROR(160,5135
+#define AFTER_SHADER(167,5307
+#define BEFORE_EVAS_GL(176,5748
+
+include/daprobe.h,2159
+#define __DAPROBE_H__34,1123
+#define GET_VALUE_2(48,1338
+#define GET_VALUE_1(49,1368
+#define PROBE_NAME(50,1411
+#define likely(53,1489
+#define unlikely(54,1537
+#define __unused 56,1592
+#define NUM_OF_MONITOR	58,1634
+#define DA_LOG_MAX	59,1660
+#define PERROR_MSG_MAX	60,1686
+#define DEFAULT_TOKEN	62,1715
+#define CALLER_ADDRESS	69,1996
+#define CALL_TYPE 72,2060
+#define WRITE_MSG(75,2121
+#define BACKTRACE_SYMBOLS 82,2378
+	MT_MEMORY,86,2445
+	MT_FILE,87,2457
+	MT_SOCKET,88,2467
+} MonitorType;89,2479
+enum BlockLocation91,2495
+	BL_PRE,93,2516
+	BL_POST,94,2525
+	int type;99,2556
+	int length;100,2567
+	char data[data101,2580
+} log_t;102,2604
+	int				eventIndex;106,2631
+	int				pID;107,2651
+	int				tID;108,2664
+	unsigned long	currentTime;109,2677
+	unsigned int	callDepth;110,2705
+} probeInfo_t;111,2730
+#define probingStart(115,2780
+#define probingEnd(116,2820
+#define rtdl_next_set_once(160,4178
+#define rtld_default_set_once(166,4308
+#define PRINTMSG(173,4532
+#define PRINTWRN(174,4618
+#define PRINTERR(175,4708
+#define INIT_INFO	177,4797
+	uint32_t host_port;186,5007
+	uint32_t host_ip;187,5028
+	struct sockaddr *sock;sock188,5047
+	uint64_t msg_total_size;190,5072
+	uint32_t msg_pack_size;191,5098
+	char *msg_buf;msg_buf192,5123
+} info_t;194,5140
+#define DECLARE_ERRNO_VARS	199,5356
+#define DECLARE_VARIABLE_STANDARD	204,5489
+#define DECLARE_VARIABLE_STANDARD_NORET	211,5712
+#define GET_REAL_FUNCP(218,5918
+#define GET_REAL_FUNCP_STR(221,6037
+#define GET_REAL_FUNC(241,6819
+#define GET_REAL_FUNCP_RTLD_NEXT(244,6910
+#define GET_REAL_FUNC_RTLD_NEXT(253,7250
+#define GET_REAL_FUNCP_RTLD_NEXT_CPP(256,7345
+#define GET_REAL_FUNC_RTLD_NEXT_CPP(268,7768
+#define GET_REAL_FUNCP_RTLD_DEFAULT(271,7871
+#define PRE_PROBEBLOCK_BEGIN(282,8292
+#define PRE_PROBEBLOCK_END(286,8404
+#define PRE_PROBEBLOCK(291,8493
+#define PRE_UNCONDITIONAL_BLOCK_BEGIN(297,8649
+#define PRE_UNCONDITIONAL_BLOCK_END(301,8735
+#define POST_PROBEBLOCK_BEGIN(306,8865
+#define POST_PROBEBLOCK_END(313,9160
+#define POST_PROBEBLOCK_FUNC_START_END(319,9327
+#define BEFORE_ORIGINAL(327,9539
+#define BEFORE_ORIGINAL_NOFILTER(332,9674
+
+include/aliases.h,151
+#define __ALIASES_H__30,1011
+#define weak_alias(33,1035
+#define weak_alias_2(34,1109
+#define weak_alias_1(35,1171
+#define weak_alias_pref(36,1233
+
+include/dahelper.h,1502
+#define _DAHELPER_H_32,1047
+#define MAX_PATH_LENGTH	47,1247
+#define MAX_STACK_DEPTH	48,1276
+#define TRIM_STACK_DEPTH	49,1305
+#define ENABLE_INTERNAL_MALLOC	61,1525
+#define ENABLE_SNAPSHOT	62,1564
+#define SCREENSHOT_LOCK(64,1599
+#define SCREENSHOT_UNLOCK(77,2019
+#define SCREENSHOT_SET(85,2297
+#define SCREENSHOT_UNSET(99,2761
+#define SCREENSHOT_DONE(107,3038
+#define SCREENSHOT_TIMEOUT(120,3467
+#define	NUM_ORIGINAL_LIBRARY	134,3935
+	LIB_NO 138,3983
+	LIBC 139,3997
+	LIBPTHREAD 140,4008
+	LIBELEMENTARY 141,4025
+	LIBECORE_INPUT_EVAS 142,4045
+	LIBDAEMON 143,4071
+	LIBCAPI_APPFW_APPLICATION 144,4087
+	LIBGLES20 145,4119
+	LIBEGL 146,4135
+	LIBSELF 147,4148
+	LIBEVAS 148,4162
+} ORIGINAL_LIBRARY;149,4175
+	int eventIndex;157,4353
+	pthread_mutex_t eventMutex;158,4370
+} __indexInfo;159,4399
+	int daemonSock;163,4432
+	pthread_mutex_t sockMutex;164,4449
+} __socketInfo;165,4477
+	char appName[appName169,4511
+	uint64_t startTime;170,4531
+} __appInfo;171,4552
+	int state;175,4583
+	pthread_mutex_t ssMutex;176,4595
+} __screenshotInfo;177,4621
+	void* map_start;181,4659
+	void* map_end;182,4677
+} __mapInfo;183,4693
+	__indexInfo			index;187,4724
+	__socketInfo		socket;188,4746
+	__appInfo			app;189,4769
+	__screenshotInfo	screenshot;190,4787
+	__mapInfo			exec_map;191,4817
+	int					stateTouch;192,4840
+	int					init_complete;193,4861
+	int					custom_chart_callback_count;194,4885
+	uint64_t		optionflag;195,4923
+} __traceInfo;196,4946
+#define isOptionEnabled(235,5997
+
+include/dautil.h,73
+#define __DAUTIL_H__32,1047
+#define HEAR(35,1111
+#define HEAR(37,1200
+
+include/app_protocol.h,347
+#define __APP_PROTOCOL_H__30,1016
+enum AppMessageType32,1044
+	APP_MSG_IMAGE 34,1066
+	APP_MSG_TERMINATE 35,1086
+	APP_MSG_PID 36,1110
+	APP_MSG_MSG 37,1128
+	APP_MSG_ALLOC 38,1146
+	APP_MSG_ERROR 39,1167
+	APP_MSG_WARNING 40,1188
+	APP_MSG_STOP 42,1212
+	APP_MSG_CONFIG 43,1233
+	APP_MSG_CAPTURE_SCREEN=44,1256
+	APP_MSG_MAPS_INST_LIST=45,1286
+
+include/common_probe_init.h,39
+#define __COMMON_PROBE_INIT_H__29,987
+
+probe_socket/da_socket.h,855
+#define __DA_SOCKET_H__33,1088
+#define SOCKET_SEND_SIZE 38,1136
+#define NO_TOTAL_INFO 39,1166
+#define POST_PROBEBLOCK_MIDDLE_LIBC_SOCK(40,1195
+#define AFTER_ORIGINAL_LIBC_SOCK(71,2458
+#define AFTER_ORIGINAL_LIBC_SOCK_WAIT_FUNC_START(77,2782
+#define POST_PROBEBLOCK_FUNC_START_BEGIN(83,3145
+#define AFTER_ORIGINAL_LIBC_SOCK_WAIT_FUNC_END(92,3459
+#define POST_PROBEBLOCK_FUNC_END_BEGIN(97,3776
+#define POST_PROBEBLOCK_MIDDLE_TIZEN_SOCK(105,4112
+#define AFTER_ORIGINAL_TIZEN_SOCK(120,4677
+#define AFTER_ORIGINAL_TIZEN_SOCK_WAIT_FUNC_START(126,5021
+#define AFTER_ORIGINAL_TIZEN_SOCK_WAIT_FUNC_END(133,5414
+#define POST_PROBEBLOCK_TIZEN_BEGIN(138,5754
+#define APPEND_NETWORK_LOG_BASIC(144,6009
+#define POST_PROBEBLOCK_TIZEN_FUNC_START_BEGIN(149,6233
+#define POST_PROBEBLOCK_TIZEN_FUNC_END_BEGIN(155,6507
+#define BEFORE_ORIGINAL_SOCK(162,6811
+
+probe_socket/libdasocket.c,3467
+#define OBJ_DUMMY 57,1584
+void getAddress(59,1605
+int PROBE_NAME(96,2582
+int PROBE_NAME(107,2913
+int PROBE_NAME(135,3719
+int PROBE_NAME(163,4542
+int PROBE_NAME(182,5077
+int PROBE_NAME(195,5367
+int PROBE_NAME(213,5884
+ssize_t PROBE_NAME(224,6180
+ssize_t PROBE_NAME(254,7082
+ssize_t PROBE_NAME(284,7962
+ssize_t PROBE_NAME(320,9150
+ssize_t PROBE_NAME(358,10369
+ssize_t PROBE_NAME(401,11481
+int PROBE_NAME(444,12607
+int PROBE_NAME(461,13162
+int PROBE_NAME(477,13705
+int PROBE_NAME(494,14193
+int PROBE_NAME(513,14722
+int PROBE_NAME(528,15185
+int PROBE_NAME(540,15440
+int PROBE_NAME(552,15738
+int PROBE_NAME(580,16638
+int PROBE_NAME(611,17695
+int PROBE_NAME(631,18301
+int PROBE_NAME(659,19166
+int PROBE_NAME(670,19439
+int PROBE_NAME(681,19719
+int PROBE_NAME(704,20463
+int PROBE_NAME(729,21386
+uint32_t PROBE_NAME(746,21840
+uint16_t PROBE_NAME(760,22128
+int PROBE_NAME(774,22430
+in_addr_t PROBE_NAME(788,22781
+in_addr_t PROBE_NAME(802,23084
+char *PROBE_NAME(PROBE_NAME816,23399
+uint32_t PROBE_NAME(830,23687
+uint16_t PROBE_NAME(844,23973
+in_addr_t PROBE_NAME(858,24273
+in_addr_t PROBE_NAME(872,24581
+const char *PROBE_NAME(PROBE_NAME886,24889
+int PROBE_NAME(901,25325
+int PROBE_NAME(914,25680
+void PROBE_NAME(929,26225
+const char *PROBE_NAME(PROBE_NAME940,26509
+int PROBE_NAME(954,26817
+int PROBE_NAME(969,27287
+int PROBE_NAME(982,27571
+int PROBE_NAME(995,27859
+int PROBE_NAME(1010,28322
+int PROBE_NAME(1025,28720
+int PROBE_NAME(1038,29055
+int PROBE_NAME(1051,29370
+int PROBE_NAME(1064,29697
+struct hostent *PROBE_NAME(PROBE_NAME1082,30347
+struct hostent *PROBE_NAME(PROBE_NAME1096,30693
+void PROBE_NAME(1111,31116
+void PROBE_NAME(1122,31363
+void PROBE_NAME(1135,31643
+const char *PROBE_NAME(PROBE_NAME1146,31881
+struct hostent *PROBE_NAME(PROBE_NAME1160,32159
+struct hostent *PROBE_NAME(PROBE_NAME1174,32443
+int PROBE_NAME(1188,32818
+int PROBE_NAME(1206,33391
+int PROBE_NAME(1228,34129
+int PROBE_NAME(1246,34780
+struct servent *PROBE_NAME(PROBE_NAME1265,35463
+void PROBE_NAME(1281,35887
+void PROBE_NAME(1292,36134
+struct servent *PROBE_NAME(PROBE_NAME1303,36351
+struct servent *PROBE_NAME(PROBE_NAME1317,36636
+int PROBE_NAME(1331,37019
+int PROBE_NAME(1348,37543
+int PROBE_NAME(1369,38230
+struct netent* PROBE_NAME(1388,38877
+struct netent *PROBE_NAME(PROBE_NAME1402,39155
+struct netent *PROBE_NAME(PROBE_NAME1416,39494
+void PROBE_NAME(1430,39838
+void PROBE_NAME(1441,40081
+int PROBE_NAME(1452,40294
+int PROBE_NAME(1470,40883
+int PROBE_NAME(1489,41555
+struct protoent *PROBE_NAME(PROBE_NAME1509,42236
+struct protoent *PROBE_NAME(PROBE_NAME1523,42529
+struct protoent *PROBE_NAME(PROBE_NAME1537,42883
+void PROBE_NAME(1551,43214
+void PROBE_NAME(1562,43465
+int PROBE_NAME(1573,43686
+int PROBE_NAME(1590,44218
+int PROBE_NAME(1609,44836
+unsigned int PROBE_NAME(1627,45430
+char *PROBE_NAME(PROBE_NAME1641,45790
+struct if_nameindex *PROBE_NAME(PROBE_NAME1656,46191
+void PROBE_NAME(1670,46504
+int PROBE_NAME(1681,46820
+void PROBE_NAME(1694,47122
+uint16_t PROBE_NAME(1707,47409
+uint16_t PROBE_NAME(1721,47704
+uint16_t PROBE_NAME(1735,47999
+uint16_t PROBE_NAME(1750,48321
+uint32_t PROBE_NAME(1765,48655
+uint32_t PROBE_NAME(1780,48943
+uint32_t PROBE_NAME(1795,49231
+uint32_t PROBE_NAME(1810,49543
+uint64_t PROBE_NAME(1825,49867
+uint64_t PROBE_NAME(1840,50155
+uint64_t PROBE_NAME(1855,50443
+uint64_t PROBE_NAME(1870,50755
+struct in_addr PROBE_NAME(1885,51079
+
+probe_graphics/da_gl_api_init.c,275
+#define X(36,1121
+	GL_ALL_FUNCTIONS;38,1204
+#undef X39,1223
+Evas_GL_API *__gl_api __gl_api42,1273
+static Evas_GL_API __gl_api_fake;43,1303
+void __init_gl_api__(45,1338
+#define X(55,1558
+Evas_GL_API *get_gl_api_fake_list(get_gl_api_fake_list64,1862
+#undef X82,2138
+
+probe_graphics/da_gles20_tizen.cpp,331
+#define _GL2_MACRO_H_30,995
+#define _GL_MACRO_H_31,1017
+#define REAL_NAME(38,1110
+#define BEFORE 39,1149
+#define CALL_ORIG(40,1178
+#define TYPEDEF(41,1235
+#undef WRITE_MSG_CALLER_ADDR44,1287
+#define WRITE_MSG_CALLER_ADDR 47,1324
+#undef WRITE_MSG_CALLER_ADDR61,1536
+#undef _GL2_MACRO_H_63,1566
+#undef _GL_MACRO_H_64,1587
+
+probe_graphics/da_egl_tizen.cpp,3346
+#define BEFORE_EGL	38,1147
+static enum DaOptions _sopt 41,1191
+static __thread EGLint egl_error_external 42,1231
+EGLint eglGetError(44,1289
+	typedef EGLint (*methodType)methodType46,1316
+EGLDisplay eglGetDisplay(64,1650
+	typedef EGLDisplay (*methodType)methodType66,1710
+EGLBoolean eglInitialize(79,2077
+	typedef EGLBoolean (*methodType)methodType81,2150
+EGLBoolean eglTerminate(95,2569
+	typedef EGLBoolean (*methodType)methodType97,2611
+const char *eglQueryString(eglQueryString109,2921
+	typedef const char *(*methodType)methodType111,2979
+EGLBoolean eglGetConfigs(123,3321
+	typedef EGLBoolean (*methodType)methodType126,3428
+EGLBoolean eglChooseConfig(142,3931
+	typedef EGLBoolean (*methodType)methodType146,4075
+EGLBoolean eglGetConfigAttrib(165,4673
+	typedef EGLBoolean (*methodType)methodType168,4781
+EGLSurface eglCreateWindowSurface(183,5263
+	typedef EGLSurface (*methodType)methodType187,5397
+EGLSurface eglCreatePbufferSurface(204,5947
+	typedef EGLSurface (*methodType)methodType207,6052
+EGLSurface eglCreatePixmapSurface(222,6544
+	typedef EGLSurface (*methodType)methodType226,6681
+EGLBoolean eglDestroySurface(243,7246
+	typedef EGLBoolean (*methodType)methodType245,7313
+EGLBoolean eglQuerySurface(258,7696
+	typedef EGLBoolean (*methodType)methodType261,7800
+EGLBoolean eglBindAPI(276,8280
+	typedef EGLBoolean (*methodType)methodType278,8317
+EGLenum eglQueryAPI(291,8610
+	typedef EGLenum (*methodType)methodType293,8638
+EGLBoolean eglWaitClient(305,8909
+	typedef EGLBoolean (*methodType)methodType307,8942
+EGLBoolean eglReleaseThread(319,9223
+	typedef EGLBoolean (*methodType)methodType321,9259
+EGLSurface eglCreatePbufferFromClientBuffer(333,9546
+	typedef EGLSurface (*methodType)methodType338,9721
+EGLBoolean eglSurfaceAttrib(356,10347
+	typedef EGLBoolean (*methodType)methodType359,10452
+EGLBoolean eglBindTexImage(374,10916
+	typedef EGLBoolean (*methodType)methodType376,10996
+EGLBoolean eglReleaseTexImage(390,11413
+	typedef EGLBoolean (*methodType)methodType392,11496
+EGLBoolean eglSwapInterval(406,11919
+	typedef EGLBoolean (*methodType)methodType408,11981
+EGLContext eglCreateContext(421,12342
+	typedef EGLContext (*methodType)methodType424,12466
+EGLBoolean eglDestroyContext(442,13033
+	typedef EGLBoolean (*methodType)methodType444,13096
+EGLBoolean eglMakeCurrent(458,13467
+	typedef EGLBoolean (*methodType)methodType461,13566
+EGLContext eglGetCurrentContext(476,14038
+	typedef EGLContext (*methodType)methodType478,14078
+EGLSurface eglGetCurrentSurface(491,14391
+	typedef EGLSurface (*methodType)methodType493,14442
+EGLDisplay eglGetCurrentDisplay(506,14786
+	typedef EGLDisplay (*methodType)methodType508,14826
+EGLBoolean eglQueryContext(520,15138
+	typedef EGLBoolean (*methodType)methodType523,15238
+EGLBoolean eglWaitGL(538,15706
+	typedef EGLBoolean (*methodType)methodType540,15735
+EGLBoolean eglWaitNative(552,16008
+	typedef EGLBoolean (*methodType)methodType554,16050
+EGLBoolean eglSwapBuffers(567,16357
+	typedef EGLBoolean (*methodType)methodType569,16421
+EGLBoolean eglCopyBuffers(578,16704
+	typedef EGLBoolean (*methodType)methodType581,16801
+#define __eglGetProcAddress_t 596,17253
+EGLAPI __eglGetProcAddress_t eglGetProcAddress(597,17324
+	typedef EGLAPI __eglGetProcAddress_t(*methodType)methodType599,17395
+
+probe_graphics/da_gles20_native.cpp,150
+#define REAL_NAME(35,1105
+#define BEFORE 36,1146
+#define CALL_ORIG(37,1176
+#define TYPEDEF(38,1226
+#undef CALL_ORIG43,1289
+#undef BEFORE44,1306
+
+probe_graphics/da_gles20_direct.cpp,218
+#define _GL2_MACRO_H_30,995
+#define _GL_MACRO_H_31,1017
+#define REAL_NAME(38,1110
+#define BEFORE 39,1151
+#define CALL_ORIG(40,1181
+#define TYPEDEF(41,1231
+#undef _GL2_MACRO_H_49,1337
+#undef _GL_MACRO_H_50,1358
+
+probe_graphics/da_evas_gl.c,1347
+void PROBE_NAME(37,1129
+	typedef void (*methodType)methodType39,1179
+void PROBE_NAME(46,1374
+	typedef void (*methodType)methodType48,1434
+void PROBE_NAME(55,1638
+	typedef void (*methodType)methodType57,1722
+void PROBE_NAME(64,1992
+	typedef void (*methodType)methodType66,2075
+Evas_GL *PROBE_NAME(PROBE_NAME73,2342
+	typedef Evas_GL *(*methodType)methodType75,2386
+Evas_GL_Config *PROBE_NAME(PROBE_NAME83,2595
+	typedef Evas_GL_Config *(*methodType)methodType85,2650
+Evas_GL_Surface *PROBE_NAME(PROBE_NAME92,2860
+	typedef Evas_GL_Surface *(*methodType)methodType95,2972
+Evas_GL_Context *PROBE_NAME(PROBE_NAME105,3341
+	typedef Evas_GL_Context *(*methodType)methodType108,3446
+Eina_Bool PROBE_NAME(117,3794
+	typedef Eina_Bool (*methodType)methodType120,3912
+const char *PROBE_NAME(PROBE_NAME129,4253
+	typedef const char *(*methodType)methodType131,4328
+Evas_GL_Func PROBE_NAME(139,4588
+	typedef Evas_GL_Func(*methodType)methodType141,4676
+Eina_Bool PROBE_NAME(149,4970
+	typedef Eina_Bool(*methodType)methodType152,5096
+Evas_GL_API *PROBE_NAME(PROBE_NAME163,5509
+	typedef Evas_GL_API *(*methodType)methodType165,5570
+Evas_GL_API* PROBE_NAME(183,6008
+	typedef Evas_GL_API *(*methodType)methodType185,6081
+Evas_GL_API *PROBE_NAME(PROBE_NAME203,6535
+	typedef Evas_GL_API *(*methodType)methodType205,6626
+
+probe_graphics/da_egl_native.cpp,86
+#define _EGL_MACRO_H_30,995
+#define BEFORE_EGL 33,1059
+#undef _EGL_MACRO_H_43,1207
+
+probe_thread/libdathread.c,1146
+typedef struct thread_routine_call_t 43,1298
+	void *(*thread_routine)thread_routine44,1337
+	void *argument;argument45,1371
+} thread_routine_call;46,1388
+int PROBE_NAME(51,1487
+int PROBE_NAME(84,2464
+void PROBE_NAME(126,3491
+int PROBE_NAME(154,4126
+int PROBE_NAME(169,4458
+pthread_t PROBE_NAME(184,4791
+int PROBE_NAME(201,5129
+int real_pthread_setcancelstate(216,5486
+int PROBE_NAME(225,5719
+int PROBE_NAME(242,6174
+int PROBE_NAME(259,6616
+int PROBE_NAME(275,6996
+int PROBE_NAME(291,7391
+int PROBE_NAME(309,7923
+int PROBE_NAME(327,8424
+int PROBE_NAME(345,8944
+int PROBE_NAME(373,9814
+int PROBE_NAME(391,10332
+int PROBE_NAME(411,10850
+int PROBE_NAME(429,11391
+int PROBE_NAME(447,11901
+int PROBE_NAME(466,12436
+int PROBE_NAME(486,12978
+int PROBE_NAME(504,13490
+int PROBE_NAME(522,13971
+int PROBE_NAME(540,14491
+int PROBE_NAME(558,14992
+int PROBE_NAME(576,15510
+int PROBE_NAME(593,15990
+int PROBE_NAME(613,16575
+#undef WRITE_MSG_CALLER_ADDR657,17976
+#define WRITE_MSG_CALLER_ADDR 660,18041
+void _da_cleanup_handler(663,18154
+void *_da_ThreadProc(_da_ThreadProc690,18765
+#undef WRITE_MSG_CALLER_ADDR747,20156
+
+probe_thread/da_sync.h,110
+#define __DA_SYNC_H__34,1123
+#define BEFORE_ORIGINAL_SYNC(46,1375
+#define AFTER_PACK_ORIGINAL_SYNC(51,1520
+
+probe_thread/libdasync.c,630
+int PROBE_NAME(45,1295
+int PROBE_NAME(62,1778
+int real_pthread_mutex_lock(76,2170
+int PROBE_NAME(84,2373
+int PROBE_NAME(122,3324
+int PROBE_NAME(165,4468
+int real_pthread_mutex_unlock(180,4871
+int PROBE_NAME(188,5082
+int PROBE_NAME(203,5476
+int PROBE_NAME(218,5878
+int PROBE_NAME(233,6295
+int PROBE_NAME(251,6850
+int PROBE_NAME(268,7369
+int PROBE_NAME(286,7897
+int PROBE_NAME(303,8389
+int PROBE_NAME(321,8908
+int PROBE_NAME(338,9391
+int PROBE_NAME(355,9881
+int PROBE_NAME(379,10526
+int PROBE_NAME(396,11006
+int PROBE_NAME(411,11399
+int PROBE_NAME(455,12498
+int PROBE_NAME(503,13767
+int PROBE_NAME(517,14151
+
+probe_thread/da_thread.h,116
+#define __DA_THREAD_H__34,1125
+#define BEFORE_ORIGINAL_THREAD(38,1172
+#define AFTER_PACK_ORIGINAL_THREAD(43,1319
+
+probe_capi/capi_appfw.c,327
+ui_app_lifecycle_callback_s uiAppCallback;46,1440
+#define PACK_ORIGINAL_APPFWCYCLE(48,1484
+static bool _ui_dalc_app_create(59,1952
+static void _ui_dalc_app_terminate(73,2230
+static void _ui_dalc_app_pause(84,2472
+static void _ui_dalc_app_resume(95,2702
+static void _ui_dalc_app_control(106,2935
+int PROBE_NAME(118,3233
+
+helper/dacapture.c,590
+#define MAX_HEIGHT	59,1693
+#define CAPTURE_TIMEOUT	60,1716
+typedef struct _screenshot_data62,1746
+	XImage*			ximage;64,1780
+	Display*		dpy;65,1799
+	XShmSegmentInfo	x_shm_info;66,1815
+} screenshot_data;67,1844
+static char* captureScreenShotX(164,4107
+static void releaseScreenShotX(237,6384
+static Evas* create_canvas(260,6930
+static void destroy_canvas(336,9631
+int captureScreen(357,10209
+int initialize_screencapture(474,13852
+int finalize_screencapture(485,14050
+static Eina_Bool _captureTimer(494,14284
+int activateCaptureTimer(501,14397
+void _cb_render_post(511,14660
+
+helper/libdaprobe.c,1692
+#define APP_INSTALL_PATH	67,2148
+#define TISEN_APP_POSTFIX	68,2186
+#define UDS_NAME	69,2221
+#define TIMERFD_INTERVAL	70,2258
+__thread int		gProbeDepth 72,2307
+pid_t gPid 73,2338
+__thread pid_t		gTid 74,2355
+int			g_timerfd 76,2383
+long		g_total_alloc_size 77,2404
+pthread_t	g_recvthread_id;78,2434
+int log_fd 80,2462
+static void _configure(92,2850
+void application_exit(103,3101
+#define MSG_CONFIG_RECV 140,4036
+#define MSG_MAPS_INST_LIST_RECV 141,4065
+static int createSocket(142,4102
+static int determineCaller(257,7319
+void reset_pid_tid(279,7716
+pid_t _getpid(286,7795
+pid_t _gettid(294,7894
+static void *recvThread(recvThread301,8005
+static int init_timerfd(434,11006
+static uint64_t get_app_start_time(461,11494
+	enum {nsecs_in_sec nsecs_in_sec463,11537
+static int create_recv_thread(470,11689
+void _init_(480,11865
+void __attribute__((constructor)) _init_probe(510,12457
+void _uninit_(534,12864
+void __attribute__((destructor)) _fini_probe(571,13461
+const char *msg_code_to_srt(msg_code_to_srt585,13935
+bool printLog(599,14167
+bool print_log_str(625,14824
+bool print_log_fmt(660,15782
+int getBacktraceString(720,17264
+static inline bool isNoFiltOptionEnabled(782,18811
+static inline bool is_user_call(799,19311
+int preBlockBegin(820,19753
+void postBlockEnd(830,19859
+unsigned long getCurrentTime(840,20126
+unsigned int getCurrentEventIndex(849,20287
+uint64_t get_current_nsec(854,20365
+unsigned long get_caller_addr(861,20518
+unsigned char get_call_type(866,20601
+void write_msg(871,20678
+bool setProbePoint(883,21068
+int update_heap_memory_size(904,21670
+void *rtdl_next(rtdl_next919,21899
+void *rtld_default(rtld_default932,22114
+
+helper/private_link.h,3195
+#define	_PRIVATE_LINK_H	22,989
+#define link_map	31,1279
+#define la_objopen	32,1312
+#undef	link_map34,1371
+#undef	la_objopen35,1387
+#define DT_THISPROCNUM 46,1705
+#define DL_FIXUP_VALUE_TYPE 49,1788
+#define DL_FIXUP_MAKE_VALUE(51,1912
+#define DL_FIXUP_VALUE_CODE_ADDR(53,2028
+#define DL_FIXUP_VALUE_ADDR(54,2076
+#define DL_FIXUP_ADDR_VALUE(55,2119
+struct link_map_machine57,2161
+struct r_found_version67,2429
+	const char *name;name69,2454
+	ElfW(70,2473
+enum r_dir_status 77,2607
+enum r_dir_status { unknown,77,2607
+enum r_dir_status { unknown, nonexisting,77,2607
+enum r_dir_status { unknown, nonexisting, existing 77,2607
+struct r_search_path_elem79,2662
+	struct r_search_path_elem *next;next82,2766
+	const char *what;what85,2856
+	const char *where;where86,2875
+	const char *dirname;dirname89,2988
+	size_t dirnamelen;90,3010
+	enum r_dir_status status[status92,3031
+struct libname_list96,3133
+	const char *name;name98,3155
+	struct libname_list *next;next99,3219
+	int dont_free;100,3290
+struct r_scope_elem109,3595
+	struct link_map **r_list;r_list112,3654
+	unsigned int r_nlist;114,3721
+struct r_search_path_struct119,3814
+	struct r_search_path_elem **dirs;dirs121,3844
+	int malloced;122,3879
+struct link_map135,4301
+    ElfW(140,4446
+      const Elf32_Word *l_gnu_buckets;l_gnu_buckets203,7154
+      const Elf_Symndx *l_chain;l_chain204,7193
+      const Elf32_Word *l_gnu_chain_zero;l_gnu_chain_zero208,7249
+      const Elf_Symndx *l_buckets;l_buckets209,7291
+    unsigned int l_direct_opencount;212,7334
+	lt_executable,215,7469
+	lt_library,216,7522
+	lt_loaded	217,7578
+      } l_type:l_type218,7634
+    unsigned int l_relocated:l_relocated219,7652
+    unsigned int l_init_called:l_init_called220,7729
+    unsigned int l_global:l_global221,7806
+    unsigned int l_reserved:l_reserved222,7881
+    unsigned int l_phdr_allocated:l_phdr_allocated223,7946
+    unsigned int l_soname_added:l_soname_added225,8062
+    unsigned int l_faked:l_faked227,8171
+    unsigned int l_need_tls_init:l_need_tls_init229,8276
+    unsigned int l_used:l_used232,8435
+    unsigned int l_auditing:l_auditing233,8497
+    unsigned int l_audit_any_plt:l_audit_any_plt234,8575
+    unsigned int l_removed:l_removed236,8703
+    unsigned int l_contiguous:l_contiguous238,8812
+    struct r_search_path_struct l_rpath_dirs;243,9012
+    struct reloc_result246,9119
+      DL_FIXUP_VALUE_TYPE addr;248,9149
+      struct link_map *bound;bound249,9181
+      unsigned int boundndx;250,9211
+      uint32_t enterexit;251,9240
+      unsigned int flags;252,9266
+    } *l_reloc_result;l_reloc_result253,9292
+    ElfW(256,9376
+    struct link_map_reldeps292,10674
+	unsigned int act;294,10710
+	struct link_map *list[list295,10729
+      } *l_reldeps;l_reldeps296,10755
+    ElfW(299,10807
+      const ElfW(310,10999
+# define NO_TLS_OFFSET	329,11572
+#  define FORCED_DYNAMIC_TLS_OFFSET 333,11662
+#  define FORCED_DYNAMIC_TLS_OFFSET 335,11727
+    struct auditstate354,12327
+      uintptr_t cookie;356,12355
+      unsigned int bindflags;357,12379
+    } l_audit[l_audit358,12409
+# define symbind 363,12463
+# define symbind 365,12521
+
+helper/dacollection.c,1107
+KHASH_MAP_INIT_VOIDP(43,1317
+struct _element73,2301
+	int		keylen;75,2319
+	char*	keystr;76,2333
+	void*	dataptr;77,2348
+	struct _element*	next;78,2364
+	struct _element*	prev;79,2388
+typedef struct _element element_t;82,2416
+element_t* gsymbol_list 84,2452
+pthread_mutex_t glist_mutex 85,2484
+int initialize_hash_table(91,2773
+int finalize_hash_table(119,3258
+int find_symbol_hash(212,5038
+int add_symbol_hash(245,5647
+int add_memory_hash(291,6643
+int del_memory_hash(331,7549
+int find_uiobject_hash(377,8612
+int add_uiobject_hash_class(414,9369
+int add_uiobject_hash_type(468,10573
+int del_uiobject_hash(526,11714
+int find_object_hash(563,12586
+int add_object_hash(596,13206
+int del_object_hash(627,13788
+int add_detector_hash(663,14593
+int del_detector_hash(696,15244
+static element_t* find_element(728,15949
+int add_to_glist(751,16421
+int remove_from_glist(790,17155
+int remove_all_glist(819,17616
+void* find_glist(837,17887
+uint32_t kh_gesture_calc_hash(860,18451
+int kh_gesture_cmp(871,18715
+int gesture_update(890,19108
+void *add_gesture_hash(add_gesture_hash907,19422
+
+helper/daforkexec.h,88
+#define __DAFORKEXEC_H_29,992
+#define INIT_FUNC_EXEC(31,1017
+#define DECLARE(41,1311
+
+helper/btsym.c,646
+# define WORD_WIDTH 46,1748
+# define WORD_WIDTH 49,1801
+#define FILEPATH_MAX 52,1832
+#define ELFW(56,2008
+typedef struct link_map *lookup_t;lookup_t59,2143
+#define LOOKUP_VALUE(60,2178
+#define LOOKUP_VALUE_ADDRESS(61,2208
+# define DL_SYMBOL_ADDRESS(67,2470
+# define DL_LOOKUP_ADDRESS(69,2564
+# define DL_DT_INIT_ADDRESS(70,2619
+# define DL_DT_FINI_ADDRESS(71,2667
+#define DL_ADDR_SYM_MATCH(75,2802
+struct _symdata82,3139
+	ElfW(84,3157
+typedef struct _symdata symdata_t;90,3237
+static symdata_t* _get_symboldata(93,3309
+int get_map_address(170,5180
+char** cached_backtrace_symbols 191,5581
+char** da_backtrace_symbols 312,8646
+
+helper/common_probe_init.c,277
+void __gl_dummy_function(50,1867
+void set_real_func(55,1942
+#define INIT_REAL_GL(79,2538
+int __init_gl_functions__(84,2659
+void probe_terminate_with_err(102,3049
+void dummy(130,3838
+void init_probe_egl(135,3865
+void init_probe_egl(142,4068
+void init_probe_gl(161,4593
+
+helper/addr-tizen.c,41
+int getExecutableMappingAddress(39,1223
+
+helper/dastdout.c,91
+static inline int __redirect(39,1136
+int __redirect_std(53,1380
+	#define STDOUT	59,1547
+
+helper/dahelper.c,335
+int app_efl_main_flg 38,1209
+const char *lib_string[lib_string40,1236
+void *lib_handle[lib_handle52,1553
+__traceInfo gTraceInfo 55,1627
+void WcharToChar(83,2296
+int remove_indir(91,2484
+static int absolute_filepath_p(122,3130
+char *absolutize_filepath(absolutize_filepath127,3210
+char *real_abs_path(real_abs_path139,3556
+
+helper/damaps.c,2207
+struct data_list_t 33,1027
+		void *next;next35,1057
+		void *first;first36,1071
+		void *data;data39,1099
+		void *tail;tail40,1113
+		uint32_t hash;43,1140
+		uint32_t count;44,1157
+struct map_t 48,1183
+	uint32_t hash;49,1198
+	int is_instrument;50,1214
+	void *addr;addr51,1234
+	void *endaddr;endaddr52,1247
+	char permissions[permissions53,1263
+	long long offset;54,1286
+	char device[device55,1305
+	long long inode;56,1324
+	char filename[filename57,1342
+typedef int cmp_by_hash_and_name_t(60,1398
+static pthread_mutex_t maps_lock 64,1470
+char **map_inst_list map_inst_list66,1533
+char *map_inst_list_set map_inst_list_set67,1562
+uint32_t map_inst_count 68,1594
+static struct data_list_t sections_list 70,1624
+static uint32_t addr_hash_table_el_count_total 76,1758
+static uint32_t addr_hash_table_el_count_buzy 77,1810
+static struct map_t **addr_hash_table addr_hash_table78,1861
+static uint32_t name_hash_table_el_count_total 80,1908
+static uint32_t name_hash_table_el_count_buzy 81,1960
+static struct map_t **name_hash_table name_hash_table82,2011
+#define MAX_READERS_COUNT 84,2058
+static sem_t readers_mutex;85,2086
+static uint32_t calc_string_hash(93,2142
+static struct data_list_t *get_first_el(get_first_el104,2287
+static struct data_list_t *get_next_el(get_next_el109,2401
+static int read_mapping_line(114,2509
+static struct data_list_t *new_data(new_data162,3399
+static int data_list_append(171,3564
+static int add_to_map_list(185,3838
+static void __attribute__((used)) print_list_sorted(196,4039
+static int realloc_array(214,4419
+static int create_addr_hash_table(268,5588
+static int cmp_by_hash_and_name(276,5754
+static int create_name_hash_table(295,6214
+static struct map_t **get_map_by_filename(get_map_by_filename303,6396
+static int update_is_instrument_lib_attr_nolock(378,8168
+static void maps_reader_lock_all(406,8778
+static void maps_reader_unlock_all(413,8895
+static inline void maps_reader_lock(420,9014
+static inline void maps_reader_unlock(425,9105
+static inline void maps_writer_lock(430,9196
+static inline void maps_writer_unlock(435,9272
+int set_map_inst_list(443,9561
+int maps_make(496,10653
+int maps_init(561,12010
+
+helper/dastdout.h,31
+#define __DASDTOUT_H__31,1013
+
+helper/daforkexec.c,292
+void init_exec_fork(45,1624
+#define prepare_params(57,1848
+#define print_params(84,2446
+int PROBE_NAME(98,2857
+int PROBE_NAME(112,3173
+int PROBE_NAME(126,3492
+int PROBE_NAME(146,3989
+int PROBE_NAME(159,4239
+int PROBE_NAME(172,4491
+int PROBE_NAME(185,4781
+pid_t PROBE_NAME(198,5061
+
+helper/real_functions.c,34
+int _init_real_functions(34,1063
+
+probe_event/gesture.c,565
+#define LOGW 43,1228
+#define MAX_INFO1_LEN 45,1251
+static inline char *__n_finger_tap_pack(__n_finger_tap_pack55,1427
+static inline char *__momentum_pack(__momentum_pack70,1713
+static inline char *__line_flick_pack(__line_flick_pack86,2029
+static inline char *__zoom_pack(__zoom_pack103,2451
+static inline char *__rotate_pack(__rotate_pack118,2777
+char *__pack_callback_data(__pack_callback_data132,3141
+static inline enum __event_type __get_event_type_code(175,4333
+Evas_Event_Flags __common_elm_gesture_layer_cb(196,5085
+void PROBE_NAME(217,5644
+
+probe_event/gesture.h,268
+#define __GESTURE_H__34,1123
+struct __elm_gesture_layer_cb_set_data{__elm_gesture_layer_cb_set_data39,1196
+	Evas_Object *obj;obj40,1236
+	Elm_Gesture_Type idx;41,1255
+	Elm_Gesture_State cb_type;42,1278
+	Elm_Gesture_Event_Cb cb;43,1306
+	void *data;data44,1332
+
+probe_event/da_event.h,1512
+#define __DA_EVENT_H__34,1124
+enum __event_type42,1329
+	_EVENT_UNKNOWN 44,1349
+	_EVENT_KEY 46,1372
+	_EVENT_TOUCH 47,1389
+	_EVENT_ORIENTATION 49,1409
+	_EVENT_LISTENER 50,1434
+	_EVENT_GESTURE_N_TAPS 52,1457
+	_EVENT_GESTURE_N_DOUBLE_TAPS 53,1485
+	_EVENT_GESTURE_N_TRIPLE_TAPS 54,1520
+	_EVENT_GESTURE_N_LONG_TAPS 55,1555
+	_EVENT_GESTURE_N_FLICKS 56,1588
+	_EVENT_GESTURE_N_LINES 57,1619
+	_EVENT_GESTURE_ZOOM 58,1649
+	_EVENT_GESTURE_ROTATE 59,1676
+	_EVENT_GESTURE_MOMENTUM 60,1705
+} EVENT_TYPE;62,1736
+enum __key_status64,1751
+	_KEY_PRESSED 66,1771
+	_KEY_RELEASED 67,1790
+} KEY_STATUS;68,1809
+enum __touch_status70,1824
+	_TOUCH_PRESSED 72,1846
+	_TOUCH_LONG_PRESSED 73,1867
+	_TOUCH_RELEASED 74,1893
+	_TOUCH_MOVED 75,1915
+	_TOUCH_DOUBLE_PRESSED 76,1934
+	_TOUCH_FOCUS_IN 77,1962
+	_TOUCH_FOCUS_OUT 78,1984
+	_TOUCH_CANCELED 79,2007
+} _TOUCH_STATUS;80,2028
+enum __gesture_type82,2046
+	_GESTURE_FLICK 84,2068
+	_GESTURE_LONGPRESS 85,2089
+	_GESTURE_PANNING 86,2114
+	_GESTURE_PINCH 87,2137
+	_GESTURE_ROTATION 88,2158
+	_GESTURE_TAP 89,2182
+	_GESTURE_CUSTOM 90,2201
+} GESTURE_TYPE;91,2222
+enum _orientation_status93,2239
+	_OS_NONE 95,2266
+	_OS_PORTRAIT 96,2281
+	_OS_LANDSCAPE 97,2300
+	_OS_PORTRAIT_REVERSE 98,2320
+	_OS_LANDSCAPE_REVERSE 99,2347
+} ORIENTATION_STATUS;100,2374
+#define DECLARE_VARIABLE_EVENT	112,2715
+#define PRE_PROBEBLOCK_BEGIN_EVENT(117,2837
+#define PRE_PROBEBLOCK_END_EVENT(128,3254
+#define BEFORE_ORIGINAL_EVENT(133,3356
+#define AFTER_ORIGINAL_EVENT(138,3545
+
+probe_event/keytouch.c,212
+bool touch_pressed 56,1522
+#define PACK_HW_EVENT(58,1551
+Eina_Bool PROBE_NAME(71,2092
+Eina_Bool PROBE_NAME(95,2732
+Eina_Bool PROBE_NAME(119,3363
+Eina_Bool PROBE_NAME(141,4058
+Eina_Bool PROBE_NAME(163,4745
+
+probe_event/gesture_tizen.h,187
+#define __GESTURE_TIZEN_H__34,1129
+using namespace Tizen::Ui;38,1176
+class GestureEventListener 40,1204
+	static GestureEventListener rInstance;GestureEventListener::rInstance85,3542
+
+probe_event/da_event.c,229
+static int external_angle 47,1327
+static int internal_angle 48,1358
+int initialize_event(54,1568
+int finalize_event(68,1893
+static int convert_angle(78,2107
+void on_orientation_changed(103,2401
+int getOrientation(132,2966
+
+probe_event/orientation.c,276
+Ecore_Event_Handler *handler handler42,1278
+Eina_Bool _da_onclientmessagereceived(45,1317
+Ecore_Event_Handler *register_orientation_event_listener(register_orientation_event_listener72,2128
+void unregister_orientation_event_listener(87,2709
+EAPI int PROBE_NAME(97,3012
+
+probe_event/gesture.cpp,1612
+#define PACK_GESTURE_EVENT(42,1284
+GestureEventListener GestureEventListener::rInstance;54,1818
+GestureEventListener::GestureEventListener(56,1873
+GestureEventListener::~GestureEventListener(61,1924
+void GestureEventListener::OnCustomGestureCanceled 66,1976
+void GestureEventListener::OnCustomGestureChanged 79,2350
+void GestureEventListener::OnCustomGestureFinished 92,2722
+void GestureEventListener::OnCustomGestureStarted 105,3096
+void GestureEventListener::OnFlickGestureCanceled 118,3468
+void GestureEventListener::OnFlickGestureDetected 139,4082
+void GestureEventListener::OnLongPressGestureCanceled 160,4696
+void GestureEventListener::OnLongPressGestureDetected 180,5302
+void GestureEventListener::OnPanningGestureCanceled 200,5908
+void GestureEventListener::OnPanningGestureChanged 218,6379
+void GestureEventListener::OnPanningGestureFinished 236,6848
+void GestureEventListener::OnPanningGestureStarted 254,7319
+void GestureEventListener::OnPinchGestureCanceled 272,7788
+void GestureEventListener::OnPinchGestureChanged 292,8331
+void GestureEventListener::OnPinchGestureFinished 312,8872
+void GestureEventListener::OnPinchGestureStarted 332,9415
+void GestureEventListener::OnRotationGestureCanceled 352,9956
+void GestureEventListener::OnRotationGestureChanged 372,10520
+void GestureEventListener::OnRotationGestureFinished 392,11082
+void GestureEventListener::OnRotationGestureStarted 412,11646
+void GestureEventListener::OnTapGestureCanceled 432,12208
+void GestureEventListener::OnTapGestureDetected 453,12865
+GestureEventListener& GestureEventListener::GetInstance(474,13522
+
+elf_parsing/lib_parse_elf.c,1275
+	ELF_PARSE_SUCCESS 14,214
+	ELF_PARSE_NOT_ELF,15,238
+	ELF_PARSE_INVALID_CLASS,16,258
+	ELF_PARSE_MMAP_ERROR,17,284
+	ELF_PARSE_MUNMAP_ERROR,18,307
+	ELF_PARSE_NO_MEM19,332
+static size_t fsize(22,354
+static void *mmap_file(mmap_file30,465
+static int munmap_file(41,725
+static int check_elf(51,867
+static Elf_Half get_machine_type(73,1314
+static const char *get_plt_section_name(get_plt_section_name80,1436
+static const Elf_Shdr *get_section_by_index(get_section_by_index99,1728
+static const Elf_Shdr *get_section_by_name(get_section_by_name109,1990
+static const Elf_Shdr *get_section_by_type(get_section_by_type126,2495
+static void __do_free_sym_entry(140,2840
+static struct sym_table_entry *new_sym_entry(new_sym_entry156,3053
+get_sym_addr(190,3697
+get_got_plt_addrs(275,5433
+static int __do_get_plt_addrs(327,6510
+static const char *__do_get_interp(__do_get_interp360,7164
+static int __do_get_syms(381,7606
+static void __attribute__((constructor)) __lib_parse_elf_ctor(419,8341
+static void __attribute__((destructor)) __lib_parse_elf_dtor(423,8414
+int get_interp(429,8488
+int get_all_symbols(459,8960
+int get_symbols_by_names(464,9093
+int get_plt_addrs(469,9278
+void free_sym_entry(509,9977
+const char *get_str_error(get_str_error514,10062
+
+elf_parsing/parse_elf.c,165
+unsigned long get_addr_by_name(10,126
+void print_sym_table(29,532
+void print_sym_addrs(45,775
+void clean_syms(58,997
+void print_usage(69,1183
+int main(78,1368
+
+elf_parsing/parse_elf.h,870
+#define _PARSE_ELF_2,20
+#define SIZEOF_VOID_P 10,99
+typedef Elf64_Half Elf_Half;12,146
+typedef Elf64_Ehdr Elf_Ehdr;13,175
+typedef Elf64_Shdr Elf_Shdr;14,204
+typedef Elf64_Sym  Elf_Sym;15,233
+typedef Elf64_Addr Elf_Addr;16,261
+typedef Elf64_Word Elf_Word;17,290
+typedef Elf64_Rel Elf_Rel;18,319
+#define ELFCLASS 19,346
+#define ELF_R_SYM(20,374
+#define ELF_ST_TYPE(21,410
+typedef Elf32_Half Elf_Half;23,475
+typedef Elf32_Ehdr Elf_Ehdr;24,504
+typedef Elf32_Shdr Elf_Shdr;25,533
+typedef Elf32_Sym  Elf_Sym;26,562
+typedef Elf32_Addr Elf_Addr;27,590
+typedef Elf32_Word Elf_Word;28,619
+typedef Elf32_Rel Elf_Rel;29,648
+#define ELFCLASS 30,675
+#define ELF_R_SYM(31,703
+#define ELF_ST_TYPE(32,739
+struct sym_table_entry 38,822
+	struct sym_table_entry *next;next39,847
+	struct sym_table_entry *prev;prev40,878
+	char* name;41,909
+	Elf_Addr addr;42,922
+
+probe_third/libdaemon.c,31
+int daemon_close_allv(39,1166
+
+probe_file/da_io_stdc.c,1047
+static inline char *get_abs_path(get_abs_path49,1396
+FILE* PROBE_NAME(60,1643
+FILE* PROBE_NAME(79,2072
+FILE* PROBE_NAME(99,2582
+int PROBE_NAME(114,2900
+int PROBE_NAME(126,3175
+FILE * PROBE_NAME(154,3765
+int PROBE_NAME(167,4048
+int PROBE_NAME(180,4408
+int PROBE_NAME(193,4807
+long int PROBE_NAME(205,5153
+void PROBE_NAME(221,5455
+void PROBE_NAME(234,5713
+int PROBE_NAME(247,5981
+int PROBE_NAME(259,6246
+int PROBE_NAME(271,6521
+int PROBE_NAME(289,6967
+int PROBE_NAME(306,7474
+int PROBE_NAME(323,7973
+char* PROBE_NAME(341,8404
+int PROBE_NAME(358,8869
+int PROBE_NAME(375,9343
+int PROBE_NAME(392,9786
+int PROBE_NAME(409,10187
+int PROBE_NAME(426,10655
+size_t PROBE_NAME(443,11110
+size_t PROBE_NAME(467,11795
+int PROBE_NAME(494,12653
+int PROBE_NAME(516,13195
+int PROBE_NAME(539,13782
+int PROBE_NAME(559,14194
+int PROBE_NAME(578,14592
+int PROBE_NAME(593,14893
+char* PROBE_NAME(608,15209
+int PROBE_NAME(625,15584
+void PROBE_NAME(643,15900
+void PROBE_NAME(657,16214
+void PROBE_NAME(671,16597
+int PROBE_NAME(684,16874
+
+probe_file/da_io.h,1006
+#define __DA_IO_H__34,1121
+#define GET_FD_FROM_FILEP(66,2089
+#define DECLARE_VARIABLE_FD	71,2204
+#define POST_PACK_PROBEBLOCK_MIDDLE_FD(83,2661
+#define POST_PACK_PROBEBLOCK_MIDDLE_NOFD(90,2889
+#define BEFORE_ORIGINAL_FILE(100,3228
+#define BEFORE_ORIGINAL_FILE_NOFILTER(105,3364
+#define DEFINE_FILESIZE_FD(115,3699
+#define DEFINE_FILESIZE_FP(116,3776
+#define DEFINE_FILESIZE_0(117,3867
+#define AFTER_PACK_ORIGINAL_FD(124,4131
+#define AFTER_PACK_ORIGINAL_FD_MIDDLE(137,4666
+#define AFTER_PACK_ORIGINAL_NOFD(150,5212
+#define AFTER_PACK_ORIGINAL_FILEP(160,5627
+static inline bool stat_regular_or_socket_p(180,6470
+#define BEFORE_ORIGINAL_START_END_FD(184,6594
+#define AFTER_ORIGINAL_START_END_FD(199,7232
+#define BEFORE_ORIGINAL_START_END_NOFD(216,7824
+#define BEFORE_ORIGINAL_START_END_FILEP(227,8297
+#define AFTER_ORIGINAL_START_END_NOFD(241,8879
+#define AFTER_ORIGINAL_START_END_FILEP(252,9343
+static inline ssize_t get_fd_filesize(268,9942
+static inline int checked_fileno(282,10261
+
+probe_file/da_io_posix.c,633
+static inline char *get_abs_path(get_abs_path56,1519
+int PROBE_NAME(67,1739
+int PROBE_NAME(93,2251
+int PROBE_NAME(119,2798
+int PROBE_NAME(136,3170
+off_t PROBE_NAME(161,3667
+int PROBE_NAME(177,4041
+int PROBE_NAME(191,4265
+int PROBE_NAME(207,4511
+int PROBE_NAME(222,4848
+int PROBE_NAME(236,5162
+int PROBE_NAME(262,5694
+ssize_t PROBE_NAME(277,6124
+ssize_t PROBE_NAME(298,6744
+ssize_t PROBE_NAME(317,7259
+ssize_t PROBE_NAME(339,7915
+ssize_t PROBE_NAME(360,8476
+ssize_t PROBE_NAME(379,9012
+int PROBE_NAME(401,9554
+int PROBE_NAME(464,10989
+int PROBE_NAME(478,11203
+int PROBE_NAME(495,11501
+int PROBE_NAME(507,11777
+
+feature_tests/new_capi_appfw.cpp,18
+int main(35,1115
+
+custom_chart/da_chart_dummy.c,238
+#define _USE_DA_31,1026
+#define __unused 37,1230
+void da_mark(38,1271
+da_handle da_create_chart(43,1345
+da_handle da_create_series(48,1415
+da_handle da_create_default_series(56,1591
+int da_set_callback(62,1709
+void da_log(70,1903
+
+custom_chart/da_chart.h,1046
+#define __DA_CHART_H__32,1049
+#define ERR_MAX_CHART_NUMBER	39,1127
+#define ERR_WRONG_HANDLE	40,1202
+#define ERR_WRONG_PARAMETER	41,1276
+	CHART_TYPE_AUTO 45,1346
+	CHART_TYPE_LINE 46,1368
+	CHART_TYPE_BAR 47,1390
+	CHART_TYPE_AREA 48,1411
+	CHART_TYPE_STEP 49,1433
+} series_type;50,1454
+	CHART_COLOR_AUTO 54,1485
+	CHART_COLOR_BLUE 55,1508
+	CHART_COLOR_GREEN 56,1531
+	CHART_COLOR_RED 57,1555
+	CHART_COLOR_BROWN 58,1577
+	CHART_COLOR_PURPLE 59,1601
+	CHART_COLOR_NAVY 60,1626
+	CHART_COLOR_CHOCOLATE 61,1649
+	CHART_COLOR_INDIGO 62,1677
+	CHART_COLOR_MAGENTA 63,1702
+	CHART_COLOR_TEAL 64,1728
+} chart_color;65,1751
+	CHART_NO_CYCLE 69,1782
+	CHART_INTERVAL_10MSEC 70,1803
+	CHART_INTERVAL_100MSEC 71,1831
+	CHART_INTERVAL_1SEC 72,1860
+} chart_interval;73,1885
+typedef int da_handle;75,1904
+typedef float (* da_user_data_2_chart_data)76,1927
+#define da_create_chart(95,2587
+#define da_create_series(96,2621
+#define da_create_default_series(97,2662
+#define da_set_callback(98,2705
+#define da_log(99,2746
+#define da_mark(102,2769
+
+custom_chart/da_chart.c,1554
+#define _USE_DA_45,1435
+#define ERR_THREAD_CREATE_FAIL	51,1526
+#define MAX_TITLE_LENGTH	53,1588
+#define MAX_CHART_HANDLE	54,1617
+#define MAX_SERIES_PER_CHART	55,1672
+typedef struct _chart_interval_callback65,2065
+	da_handle chart_handle;67,2107
+	da_handle series_handle;68,2132
+	da_user_data_2_chart_data callback;69,2158
+	void* user_data;70,2195
+	struct _chart_interval_callback* next;71,2213
+} chart_interval_callback;72,2253
+	int			timerfd;76,2298
+	pthread_t	thread_handle;77,2314
+	chart_interval_callback*	callback_list;78,2340
+	pthread_mutex_t		list_mutex;79,2381
+} interval_manager;80,2411
+	int			chart_handle_index;84,2449
+	int			series_handle_index[series_handle_index85,2476
+	int			interval_for_series[interval_for_series86,2522
+	interval_manager	interval_10ms;87,2590
+	interval_manager	interval_100ms;88,2623
+	interval_manager	interval_1s;89,2657
+} chart_handle_maintainer;90,2688
+chart_handle_maintainer chm;92,2716
+__thread pid_t cur_thread 94,2746
+#define DECLARE_CHART_VARIABLE	101,2956
+void* _chart_timerThread(109,3248
+static int start_callback_thread(154,4166
+static void add_to_callback_list(221,6009
+static void remove_all_callback_list(263,7500
+static void remove_from_callback_list(298,8497
+void __attribute__((constructor)) _init_lib(393,10687
+void __attribute__((destructor)) _fini_lib(407,11156
+void da_mark(430,11982
+da_handle da_create_chart(445,12314
+da_handle da_create_series(472,12912
+da_handle da_create_default_series(506,13829
+int da_set_callback(512,13999
+void da_log(545,14851
+
+probe_memory/libdamemalloc.c,178
+void *PROBE_NAME(PROBE_NAME49,1437
+void PROBE_NAME(78,2014
+void *PROBE_NAME(PROBE_NAME104,2521
+void *temp_calloc(temp_calloc136,3238
+void *PROBE_NAME(PROBE_NAME145,3442
+
+probe_memory/libdanew.cpp,370
+void *operator new(operator new47,1351
+void *operator new[](operator new[]77,2011
+void operator delete(operator delete107,2676
+void operator delete[](operator delete[]143,3427
+void *operator new(operator new179,4182
+void *operator new[](operator new[]209,4957
+void operator delete(operator delete239,5736
+void operator delete[](operator delete[]275,6631
+
+probe_memory/da_memory.h,199
+#define __DA_MEMORY_H__34,1125
+#define INTERNAL_MALLOC_FILTERING	39,1229
+#define INTERNAL_FREE_FILTERING	40,1269
+#define INTERNAL_NEW_FILTERING	41,1308
+#define INTERNAL_DELETE_FILTERING	42,1346
+
+probe_memory/libdamemmanage.c,99
+void *PROBE_NAME(PROBE_NAME49,1409
+int PROBE_NAME(77,1981
+void *PROBE_NAME(PROBE_NAME104,2584
+
+probe_ui/da_ui.h,117
+#define __DA_SNAPSHOT_H__32,1052
+#define BEFORE_ORIGINAL_SNAPSHOT(52,1590
+#define AFTER_ORIGINAL_SNAPSHOT(55,1680
+
+probe_ui/capi_capture.c,25
+void PROBE_NAME(38,1133
+
+probe_ui/tizen_frameani.h,227
+#define __TIZEN_FRAMEANI_H__32,1055
+using namespace Tizen::Ui::Animations;36,1103
+class DAFrameAnimationEventListener 39,1180
+	static DAFrameAnimationEventListener rInstance;DAFrameAnimationEventListener::rInstance53,1752
+
+include/damaps.h,0

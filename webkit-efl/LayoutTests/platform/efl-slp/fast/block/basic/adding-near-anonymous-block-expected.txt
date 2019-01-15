@@ -1,0 +1,42 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 79x14
+          text run at (0,0) width 79: "This is a test for "
+        RenderInline {I} at (0,0) size 782x28
+          RenderInline {A} at (0,0) size 231x14 [color=#0000EE]
+            RenderText {#text} at (79,0) size 231x14
+              text run at (79,0) width 231: "https://bugs.webkit.org/show_bug.cgi?id=18809"
+          RenderText {#text} at (310,0) size 782x28
+            text run at (310,0) width 3: " "
+            text run at (313,0) width 469: "Forms with block level generated content and absolutely positioned labels break inline layout (fixed"
+            text run at (0,14) width 49: "on reflow)"
+        RenderText {#text} at (49,14) size 3x14
+          text run at (49,14) width 3: "."
+      RenderBlock {DIV} at (0,40) size 784x28
+        RenderBlock (anonymous) at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 73x14
+            text run at (0,0) width 73: "This should be "
+          RenderText {#text} at (73,0) size 59x14
+            text run at (73,0) width 59: "a single line."
+        RenderBlock (generated) at (0,14) size 784x14
+          RenderText at (0,0) size 146x14
+            text run at (0,0) width 146: "This should be the second line."
+      RenderBlock {DIV} at (0,68) size 784x14
+        RenderBlock {DIV} at (0,0) size 784x0
+        RenderBlock (anonymous) at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 73x14
+            text run at (0,0) width 73: "This should be "
+          RenderText {#text} at (73,0) size 59x14
+            text run at (73,0) width 59: "a single line."
+      RenderBlock {DIV} at (0,82) size 784x14
+        RenderBlock {DIV} at (0,0) size 784x0
+        RenderBlock (anonymous) at (0,0) size 784x14
+          RenderText {#text} at (73,0) size 59x14
+            text run at (73,0) width 59: "a single line."
+          RenderBlock (floating) {SPAN} at (0,0) size 73x14
+            RenderText {#text} at (0,0) size 73x14
+              text run at (0,0) width 73: "This should be "

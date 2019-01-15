@@ -1,0 +1,18 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x100
+  RenderBlock {HTML} at (0,0) size 800x100
+    RenderBody {BODY} at (8,8) size 784x80
+      RenderBlock {DIV} at (0,0) size 784x80
+        RenderBlock (anonymous) at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 145x14
+            text run at (0,0) width 145: "This div contains 3 addresses :"
+        RenderBlock {ADDRESS} at (12,14) size 772x14
+          RenderText {#text} at (0,0) size 191x14
+            text run at (0,0) width 191: "A first address with normal background"
+        RenderBlock {ADDRESS} at (12,40) size 772x14 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 264x14
+            text run at (0,0) width 264: "A second address that should have a green background"
+        RenderBlock {ADDRESS} at (12,66) size 772x14 [bgcolor=#00FF00]
+          RenderText {#text} at (0,0) size 254x14
+            text run at (0,0) width 254: "A third address that should have a green background"

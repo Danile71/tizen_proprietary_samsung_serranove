@@ -1,0 +1,24 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x314
+  RenderBlock {HTML} at (0,0) size 980x314
+    RenderBody {BODY} at (8,16) size 964x290
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 67x19
+          text run at (0,0) width 67: "Test for "
+        RenderInline {A} at (0,0) size 380x19 [color=#0000EE]
+          RenderText {#text} at (67,0) size 380x19
+            text run at (67,0) width 380: "https://bugs.webkit.org/show_bug.cgi?id=22472"
+        RenderText {#text} at (447,0) size 5x19
+          text run at (447,0) width 5: " "
+        RenderInline {I} at (0,0) size 935x38
+          RenderText {#text} at (452,0) size 935x38
+            text run at (452,0) width 483: "Selection is not completely erased when a replaced element"
+            text run at (0,19) width 53: "moves"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock (anonymous) at (0,54) size 964x236
+        RenderText {#text} at (0,0) size 0x0
+layer at (8,70) size 214x232
+  RenderImage {IMG} at (0,0) size 214x232
+selection start: position 0 of child 3 {IMG} of body
+selection end:   position 1 of child 3 {IMG} of body

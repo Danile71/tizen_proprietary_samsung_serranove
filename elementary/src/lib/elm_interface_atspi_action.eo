@@ -1,0 +1,79 @@
+mixin Elm_Interface_Atspi_Action ()
+{
+   legacy_prefix: null;
+   eo_prefix: elm_interface_atspi_action;
+   data: null;
+   properties {
+      name @protected {
+         get {
+            /*@ Gets action name for given id */
+         }
+         values {
+            const(char)* name;
+         }
+         keys {
+            int id;
+         }
+      }
+      localized_name @protected {
+         get {
+            /*@ Gets localized action name for given id */
+         }
+         values {
+            const(char)* name;
+         }
+         keys {
+            int id;
+         }
+      }
+      description @protected {
+         get {
+            /*@ Gets action description for given id */
+         }
+         set {
+            /*@ Sets action description for given id */
+            return: bool;
+         }
+         values {
+            const(char)* description;
+         }
+         keys {
+            int id;
+         }
+      }
+      actions @protected {
+         get {
+            /*@ Get list of available widget actions */
+         }
+         values {
+            list *actions; /*@ contains statically allocated strings */
+         }
+      }
+   }
+   methods {
+      action_do @protected {
+         /*@ Performs action on given widget. */
+         params {
+            @in int id;
+         }
+         return: bool;
+      }
+      keybinding_get @protected {
+         /*@ Gets configured keybinding for specific action and widget.
+             returned pointer should be free by a user.*/
+         params {
+            @in  int id;
+         }
+         return: char *;
+      }
+   }
+   implements {
+      @virtual .action_do;
+      @virtual .keybinding_get;
+      @virtual .name.get;
+      @virtual .name.set;
+      @virtual .description.get;
+      @virtual .description.set;
+      @virtual .actions.get;
+   }
+}

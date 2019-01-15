@@ -1,0 +1,23 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x104
+  RenderBlock {html} at (0,0) size 980x104
+    RenderInline {body} at (0,0) size 251x19
+      RenderText {#text} at (0,0) size 0x0
+      RenderInline {h1} at (0,0) size 69x19
+        RenderText {#text} at (0,85) size 69x19
+          text run at (0,85) width 69: "Test 123"
+      RenderText {#text} at (69,85) size 5x19
+        text run at (69,85) width 5: " "
+      RenderSVGRoot {svg} at (74,0) size 100x100
+        RenderSVGText {text} at (0,-15) size 245x19 contains 1 chunk(s)
+          RenderSVGInlineText {#text} at (0,0) size 245x19
+            chunk 1 text run 1 at (0.00,0.00) startOffset 0 endOffset 29 width 245.00: "You should see an error above"
+        RenderSVGRect {rect} at (74,0) size 100x100 [fill={[type=SOLID] [color=#008000]}] [x=0.00] [y=0.00] [width=100.00] [height=100.00]
+      RenderText {#text} at (174,85) size 5x19
+        text run at (174,85) width 5: " "
+      RenderInline {h1} at (0,0) size 72x19
+        RenderText {#text} at (179,85) size 72x19
+          text run at (179,85) width 72: "Test ABC"
+      RenderText {#text} at (0,0) size 0x0
+    RenderText {#text} at (0,0) size 0x0

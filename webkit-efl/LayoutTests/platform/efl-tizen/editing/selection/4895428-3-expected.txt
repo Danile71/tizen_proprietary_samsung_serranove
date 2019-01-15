@@ -1,0 +1,26 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 962x57
+          text run at (0,0) width 962: "We delay focus until mouse up if the mouse down occurs inside a focusable node that is inside an already focused node."
+          text run at (0,19) width 711: "But we shouldn't delay focus unless the mouse down occurs in an already focused node. "
+          text run at (711,19) width 239: "The text field below should be"
+          text run at (0,38) width 73: "focused. "
+        RenderInline {B} at (0,0) size 885x19
+          RenderText {#text} at (73,38) size 885x19
+            text run at (73,38) width 885: "To run manually, select everything from 'foo' though 'baz', then mouse down inside the text field."
+      RenderBlock {DIV} at (0,73) size 964x67
+        RenderBlock {DIV} at (0,0) size 964x19
+          RenderText {#text} at (0,0) size 26x19
+            text run at (0,0) width 26: "foo"
+        RenderBlock (anonymous) at (0,19) size 964x29
+          RenderTextControl {INPUT} at (2,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderBlock {DIV} at (0,48) size 964x19
+          RenderText {#text} at (0,0) size 28x19
+            text run at (0,0) width 28: "baz"
+layer at (14,108) size 164x15
+  RenderBlock {DIV} at (4,6) size 164x15
+caret: position 0 of child 0 {DIV} of {#shadow-root} of child 1 {INPUT} of child 2 {DIV} of body

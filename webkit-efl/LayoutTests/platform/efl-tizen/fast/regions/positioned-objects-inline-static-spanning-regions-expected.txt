@@ -1,0 +1,88 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x534
+  RenderBlock {HTML} at (0,0) size 800x534
+    RenderBody {BODY} at (8,16) size 784x510
+      RenderBlock {P} at (0,0) size 784x38
+        RenderText {#text} at (0,0) size 745x38
+          text run at (0,0) width 745: "The green positioned object should go through all three regions. Its left edge should have the"
+          text run at (0,19) width 546: "same offset from the left side of the light grey boxes in each region."
+      RenderBlock {DIV} at (0,54) size 784x456
+        RenderRegion {DIV} at (0,0) size 202x152 [border: (1px solid #000000)]
+        RenderRegion {DIV} at (0,152) size 302x182 [border: (1px solid #000000)]
+        RenderRegion {DIV} at (0,334) size 122x122 [border: (1px solid #000000)]
+Flow Threads
+  Thread with flow-name 'flow1'
+    layer at (0,0) size 300x450
+      RenderFlowThread at (0,0) size 300x450
+        RenderBlock {DIV} at (0,30) size 300x350
+          RenderBlock {DIV} at (30,0) size 240x350 [bgcolor=#CCCCCC]
+            RenderText {#text} at (-10,0) size 40x19
+              text run at (-10,0) width 40: "        "
+            RenderText {#text} at (0,0) size 0x0
+    layer at (70,0) size 150x450
+      RenderBlock (positioned) {SPAN} at (70,0) size 150x450 [color=#00A000] [bgcolor=#00A000]
+        RenderText {#text} at (-10,0) size 87x19
+          text run at (-10,0) width 87: "Some text."
+        RenderBR {BR} at (77,0) size 0x19
+        RenderText {#text} at (-10,19) size 87x19
+          text run at (-10,19) width 87: "Some text."
+        RenderBR {BR} at (77,19) size 0x19
+        RenderText {#text} at (-10,38) size 87x19
+          text run at (-10,38) width 87: "Some text."
+        RenderBR {BR} at (77,38) size 0x19
+        RenderText {#text} at (-10,57) size 87x19
+          text run at (-10,57) width 87: "Some text."
+        RenderBR {BR} at (77,57) size 0x19
+        RenderText {#text} at (-10,76) size 87x19
+          text run at (-10,76) width 87: "Some text."
+        RenderBR {BR} at (77,76) size 0x19
+        RenderText {#text} at (-10,95) size 87x19
+          text run at (-10,95) width 87: "Some text."
+        RenderBR {BR} at (77,95) size 0x19
+        RenderText {#text} at (-10,114) size 87x19
+          text run at (-10,114) width 87: "Some text."
+        RenderBR {BR} at (77,114) size 0x19
+        RenderText {#text} at (0,150) size 87x19
+          text run at (0,150) width 87: "Some text."
+        RenderBR {BR} at (87,150) size 0x19
+        RenderText {#text} at (0,169) size 87x19
+          text run at (0,169) width 87: "Some text."
+        RenderBR {BR} at (87,169) size 0x19
+        RenderText {#text} at (0,188) size 87x19
+          text run at (0,188) width 87: "Some text."
+        RenderBR {BR} at (87,188) size 0x19
+        RenderText {#text} at (0,207) size 87x19
+          text run at (0,207) width 87: "Some text."
+        RenderBR {BR} at (87,207) size 0x19
+        RenderText {#text} at (0,226) size 87x19
+          text run at (0,226) width 87: "Some text."
+        RenderBR {BR} at (87,226) size 0x19
+        RenderText {#text} at (0,245) size 87x19
+          text run at (0,245) width 87: "Some text."
+        RenderBR {BR} at (87,245) size 0x19
+        RenderText {#text} at (0,264) size 87x19
+          text run at (0,264) width 87: "Some text."
+        RenderBR {BR} at (87,264) size 0x19
+        RenderText {#text} at (0,283) size 87x19
+          text run at (0,283) width 87: "Some text."
+        RenderBR {BR} at (87,283) size 0x19
+        RenderText {#text} at (0,302) size 87x19
+          text run at (0,302) width 87: "Some text."
+        RenderBR {BR} at (87,302) size 0x19
+        RenderText {#text} at (-18,330) size 46x38
+          text run at (-18,330) width 46: "Some"
+          text run at (-18,349) width 36: "text."
+        RenderBR {BR} at (18,349) size 0x19
+        RenderText {#text} at (-18,368) size 46x38
+          text run at (-18,368) width 46: "Some"
+          text run at (-18,387) width 36: "text."
+        RenderBR {BR} at (18,387) size 0x19
+        RenderText {#text} at (-18,406) size 46x38
+          text run at (-18,406) width 46: "Some"
+          text run at (-18,425) width 36: "text."
+        RenderBR {BR} at (18,425) size 0x19
+  Regions for flow 'flow1'
+    RenderRegion {DIV} #region1
+    RenderRegion {DIV} #region2
+    RenderRegion {DIV} #region3

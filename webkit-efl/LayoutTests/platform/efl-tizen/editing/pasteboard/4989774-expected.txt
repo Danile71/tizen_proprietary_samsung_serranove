@@ -1,0 +1,15 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderImage {IMG} at (0,0) size 76x103
+      RenderBR {BR} at (76,103) size 0x0
+      RenderText {#text} at (0,103) size 964x38
+        text run at (0,103) width 865: "This tests for a bug where an images pasted on the same line would appear on different lines. "
+        text run at (865,103) width 99: "You should"
+        text run at (964,103) width 0: " "
+        text run at (0,122) width 526: "see several pictures above all in the same line/paragraph."
+      RenderText {#text} at (0,0) size 0x0
+      RenderText {#text} at (0,0) size 0x0
+caret: position 164 of child 2 {#text} of body

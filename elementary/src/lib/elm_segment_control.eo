@@ -1,0 +1,239 @@
+class Elm_Segment_Control (Elm_Layout)
+{
+   eo_prefix: elm_obj_segment_control;
+   properties {
+      item_count {
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get the Segment items count from segment control.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return Segment items count.
+
+            @remark It will just return the number of items added to segment control @p obj.
+
+            @ingroup SegmentControl */
+            return: int;
+         }
+      }
+      item_selected {
+         get {
+            /*@
+            @MOBILE_ONLY
+
+            @brief Get the selected item.
+
+            @if MOBILE @since_tizen 2.3
+            @endif
+
+            @return The selected item or @c NULL if none of segment items is
+            selected.
+
+            @remark The selected item can be unselected with function
+            elm_segment_control_item_selected_set().
+
+            @remark The selected item always will be highlighted on segment control.
+
+            @ingroup SegmentControl */
+            return: Elm_Object_Item *;
+         }
+      }
+   }
+   methods {
+      item_label_get @const {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Get the label of item.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return The label of the item at @p index.
+
+         @remark The return value is a pointer to the label associated to the item when
+         it was created, with function elm_segment_control_item_add(), or later
+         with function elm_object_item_text_set. If no label
+         was passed as argument, it will return @c NULL.
+
+         @see elm_object_item_text_set() for more details.
+         @see elm_segment_control_item_add()
+
+         @ingroup SegmentControl */
+         return: const(char)*;
+         params {
+            @in int idx; /*@ The index of the segment item. */
+         }
+      }
+      item_insert_at {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Insert a new item to the segment control object at specified position.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return The created item or @c NULL upon failure.
+
+         @remark Index values must be between @c 0, when item will be prepended to
+         segment control, and items count, that can be get with
+         elm_segment_control_item_count_get(), case when item will be appended
+         to segment control, just like elm_segment_control_item_add().
+
+         @remark Items created with this function can be deleted with function
+         elm_object_item_del() or elm_segment_control_item_del_at().
+
+         @remark @p label set to @c NULL is different from empty string "".
+         If an item
+         only has icon, it will be displayed bigger and centered. If it has
+         icon and label, even that an empty string, icon will be smaller and
+         positioned at left.
+
+         @see elm_segment_control_item_add()
+         @see elm_segment_control_item_count_get()
+         @see elm_object_item_del()
+
+         @ingroup SegmentControl */
+
+         return: Elm_Object_Item *;
+         params {
+            @in Evas_Object *icon; /*@ The icon object to use for the left side of the item. An
+            icon can be any Evas object, but usually it is an icon created
+            with elm_icon_add(). */
+            @in const(char)* label; /*@ The label of the item. */
+            @in int idx; /*@ Item position. Value should be between 0 and items count. */
+         }
+      }
+      item_get @const {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Get the item placed at specified index.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return The segment control item or @c NULL on failure.
+
+         @remark Index is the position of an item in segment control widget. Its
+         range is from @c 0 to <tt> count - 1 </tt>.
+         Count is the number of items, that can be get with
+         elm_segment_control_item_count_get().
+
+         @ingroup SegmentControl */
+         return: Elm_Object_Item *;
+         params {
+            @in int idx; /*@ The index of the segment item. */
+         }
+      }
+      item_del_at {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Remove a segment control item at given index from its parent,
+         deleting it.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @remark Items can be added with elm_segment_control_item_add() or
+         elm_segment_control_item_insert_at().
+
+         @ingroup SegmentControl */
+
+         params {
+            @in int idx; /*@ The position of the segment control item to be deleted. */
+         }
+      }
+      item_add {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Append a new item to the segment control object.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return The created item or @c NULL upon failure.
+
+         @remark A new item will be created and appended to the segment control, i.e., will
+         be set as @b last item.
+
+         @remark If it should be inserted at another position,
+         elm_segment_control_item_insert_at() should be used instead.
+
+         @remark Items created with this function can be deleted with function
+         elm_object_item_del() or elm_object_item_del_at().
+
+         @remark @p label set to @c NULL is different from empty string "".
+         If an item
+         only has icon, it will be displayed bigger and centered. If it has
+         icon and label, even that an empty string, icon will be smaller and
+         positioned at left.
+
+         @see elm_segment_control_item_insert_at()
+         @see elm_object_item_del()
+
+         @ingroup SegmentControl */
+
+         return: Elm_Object_Item *;
+         params {
+            @in Evas_Object *icon; /*@ The icon object to use for the left side of the item. An
+            icon can be any Evas object, but usually it is an icon created
+            with elm_icon_add(). */
+            @in const(char)* label; /*@ The label of the item.
+            Note that, NULL is different from empty string "". */
+         }
+      }
+      item_icon_get @const {
+         /*@
+         @MOBILE_ONLY
+
+         @brief Get the icon associated to the item.
+
+         @if MOBILE @since_tizen 2.3
+         @endif
+
+         @return The left side icon associated to the item at @p index.
+
+         @remark The return value is a pointer to the icon associated to the item when
+         it was created, with function elm_segment_control_item_add(), or later
+         with function elm_object_item_part_content_set(). If no icon
+         was passed as argument, it will return @c NULL.
+
+         @see elm_segment_control_item_add()
+         @see elm_object_item_part_content_set()
+
+         @ingroup SegmentControl */
+         return: Evas_Object *;
+         params {
+            @in int idx; /*@ The index of the segment item. */
+         }
+      }
+   }
+   implements {
+      class.constructor;
+      Eo.Base.constructor;
+      Evas.Object_Smart.add;
+      Evas.Object_Smart.del;
+      Elm_Widget.theme_apply;
+      Elm_Widget.focus_next_manager_is;
+      Elm_Widget.focus_next;
+      Elm_Widget.focus_direction_manager_is;
+      Elm_Widget.access;
+      Elm_Widget.disable;
+      Elm_Widget.translate;
+      Elm_Layout.sizing_eval;
+   }
+   events {
+      changed;
+      language,changed;
+      access,changed;
+   }
+
+}

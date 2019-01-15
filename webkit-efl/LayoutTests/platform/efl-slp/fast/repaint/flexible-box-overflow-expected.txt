@@ -1,0 +1,40 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x552
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 172x14
+          text run at (0,0) width 172: "This is a test for regressions against "
+        RenderInline {I} at (0,0) size 585x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (172,0) size 262x14
+              text run at (172,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=8056"
+          RenderText {#text} at (434,0) size 323x14
+            text run at (434,0) width 3: " "
+            text run at (437,0) width 320: "Flexible boxes do not repaint their top, left and children's overflows"
+        RenderText {#text} at (757,0) size 3x14
+          text run at (757,0) width 3: "."
+      RenderBlock {HR} at (0,26) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,34) size 784x100
+        RenderDeprecatedFlexibleBox {DIV} at (10,10) size 80x80 [bgcolor=#FFFF00]
+          RenderBlock {DIV} at (-10,-10) size 100x100 [border: (1px solid #000000)]
+            RenderText {#text} at (1,1) size 133x14
+              text run at (1,1) width 133: "Lorem ipsum dolor sit amet."
+      RenderBlock {DIV} at (0,154) size 784x100
+        RenderDeprecatedFlexibleBox {DIV} at (10,10) size 80x80 [bgcolor=#FFFF00]
+          RenderBlock {DIV} at (-10,-10) size 100x100 [border: (1px solid #000000)]
+      RenderBlock {DIV} at (0,274) size 784x100
+        RenderDeprecatedFlexibleBox {DIV} at (10,10) size 80x80 [bgcolor=#FFFF00]
+          RenderBlock {DIV} at (-10,-10) size 100x100 [border: (1px solid #000000)]
+      RenderBlock {DIV} at (0,394) size 784x100
+        RenderDeprecatedFlexibleBox {DIV} at (10,10) size 80x80 [bgcolor=#FFFF00]
+          RenderBlock {DIV} at (-10,-10) size 100x100 [border: (1px solid #000000)]
+            RenderText {#text} at (1,1) size 98x98
+              text run at (1,1) width 91: "Lorem ipsum dolor"
+              text run at (1,15) width 39: "sit amet,"
+              text run at (1,29) width 58: "consectetuer"
+              text run at (1,43) width 98: "adipiscing elit. Etiam"
+              text run at (1,57) width 69: "et ipsum. Nam"
+              text run at (1,71) width 95: "consectetuer mi eget"
+              text run at (1,85) width 23: "velit."

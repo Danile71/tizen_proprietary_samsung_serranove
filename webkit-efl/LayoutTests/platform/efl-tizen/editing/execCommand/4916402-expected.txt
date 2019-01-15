@@ -1,0 +1,22 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x711
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 934x38
+          text run at (0,0) width 934: "This tests to see that creating an ordered list item from the last list item in an unordered list creates a new list that is"
+          text run at (0,19) width 252: "not a sublist of the original one."
+      RenderBlock {DIV} at (0,54) size 964x54
+        RenderBlock {UL} at (0,0) size 964x19
+          RenderListItem {LI} at (40,0) size 924x19
+            RenderListMarker at (-18,0) size 7x19: bullet
+            RenderText {#text} at (0,0) size 26x19
+              text run at (0,0) width 26: "foo"
+        RenderBlock {OL} at (0,35) size 964x19
+          RenderListItem {LI} at (40,0) size 924x19
+            RenderListMarker at (-25,0) size 20x19: "1"
+            RenderText {#text} at (0,0) size 27x19
+              text run at (0,0) width 27: "bar"
+        RenderBlock (anonymous) at (0,70) size 964x0
+caret: position 0 of child 0 {#text} of child 0 {LI} of child 1 {OL} of child 2 {DIV} of body

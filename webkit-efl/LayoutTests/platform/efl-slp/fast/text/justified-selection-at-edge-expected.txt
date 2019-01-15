@@ -1,0 +1,28 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 290x14
+          text run at (0,0) width 290: "Test for bug 13234, layout of selected justified text is broken."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 187x14
+          text run at (0,0) width 187: "The two blue boxes should be identical."
+      RenderBlock {DIV} at (0,52) size 256x34 [border: (3px solid #0000FF)]
+        RenderText {#text} at (3,3) size 104x14
+          text run at (3,3) width 104: "Lorem ipsum dolor si"
+        RenderInline {SPAN} at (0,0) size 32x14 [color=#008000] [bgcolor=#FFFF00]
+          RenderText {#text} at (107,3) size 32x14
+            text run at (107,3) width 32: "t amet,"
+        RenderText {#text} at (139,3) size 250x28
+          text run at (139,3) width 114: " consectetuer adipiscing"
+          text run at (3,17) width 17: "elit."
+      RenderBlock (anonymous) at (0,86) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderBlock {P} at (0,112) size 256x34 [border: (3px solid #0000FF)]
+        RenderText {#text} at (3,3) size 250x28
+          text run at (3,3) width 250: "Lorem ipsum dolor sit amet, consectetuer adipiscing"
+          text run at (3,17) width 17: "elit."
+selection start: position 20 of child 0 {#text} of child 8 {P} of body
+selection end:   position 27 of child 0 {#text} of child 8 {P} of body

@@ -1,0 +1,22 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (floating) {DIV} at (5,5) size 340x144 [border: (2px solid #000000)]
+        RenderBlock {DIV} at (12,12) size 316x120
+          RenderText {#text} at (0,22) size 129x14
+            text run at (0,22) width 129: "This text should snap"
+          RenderBR {BR} at (129,33) size 0x0
+          RenderText {#text} at (0,64) size 144x14
+            text run at (0,64) width 144: "to a 36px font-size grid."
+          RenderBR {BR} at (144,75) size 0x0
+          RenderText {#text} at (0,106) size 316x14
+            text run at (0,106) width 316: "There should be lots of spacing between these lines."
+      RenderBlock (floating) {DIV} at (355,5) size 453x108 [border: (2px solid #000000)]
+        RenderText {#text} at (12,12) size 385x41
+          text run at (12,12) width 385: "This text should snap"
+        RenderBR {BR} at (397,45) size 0x0
+        RenderText {#text} at (12,54) size 429x41
+          text run at (12,54) width 429: "to a 36px font-size grid."
+        RenderBR {BR} at (441,87) size 0x0

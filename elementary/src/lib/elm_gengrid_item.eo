@@ -1,0 +1,358 @@
+class Elm_Gengrid_Item(Elm_Widget_Item)
+{
+      eo_prefix: elm_obj_gengrid_item;
+      data: Elm_Gen_Item;
+      properties {
+           prev {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the @b previous item in a gengrid widget's internal list of items,
+                      given a handle to one of those items.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark This returns the item placed before the @p item, on the container
+                      gengrid.
+
+                      @see elm_gengrid_item_next_get()
+
+                      @ingroup Gengrid
+                      */
+                }
+                values {
+                     Elm_Object_Item *item; /*@ @return The item before @p item, or @c NULL if there's none (and on errors) */
+                }
+           }
+           next {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the @b next item in a gengrid widget's internal list of items,
+                      given a handle to one of those items.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark This returns the item placed after the @p item, on the container
+                      gengrid.
+
+                      @see elm_gengrid_item_prev_get()
+
+                      @ingroup Gengrid
+                      */
+                }
+                values {
+                     Elm_Object_Item *item; /*@ @return The item after @p item, or @c NULL if there's none (and on errors) */
+                }
+           }
+           selected {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get whether a given gengrid item is selected or not
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark This API returns EINA_TRUE for all the items selected in multi-select mode as well.
+
+                      @see elm_gengrid_item_selected_set() for more details
+
+                      @ingroup Gengrid
+                      */
+                }
+                set {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Set whether a given gengrid item is selected or not
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark This sets the selected state of an item. If multi-selection is
+                      not enabled on the containing gengrid and @p selected is @c
+                      EINA_TRUE, any other previously selected items will get
+                      unselected in favor of this new one.
+
+                      @see elm_gengrid_item_selected_get()
+
+                      @ingroup Gengrid
+                      */
+                }
+                values {
+                     Eina_Bool selected; /*@ the selected state (@c EINA_TRUE selected, @c EINA_FALSE not selected) */
+                }
+           }
+           item_class {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the Gengrid Item class for the given Gengrid Item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark This returns the Gengrid_Item_Class for the given item. It can be used to examine
+                      the function pointers and item_style.
+
+                      @ingroup Gengrid
+                      */
+                }
+                values {
+                     const (Elm_Gengrid_Item_Class) *itc; /*@ Gengrid Item class for the given item */
+                }
+           }
+           index {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the index of the item. It is only valid once displayed.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @ingroup Gengrid
+                      */
+                }
+                values {
+                     int index(-1); /*@ @return the position inside the list of item. */
+                }
+           }
+           pos {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get a given gengrid item's position, relative to the whole
+                      gengrid's grid area.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark This returns the "logical" position of the item within the
+                      gengrid. For example, @c (0, 1) would stand for first row,
+                      second column.
+
+                      @ingroup Gengrid
+                      */
+                }
+                values {
+                     uint x; /*@ Pointer to variable to store the item's <b>row number</b>. */
+                     uint y; /*@ Pointer to variable to store the item's <b>column number</b>. */
+                }
+           }
+           select_mode {
+                get {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Get the gengrid item's select mode.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark (If getting mode fails, it returns ELM_OBJECT_SELECT_MODE_MAX)
+
+                      @see elm_gengrid_item_select_mode_set()
+
+                      @ingroup Gengrid
+                      */
+                }
+                set {
+                     /*@
+                      @MOBILE_ONLY
+
+                      @brief Set the gengrid item's select mode.
+
+                      @if MOBILE @since_tizen 2.3
+                      @endif
+
+                      @remark elm_gengrid_select_mode_set() changes item's select mode.
+                      - ELM_OBJECT_SELECT_MODE_DEFAULT : The item will only call their selection func and
+                           callback when first becoming selected. Any further clicks will
+                           do nothing, unless you set always select mode.
+                      - ELM_OBJECT_SELECT_MODE_ALWAYS : This means that, even if selected,
+                           every click will make the selected callbacks be called.
+                      - ELM_OBJECT_SELECT_MODE_NONE : This will turn off the ability to select the item
+                           entirely and they will neither appear selected nor call selected
+                           callback functions.
+                      - ELM_OBJECT_SELECT_MODE_DISPLAY_ONLY : This will apply no-finger-size rule
+                           with ELM_OBJECT_SELECT_MODE_NONE. No-finger-size rule makes an item can be
+                           smaller than lower limit. Clickable objects should be bigger than
+                           human touch point device (your finger) for some touch or
+                           small screen devices. So it is enabled, the item can be shrink than
+                           predefined finger-size value. And the item will be updated.
+
+                      @see elm_gengrid_item_select_mode_get()
+
+                      @ingroup Gengrid
+                      */
+                }
+                values {
+                     Elm_Object_Select_Mode mode(4); /*@ The selected mode */
+                }
+           }
+      }
+      methods {
+           /*      init { FIXME
+                   params {
+                   Evas_Smart_Cb func;
+                   const(void)* data;
+                   }
+                   }*/
+           show {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Show the portion of a gengrid's internal grid containing a given
+                 item, @b immediately.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @remark This causes gengrid to @b redraw its viewport's contents to the
+                 region containing the given @p item item, if it is not fully
+                 visible.
+
+                 @see elm_gengrid_item_bring_in()
+
+                 @ingroup Gengrid
+                 */
+                params {
+                     @in Elm_Gengrid_Item_Scrollto_Type type; /*@ Where to position the item in the viewport. */
+                }
+           }
+           bring_in {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Animatedly bring in, to the visible area of a gengrid, a given
+                 item on it.
+
+                 @if MOBILE @since_tizen 2.3
+                 @endif
+
+                 @remark This causes gengrid to jump to the given @p item and show
+                 it (by scrolling), if it is not fully visible. This will use
+                 animation to do so and take a period of time to complete.
+
+                 @see elm_gengrid_item_show()
+
+                 @ingroup Gengrid
+                 */
+                params {
+                     @in Elm_Gengrid_Item_Scrollto_Type type; /*@ Where to position the item in the viewport. */
+                }
+           }
+           all_contents_unset{
+                /*@
+                 @brief Unset all contents fetched by the item class
+
+                 @if MOBILE @since_tizen 2.4
+                 @elseif WEARABLE @since_tizen 2.4
+                 @endif
+
+                 @remark This instructs gengrid to release references to contents in the item,
+                 meaning that they will no longer be managed by gengrid and are
+                 floating "orphans" that can be re-used elsewhere if the user wants
+                 to.
+
+                 @ingroup Gengrid
+                 */
+                params {
+                     @out Eina_List *l; /*@ The contents list to return */
+                }
+           }
+           update {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Update the contents of a given gengrid item
+
+                 @remark This updates an item by calling all the item class functions
+                 again to get the contents, texts and states. Use this when the
+                 original item data has changed and you want the changes to be
+                 reflected.
+
+                 @ingroup Gengrid
+                 */
+           }
+           fields_update {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Update the part of an item
+
+                 @since_tizen 2.4
+
+                 @remark This updates an item's part by calling item's fetching functions
+                 again to get the contents, texts and states. Use this when the original
+                 item data has changed and the changes are desired to be reflected.
+                 Second parts argument is used for globbing to match '*', '?', and '.'
+                 It can be used at updating multi fields.
+                 Use elm_gengrid_realized_items_update() to update an item's all property.
+
+                 @see elm_gengrid_iitem_update()
+
+                 @ingroup Gengrid
+                 */
+                params {
+                     @in const (char) *parts; /*@ The name of item's part */
+                     @in Elm_Gengrid_Item_Field_Type itf; /*@ The type of item's part type */
+                }
+           }
+           item_class_update {
+                /*@
+                 @MOBILE_ONLY
+
+                 @brief Update the item class of a gengrid item.
+
+                 @if MOBILE @since_tizen 2.3
+                 @elseif WEARABLE @since_tizen 2.3.1
+                 @endif
+
+                 @remark This sets another class of the item, changing the way that it is
+                 displayed. After changing the item class, elm_gengrid_item_update() is
+                 called on the item @p it.
+
+                 @ingroup Gengrid
+                 */
+                params {
+                     @in const (Elm_Gengrid_Item_Class) *itc; /*@ The gengrid item class describing the function pointers and the item style. */
+                }
+           }
+      }
+      implements {
+           Eo.Base.constructor;
+           Elm_Widget_Item.del_pre;
+           Elm_Widget_Item.disable;
+           Elm_Widget_Item.signal_emit;
+           Elm_Widget_Item.focus.set;
+           Elm_Widget_Item.focus.get;
+           Elm_Widget_Item.part_text.get;
+           Elm_Widget_Item.part_content.get;
+           Elm_Widget_Item.tooltip_text_set;
+           Elm_Widget_Item.tooltip_style.get;
+           Elm_Widget_Item.tooltip_style.set;
+           Elm_Widget_Item.tooltip_window_mode.get;
+           Elm_Widget_Item.tooltip_window_mode.set;
+           Elm_Widget_Item.tooltip_content_cb_set;
+           Elm_Widget_Item.tooltip_unset;
+           Elm_Widget_Item.cursor.set;
+           Elm_Widget_Item.cursor_unset;
+           Elm_Interface_Atspi_Accessible.name.get;
+           Elm_Interface_Atspi_Accessible.state_set.get;
+           Elm_Interface_Atspi_Accessible.children.get;
+           Elm_Interface_Atspi_Component.highlight_grab;
+           Elm_Interface_Atspi_Component.highlight_clear;
+      }
+}
+

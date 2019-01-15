@@ -1,0 +1,62 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x28
+        RenderText {#text} at (0,0) size 161x14
+          text run at (0,0) width 161: "This tests for a regression against "
+        RenderInline {I} at (0,0) size 756x28
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (161,0) size 262x14
+              text run at (161,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=6418"
+          RenderText {#text} at (423,0) size 756x28
+            text run at (423,0) width 3: " "
+            text run at (426,0) width 330: "Incorrect scrollbar when using overflow:auto and word-wrap:break-"
+            text run at (0,14) width 32: "word; "
+            text run at (32,14) width 66: "in some cases"
+        RenderText {#text} at (98,14) size 3x14
+          text run at (98,14) width 3: "."
+      RenderBlock {HR} at (0,40) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,54) size 784x14
+        RenderText {#text} at (0,0) size 195x14
+          text run at (0,0) width 195: "The first line should break after \x{201C}Lorem\x{201D}."
+      RenderBlock {DIV} at (0,80) size 85x38 [border: (1px solid #00FFFF)]
+        RenderText {#text} at (1,1) size 42x35
+          text run at (1,1) width 42: "Lorem"
+          text run at (1,19) width 38: "ipsum"
+        RenderInline {SPAN} at (0,0) size 37x17
+          RenderText {#text} at (39,19) size 37x17
+            text run at (39,19) width 37: " dolor"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {HR} at (0,124) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,138) size 784x14
+        RenderText {#text} at (0,0) size 493x14
+          text run at (0,0) width 358: "The first line should break after the letter u, so that the gray border does not "
+          text run at (358,0) width 135: "extend beyond the cyan box."
+      RenderBlock {DIV} at (0,164) size 87x38 [border: (1px solid #00FFFF)]
+        RenderInline {SPAN} at (0,0) size 68x35 [border: (30px solid #C0C0C0) none]
+          RenderText {#text} at (1,1) size 68x35
+            text run at (1,1) width 68: "Loremipsu"
+            text run at (1,19) width 12: "m"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {HR} at (0,208) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,222) size 784x14
+        RenderText {#text} at (0,0) size 455x14
+          text run at (0,0) width 320: "The first line should break after the letter p, so that the text does not "
+          text run at (320,0) width 135: "extend beyond the cyan box."
+      RenderBlock {DIV} at (0,248) size 87x38 [border: (1px solid #00FFFF)]
+        RenderInline {SPAN} at (0,0) size 84x35 [border: (30px solid #C0C0C0)]
+          RenderText {#text} at (31,1) size 84x35
+            text run at (31,1) width 54: "Loremip"
+            text run at (1,19) width 26: "sum"
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {HR} at (0,292) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,306) size 784x14
+        RenderText {#text} at (0,0) size 190x14
+          text run at (0,0) width 190: "\x{201C}Dolor\x{201D} should not break into two lines."
+layer at (8,340) size 41x20
+  RenderBlock (positioned) {DIV} at (8,340) size 41x20
+    RenderBlock {DIV} at (0,0) size 41x20 [border: (1px solid #00FFFF)]
+      RenderText {#text} at (1,1) size 39x17
+        text run at (1,1) width 39: "Dolor"

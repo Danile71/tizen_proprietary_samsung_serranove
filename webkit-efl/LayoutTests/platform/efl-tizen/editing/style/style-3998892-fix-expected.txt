@@ -1,0 +1,48 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 4 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:range from 3 of #text > DIV > DIV > DIV > BODY > HTML > #document to 3 of #text > B > DIV > DIV > DIV > BODY > HTML > #document toDOMRange:range from 3 of #text > DIV > DIV > DIV > BODY > HTML > #document to 3 of #text > B > DIV > DIV > DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+EDITING DELEGATE: webViewDidChange:WebViewDidChangeNotification
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {DIV} at (0,0) size 964x184 [border: (2px solid #0000FF)]
+        RenderBlock {DIV} at (14,14) size 936x84
+          RenderText {#text} at (0,0) size 89x28
+            text run at (0,0) width 89: "Tests: "
+          RenderBR {BR} at (0,0) size 0x0
+          RenderText {#text} at (0,28) size 132x28
+            text run at (0,28) width 132: "Bug fix for "
+          RenderInline {A} at (0,0) size 327x28 [color=#0000EE]
+            RenderText {#text} at (132,28) size 327x28
+              text run at (132,28) width 327: "<rdar://problem/3998892>"
+          RenderText {#text} at (459,28) size 828x56
+            text run at (459,28) width 369: " REGRESSION (Mail): bolding a"
+            text run at (0,56) width 117: "selection "
+            text run at (117,56) width 695: "from end of line changes unselected text on starting line."
+        RenderBlock {DIV} at (14,114) size 936x56
+          RenderText {#text} at (0,0) size 246x28
+            text run at (0,0) width 246: "Expected Results: "
+          RenderBR {BR} at (246,22) size 0x0
+          RenderText {#text} at (0,28) size 743x28
+            text run at (0,28) width 743: "Should see first line (\"foo\") not bold; second line (\"bar\") bold."
+      RenderBlock {DIV} at (0,208) size 964x60
+        RenderBlock {DIV} at (0,0) size 964x60 [border: (2px solid #FF0000)]
+          RenderBlock {DIV} at (2,2) size 960x28
+            RenderText {#text} at (0,0) size 38x28
+              text run at (0,0) width 38: "foo"
+          RenderBlock {DIV} at (2,30) size 960x28
+            RenderInline {B} at (0,0) size 45x28
+              RenderText {#text} at (0,0) size 45x28
+                text run at (0,0) width 45: "bar"
+selection start: position 3 of child 0 {#text} of child 1 {DIV} of child 1 {DIV} of child 3 {DIV} of body
+selection end:   position 3 of child 0 {#text} of child 0 {B} of child 3 {DIV} of child 1 {DIV} of child 3 {DIV} of body

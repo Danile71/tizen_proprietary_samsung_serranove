@@ -1,0 +1,24 @@
+From f1ccce85da03399b7c33c35b3573df2b84d92ac7 Mon Sep 17 00:00:00 2001
+From: Elena, Reshetova <elena.reshetova@intel.com>
+Date: Mon, 20 Feb 2012 15:48:49 +0200
+Subject: [PATCH] Fix for rpmbuild functionality
+
+---
+ rpmbuild.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/rpmbuild.c b/rpmbuild.c
+index 856798a..0165f30 100644
+--- a/rpmbuild.c
++++ b/rpmbuild.c
+@@ -248,6 +248,7 @@ static int isSpecFile(const char * specfile)
+     if (f == NULL || ferror(f)) {
+ 	rpmlog(RPMLOG_ERR, _("Unable to open spec file %s: %s\n"),
+ 		specfile, strerror(errno));
++	if (f) fclose(f);
+ 	return 0;
+     }
+     count = fread(buf, sizeof(buf[0]), sizeof(buf), f);
+-- 
+1.7.4.1
+

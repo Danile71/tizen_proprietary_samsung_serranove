@@ -1,0 +1,7 @@
+[Unit]
+Description=Input Service Framework Panel
+
+[Socket]
+ListenStream=/tmp/scim-socket-frontend
+SmackLabelIPIn=*
+SmackLabelIPOut=@

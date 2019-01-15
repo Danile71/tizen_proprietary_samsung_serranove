@@ -1,0 +1,16 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x86
+  RenderBlock {html} at (0,0) size 980x86 [color=#00FF00]
+    RenderBody {body} at (8,16) size 964x54
+      RenderBlock {p} at (0,0) size 964x19 [color=#FF0000]
+        RenderInline {span} at (0,0) size 598x19 [color=#00FF00]
+          RenderText {#text} at (0,0) size 598x19
+            text run at (0,0) width 464: "This paragraph, and all textual contents in the document, "
+            text run at (464,0) width 134: "should be green."
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {ul} at (0,35) size 964x19 [color=#FF0000]
+        RenderListItem {li} at (40,0) size 924x19 [color=#00FF00]
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 212x19
+            text run at (0,0) width 212: "This item should be green."

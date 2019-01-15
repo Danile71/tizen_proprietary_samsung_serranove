@@ -1,0 +1,15 @@
+[Unit]
+Description=Security Auditing Service
+DefaultDependencies=no
+After=local-fs.target
+Conflicts=shutdown.target
+Before=sysinit.target shutdown.target
+
+[Service]
+SmackProcessLabel=auditd
+ExecStart=/sbin/auditd -n
+ExecStartPost=/sbin/auditctl -R /etc/audit/audit.rules
+
+[Install]
+WantedBy=multi-user.target
+

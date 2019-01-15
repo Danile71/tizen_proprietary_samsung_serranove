@@ -1,0 +1,44 @@
+<manifest>
+	<define>
+		<domain name="gstreamer" />
+		<request>
+			<smack request="system::media" type="rwxat" />
+			<smack request="system::homedir" type="rwxat" />
+			<smack request="system::share" type="rwxat" />
+			<smack request="system::use_internet" type="w" />
+			<smack request="system::sys_logging" type="rwxat" />
+			<smack request="device::app_logging" type="rwxat" />
+			<smack request="device::sys_logging" type="rwxat" />
+			<smack request="device::audio" type="rw" />
+			<smack request="sound_server" type="rw" />
+			<smack request="pulseaudio" type="rwx" />
+			<smack request="xorg" type="rw" />
+			<smack request="tizen::vconf::public::r::platform::rw" type="rw" />
+		</request>
+		<permit>
+			<smack permit="system::use_internet" type="w" />
+		</permit>
+	</define>
+	<assign>
+		<filesystem path="/usr/lib/libgstreamer-1.0.so.0" label="_" />
+		<filesystem path="/usr/lib/libgstbase-1.0.so.0" label="_" />
+		<filesystem path="/usr/lib/libgstcontroller-1.0.so.0" label="_" />
+		<filesystem path="/usr/lib/libgstnet-1.0.so.0" label="_" />
+		<filesystem path="/usr/lib/libgstreamer-1.0.so.0.405.0" label="_" exec_label="none" />
+		<filesystem path="/usr/lib/libgstbase-1.0.so.0.405.0" label="_" exec_label="none" />
+		<filesystem path="/usr/lib/libgstcontroller-1.0.so.0.405.0" label="_" exec_label="none" />
+		<filesystem path="/usr/lib/libgstnet-1.0.so.0.405.0" label="_" exec_label="none" />
+		<filesystem path="/usr/lib/gstreamer-1.0" label="_" />
+		<filesystem path="/usr/lib/gstreamer-1.0/libgstcoreelements.so" label="_" exec_label="none" />
+		<filesystem path="/usr/lib/gstreamer-1.0/gst-plugin-scanner" label="_" exec_label="gstreamer" />
+		<filesystem path="/usr/bin/gst-inspect-1.0" label="_" exec_label="gstreamer" />
+		<filesystem path="/usr/bin/gst-launch-1.0" label="_" exec_label="gstreamer" />
+		<filesystem path="/usr/bin/gst-typefind-1.0" label="_" exec_label="gstreamer" />
+		<filesystem path="/usr/lib/systemd/system/gstreamer-registry.service" label="_"/>
+		<filesystem path="/usr/lib/systemd/system/gstreamer-registry-for-system.service" label="_"/>
+		<filesystem path="/usr/lib/systemd/system/multi-user.target.wants/gstreamer-registry.service" label="_" />
+	</assign>
+	<request>
+		<domain name="gstreamer" />
+	</request>
+</manifest>

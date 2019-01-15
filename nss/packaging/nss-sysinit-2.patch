@@ -1,0 +1,90 @@
+--- mozilla/security/nss/lib/sysinit/nsssysinit.c.orig	2009-10-08 18:08:36.000000000 +0100
++++ mozilla/security/nss/lib/sysinit/nsssysinit.c	2009-12-13 23:37:00.000000000 +0000
+@@ -54,7 +54,8 @@
+ #ifdef XP_UNIX
+ #include <sys/stat.h>
+ #include <sys/types.h>
+-
++#include <stdio.h>
++#include <stdarg.h>
+ static int 
+ testdir(char *dir)
+ {
+@@ -201,8 +202,9 @@ getFIPSMode(void)
+ static char **
+ get_list(char *filename, char *stripped_parameters)
+ {
+-    char **module_list = PORT_ZNewArray(char *, 4);
+-    char *userdb;
++    char **module_list = PORT_ZNewArray(char *, 5);
++    char *userdb, *sysdb;
++    char *nssflags = "trustOrder=75 cipherOrder=100 slotParams={0x00000001=[slotFlags=RSA,RC4,RC2,DES,DH,SHA1,MD5,MD2,SSL,TLS,AES,RANDOM askpw=any timeout=30 ] }  ";
+     int next = 0;
+ 
+     /* can't get any space */
+@@ -210,15 +212,23 @@ get_list(char *filename, char *stripped_
+ 	return NULL;
+     }
+ 
++    sysdb = getSystemDB();
+     userdb  = getUserDB();
++
++    if (sysdb && !strcmp(filename, sysdb))
++	    filename = NULL;
++    if (userdb && !strcmp(filename, userdb))
++	    filename = NULL;
++
+     if (userdb != NULL) {
+ 	/* return a list of databases to open. First the user Database */
+ 	module_list[next++] = PR_smprintf(
+ 	    "library= "
+ 	    "module=\"NSS User database\" "
+-	    "parameters=\"configdir='sql:%s' %s\" "
+-	    "NSS=\"flags=internal%s\"", 
+-		userdb, stripped_parameters, getFIPSMode() ? ",FIPS" : "");
++	    "parameters=\"configdir='sql:%s' %s tokenDescription='NSS user database'\" "
++	    "NSS=\"%sflags=internal%s\"", 
++	    userdb, stripped_parameters, nssflags,
++	    getFIPSMode() ? ",FIPS" : "");
+ 
+ 	/* now open the user's defined PKCS #11 modules */
+ 	/* skip the local user DB entry */
+@@ -230,17 +240,33 @@ get_list(char *filename, char *stripped_
+ 		userdb, stripped_parameters);
+    }
+ 
++
++    if (filename && 0 /* This doesn't actually work. If we register
++			 both this and the sysdb (in either order)
++			 then only one of them actually shows up */) {
++	    module_list[next++] = PR_smprintf(
++	      "library= "
++	      "module=\"NSS database\" "
++	      "parameters=\"configdir='sql:%s' tokenDescription='NSS database sql:%s'\" "
++	      "NSS=\"%sflags=internal\"",filename, filename, nssflags);
++    }
++
+     /* now the system database (always read only) */
+-    module_list[next++] = PR_smprintf(
+-	"library= "
+-	"module=\"NSS system database\" "
+-	"parameters=\"configdir='sql:%s' tokenDescription='NSS system database' flags=readonly\" "
+-	"NSS=\"flags=internal,critical\"",filename);
++    if (sysdb) {
++	    module_list[next++] = PR_smprintf(
++	      "library= "
++	      "module=\"NSS system database\" "
++	      "parameters=\"configdir='sql:%s' tokenDescription='NSS system database' flags=readonly\" "
++	      "NSS=\"%sflags=internal,critical\"",sysdb, nssflags);
++    }
++
++    
+ 
+     /* that was the last module */
+     module_list[next] = 0;
+ 
+     PORT_Free(userdb);
++    PORT_Free(sysdb);
+ 
+     return module_list;
+ }

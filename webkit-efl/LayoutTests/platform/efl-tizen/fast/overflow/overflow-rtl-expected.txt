@@ -1,0 +1,91 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x505
+  RenderBlock {HTML} at (0,0) size 980x505
+    RenderBody {BODY} at (8,16) size 964x481
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 174x19
+          text run at (0,0) width 174: "This is a test case for "
+        RenderInline {I} at (0,0) size 963x38
+          RenderText {#text} at (174,0) size 963x38
+            text run at (174,0) width 789: "http://bugzilla.opendarwin.org/show_bug.cgi?id=5826 Blocks with direction:rtl and overflow:auto or"
+            text run at (0,19) width 245: "scroll have incorrect scrollbars"
+        RenderText {#text} at (245,19) size 5x19
+          text run at (245,19) width 5: "."
+      RenderBlock (anonymous) at (0,54) size 964x19
+        RenderText {#text} at (0,0) size 584x19
+          text run at (0,0) width 584: "The right column should be a mirror-image of the left column in terms of"
+      RenderBlock {UL} at (0,89) size 964x76
+        RenderListItem {LI} at (40,0) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 215x19
+            text run at (0,0) width 215: "the presence of a scrollbar"
+        RenderListItem {LI} at (40,19) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 296x19
+            text run at (0,0) width 296: "the initial position of the scroll thumb"
+        RenderListItem {LI} at (40,38) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 563x19
+            text run at (0,0) width 563: "which letters are visible initially and when you scroll (in the top 3 rows)"
+        RenderListItem {LI} at (40,57) size 924x19
+          RenderListMarker at (-18,0) size 7x19: bullet
+          RenderText {#text} at (0,0) size 725x19
+            text run at (0,0) width 725: "the position of the blue and olive boxes, initially and when you scroll (in the bottom 2 rows)"
+      RenderTable {TABLE} at (0,181) size 256x300
+        RenderTableSection {TBODY} at (0,0) size 256x300
+          RenderTableRow {TR} at (0,2) size 256x296
+            RenderTableCell {TD} at (2,2) size 125x296 [r=0 c=0 rs=1 cs=1]
+            RenderTableCell {TD} at (129,2) size 125x296 [r=0 c=1 rs=1 cs=1]
+layer at (15,204) size 115x54 clip at (25,204) size 100x39 scrollWidth 231
+  RenderBlock {DIV} at (5,5) size 115x54 [bgcolor=#FFFF00] [border: none (5px solid #008000) none (10px solid #FF0000)]
+    RenderText {#text} at (10,0) size 231x19
+      text run at (10,0) width 231: "abcdefghijklmnopqrstuvwxyz"
+layer at (15,262) size 115x54 clip at (25,262) size 100x54
+  RenderBlock {DIV} at (5,63) size 115x54 [bgcolor=#FFFF00] [border: none (5px solid #008000) none (10px solid #FF0000)]
+    RenderBlock {DIV} at (10,0) size 100x19 [bgcolor=#D3D3D3]
+      RenderText {#text} at (-131,0) size 231x19
+        text run at (-131,0) width 231: "abcdefghijklmnopqrstuvwxyz"
+layer at (15,320) size 115x54 clip at (25,320) size 100x39 scrollWidth 231
+  RenderBlock {DIV} at (5,121) size 115x54 [bgcolor=#FFFF00] [border: none (5px solid #008000) none (10px solid #FF0000)]
+    RenderBlock {DIV} at (10,0) size 100x19 [bgcolor=#D3D3D3]
+      RenderText {#text} at (0,0) size 231x19
+        text run at (0,0) width 231: "abcdefghijklmnopqrstuvwxyz"
+layer at (142,204) size 115x54 clip at (147,204) size 100x39 scrollX 131 scrollWidth 231
+  RenderBlock {DIV} at (5,5) size 115x54 [bgcolor=#FFFF00] [border: none (10px solid #FF0000) none (5px solid #008000)]
+    RenderText {#text} at (-126,0) size 231x19
+      text run at (-126,0) width 231: "zyxwvutsrqponmlkjihgfedcba"
+layer at (142,262) size 115x54 clip at (147,262) size 100x54
+  RenderBlock {DIV} at (5,63) size 115x54 [bgcolor=#FFFF00] [border: none (10px solid #FF0000) none (5px solid #008000)]
+    RenderBlock {DIV} at (5,0) size 100x19 [bgcolor=#D3D3D3]
+      RenderText {#text} at (0,0) size 231x19
+        text run at (0,0) width 231: "zyxwvutsrqponmlkjihgfedcba"
+layer at (142,320) size 115x54 clip at (147,320) size 100x39 scrollX 131 scrollWidth 231
+  RenderBlock {DIV} at (5,121) size 115x54 [bgcolor=#FFFF00] [border: none (10px solid #FF0000) none (5px solid #008000)]
+    RenderBlock {DIV} at (5,0) size 100x19 [bgcolor=#D3D3D3]
+      RenderText {#text} at (-131,0) size 231x19
+        text run at (-131,0) width 231: "zyxwvutsrqponmlkjihgfedcba"
+layer at (15,378) size 115x54 clip at (25,378) size 100x54
+  RenderBlock (relative positioned) {DIV} at (5,179) size 115x54 [bgcolor=#FFFF00] [border: none (5px solid #008000) none (10px solid #FF0000)]
+layer at (71,398) size 8x4
+  RenderBlock (positioned) {DIV} at (56,20) size 8x4 [bgcolor=#0000FF]
+layer at (-25,378) size 70x20 backgroundClip at (25,378) size 100x54 clip at (25,378) size 100x54 outlineClip at (25,378) size 100x54
+  RenderBlock (positioned) {DIV} at (-40,0) size 70x20 [bgcolor=#808000]
+layer at (15,436) size 115x54 clip at (25,436) size 100x39 scrollWidth 150
+  RenderBlock (relative positioned) {DIV} at (5,237) size 115x54 [bgcolor=#FFFF00] [border: none (5px solid #008000) none (10px solid #FF0000)]
+layer at (71,456) size 8x4
+  RenderBlock (positioned) {DIV} at (56,20) size 8x4 [bgcolor=#0000FF]
+layer at (105,436) size 70x20 backgroundClip at (25,436) size 100x39 clip at (25,436) size 100x39 outlineClip at (25,436) size 100x39
+  RenderBlock (positioned) {DIV} at (90,0) size 70x20 [bgcolor=#808000]
+layer at (142,378) size 115x54 clip at (147,378) size 100x54
+  RenderBlock (relative positioned) {DIV} at (5,179) size 115x54 [bgcolor=#FFFF00] [border: none (10px solid #FF0000) none (5px solid #008000)]
+layer at (193,398) size 8x4
+  RenderBlock (positioned) {DIV} at (51,20) size 8x4 [bgcolor=#0000FF]
+layer at (227,378) size 70x20 backgroundClip at (147,378) size 100x54 clip at (147,378) size 100x54 outlineClip at (147,378) size 100x54
+  RenderBlock (positioned) {DIV} at (85,0) size 70x20 [bgcolor=#808000]
+layer at (142,436) size 115x54 clip at (147,436) size 100x39 scrollX 50 scrollWidth 150
+  RenderBlock (relative positioned) {DIV} at (5,237) size 115x54 [bgcolor=#FFFF00] [border: none (10px solid #FF0000) none (5px solid #008000)]
+layer at (193,456) size 8x4
+  RenderBlock (positioned) {DIV} at (51,20) size 8x4 [bgcolor=#0000FF]
+layer at (97,436) size 70x20 backgroundClip at (147,436) size 100x39 clip at (147,436) size 100x39 outlineClip at (147,436) size 100x39
+  RenderBlock (positioned) {DIV} at (-45,0) size 70x20 [bgcolor=#808000]

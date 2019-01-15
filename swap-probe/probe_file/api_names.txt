@@ -1,0 +1,132 @@
+#filename "da_io_stdc.c"
+#lib "/lib/*"
+#feature FL_FILE_API_PROBING
+clearerr@*;        clearerr;   0
+fclose@*;          fclose;     0
+fdopen@*;          fdopen;     0
+feof@*;            feof;       0
+ferror@*;          ferror;     0
+fflush@*;          fflush;     0
+fgetc@*;           fgetc;      0
+fgetpos@*;         fgetpos;    0
+fileno@*;          fileno;     0
+fopen@*;         fopen;      0
+fprintf@*;         fprintf;    0
+fputc@*;           fputc;      0
+fputs@*;           fputs;      0
+fread@*;           fread;      0
+freopen@*;         freopen;    0
+fscanf@*;          fscanf;     0
+fseek@*;           fseek;      0
+fsetpos@*;         fsetpos;    0
+ftell@*;           ftell;      0
+fwrite@*;          fwrite;     0
+getc@*;            getc;       0
+getchar@*;         getchar;    0
+gets@*;            gets;       0
+printf@*;          printf;     0
+putc@*;            putc;       0
+putchar@*;         putchar;    0
+puts@*;            puts;       0
+rewind@*;          rewind;     0
+scanf@*;           scanf;      0
+setbuf@*;          setbuf;     0
+setbuffer@*;       setbuffer;  0
+setlinebuf@*;      setlinebuf; 0
+setvbuf@*;         setvbuf;    0
+tmpfile@*;         tmpfile;    0
+ungetc@*;          ungetc;     0
+vfprintf@*;        vfprintf;   0
+vfscanf@*;         vfscanf;    0
+
+
+#filename "da_io_stdc.c"
+#lib "/lib/*"
+#feature_always FL_FILE_API_ALWAYS_PROBING
+clearerr@*;        clearerr;   1
+fclose@*;          fclose;     1
+fdopen@*;          fdopen;     1
+feof@*;            feof;       1
+ferror@*;          ferror;     1
+fflush@*;          fflush;     1
+fgetc@*;           fgetc;      1
+fgetpos@*;         fgetpos;    1
+fileno@*;          fileno;     1
+fopen@*;           fopen;      1
+fprintf@*;         fprintf;    1
+fputc@*;           fputc;      1
+fputs@*;           fputs;      1
+fread@*;           fread;      1
+freopen@*;         freopen;    1
+fscanf@*;          fscanf;     1
+fseek@*;           fseek;      1
+fsetpos@*;         fsetpos;    1
+ftell@*;           ftell;      1
+fwrite@*;          fwrite;     1
+getc@*;            _IO_getc;   1
+getchar@*;         getchar;    1
+gets@*;            gets;       1
+printf@*;          printf;     1
+putc@*;            _IO_putc;   1
+putchar@*;         putchar;    1
+puts@*;            puts;       1
+rewind@*;          rewind;     1
+scanf@*;           scanf;      1
+setbuf@*;          setbuf;     1
+setbuffer@*;       setbuffer;  1
+setlinebuf@*;      setlinebuf; 1
+setvbuf@*;         setvbuf;    1
+tmpfile@*;         tmpfile;    1
+ungetc@*;          ungetc;     1
+vfprintf@*;        vfprintf;   1
+vfscanf@*;         vfscanf;    1
+
+
+#filename "da_io_posix.c"
+#lib "/lib/*"
+#feature FL_FILE_API_PROBING
+close@*;       close;      0
+creat@*;       creat;      0
+dup@*;         dup;        0
+dup2@*;        dup2;       0
+fchmod@*;      fchmod;     0
+fchown@*;      fchown;     0
+fcntl@*;       fcntl;      0
+fdatasync@*;   fdatasync;  0
+fsync@*;       fsync;      0
+ftruncate@*;   ftruncate;  0
+futimens@*;    futimens;   0
+lockf@*;       lockf;      0
+lseek@*;       lseek;      0
+open@*;        open;       0
+openat@*;      openat;     0
+pread@*;       pread;      0
+pwrite@*;      pwrite;     0
+read@*;        read;       0
+readv@*;       readv;      0
+write@*;       write;      0
+
+
+#filename "da_io_posix.c"
+#lib "/lib/*"
+#feature_always FL_FILE_API_ALWAYS_PROBING
+close@*;       close;      1
+creat@*;       creat;      1
+dup@*;         dup;        1
+dup2@*;        dup2;       1
+fchmod@*;      fchmod;     1
+fchown@*;      fchown;     1
+fcntl@*;       fcntl;      1
+fdatasync@*;   fdatasync;  1
+fsync@*;       fsync;      1
+ftruncate@*;   ftruncate;  1
+futimens@*;    futimens;   1
+lockf@*;       lockf;      1
+lseek@*;       lseek;      1
+open@*;        open;       1
+openat@*;      openat;     1
+pread@*;       pread;      1
+pwrite@*;      pwrite;     1
+read@*;        read;       1
+readv@*;       readv;      1
+write@*;       write;      1

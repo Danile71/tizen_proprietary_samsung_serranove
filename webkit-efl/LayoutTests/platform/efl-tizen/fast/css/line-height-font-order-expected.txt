@@ -1,0 +1,21 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x195
+  RenderBlock {HTML} at (0,0) size 980x195
+    RenderBody {BODY} at (8,15) size 964x165
+      RenderBlock {P} at (0,0) size 964x75
+        RenderText {#text} at (0,28) size 113x18
+          text run at (0,28) width 113: "This tests bug "
+        RenderInline {A} at (0,0) size 757x18 [color=#0000EE]
+          RenderText {#text} at (113,28) size 757x18
+            text run at (113,28) width 757: "Bug 13174: line-height in font shorthand does not override a previously stated line-height property"
+        RenderText {#text} at (870,28) size 5x18
+          text run at (870,28) width 5: "."
+      RenderBlock {P} at (0,90) size 964x75
+        RenderText {#text} at (0,28) size 151x18
+          text run at (0,28) width 151: "This text should be "
+        RenderInline {CODE} at (0,0) size 177x18
+          RenderText {#text} at (151,28) size 177x18
+            text run at (151,28) width 177: "font:15px/5em Georgia"
+        RenderText {#text} at (328,28) size 5x18
+          text run at (328,28) width 5: "."

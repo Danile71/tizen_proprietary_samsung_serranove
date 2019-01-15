@@ -1,0 +1,27 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x574
+      RenderBlock {H1} at (0,0) size 784x41
+        RenderText {#text} at (0,0) size 582x41
+          text run at (0,0) width 582: "Inheritance bug for floated first-letter"
+      RenderBlock {P} at (0,65) size 784x106 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+        RenderInline (generated) at (0,0) size 41x63 [color=#008000] [border: (1px dashed #008000)]
+          RenderText {#text} at (2,1) size 39x61
+            text run at (2,1) width 39: "H"
+        RenderText {#text} at (42,33) size 781x72
+          text run at (42,33) width 740: "ere is the first paragraph. Here the CSS :first-line rule sets the text to a green, sans-serif font."
+          text run at (1,63) width 757: "Then, the CSS :first-letter rule sets the font size to 3em, and makes the text bold. And here's some more"
+          text run at (1,84) width 756: "text to pad out the paragraph and make things look nice (or, at least, to illustrate the problem correctly)."
+      RenderBlock {P} at (0,189) size 784x86 [bgcolor=#EEEEEE] [border: (1px solid #000000)]
+        RenderBlock (floating) at (1,1) size 41x64 [color=#008000] [border: (1px dashed #008000)]
+          RenderText {#text} at (1,1) size 39x61
+            text run at (1,1) width 39: "H"
+        RenderText {#text} at (42,1) size 727x84
+          text run at (42,1) width 727: "ere is the second paragraph. This is just like the first except that the rule p.floated:first-letter"
+          text run at (42,22) width 106: "floats the first "
+          text run at (148,22) width 122: "letter to the left. "
+          text run at (270,22) width 494: "However, this floated element should still inherit the font properties"
+          text run at (42,43) width 716: "(green and sans-serif) from the first-line: selector. It does not -- instead, the font is black, and uses"
+          text run at (42,64) width 347: "the serif font. .... And here's some more text ...."

@@ -1,0 +1,8 @@
+FAIL: Timed out waiting for notifyDone to be called
+Video has no src. Test that the playing event is not dispatched.
+
+RUN(video.play())
+TypeError: 'undefined' is not a function (evaluating 'video.play()')
+RUN(video.pause())
+TypeError: 'undefined' is not a function (evaluating 'video.pause()')
+

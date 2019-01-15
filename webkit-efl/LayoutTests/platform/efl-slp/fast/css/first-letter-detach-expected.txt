@@ -1,0 +1,43 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 40x14
+          text run at (0,0) width 40: "Test for "
+        RenderInline {I} at (0,0) size 653x14
+          RenderInline {A} at (0,0) size 262x14 [color=#0000EE]
+            RenderText {#text} at (40,0) size 262x14
+              text run at (40,0) width 262: "http://bugzilla.opendarwin.org/show_bug.cgi?id=3560"
+          RenderText {#text} at (302,0) size 391x14
+            text run at (302,0) width 391: " page with use of first-letter crashes reproducibly in RenderObject::renderArena()"
+        RenderText {#text} at (693,0) size 3x14
+          text run at (693,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 172x14
+          text run at (0,0) width 172: "The next three lines should all read \x{201C}"
+        RenderInline {SPAN} at (0,0) size 7x14 [color=#0000FF]
+          RenderText {#text} at (172,0) size 7x14
+            text run at (172,0) width 7: "P"
+        RenderText {#text} at (179,0) size 157x14
+          text run at (179,0) width 157: "ASS\x{201D}, with nothing before the P."
+      RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,66) size 784x14
+        RenderInline (generated) at (0,0) size 7x14 [color=#0000FF]
+          RenderText {#text} at (0,0) size 7x14
+            text run at (0,0) width 7: "P"
+        RenderText {#text} at (7,0) size 23x14
+          text run at (7,0) width 23: "ASS"
+      RenderBlock {P} at (0,92) size 784x14
+        RenderInline (generated) at (0,0) size 7x14 [color=#0000FF]
+          RenderText {#text} at (0,0) size 7x14
+            text run at (0,0) width 7: "P"
+        RenderText {#text} at (7,0) size 23x14
+          text run at (7,0) width 23: "ASS"
+      RenderBlock {P} at (0,118) size 784x14
+        RenderInline (generated) at (0,0) size 7x14 [color=#0000FF]
+          RenderText {#text} at (0,0) size 7x14
+            text run at (0,0) width 7: "P"
+        RenderText {#text} at (7,0) size 23x14
+          text run at (7,0) width 23: "ASS"

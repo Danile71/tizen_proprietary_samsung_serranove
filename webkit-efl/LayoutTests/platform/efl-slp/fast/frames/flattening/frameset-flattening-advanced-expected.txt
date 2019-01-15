@@ -1,0 +1,43 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderFrameSet {FRAMESET} at (0,0) size 800x600
+      RenderFrameSet {FRAMESET} at (0,0) size 800x207
+        RenderFrame {FRAME} at (0,0) size 274x207
+          layer at (0,0) size 350x207
+            RenderView at (0,0) size 274x207
+          layer at (0,0) size 274x207
+            RenderBlock {HTML} at (0,0) size 274x207
+              RenderBody {BODY} at (8,8) size 258x187 [bgcolor=#008000]
+                RenderBlock {P} at (0,0) size 258x28
+                  RenderText {#text} at (0,0) size 255x28
+                    text run at (0,0) width 255: "Test for frameset flattening. The flattening only works"
+                    text run at (0,14) width 75: "inside the DRT."
+          layer at (0,0) size 350x50
+            RenderBlock (positioned) {DIV} at (0,0) size 350x50
+        RenderFrame {FRAME} at (280,0) size 520x207
+          layer at (0,0) size 520x207
+            RenderView at (0,0) size 520x207
+          layer at (0,0) size 520x207
+            RenderBlock {HTML} at (0,0) size 520x207
+              RenderBody {BODY} at (8,8) size 504x191 [bgcolor=#FF0000]
+          layer at (0,0) size 300x100
+            RenderBlock (positioned) {DIV} at (0,0) size 300x100
+      RenderFrameSet {FRAMESET} at (0,207) size 800x393
+        RenderFrame {FRAME} at (0,0) size 200x393
+          layer at (0,0) size 200x393
+            RenderView at (0,0) size 200x393
+          layer at (0,0) size 200x393
+            RenderBlock {HTML} at (0,0) size 200x393
+              RenderBody {BODY} at (8,8) size 184x377 [bgcolor=#FFFF00]
+          layer at (0,0) size 50x200
+            RenderBlock (positioned) {DIV} at (0,0) size 50x200
+        RenderFrame {FRAME} at (206,0) size 594x393
+          layer at (0,0) size 650x400
+            RenderView at (0,0) size 594x393
+          layer at (0,0) size 594x393
+            RenderBlock {HTML} at (0,0) size 594x393
+              RenderBody {BODY} at (8,8) size 578x377 [bgcolor=#0000FF]
+          layer at (0,0) size 650x400
+            RenderBlock (positioned) {DIV} at (0,0) size 650x400

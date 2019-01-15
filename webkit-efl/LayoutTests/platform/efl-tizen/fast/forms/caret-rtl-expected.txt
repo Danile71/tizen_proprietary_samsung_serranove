@@ -1,0 +1,18 @@
+EDITING DELEGATE: shouldBeginEditingInDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document
+EDITING DELEGATE: webViewDidBeginEditing:WebViewDidBeginEditingNotification
+EDITING DELEGATE: shouldChangeSelectedDOMRange:(null) toDOMRange:range from 0 of DIV > BODY > HTML > #document to 0 of DIV > BODY > HTML > #document affinity:NSSelectionAffinityDownstream stillSelecting:FALSE
+EDITING DELEGATE: webViewDidChangeSelection:WebViewDidChangeSelectionNotification
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 727x19
+          text run at (0,0) width 727: "This tests that clicking in a contenteditable div will set the caret in the right edge of the div "
+        RenderBR {BR} at (727,15) size 0x0
+      RenderBlock {P} at (0,35) size 964x19
+        RenderText {#text} at (0,0) size 508x19
+          text run at (0,0) width 508: "Click in the div, the caret should be on the right edge of the div."
+      RenderBlock {DIV} at (0,70) size 200x373
+caret: position 0 of child 5 {DIV} of body

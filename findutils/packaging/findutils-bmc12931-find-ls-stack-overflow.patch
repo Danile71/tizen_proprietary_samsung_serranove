@@ -1,0 +1,28 @@
+From 1c8f72f75303cc2a23922704e335c500acf19eb3 Mon Sep 17 00:00:00 2001
+Message-Id: <1c8f72f75303cc2a23922704e335c500acf19eb3.1296053308.git.yan.i.li@intel.com>
+From: Yan Li <yan.i.li@intel.com>
+Date: Wed, 26 Jan 2011 22:47:40 +0800
+Subject: [PATCH] BMC#12931: find -ls stack overflow
+
+
+Signed-off-by: Yan Li <yan.i.li@intel.com>
+---
+ lib/listfile.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/lib/listfile.c b/lib/listfile.c
+index d60f465..f18984a 100644
+--- a/lib/listfile.c
++++ b/lib/listfile.c
+@@ -200,7 +200,7 @@ list_file (char *name,
+ 	   int output_block_size,
+ 	   FILE *stream)
+ {
+-  char modebuf[11];
++  char modebuf[12];
+   struct tm const *when_local;
+   char const *user_name;
+   char const *group_name;
+-- 
+1.7.2.3
+

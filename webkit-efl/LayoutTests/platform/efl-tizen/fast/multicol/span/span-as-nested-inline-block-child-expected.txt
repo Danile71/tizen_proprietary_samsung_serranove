@@ -1,0 +1,24 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x121
+  RenderBlock {HTML} at (0,0) size 980x121
+    RenderBody {BODY} at (8,8) size 964x105
+layer at (8,8) size 964x105
+  RenderBlock {DIV} at (0,0) size 964x105
+    RenderBlock {DIV} at (0,0) size 474x105
+      RenderBlock {P} at (0,16) size 474x19
+        RenderText {#text} at (0,0) size 422x19
+          text run at (0,0) width 422: "This text should not be spanned across two columns."
+      RenderBlock {P} at (0,51) size 474x38
+        RenderText {#text} at (0,0) size 465x38
+          text run at (0,0) width 465: "This text should be below the previous text, but still on the"
+          text run at (0,19) width 31: "left."
+    RenderText {#text} at (0,0) size 0x0
+    RenderInline {SPAN} at (0,0) size 468x95
+      RenderText {#text} at (0,105) size 468x95
+        text run at (0,105) width 468: "The beginning of this text should start next to or below the"
+        text run at (0,124) width 454: "previous text, and still in the left column. However, when"
+        text run at (0,143) width 462: "made sufficiently longer than the previous block of text, it"
+        text run at (0,162) width 457: "should spill into the right column instead of staying below"
+        text run at (0,181) width 151: "the block before it."
+    RenderText {#text} at (0,0) size 0x0

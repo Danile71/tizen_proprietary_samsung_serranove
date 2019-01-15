@@ -1,0 +1,42 @@
+diff --git a/Source/WebCore/ChangeLog b/Source/WebCore/ChangeLog
+index 04bb96a..3d79356 100644
+--- a/Source/WebCore/ChangeLog
++++ b/Source/WebCore/ChangeLog
+@@ -1,3 +1,21 @@
++2012-12-02  Hurnjoo Lee  <hurnjoo.lee@samsung.com>
++
++        Coordinated Graphics: Animation is not working properly
++        https://bugs.webkit.org/show_bug.cgi?id=XXXXX
++
++        Reviewed by NOBODY (OOPS!).
++
++        The animation that keyframe has two or more styles is not working
++        properly. Because the first animation is removed when add the second
++        animation to m_animations.
++
++        Tests: animations/opacity-transform-animation.html
++
++        * platform/graphics/GraphicsLayerAnimation.cpp:
++        (WebCore::GraphicsLayerAnimations::add): Check whether the property of
++        animation is same as the property of existing animation when removing
++        the existing animation.
++
+ 2012-12-02  Otto Derek Cheung  <otcheung@rim.com>
+ 
+         [BlackBerry] Adding checks for null when checking cookie status in CookieJarBlackBerry
+diff --git a/Source/WebCore/platform/graphics/GraphicsLayerAnimation.cpp b/Source/WebCore/platform/graphics/GraphicsLayerAnimation.cpp
+index 706158d..bd8e594 100644
+--- a/Source/WebCore/platform/graphics/GraphicsLayerAnimation.cpp
++++ b/Source/WebCore/platform/graphics/GraphicsLayerAnimation.cpp
+@@ -344,7 +344,10 @@ void GraphicsLayerAnimation::resume()
+ void GraphicsLayerAnimations::add(const GraphicsLayerAnimation& animation)
+ {
+     // Remove the old state if we are resuming a paused animation.
+-    remove(animation.name());
++    for (int i = m_animations.size() - 1; i >= 0; --i) {
++        if (m_animations[i].name() == animation.name() && m_animations[i].property() == animation.property())
++            m_animations.remove(i);
++    }
+ 
+     m_animations.append(animation);
+ }

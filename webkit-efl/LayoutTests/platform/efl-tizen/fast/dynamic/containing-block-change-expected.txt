@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 221x19
+          text run at (0,0) width 221: "This is a regression test for "
+        RenderInline {I} at (0,0) size 939x38
+          RenderInline {A} at (0,0) size 372x19 [color=#0000EE]
+            RenderText {#text} at (221,0) size 372x19
+              text run at (221,0) width 372: "http://bugs.webkit.org/show_bug.cgi?id=11672"
+          RenderText {#text} at (593,0) size 939x38
+            text run at (593,0) width 5: " "
+            text run at (598,0) width 341: "REGRESSION (r17068): Repro crash due to"
+            text run at (0,19) width 182: "painting without layout"
+        RenderText {#text} at (182,19) size 163x19
+          text run at (182,19) width 163: ". It should not crash."
+layer at (8,62) size 6x6
+  RenderTable {TABLE} at (0,54) size 6x6
+    RenderTableSection {TBODY} at (0,0) size 6x6
+      RenderTableRow {TR} at (0,2) size 6x2
+        RenderTableCell {TD} at (2,2) size 2x2 [r=0 c=0 rs=1 cs=1]
+layer at (11,65) size 52x38
+  RenderBlock (positioned) {DIV} at (3,3) size 52x38
+    RenderText {#text} at (0,0) size 52x38
+      text run at (0,0) width 52: "Lorem"
+      text run at (0,19) width 48: "ipsum"

@@ -1,0 +1,62 @@
+layer at (0,0) size 980x955
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x955
+  RenderBlock {HTML} at (0,0) size 980x955
+    RenderBody {BODY} at (8,8) size 964x926
+layer at (8,8) size 512x926
+  RenderBlock (relative positioned) {DIV} at (0,0) size 512x926
+    RenderBlock {H2} at (0,0) size 512x29
+      RenderText {#text} at (0,-4) size 103x38
+        text run at (0,-4) width 103: "Bug 1"
+    RenderBlock {P} at (0,55) size 512x261
+      RenderText {#text} at (0,2) size 512x170
+        text run at (0,2) width 418: "Safari public beta does not support CSS"
+        text run at (0,31) width 416: "absolute positioning correctly (if at all)."
+        text run at (0,60) width 497: "Immediately following the text position marked"
+        text run at (0,89) width 496: "by the dagger, there is a <span> element that"
+        text run at (0,118) width 512: "is positioned to the right of the <div> block that"
+        text run at (0,147) width 261: "contains this paragraph\x{2020}"
+      RenderText {#text} at (261,147) size 500x112
+        text run at (261,147) width 232: ". In IE 5.x, Mozilla 1.2,"
+        text run at (0,176) width 500: "and Chimera 0.6+, the contents of the <span>"
+        text run at (0,205) width 481: "element appears in the margin directly to the"
+        text run at (0,234) width 205: "right of the dagger."
+    RenderBlock {P} at (0,337) size 512x87
+      RenderText {#text} at (0,2) size 505x83
+        text run at (0,2) width 469: "I should note that Chimera 0.6 rendered this"
+        text run at (0,31) width 505: "test with the marginal note shifted down by one"
+        text run at (0,60) width 481: "line; this has been fixed in subsequent builds."
+    RenderBlock {H2} at (0,450) size 512x29
+      RenderText {#text} at (0,-4) size 103x38
+        text run at (0,-4) width 103: "Bug 2"
+    RenderBlock {P} at (0,505) size 512x87
+      RenderText {#text} at (0,7) size 505x73
+        text run at (0,7) width 485: "Fonts also render substantially smaller than other browsers, which is not a"
+        text run at (0,36) width 505: "good thing when you consider that most sites specify fonts that are too small"
+        text run at (0,65) width 110: "in the first place."
+    RenderBlock {P} at (0,613) size 512x87
+      RenderText {#text} at (0,2) size 510x83
+        text run at (0,2) width 510: "At the very least, the preferences panel needs a"
+        text run at (0,31) width 371: "default text-zoom setting to enable"
+        text run at (0,60) width 360: "compatibility with other browsers."
+    RenderBlock {H2} at (0,726) size 512x29
+      RenderText {#text} at (0,-4) size 103x38
+        text run at (0,-4) width 103: "Bug 3"
+    RenderBlock {P} at (0,781) size 512x145
+      RenderText {#text} at (0,2) size 81x25
+        text run at (0,2) width 81: "Worse, "
+      RenderInline {I} at (0,0) size 495x54
+        RenderText {#text} at (81,2) size 495x54
+          text run at (81,2) width 414: "the \"make text bigger\" button does not"
+          text run at (0,31) width 428: "scale line-height when it scales font-size"
+      RenderText {#text} at (428,31) size 511x112
+        text run at (428,31) width 83: " (hit it a"
+        text run at (0,60) width 496: "few times on this page). This is a crippling flaw"
+        text run at (0,89) width 459: "for people who need to enlarge the fonts to"
+        text run at (0,118) width 188: "read comfortably."
+layer at (546,208) size 200x48
+  RenderBlock (positioned) {SPAN} at (538,200) size 200x48
+    RenderText {#text} at (0,0) size 199x47
+      text run at (0,0) width 199: "\x{2190} this should be to the right of"
+      text run at (0,16) width 187: "the paragraph, lining up with"
+      text run at (0,32) width 70: "the dagger"

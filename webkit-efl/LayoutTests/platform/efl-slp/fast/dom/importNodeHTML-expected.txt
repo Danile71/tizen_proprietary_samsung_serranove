@@ -1,0 +1,39 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {DIV} at (0,0) size 784x188
+        RenderBlock {P} at (0,0) size 784x14
+          RenderText {#text} at (0,0) size 575x14
+            text run at (0,0) width 575: "This is a simple test of both importNode and cloneNode, created from an example that demonstrated a bug in importNode."
+        RenderBlock {DIV} at (0,26) size 784x14 [bgcolor=#FFFF00]
+          RenderText {#text} at (0,0) size 86x14
+            text run at (0,0) width 86: "The original node:"
+        RenderBlock {DIV} at (0,40) size 784x40 [bgcolor=#7F7FFF]
+          RenderBlock (anonymous) at (3,3) size 778x14
+            RenderText {#text} at (0,0) size 42x14
+              text run at (0,0) width 42: "Outer bit"
+          RenderBlock {DIV} at (6,20) size 772x14 [color=#FFFF00] [bgcolor=#0000FF]
+            RenderText {#text} at (0,0) size 43x14
+              text run at (0,0) width 43: "Inner bit."
+        RenderBlock {DIV} at (0,80) size 784x14 [bgcolor=#FFFF00]
+          RenderText {#text} at (0,0) size 129x14
+            text run at (0,0) width 129: "Copied with importNode():"
+        RenderBlock {DIV} at (0,94) size 784x40 [bgcolor=#7F7FFF]
+          RenderBlock (anonymous) at (3,3) size 778x14
+            RenderText {#text} at (0,0) size 42x14
+              text run at (0,0) width 42: "Outer bit"
+          RenderBlock {DIV} at (6,20) size 772x14 [color=#FFFF00] [bgcolor=#0000FF]
+            RenderText {#text} at (0,0) size 43x14
+              text run at (0,0) width 43: "Inner bit."
+        RenderBlock {DIV} at (0,134) size 784x14 [bgcolor=#FFFF00]
+          RenderText {#text} at (0,0) size 123x14
+            text run at (0,0) width 123: "Copied with cloneNode():"
+        RenderBlock {DIV} at (0,148) size 784x40 [bgcolor=#7F7FFF]
+          RenderBlock (anonymous) at (3,3) size 778x14
+            RenderText {#text} at (0,0) size 42x14
+              text run at (0,0) width 42: "Outer bit"
+          RenderBlock {DIV} at (6,20) size 772x14 [color=#FFFF00] [bgcolor=#0000FF]
+            RenderText {#text} at (0,0) size 43x14
+              text run at (0,0) width 43: "Inner bit."

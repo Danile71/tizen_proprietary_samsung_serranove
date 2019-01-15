@@ -1,0 +1,25 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock (anonymous) at (0,0) size 964x57
+        RenderText {#text} at (0,0) size 932x38
+          text run at (0,0) width 932: "This tests that the blockquote's typing style doesn't remain after breaking the blockquote and typing in the unquoted"
+          text run at (0,19) width 42: "area."
+        RenderBR {BR} at (42,34) size 0x0
+        RenderBR {BR} at (0,38) size 0x19
+      RenderBlock {DIV} at (0,57) size 964x57
+        RenderBlock {BLOCKQUOTE} at (0,0) size 964x19 [color=#0000FF] [border: none (2px solid #0000FF)]
+          RenderText {#text} at (12,0) size 34x19
+            text run at (12,0) width 34: "blue"
+        RenderBlock (anonymous) at (0,19) size 964x19
+          RenderText {#text} at (0,0) size 42x19
+            text run at (0,0) width 42: "black"
+          RenderBR {BR} at (42,15) size 0x0
+        RenderBlock {BLOCKQUOTE} at (0,38) size 964x19 [color=#0000FF] [border: none (2px solid #0000FF)]
+          RenderBlock {DIV} at (12,0) size 952x19
+            RenderBlock {BLOCKQUOTE} at (0,0) size 952x19 [color=#008000] [border: none (2px solid #008000)]
+              RenderText {#text} at (12,0) size 47x19
+                text run at (12,0) width 47: "green"
+caret: position 5 of child 2 {#text} of child 4 {DIV} of body

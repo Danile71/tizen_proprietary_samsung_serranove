@@ -1,0 +1,25 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 148x14
+          text run at (0,0) width 148: "This is a regression test for "
+        RenderInline {I} at (0,0) size 565x14
+          RenderInline {A} at (0,0) size 292x14 [color=#0000EE]
+            RenderText {#text} at (148,0) size 292x14
+              text run at (148,0) width 292: "http://bugzilla.opendarwin.org/show_bug.cgi?id=8866"
+          RenderText {#text} at (440,0) size 273x14
+            text run at (440,0) width 3: " "
+            text run at (443,0) width 270: "REGRESSION: Incorrect caret position in RTL text"
+        RenderText {#text} at (713,0) size 3x14
+          text run at (713,0) width 3: "."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 293x14
+          text run at (0,0) width 293: "The caret should be in the middle of the Hebrew word."
+      RenderBlock {HR} at (0,52) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {DIV} at (0,60) size 784x14
+        RenderText {#text} at (0,0) size 41x14
+          text run at (0,0) width 41 RTL: "\x{5D0}\x{5D5}\x{5DB}\x{5DE}\x{5E0}\x{5D9}\x{5D5}\x{5EA}"
+caret: position 5 of child 0 {#text} of child 7 {DIV} of body

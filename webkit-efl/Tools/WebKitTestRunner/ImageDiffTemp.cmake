@@ -1,0 +1,14 @@
+SET(ImageDiff_SOURCES
+    ${TOOLS_DIR}/DumpRenderTree/efl/ImageDiff.cpp
+)
+
+SET(ImageDiff_LIBRARIES
+    ${WTF_LIBRARY_NAME}
+    ${JavaScriptCore_LIBRARY_NAME}
+    ${WebCore_LIBRARY_NAME}
+    ${WebKit2_LIBRARY_NAME}
+)
+
+ADD_EXECUTABLE(bin/ImageDiff ${ImageDiff_SOURCES})
+TARGET_LINK_LIBRARIES(bin/ImageDiff ${ImageDiff_LIBRARIES})
+SET_TARGET_PROPERTIES(bin/ImageDiff PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")

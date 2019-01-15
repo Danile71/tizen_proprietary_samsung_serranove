@@ -1,0 +1,210 @@
+class Elm_List_Item(Elm_Widget_Item)
+{
+      eo_prefix: elm_obj_list_item;
+      properties {
+           separator {
+                get {
+                     /*@
+                      @brief Get a value whether item is a separator or not.
+
+                      @if MOBILE @since_tizen 2.3
+                      @elseif WEARABLE @since_tizen 2.3.1
+                      @endif
+
+                      @see elm_list_item_separator_set() for details.
+
+                      @ingroup List
+                      */
+                }
+                set {
+                     /*@
+                      @brief Set or unset item as a separator.
+
+                      @if MOBILE @since_tizen 2.3
+                      @elseif WEARABLE @since_tizen 2.3.1
+                      @endif
+
+                      @remark Items aren't set as separator by default.
+
+                      @remark If set as separator it will display separator theme, so won't display
+                      icons or label.
+
+                      @see elm_list_item_separator_get()
+
+                      @ingroup List
+                      */
+                }
+                values {
+                     Eina_Bool setting; /*@ @c EINA_TRUE means item @p it is a separator. @c EINA_FALSE
+                                         indicates it's not. */
+                }
+           }
+           selected {
+                get {
+                     /*@
+                      @brief Get whether the @p item is selected or not.
+
+                      @if MOBILE @since_tizen 2.3
+                      @elseif WEARABLE @since_tizen 2.3.1
+                      @endif
+
+                      @see elm_list_selected_item_set() for details.
+                      @see elm_list_item_selected_get()
+
+                      @ingroup List
+                      */
+                }
+                set {
+                     /*@
+                      @brief Set the selected state of an item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @elseif WEARABLE @since_tizen 2.3.1
+                      @endif
+
+                      @remark This sets the selected state of the given item @p it.
+                      @c EINA_TRUE for selected, @c EINA_FALSE for not selected.
+
+                      @remark If a new item is selected the previously selected will be unselected,
+                      unless multiple selection is enabled with elm_list_multi_select_set().
+                      Previously selected item can be get with function
+                      elm_list_selected_item_get().
+
+                      @remark Selected items will be highlighted.
+
+                      @see elm_list_item_selected_get()
+                      @see elm_list_selected_item_get()
+                      @see elm_list_multi_select_set()
+
+                      @ingroup List
+                      */
+                }
+                values {
+                     Eina_Bool selected; /*@ the selected state (@c EINA_TRUE selected, @c EINA_FALSE not selected) */
+                }
+           }
+           object {
+                get {
+                     /*@
+                      @brief Get the real Evas(Edje) object created to implement the view of a given
+                      list @p item.
+
+                      @if MOBILE @since_tizen 2.3
+                      @elseif WEARABLE @since_tizen 2.3.1
+                      @endif
+
+                      @remark Base object is the @c Evas_Object that represents that item.
+
+                      @ingroup List
+                      */
+                }
+                values {
+                     Evas_Object *obj; /*@ The base Edje object associated with @p it. */
+                }
+           }
+           prev {
+                get {
+                     /*@
+                      @brief Get the item before @p it in list.
+
+                      @if MOBILE @since_tizen 2.3
+                      @elseif WEARABLE @since_tizen 2.3.1
+                      @endif
+
+                      @remark If it is the first item, @c NULL will be returned.
+
+                      @see elm_list_item_append()
+                      @see elm_list_items_get()
+
+                      @ingroup List
+                      */
+                     legacy: elm_list_item_prev;
+                }
+                values {
+                     Elm_Object_Item *item; /*@ The item before @p it, or @c NULL if none or on failure. */
+                }
+           }
+           next {
+                get {
+                     /*@
+                      @brief Get the item after @p it in list.
+
+                      @if MOBILE @since_tizen 2.3
+                      @elseif WEARABLE @since_tizen 2.3.1
+                      @endif
+
+                      @remark If it is the last item, @c NULL will be returned.
+
+                      @see elm_list_item_append()
+                      @see elm_list_items_get()
+
+                      @ingroup List
+                      */
+                     legacy: elm_list_item_next;
+                }
+                values {
+                     Elm_Object_Item *item; /*@ The item after @p it, or @c NULL if none or on failure. */
+                }
+           }
+      }
+      methods {
+           /*      init { FIXME
+                   params {
+                   Evas_Smart_Cb func;
+                   const(void)* data;
+                   }
+                   }*/
+           show {
+                /*@
+                 @brief Show @p item in the list view.
+
+                 @if MOBILE @since_tizen 2.3
+                 @elseif WEARABLE @since_tizen 2.3.1
+                 @endif
+
+                 @remark It won't animate list until item is visible. If such behavior is wanted,
+                 use elm_list_bring_in() instead.
+
+                 @ingroup List
+                 */
+           }
+           bring_in {
+                /*@
+                 @brief Bring in the given item to list view.
+
+                 @if MOBILE @since_tizen 2.3
+                 @elseif WEARABLE @since_tizen 2.3.1
+                 @endif
+
+                 @remark This causes list to jump to the given item @p item and show it
+                 (by scrolling), if it is not fully visible.
+
+                 @remark This may use animation to do so and take a period of time.
+
+                 @remark If animation isn't wanted, elm_list_item_show() can be used.
+
+                 @ingroup List
+                 */
+           }
+      }
+      implements {
+           Eo.Base.constructor;
+           Elm_Widget_Item.disable;
+           Elm_Widget_Item.del_pre;
+           Elm_Widget_Item.signal_emit;
+           Elm_Widget_Item.focus.set;
+           Elm_Widget_Item.focus.get;
+           Elm_Widget_Item.part_text.get;
+           Elm_Widget_Item.part_text.set;
+           Elm_Widget_Item.part_content.get;
+           Elm_Widget_Item.part_content.set;
+           Elm_Widget_Item.part_content_unset;
+           Elm_Interface_Atspi_Accessible.name.get;
+           Elm_Interface_Atspi_Accessible.state_set.get;
+           Elm_Interface_Atspi_Accessible.children.get;
+           Elm_Interface_Atspi_Component.highlight_grab;
+           Elm_Interface_Atspi_Component.highlight_clear;
+      }
+}
+
+

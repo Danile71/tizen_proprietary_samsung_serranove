@@ -1,0 +1,100 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderInline {B} at (0,0) size 502x19
+          RenderText {#text} at (0,0) size 502x19
+            text run at (0,0) width 502: "(1) Colspanning TD has fixed width equal to table width"
+      RenderTable {TABLE} at (0,35) size 340x63 [bgcolor=#FFFFCC] [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 338x61
+          RenderTableRow {TR} at (0,0) size 338x21
+            RenderTableCell {TD} at (0,0) size 338x21 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 215x19
+                text run at (1,1) width 215: "width=340 (same as table)"
+          RenderTableRow {TR} at (0,21) size 338x40
+            RenderTableCell {TD} at (0,21) size 81x40 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 56x38
+                text run at (1,1) width 56: "Search"
+                text run at (1,20) width 28: "for:"
+            RenderTableCell {TD} at (81,21) size 257x40 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 250x38
+                text run at (1,1) width 250: "foo bar baz foo bar baz foo bar"
+                text run at (1,20) width 28: "baz"
+      RenderBlock {P} at (0,114) size 964x19
+        RenderInline {B} at (0,0) size 311x19
+          RenderText {#text} at (0,0) size 311x19
+            text run at (0,0) width 311: "(2) Colspanning TD has auto width"
+      RenderTable {TABLE} at (0,149) size 340x63 [bgcolor=#FFFFCC] [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 338x61
+          RenderTableRow {TR} at (0,0) size 338x21
+            RenderTableCell {TD} at (0,0) size 338x21 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 142x19
+                text run at (1,1) width 142: "no width attribute"
+          RenderTableRow {TR} at (0,21) size 338x40
+            RenderTableCell {TD} at (0,21) size 81x40 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 56x38
+                text run at (1,1) width 56: "Search"
+                text run at (1,20) width 28: "for:"
+            RenderTableCell {TD} at (81,21) size 257x40 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 250x38
+                text run at (1,1) width 250: "foo bar baz foo bar baz foo bar"
+                text run at (1,20) width 28: "baz"
+      RenderBlock {P} at (0,228) size 964x19
+        RenderInline {B} at (0,0) size 331x19
+          RenderText {#text} at (0,0) size 331x19
+            text run at (0,0) width 331: "(3) Colspanning TD has width=100px"
+      RenderTable {TABLE} at (0,263) size 340x63 [bgcolor=#FFFFCC] [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 338x61
+          RenderTableRow {TR} at (0,0) size 338x21
+            RenderTableCell {TD} at (0,0) size 338x21 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 105x19
+                text run at (1,1) width 105: "width=100px"
+          RenderTableRow {TR} at (0,21) size 338x40
+            RenderTableCell {TD} at (0,21) size 81x40 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 56x38
+                text run at (1,1) width 56: "Search"
+                text run at (1,20) width 28: "for:"
+            RenderTableCell {TD} at (81,21) size 257x40 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 250x38
+                text run at (1,1) width 250: "foo bar baz foo bar baz foo bar"
+                text run at (1,20) width 28: "baz"
+      RenderBlock {P} at (0,342) size 964x19
+        RenderInline {B} at (0,0) size 331x19
+          RenderText {#text} at (0,0) size 331x19
+            text run at (0,0) width 331: "(4) Colspanning TD has width=200px"
+      RenderTable {TABLE} at (0,377) size 340x63 [bgcolor=#FFFFCC] [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 338x61
+          RenderTableRow {TR} at (0,0) size 338x21
+            RenderTableCell {TD} at (0,0) size 338x21 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 105x19
+                text run at (1,1) width 105: "width=200px"
+          RenderTableRow {TR} at (0,21) size 338x40
+            RenderTableCell {TD} at (0,21) size 81x40 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 56x38
+                text run at (1,1) width 56: "Search"
+                text run at (1,20) width 28: "for:"
+            RenderTableCell {TD} at (81,21) size 257x40 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 250x38
+                text run at (1,1) width 250: "foo bar baz foo bar baz foo bar"
+                text run at (1,20) width 28: "baz"
+      RenderBlock {P} at (0,456) size 964x19
+        RenderInline {B} at (0,0) size 326x19
+          RenderText {#text} at (0,0) size 326x19
+            text run at (0,0) width 326: "(5) Colspanning TD has width=100%"
+      RenderTable {TABLE} at (0,491) size 340x63 [bgcolor=#FFFFCC] [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 338x61
+          RenderTableRow {TR} at (0,0) size 338x21
+            RenderTableCell {TD} at (0,0) size 338x21 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 101x19
+                text run at (1,1) width 101: "width=100%"
+          RenderTableRow {TR} at (0,21) size 338x40
+            RenderTableCell {TD} at (0,21) size 82x40 [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 56x38
+                text run at (1,1) width 56: "Search"
+                text run at (1,20) width 28: "for:"
+            RenderTableCell {TD} at (82,21) size 256x40 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 250x38
+                text run at (1,1) width 250: "foo bar baz foo bar baz foo bar"
+                text run at (1,20) width 28: "baz"

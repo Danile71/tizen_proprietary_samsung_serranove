@@ -1,0 +1,93 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584 [bgcolor=#CCCCCC]
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 264x14
+          text run at (0,0) width 264: "The style declarations which apply to the text below are:"
+      RenderBlock {PRE} at (0,26) size 784x84
+        RenderText {#text} at (0,0) size 420x84
+          text run at (0,0) width 156: "P.one {line-height: 200%;}"
+          text run at (156,0) width 0: " "
+          text run at (0,12) width 414: "SPAN.two {border-style: solid; border-width: 10px; border-color: red;"
+          text run at (414,12) width 0: " "
+          text run at (0,24) width 228: "          padding: 2pt; margin: 30pt;}"
+          text run at (228,24) width 0: " "
+          text run at (0,36) width 270: "P.three {font-size: 10pt; line-height: 12pt;}"
+          text run at (270,36) width 0: " "
+          text run at (0,48) width 420: "SPAN.four {border-style: solid; border-width: 12px; border-color: red;"
+          text run at (420,48) width 0: " "
+          text run at (0,60) width 144: "          padding: 2pt;}"
+          text run at (144,60) width 0: " "
+          text run at (0,72) width 0: " "
+      RenderBlock {HR} at (0,120) size 784x2 [border: (1px inset #000000)]
+      RenderBlock {P} at (0,134) size 784x96
+        RenderText {#text} at (0,5) size 140x14
+          text run at (0,5) width 140: "This is a paragraph that has a "
+        RenderInline {SPAN} at (0,0) size 781x110 [border: (10px solid #FF0000)]
+          RenderText {#text} at (192,5) size 781x86
+            text run at (192,5) width 520: "very long span in it, and the span has a 10px red border separated from the span by 2pt, and a margin of 30pt. "
+            text run at (712,5) width 59: "The padding"
+            text run at (0,29) width 763: "and border should be present on all sides of the span (although vertical lines should appear only at the beginning and the end of the whole span, not on each line). "
+            text run at (763,29) width 18: "The"
+            text run at (0,53) width 426: "padding, border, and margin should all be noticeable at the beginning and end of the span. "
+            text run at (426,53) width 333: "However, the line height should not be changed by any of them, so the"
+            text run at (0,77) width 378: "margin should be unnoticeable and the border should overlap text on other lines."
+        RenderText {#text} at (430,77) size 347x14
+          text run at (430,77) width 3: " "
+          text run at (433,77) width 344: "The line spacing in the whole paragraph should be 200% of the font size."
+      RenderBlock {P} at (0,243) size 784x64
+        RenderText {#text} at (0,0) size 159x15
+          text run at (0,0) width 159: "This is a paragraph that has a "
+        RenderInline {SPAN} at (0,0) size 782x91 [border: (12px solid #FF0000)]
+          RenderText {#text} at (173,0) size 782x63
+            text run at (173,0) width 609: "very long span in it, and the span has a 12px red border separated from the span by 2pt of padding (the difference"
+            text run at (0,16) width 768: "between the line-height and the font-size), which should overlap with the lines of text above and below the span, since the padding and border"
+            text run at (0,32) width 179: "should not effect the line height. "
+            text run at (179,32) width 569: "The span's border should have vertical lines only at the beginning and end of the whole span, not on each"
+            text run at (0,48) width 24: "line."
+        RenderText {#text} at (38,48) size 415x15
+          text run at (38,48) width 3: " "
+          text run at (41,48) width 412: "The line spacing in the whole paragraph should be 12pt, with font-size 10pt."
+      RenderTable {TABLE} at (0,320) size 784x229 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x227
+          RenderTableRow {TR} at (0,0) size 782x22
+            RenderTableCell {TD} at (0,0) size 782x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderInline {STRONG} at (0,0) size 122x14
+                RenderText {#text} at (4,4) size 122x14
+                  text run at (4,4) width 122: "TABLE Testing Section"
+          RenderTableRow {TR} at (0,22) size 782x205
+            RenderTableCell {TD} at (0,113) size 11x22 [bgcolor=#C0C0C0] [border: (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (4,4) size 3x14
+                text run at (4,4) width 3: " "
+            RenderTableCell {TD} at (11,22) size 771x205 [border: (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock {P} at (4,4) size 763x120
+                RenderText {#text} at (0,5) size 140x14
+                  text run at (0,5) width 140: "This is a paragraph that has a "
+                RenderInline {SPAN} at (0,0) size 758x110 [border: (10px solid #FF0000)]
+                  RenderText {#text} at (192,5) size 758x86
+                    text run at (192,5) width 520: "very long span in it, and the span has a 10px red border separated from the span by 2pt, and a margin of 30pt. "
+                    text run at (712,5) width 18: "The"
+                    text run at (0,29) width 750: "padding and border should be present on all sides of the span (although vertical lines should appear only at the beginning and the end of the whole span, not on"
+                    text run at (0,53) width 51: "each line). "
+                    text run at (51,53) width 447: "The padding, border, and margin should all be noticeable at the beginning and end of the span. "
+                    text run at (498,53) width 260: "However, the line height should not be changed by any"
+                    text run at (0,77) width 451: "of them, so the margin should be unnoticeable and the border should overlap text on other lines."
+                RenderText {#text} at (503,77) size 743x38
+                  text run at (503,77) width 3: " "
+                  text run at (506,77) width 237: "The line spacing in the whole paragraph should be"
+                  text run at (0,101) width 104: "200% of the font size."
+              RenderBlock {P} at (4,137) size 763x64
+                RenderText {#text} at (0,0) size 159x15
+                  text run at (0,0) width 159: "This is a paragraph that has a "
+                RenderInline {SPAN} at (0,0) size 760x91 [border: (12px solid #FF0000)]
+                  RenderText {#text} at (173,0) size 760x63
+                    text run at (173,0) width 552: "very long span in it, and the span has a 12px red border separated from the span by 2pt of padding (the"
+                    text run at (0,16) width 716: "difference between the line-height and the font-size), which should overlap with the lines of text above and below the span, since the"
+                    text run at (0,32) width 288: "padding and border should not effect the line height. "
+                    text run at (288,32) width 472: "The span's border should have vertical lines only at the beginning and end of the whole"
+                    text run at (0,48) width 121: "span, not on each line."
+                RenderText {#text} at (135,48) size 415x15
+                  text run at (135,48) width 3: " "
+                  text run at (138,48) width 412: "The line spacing in the whole paragraph should be 12pt, with font-size 10pt."

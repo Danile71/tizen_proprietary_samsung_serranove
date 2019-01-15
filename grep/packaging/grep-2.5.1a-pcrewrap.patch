@@ -1,0 +1,101 @@
+Fix https://bugzilla.redhat.com/show_bug.cgi?id=324781
+See the code comments for details.
+
+Lubomir Rintel <lkundrak@v3.sk>
+
+--- grep-2.5.1a/src/search.c.pcrewrap	2008-10-01 16:38:20.000000000 +0200
++++ grep-2.5.1a/src/search.c	2008-10-01 16:38:20.000000000 +0200
+@@ -1241,8 +1241,31 @@
+      is just for performance improvement in pcre_exec.  */
+   int sub[300];
+ 
+-  int e = pcre_exec (cre, extra, buf, size, 0, 0,
+-		     sub, sizeof sub / sizeof *sub);
++  char *line_buf = buf;
++  int line_size = 0;
++  int e = 0;
++
++  /* PCRE can't limit the matching to space between newlines (i.e
++     [^a] will allways match newline, see pcreposix(3) for details),
++     therefore whe have to match each line in the buffer separately */
++  do {
++    /* We're not at the of buffer or end of line, get another char */
++    if (line_buf + line_size < buf + size && line_buf[line_size++] != eolbyte) {
++      continue;
++    }
++
++    /* Match the part of buffer that constitutes a line */
++    e = pcre_exec (cre, extra, line_buf, line_size - 1, 0, 0,
++                   sub, sizeof sub / sizeof *sub);
++
++    /* Don't try other lines if this one matched or returned an error */
++    if (e != PCRE_ERROR_NOMATCH)
++      break;
++
++    /* Wrap up */
++    line_buf += line_size;
++    line_size = 0;
++  } while (line_buf < buf + size);
+ 
+   if (e <= 0)
+     {
+@@ -1261,8 +1284,8 @@
+   else
+     {
+       /* Narrow down to the line we've found.  */
+-      char const *beg = buf + sub[0];
+-      char const *end = buf + sub[1];
++      char const *beg = line_buf + sub[0];
++      char const *end = line_buf + sub[1];
+       char const *buflim = buf + size;
+       char eol = eolbyte;
+       if (!exact)
+--- grep-2.5.1a/tests/Makefile.am.pcrewrap	2008-10-01 16:47:01.000000000 +0200
++++ grep-2.5.1a/tests/Makefile.am	2008-10-01 16:47:26.000000000 +0200
+@@ -4,7 +4,7 @@
+ 
+ TESTS = warning.sh khadafy.sh spencer1.sh bre.sh ere.sh \
+         status.sh empty.sh options.sh backref.sh file.sh \
+-        fmbtest.sh
++        fmbtest.sh pcrewrap.sh
+ EXTRA_DIST = $(TESTS) \
+              khadafy.lines khadafy.regexp \
+              spencer1.awk spencer1.tests \
+--- grep-2.5.1a/tests/Makefile.in.pcrewrap	2008-10-01 16:47:01.000000000 +0200
++++ grep-2.5.1a/tests/Makefile.in	2008-10-01 16:47:34.000000000 +0200
+@@ -98,7 +98,7 @@
+ 
+ TESTS = warning.sh khadafy.sh spencer1.sh bre.sh ere.sh \
+         status.sh empty.sh options.sh backref.sh file.sh \
+-	fmbtest.sh
++	fmbtest.sh pcrewrap.sh
+ 
+ EXTRA_DIST = $(TESTS) \
+              khadafy.lines khadafy.regexp \
+--- grep-2.5.1a/tests/pcrewrap.sh	2008-09-30 09:16:44.037543374 +0200
++++ grep-2.5.1a/tests/pcrewrap.sh	2008-10-01 16:45:45.000000000 +0200
+@@ -0,0 +1,23 @@
++#!/bin/sh
++# Test for bug https://bugzilla.redhat.com/show_bug.cgi?id=324781
++# Lubomir Rintel <lkundrak@v3.sk>
++
++: ${srcdir=.}
++
++failures=0
++
++echo -ne "a\na" | ${GREP} -P '[^a]' > /dev/null 2>&1
++if test $? -ne 1
++then
++        echo "PCRE Wrap: Wrong status code, test \#1 failed"
++        failures=1
++fi
++
++echo -ne "a\na" | ${GREP} -P '[^b].[^b]' > /dev/null 2>&1
++if test $? -ne 1
++then
++        echo "PCRE Wrap: Wrong status code, test \#2 failed"
++        failures=1
++fi
++
++exit $failures
+

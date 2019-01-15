@@ -1,0 +1,15 @@
+layer at (0,0) size 980x1350
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x1350
+  RenderBlock {HTML} at (0,0) size 980x1350
+    RenderBody {BODY} at (8,8) size 964x1334
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 382x19
+          text run at (0,0) width 382: "This test for a bug copy/pasting underlined text."
+      RenderBlock {DIV} at (0,35) size 964x19
+        RenderInline {U} at (0,0) size 209x19
+          RenderText {#text} at (0,0) size 209x19
+            text run at (0,0) width 209: "This should be underlined."
+      RenderBlock {DIV} at (0,54) size 964x1280
+        RenderImage {IMG} at (0,0) size 720x1280
+caret: position 1 of child 0 {IMG} of child 4 {DIV} of body

@@ -1,0 +1,64 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 244x14
+          text run at (0,0) width 244: "fixed table - percentage width cell is honored to min"
+      RenderTable {TABLE} at (0,14) size 300x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 298x22
+          RenderTableRow {TR} at (0,2) size 298x18
+            RenderTableCell {TD} at (2,2) size 146x18 [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 16x14
+                text run at (2,2) width 16: "foo"
+            RenderTableCell {TD} at (150,2) size 146x18 [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 16x14
+                text run at (2,2) width 16: "foo"
+      RenderBlock (anonymous) at (0,38) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderTable {TABLE} at (0,52) size 500x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 498x22
+          RenderTableRow {TR} at (0,2) size 498x18
+            RenderTableCell {TD} at (2,2) size 167x18 [bgcolor=#FF0000] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 58x14
+                text run at (2,2) width 58: "fooooooooo"
+            RenderTableCell {TD} at (171,2) size 168x18 [bgcolor=#008000] [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 58x14
+                text run at (2,2) width 58: "fooooooooo"
+            RenderTableCell {TD} at (341,2) size 155x18 [bgcolor=#FFA500] [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 73x14
+                text run at (2,2) width 73: "foo foo foo foo"
+      RenderBlock (anonymous) at (0,76) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderTable {TABLE} at (0,90) size 500x66 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 498x64
+          RenderTableRow {TR} at (0,2) size 498x60
+            RenderTableCell {TD} at (2,23) size 235x18 [bgcolor=#FF0000] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 58x14
+                text run at (2,2) width 58: "fooooooooo"
+            RenderTableCell {TD} at (239,23) size 235x18 [bgcolor=#008000] [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 58x14
+                text run at (2,2) width 58: "fooooooooo"
+            RenderTableCell {TD} at (476,2) size 20x60 [bgcolor=#FFA500] [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 16x56
+                text run at (2,2) width 16: "foo"
+                text run at (2,16) width 16: "foo"
+                text run at (2,30) width 16: "foo"
+                text run at (2,44) width 16: "foo"
+      RenderBlock (anonymous) at (0,156) size 784x14
+        RenderBR {BR} at (0,0) size 0x14
+      RenderTable {TABLE} at (0,170) size 784x24 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 782x22
+          RenderTableRow {TR} at (0,2) size 782x18
+            RenderTableCell {TD} at (2,2) size 155x18 [bgcolor=#FFA500] [border: (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 73x14
+                text run at (2,2) width 73: "foo foo foo foo"
+            RenderTableCell {TD} at (159,2) size 154x18 [bgcolor=#0000FF] [border: (1px inset #808080)] [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 73x14
+                text run at (2,2) width 73: "foo foo foo foo"
+            RenderTableCell {TD} at (315,2) size 465x18 [bgcolor=#008000] [border: (1px inset #808080)] [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (390,2) size 73x14
+                text run at (390,2) width 73: "foo foo foo foo"
+      RenderBlock (anonymous) at (0,194) size 784x14
+        RenderBR {BR} at (0,0) size 0x14

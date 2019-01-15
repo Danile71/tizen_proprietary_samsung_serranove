@@ -1,0 +1,72 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x422
+  RenderBlock {HTML} at (0,0) size 800x422
+    RenderBody {BODY} at (8,8) size 784x406
+      RenderBlock {DIV} at (0,0) size 784x406
+        RenderRegion {DIV} at (0,0) size 202x102 [border: (1px solid #000000)]
+        RenderRegion {DIV} at (0,102) size 302x182 [border: (1px solid #000000)]
+        RenderRegion {DIV} at (0,284) size 122x122 [border: (1px solid #000000)]
+Flow Threads
+  Thread with flow-name 'flow1'
+    layer at (0,0) size 300x400
+      RenderFlowThread at (0,0) size 300x400
+        RenderBlock {DIV} at (0,0) size 300x829
+          RenderBlock {DIV} at (5,5) size 290x819 [border: (1px solid #0000FF)]
+            RenderBlock {DIV} at (11,11) size 268x797 [border: (1px solid #008000)]
+              RenderInline {SPAN} at (0,0) size 266x121
+                RenderText {#text} at (1,1) size 166x57
+                  text run at (1,1) width 166: "This line of text"
+                  text run at (1,20) width 166: "should not get out of"
+                  text run at (1,39) width 93: "the region."
+                RenderText {#text} at (94,39) size 266x83
+                  text run at (94,39) width 73: " Here is"
+                  text run at (1,58) width 166: "some added content"
+                  text run at (1,84) width 266: "that will mess things up, since it"
+                  text run at (1,103) width 166: "shoves things down."
+              RenderText {#text} at (167,103) size 266x114
+                text run at (167,103) width 100: " This line of"
+                text run at (1,122) width 266: "text should not get out of the"
+                text run at (1,141) width 266: "region. This line of text should"
+                text run at (1,160) width 266: "not get out of the region. This"
+                text run at (1,179) width 266: "line of text should not get out of"
+                text run at (1,198) width 87: "the region."
+              RenderBR {BR} at (88,198) size 0x19
+              RenderBR {BR} at (1,217) size 0x19
+              RenderText {#text} at (1,236) size 266x408
+                text run at (1,236) width 266: "This line of text should not get"
+                text run at (1,264) width 86: "out of the"
+                text run at (1,283) width 56: "region."
+                text run at (1,302) width 86: "This line of"
+                text run at (1,321) width 31: "text"
+                text run at (1,340) width 86: "should not"
+                text run at (1,359) width 86: "get out of"
+                text run at (1,378) width 26: "the"
+                text run at (1,397) width 56: "region."
+                text run at (1,416) width 86: "This line of"
+                text run at (1,435) width 31: "text"
+                text run at (1,454) width 86: "should not"
+                text run at (1,473) width 86: "get out of"
+                text run at (1,492) width 26: "the"
+                text run at (1,511) width 56: "region."
+                text run at (1,530) width 86: "This line of"
+                text run at (1,549) width 31: "text"
+                text run at (1,568) width 86: "should not"
+                text run at (1,587) width 86: "get out of"
+                text run at (1,606) width 26: "the"
+                text run at (1,625) width 56: "region."
+              RenderBR {BR} at (57,625) size 0x19
+              RenderBR {BR} at (1,644) size 0x19
+              RenderText {#text} at (1,663) size 86x114
+                text run at (1,663) width 86: "This line of"
+                text run at (1,682) width 31: "text"
+                text run at (1,701) width 86: "should not"
+                text run at (1,720) width 86: "get out of"
+                text run at (1,739) width 26: "the"
+                text run at (1,758) width 56: "region."
+              RenderBR {BR} at (57,758) size 0x19
+              RenderBR {BR} at (1,777) size 0x19
+  Regions for flow 'flow1'
+    RenderRegion {DIV} #region1
+    RenderRegion {DIV} #region2
+    RenderRegion {DIV} #region3

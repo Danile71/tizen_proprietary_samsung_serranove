@@ -1,0 +1,28 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x19
+        RenderText {#text} at (0,0) size 67x19
+          text run at (0,0) width 67: "Test for "
+        RenderInline {A} at (0,0) size 85x19 [color=#0000EE]
+          RenderText {#text} at (67,0) size 85x19
+            text run at (67,0) width 85: "bug 11534"
+        RenderText {#text} at (152,0) size 5x19
+          text run at (152,0) width 5: "."
+      RenderBlock {P} at (0,35) size 964x19
+        RenderText {#text} at (0,0) size 444x19
+          text run at (0,0) width 444: "Readonly text fields don't scroll when selecting content."
+      RenderBlock (anonymous) at (0,70) size 964x29
+        RenderTextControl {INPUT} at (2,2) size 171x25 [bgcolor=#FFFFFF]
+        RenderText {#text} at (0,0) size 0x0
+      RenderBlock {DIV} at (0,99) size 964x19
+        RenderText {#text} at (0,0) size 95x19
+          text run at (0,0) width 95: "ScrollLeft: 0"
+        RenderBR {BR} at (95,15) size 0x0
+layer at (14,86) size 164x15 scrollWidth 192
+  RenderBlock {DIV} at (4,6) size 164x15
+    RenderText {#text} at (0,0) size 192x15
+      text run at (0,0) width 192: "abcdefghijklmnopqrstuvwxyz"
+caret: position 1 of child 0 {#text} of child 0 {DIV} of {#shadow-root} of child 5 {INPUT} of body

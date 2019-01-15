@@ -1,0 +1,17 @@
+layer at (0,0) size 980x735
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x735
+  RenderBlock {HTML} at (0,0) size 980x735
+    RenderBody {BODY} at (8,8) size 964x719
+      RenderBlock {P} at (0,0) size 964x38
+        RenderText {#text} at (0,0) size 955x38
+          text run at (0,0) width 955: "This tests for a bug where deleting everything in a paragraph of colored text would prevent the user from changing the"
+          text run at (0,19) width 81: "text color."
+      RenderBlock {DIV} at (0,54) size 964x19
+        RenderInline {FONT} at (0,0) size 187x19 [color=#FF0000]
+          RenderText {#text} at (0,0) size 187x19
+            text run at (0,0) width 187: "This text should be red."
+        RenderInline {FONT} at (0,0) size 194x19 [color=#0000FF]
+          RenderText {#text} at (187,0) size 194x19
+            text run at (187,0) width 194: "This text should be blue."
+caret: position 25 of child 0 {#text} of child 1 {FONT} of child 2 {DIV} of body

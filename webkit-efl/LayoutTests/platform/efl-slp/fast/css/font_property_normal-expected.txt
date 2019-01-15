@@ -1,0 +1,38 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x553
+  RenderBlock {HTML} at (0,0) size 800x553
+    RenderBody {BODY} at (8,12) size 784x529
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 342x14
+          text run at (0,0) width 342: "Fails indicate that the font property specification is invalid in strict mode."
+      RenderBlock {P} at (0,46) size 784x37
+        RenderText {#text} at (0,0) size 220x36
+          text run at (0,0) width 220: "24pt italic = 24pt"
+      RenderBlock {P} at (0,115) size 784x37
+        RenderText {#text} at (0,0) size 294x36
+          text run at (0,0) width 294: "24pt italic Arial = 24pt"
+      RenderBlock {P} at (0,184) size 784x37
+        RenderText {#text} at (0,0) size 394x36
+          text run at (0,0) width 394: "24pt italic 'Arial' = 24pt Arial"
+      RenderBlock {P} at (0,253) size 784x14
+        RenderText {#text} at (0,0) size 79x14
+          text run at (0,0) width 79: "italic 24pt = fails"
+      RenderBlock {P} at (0,299) size 784x37
+        RenderText {#text} at (0,0) size 457x36
+          text run at (0,0) width 457: "italic 24pt Arial = 24pt Arial Italic"
+      RenderBlock {P} at (0,368) size 784x37
+        RenderText {#text} at (0,0) size 469x36
+          text run at (0,0) width 469: "italic 24pt 'Arial' = 24pt Arial Italic"
+      RenderBlock {P} at (0,437) size 784x14
+        RenderText {#text} at (0,0) size 106x14
+          text run at (0,0) width 106: "Arial 24pt italic = fails"
+      RenderBlock {P} at (0,463) size 784x14
+        RenderText {#text} at (0,0) size 110x14
+          text run at (0,0) width 110: "'Arial' 24pt italic = fails"
+      RenderBlock {P} at (0,489) size 784x14
+        RenderText {#text} at (0,0) size 106x14
+          text run at (0,0) width 106: "Arial italic 24pt = fails"
+      RenderBlock {P} at (0,515) size 784x14
+        RenderText {#text} at (0,0) size 110x14
+          text run at (0,0) width 110: "'Arial' italic 24pt = fails"

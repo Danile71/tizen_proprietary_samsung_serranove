@@ -1,0 +1,27 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x148
+  RenderBlock {HTML} at (0,0) size 800x148
+    RenderBody {BODY} at (8,12) size 784x128
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 221x14
+          text run at (0,0) width 221: "The following two squares should be identical."
+      RenderTable {TABLE} at (0,26) size 192x102
+        RenderTableSection {TBODY} at (0,0) size 192x102
+          RenderTableRow {TR} at (0,12) size 192x78
+            RenderTableCell {TD} at (12,12) size 78x78 [bgcolor=#FF0000] [r=0 c=0 rs=1 cs=1]
+              RenderBlock {DIV} at (0,0) size 78x78 [bgcolor=#FFFF00] [border: (3px solid #000000)]
+                RenderBlock {DIV} at (3,27) size 72x0 [bgcolor=#FF0000]
+                RenderBlock (floating) {DIV} at (3,27) size 36x24 [bgcolor=#FFA500]
+                RenderBlock {DIV} at (3,27) size 72x0 [bgcolor=#FF0000]
+                RenderBlock {DIV} at (3,51) size 72x24 [border: (24px solid #FFA500) none]
+            RenderTableCell {TD} at (102,12) size 78x78 [bgcolor=#FF0000] [r=0 c=1 rs=1 cs=1]
+              RenderTable {TABLE} at (0,0) size 78x78 [border: (3px solid #000000)]
+                RenderTableSection {TBODY} at (3,3) size 72x72
+                  RenderTableRow {TR} at (0,0) size 72x24
+                    RenderTableCell {TD} at (0,12) size 72x0 [bgcolor=#FFFF00] [r=0 c=0 rs=1 cs=2]
+                  RenderTableRow {TR} at (0,24) size 72x24
+                    RenderTableCell {TD} at (0,36) size 36x0 [bgcolor=#FFA500] [r=1 c=0 rs=1 cs=1]
+                    RenderTableCell {TD} at (36,36) size 36x0 [bgcolor=#FFFF00] [r=1 c=1 rs=1 cs=1]
+                  RenderTableRow {TR} at (0,48) size 72x24
+                    RenderTableCell {TD} at (0,60) size 72x0 [bgcolor=#FFA500] [r=2 c=0 rs=1 cs=2]

@@ -1,0 +1,31 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x580
+      RenderBlock {P} at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 21x14
+          text run at (0,0) width 21: "The "
+        RenderInline {SPAN} at (0,0) size 104x14
+          RenderText {#text} at (21,0) size 104x14
+            text run at (21,0) width 104: "span in this paragraph"
+        RenderText {#text} at (125,0) size 226x14
+          text run at (125,0) width 226: " has a transform, which has no effect on inlines."
+      RenderBlock {P} at (0,26) size 784x14
+        RenderText {#text} at (0,0) size 21x14
+          text run at (0,0) width 21: "The "
+        RenderText {#text} at (125,0) size 462x14
+          text run at (125,0) width 462: " has a transform, which has no effect on inlines. It also has opacity to throw it into a RenderLayer."
+      RenderBlock {P} at (0,52) size 784x14
+        RenderText {#text} at (0,0) size 21x14
+          text run at (0,0) width 21: "The "
+        RenderText {#text} at (125,0) size 408x14
+          text run at (125,0) width 408: " has a transform and opacity, and is an inline-block. So it should respect the transform."
+layer at (8,34) size 104x14
+  RenderInline {SPAN} at (0,0) size 104x14
+    RenderText {#text} at (21,0) size 104x14
+      text run at (21,0) width 104: "span in this paragraph"
+layer at (29,60) size 104x14
+  RenderBlock {SPAN} at (21,0) size 104x14
+    RenderText {#text} at (0,0) size 104x14
+      text run at (0,0) width 104: "span in this paragraph"

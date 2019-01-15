@@ -1,0 +1,455 @@
+layer at (0,0) size 980x2074
+  RenderView at (0,0) size 980x735
+layer at (0,0) size 980x2074
+  RenderBlock {HTML} at (0,0) size 980x2074
+    RenderBody {BODY} at (8,8) size 964x2058
+      RenderBlock (anonymous) at (0,0) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {HR} at (0,27) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {H3} at (0,47) size 964x22
+        RenderText {#text} at (0,0) size 116x22
+          text run at (0,0) width 116: "border-top"
+      RenderBlock {P} at (0,87) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 44x19
+          text run at (59,0) width 44: " has "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (103,3) size 48x15
+            text run at (103,3) width 48: "border"
+        RenderText {#text} at (151,0) size 99x19
+          text run at (151,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (250,3) size 37x15
+            text run at (250,3) width 37: "<td>"
+        RenderText {#text} at (287,0) size 55x19
+          text run at (287,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 273x15
+          RenderText {#text} at (342,3) size 273x15
+            text run at (342,3) width 273: "style=\"border-top: green 10px solid;\""
+        RenderText {#text} at (615,0) size 6x19
+          text run at (615,0) width 6: "."
+      RenderTable {TABLE} at (0,122) size 562x119 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 560x117
+          RenderTableRow {TR} at (0,5) size 560x32
+            RenderTableCell {TD} at (5,5) size 550x32 [border: (10px solid #008000) (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (2,11) size 546x19
+                text run at (2,11) width 546: "Every cell in this table should have a 10-pixel solid green top border."
+          RenderTableRow {TR} at (0,42) size 560x70
+            RenderTableCell {TD} at (5,61) size 135x32 [border: (10px solid #008000) (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,11) size 64x19
+                text run at (2,11) width 64: "Cell one"
+            RenderTableCell {TD} at (145,42) size 410x70 [border: (10px solid #008000) (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (2,11) size 406x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (2,30) size 201x38 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 199x36
+                  RenderTableRow {TR} at (0,2) size 199x32
+                    RenderTableCell {TD} at (2,2) size 195x32 [border: (10px solid #008000) (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,11) size 191x19
+                        text run at (2,11) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,241) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {P} at (0,276) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 88x19
+          text run at (59,0) width 88: " has *no* "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (147,3) size 48x15
+            text run at (147,3) width 48: "border"
+        RenderText {#text} at (195,0) size 99x19
+          text run at (195,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (294,3) size 37x15
+            text run at (294,3) width 37: "<td>"
+        RenderText {#text} at (331,0) size 55x19
+          text run at (331,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 273x15
+          RenderText {#text} at (386,3) size 273x15
+            text run at (386,3) width 273: "style=\"border-top: green 10px solid;\""
+        RenderText {#text} at (659,0) size 6x19
+          text run at (659,0) width 6: "."
+      RenderTable {TABLE} at (0,311) size 558x112
+        RenderTableSection {TBODY} at (0,0) size 558x112
+          RenderTableRow {TR} at (0,5) size 558x31
+            RenderTableCell {TD} at (5,5) size 548x31 [border: (10px solid #008000) none] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (1,11) size 546x19
+                text run at (1,11) width 546: "Every cell in this table should have a 10-pixel solid green top border."
+          RenderTableRow {TR} at (0,41) size 558x66
+            RenderTableCell {TD} at (5,58) size 135x31 [border: (10px solid #008000) none] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,11) size 64x19
+                text run at (1,11) width 64: "Cell one"
+            RenderTableCell {TD} at (145,41) size 408x66 [border: (10px solid #008000) none] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (1,11) size 406x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (1,30) size 197x35
+                RenderTableSection {TBODY} at (0,0) size 197x35
+                  RenderTableRow {TR} at (0,2) size 197x31
+                    RenderTableCell {TD} at (2,2) size 193x31 [border: (10px solid #008000) none] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (1,11) size 191x19
+                        text run at (1,11) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,423) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {HR} at (0,450) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {H3} at (0,470) size 964x22
+        RenderText {#text} at (0,0) size 133x22
+          text run at (0,0) width 133: "border-right"
+      RenderBlock {P} at (0,510) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 44x19
+          text run at (59,0) width 44: " has "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (103,3) size 48x15
+            text run at (103,3) width 48: "border"
+        RenderText {#text} at (151,0) size 99x19
+          text run at (151,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (250,3) size 37x15
+            text run at (250,3) width 37: "<td>"
+        RenderText {#text} at (287,0) size 55x19
+          text run at (287,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 283x15
+          RenderText {#text} at (342,3) size 283x15
+            text run at (342,3) width 283: "style=\"border-right: green 10px solid;\""
+        RenderText {#text} at (625,0) size 6x19
+          text run at (625,0) width 6: "."
+      RenderTable {TABLE} at (0,545) size 582x92 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 580x90
+          RenderTableRow {TR} at (0,5) size 580x23
+            RenderTableCell {TD} at (5,5) size 570x23 [border: (1px inset #808080) (10px solid #008000) (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (2,2) size 557x19
+                text run at (2,2) width 557: "Every cell in this table should have a 10-pixel solid green right border."
+          RenderTableRow {TR} at (0,33) size 580x52
+            RenderTableCell {TD} at (5,47) size 145x23 [border: (1px inset #808080) (10px solid #008000) (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 64x19
+                text run at (2,2) width 64: "Cell one"
+            RenderTableCell {TD} at (155,33) size 420x52 [border: (1px inset #808080) (10px solid #008000) (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (2,2) size 407x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (2,21) size 210x29 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 208x27
+                  RenderTableRow {TR} at (0,2) size 208x23
+                    RenderTableCell {TD} at (2,2) size 204x23 [border: (1px inset #808080) (10px solid #008000) (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,2) size 191x19
+                        text run at (2,2) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,637) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {P} at (0,672) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 44x19
+          text run at (59,0) width 44: " has "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (103,3) size 48x15
+            text run at (103,3) width 48: "border"
+        RenderText {#text} at (151,0) size 99x19
+          text run at (151,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (250,3) size 37x15
+            text run at (250,3) width 37: "<td>"
+        RenderText {#text} at (287,0) size 55x19
+          text run at (287,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 283x15
+          RenderText {#text} at (342,3) size 283x15
+            text run at (342,3) width 283: "style=\"border-right: green 10px solid;\""
+        RenderText {#text} at (625,0) size 6x19
+          text run at (625,0) width 6: "."
+      RenderTable {TABLE} at (0,707) size 579x82
+        RenderTableSection {TBODY} at (0,0) size 579x82
+          RenderTableRow {TR} at (0,5) size 579x21
+            RenderTableCell {TD} at (5,5) size 569x21 [border: none (10px solid #008000) none] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 557x19
+                text run at (1,1) width 557: "Every cell in this table should have a 10-pixel solid green right border."
+          RenderTableRow {TR} at (0,31) size 579x46
+            RenderTableCell {TD} at (5,43) size 145x21 [border: none (10px solid #008000) none] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 64x19
+                text run at (1,1) width 64: "Cell one"
+            RenderTableCell {TD} at (155,31) size 419x46 [border: none (10px solid #008000) none] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (1,1) size 407x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (1,20) size 207x25
+                RenderTableSection {TBODY} at (0,0) size 207x25
+                  RenderTableRow {TR} at (0,2) size 207x21
+                    RenderTableCell {TD} at (2,2) size 203x21 [border: none (10px solid #008000) none] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 191x19
+                        text run at (1,1) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,789) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {HR} at (0,816) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {H3} at (0,836) size 964x22
+        RenderText {#text} at (0,0) size 158x22
+          text run at (0,0) width 158: "border-bottom"
+      RenderBlock {P} at (0,876) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 44x19
+          text run at (59,0) width 44: " has "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (103,3) size 48x15
+            text run at (103,3) width 48: "border"
+        RenderText {#text} at (151,0) size 99x19
+          text run at (151,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (250,3) size 37x15
+            text run at (250,3) width 37: "<td>"
+        RenderText {#text} at (287,0) size 55x19
+          text run at (287,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 302x15
+          RenderText {#text} at (342,3) size 302x15
+            text run at (342,3) width 302: "style=\"border-bottom: green 10px solid;\""
+        RenderText {#text} at (644,0) size 6x19
+          text run at (644,0) width 6: "."
+      RenderTable {TABLE} at (0,911) size 594x119 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 592x117
+          RenderTableRow {TR} at (0,5) size 592x32
+            RenderTableCell {TD} at (5,5) size 582x32 [border: (1px inset #808080) (10px solid #008000) (1px inset #808080)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (2,2) size 578x19
+                text run at (2,2) width 578: "Every cell in this table should have a 10-pixel solid green bottom border."
+          RenderTableRow {TR} at (0,42) size 592x70
+            RenderTableCell {TD} at (5,61) size 143x32 [border: (1px inset #808080) (10px solid #008000) (1px inset #808080)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (2,2) size 64x19
+                text run at (2,2) width 64: "Cell one"
+            RenderTableCell {TD} at (153,42) size 434x70 [border: (1px inset #808080) (10px solid #008000) (1px inset #808080)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (2,2) size 430x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (2,21) size 201x38 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 199x36
+                  RenderTableRow {TR} at (0,2) size 199x32
+                    RenderTableCell {TD} at (2,2) size 195x32 [border: (1px inset #808080) (10px solid #008000) (1px inset #808080)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (2,2) size 191x19
+                        text run at (2,2) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,1030) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {P} at (0,1065) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 88x19
+          text run at (59,0) width 88: " has *no* "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (147,3) size 48x15
+            text run at (147,3) width 48: "border"
+        RenderText {#text} at (195,0) size 99x19
+          text run at (195,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (294,3) size 37x15
+            text run at (294,3) width 37: "<td>"
+        RenderText {#text} at (331,0) size 55x19
+          text run at (331,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 302x15
+          RenderText {#text} at (386,3) size 302x15
+            text run at (386,3) width 302: "style=\"border-bottom: green 10px solid;\""
+        RenderText {#text} at (688,0) size 6x19
+          text run at (688,0) width 6: "."
+      RenderTable {TABLE} at (0,1100) size 590x112
+        RenderTableSection {TBODY} at (0,0) size 590x112
+          RenderTableRow {TR} at (0,5) size 590x31
+            RenderTableCell {TD} at (5,5) size 580x31 [border: none (10px solid #008000) none] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (1,1) size 578x19
+                text run at (1,1) width 578: "Every cell in this table should have a 10-pixel solid green bottom border."
+          RenderTableRow {TR} at (0,41) size 590x66
+            RenderTableCell {TD} at (5,58) size 143x31 [border: none (10px solid #008000) none] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 64x19
+                text run at (1,1) width 64: "Cell one"
+            RenderTableCell {TD} at (153,41) size 432x66 [border: none (10px solid #008000) none] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (1,1) size 430x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (1,20) size 197x35
+                RenderTableSection {TBODY} at (0,0) size 197x35
+                  RenderTableRow {TR} at (0,2) size 197x31
+                    RenderTableCell {TD} at (2,2) size 193x31 [border: none (10px solid #008000) none] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (1,1) size 191x19
+                        text run at (1,1) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,1212) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {HR} at (0,1239) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {H3} at (0,1259) size 964x22
+        RenderText {#text} at (0,0) size 117x22
+          text run at (0,0) width 117: "border-left"
+      RenderBlock {P} at (0,1299) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 44x19
+          text run at (59,0) width 44: " has "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (103,3) size 48x15
+            text run at (103,3) width 48: "border"
+        RenderText {#text} at (151,0) size 99x19
+          text run at (151,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (250,3) size 37x15
+            text run at (250,3) width 37: "<td>"
+        RenderText {#text} at (287,0) size 55x19
+          text run at (287,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 274x15
+          RenderText {#text} at (342,3) size 274x15
+            text run at (342,3) width 274: "style=\"border-left: green 10px solid;\""
+        RenderText {#text} at (616,0) size 6x19
+          text run at (616,0) width 6: "."
+      RenderTable {TABLE} at (0,1334) size 571x92 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 569x90
+          RenderTableRow {TR} at (0,5) size 569x23
+            RenderTableCell {TD} at (5,5) size 559x23 [border: (1px inset #808080) (10px solid #008000)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (11,2) size 546x19
+                text run at (11,2) width 546: "Every cell in this table should have a 10-pixel solid green left border."
+          RenderTableRow {TR} at (0,33) size 569x52
+            RenderTableCell {TD} at (5,47) size 142x23 [border: (1px inset #808080) (10px solid #008000)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (11,2) size 64x19
+                text run at (11,2) width 64: "Cell one"
+            RenderTableCell {TD} at (152,33) size 412x52 [border: (1px inset #808080) (10px solid #008000)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (11,2) size 399x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (11,21) size 210x29 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 208x27
+                  RenderTableRow {TR} at (0,2) size 208x23
+                    RenderTableCell {TD} at (2,2) size 204x23 [border: (1px inset #808080) (10px solid #008000)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (11,2) size 191x19
+                        text run at (11,2) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,1426) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {P} at (0,1461) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 88x19
+          text run at (59,0) width 88: " has *no* "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (147,3) size 48x15
+            text run at (147,3) width 48: "border"
+        RenderText {#text} at (195,0) size 99x19
+          text run at (195,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (294,3) size 37x15
+            text run at (294,3) width 37: "<td>"
+        RenderText {#text} at (331,0) size 55x19
+          text run at (331,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 274x15
+          RenderText {#text} at (386,3) size 274x15
+            text run at (386,3) width 274: "style=\"border-left: green 10px solid;\""
+        RenderText {#text} at (660,0) size 6x19
+          text run at (660,0) width 6: "."
+      RenderTable {TABLE} at (0,1496) size 568x82
+        RenderTableSection {TBODY} at (0,0) size 568x82
+          RenderTableRow {TR} at (0,5) size 568x21
+            RenderTableCell {TD} at (5,5) size 558x21 [border: none (10px solid #008000)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (11,1) size 546x19
+                text run at (11,1) width 546: "Every cell in this table should have a 10-pixel solid green left border."
+          RenderTableRow {TR} at (0,31) size 568x46
+            RenderTableCell {TD} at (5,43) size 142x21 [border: none (10px solid #008000)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (11,1) size 64x19
+                text run at (11,1) width 64: "Cell one"
+            RenderTableCell {TD} at (152,31) size 411x46 [border: none (10px solid #008000)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (11,1) size 399x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (11,20) size 207x25
+                RenderTableSection {TBODY} at (0,0) size 207x25
+                  RenderTableRow {TR} at (0,2) size 207x21
+                    RenderTableCell {TD} at (2,2) size 203x21 [border: none (10px solid #008000)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (11,1) size 191x19
+                        text run at (11,1) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,1578) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {HR} at (0,1605) size 964x2 [border: (1px inset #000000)]
+      RenderBlock {H3} at (0,1625) size 964x22
+        RenderText {#text} at (0,0) size 72x22
+          text run at (0,0) width 72: "border"
+      RenderBlock {P} at (0,1665) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 44x19
+          text run at (59,0) width 44: " has "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (103,3) size 48x15
+            text run at (103,3) width 48: "border"
+        RenderText {#text} at (151,0) size 99x19
+          text run at (151,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (250,3) size 37x15
+            text run at (250,3) width 37: "<td>"
+        RenderText {#text} at (287,0) size 55x19
+          text run at (287,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 244x15
+          RenderText {#text} at (342,3) size 244x15
+            text run at (342,3) width 244: "style=\"border: green 10px solid;\""
+        RenderText {#text} at (586,0) size 6x19
+          text run at (586,0) width 6: "."
+      RenderTable {TABLE} at (0,1700) size 549x146 [border: (1px outset #808080)]
+        RenderTableSection {TBODY} at (1,1) size 547x144
+          RenderTableRow {TR} at (0,5) size 547x41
+            RenderTableCell {TD} at (5,5) size 537x41 [border: (10px solid #008000)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (11,11) size 515x19
+                text run at (11,11) width 515: "Every cell in this table should have a 10-pixel solid green border."
+          RenderTableRow {TR} at (0,51) size 547x88
+            RenderTableCell {TD} at (5,74) size 139x41 [border: (10px solid #008000)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (11,11) size 64x19
+                text run at (11,11) width 64: "Cell one"
+            RenderTableCell {TD} at (149,51) size 393x88 [border: (10px solid #008000)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (11,11) size 371x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (11,30) size 219x47 [border: (1px outset #808080)]
+                RenderTableSection {TBODY} at (1,1) size 217x45
+                  RenderTableRow {TR} at (0,2) size 217x41
+                    RenderTableCell {TD} at (2,2) size 213x41 [border: (10px solid #008000)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (11,11) size 191x19
+                        text run at (11,11) width 191: "Nested single-cell table!"
+      RenderBlock (anonymous) at (0,1846) size 964x19
+        RenderBR {BR} at (0,0) size 0x19
+      RenderBlock {P} at (0,1881) size 964x19
+        RenderInline {CODE} at (0,0) size 59x15
+          RenderText {#text} at (0,3) size 59x15
+            text run at (0,3) width 59: "<table>"
+        RenderText {#text} at (59,0) size 88x19
+          text run at (59,0) width 88: " has *no* "
+        RenderInline {CODE} at (0,0) size 48x15
+          RenderText {#text} at (147,3) size 48x15
+            text run at (147,3) width 48: "border"
+        RenderText {#text} at (195,0) size 99x19
+          text run at (195,0) width 99: " attribute; "
+        RenderInline {CODE} at (0,0) size 37x15
+          RenderText {#text} at (294,3) size 37x15
+            text run at (294,3) width 37: "<td>"
+        RenderText {#text} at (331,0) size 55x19
+          text run at (331,0) width 55: " have "
+        RenderInline {CODE} at (0,0) size 244x15
+          RenderText {#text} at (386,3) size 244x15
+            text run at (386,3) width 244: "style=\"border: green 10px solid;\""
+        RenderText {#text} at (630,0) size 6x19
+          text run at (630,0) width 6: "."
+      RenderTable {TABLE} at (0,1916) size 547x142
+        RenderTableSection {TBODY} at (0,0) size 547x142
+          RenderTableRow {TR} at (0,5) size 547x41
+            RenderTableCell {TD} at (5,5) size 537x41 [border: (10px solid #008000)] [r=0 c=0 rs=1 cs=2]
+              RenderText {#text} at (11,11) size 515x19
+                text run at (11,11) width 515: "Every cell in this table should have a 10-pixel solid green border."
+          RenderTableRow {TR} at (0,51) size 547x86
+            RenderTableCell {TD} at (5,73) size 140x41 [border: (10px solid #008000)] [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (11,11) size 64x19
+                text run at (11,11) width 64: "Cell one"
+            RenderTableCell {TD} at (150,51) size 392x86 [border: (10px solid #008000)] [r=1 c=1 rs=1 cs=1]
+              RenderBlock (anonymous) at (11,11) size 370x19
+                RenderText {#text} at (0,0) size 63x19
+                  text run at (0,0) width 63: "Cell two"
+              RenderTable {TABLE} at (11,30) size 217x45
+                RenderTableSection {TBODY} at (0,0) size 217x45
+                  RenderTableRow {TR} at (0,2) size 217x41
+                    RenderTableCell {TD} at (2,2) size 213x41 [border: (10px solid #008000)] [r=0 c=0 rs=1 cs=1]
+                      RenderText {#text} at (11,11) size 191x19
+                        text run at (11,11) width 191: "Nested single-cell table!"

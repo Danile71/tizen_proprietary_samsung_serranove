@@ -1,0 +1,31 @@
+layer at (0,0) size 800x600
+  RenderView at (0,0) size 800x600
+layer at (0,0) size 800x600
+  RenderBlock {HTML} at (0,0) size 800x600
+    RenderBody {BODY} at (8,8) size 784x584
+      RenderBlock (anonymous) at (0,0) size 784x14
+        RenderText {#text} at (0,0) size 325x14
+          text run at (0,0) width 325: "The table displayed is two rows by three columns with no alignment."
+        RenderBR {BR} at (325,11) size 0x0
+      RenderTable {TABLE} at (0,14) size 159x38
+        RenderTableSection {TBODY} at (0,0) size 159x38
+          RenderTableRow {TR} at (0,2) size 159x16
+            RenderTableCell {TD} at (2,2) size 51x16 [r=0 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 47x14
+                text run at (1,1) width 47: "Navigator"
+            RenderTableCell {TD} at (55,2) size 54x16 [r=0 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 52x14
+                text run at (1,1) width 52: "Messenger"
+            RenderTableCell {TD} at (111,2) size 46x16 [r=0 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 40x14
+                text run at (1,1) width 40: "Collabra"
+          RenderTableRow {TR} at (0,20) size 159x16
+            RenderTableCell {TD} at (2,20) size 51x16 [r=1 c=0 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 49x14
+                text run at (1,1) width 49: "Composer"
+            RenderTableCell {TD} at (55,20) size 54x16 [r=1 c=1 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 42x14
+                text run at (1,1) width 42: "Calendar"
+            RenderTableCell {TD} at (111,20) size 46x16 [r=1 c=2 rs=1 cs=1]
+              RenderText {#text} at (1,1) size 44x14
+                text run at (1,1) width 44: "Netcaster"
